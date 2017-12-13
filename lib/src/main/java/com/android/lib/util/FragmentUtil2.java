@@ -1,5 +1,6 @@
 package com.android.lib.util;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
@@ -39,7 +40,7 @@ public class FragmentUtil2 {
     public void showAndHidden(FragmentActivity activity,ArrayList<Fragment> fragments,int position){
         for(int i=0;i<fragments.size();i++){
             FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-            transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+           // transaction.setCustomAnimations(R.anim.anim_push_right_in_200, R.anim.anim_push_left_out_200);
             transaction.commitAllowingStateLoss();
             if(position==i){
                 transaction.show(fragments.get(i));
@@ -229,7 +230,7 @@ public class FragmentUtil2 {
 
     public void initClear(FragmentActivity fragmentActivity, int id) {
         clear(id);
-        ArrayList<Fragment> fragments = (ArrayList<Fragment>) fragmentActivity.getSupportFragmentManager().getFragments();
+        @SuppressLint("RestrictedApi") ArrayList<Fragment> fragments = (ArrayList<Fragment>) fragmentActivity.getSupportFragmentManager().getFragments();
         FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
         for (int i = 0; fragments != null && i < fragments.size(); i++) {
             transaction.remove(fragments.get(i));
@@ -243,7 +244,7 @@ public class FragmentUtil2 {
         if (fragmentActivity == null) {
             return;
         }
-        ArrayList<Fragment> fragments = (ArrayList<Fragment>) fragmentActivity.getSupportFragmentManager().getFragments();
+        @SuppressLint("RestrictedApi") ArrayList<Fragment> fragments = (ArrayList<Fragment>) fragmentActivity.getSupportFragmentManager().getFragments();
         LogUtil.E(2);
         FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
         LogUtil.E(3);

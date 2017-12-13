@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,16 +11,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.lib.R;
-import com.android.lib.R2;
 import com.android.lib.base.interf.view.OnAppItemLongClickListener;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.util.LogUtil;
 
 import java.util.ArrayList;
-
-import butterknife.OnClick;
-import butterknife.Optional;
 
 /**
  * Created by ${viwmox} on 2016-10-18.
@@ -46,7 +41,7 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
 
     private void init() {
         View view = LayoutInflater.from(context).inflate(R.layout.item_bottommenus, null);
-        addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
     public void initItems(ArrayList<BottomMenuBean> been) {
@@ -72,10 +67,9 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
     public void onClick(View v) {
         long t = System.currentTimeMillis();
         long d = t - time;
-        boolean b = v.getId() == id;
-        id = v.getId();
+        boolean b = ((Integer)v.getTag(R.id.position) == id);
+        id = (int) v.getTag(R.id.position);
         time = t;
-        LogUtil.E(d);
         if (d < 500 && b) {
             for (int i = 0; i < tabViews.size(); i++) {
                 if (v.getTag(R.id.position) == tabViews.get(i).getTag(R.id.position)) {
@@ -91,9 +85,7 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
             for (int i = 0; i < tabViews.size(); i++) {
                 if (v.getTag(R.id.position) == tabViews.get(i).getTag(R.id.position)) {
                     tabViews.get(i).setSelected(true);
-                    if (onAppItemClickListener != null) {
-                        onAppItemClickListener.onAppItemSelect(this, v, i);
-                    }
+                    onAppItemClickListener.onAppItemSelect(this, v, i);
                 } else {
                     tabViews.get(i).setSelected(false);
                 }

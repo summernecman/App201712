@@ -6,8 +6,9 @@ package com.android.lib.constant;
  */
 public class UrlConstant {
 
-    public static String DOMAIN = "";
-    public static String HTTP = "";
-    public static String PROJECT = "";
-    public static String FILE = "";
+    public static String 域名 = "www.summernecro.com:8079";
+    public static String HTTP前缀 = "http://";
+    public static String 项目名 = "/server";
+
+    public static String 文件路径 = "";
 }

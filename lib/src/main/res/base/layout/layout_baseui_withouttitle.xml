@@ -11,7 +11,6 @@
     android:id="@+id/act_base_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
     android:orientation="vertical">
 
 </RelativeLayout>

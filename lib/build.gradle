@@ -93,4 +93,5 @@ dependencies {
 //    compile 'com.shuyu:GSYVideoPlayer:2.0.6'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.jaeger.statusbarutil:library:1.4.0'
+    compile "com.daimajia.swipelayout:library:1.2.0@aar"//侧滑菜单
 }

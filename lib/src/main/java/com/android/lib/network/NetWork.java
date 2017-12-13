@@ -564,7 +564,9 @@ public class NetWork {
         RequestParams requestParams = new RequestParams(url);
         requestParams.setUseCookie(true);
         requestParams.setHeader("Cookie", SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse));
-        Map<String, String> map = GsonUtil.getInstance().fromJson(jsonstr, new TypeToken<Map<String, String>>() {
+        Map<String, String> map = GsonUtil.getInstance().
+                fromJson(jsonstr,
+                        new TypeToken<Map<String, String>>() {
         }.getType());
         for (Map.Entry<String, String> entry : map.entrySet()) {
             requestParams.addBodyParameter(entry.getKey(), entry.getValue());

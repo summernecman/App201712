@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.android.lib.base.adapter.AppBasePagerAdapter;
 import com.android.lib.constant.ValueConstant;
@@ -13,12 +14,12 @@ import com.android.lib.view.image.ImageFrag;
 
 import java.util.ArrayList;
 
-public class ImagePagerAdaper extends AppBasePagerAdapter {
+public class ImagePagerAdaper extends FragmentStatePagerAdapter {
 
     ArrayList<String> data;
 
     public ImagePagerAdaper(FragmentManager fm, Context context, ArrayList<String> data) {
-        super(fm, context);
+        super(fm);
         this.data = data;
     }
 

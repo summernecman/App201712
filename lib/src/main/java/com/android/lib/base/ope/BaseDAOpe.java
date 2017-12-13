@@ -2,6 +2,7 @@ package com.android.lib.base.ope;
 
 import android.content.Context;
 
+import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.bean.LayoutDABean;
 
 import java.util.ArrayList;
@@ -20,9 +21,20 @@ public class BaseDAOpe implements BaseOpe {
 
     }
 
+
+
     public BaseDAOpe(Context context) {
         this.context = context;
     }
+
+    public BaseUIActivity getActivity(){
+        if(context!=null && context instanceof BaseUIActivity){
+            BaseUIActivity activity = (BaseUIActivity) context;
+            return activity;
+        }
+        return null;
+    }
+
 
     public LayoutDABean getData(Object[] objects) {
         LayoutDABean bean = new LayoutDABean();

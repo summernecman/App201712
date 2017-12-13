@@ -52,11 +52,11 @@ public class CrashHander implements Thread.UncaughtExceptionHandler {
             saveInfo(ex, result);
         }
         if (true) {
-//            try {
-//                Thread.sleep(2000);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             uncaughtExceptionHandler.uncaughtException(thread, ex);
             Thread.setDefaultUncaughtExceptionHandler(null);
             restart(thread, ex);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 
+import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.databinding.LayoutBaseuiWithouttitleBinding;
 
@@ -27,6 +28,19 @@ public class BaseUIOpe<A extends ViewDataBinding> {
         bind = initViewDataBinding();
         viewHolder = new AppViewHolder(bind);
         bind.executePendingBindings();
+    }
+
+    public BaseUIActivity getActivity(){
+        if(context!=null && context instanceof BaseUIActivity){
+            BaseUIActivity activity = (BaseUIActivity) context;
+            return activity;
+        }
+        return null;
+    }
+
+
+    public void initUI(){
+
     }
 
 
