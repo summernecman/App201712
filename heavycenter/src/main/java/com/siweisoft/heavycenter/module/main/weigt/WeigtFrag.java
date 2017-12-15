@@ -6,4 +6,6 @@ import com.android.lib.base.fragment.BaseUIFrag;
 
 public class WeigtFrag extends BaseUIFrag<WeigtUIOpe,WeigtDAOpe> {
 
+
+
 }

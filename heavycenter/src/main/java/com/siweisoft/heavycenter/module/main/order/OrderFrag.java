@@ -4,7 +4,6 @@ package com.siweisoft.heavycenter.module.main.order;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.util.LogUtil;
@@ -40,4 +39,5 @@ public class OrderFrag extends BaseUIFrag<OrderUIOpe,OrderDAOpe> {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
 }

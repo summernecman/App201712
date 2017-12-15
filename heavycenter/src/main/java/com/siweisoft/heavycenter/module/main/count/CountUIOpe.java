@@ -12,4 +12,5 @@ public class CountUIOpe extends BaseUIOpe<FragCountBinding>{
     public CountUIOpe(Context context) {
         super(context);
     }
+
 }

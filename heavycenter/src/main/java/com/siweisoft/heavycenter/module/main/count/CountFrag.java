@@ -6,4 +6,9 @@ import com.android.lib.base.fragment.BaseUIFrag;
 
 public class CountFrag  extends BaseUIFrag<CountUIOpe,CountDAOpe> {
 
+    @Override
+    public void initData() {
+        super.initData();
+    }
+
 }

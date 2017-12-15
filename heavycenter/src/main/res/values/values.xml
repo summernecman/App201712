@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_item_content_h">42dp</dimen>
+    <dimen name="dimen_item_content_txt_size">17sp</dimen>
+    <dimen name="dimen_item_content_left_icon_size">17dp</dimen>
+    <dimen name="dimen_item_content_right_icon_size">17dp</dimen>
+    <dimen name="dimen_item_content_gap_size">1px</dimen>
+    <dimen name="dimen_item_content_left_padding">10dp</dimen>
+    <dimen name="dimen_item_content_right_txt_right_padding">10dp</dimen>
+
+    <color name="color_item_content_gap">@color/color_grey_300</color>
+    <color name="color_item_content">@color/white</color>
+    <color name="color_item_content_left_txt_color">@color/black</color>
+    <color name="color_item_content_right_txt_color">@color/black</color>
+
+
+</resources>

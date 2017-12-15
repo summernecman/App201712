@@ -5,5 +5,4 @@ package com.siweisoft.heavycenter.module.main.store;
 import com.android.lib.base.fragment.BaseUIFrag;
 
 public class StoreFrag extends BaseUIFrag<StoreUIOpe,StoreDAOpe> {
-
 }

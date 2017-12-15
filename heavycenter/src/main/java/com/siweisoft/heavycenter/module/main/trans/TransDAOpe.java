@@ -7,17 +7,39 @@ import android.content.Context;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.siweisoft.heavycenter.module.view.map.MapUtil;
 
+import java.util.ArrayList;
+
 public class TransDAOpe extends BaseDAOpe {
 
-    MapUtil mapUtil;
 
     public TransDAOpe(Context context) {
         super(context);
-        mapUtil = new MapUtil();
     }
 
     public MapUtil getMapUtil() {
-        return mapUtil;
+       return MapUtil.getInstance();
+    }
+
+    public ArrayList<String> getData(){
+        ArrayList<String> data = new ArrayList<>();
+        for(int i=0;i<100;i++){
+            data.add(""+i);
+        }
+        return data;
+    }
+
+    public void  stopMap(){
+        if(getMapUtil().getLocationClient()==null){
+            return;
+        }
+        getMapUtil().getLocationClient().stop();
+    }
+
+    public void startMap(){
+        if(getMapUtil().getLocationClient()==null){
+            return;
+        }
+        getMapUtil().getLocationClient().start();
     }
 
 }

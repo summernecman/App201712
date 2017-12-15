@@ -17,22 +17,37 @@ public class TransFrag extends BaseUIFrag<TransUIOpe,TransDAOpe> {
         getP().getD().getMapUtil().registerLocationListener(activity, new BDAbstractLocationListener() {
             @Override
             public void onReceiveLocation(BDLocation bdLocation) {
-                TransFrag.this.getId();
                 LogUtil.E(bdLocation.getLatitude()+":"+bdLocation.getLongitude()+":"+bdLocation.getAddrStr());
-                getP().getD().getMapUtil().animateMapStatus(getP().getU().bind.bmapView.getMap(),bdLocation);
-                getP().getD().getMapUtil().setMyLocationData(getP().getU().bind.bmapView.getMap(),bdLocation);
-                getP().getD().getMapUtil().addOverlays(getP().getU().bind.bmapView.getMap(),new LatLng[]{new LatLng(bdLocation.getLatitude(),bdLocation.getLongitude())});
+                getP().getD().getMapUtil().animateMapStatus(getP().getU().getMap(),bdLocation);
+                getP().getD().getMapUtil().setMyLocationData(getP().getU().getMap(),bdLocation);
+                getP().getD().getMapUtil().addOverlays(getP().getU().getMap(),new LatLng[]{new LatLng(bdLocation.getLatitude(),bdLocation.getLongitude())});
             }
         });
-        getP().getD().getMapUtil().getLocationClient().start();
+        getP().getD().startMap();
         getP().getD().getMapUtil().getLocationClient().requestLocation();
+
+
+        getP().getU().initRecycle();
+        getP().getU().LoadListData(getP().getD().getData());
+        getP().getU().ddd();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if(hidden){
+            getP().getD().stopMap();
+        }else{
+            getP().getD().startMap();
+            getP().getD().getMapUtil().getLocationClient().requestLocation();
+        }
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         getP().getU().设置地图状态(TransUIOpe.地图状态_DESTROY);
-        getP().getD().getMapUtil().getLocationClient().stop();
+        getP().getD().stopMap();
     }
 
     @Override

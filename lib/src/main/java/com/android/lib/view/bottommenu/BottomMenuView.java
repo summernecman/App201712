@@ -41,26 +41,30 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
 
     private void init() {
         View view = LayoutInflater.from(context).inflate(R.layout.item_bottommenus, null);
-        addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
     }
 
     public void initItems(ArrayList<BottomMenuBean> been) {
         viewGroup = (ViewGroup) findViewById(R.id.ll_container);
         viewGroup.removeAllViews();
         for (int i = 0; i < been.size(); i++) {
-            View view = LayoutInflater.from(context).inflate(R.layout.item_bottommenu, null);
+            ViewGroup view = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.item_bottommenu, null);
             ImageView imageView = (ImageView) view.findViewById(R.id.iv_image);
             TextView textView = (TextView) view.findViewById(R.id.tv_name);
             imageView.setBackgroundResource(been.get(i).drawbleId);
             textView.setText(been.get(i).name);
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 1);
             viewGroup.addView(view, params);
-            tabViews.add(view);
-            view.setOnClickListener(this);
-            view.setOnLongClickListener(this);
-            view.setTag(R.id.position, i);
+            tabViews.add(view.getChildAt(0));
+            view.getChildAt(0).setOnClickListener(this);
+            view.getChildAt(0).setOnLongClickListener(this);
+            view.getChildAt(0).setTag(R.id.position, i);
         }
 
+    }
+
+    public void setIndex(int index){
+        onClick(((ViewGroup)viewGroup.getChildAt(index)).getChildAt(0));
     }
 
     @Override
@@ -85,7 +89,9 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
             for (int i = 0; i < tabViews.size(); i++) {
                 if (v.getTag(R.id.position) == tabViews.get(i).getTag(R.id.position)) {
                     tabViews.get(i).setSelected(true);
-                    onAppItemClickListener.onAppItemSelect(this, v, i);
+                    if(onAppItemClickListener!=null){
+                        onAppItemClickListener.onAppItemSelect(this, v, i);
+                    }
                 } else {
                     tabViews.get(i).setSelected(false);
                 }

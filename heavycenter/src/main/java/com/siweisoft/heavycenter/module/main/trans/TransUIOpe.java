@@ -3,17 +3,16 @@ package com.siweisoft.heavycenter.module.main.trans;
 //by summer on 2017-12-11.
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 
-import com.android.lib.base.interf.OnFinishListener;
+import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.ope.BaseUIOpe;
-import com.android.lib.util.LogUtil;
-import com.baidu.location.BDAbstractLocationListener;
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.BaiduMap;
+import com.siweisoft.heavycenter.BR;
+import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.databinding.FragTransBinding;
+
+import java.util.List;
 
 public class TransUIOpe extends BaseUIOpe<FragTransBinding>{
 
@@ -24,9 +23,9 @@ public class TransUIOpe extends BaseUIOpe<FragTransBinding>{
     public static final int 地图状态_ONPAUSE = 2;
 
 
-
     public TransUIOpe(Context context) {
         super(context);
+        //initRecycle();
     }
 
     public void 设置地图状态(int status){
@@ -43,4 +42,20 @@ public class TransUIOpe extends BaseUIOpe<FragTransBinding>{
         }
     }
 
+    public void initRecycle(){
+        bind.drawerview.getRecyclerView().setLayoutManager(new LinearLayoutManager(context));
+    }
+
+    public void LoadListData(List<String> s) {
+        bind.drawerview.getRecyclerView().setAdapter(new AppsDataBindingAdapter(context, R.layout.item_order, BR.item_order, s));
+    }
+
+    public void ddd(){
+
+    }
+
+
+    public BaiduMap getMap(){
+        return bind.bmapView.getMap();
+    }
 }

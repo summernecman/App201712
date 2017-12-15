@@ -62,7 +62,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         }
         View group = inflater.inflate(getLayoutID(), null);
         ViewGroup parent = (ViewGroup) group.findViewById(R.id.container);
-        if (getP().getU() != null && getP().getU().getBind().getRoot() != null) {
+        if (getP()!=null && getP().getU() != null && getP().getU().getBind().getRoot() != null) {
             ViewGroup viewGroup = (ViewGroup) getP().getU().getBind().getRoot().getParent();
             if (viewGroup != null) {
                 viewGroup.removeAllViews();

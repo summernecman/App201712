@@ -9,7 +9,9 @@
 
     <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe"
-        android:layout_width="match_parent" android:layout_height="80dp">
+        android:layout_width="match_parent" android:layout_height="80dp"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp">
         <!-- Bottom View Start-->
         <TextView
             android:text="finish"
@@ -27,7 +29,7 @@
         <TextView
             android:text="@{item_order}"
             android:padding="10dp"
-            android:background="#ffffff"
+            android:background="@drawable/bg_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <!--What you want to show in SurfaceView-->

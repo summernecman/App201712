@@ -4,10 +4,10 @@ package com.siweisoft.heavycenter.module.main.weigt;
 
 import android.content.Context;
 
-import com.android.lib.base.ope.BaseUIOpe;
+import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.FragWeigtBinding;
 
-public class WeigtUIOpe extends BaseUIOpe<FragWeigtBinding>{
+public class WeigtUIOpe extends AppUIOpe<FragWeigtBinding> {
 
     public WeigtUIOpe(Context context) {
         super(context);

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="frag_login"
+            type="String" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:background="@drawable/aaaaaa"
+            android:orientation="vertical"
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <Button
+            android:text="regist"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:id="@+id/regist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="login"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="repwd"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:id="@+id/repwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

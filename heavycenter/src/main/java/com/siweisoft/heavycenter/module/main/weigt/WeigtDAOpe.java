@@ -4,9 +4,9 @@ package com.siweisoft.heavycenter.module.main.weigt;
 
 import android.content.Context;
 
-import com.android.lib.base.ope.BaseDAOpe;
+import com.siweisoft.heavycenter.base.AppDAOpe;
 
-public class WeigtDAOpe extends BaseDAOpe {
+public class WeigtDAOpe extends AppDAOpe {
 
     public WeigtDAOpe(Context context) {
         super(context);

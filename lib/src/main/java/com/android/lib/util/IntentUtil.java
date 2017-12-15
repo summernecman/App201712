@@ -7,6 +7,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import com.android.lib.constant.ValueConstant;
 import com.lzy.imagepicker.ui.ImageGridActivity;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 //import com.siweisoft.imga.constant.ValueConstant;
@@ -158,6 +160,23 @@ public class IntentUtil {
         intent2.putExtra(Intent.EXTRA_STREAM, uri);
         intent2.setType("image/*");
         fragment.startActivity(Intent.createChooser(intent2, "share"));
+    }
+
+    public static void startActivity(Activity activity, Class c, Serializable s){
+        Intent intent = new Intent(activity,c);
+        if(s!=null){
+            intent.putExtra(ValueConstant.DATA_DATA,s);
+        }
+        activity.startActivity(intent);
+    }
+
+    public static void startActivityWithFinish(Activity activity, Class c, Serializable s){
+        Intent intent = new Intent(activity,c);
+        if(s!=null){
+            intent.putExtra(ValueConstant.DATA_DATA,s);
+        }
+        activity.startActivity(intent);
+        activity.finish();
     }
 
 

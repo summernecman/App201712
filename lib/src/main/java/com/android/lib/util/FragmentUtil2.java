@@ -40,15 +40,30 @@ public class FragmentUtil2 {
     public void showAndHidden(FragmentActivity activity,ArrayList<Fragment> fragments,int position){
         for(int i=0;i<fragments.size();i++){
             FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-           // transaction.setCustomAnimations(R.anim.anim_push_right_in_200, R.anim.anim_push_left_out_200);
-            transaction.commitAllowingStateLoss();
+            //transaction.setCustomAnimations(R.anim.anim_push_right_in_200, R.anim.anim_push_left_out_200);
             if(position==i){
                 transaction.show(fragments.get(i));
             }else{
                 transaction.hide(fragments.get(i));
             }
+            transaction.commitAllowingStateLoss();
         }
     }
+
+    public void showAndHiddenWithAnim(FragmentActivity activity,ArrayList<Fragment> fragments,int position){
+        for(int i=0;i<fragments.size();i++){
+            FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+            if(position==i){
+                transaction.show(fragments.get(i));
+            }else{
+                transaction.hide(fragments.get(i));
+            }
+            transaction.commitAllowingStateLoss();
+        }
+    }
+
+
     public Fragment getFragment(Class c) {
         Iterator<Integer> keys = fragMap.keySet().iterator();
         while (keys.hasNext()) {
@@ -103,6 +118,12 @@ public class FragmentUtil2 {
             transaction.add(id, now);
             transaction.commitAllowingStateLoss();
         }
+    }
+
+    public void addsNoAnim(final FragmentActivity fragmentActivity, int id,ArrayList<Fragment> fragments) {
+       for(int i=0;i<fragments.size();i++){
+           addNoAnim(fragmentActivity,id,fragments.get(i));
+       }
     }
 
 
