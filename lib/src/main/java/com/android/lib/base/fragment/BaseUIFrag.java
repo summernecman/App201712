@@ -82,7 +82,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             public void run() {
                 initData();
             }
-        }, 500);
+        }, 1000);
 
     }
 

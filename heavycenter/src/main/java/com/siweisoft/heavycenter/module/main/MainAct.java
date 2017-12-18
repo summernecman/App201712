@@ -4,18 +4,29 @@ package com.siweisoft.heavycenter.module.main;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 
+import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.util.IntentUtil;
+import com.android.lib.util.menu.popup.PopupUtil;
+import com.android.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.module.myce.MyceAct;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.OnClick;
 
 public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSelectListener {
+
+    public static final int ID_ROOT = R.id.content_frame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +53,9 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     public void onClick(View v){
         switch (v.getId()){
             case R.id.menu:
-                IntentUtil.startActivity(activity, MyceAct.class,null);
+                //IntentUtil.startActivity(activity, MyceAct.class,null);
                 break;
+
         }
     }
 
@@ -54,5 +66,9 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
             return;
         }
         dothing();
+    }
+
+    public void soo(){
+
     }
 }

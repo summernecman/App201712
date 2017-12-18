@@ -4,10 +4,14 @@ package com.siweisoft.heavycenter.module.acct.acct;
 
 import android.os.Bundle;
 
+import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.module.acct.login.LoginFrag;
 
 public class AcctAct extends AppAct<AcctUIOpe,AcctDAOpe> {
+
+
+    public static final int ROOT_ID = R.id.content_acct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

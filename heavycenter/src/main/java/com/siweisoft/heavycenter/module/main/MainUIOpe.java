@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
+import com.android.lib.util.LogUtil;
 import com.android.lib.view.bottommenu.BottomMenuBean;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.ActMainBinding;
@@ -39,6 +40,9 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
 //        }
         bind.bottommenu.setViewPager(bind.content);
         bind.bottommenu.setOnAppItemClickListener(listener);
+        for(int i=0;i<bind.bottommenu.getChildCount();i++){
+            LogUtil.E("id="+bind.bottommenu.getChildAt(i).getId());
+        }
     }
 
     public void setCurrentItem(ArrayList<Fragment> pages,int item){

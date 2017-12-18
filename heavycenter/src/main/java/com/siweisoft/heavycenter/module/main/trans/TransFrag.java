@@ -43,6 +43,13 @@ public class TransFrag extends BaseUIFrag<TransUIOpe,TransDAOpe> {
         }
     }
 
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        LogUtil.E("setUserVisibleHint:"+isVisibleToUser);
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

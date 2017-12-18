@@ -11,11 +11,13 @@
         android:layout_height="@dimen/dimen_item_content_h">
 
         <ImageView
+            android:id="@+id/iv_left_icon"
             android:src="@drawable/icon_arraw"
             android:layout_width="@dimen/dimen_item_content_left_icon_size"
             android:layout_height="@dimen/dimen_item_content_left_icon_size" />
 
         <TextView
+            android:id="@+id/tv_left_content"
             android:layout_marginLeft="3dp"
             android:text="文字内容"
             android:textSize="@dimen/dimen_item_content_txt_size"
@@ -28,7 +30,18 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
 
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/iv_right_content"
+            android:layout_marginRight="@dimen/dimen_item_content_right_txt_right_padding"
+            android:background="@drawable/icon_arraw"
+            android:layout_width="@dimen/dimen_item_content_right_icon_size"
+            android:layout_height="@dimen/dimen_item_content_right_icon_size" />
+
+
         <ImageView
+            android:id="@+id/iv_right_icon"
             android:layout_marginRight="@dimen/dimen_item_content_right_txt_right_padding"
             android:src="@drawable/icon_arraw"
             android:layout_width="@dimen/dimen_item_content_right_icon_size"
@@ -37,6 +50,7 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/divide"
         android:background="@color/color_item_content_gap"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_item_content_gap_size"/>

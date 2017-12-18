@@ -1,7 +1,9 @@
 package com.android.lib.util.menu.popup;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.view.View;
@@ -10,6 +12,9 @@ import android.widget.PopupWindow;
 import com.android.lib.R;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.ScreenUtil;
+import com.android.lib.view.pop.PopView;
+
+import java.util.List;
 
 /**
  * Created by ${viwmox} on 2016-11-14.
@@ -77,7 +82,7 @@ public class PopupUtil {
         popupWindow = new PopupWindow(context);
         popupWindow.setHeight((int) (ScreenUtil.w / 2));
         popupWindow.setWidth(102 * ValueConstant.DIMEN_1);
-        popupWindow.setBackgroundDrawable(null);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(context.getResources().getColor(R.color.color_grey_500)));
         popupWindow.setOutsideTouchable(true);
         popupWindow.setFocusable(true);
         popupWindow.setAnimationStyle(R.style.popanimstyle);
@@ -99,6 +104,13 @@ public class PopupUtil {
 //        }
         int xoff = (archerview.getWidth() - popupWindow.getWidth()) / 2;
         popupWindow.showAsDropDown(archerview, xoff, 0);
+    }
+
+
+    public void show(Activity context, View archerview, List<String> strs){
+        PopView p = new PopView(context);
+        p.init(context,p,strs);
+        show(context,p,archerview);
     }
 
     public void dimess() {

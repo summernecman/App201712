@@ -24,7 +24,7 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.image:
-                //IntentUtil.startActivityWithFinish(this, AcctAct.class,null);
+                IntentUtil.startActivityWithFinish(this, AcctAct.class,null);
                 break;
         }
     }
