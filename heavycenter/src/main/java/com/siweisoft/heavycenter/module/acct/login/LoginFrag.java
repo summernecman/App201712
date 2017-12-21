@@ -39,4 +39,5 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
                 break;
         }
     }
+
 }

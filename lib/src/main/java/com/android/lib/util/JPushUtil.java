@@ -17,7 +17,7 @@ public class JPushUtil {
 //
 //    public void initJPush(Context activity) {
 //        JPushInterface.setDebugMode(true);
-//        JPushInterface.init(activity);
+//        JPushInterface.initIds(activity);
 //        //JPushInterface.setSilenceTime(activity, 0, 0, 23, 59);
 //    }
 }

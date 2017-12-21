@@ -2,7 +2,28 @@ package com.siweisoft.heavycenter.module.main.store;
 
 //by summer on 2017-12-11.
 
-import com.android.lib.base.fragment.BaseUIFrag;
+import android.view.View;
 
-public class StoreFrag extends BaseUIFrag<StoreUIOpe,StoreDAOpe> {
+import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.module.main.MainAct;
+
+public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> {
+
+    @Override
+    public void initData() {
+        super.initData();
+        getP().getU().initRefresh();
+        getP().getU().initRecycle();
+        getP().getU().LoadListData(getP().getD().getData());
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.ftv_back:
+                ((MainAct)getActivity()).getP().getU().switchDrawer();
+                break;
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.android.lib.util.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.View;
 
 import com.android.lib.R;
 import com.android.lib.base.fragment.BaseUIFrag;
+import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.LogUtil;
 
@@ -19,15 +21,15 @@ import java.util.HashMap;
  * Created by ${viwmox} on 2016-11-10.
  */
 public class FragManager {
+
+
     private static FragManager instance;
 
     private int index = 0;
 
-
     private HashMap<Integer, ArrayList<Fragment>> fragMaps = new HashMap<>();
 
-
-    private ArrayList<Integer> containsView = new ArrayList<>();
+    private ArrayList<Integer> viewIds = new ArrayList<>();
 
 
     public static FragManager getInstance() {
@@ -38,21 +40,28 @@ public class FragManager {
         return instance;
     }
 
-    public void init(ArrayList<Integer> ints) {
-        LogUtil.E(containsView.size() + "--" + fragMaps);
-        containsView.clear();
+    public void initIds(ArrayList<Integer> ints) {
+        LogUtil.E(viewIds.size() + "--" + fragMaps);
+        viewIds.clear();
         for (int i = 0; i < ints.size(); i++) {
-            containsView.add(ints.get(i));
+            viewIds.add(ints.get(i));
         }
 
         fragMaps.clear();
-        for (int i = 0; i < containsView.size(); i++) {
+        for (int i = 0; i < viewIds.size(); i++) {
             fragMaps.put(i, new ArrayList<Fragment>());
         }
     }
 
+
+    public int addId(int id){
+        viewIds.add(id);
+        fragMaps.put(fragMaps.keySet().size(),new ArrayList<Fragment>());
+        return fragMaps.keySet().size()-1;
+    }
+
     public void clear() {
-        containsView.clear();
+        viewIds.clear();
         fragMaps.clear();
     }
 
@@ -128,7 +137,31 @@ public class FragManager {
             }
             fragment.getArguments().putInt(ValueConstant.FRAG_POSITION, index);
 
-            transaction.add(containsView.get(index), fragment, fragment.getClass().getSimpleName());
+            transaction.add(viewIds.get(index), fragment, fragment.getClass().getSimpleName());
+            fragMaps.get(index).add(fragment);
+        }
+        transaction.commitAllowingStateLoss();
+    }
+
+    public void startFragment(FragmentManager manager, BaseUIFrag fragment) {
+        this.index = fragment.getIndex();
+        if (fragMaps.get(index) == null) {
+            fragMaps.put(index, new ArrayList<Fragment>());
+        }
+        FragmentTransaction transaction = manager.beginTransaction();
+
+        if (fragment != null) {
+            if (fragMaps.get(index).size() - 1 >= 0) {
+                transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out, R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+                transaction.hide(fragMaps.get(index).get(fragMaps.get(index).size() - 1));
+            }
+            Bundle bundle = fragment.getArguments();
+            if (bundle == null) {
+                fragment.setArguments(new Bundle());
+            }
+            fragment.getArguments().putInt(ValueConstant.FRAG_POSITION, index);
+
+            transaction.add(viewIds.get(index), fragment, fragment.getClass().getSimpleName());
             fragMaps.get(index).add(fragment);
         }
         transaction.commitAllowingStateLoss();
@@ -155,12 +188,13 @@ public class FragManager {
             if (bundle != null) {
                 fragment.getArguments().putAll(bundle);
             }
-            transaction.add(containsView.get(index), fragment, fragment.getClass().getSimpleName());
+            transaction.add(viewIds.get(index), fragment, fragment.getClass().getSimpleName());
             fragMaps.get(index).add(fragment);
         }
         transaction.commitAllowingStateLoss();
     }
 
+    @SuppressLint("Range")
     public void startFragment(FragmentManager manager, int index, Fragment fragment, Bundle bundle, View view, int id) {
         this.index = index;
         if (fragMaps.get(index) == null) {
@@ -185,7 +219,7 @@ public class FragManager {
                 bundle.putIntArray(ValueConstant.DATA_INTENT3, ints);
                 fragment.getArguments().putAll(bundle);
             }
-            transaction.add(containsView.get(index), fragment, fragment.getClass().getSimpleName());
+            transaction.add(viewIds.get(index), fragment, fragment.getClass().getSimpleName());
             fragMaps.get(index).add(fragment);
         }
         transaction.commitAllowingStateLoss();
@@ -216,7 +250,7 @@ public class FragManager {
             if (bundle != null) {
                 fragment.getArguments().putAll(bundle);
             }
-            transaction.add(containsView.get(index), fragment, fragment.getClass().getSimpleName());
+            transaction.add(viewIds.get(index), fragment, fragment.getClass().getSimpleName());
             fragMaps.get(index).add(fragment);
         }
         transaction.commitAllowingStateLoss();
@@ -241,7 +275,7 @@ public class FragManager {
     }
 
 
-    public void clearTopWith(FragmentManager manager, int positon) {
+    public void clearTopWith(FragmentManager manager, int positon, OnFinishListener onFinishListener) {
         this.index = positon;
         ArrayList<Fragment> fragments = fragMaps.get(positon);
         if (fragments.size() > 1) {
@@ -255,6 +289,8 @@ public class FragManager {
                 }
             }
             transaction.commitAllowingStateLoss();
+        }else{
+            onFinishListener.onFinish(null);
         }
     }
 
@@ -276,9 +312,21 @@ public class FragManager {
         }
     }
 
+    public void clearAll(FragmentManager manager, int positon) {
+        ArrayList<Fragment> fragments = fragMaps.get(positon);
+        if (fragments.size() > 0) {
+            FragmentTransaction transaction = manager.beginTransaction();
+            for (int j = fragments.size() - 1; j >= 0; j--) {
+                transaction.remove(fragments.get(j));
+                fragments.remove(j);
+            }
+            transaction.commitAllowingStateLoss();
+        }
+    }
 
-    public ArrayList<Integer> getContainsView() {
-        return containsView;
+
+    public ArrayList<Integer> getViewIds() {
+        return viewIds;
     }
 
     public HashMap<Integer, ArrayList<Fragment>> getFragMaps() {

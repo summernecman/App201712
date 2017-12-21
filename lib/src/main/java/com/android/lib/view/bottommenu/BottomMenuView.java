@@ -51,8 +51,8 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
             ViewGroup view = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.item_bottommenu, null);
             ImageView imageView = (ImageView) view.findViewById(R.id.iv_image);
             TextView textView = (TextView) view.findViewById(R.id.tv_name);
-            imageView.setBackgroundResource(been.get(i).drawbleId);
-            textView.setText(been.get(i).name);
+            imageView.setBackgroundResource(been.get(i).getDrawbleId());
+            textView.setText(been.get(i).getName());
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 1);
             viewGroup.addView(view, params);
             tabViews.add(view.getChildAt(0));

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="style_title">
+        <attr name="txt_mid" format="string"/>
+        <attr name="iv_left" format="reference"/>
+        <attr name="iv_right" format="reference"/>
+    </declare-styleable>
+</resources>

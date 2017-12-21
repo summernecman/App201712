@@ -3,9 +3,11 @@ package com.siweisoft.heavycenter.module.main;
 //by summer on 17-08-23.
 
 import android.Manifest;
+import android.app.Fragment;
 import android.content.Context;
-import android.support.v4.app.Fragment;
+import android.widget.RelativeLayout;
 
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.network.NetWork;
 import com.android.lib.network.bean.req.BaseReqBean;
 import com.android.lib.network.bean.res.BaseResBean;
@@ -16,8 +18,8 @@ import com.android.lib.util.system.PermissionUtil;
 import com.android.lib.view.bottommenu.BottomMenuBean;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppDAOpe;
-import com.siweisoft.heavycenter.data.netd.NetApi;
-import com.siweisoft.heavycenter.module.main.count.CountFrag;
+import com.siweisoft.heavycenter.data.netd.NetValue;
+import com.siweisoft.heavycenter.module.main.msg.MsgFrag;
 import com.siweisoft.heavycenter.module.main.order.OrderFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
@@ -27,17 +29,16 @@ import java.util.ArrayList;
 
 public class MainDAOpe extends AppDAOpe {
 
-
-    private ArrayList<Fragment> pages = new ArrayList<>();
-
     private ArrayList<BottomMenuBean> menudata = new ArrayList<>();
 
     private PermissionUtil permissionUtil;
 
+    private int index=0;
+
+
     public MainDAOpe(Context context) {
         super(context);
         initBottomMenuViewData();
-        initPages();
         permissionUtil= new PermissionUtil();
     }
 
@@ -46,38 +47,28 @@ public class MainDAOpe extends AppDAOpe {
             menudata = new ArrayList<>();
         }
         menudata.clear();
-        menudata.add(new BottomMenuBean("地磅", R.drawable.drawable_bed));
-        menudata.add(new BottomMenuBean("运输单", R.drawable.drawable_bed));
-        menudata.add(new BottomMenuBean("订单", R.drawable.drawable_bed));
-        menudata.add(new BottomMenuBean("仓库", R.drawable.drawable_bed));
-        menudata.add(new BottomMenuBean("盘库", R.drawable.drawable_bed));
+        RelativeLayout v0 = new RelativeLayout(context);v0.setId(11111+0);
+        BaseUIFrag fragment0 = new WeigtFrag(); fragment0.setIndex(0);
+        menudata.add(new BottomMenuBean("地磅", R.drawable.drawable_bed,new WeigtFrag(),v0));
+
+        RelativeLayout v1 = new RelativeLayout(context);v1.setId(11111+1);
+        BaseUIFrag fragment1 = new TransFrag(); fragment1.setIndex(1);
+        menudata.add(new BottomMenuBean("运输单", R.drawable.drawable_bed,new TransFrag(),v1));
+
+        RelativeLayout v2 = new RelativeLayout(context);v2.setId(11111+2);
+        BaseUIFrag fragment2 = new TransFrag(); fragment2.setIndex(2);
+        menudata.add(new BottomMenuBean("订单", R.drawable.drawable_bed,new OrderFrag(),v2));
+
+        RelativeLayout v3 = new RelativeLayout(context);v3.setId(11111+3);
+        BaseUIFrag fragment3 = new TransFrag(); fragment3.setIndex(3);
+        menudata.add(new BottomMenuBean("仓库", R.drawable.drawable_bed,new StoreFrag(),v3));
+
+        RelativeLayout v4 = new RelativeLayout(context);v4.setId(11111+4);
+        BaseUIFrag fragment4 = new TransFrag(); fragment4.setIndex(4);
+        menudata.add(new BottomMenuBean("消息", R.drawable.drawable_bed,new MsgFrag(),v4));
         return menudata;
     }
 
-    protected ArrayList<Fragment> initPages(){
-        if(pages==null){
-            pages = new ArrayList<>();
-        }
-        pages.clear();
-        pages.add(new WeigtFrag());
-        pages.add(new TransFrag());
-        pages.add(new OrderFrag());
-        pages.add(new StoreFrag());
-        pages.add(new CountFrag());
-        LogUtil.E(pages.get(1).getId());
-        return pages;
-    }
-
-    public void post(){
-        BaseReqBean baseReqBean = new BaseReqBean();
-        baseReqBean.setData("");
-        NetWork.postData(context, NetApi.getURL(NetApi.测试接口), baseReqBean, new onNetWrokResAdapter() {
-            @Override
-            public void onNetWorkResult(boolean success, BaseResBean o) {
-                LogUtil.E(GsonUtil.getInstance().toJson(o));
-            }
-        });
-    }
 
     private String[] permissions = new String[]{
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -103,9 +94,6 @@ public class MainDAOpe extends AppDAOpe {
         return permissions;
     }
 
-    public ArrayList<Fragment> getPages() {
-        return pages;
-    }
 
     public ArrayList<BottomMenuBean> getMenudata() {
         return menudata;
@@ -113,5 +101,13 @@ public class MainDAOpe extends AppDAOpe {
 
     public PermissionUtil getPermissionUtil() {
         return permissionUtil;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 }

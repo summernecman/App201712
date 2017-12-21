@@ -21,4 +21,5 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                 break;
         }
     }
+
 }

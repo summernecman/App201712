@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_main_msg"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+        <include layout="@layout/item_title5"/>
+
+        <com.siweisoft.heavycenter.module.view.menu.TopTypeView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            app:srlEnablePureScrollMode="true"
+            app:srlEnableLoadmore="true"
+            app:srlDragRate="0.1"
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+        <android.support.v4.view.ViewPager
+            android:orientation="vertical"
+            android:id="@+id/ll_cntent"
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+            </LinearLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+</layout>

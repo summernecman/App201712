@@ -8,6 +8,7 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 import com.siweisoft.heavycenter.module.acct.login.LoginFrag;
+import com.siweisoft.heavycenter.module.main.MainAct;
 
 import butterknife.OnClick;
 
@@ -29,4 +30,5 @@ public class RepwdFrag extends AppFrag<RepwdUIOpe,RepwdDAOpe> {
                     break;
         }
     }
+
 }

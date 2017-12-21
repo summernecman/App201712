@@ -48,7 +48,7 @@ public class SunLineView extends View {
     }
 
     private void init() {
-        Log.i(Tag, "init");
+        Log.i(Tag, "initIds");
 
         mLineWidth = changeDp(1);
         mLineHeight = changeDp(3);

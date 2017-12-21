@@ -3,72 +3,41 @@ package com.siweisoft.heavycenter.module.main.order;
 //by summer on 2017-12-11.
 
 import android.content.Context;
-import android.databinding.ViewDataBinding;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.app.Fragment;
 
-import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.ope.BaseUIOpe;
-import com.android.lib.bean.AppViewHolder;
-import com.android.lib.util.LogUtil;
-import com.daimajia.swipe.SimpleSwipeListener;
-import com.daimajia.swipe.SwipeLayout;
-import com.jaeger.library.StatusBarUtil;
-import com.siweisoft.heavycenter.BR;
-import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.databinding.FragOrderBinding;
-import com.siweisoft.heavycenter.databinding.ItemOrderBinding;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.siweisoft.heavycenter.databinding.FragMainOrderBinding;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class OrderUIOpe extends BaseUIOpe<FragOrderBinding>{
+public class OrderUIOpe extends BaseUIOpe<FragMainOrderBinding>{
 
     public OrderUIOpe(Context context) {
         super(context);
-        initRecycle();
     }
 
-    private void initRecycle(){
-        bind.recycle.setLayoutManager(new LinearLayoutManager(context));
+    public void initPages(Fragment fragment, ArrayList<Fragment> pages){
+        bind.llCntent.setOffscreenPageLimit(pages.size());
+        bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
     }
 
-    public void LoadListData(List<String> s){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_order, BR.item_order,s){
+    public void initRefresh(){
+        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
-            public void onBindViewHolder(AppViewHolder holder, int position) {
-                super.onBindViewHolder(holder, position);
-                ItemOrderBinding binding = (ItemOrderBinding) holder.viewDataBinding;
-                binding.swipe.addSwipeListener(new SimpleSwipeListener(){
-                    @Override
-                    public void onStartOpen(SwipeLayout layout) {
-                        super.onStartOpen(layout);
-                        for(int i=0;i<bind.recycle.getChildCount();i++){
-                            SwipeLayout swipeLayout = (SwipeLayout) bind.recycle.getChildAt(i);
-                            swipeLayout.close(true);
-                        }
-                    }
-                });
-
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000);
             }
         });
-        bind.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                switch (newState){
-                    case RecyclerView.SCROLL_STATE_DRAGGING:
-                        for(int i=0;i<recyclerView.getChildCount();i++){
-                            SwipeLayout swipeLayout = (SwipeLayout) recyclerView.getChildAt(i);
-                            swipeLayout.close(true);
-                        }
-                        break;
-                }
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadmore(2000);
             }
         });
     }
+
 }

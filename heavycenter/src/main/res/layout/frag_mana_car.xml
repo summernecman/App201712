@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_title="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_mana_car"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/content_acct"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.siweisoft.heavycenter.module.view.title.TitleView
+            android:id="@+id/title"
+            style_title:txt_mid ="车辆管理"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.menu.TopTypeView3
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <android.support.v4.view.ViewPager
+                    android:orientation="vertical"
+                    android:id="@+id/ll_cntent"
+                    android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+</layout>

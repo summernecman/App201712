@@ -11,7 +11,7 @@ import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.data.DateFormatUtil;
-import com.siweisoft.heavycenter.data.netd.NetApi;
+import com.siweisoft.heavycenter.data.netd.NetValue;
 
 public class CrashNetOpe extends BaseDAOpe{
 
@@ -32,7 +32,7 @@ public class CrashNetOpe extends BaseDAOpe{
         crash.setUserBean(userBeanBean);
         crash.setPlatform(context.getPackageName());
         baseReqBean.setData(GsonUtil.getInstance().toJson(crash));
-        NetWork.postData(context, NetApi.奔溃日志, baseReqBean, new OnNetWorkReqAdapter(context) {
+        NetWork.postData(context, NetValue.奔溃日志, baseReqBean, new OnNetWorkReqAdapter(context) {
             @Override
             public void onNetWorkResult(boolean success, BaseResBean o) {
 

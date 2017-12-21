@@ -44,7 +44,7 @@ public class SunFaceView extends View {
     }
 
     private void init() {
-        Log.i(Tag, "init");
+        Log.i(Tag, "initIds");
 
         mSunRadius = changeDp(DEFAULT_SUN_RADIUS);
         mEyesRadius = changeDp(DEFAULT_EYES_RADIUS);
