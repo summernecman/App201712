@@ -6,8 +6,8 @@ import android.content.Context;
 
 import com.siweisoft.heavycenter.base.AppDAOpe;
 
-public class NewUnitDAOpe extends AppDAOpe {
-    public NewUnitDAOpe(Context context) {
+public class NewDAOpe extends AppDAOpe {
+    public NewDAOpe(Context context) {
         super(context);
     }
 }

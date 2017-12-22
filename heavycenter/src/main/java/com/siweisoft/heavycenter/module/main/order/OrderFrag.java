@@ -25,8 +25,6 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
     @Override
     public void initData() {
         super.initData();
-        TitleBean titleBean = new TitleBean("111","11111","111111");
-        getP().getU().bind.title.setTitlebean5(titleBean);
         getP().getU().initRefresh();
         getP().getU().initPages(fragment,getP().getD().getPages());
     }

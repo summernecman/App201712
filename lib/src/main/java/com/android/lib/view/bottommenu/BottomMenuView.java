@@ -53,6 +53,7 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
             TextView textView = (TextView) view.findViewById(R.id.tv_name);
             imageView.setBackgroundResource(been.get(i).getDrawbleId());
             textView.setText(been.get(i).getName());
+            textView.setTextColor(been.get(i).getTxtColor());
             LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 1);
             viewGroup.addView(view, params);
             tabViews.add(view.getChildAt(0));

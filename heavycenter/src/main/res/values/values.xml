@@ -6,5 +6,7 @@
         <attr name="txt_mid" format="string"/>
         <attr name="iv_left" format="reference"/>
         <attr name="iv_right" format="reference"/>
+        <attr name="iv_right2" format="reference"/>
     </declare-styleable>
+
 </resources>

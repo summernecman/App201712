@@ -3,4 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="color_base_heavycenter">#262932</color>
+    <color name="color_base_txt_heavycenter_y">#F6AB12</color>
+    <color name="color_base_txt_heavycenter_n">#687189</color>
+
+
+    <color name="color_base">@color/color_base_heavycenter</color>
+
+    <color name="color_block_back">#f8f8f8</color>
 </resources>

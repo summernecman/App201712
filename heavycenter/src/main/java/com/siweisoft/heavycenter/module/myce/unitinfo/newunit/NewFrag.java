@@ -4,5 +4,5 @@ package com.siweisoft.heavycenter.module.myce.unitinfo.newunit;
 
 import com.siweisoft.heavycenter.base.AppFrag;
 
-public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> {
+public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
 }

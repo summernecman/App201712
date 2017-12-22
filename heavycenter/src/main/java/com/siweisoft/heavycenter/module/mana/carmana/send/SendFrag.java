@@ -2,13 +2,27 @@ package com.siweisoft.heavycenter.module.mana.carmana.send;
 
 //by summer on 2017-12-19.
 
-import com.siweisoft.heavycenter.base.AppFrag;
+import android.view.View;
 
-public class SendFrag extends AppFrag<SendUIOpe,SendDAOpe> {
+import com.android.lib.base.listener.ViewListener;
+import com.android.lib.util.fragment.FragManager;
+import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.module.mana.carmana.detail.DetailFrag;
+
+public class SendFrag extends AppFrag<SendUIOpe,SendDAOpe> implements ViewListener{
 
     @Override
     public void initData() {
         super.initData();
-        getP().getU().LoadListData(getP().getD().getData());
+        getP().getU().LoadListData(getP().getD().getData(),this);
+    }
+
+    @Override
+    public void onInterupt(int type, View v) {
+        switch (type){
+            case ViewListener.TYPE_ONCLICK:
+                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),getIndex(),new DetailFrag());
+                break;
+        }
     }
 }

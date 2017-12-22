@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:style_title="http://schemas.android.com/tools">
     <data>
         <variable
             name="frag_main_weigt"
@@ -10,8 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/color_block_back"
         >
-        <include layout="@layout/item_title5"/>
+        <com.siweisoft.heavycenter.module.view.title.TitleView
+            android:id="@+id/title"
+            style_title:txt_mid ="地磅"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         app:srlEnablePureScrollMode="true"
         app:srlEnableLoadmore="true"

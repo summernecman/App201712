@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:style_title="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_myce_unit_addr"
@@ -11,6 +11,10 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:orientation="vertical">
-        <include layout="@layout/item_title5"/>
+        <com.siweisoft.heavycenter.module.view.title.TitleView
+            android:id="@+id/title"
+            style_title:txt_mid ="单位地址"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </layout>

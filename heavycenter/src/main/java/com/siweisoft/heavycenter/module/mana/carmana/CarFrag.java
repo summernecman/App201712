@@ -9,6 +9,9 @@ import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.mana.carmana.news.NewFrag;
+
+import butterknife.OnClick;
 
 public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
 
@@ -19,11 +22,14 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
         getP().getU().initPages(fragment,getP().getD().getPages());
     }
 
-    @Override
+    @OnClick({R.id.ftv_right})
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
                 ((MainAct)(getActivity())).getP().getU().switchDrawer();
+                break;
+            case R.id.ftv_right:
+                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),getIndex(),new NewFrag());
                 break;
         }
     }

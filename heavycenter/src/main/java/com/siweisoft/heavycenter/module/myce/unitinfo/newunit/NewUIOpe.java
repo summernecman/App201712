@@ -6,11 +6,12 @@ import android.content.Context;
 
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitAreaBinding;
+import com.siweisoft.heavycenter.databinding.FragMyceUnitNewBinding;
 
-public class NewUnitUIOpe extends AppUIOpe<FragMyceUnitAreaBinding>{
+public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
 
 
-    public NewUnitUIOpe(Context context) {
+    public NewUIOpe(Context context) {
         super(context);
     }
 }

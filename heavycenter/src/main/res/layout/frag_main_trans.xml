@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:style_title="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_main_trans"
@@ -9,8 +9,13 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/color_block_back"
         android:orientation="vertical">
-        <include layout="@layout/item_title5"/>
+        <com.siweisoft.heavycenter.module.view.title.TitleView
+            android:id="@+id/title"
+            style_title:txt_mid ="运输单"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"

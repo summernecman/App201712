@@ -29,8 +29,6 @@
         <activity android:name=".module.main.MainAct"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".module.myce.MyceFrag"
-            android:screenOrientation="portrait"/>
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
