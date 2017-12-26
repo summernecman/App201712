@@ -20,10 +20,11 @@ public class RepwdFrag extends AppFrag<RepwdUIOpe,RepwdDAOpe> {
         getP().getU().initBg(getP().getD().getImageUrl());
     }
 
-    @OnClick({R.id.login,R.id.ftv_back})
+
+    @OnClick({R.id.save,R.id.ftv_back})
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.login:
+            case R.id.save:
                 break;
                 case R.id.ftv_back:
                     ((AcctAct)getActivity()).showAndHidden(LoginFrag.class);

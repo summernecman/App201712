@@ -26,7 +26,7 @@ public class SysUIOpe extends BaseUIOpe<FragMainMsgSysBinding>{
     }
 
     public void LoadListData(List<String> s){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_order, BR.item_order,s));
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_sys, BR.item_main_msg_sys,s));
     }
 
 }

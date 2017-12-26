@@ -15,6 +15,7 @@ import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.FragManaGoodBinding;
+import com.siweisoft.heavycenter.databinding.ItemManaGoodBinding;
 import com.siweisoft.heavycenter.databinding.ItemTransBinding;
 
 import java.util.List;
@@ -45,12 +46,12 @@ public class GoodUIOpe extends AppUIOpe<FragManaGoodBinding> {
     }
 
     public void LoadListData(List<String> s, final ViewListener listener) {
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_trans, BR.item_trans, s,listener){
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_good, BR.item_mana_good, s,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {
                 super.onBindViewHolder(holder, position, payloads);
-                ItemTransBinding binding = (ItemTransBinding) holder.viewDataBinding;
-                binding.tvRoot.setOnClickListener(this);
+                ItemManaGoodBinding binding = (ItemManaGoodBinding) holder.viewDataBinding;
+                binding.swipe.setOnClickListener(this);
             }
         });
     }

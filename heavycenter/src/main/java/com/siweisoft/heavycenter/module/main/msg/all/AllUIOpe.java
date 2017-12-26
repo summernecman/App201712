@@ -14,7 +14,6 @@ import com.daimajia.swipe.SwipeLayout;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.databinding.FragMainMsgAllBinding;
-import com.siweisoft.heavycenter.databinding.ItemOrderBinding;
 
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class AllUIOpe extends BaseUIOpe<FragMainMsgAllBinding>{
     }
 
     public void LoadListData(List<String> s){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_order, BR.item_order,s));
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_sys, BR.item_main_msg_sys,s));
     }
 
 }

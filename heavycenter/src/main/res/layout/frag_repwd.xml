@@ -1,34 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:style_title="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_repwd"
             type="String" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/red"
-        android:orientation="vertical">
 
-        <include layout="@layout/item_title5"/>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            android:background="@drawable/icon_hv_bg"
-            android:orientation="vertical"
-            android:id="@+id/image"
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        <Button
-            android:text="repwd"
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:id="@+id/login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:src="@drawable/icon_hv_back"
+                android:layout_marginTop="20dp"
+                android:id="@+id/ftv_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:paddingBottom="2.5dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingTop="2.5dp"
+                android:textColor="@color/color_title_select"
+                android:textSize="17sp"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
+
+                    <TextView
+                        android:layout_marginTop="100dp"
+                        android:text="忘记密码"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                    <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+                        style_title:iv_left="@drawable/icon_hv_phone"
+                        android:layout_marginTop="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        />
+                    <com.siweisoft.heavycenter.module.view.input.CodeInputAcctItem
+                        style_title:iv_left="@drawable/icon_hv_pwd"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        />
+
+                    <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+                        style_title:iv_left="@drawable/icon_hv_pwd"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        />
+                    <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+                        style_title:iv_left="@drawable/icon_hv_pwd"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:textSize="13sp"
+                            android:text="密码为6-18位数字和字母"
+                            android:textColor="@color/white"
+                            android:layout_gravity="left"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/save"
+                        android:text="保存"
+                        android:textSize="22sp"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:background="@drawable/drawable_hv_bg_btn_login"
+                        android:layout_marginTop="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
 </layout>

@@ -9,6 +9,7 @@ import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.module.acct.login.LoginFrag;
 import com.siweisoft.heavycenter.module.acct.regist.RegistFrag;
 import com.siweisoft.heavycenter.module.acct.repwd.RepwdFrag;
+import com.siweisoft.heavycenter.module.acct.role.RoleFrag;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ public class AcctDAOpe extends AppDAOpe {
         frags.add(new LoginFrag());
         frags.add(new RegistFrag());
         frags.add(new RepwdFrag());
+        frags.add(new RoleFrag());
     }
 
     public Fragment getShowFrag(){

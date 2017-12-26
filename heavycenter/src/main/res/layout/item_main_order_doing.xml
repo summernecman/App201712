@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_main_order_doing"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+<TextView
+    android:singleLine="true"
+    android:textColor="@color/white"
+    android:textSize="20sp"
+    android:text="混凝土"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+            <TextView
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:text="D150"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"/>
+            <TextView
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:text="D150"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:text="收"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:text="上海绿地"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:text="计划：2000t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:text="实发：2000t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:text="盈亏：2000t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:singleLine="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:text="实收：2000t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:singleLine="true"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/color_base_txt_heavycenter_y"
+                android:textSize="12sp"
+                android:text="2000t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

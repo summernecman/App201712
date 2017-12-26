@@ -42,6 +42,6 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
     }
 
     public void LoadListData(List<String> s) {
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_order, BR.item_order, s));
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin, s));
     }
 }

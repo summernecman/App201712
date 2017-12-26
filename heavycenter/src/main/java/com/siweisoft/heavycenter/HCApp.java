@@ -19,6 +19,8 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.siweisoft.heavycenter.data.netd.crash.CrashNetOpe;
 
+import cn.jpush.android.api.JPushInterface;
+
 public class HCApp extends LibAplication implements OnFinishListener{
 
 
@@ -50,6 +52,8 @@ public class HCApp extends LibAplication implements OnFinishListener{
         SDKInitializer.initialize(getApplicationContext());
         new Thread(new Runnable() {@Override public void run() {Glide.get(getApplicationContext()).clearDiskCache();}}).start();
         CrashHander.getInstance().init(getBaseContext(),this);
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
 
     @Override

@@ -15,7 +15,9 @@
         <com.siweisoft.heavycenter.module.view.title.TitleView
             android:id="@+id/title"
             style_title:txt_mid ="物料管理"
-            style_title:iv_right ="@drawable/icon_scan"
+            style_title:iv_left ="@drawable/icon_hv_back"
+            style_title:iv_right ="@drawable/icon_hv_scan"
+            style_title:iv_right2 ="@drawable/icon_hv_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.android.lib.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Created by ${viwmox} on 2016-11-10.
@@ -335,5 +337,122 @@ public class FragManager {
 
     public Fragment getCurrentClass(int index) {
         return fragMaps.get(index).get(fragMaps.get(index).size() - 1);
+    }
+
+
+    public void showAndHidden(FragmentActivity activity, ArrayList<Fragment> fragments, int position){
+        for(int i=0;i<fragments.size();i++){
+            FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+            //transaction.setCustomAnimations(R.anim.anim_push_right_in_200, R.anim.anim_push_left_out_200);
+            if(position==i){
+                transaction.show(fragments.get(i));
+            }else{
+                transaction.hide(fragments.get(i));
+            }
+            transaction.commitAllowingStateLoss();
+        }
+    }
+
+    public void showAndHiddenWithAnim(FragmentActivity activity,ArrayList<Fragment> fragments,int position){
+        for(int i=0;i<fragments.size();i++){
+            FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+            if(position==i){
+                transaction.show(fragments.get(i));
+            }else{
+                transaction.hide(fragments.get(i));
+            }
+            transaction.commitAllowingStateLoss();
+        }
+    }
+
+
+    public Fragment getFragment(Class c) {
+        Iterator<Integer> keys = fragMaps.keySet().iterator();
+        while (keys.hasNext()) {
+            int k = keys.next();
+            for (int i = 0; fragMaps.get(k) != null && i < fragMaps.get(k).size(); i++) {
+                if (fragMaps.get(k).get(i).getClass().getName().equals(c.getName())) {
+                    return fragMaps.get(k).get(i);
+                }
+            }
+        }
+        return null;
+    }
+
+
+    public void add(final FragmentActivity fragmentActivity, int id, Fragment now) {
+        if (fragMaps.get(id) == null) {
+            fragMaps.put(id, new ArrayList<Fragment>());
+        }
+        if (fragMaps.get(id) != null && fragMaps.get(id).size() > 0) {
+            Fragment fragment = fragMaps.get(id).get(fragMaps.get(id).size() - 1);
+            fragMaps.get(id).add(now);
+            FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+            transaction.hide(fragment);
+            transaction.add(id, now);
+            transaction.commitAllowingStateLoss();
+        } else {
+            fragMaps.get(id).add(now);
+            FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+            transaction.add(id, now);
+            transaction.commitAllowingStateLoss();
+        }
+    }
+
+    public void addNoAnim(final FragmentActivity fragmentActivity, int id, Fragment now) {
+        if (fragMaps.get(id) == null) {
+            fragMaps.put(id, new ArrayList<Fragment>());
+        }
+        if (fragMaps.get(id) != null && fragMaps.get(id).size() > 0) {
+            Fragment fragment = fragMaps.get(id).get(fragMaps.get(id).size() - 1);
+            fragMaps.get(id).add(now);
+            FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+            //transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+            transaction.hide(fragment);
+            transaction.add(id, now);
+            transaction.commitAllowingStateLoss();
+        } else {
+            fragMaps.get(id).add(now);
+            FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+            //transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+            transaction.add(id, now);
+            transaction.commitAllowingStateLoss();
+        }
+    }
+
+
+    public void cover(final FragmentActivity fragmentActivity, int id, Fragment now,boolean anim) {
+        if (fragMaps.get(id) == null) {
+            fragMaps.put(id, new ArrayList<Fragment>());
+        }
+        fragMaps.get(id).add(now);
+        FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+        if(anim){
+            transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+        }
+        transaction.add(id, now);
+        transaction.commitAllowingStateLoss();
+    }
+
+    public void cover(final FragmentActivity fragmentActivity, int id, Fragment now,int anim1,int anim2) {
+        if (fragMaps.get(id) == null) {
+            fragMaps.put(id, new ArrayList<Fragment>());
+        }
+        fragMaps.get(id).add(now);
+        FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(anim1, anim2);
+        transaction.add(id, now);
+        transaction.commitAllowingStateLoss();
+    }
+
+
+
+    public void addsNoAnim(final FragmentActivity fragmentActivity, int id,ArrayList<Fragment> fragments) {
+        for(int i=0;i<fragments.size();i++){
+            addNoAnim(fragmentActivity,id,fragments.get(i));
+        }
     }
 }

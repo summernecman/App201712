@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:style_title="http://schemas.android.com/tools">
+    xmlns:style_title="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_main_order"

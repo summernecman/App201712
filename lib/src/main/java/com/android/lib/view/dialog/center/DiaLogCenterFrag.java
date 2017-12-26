@@ -14,8 +14,15 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
 
     private View v;
 
-    public void setV(View v) {
+    View.OnClickListener onClickListener;
+
+    private int[] ids;
+
+
+    public void setV(View v,View.OnClickListener onClickListener,int... ids) {
         this.v = v;
+        this.onClickListener = onClickListener;
+        this.ids = ids;
     }
 
     @Override
@@ -25,11 +32,22 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
         if(v!=null){
             group.addView(v,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         }
-        group.setOnClickListener(this);
+        for(int i=0;i<ids.length;i++){
+            group.findViewById(ids[i]).setOnClickListener(this);
+            group.findViewById(ids[i]).setTag(R.id.data,this);
+        }
+
+    }
+
+    public void close(){
+        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
     }
 
     @Override
     public void onClick(View v) {
-        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+        if(onClickListener!=null){
+            onClickListener.onClick(v);
+        }
+        close();
     }
 }

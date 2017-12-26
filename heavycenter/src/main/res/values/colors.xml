@@ -12,4 +12,6 @@
     <color name="color_base">@color/color_base_heavycenter</color>
 
     <color name="color_block_back">#f8f8f8</color>
+
+    <color name="color_base_txt_yellow">#f6ab12</color>
 </resources>

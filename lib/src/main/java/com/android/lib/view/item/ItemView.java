@@ -82,11 +82,11 @@ public class ItemView extends RelativeLayout{
 
         t.recycle();
         leftTV.setText(StringUtil.getStr(textleftStr));
-        leftIV.setBackgroundResource(ivleftInt);
+        leftIV.setImageResource(ivleftInt);
         rightTV.setText(StringUtil.getStr(txtrightStr));
-        rightIV.setBackgroundResource(ivrightInt);
+        rightIV.setImageResource(ivrightInt);
         rightTV.setBackgroundResource(txtrightBg);
-        divider.setBackgroundColor(bgDivider);
+       // divider.setBackgroundColor(bgDivider);
     }
 
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_title="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="item_myce_head"
+            type="String" />
+    </data>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:background="@color/color_base"
+            android:layout_height="230dp">
+            <ImageView
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_hv_myce_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.siweisoft.heavycenter.module.view.title.TitleView
+                    android:id="@+id/title"
+                    style_title:iv_left ="@drawable/icon_hv_back"
+                    style_title:iv_right ="@drawable/icon_hv_myce_code"
+                    style_title:iv_right2 ="@color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:src="@drawable/icon_hv_myce_head"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp" />
+
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="13dp"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:text="12333"
+                                android:textSize="23sp"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <ImageView
+                                android:layout_marginLeft="25dp"
+                                android:src="@drawable/icon_hv_myce_edit"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:text="管理员"
+                            android:textSize="14sp"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_marginTop="5dp"
+                            android:text="18741414141"
+                            android:textSize="20sp"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+</layout>

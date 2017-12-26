@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:style_title="http://schemas.android.com/tools">
+    xmlns:style_title="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_main_weigt"
@@ -13,6 +13,7 @@
         android:orientation="vertical"
         android:background="@color/color_block_back"
         >
+
         <com.siweisoft.heavycenter.module.view.title.TitleView
             android:id="@+id/title"
             style_title:txt_mid ="地磅"

@@ -15,7 +15,7 @@ public class RepwdUIOpe extends AppUIOpe<FragRepwdBinding> {
     }
 
     public void initBg(String url){
-        GlideApp.with(context).asBitmap().load(url).centerCrop().into(bind.image);
+       // GlideApp.with(context).asBitmap().load(url).centerCrop().into(bind.image);
     }
 
 }

@@ -14,9 +14,7 @@ import com.daimajia.swipe.SwipeLayout;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
-import com.siweisoft.heavycenter.databinding.FragManaCarMyBinding;
 import com.siweisoft.heavycenter.databinding.FragManaCarReceiptingBinding;
-import com.siweisoft.heavycenter.databinding.ItemOrderBinding;
 
 import java.util.List;
 
@@ -35,24 +33,7 @@ public class ReceiptUIOpe extends AppUIOpe<FragManaCarReceiptingBinding>{
     }
 
     public void LoadListData(List<String> s, ViewListener listener){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_order, BR.item_order,s,listener){
-            @Override
-            public void onBindViewHolder(AppViewHolder holder, int position) {
-                super.onBindViewHolder(holder, position);
-                ItemOrderBinding binding = (ItemOrderBinding) holder.viewDataBinding;
-                binding.swipe.addSwipeListener(new SimpleSwipeListener(){
-                    @Override
-                    public void onStartOpen(SwipeLayout layout) {
-                        super.onStartOpen(layout);
-                        for(int i=0;i<bind.recycle.getChildCount();i++){
-                            SwipeLayout swipeLayout = (SwipeLayout) bind.recycle.getChildAt(i);
-                            swipeLayout.close(true);
-                        }
-                    }
-                });
-
-            }
-        });
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s,listener));
         bind.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {

@@ -18,7 +18,7 @@
 
         <TextView
             android:id="@+id/tv_left_content"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="8dp"
             android:text="文字内容"
             android:textSize="@dimen/dimen_item_content_txt_size"
             android:textColor="@color/color_item_content_left_txt_color"

@@ -28,8 +28,7 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.login:
-                FragmentUtil2.getInstance().addNoAnim(activity,AcctAct.ROOT_ID,new RoleFrag());
-                //IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+                ((AcctAct)getActivity()).showAndHidden(RoleFrag.class);
                 break;
             case R.id.regist:
                 ((AcctAct)getActivity()).showAndHidden(RegistFrag.class);

@@ -16,6 +16,6 @@ public class WelcUIOpe extends AppUIOpe<ActWelcBinding> {
     }
 
     public void initBg(String url){
-        GlideApp.with(context).asBitmap().load(url).centerCrop().into(bind.image);
+        //GlideApp.with(context).asBitmap().load(url).centerCrop().into(bind.image);
     }
 }

@@ -5,9 +5,9 @@ package com.siweisoft.heavycenter.module.myce;
 import android.content.Context;
 
 import com.siweisoft.heavycenter.base.AppUIOpe;
-import com.siweisoft.heavycenter.databinding.ActMyceBinding;
+import com.siweisoft.heavycenter.databinding.FragMyceBinding;
 
-public class MyceUIOpe extends AppUIOpe<ActMyceBinding> {
+public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
 
     public MyceUIOpe(Context context) {
         super(context);

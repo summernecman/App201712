@@ -13,11 +13,32 @@ import butterknife.OnClick;
 
 public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
 
-    @OnClick({R.id.lll})
+    @OnClick({R.id.tv_notdriver,R.id.tv_driver})
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.lll:
-                IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+            case R.id.tv_notdriver:
+                getP().getU().showTip(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        switch (v.getId()){
+                            case R.id.tv_sure:
+                                IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+                                break;
+                        }
+                    }
+                });
+                break;
+            case R.id.tv_driver:
+                getP().getU().showTip(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        switch (v.getId()){
+                            case R.id.tv_sure:
+                                IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+                                break;
+                        }
+                    }
+                });
                 break;
         }
     }
