@@ -7,19 +7,21 @@ import android.view.View;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.FragManager;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.trans.detail.TransDetailFrag;
 
-public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewListener {
+public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewListener,OnRefreshListener {
 
     @Override
     public void initData() {
         super.initData();
-        getP().getU().initRefresh();
+        getP().getU().initRefresh(this);
         getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getData(),this);
+        //getP().getU().LoadListData(getP().getD().getData(),this);
         getP().getU().ddd();
     }
 
@@ -53,4 +55,9 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
         }
     }
 
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        refreshlayout.finishRefresh(2000);
+        getP().getU().LoadListData(getP().getD().getData(),this);
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_title="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_mana_user"
@@ -14,7 +14,7 @@
 
         <com.siweisoft.heavycenter.module.view.title.TitleView
             android:id="@+id/title"
-            style_title:txt_mid ="用户管理"
+            style_common:txt_mid ="用户管理"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

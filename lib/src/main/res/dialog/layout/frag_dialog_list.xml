@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_item="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_dialog_list"

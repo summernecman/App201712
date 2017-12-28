@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_title="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_myce_car_bind"
@@ -13,8 +13,46 @@
         android:orientation="vertical">
         <com.siweisoft.heavycenter.module.view.title.TitleView
             android:id="@+id/title"
-            style_title:txt_mid ="绑定单位"
+            style_common:txt_mid ="绑定车辆"
+            style_common:iv_right2 ="@drawable/icon_hv_sel_y"
+            style_common:iv_right ="@drawable/icon_hv_scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:text="车牌号"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:text="确定"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </layout>

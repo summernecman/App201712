@@ -10,6 +10,9 @@ import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.bean.AppViewHolder;
 import com.daimajia.swipe.SimpleSwipeListener;
 import com.daimajia.swipe.SwipeLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -34,5 +37,20 @@ public class DoingUIOpe extends AppUIOpe<FragMainOrderDoingBinding>{
     public void LoadListData(List<String> s){
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_doing,s));
 
+    }
+
+    public void initRefresh(){
+        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000);
+            }
+        });
+        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadmore(2000);
+            }
+        });
     }
 }

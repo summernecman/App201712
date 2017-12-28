@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.main.trans;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
@@ -29,13 +30,8 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
         //initRecycle();
     }
 
-    public void initRefresh(){
-        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000);
-            }
-        });
+    public void initRefresh(OnRefreshListener onRefreshListener){
+        bind.refreshLayout.setOnRefreshListener(onRefreshListener);
         bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
@@ -57,6 +53,12 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                 binding.tvRoot.setOnClickListener(this);
             }
         });
+
+        if(s.size()==0){
+            bind.ivNodata.setVisibility(View.VISIBLE);
+        }else{
+            bind.ivNodata.setVisibility(View.GONE);
+        }
     }
 
     public void ddd(){

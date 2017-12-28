@@ -6,9 +6,46 @@ package com.android.lib.constant;
  */
 public class UrlConstant {
 
-    public static String 域名 = "www.summernecro.com:8079";
-    public static String HTTP前缀 = "http://";
-    public static String 项目名 = "/server";
+    protected static final String 奔溃日志 = "http://www.summernecro.com:8079/server/crash/sendCrash";
 
-    public static String 文件路径 = "";
+    protected static final String HTTP前缀 = "http://";
+
+    protected static  String 项目名 = "/zhongxin";
+
+    protected static String 正式域名 = "192.168.1.205:8080";
+
+    protected static String 测试域名 = "192.168.1.205:8080";
+
+    protected static String 域名 = 测试域名;
+
+    protected static String 正式文件路径 = "";
+
+    protected static String 测试文件路径 = "";
+
+    protected static String 文件路径 = "";
+
+    protected static boolean isOffice = false;
+
+
+    public static String 获取地址(String module){
+        return  HTTP前缀+域名+项目名+module;
+    }
+
+
+    public static String 获取文件路径(String module){
+        return  HTTP前缀+域名+文件路径+module;
+    }
+
+    public static void setIsOffice(boolean isOffice) {
+        UrlConstant.isOffice = isOffice;
+        if(isOffice){
+            域名 = 正式域名;
+        }else{
+            域名 = 测试域名;
+        }
+    }
+
+    public static void set域名(String 域名){
+        UrlConstant.域名= 域名;
+    }
 }

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:hedgehog="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="frag_userinfo"
+            type="com.siweisoft.service.netdb.user.UserBean" />
+
+        <variable
+            name="callinfo1"
+            type="com.siweisoft.service.netdb.video.VideoTimeBean" />
+
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:background="@color/color_base_graybg"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tophead"
+            layout="@layout/item_title2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_base_title_clip" />
+
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+            android:padding="5dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+                <com.android.lib.view.image.RoundCricleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+
+                android:id="@+id/iv_head11"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                app:civ_border_width="1px"
+                app:civ_border_color="#FF000000" />
+
+            <LinearLayout
+                android:padding="5dp"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp">
+
+                    <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center_vertical">
+
+
+                    <com.hedgehog.ratingbar.RatingBar
+                        android:id="@+id/ratingbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        hedgehog:clickable="false"
+                        hedgehog:halfstart="true"
+                        hedgehog:starCount="5"
+                        hedgehog:starEmpty="@mipmap/star_empty"
+                        hedgehog:starFill="@mipmap/star_full"
+                        hedgehog:starHalf="@mipmap/star_half"
+                        hedgehog:starImageHeight="25dp"
+                        hedgehog:starImagePadding="3dp"
+                        hedgehog:starImageWidth="25dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="77.5dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:padding="7.5dp"
+                        android:id="@+id/call"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/drawable_call2" />
+
+                </RelativeLayout>
+        </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:background="@color/color_divide_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_marginTop="1px"
+                    android:layout_marginBottom="1px"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/drawable_press_black_while"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{callinfo1.timeout+""}'
+                            android:textColor="@color/color_blue_400"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="呼出"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{callinfo1.timein+""}'
+                            android:textColor="@color/color_red_400"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="呼入"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{callinfo1.timehours/60+""}'
+                            android:textColor="@color/color_purple_400"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="分钟"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:id="@+id/recycle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+            <com.android.lib.view.other.AppMaterialRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/refresh"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:isLoadMore="true"
+                app:overlay="false"
+                android:layout_weight="1"
+                app:progress_show_circle_backgroud="false"
+                app:progress_size_type="normal"
+                app:wave_color="@color/color_base"
+                app:wave_height_type="normal"
+                android:layout_marginTop="10dp"
+                app:wave_show="false">
+
+                <com.android.lib.view.recyclerview.MyRecyclerView
+            android:background="@color/white"
+            android:id="@+id/remarklist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+            </com.android.lib.view.other.AppMaterialRefreshLayout>
+    </LinearLayout>
+    </LinearLayout>
+</layout>

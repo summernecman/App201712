@@ -17,6 +17,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.ActMainBinding;
 import com.siweisoft.heavycenter.module.myce.MyceFrag;
+import com.siweisoft.heavycenter.module.myce.unit.nobind.NoBindFrag;
 
 import java.util.ArrayList;
 
@@ -73,6 +74,11 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
                 }
             }
         }));
+    }
+
+    public void nobind(){
+        NoBindFrag noBindFrag = new NoBindFrag();
+        FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),pos_content,noBindFrag);
     }
 
     public void setCurrentItem(int item){

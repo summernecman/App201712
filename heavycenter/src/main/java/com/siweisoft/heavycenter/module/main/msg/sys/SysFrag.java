@@ -11,6 +11,7 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> {
     @Override
     public void initData() {
         super.initData();
+        getP().getU().initRefresh();
         getP().getU().LoadListData(getP().getD().getData());
     }
 }

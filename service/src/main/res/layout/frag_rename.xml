@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="username"
+            type="com.siweisoft.service.netdb.user.UserBean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tophead"
+            layout="@layout/item_title2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_base_title_clip" />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/ll_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:singleLine="true"
+                android:layout_marginLeft="20sp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/et_input"
+                android:paddingRight="10dp"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimens_base_item"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right|center_vertical"
+                android:text="@={username.name}"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <Button
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:background="@drawable/drawable_press_maincolor_gray_radious"
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:text="确定" />
+    </LinearLayout>
+</layout>

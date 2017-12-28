@@ -24,20 +24,9 @@ public class MsgUIOpe extends BaseUIOpe<FragMainMsgBinding>{
     public void initPages(Fragment fragment,ArrayList<Fragment> pages){
         bind.llCntent.setOffscreenPageLimit(pages.size());
         bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
+        bind.topview.setViewPager(bind.llCntent);
     }
 
-    public void initRefresh(){
-        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000);
-            }
-        });
-        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadmore(2000);
-            }
-        });
-    }
+
+
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_title="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_main_store"
@@ -13,8 +13,8 @@
         android:orientation="vertical">
         <com.siweisoft.heavycenter.module.view.title.TitleView
             android:id="@+id/title"
-            style_title:txt_mid ="仓库"
-            style_title:iv_right = "@drawable/icon_hv_scan"
+            style_common:txt_mid ="仓库"
+            style_common:iv_right = "@drawable/icon_hv_scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <com.scwang.smartrefresh.layout.SmartRefreshLayout

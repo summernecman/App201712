@@ -9,6 +9,7 @@ public class DoingFrag extends AppFrag<DoingUIOpe,DoingDAOpe> {
     @Override
     public void initData() {
         super.initData();
+        getP().getU().initRefresh();
         getP().getU().LoadListData(getP().getD().getData());
     }
 

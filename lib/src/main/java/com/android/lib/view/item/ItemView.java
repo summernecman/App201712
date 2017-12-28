@@ -72,13 +72,13 @@ public class ItemView extends RelativeLayout{
         rightTV = (TextView) findViewById(R.id.iv_right_content);
         rightIV = (ImageView) findViewById(R.id.iv_right_icon);
         divider = findViewById(R.id.divide);
-        TypedArray t = context.obtainStyledAttributes(attrs,R.styleable.style_item);
-        textleftStr= t.getString(R.styleable.style_item_txt_left);
-        txtrightStr= t.getString(R.styleable.style_item_txt_right);
-        ivleftInt= t.getResourceId(R.styleable.style_item_iv_left,R.color.white);
-        ivrightInt= t.getResourceId(R.styleable.style_item_iv_right,-R.color.white);
-        txtrightBg= t.getResourceId(R.styleable.style_item_txt_right_bg,R.color.white);
-        bgDivider= t.getResourceId(R.styleable.style_item_bg_divider,R.color.color_item_content_gap);
+        TypedArray t = context.obtainStyledAttributes(attrs,R.styleable.style_common);
+        textleftStr= t.getString(R.styleable.style_common_txt_left);
+        txtrightStr= t.getString(R.styleable.style_common_txt_right);
+        ivleftInt= t.getResourceId(R.styleable.style_common_iv_left,R.color.white);
+        ivrightInt= t.getResourceId(R.styleable.style_common_iv_right,-R.color.white);
+        txtrightBg= t.getResourceId(R.styleable.style_common_txt_right_bg,R.color.white);
+        bgDivider= t.getResourceId(R.styleable.style_common_bg_divider,R.color.color_item_content_gap);
 
         t.recycle();
         leftTV.setText(StringUtil.getStr(textleftStr));

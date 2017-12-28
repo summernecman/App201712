@@ -14,14 +14,19 @@
     <color name="color_item_content_right_txt_color">@color/black</color>
 
 
-    <declare-styleable name="style_item">
-        <attr name="txt_left" format="string"/>
-        <attr name="txt_right" format="string"/>
-        <attr name="txt_right_left" format="string"/>
-        <attr name="iv_left" format="reference"/>
-        <attr name="iv_right" format="reference"/>
+
+
+
+    <declare-styleable name="style_common">
         <attr name="txt_right_bg" format="reference"/>
         <attr name="bg_divider" format="reference"/>
+        <attr name="txt_right_left" format="string"/>
+        <attr name="txt_mid" format="string"/>
+        <attr name="iv_left" format="reference"/>
+        <attr name="iv_right" format="reference"/>
+        <attr name="txt_left" format="string"/>
+        <attr name="txt_right" format="string"/>
+        <attr name="boo_edit" format="boolean"/>
+        <attr name="iv_right2" format="reference"/>
     </declare-styleable>
-
 </resources>

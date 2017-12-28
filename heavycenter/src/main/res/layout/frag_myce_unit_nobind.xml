@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_myce_unit_nobind"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <com.siweisoft.heavycenter.module.view.title.TitleView
+            android:id="@+id/title"
+            style_common:txt_mid ="绑定单位"
+            style_common:iv_left ="@drawable/icon_hv_back"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/icon_hv_myce_car"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp" />
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:text="您是非驾驶员，必须先绑定单位"
+                    android:textSize="14sp"
+                    android:textColor="@color/color_base_txt_gray"
+                    android:singleLine="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/bind"
+                    android:text="立刻绑定"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:background="@drawable/drawable_hv_bg_btn_login"
+                    android:layout_marginTop="40dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

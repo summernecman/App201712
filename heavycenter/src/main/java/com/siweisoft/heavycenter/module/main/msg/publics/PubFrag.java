@@ -11,6 +11,7 @@ public class PubFrag extends AppFrag<PubUIOpe,PubDAOpe> {
     @Override
     public void initData() {
         super.initData();
+        getP().getU().initRefresh();
         getP().getU().LoadListData(getP().getD().getData());
     }
 }

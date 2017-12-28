@@ -11,6 +11,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
     @Override
     public void initData() {
         super.initData();
+        getP().getU().initRefresh();
         getP().getU().LoadListData(getP().getD().getData());
     }
 

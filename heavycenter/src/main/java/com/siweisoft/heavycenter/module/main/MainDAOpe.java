@@ -36,6 +36,8 @@ public class MainDAOpe extends AppDAOpe {
 
     private int index=0;
 
+    private boolean isRead = true;
+
 
     public MainDAOpe(Context context) {
         super(context);
@@ -110,5 +112,10 @@ public class MainDAOpe extends AppDAOpe {
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    public boolean isRead() {
+        //绑定了单位== true
+        return true;
     }
 }

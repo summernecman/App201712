@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_title="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_mana_store"
@@ -15,10 +15,10 @@
 
         <com.siweisoft.heavycenter.module.view.title.TitleView
             android:id="@+id/title"
-            style_title:txt_mid ="仓库管理"
-            style_title:iv_left ="@drawable/icon_hv_back"
-            style_title:iv_right ="@drawable/icon_hv_scan"
-            style_title:iv_right2 ="@drawable/icon_hv_add"
+            style_common:txt_mid ="仓库管理"
+            style_common:iv_left ="@drawable/icon_hv_back"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            style_common:iv_right2 ="@drawable/icon_hv_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

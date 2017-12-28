@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/heavycenter" />
             <option value="$PROJECT_DIR$/lib" />
             <option value="$PROJECT_DIR$/myapplication" />
+            <option value="$PROJECT_DIR$/service" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

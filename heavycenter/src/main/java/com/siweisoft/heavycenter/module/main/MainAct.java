@@ -34,13 +34,18 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     private void dothing(){
         getP().getU().initPages(getP().getD().getMenudata(),this);
         getP().getU().initDrawerMenu();
+       if(!getP().getD().isRead()){
+           getP().getU().nobind();
+       }
     }
 
     @Override
     public void onAppItemSelect(ViewGroup viewGroup, View view, int position) {
         getP().getU().setCurrentItem(position);
         getP().getD().setIndex(position);
-        FragManager.getInstance().clearAll(getSupportFragmentManager(),getP().getU().getPos_content());
+        if(getP().getD().isRead()){
+            FragManager.getInstance().clearAll(getSupportFragmentManager(),getP().getU().getPos_content());
+        }
     }
 
 

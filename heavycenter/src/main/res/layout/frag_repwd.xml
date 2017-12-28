@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_title="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_repwd"
@@ -52,26 +52,26 @@
 
 
                     <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
-                        style_title:iv_left="@drawable/icon_hv_phone"
+                        style_common:iv_left="@drawable/icon_hv_phone"
                         android:layout_marginTop="30dp"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         />
                     <com.siweisoft.heavycenter.module.view.input.CodeInputAcctItem
-                        style_title:iv_left="@drawable/icon_hv_pwd"
+                        style_common:iv_left="@drawable/icon_hv_pwd"
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         />
 
                     <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
-                        style_title:iv_left="@drawable/icon_hv_pwd"
+                        style_common:iv_left="@drawable/icon_hv_pwd"
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         />
                     <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
-                        style_title:iv_left="@drawable/icon_hv_pwd"
+                        style_common:iv_left="@drawable/icon_hv_pwd"
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item_videorecord"
+            type="com.siweisoft.service.netdb.video.VideoBean" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:background="@drawable/drawable_press_black_while"
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.android.lib.view.image.RoundCricleImageView
+
+                android:id="@+id/iv_head"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                android:src="@drawable/ic_launcher_round" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
+
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_way"
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/drawable_callway" />
+
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/tv_times"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:text="未上传"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/tv_upload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_red_A400"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@={item_videorecord.created}"
+                        android:textColor="@color/gray"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_videotips"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:padding="5dp"
+                android:layout_width="77.5dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:id="@+id/play"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/drawable_play" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/gray" />
+    </LinearLayout>
+</layout>

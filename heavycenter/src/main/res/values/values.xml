@@ -2,11 +2,15 @@
 <resources>
 
 
-    <declare-styleable name="style_title">
-        <attr name="txt_mid" format="string"/>
-        <attr name="iv_left" format="reference"/>
-        <attr name="iv_right" format="reference"/>
-        <attr name="iv_right2" format="reference"/>
+
+
+    <declare-styleable name="style_toptypeview">
+        <attr name="txts" format="string"/>
     </declare-styleable>
+
+    <dimen name="dimen_text_size_15">15sp</dimen>
+    <dimen name="dimen_text_size_20">20sp</dimen>
+
+
 
 </resources>

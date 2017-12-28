@@ -2,65 +2,26 @@
 <layout>
     <data>
         <variable
-            name="frag_login"
+            name="item_main_msg_top"
             type="String" />
     </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="38dp">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_centerInParent="true"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ll_root"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:background="@color/color_base"
             android:layout_height="35dp">
-
-            <TextView
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:id="@+id/a"
-                android:gravity="center"
-                android:text="全部"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:id="@+id/b"
-                android:gravity="center"
-                android:text="运输"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:id="@+id/c"
-                android:gravity="center"
-                android:text="车辆"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:id="@+id/d"
-                android:gravity="center"
-                android:text="公告"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:id="@+id/e"
-                android:gravity="center"
-                android:text="系统"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent" />
         </LinearLayout>
+
+        <View
+            android:id="@+id/line"
+            android:background="@drawable/bg_cricle_yel"
+            android:layout_alignParentBottom="true"
+            android:layout_width="100dp"
+            android:layout_height="6dp"/>
+    </RelativeLayout>
 </layout>

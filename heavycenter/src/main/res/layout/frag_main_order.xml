@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:style_title="http://schemas.android.com/apk/res-auto">
+    xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:style_toptypeview="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_main_order"
@@ -14,17 +15,16 @@
         android:layout_height="match_parent">
         <com.siweisoft.heavycenter.module.view.title.TitleView
             android:id="@+id/title"
-            style_title:txt_mid ="订单"
+            style_common:txt_mid ="订单"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <com.siweisoft.heavycenter.module.view.menu.TopTypeView2
+        <com.siweisoft.heavycenter.module.view.menu.TopTypeView
+            android:id="@+id/topview"
+            style_toptypeview:txts="新订单,进行中,已完成"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/refreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -38,6 +38,5 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </layout>

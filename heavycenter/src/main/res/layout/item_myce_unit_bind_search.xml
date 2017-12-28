@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_myce_unit_bind_search"
+            type="String" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_item_myce_unit_bind_search"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp">
+
+        <EditText
+            android:layout_marginLeft="20dp"
+            android:textSize="16sp"
+            android:hint="请输入单位名称"
+            android:background="@color/transparent"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:layout_marginRight="10dp"
+            android:src="@drawable/icon_hv_search"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_myce_unit_bind"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:background="@color/color_base_graybg"
+        android:layout_width="match_parent"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:layout_height="70dp">
+<ImageView
+    android:src="@drawable/drawable_hv_sel"
+    android:layout_width="20dp"
+    android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@color/color_grey_900"
+                android:text="绿地建筑工程有限责任公司"
+                android:id="@+id/tv_com_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/gray"
+                android:text="王先生"
+                android:id="@+id/tv_mana_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

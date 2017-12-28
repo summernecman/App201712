@@ -13,7 +13,6 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> {
     @Override
     public void initData() {
         super.initData();
-        getP().getU().initRefresh();
         getP().getU().initPages(fragment,getP().getD().getPages());
     }
 

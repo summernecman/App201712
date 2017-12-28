@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="titlebean5"
+            type="String" />
+    </data>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ftitle_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimens_base_title_clip"
+    android:background="@color/color_base_statusbar"
+    android:elevation="1dp"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:layout_marginBottom="0dp"
+    >
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:id="@+id/ftv_back"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:paddingBottom="2.5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="2.5dp"
+        android:textColor="@color/color_title_select"
+        android:textSize="17sp"
+        android:visibility="visible" />
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/ftv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/drawable_title"
+        android:paddingBottom="3dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="2.5dp"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:visibility="visible" />
+
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:id="@+id/ftv_right"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="2.5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="2.5dp"
+        android:textColor="@color/color_title_select"
+        android:textSize="17sp"
+        android:visibility="visible" />
+
+
+    <ImageView
+        android:layout_toLeftOf="@id/ftv_right"
+        android:layout_marginTop="20dp"
+        android:id="@+id/ftv_right2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:paddingBottom="2.5dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="2.5dp"
+        android:textColor="@color/color_title_select"
+        android:textSize="17sp"
+        android:visibility="visible" />
+
+</RelativeLayout>
+
+</layout>
