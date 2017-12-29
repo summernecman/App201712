@@ -22,6 +22,7 @@ import com.google.gson.reflect.TypeToken;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TitleBean;
+import com.siweisoft.service.netdb.NetValue;
 import com.siweisoft.service.netdb.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.user.rename.RenameFrag;
@@ -70,7 +71,7 @@ public class UserHeadNameFrag extends BaseServerFrag<UserHeadNameUIOpe, UserHead
         fileBeen.add(new FileBean(new File(UriUtils.getPath(activity, data.getData()))));
         filesBean.setData(fileBeen);
         LoadUtil.getInstance().onStartLoading(activity, "headuri");
-        NetWork.doHttpRequsetWithFile(activity, "/user/addheadurl", filesBean, new OnNetWorkReqAdapter(activity) {
+        NetWork.doHttpRequsetWithFile(activity, NetValue.获取地址("/user/addheadurl"), filesBean, new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, BaseResBean o) {
                 LogUtil.E(o);

@@ -13,6 +13,9 @@ import com.android.lib.util.ToastUtil;
 import com.android.lib.view.recyclerview.MyRecyclerView;
 import com.android.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.android.lib.view.refreshlayout.MaterialRefreshListener;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.ContactBean;
@@ -28,11 +31,12 @@ import com.siweisoft.service.ui.video.videocontainer.VideoContainerFrag;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecordDAOpe> implements ViewListener {
+public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecordDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener {
 
     @Override
     public void initData() {
         super.initData();
+        getP().getU().initRefresh(this,this);
         setTitleBean(new TitleBean("返回", "录像", "", "搜索"));
         getP().getD().setHistoryBean((HistoryBean) getArguments().getSerializable(Value.DATA_DATA));
         ContactBean contactBean = new ContactBean();
@@ -54,7 +58,7 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
                         initData2();
                     }
                 });
-                getP().getU().bind.refresh.finishRefresh();
+                getP().getU().finishRefresh();
                 getP().getD().setPageindex(getP().getD().getPageindex() + 1);
             }
         });
@@ -81,28 +85,13 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
                 }
                 getP().getU().loadmore();
                 getP().getD().setPageindex(getP().getD().getPageindex() + 1);
-                getP().getU().bind.refresh.finishRefreshLoadMore();
+                getP().getU().finishLoadmore();
             }
         });
 
     }
 
 
-    @Override
-    public void doThing() {
-        getP().getU().initRefresh(new MaterialRefreshListener() {
-            @Override
-            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-                initData();
-            }
-
-            @Override
-            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-                initData2();
-            }
-        });
-
-    }
 
 
     @Override
@@ -146,5 +135,15 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        initData2();
+    }
+
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        initData();
     }
 }

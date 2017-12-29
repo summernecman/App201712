@@ -13,6 +13,9 @@ import com.android.lib.util.ToastUtil;
 import com.android.lib.view.recyclerview.MyRecyclerView;
 import com.android.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.android.lib.view.refreshlayout.MaterialRefreshListener;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TitleBean;
@@ -24,22 +27,12 @@ import com.siweisoft.service.ui.video.videocontainer.VideoContainerFrag;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CollecFrag extends BaseServerFrag<CollectUIOpe, CollectDAOpe> implements ViewListener {
+public class CollecFrag extends BaseServerFrag<CollectUIOpe, CollectDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener {
 
     @Override
     public void doThing() {
         super.doThing();
-        getP().getU().initRefresh(new MaterialRefreshListener() {
-            @Override
-            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-                initData();
-            }
-
-            @Override
-            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-                initData2();
-            }
-        });
+        getP().getU().initRefresh(this,this);
 
     }
 
@@ -65,7 +58,7 @@ public class CollecFrag extends BaseServerFrag<CollectUIOpe, CollectDAOpe> imple
                     }
                 });
                 getP().getD().setPagestart(getP().getD().getPagestart() + 1);
-                getP().getU().bind.refresh.finishRefresh();
+                getP().getU().finishRefresh();
             }
         });
     }
@@ -86,7 +79,7 @@ public class CollecFrag extends BaseServerFrag<CollectUIOpe, CollectDAOpe> imple
                 }
                 getP().getU().loadMore();
                 getP().getD().setPagestart(getP().getD().getPagestart() + 1);
-                getP().getU().bind.refresh.finishRefreshLoadMore();
+                getP().getU().finishLoadmore();
             }
         });
     }
@@ -111,5 +104,15 @@ public class CollecFrag extends BaseServerFrag<CollectUIOpe, CollectDAOpe> imple
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        initData2();
+    }
+
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        initData();
     }
 }

@@ -5,6 +5,7 @@ package com.siweisoft.service.ui.user.login;
 import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
+import android.view.View;
 
 import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.ope.BaseUIOpe;
@@ -34,6 +35,9 @@ public class LoginUIOpe extends BaseUIOpe<FragLoginBinding> {
             }
         });
         bind.etServer.setText(NetValue.获取域名从文件(context));
+        if(bind.etServer.getText().toString().equals(NetValue.正式域名)){
+            bind.etServer.setVisibility(View.GONE);
+        }
     }
 
     public void initImage(String url) {

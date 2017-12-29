@@ -12,6 +12,19 @@
         android:roundIcon="@drawable/icon_icon"
         android:theme="@style/AppBaseTheme"
         tools:replace="android:label,android:theme">
+
+        <provider
+            android:name=".ui.setting.setting.GenericFileProvider"
+            android:authorities="com.siweisoft.service.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
+
+
         <activity
             android:windowSoftInputMode="adjustPan"
             android:launchMode="singleTask"
@@ -41,6 +54,8 @@
         <service
             android:name=".AppServer"
             android:stopWithTask="false" />
+
+        <service android:name=".ui.setting.setting.DownloadService"/>
 
         <!-- 设置环信应用的AppKey -->
         <meta-data

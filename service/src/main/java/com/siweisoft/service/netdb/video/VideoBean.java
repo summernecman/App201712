@@ -16,6 +16,14 @@ import java.util.ArrayList;
  */
 public class VideoBean extends BaseBean {
 
+
+    public static int type_video_record = 1;
+
+    public static int type_video = 2;
+
+    public static int type_voice = 3;
+
+
     private int id;
 
     /**
@@ -74,6 +82,10 @@ public class VideoBean extends BaseBean {
     private boolean isRecord;
 
     private boolean video;
+
+
+    private int type;
+
 
     @Bindable
     public int getId() {
@@ -258,6 +270,8 @@ public class VideoBean extends BaseBean {
         this.video = video;
     }
 
+
+
     public VideoBean getSame() {
         VideoBean videoBean = new VideoBean();
         videoBean.setCreated(getCreated());
@@ -336,5 +350,13 @@ public class VideoBean extends BaseBean {
 
     public void setCommentid(int commentid) {
         this.commentid = commentid;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

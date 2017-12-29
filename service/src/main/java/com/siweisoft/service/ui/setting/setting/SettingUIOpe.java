@@ -14,4 +14,7 @@ public class SettingUIOpe extends BaseUIOpe<FragSettingBinding> {
         super(context);
     }
 
+    public void setVersion(String verison){
+        bind.tvVersion.setText(verison);
+    }
 }

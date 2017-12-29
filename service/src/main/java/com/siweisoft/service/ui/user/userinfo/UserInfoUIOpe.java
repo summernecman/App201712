@@ -17,6 +17,8 @@ import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.view.recyclerview.MyRecyclerView;
 import com.android.lib.view.refreshlayout.MaterialRefreshListener;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.service.BR;
 import com.siweisoft.service.GlideApp;
 import com.siweisoft.service.R;
@@ -111,8 +113,17 @@ public class UserInfoUIOpe extends BaseUIOpe<FragUserinfoBinding> {
     }
 
 
-    public void initRefresh(MaterialRefreshListener refreshListener) {
-        bind.refresh.setMaterialRefreshListener(refreshListener);
+    public void finishRefresh(){
+        bind.refreshLayout.finishRefresh();
+    }
+
+    public void finishLoadmore(){
+        bind.refreshLayout.finishLoadmore();
+    }
+
+    public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener) {
+        bind.refreshLayout.setOnRefreshListener(refreshListener);
+        bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
     }
 
     public void initOnline(boolean online) {

@@ -12,6 +12,9 @@ import com.android.lib.util.FragmentUtil2;
 import com.android.lib.view.recyclerview.MyRecyclerView;
 import com.android.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.android.lib.view.refreshlayout.MaterialRefreshListener;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TitleBean;
@@ -25,22 +28,12 @@ import com.siweisoft.service.ui.video.videocontainer.VideoContainerFrag;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ShareListFrag extends BaseServerFrag<ShareListUIOpe, ShareListDAOpe> implements ViewListener {
+public class ShareListFrag extends BaseServerFrag<ShareListUIOpe, ShareListDAOpe> implements ViewListener ,OnRefreshListener,OnLoadmoreListener {
 
     @Override
     public void doThing() {
         super.doThing();
-        getP().getU().initRefresh(new MaterialRefreshListener() {
-            @Override
-            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-                initData();
-            }
-
-            @Override
-            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-                initData2();
-            }
-        });
+        getP().getU().initRefresh(this,this);
 
     }
 
@@ -68,7 +61,7 @@ public class ShareListFrag extends BaseServerFrag<ShareListUIOpe, ShareListDAOpe
                     }
                 });
                 getP().getD().setPagestart(getP().getD().getPagestart() + 1);
-                getP().getU().bind.refresh.finishRefresh();
+                getP().getU().finishRefresh();
             }
         });
     }
@@ -87,7 +80,7 @@ public class ShareListFrag extends BaseServerFrag<ShareListUIOpe, ShareListDAOpe
                 }
                 getP().getU().loadMore();
                 getP().getD().setPagestart(getP().getD().getPagestart() + 1);
-                getP().getU().bind.refresh.finishRefreshLoadMore();
+                getP().getU().finishLoadmore();
             }
         });
     }
@@ -114,5 +107,15 @@ public class ShareListFrag extends BaseServerFrag<ShareListUIOpe, ShareListDAOpe
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        initData2();
+    }
+
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        initData();
     }
 }

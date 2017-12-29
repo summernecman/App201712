@@ -19,7 +19,7 @@
             android:id="@+id/tophead"
             layout="@layout/item_title2"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimens_base_title" />
+            android:layout_height="@dimen/dimens_base_title_clip" />
 
         <android.support.v7.widget.RecyclerView
             android:background="@color/white"

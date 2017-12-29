@@ -100,6 +100,17 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
                                 }else{
                                     videoBean.setVideo(true);
                                 }
+                                switch (((View) o).getId()){
+                                    case R.id.tv_video:
+                                        videoBean.setType(VideoBean.type_video);
+                                        break;
+                                    case R.id.tv_record:
+                                        videoBean.setType(VideoBean.type_video_record);
+                                        break;
+                                    case R.id.tv_voice:
+                                        videoBean.setType(VideoBean.type_voice);
+                                        break;
+                                }
                                 VideoChatFrag videoChatFrag = new VideoChatFrag();
                                 videoChatFrag.setArguments(new Bundle());
                                 videoChatFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, videoBean);
@@ -110,21 +121,21 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
                 });
 
                 break;
-            case R.id.ftv_right:
-                List<String> strs = new ArrayList<>();
-                for(int i=0;i<10;i++){
-                    strs.add("fdfdsfsd"+i);
-                }
-                DialogListFrag frag = new DialogListFrag();
-                frag.init(strs);
-                FragmentUtil2.getInstance().add(fragment.getActivity(), Value.ROOTID_TWO, frag);
-                frag.setOnAppItemsClickListener(new OnAppItemClickListener() {
-                    @Override
-                    public void onAppItemClick(View view, int position) {
-                        IntentIntegrator.forSupportFragment(OnLineListFrag.this).initiateScan();
-                    }
-                });
-                break;
+//            case R.id.ftv_right:
+//                List<String> strs = new ArrayList<>();
+//                for(int i=0;i<10;i++){
+//                    strs.add("fdfdsfsd"+i);
+//                }
+//                DialogListFrag frag = new DialogListFrag();
+//                frag.init(strs);
+//                FragmentUtil2.getInstance().add(fragment.getActivity(), Value.ROOTID_TWO, frag);
+//                frag.setOnAppItemsClickListener(new OnAppItemClickListener() {
+//                    @Override
+//                    public void onAppItemClick(View view, int position) {
+//                        IntentIntegrator.forSupportFragment(OnLineListFrag.this).initiateScan();
+//                    }
+//                });
+//                break;
         }
         v.setEnabled(true);
     }

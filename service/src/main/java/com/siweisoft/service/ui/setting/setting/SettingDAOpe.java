@@ -3,8 +3,14 @@ package com.siweisoft.service.ui.setting.setting;
 //by summer on 17-08-28.
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
+import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
+import com.siweisoft.service.netdb.app.AppBean;
+import com.siweisoft.service.netdb.app.AppI;
+import com.siweisoft.service.netdb.app.AppOpe;
 import com.siweisoft.service.netdb.user.UserI;
 import com.siweisoft.service.netdb.user.UserNetOpe;
 
@@ -12,10 +18,60 @@ public class SettingDAOpe extends BaseDAOpe {
 
     UserI userI;
 
+    AppI appI;
+
+    AppBean appBean;
+
     public SettingDAOpe(Context context) {
         super(context);
         userI = new UserNetOpe(context);
     }
 
+    public void CheckVersion(final OnFinishListener onFinishListener){
+        getAppI().CheckVersion(new OnFinishListener() {
+            @Override
+            public void onFinish(Object o) {
+                 appBean = (AppBean) o;
+                if(appBean==null){
+                    onFinishListener.onFinish(false);
+                    return;
+                }
+                PackageManager pm = context.getPackageManager();//context为当前Activity上下文
+                PackageInfo pi = null;
+                try {
+                    pi = pm.getPackageInfo(context.getPackageName(), 0);
+                    if(pi.versionCode<appBean.getVersioncode()){
+                        onFinishListener.onFinish(true);
+                        return;
+                    }
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                    onFinishListener.onFinish(false);
+                    return;
+                }
+                onFinishListener.onFinish(false);
+            }
+        });
+    }
 
+
+    public AppI getAppI() {
+        if(appI==null){
+            appI =  new AppOpe(context);
+        }
+        return appI;
+    }
+
+
+    public String getVersion(){
+        PackageManager pm = context.getPackageManager();//context为当前Activity上下文
+        PackageInfo pi  = null;
+        try {
+            pi = pm.getPackageInfo(context.getPackageName(), 0);
+            return pi.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }

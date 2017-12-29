@@ -186,7 +186,7 @@
 
 
         <EditText
-            android:visibility="gone"
+            android:visibility="visible"
             android:hint="对本次视频服务的评价"
             android:textSize="16sp"
             android:maxLength="200"

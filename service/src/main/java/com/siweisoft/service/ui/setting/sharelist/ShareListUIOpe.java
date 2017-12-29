@@ -12,6 +12,8 @@ import com.android.lib.bean.AppViewHolder;
 import com.android.lib.constant.UrlConstant;
 import com.android.lib.view.recyclerview.MyRecyclerView;
 import com.android.lib.view.refreshlayout.MaterialRefreshListener;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.service.BR;
 import com.siweisoft.service.GlideApp;
 import com.siweisoft.service.R;
@@ -57,8 +59,17 @@ public class ShareListUIOpe extends BaseUIOpe<FragRemarklistBinding> {
         bind.recycle.getAdapter().notifyDataSetChanged();
     }
 
-    public void initRefresh(MaterialRefreshListener refreshListener) {
-        bind.refresh.setMaterialRefreshListener(refreshListener);
+    public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener) {
+        bind.refreshLayout.setOnRefreshListener(refreshListener);
+        bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
+    }
+
+    public void finishRefresh(){
+        bind.refreshLayout.finishRefresh();
+    }
+
+    public void finishLoadmore(){
+        bind.refreshLayout.finishLoadmore();
     }
 
 }

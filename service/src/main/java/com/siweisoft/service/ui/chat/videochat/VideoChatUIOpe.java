@@ -39,6 +39,10 @@ public class VideoChatUIOpe extends BaseUIOpe<FragVideochatBinding> {
             GlideApp.with(context).asBitmap().centerCrop().placeholder(R.drawable.icon_head1).load(NetValue.获取文件路径("/" + Value.getUserInfo().getHeadurl())).into(bind.ivHead);
 
         }else{
+            bind.btnSwitchvideo.setVisibility(View.VISIBLE);
+            bind.btnCamera.setVisibility(View.VISIBLE);
+            bind.removeview.setVisibility(View.VISIBLE);
+            bind.surfaceviewlocal.setVisibility(View.VISIBLE);
             bind.ivHead.setVisibility(View.GONE);
         }
     }

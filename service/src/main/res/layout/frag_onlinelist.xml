@@ -15,11 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
+        <!--style_common:iv_right ="@drawable/icon_scan"-->
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:txt_mid ="联系人"
-            style_common:iv_right ="@drawable/icon_scan"
+
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimens_base_title_clip"
             android:elevation="1dp"/>

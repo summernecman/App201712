@@ -23,6 +23,9 @@ import com.android.lib.view.refreshlayout.MaterialRefreshListener;
 import com.hyphenate.EMValueCallBack;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMCursorResult;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TipBean;
@@ -43,24 +46,12 @@ import java.util.HashMap;
 
 import butterknife.OnClick;
 
-public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> implements ViewListener {
+public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> implements ViewListener ,OnRefreshListener,OnLoadmoreListener {
 
 
     @Override
     public void doThing() {
-        getP().getU().initRefresh(new MaterialRefreshListener() {
-            @Override
-            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-                init();
-                materialRefreshLayout.finishRefresh();
-            }
-
-            @Override
-            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-                initData2();
-
-            }
-        });
+        getP().getU().initRefresh(this,this);
     }
 
     @Override
@@ -141,7 +132,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
         getP().getD().getRemarks(commentBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
-                getP().getU().bind.refresh.finishRefreshLoadMore();
+                getP().getU().finishLoadmore();
                 ArrayList<CommentBean> a = (ArrayList<CommentBean>) o;
                 if (a == null || a.size() == 0) {
                     ToastUtil.getInstance().showShort(activity, "已经加载完了");
@@ -288,5 +279,16 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        initData2();
+    }
+
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        init();
+        getP().getU().finishRefresh();
     }
 }
