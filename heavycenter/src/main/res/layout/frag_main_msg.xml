@@ -15,7 +15,8 @@
         android:fitsSystemWindows="true"
         android:background="@color/color_block_back"
         android:orientation="vertical">
-        <com.siweisoft.heavycenter.module.view.title.TitleView
+
+        <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:txt_mid ="消息"
             style_common:iv_right = "@drawable/icon_hv_scan"

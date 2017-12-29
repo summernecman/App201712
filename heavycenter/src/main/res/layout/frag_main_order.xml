@@ -13,7 +13,7 @@
         android:background="@color/color_block_back"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.siweisoft.heavycenter.module.view.title.TitleView
+        <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:txt_mid ="订单"
             android:layout_width="match_parent"

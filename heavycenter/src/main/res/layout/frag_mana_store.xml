@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
 
-        <com.siweisoft.heavycenter.module.view.title.TitleView
+        <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:txt_mid ="仓库管理"
             style_common:iv_left ="@drawable/icon_hv_back"

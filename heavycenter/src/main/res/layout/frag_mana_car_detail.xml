@@ -12,7 +12,7 @@
         android:fitsSystemWindows="true"
         android:orientation="vertical">
 
-        <com.siweisoft.heavycenter.module.view.title.TitleView
+        <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:iv_right ="@drawable/icon_hv_scan"
             style_common:iv_right2 ="@drawable/drawable_hv_sel"

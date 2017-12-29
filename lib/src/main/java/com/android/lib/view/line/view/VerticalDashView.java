@@ -3,11 +3,13 @@ package com.android.lib.view.line.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.android.lib.R;
+import com.android.lib.util.LogUtil;
 
 
 /**
@@ -21,7 +23,12 @@ public class VerticalDashView extends View {
 
     float dashWidth;
 
+    int bgcolor;
+
+    float w;
+
     Paint paint = new Paint();
+
 
     public VerticalDashView(Context context) {
         super(context);
@@ -34,17 +41,21 @@ public class VerticalDashView extends View {
 
     private void init(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.DashView);
-        dashColor = typedArray.getResourceId(R.styleable.DashView_dashcolor, R.color.color_base_bottommenu);
-        dashGap = typedArray.getDimension(R.styleable.DashView_dashgap, 3f);
-        dashWidth = typedArray.getDimension(R.styleable.DashView_hashwidth, 3f);
+        dashColor = typedArray.getColor(R.styleable.DashView_dashcolor, Color.BLACK);
+        dashGap = typedArray.getDimension(R.styleable.DashView_dashgap, 10f);
+        dashWidth = typedArray.getDimension(R.styleable.DashView_hashwidth, 10f);
+        bgcolor = typedArray.getColor(R.styleable.DashView_dashbg, Color.WHITE);
+        w = typedArray.getDimension(R.styleable.DashView_w, 10f);
         paint.setColor(dashColor);
+        paint.setStyle(Paint.Style.FILL);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         paint.setStrokeWidth(getHeight());
+        paint.setColor(dashColor);
         for (int i = 0; i < getHeight() / (dashGap + dashWidth); i++) {
-            canvas.drawLine(0, 0 + (dashGap + dashWidth) * i, 0, dashWidth + (dashGap + dashWidth) * i, paint);
+            canvas.drawRect(0, 0 + (dashGap + dashWidth) * i, w, dashWidth + (dashGap + dashWidth) * i, paint);
         }
     }
 }

@@ -4,5 +4,8 @@
         <attr name="dashgap" format="dimension" />
         <attr name="hashwidth" format="dimension" />
         <attr name="dashcolor" format="reference" />
+        <attr name="dashbg" format="reference" />
+        <attr name="w" format="dimension" />
+        <attr name="h" format="dimension" />
     </declare-styleable>
 </resources>

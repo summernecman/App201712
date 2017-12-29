@@ -45,12 +45,10 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
     }
 
     public void LoadListData(List<String> s, final ViewListener listener) {
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_trans, BR.item_trans, s,listener){
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_trans, BR.item_main_trans, s,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {
                 super.onBindViewHolder(holder, position, payloads);
-                ItemTransBinding binding = (ItemTransBinding) holder.viewDataBinding;
-                binding.tvRoot.setOnClickListener(this);
             }
         });
 

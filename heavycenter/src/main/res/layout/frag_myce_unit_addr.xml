@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:orientation="vertical">
-        <com.siweisoft.heavycenter.module.view.title.TitleView
+        <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:txt_mid ="单位地址"
             android:layout_width="match_parent"
