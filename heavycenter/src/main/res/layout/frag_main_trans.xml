@@ -13,10 +13,14 @@
         android:orientation="vertical">
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
+            style_common:iv_left ="@drawable/icon_hv_person"
             style_common:txt_mid ="运输单"
+            style_common:iv_right2 ="@drawable/drawable_hv_sure_search"
+            style_common:iv_right ="@drawable/icon_hv_scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <RelativeLayout
+            android:id="@+id/rl_trans"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

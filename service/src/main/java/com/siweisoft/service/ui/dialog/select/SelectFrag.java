@@ -21,7 +21,7 @@ public class SelectFrag extends BaseServerFrag<SelectUIOpe, SelectDAOpe> {
         super.doThing();
     }
 
-    @OnClick({R.id.tv_video, R.id.tv_record,R.id.ll_root,R.id.tv_voice})
+    @OnClick({R.id.tv_video, R.id.ll_root,R.id.tv_voice})
     public void onClickEvent(View v) {
         if (onFinishListener != null) {
             onFinishListener.onFinish(v);

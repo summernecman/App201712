@@ -18,11 +18,11 @@ public class CarDAOpe extends AppDAOpe {
     }
 
 
-    public ArrayList<Fragment> getPages(){
+    public ArrayList<Fragment> getPages(int index){
         ArrayList<Fragment> pages = new ArrayList<>();
-        pages.add(new SendFrag());
-        pages.add(new MyFrag());
-        pages.add(new ReceiptFrag());
+        SendFrag sendFrag = new SendFrag(); sendFrag.setIndex(index);pages.add(sendFrag);
+        MyFrag myFrag = new MyFrag(); myFrag.setIndex(index);pages.add(myFrag);
+        ReceiptFrag receiptFrag = new ReceiptFrag(); receiptFrag.setIndex(index);pages.add(receiptFrag);
         return pages;
     }
 

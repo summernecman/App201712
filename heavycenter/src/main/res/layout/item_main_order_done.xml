@@ -9,114 +9,147 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe"
+        android:background="@drawable/bg_hv_sel_dark_light"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp">
+        android:paddingTop="15dp"
+        android:paddingBottom="10dp">
 
         <LinearLayout
-            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-<TextView
-    android:singleLine="true"
-    android:textColor="@color/white"
-    android:textSize="20sp"
-    android:text="混凝土"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-
-            <TextView
-                android:singleLine="true"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:text="D150"
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:text="混凝土"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:text="D150"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:background="@drawable/bg_hv_sharp2_blue_solid"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:text="来自"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:text="上海绿地"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_hv_sharp2_yell_stroke"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:singleLine="true"
+                    android:textColor="@color/color_base_txt_heavycenter_y"
+                    android:textSize="8.5sp"
+                    android:text=" 沪A2345 "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:singleLine="true"
+                    android:textColor="@color/color_base_txt_heavycenter_y"
+                    android:textSize="8.5sp"
+                    android:text=" 沪A2345 "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_gravity="right"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:text="实发：2000t"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content" />
-            <View
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="horizontal"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="1dp"/>
-            <TextView
-                android:singleLine="true"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:text="D150"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical|right"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:text="实收："
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:singleLine="true"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:text="收"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:singleLine="true"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:text="上海绿地"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:text="2000t"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
             <TextView
+                android:layout_gravity="right"
+                android:gravity="center_vertical|right"
+                android:layout_weight="1"
                 android:singleLine="true"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                android:text="计划：2000t"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:singleLine="true"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:text="实发：2000t"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:singleLine="true"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:text="盈亏：2000t"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:singleLine="true"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:text="实收：2000t"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:singleLine="true"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/color_base_txt_heavycenter_y"
-                android:textSize="12sp"
-                android:text="2000t"
-                android:layout_width="wrap_content"
+                android:textSize="13sp"
+                android:text="盈亏：20t"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>

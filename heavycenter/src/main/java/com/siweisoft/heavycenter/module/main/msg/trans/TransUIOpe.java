@@ -32,7 +32,7 @@ public class TransUIOpe extends BaseUIOpe<FragMainMsgTransBinding>{
     }
 
     public void LoadListData(List<String> s){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_sys, BR.item_main_msg_sys,s));
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_trans, BR.item_main_msg_trans,s));
     }
 
     public void initRefresh(){

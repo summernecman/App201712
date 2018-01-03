@@ -455,4 +455,36 @@ public class FragManager {
             addNoAnim(fragmentActivity,id,fragments.get(i));
         }
     }
+
+
+
+    public void addJustInNormal(final FragmentActivity fragmentActivity, int resid, Fragment now) {
+        FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+        transaction.add(resid, now);
+        transaction.commitAllowingStateLoss();
+    }
+
+
+    public void addJustInNormal(final FragmentActivity fragmentActivity, int resid, Fragment now,int anim1,int anim2) {
+        FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(anim1, anim2);
+        transaction.add(resid, now);
+        transaction.commitAllowingStateLoss();
+    }
+
+
+    public void removeJustInNormal(final FragmentActivity fragmentActivity,  Fragment now) {
+        FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+        transaction.remove(now);
+        transaction.commitAllowingStateLoss();
+    }
+
+    public void removeJustInNormal(final FragmentActivity fragmentActivity,  Fragment now,int anim1,int anim2) {
+        FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(anim1, anim2);
+        transaction.remove(now);
+        transaction.commitAllowingStateLoss();
+    }
 }

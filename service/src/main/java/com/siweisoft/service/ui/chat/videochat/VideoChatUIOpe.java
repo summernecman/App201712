@@ -22,7 +22,7 @@ public class VideoChatUIOpe extends BaseUIOpe<FragVideochatBinding> {
 
     public void setCallInfo(UserBean userBean) {
         bind.tvCallinfo.setVisibility(View.VISIBLE);
-        bind.tvCallinfo.setText("正在向 " + userBean.getPhone() + "(" + userBean.getName() + ") 发起视频通话");
+        bind.tvCallinfo.setText("正在向 " + userBean.getPhone() + "(" + userBean.getName() + ") 发起通话");
     }
 
     public void hideCallInfo() {
@@ -33,6 +33,7 @@ public class VideoChatUIOpe extends BaseUIOpe<FragVideochatBinding> {
         if(!is){
             bind.btnSwitchvideo.setVisibility(View.GONE);
             bind.btnCamera.setVisibility(View.GONE);
+            bind.surfaceviewremove.setVisibility(View.GONE);
             bind.removeview.setVisibility(View.GONE);
             bind.surfaceviewlocal.setVisibility(View.GONE);
             bind.ivHead.setVisibility(View.VISIBLE);
@@ -42,6 +43,7 @@ public class VideoChatUIOpe extends BaseUIOpe<FragVideochatBinding> {
             bind.btnSwitchvideo.setVisibility(View.VISIBLE);
             bind.btnCamera.setVisibility(View.VISIBLE);
             bind.removeview.setVisibility(View.VISIBLE);
+            bind.surfaceviewremove.setVisibility(View.VISIBLE);
             bind.surfaceviewlocal.setVisibility(View.VISIBLE);
             bind.ivHead.setVisibility(View.GONE);
         }

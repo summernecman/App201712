@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="dimen_item_content_h">50dp</dimen>
+    <dimen name="dimen_item_content_h">45dp</dimen>
     <dimen name="dimen_item_content_txt_size">17sp</dimen>
     <dimen name="dimen_item_content_left_icon_size">17dp</dimen>
     <dimen name="dimen_item_content_right_icon_size">17dp</dimen>
@@ -18,6 +18,8 @@
 
 
     <declare-styleable name="style_common">
+        <attr name="color_bg" format="color"/>
+        <attr name="color_txt_right" format="color"/>
         <attr name="txt_right_bg" format="reference"/>
         <attr name="bg_divider" format="reference"/>
         <attr name="txt_right_left" format="string"/>
@@ -28,5 +30,6 @@
         <attr name="txt_right" format="string"/>
         <attr name="boo_edit" format="boolean"/>
         <attr name="iv_right2" format="reference"/>
+        <attr name="minwidth" format="dimension"/>
     </declare-styleable>
 </resources>

@@ -29,7 +29,7 @@ public class PubUIOpe extends BaseUIOpe<FragMainMsgPublicBinding>{
     }
 
     public void LoadListData(List<String> s){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_sys, BR.item_main_msg_sys,s));
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_public, BR.item_main_msg_public,s));
     }
 
     public void initRefresh(){

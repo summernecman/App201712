@@ -64,6 +64,10 @@ public class DownloadService extends Service {
     }
 
     private void startDownload(String downUrl) {
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "心服务.apk");
+        if(file.exists()){
+            file.delete();
+        }
         /**获得系统下载器        */
         dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
         /**设置下载地址*/
@@ -71,9 +75,9 @@ public class DownloadService extends Service {
         /**设置下载文件的类型*/
         request.setMimeType("application/vnd.android.package-archive");
               /**设置下载存放的文件夹和文件名字*/
-request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "心服务.apk");
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "心服务.apk");
         /**设置下载时或者下载完成时，通知栏是否显示*/        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setTitle("xxxx");
+        request.setTitle("心服务");
         /**执行下载，并返回任务唯一id*/
         enqueue = dm.enqueue(request);
     }

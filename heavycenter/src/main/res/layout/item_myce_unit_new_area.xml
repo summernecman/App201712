@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_myce_unit_new_area"
+            type="String" />
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/color_item_content"
+    android:paddingLeft="@dimen/dimen_item_content_left_padding">
+
+
+    <LinearLayout
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/icon_hv_sel_y"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:text="123"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:src="@drawable/icon_arraw"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+    </LinearLayout>
+
+</LinearLayout>
+
+</layout>

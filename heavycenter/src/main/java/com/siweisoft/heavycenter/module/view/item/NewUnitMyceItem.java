@@ -21,6 +21,8 @@ public class NewUnitMyceItem extends RelativeLayout {
 
     private EditText midET;
 
+    private float leftW = 0;
+
     public NewUnitMyceItem(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -44,7 +46,8 @@ public class NewUnitMyceItem extends RelativeLayout {
         if(hint!=null){
             midET.setHint(hint);
         }
-
+        leftW = a.getDimension(R.styleable.style_common_minwidth,0);
+        leftTV.setMinWidth((int) leftW);
         boolean edit = a.getBoolean(R.styleable.style_common_boo_edit,false);
         midET.setEnabled(edit);
 

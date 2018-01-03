@@ -33,7 +33,7 @@ public class AllUIOpe extends BaseUIOpe<FragMainMsgAllBinding>{
     }
 
     public void LoadListData(List<String> s){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_sys, BR.item_main_msg_sys,s));
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_all, BR.item_main_msg_all,s));
     }
 
     public void initRefresh(){

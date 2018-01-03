@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="item_main_store_detail"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        >
+        <TextView
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="2017/12/19"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="沪A12345"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="王先生"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="100.5t"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>

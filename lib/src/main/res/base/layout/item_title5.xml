@@ -7,22 +7,20 @@
             name="titlebean5"
             type="String" />
     </data>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ftitle_bar"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/dimens_base_title_clip"
-    android:background="@color/color_base_statusbar"
-    android:elevation="1dp"
-    android:gravity="center_vertical"
-    android:orientation="vertical"
-    android:layout_marginBottom="0dp"
-    >
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ftitle_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_base_title_clip"
+        android:background="@color/color_base_statusbar"
+        android:elevation="1dp"
+        android:paddingTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
     <ImageView
-        android:layout_marginTop="20dp"
         android:id="@+id/ftv_back"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:gravity="center"
@@ -36,7 +34,6 @@
 
 
     <TextView
-        android:layout_marginTop="20dp"
         android:id="@+id/ftv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,10 +49,9 @@
 
 
     <ImageView
-        android:layout_marginTop="20dp"
         android:id="@+id/ftv_right"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="10dp"
@@ -71,10 +67,9 @@
 
     <ImageView
         android:layout_toLeftOf="@id/ftv_right"
-        android:layout_marginTop="20dp"
         android:id="@+id/ftv_right2"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_centerVertical="true"
         android:layout_marginRight="10dp"
         android:gravity="center_vertical"

@@ -5,9 +5,9 @@ package com.siweisoft.heavycenter.module.main.trans.detail;
 import android.content.Context;
 
 import com.siweisoft.heavycenter.base.AppUIOpe;
-import com.siweisoft.heavycenter.databinding.FragTransDetailBinding;
+import com.siweisoft.heavycenter.databinding.FragMainTransDetailBinding;
 
-public class TransDetailUIOpe extends AppUIOpe<FragTransDetailBinding> {
+public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
 
 
     public TransDetailUIOpe(Context context) {

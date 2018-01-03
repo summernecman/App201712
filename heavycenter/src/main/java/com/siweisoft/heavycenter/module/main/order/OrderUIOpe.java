@@ -24,6 +24,7 @@ public class OrderUIOpe extends BaseUIOpe<FragMainOrderBinding>{
         bind.llCntent.setOffscreenPageLimit(pages.size());
         bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
         bind.topview.setViewPager(bind.llCntent);
+        bind.scrollmenu.setViewPager(bind.llCntent);
     }
 
 

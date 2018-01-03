@@ -39,16 +39,6 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_record"
-                    android:background="@drawable/drawable_press_maincolor_gray_radious"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:text="录制视频"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp" />
-
-                <TextView
                     android:layout_marginTop="10dp"
                     android:id="@+id/tv_video"
                     android:background="@drawable/drawable_press_maincolor_gray_radious"

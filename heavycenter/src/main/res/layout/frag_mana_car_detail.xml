@@ -7,6 +7,7 @@
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
@@ -15,7 +16,7 @@
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:iv_right ="@drawable/icon_hv_scan"
-            style_common:iv_right2 ="@drawable/drawable_hv_sel"
+            style_common:iv_right2 ="@drawable/bg_hv_check"
             style_common:txt_mid ="车辆详情"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

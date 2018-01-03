@@ -2,7 +2,7 @@
 <layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="frag_trans_detail"
+            name="frag_main_trans_detail"
             type="String" />
     </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,6 +11,11 @@
         android:background="@color/red"
         android:orientation="vertical">
 
-        <include layout="@layout/item_title5"/>
+        <com.android.lib.view.title.TitleView
+            android:id="@+id/title"
+            style_common:txt_mid ="运输单详情"
+            style_common:iv_left ="@drawable/icon_hv_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </layout>

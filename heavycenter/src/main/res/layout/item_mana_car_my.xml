@@ -13,11 +13,15 @@
         android:paddingBottom="1dp">
 
         <TextView
-            android:text="finish"
+
+            android:textSize="22sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="停用"
             android:orientation="horizontal"
             android:background="#66ddff00"
             android:id="@+id/bottom_wrapper"
-            android:layout_width="160dp"
+            android:layout_width="55dp"
             android:weightSum="1"
             android:layout_height="match_parent"/>
     <LinearLayout
@@ -46,8 +50,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 <TextView
+
     android:singleLine="true"
-    android:textColor="@color/white"
+    android:textColor="@color/black"
     android:textSize="18sp"
     android:text="沪A12345"
     android:layout_width="wrap_content"
@@ -56,7 +61,7 @@
             <TextView
                 android:singleLine="true"
                 android:layout_marginLeft="14dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:text="20T"
                 android:layout_width="wrap_content"
@@ -68,7 +73,7 @@
             <TextView
                 android:singleLine="true"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="12sp"
                 android:text="奔驰"
                 android:layout_width="wrap_content"
@@ -83,7 +88,7 @@
             <TextView
                 android:singleLine="true"
 
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="12sp"
                 android:text="驾驶员：王先生"
                 android:layout_width="wrap_content"
@@ -91,7 +96,7 @@
             <TextView
                 android:singleLine="true"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="12sp"
                 android:text="联系电话：1111111111"
                 android:layout_width="wrap_content"

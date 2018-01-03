@@ -194,7 +194,7 @@ public class VideoChatDAOpe extends BaseDAOpe {
     }
 
     public boolean isRecordVideo() {
-        return isRecordVideo;
+        return true;
     }
 
     public void setRecordVideo(boolean recordVideo) {

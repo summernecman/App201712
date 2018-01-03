@@ -4,36 +4,24 @@ package com.siweisoft.heavycenter.module.view.menu;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.lib.util.LogUtil;
-import com.android.lib.util.ScreenUtil;
 import com.siweisoft.heavycenter.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class TopTypeView extends RelativeLayout {
 
 
-    private View line ;
+
 
     private String[] strs;
-
-    private float aaa = 3/4f;
-
-    private float bbb = 1-aaa;
-
-    private float ccc = (bbb/aaa)/2;
 
     private ViewPager viewPager;
 
@@ -58,15 +46,7 @@ public class TopTypeView extends RelativeLayout {
         }
     }
 
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        super.onLayout(changed, l, t, r, b);
-        if(line==null){
-            line = findViewById(R.id.line);
-            line.getLayoutParams().width = (int) ((aaa)*getWidth()/strs.length);
-            line.requestLayout();
-        }
-    }
+
 
     public void setIndex(int index){
         if(index>=strs.length){
@@ -76,19 +56,17 @@ public class TopTypeView extends RelativeLayout {
 
     public void setViewPager(ViewPager viewPager) {
         this.viewPager = viewPager;
-        final float trans1 =  (getWidth()/strs.length);
-        final float trnas2 = (line.getWidth()*ccc);
         this.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                ViewCompat.setTranslationX(line,trans1*(position+positionOffset)+trnas2);
+             
             }
 
             @Override
             public void onPageSelected(int position) {
                 for(int i=0;i<textViews.size();i++){
                     if(position==i){
-                        textViews.get(i).setTextColor(getResources().getColorStateList(R.color.color_base_txt_yellow));
+                        textViews.get(i).setTextColor(getResources().getColorStateList(R.color.color_hv_yelll));
                         textViews.get(i).setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
                     }else{
                         textViews.get(i).setTextColor(getResources().getColorStateList(R.color.white));
@@ -110,4 +88,6 @@ public class TopTypeView extends RelativeLayout {
         }
         textViews.get(index).setText(str);
     }
+
+
 }

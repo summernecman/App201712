@@ -5,14 +5,18 @@ package com.siweisoft.service.ui.setting.setting;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Environment;
 
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
+import com.android.lib.util.ToastUtil;
 import com.siweisoft.service.netdb.app.AppBean;
 import com.siweisoft.service.netdb.app.AppI;
 import com.siweisoft.service.netdb.app.AppOpe;
 import com.siweisoft.service.netdb.user.UserI;
 import com.siweisoft.service.netdb.user.UserNetOpe;
+
+import java.io.File;
 
 public class SettingDAOpe extends BaseDAOpe {
 
@@ -73,5 +77,18 @@ public class SettingDAOpe extends BaseDAOpe {
             e.printStackTrace();
         }
         return "";
+    }
+
+    public void clear(Context context){
+        File file = new File(Environment.getExternalStorageDirectory(),"videorecord");
+        if(file.exists()){
+            File[] files = file.listFiles();
+            for(int i=0;files!=null && i<files.length;i++){
+                files[i].delete();
+            }
+            ToastUtil.getInstance().showLong(context,"清除成功");
+            return;
+        }
+        ToastUtil.getInstance().showLong(context,"清除失败");
     }
 }

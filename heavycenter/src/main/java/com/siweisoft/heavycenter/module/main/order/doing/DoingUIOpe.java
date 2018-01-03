@@ -17,6 +17,8 @@ import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.FragMainOrderDoingBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainOrderBeginBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainOrderDoingBinding;
 
 import java.util.List;
 
@@ -34,9 +36,19 @@ public class DoingUIOpe extends AppUIOpe<FragMainOrderDoingBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<String> s){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_doing,s));
+    public void LoadListData(List<String> s) {
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_doing, BR.item_main_order_doing, s) {
 
+            int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
+            int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);
+
+            @Override
+            public void onBindViewHolder(AppViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
+                ItemMainOrderDoingBinding doingBinding = (ItemMainOrderDoingBinding) holder.viewDataBinding;
+                doingBinding.getRoot().setSelected(position % 2 == 0 ? true : false);
+            }
+        });
     }
 
     public void initRefresh(){

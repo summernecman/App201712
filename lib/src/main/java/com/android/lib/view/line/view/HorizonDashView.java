@@ -51,7 +51,7 @@ public class HorizonDashView extends View {
         paint.setColor(dashColor);
         paint.setStrokeWidth(dashGap);
         for (int i = 0; i < getWidth() / (dashGap + dashWidth); i++) {
-            canvas.drawLine(0 + (dashGap + dashWidth) * i, 0, dashWidth + (dashGap + dashWidth) * i, 0, paint);
+            canvas.drawRect((dashGap + dashWidth) * i,0,dashWidth + (dashGap + dashWidth) * i,getHeight(),paint);
         }
     }
 }

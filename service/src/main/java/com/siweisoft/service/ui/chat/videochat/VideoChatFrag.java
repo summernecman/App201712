@@ -16,6 +16,7 @@ import com.android.lib.util.SPUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.data.DateFormatUtil;
+import com.android.lib.util.system.AudioUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
 import com.hyphenate.chat.EMCallStateChangeListener;
 import com.hyphenate.chat.EMClient;
@@ -39,6 +40,7 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
     @Override
     public void doThing() {
         super.doThing();
+        AudioUtil.setAudio50(activity);
         getP().getD().setVideoBean((VideoBean) getArguments().getSerializable(Value.DATA_DATA));
         getP().getU().isVideo(getP().getD().getVideoBean().isVideo());
         //发起者
@@ -50,11 +52,7 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
                     //获取创建的视频的相关信息 以及id
                     getP().getD().setVideoBean((VideoBean) o);
                     try {//发起通话 并将视频通话双方信息发送给接受方
-                        if(getP().getD().getVideoBean().isVideo()){
-                            EMClient.getInstance().callManager().makeVideoCall(getP().getD().getVideoBean().getToUser().getPhone(), GsonUtil.getInstance().toJson(getP().getD().getVideoBean()));
-                        }else{
-                            EMClient.getInstance().callManager().makeVoiceCall(getP().getD().getVideoBean().getToUser().getPhone(), GsonUtil.getInstance().toJson(getP().getD().getVideoBean()));
-                        }
+                        EMClient.getInstance().callManager().makeVideoCall(getP().getD().getVideoBean().getToUser().getPhone(), GsonUtil.getInstance().toJson(getP().getD().getVideoBean()));
                     } catch (EMServiceNotReadyException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -134,6 +132,13 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
                     FragmentUtil2.getInstance().removeTop(activity, Value.FULLSCREEN);
                     break;
                 case ACCEPTED:
+                    if(!getP().getD().getVideoBean().isVideo()){
+                        try {
+                            EMClient.getInstance().callManager().pauseVideoTransfer();
+                        } catch (HyphenateException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     LogUtil.E("接受到录音指令2");
                     getP().getU().hideCallInfo();
                     getP().getD().setAccept(true);
@@ -149,11 +154,10 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
 //                        getP().getU().bind.btnSwitchvideo.setVisibility(View.GONE);
 //                    }
 
-
                     //建立通话后
                     getP().getD().setStart(System.currentTimeMillis());
-                    if (getP().getD().getVideoBean().isRecord()) {
-                        ToastUtil.getInstance().showLong(activity, "开始录制");
+                    if (getP().getD().isRecordVideo()) {
+                        //ToastUtil.getInstance().showLong(activity, "开始录制");
                         activity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

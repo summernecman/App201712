@@ -9,6 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.daimajia.swipe.SwipeLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -49,6 +52,21 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+    }
+
+    public void initRefresh(){
+        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                refreshlayout.finishRefresh(2000);
+            }
+        });
+        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+            @Override
+            public void onLoadmore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadmore(2000);
             }
         });
     }

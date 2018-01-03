@@ -56,6 +56,9 @@ public class ItemView extends RelativeLayout{
 
     private int bgDivider;
 
+    private View right2;
+
+    private int color_txt_right;
 
 
 
@@ -70,22 +73,25 @@ public class ItemView extends RelativeLayout{
         leftIV = (ImageView) findViewById(R.id.iv_left_icon);
         leftTV = (TextView) findViewById(R.id.tv_left_content);
         rightTV = (TextView) findViewById(R.id.iv_right_content);
+        right2 = findViewById(R.id.rl_right2);
         rightIV = (ImageView) findViewById(R.id.iv_right_icon);
         divider = findViewById(R.id.divide);
         TypedArray t = context.obtainStyledAttributes(attrs,R.styleable.style_common);
         textleftStr= t.getString(R.styleable.style_common_txt_left);
         txtrightStr= t.getString(R.styleable.style_common_txt_right);
         ivleftInt= t.getResourceId(R.styleable.style_common_iv_left,R.color.white);
-        ivrightInt= t.getResourceId(R.styleable.style_common_iv_right,-R.color.white);
+        ivrightInt= t.getResourceId(R.styleable.style_common_iv_right,R.color.white);
         txtrightBg= t.getResourceId(R.styleable.style_common_txt_right_bg,R.color.white);
         bgDivider= t.getResourceId(R.styleable.style_common_bg_divider,R.color.color_item_content_gap);
+        color_txt_right = t.getColor(R.styleable.style_common_color_txt_right,getResources().getColor(R.color.white));
 
         t.recycle();
         leftTV.setText(StringUtil.getStr(textleftStr));
         leftIV.setImageResource(ivleftInt);
         rightTV.setText(StringUtil.getStr(txtrightStr));
+        rightTV.setTextColor(color_txt_right);
         rightIV.setImageResource(ivrightInt);
-        rightTV.setBackgroundResource(txtrightBg);
+        right2.setBackgroundResource(txtrightBg);
        // divider.setBackgroundColor(bgDivider);
     }
 

@@ -17,8 +17,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
     @Override
     public void initData() {
         super.initData();
-        getP().getU().initRefresh();
-        getP().getU().initPages(fragment,getP().getD().getPages());
+        getP().getU().initPages(fragment,getP().getD().getPages(getIndex()));
     }
 
     @OnClick({R.id.ftv_right})

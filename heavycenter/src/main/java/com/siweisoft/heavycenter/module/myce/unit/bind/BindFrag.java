@@ -29,8 +29,11 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
 
     @OnClick({R.id.ftv_right,R.id.ftv_right2})
     public void onClick(View v) {
-        super.onClick(v);
         switch (v.getId()){
+            case R.id.ftv_back:
+                if(FragManager.getInstance().getFragMaps().get(getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getIndex()).size()>0){
+                    FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex());
+                }
             case R.id.ftv_right:
 
                 break;
@@ -46,7 +49,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
             case ViewListener.TYPE_ONCLICK:
                 switch (v.getId()){
                     case R.id.tv_root:
-                       // FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new TransDetailFrag());
+                       // FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new SearchFrag());
                         break;
                 }
                 break;

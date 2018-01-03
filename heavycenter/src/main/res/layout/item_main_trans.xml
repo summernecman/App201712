@@ -11,6 +11,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:clipToPadding="false"
         >
     <LinearLayout
         android:gravity="center_vertical"
@@ -18,16 +19,54 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         >
-        <LinearLayout
+        <RelativeLayout
             android:background="@color/color_item_main_trans_dark"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
             android:src="@drawable/icon_hv_myce_car"
             android:layout_width="90dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
 
+            <com.siweisoft.heavycenter.module.view.circle.CircleBar
+                android:layout_margin="10dp"
+                android:id="@+id/circlebar"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="3t"
+                    android:textSize="20sp"
+                    android:textColor="@color/color_yell_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="10车"
+                    android:textSize="13sp"
+                    android:textColor="@color/color_yell_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <com.android.lib.view.line.view.HorizonDashView
+                android:layout_marginRight="5dp"
+                android:layout_alignParentBottom="true"
+                DashView:dashgap = "2dp"
+                DashView:hashwidth = "2dp"
+                DashView:dashcolor = "@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <LinearLayout
             android:background="@color/color_item_main_trans_light"
             android:paddingLeft="10dp"
@@ -66,8 +105,8 @@
                     android:layout_height="1dp"/>
                 <ImageView
                     android:src="@drawable/icon_hv_local"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp" />
+                    android:layout_width="15dp"
+                    android:layout_height="15dp" />
                 <TextView
                     android:singleLine="true"
                     android:layout_marginLeft="10dp"
@@ -94,6 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:background="@drawable/bg_hv_yell_solid_2"
                     android:singleLine="true"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/white"
@@ -107,7 +147,7 @@
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="发往"
+                    android:text="10t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -143,7 +183,7 @@
                 <TextView
                     android:singleLine="true"
                     android:layout_marginLeft="15dp"
-                    android:textColor="@color/color_base_txt_yellow"
+                    android:textColor="@color/color_hv_yelll"
                     android:textSize="18sp"
                     android:text="0t"
                     android:layout_width="wrap_content"
@@ -154,18 +194,29 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"/>
                 <TextView
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:background="@drawable/drawable_hv_bg_btn_login"
                     android:singleLine="true"
                     android:layout_marginLeft="15dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:text="确认"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
+            <com.android.lib.view.line.view.HorizonDashView
+                android:layout_marginLeft="5dp"
+                android:layout_alignParentBottom="true"
+                DashView:dashgap = "2dp"
+                DashView:hashwidth = "2dp"
+                DashView:dashcolor = "@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+        </RelativeLayout>
     </LinearLayout>
 
         <com.android.lib.view.line.view.VerticalDashView
@@ -178,25 +229,18 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"  />
 
-        <com.android.lib.view.line.view.HorizonDashView
-            android:layout_alignParentBottom="true"
-            DashView:dashgap = "2dp"
-            DashView:hashwidth = "2dp"
-            DashView:dashcolor = "@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="2dp" />
 
         <com.siweisoft.heavycenter.module.view.circle.UpCircleView
-            android:layout_marginLeft="85dp"
-            android:layout_width="10dp"
-            android:layout_height="10dp" />
+            android:layout_marginLeft="87.5dp"
+            android:layout_width="6dp"
+            android:layout_height="6dp" />
 
 
         <com.siweisoft.heavycenter.module.view.circle.DownCircleView
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="85dp"
-            android:layout_width="10dp"
-            android:layout_height="10dp" />
+            android:layout_marginLeft="87.5dp"
+            android:layout_width="6dp"
+            android:layout_height="6dp" />
 
     </RelativeLayout>
 </layout>

@@ -17,6 +17,7 @@ import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.FragMainOrderBeginBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainOrderBeginBinding;
 
 import java.util.List;
 
@@ -35,7 +36,19 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
     }
 
     public void LoadListData(List<String> s){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s));
+
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s){
+
+            int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
+            int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);
+
+            @Override
+            public void onBindViewHolder(AppViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
+                ItemMainOrderBeginBinding beginBinding = (ItemMainOrderBeginBinding) holder.viewDataBinding;
+                beginBinding.getRoot().setSelected(position%2==0?true:false);
+            }
+        });
 //        bind.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
 //            @Override
 //            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {

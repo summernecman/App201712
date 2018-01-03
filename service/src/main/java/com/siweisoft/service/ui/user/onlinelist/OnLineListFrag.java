@@ -33,6 +33,8 @@ import java.util.List;
 
 import butterknife.OnClick;
 
+import static com.siweisoft.service.netdb.video.VideoBean.type_video_record;
+
 public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDAOpe> implements OnRefreshListener{
 
 
@@ -81,20 +83,12 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
                         FragmentUtil2.getInstance().removeTopRightNow(activity, Value.FULLSCREEN);
                         switch (((View) o).getId()) {
                             case R.id.tv_video:
-                            case R.id.tv_record:
                             case R.id.tv_voice:
                                 VideoBean videoBean = new VideoBean();
                                 videoBean.setToUser(userBean);
                                 videoBean.setFromUser(Value.getUserInfo());
                                 videoBean.setFromphone(Value.getUserInfo().getPhone());
                                 videoBean.setTophone(userBean.getPhone());
-                                if(((View) o).getId()==R.id.tv_record){
-                                    //不录制
-                                    videoBean.setRecord(true);
-                                }else{
-                                    //录制
-                                    videoBean.setRecord(false);
-                                }
                                 if(((View) o).getId()==R.id.tv_voice){
                                     videoBean.setVideo(false);
                                 }else{
@@ -103,9 +97,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
                                 switch (((View) o).getId()){
                                     case R.id.tv_video:
                                         videoBean.setType(VideoBean.type_video);
-                                        break;
-                                    case R.id.tv_record:
-                                        videoBean.setType(VideoBean.type_video_record);
+                                        videoBean.setType(type_video_record);
                                         break;
                                     case R.id.tv_voice:
                                         videoBean.setType(VideoBean.type_voice);

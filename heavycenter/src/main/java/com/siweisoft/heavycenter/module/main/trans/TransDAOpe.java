@@ -5,12 +5,15 @@ package com.siweisoft.heavycenter.module.main.trans;
 import android.content.Context;
 
 import com.android.lib.base.ope.BaseDAOpe;
+import com.siweisoft.heavycenter.module.main.trans.search.SearchFrag;
 import com.siweisoft.heavycenter.module.view.map.MapUtil;
 
 import java.util.ArrayList;
 
 public class TransDAOpe extends BaseDAOpe {
 
+
+    private SearchFrag searchFrag;
 
     public TransDAOpe(Context context) {
         super(context);
@@ -42,4 +45,11 @@ public class TransDAOpe extends BaseDAOpe {
         getMapUtil().getLocationClient().start();
     }
 
+    public SearchFrag getSearchFrag() {
+        return searchFrag;
+    }
+
+    public void setSearchFrag(SearchFrag searchFrag) {
+        this.searchFrag = searchFrag;
+    }
 }

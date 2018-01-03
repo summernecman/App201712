@@ -13,6 +13,8 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> {
     @Override
     public void initData() {
         super.initData();
+        getP().getU().initRecycle();
+        getP().getU().LoadListData(getP().getD().getData());
     }
 
     @Override

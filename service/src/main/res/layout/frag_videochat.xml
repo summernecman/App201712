@@ -35,16 +35,15 @@
             android:id="@+id/removeview"
             android:layout_width="100dp"
             android:layout_height="100dp" />
-
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
-          <ImageView
-              android:layout_centerInParent="true"
-              android:id="@+id/iv_head"
-              android:layout_width="150dp"
-              android:layout_height="150dp" />
-      </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_centerInParent="true"
+                android:id="@+id/iv_head"
+                android:layout_width="150dp"
+                android:layout_height="150dp" />
+        </RelativeLayout>
         <LinearLayout
             android:gravity="center_vertical"
             android:id="@+id/ll_menu"

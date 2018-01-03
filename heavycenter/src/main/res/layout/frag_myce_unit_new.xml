@@ -33,6 +33,7 @@
             android:layout_height="45dp"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/upunit"
             style_common:txt_left = "上级单位"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "false"
@@ -41,6 +42,7 @@
             android:layout_height="45dp"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/addr"
             style_common:txt_left = "单位地址"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "false"
@@ -49,6 +51,7 @@
             android:layout_height="45dp"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/area"
             style_common:txt_left = "送货区域"
             style_common:txt_mid = "请输入"
             style_common:iv_right = "@drawable/icon_arraw"

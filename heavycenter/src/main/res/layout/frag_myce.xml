@@ -16,14 +16,15 @@
     layout="@layout/item_myce_head"/>
 
         <com.android.lib.view.item.ItemView
+            style_common:color_txt_right="@color/color_base_txt_heavycenter_y"
             android:id="@+id/item_unit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style_common:txt_left="上海路灯"
-            style_common:txt_right="5"
+            style_common:txt_right="绑定单位"
             style_common:iv_left="@drawable/icon_hv_myce_unit"
-            style_common:iv_right="@drawable/icon_arraw"
-            style_common:txt_right_bg="@drawable/bg_cricle_yel"
+            style_common:iv_right="@drawable/icon_hv_into"
+            style_common:txt_right_bg="@drawable/bg_hv_sharp8_yell_stroke"
             style_common:bg_divider="@color/color_item_content_gap"
             />
 
@@ -35,7 +36,7 @@
             style_common:txt_left="仓库管理"
             style_common:txt_right="5"
             style_common:iv_left="@drawable/icon_hv_myce_store"
-            style_common:iv_right="@drawable/icon_arraw"
+            style_common:iv_right="@drawable/icon_hv_into"
             style_common:txt_right_bg="@drawable/bg_cricle_yel"
             style_common:bg_divider="@color/color_item_content_gap"
         />
@@ -47,7 +48,7 @@
             style_common:txt_left="物料管理"
             style_common:txt_right="5"
             style_common:iv_left="@drawable/icon_hv_myce_good"
-            style_common:iv_right="@drawable/icon_arraw"
+            style_common:iv_right="@drawable/icon_hv_into"
             style_common:txt_right_bg="@drawable/bg_cricle_yel"
             style_common:bg_divider="@color/color_item_content_gap"
             />
@@ -59,7 +60,7 @@
             style_common:txt_left="用户管理"
             style_common:txt_right="5"
             style_common:iv_left="@drawable/icon_hv_myce_user"
-            style_common:iv_right="@drawable/icon_arraw"
+            style_common:iv_right="@drawable/icon_hv_into"
             style_common:txt_right_bg="@drawable/bg_cricle_yel"
             style_common:bg_divider="@color/color_item_content_gap"
             />
@@ -71,7 +72,7 @@
             style_common:txt_left="车辆管理"
             style_common:txt_right="5"
             style_common:iv_left="@drawable/icon_hv_myce_car"
-            style_common:iv_right="@drawable/icon_arraw"
+            style_common:iv_right="@drawable/icon_hv_into"
             style_common:txt_right_bg="@drawable/bg_cricle_yel"
             style_common:bg_divider="@color/color_item_content_gap"
             />
@@ -86,7 +87,7 @@
             android:layout_alignParentTop="true"
             style_common:bg_divider="@color/color_item_content_gap"
             style_common:iv_left="@drawable/icon_hv_myce_setting"
-            style_common:iv_right="@drawable/icon_arraw"
+            style_common:iv_right="@drawable/icon_hv_into"
             style_common:txt_left="设置"
             style_common:txt_right=""
           />

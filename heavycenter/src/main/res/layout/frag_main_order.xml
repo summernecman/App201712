@@ -15,10 +15,15 @@
         android:layout_height="match_parent">
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
+            style_common:iv_left ="@drawable/icon_hv_person"
+            style_common:iv_right ="@drawable/icon_hv_scan"
             style_common:txt_mid ="订单"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <com.siweisoft.heavycenter.module.view.menu.TopTypeView
             android:id="@+id/topview"
             style_toptypeview:txts="新订单,进行中,已完成"
@@ -26,6 +31,7 @@
             android:layout_height="wrap_content"/>
 
             <LinearLayout
+                android:layout_below="@id/topview"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -38,5 +44,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
+
+            <com.siweisoft.heavycenter.module.view.menu.ScrollMenu
+                android:id="@+id/scrollmenu"
+                android:layout_marginTop="-3dp"
+                android:layout_below="@id/topview"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"/>
+
+        </RelativeLayout>
     </LinearLayout>
 </layout>

@@ -30,7 +30,7 @@ public class HCApp extends LibAplication implements OnFinishListener{
         SmartRefreshLayout.setDefaultRefreshHeaderCreater(new DefaultRefreshHeaderCreater() {
             @Override
             public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
-                layout.setPrimaryColorsId(R.color.color_base_nurse, android.R.color.white);//全局设置主题颜色
+                layout.setPrimaryColorsId(R.color.color_base, android.R.color.white);//全局设置主题颜色
                 return new ClassicsHeader(context);//.setTimeFormat(new DynamicTimeFormat("更新于 %s"));//指定为经典Header，默认是 贝塞尔雷达Header
             }
         });
@@ -38,9 +38,9 @@ public class HCApp extends LibAplication implements OnFinishListener{
         SmartRefreshLayout.setDefaultRefreshFooterCreater(new DefaultRefreshFooterCreater() {
             @Override
             public RefreshFooter createRefreshFooter(Context context, RefreshLayout layout) {
-                layout.setPrimaryColorsId(R.color.color_base_nurse, android.R.color.white);//全局设置主题颜色
+                layout.setPrimaryColorsId(R.color.color_base, android.R.color.white);//全局设置主题颜色
                 //指定为经典Footer，默认是 BallPulseFooter
-                return new ClassicsFooter(context).setDrawableSize(20);
+                return new ClassicsFooter(context);
             }
         });
     }

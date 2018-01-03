@@ -14,8 +14,34 @@
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:txt_mid ="新建物料"
-            style_common:iv_right ="@drawable/icon_scan"
+            style_common:iv_left ="@drawable/icon_hv_back"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            style_common:iv_right2 ="@drawable/icon_hv_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
     </LinearLayout>
 </layout>

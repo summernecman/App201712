@@ -14,6 +14,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener{
     @Override
     public void initData() {
         super.initData();
+        getP().getU().initRefresh();
         getP().getU().LoadListData(getP().getD().getData(),this);
     }
 

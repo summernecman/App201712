@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:style_toptypeview="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_mana_car"
@@ -8,6 +9,7 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/content_acct"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -18,18 +20,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <com.siweisoft.heavycenter.module.view.menu.TopTypeView3
+        <com.siweisoft.heavycenter.module.view.menu.TopTypeView
+            android:id="@+id/topview"
+            style_toptypeview:txts="发货中,我的车辆,收货中"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/refreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
 
                 <android.support.v4.view.ViewPager
@@ -39,6 +35,4 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-    </LinearLayout>
 </layout>

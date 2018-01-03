@@ -19,7 +19,7 @@
         android:paddingBottom="5dp">
 
         <ImageView
-            android:src="@drawable/icon_hv_myce_user"
+            android:src="@drawable/icon_hv_mana_store"
             android:layout_width="70dp"
             android:layout_height="70dp" />
 
@@ -64,20 +64,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
                 <TextView
+                    android:layout_weight="1"
                     android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="14sp"
                     android:text="送货区域12345"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:layout_weight="1"
                     android:layout_marginLeft="10dp"
                     android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="14sp"
                     android:text="送货区域12345"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>

@@ -26,19 +26,8 @@ public class CarUIOpe extends AppUIOpe<FragManaCarBinding> {
         bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
     }
 
-    public void initRefresh(){
-        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000);
-            }
-        });
-        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadmore(2000);
-            }
-        });
+    public void dd(){
+        bind.topview.setViewPager(bind.llCntent);
     }
 
 

@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -26,6 +27,7 @@ import com.android.lib.util.LogUtil;
 import com.android.lib.util.SPUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.data.DateFormatUtil;
+import com.android.lib.util.system.AudioUtil;
 import com.android.lib.util.system.UUUIDUtil;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
@@ -322,6 +324,21 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
 
             }
         });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode){
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                AudioUtil.setAudioJia(activity);
+                return true;
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                AudioUtil.setAudioJian(activity);
+                return true;
+                default:
+                    break;
+        }
+        return super.onKeyDown(keyCode,event);
     }
 }
 
