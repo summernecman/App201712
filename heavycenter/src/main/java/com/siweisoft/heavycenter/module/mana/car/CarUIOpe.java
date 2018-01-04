@@ -24,11 +24,9 @@ public class CarUIOpe extends AppUIOpe<FragManaCarBinding> {
     public void initPages(Fragment fragment, ArrayList<Fragment> pages){
         bind.llCntent.setOffscreenPageLimit(pages.size());
         bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
-    }
-
-    public void dd(){
         bind.topview.setViewPager(bind.llCntent);
     }
+
 
 
 }

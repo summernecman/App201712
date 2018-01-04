@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.daimajia.swipe.SimpleSwipeListener;
 import com.daimajia.swipe.SwipeLayout;
@@ -36,8 +37,8 @@ public class DoingUIOpe extends AppUIOpe<FragMainOrderDoingBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<String> s) {
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_doing, BR.item_main_order_doing, s) {
+    public void LoadListData(List<String> s, ViewListener listener) {
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_doing, BR.item_main_order_doing, s,listener) {
 
             int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
             int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);

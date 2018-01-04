@@ -8,12 +8,15 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
 
+import cn.jpush.android.api.JPushInterface;
+
 public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
 
     @Override
     public void initData() {
         super.initData();
         getP().getU().initRefresh();
+        getP().getU().bind.title.getMidTV().setText(JPushInterface.getRegistrationID(activity)+"");
     }
 
 

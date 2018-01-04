@@ -1,16 +1,13 @@
-package com.siweisoft.heavycenter.module.myce.unit.newunit.area;
+package com.siweisoft.heavycenter.module.myce.unit.newunit.area.city;
 
 //by summer on 2017-12-19.
 
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
-import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 
-import butterknife.OnClick;
-
-public class AreaFrag extends AppFrag<AreaUIOpe,AreaDAOpe> implements ViewListener{
+public class CityFrag extends AppFrag<CityUIOpe,CityDAOpe> implements ViewListener{
 
     @Override
     public void initData() {

@@ -9,7 +9,7 @@ import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.mana.good.news.NewFrag;
+import com.siweisoft.heavycenter.module.mana.store.news.NewFrag;
 
 import butterknife.OnClick;
 

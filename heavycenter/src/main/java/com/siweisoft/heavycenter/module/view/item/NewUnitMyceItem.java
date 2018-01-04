@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -23,6 +24,10 @@ public class NewUnitMyceItem extends RelativeLayout {
 
     private float leftW = 0;
 
+    private TextView midTV;
+
+
+
     public NewUnitMyceItem(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
@@ -33,6 +38,8 @@ public class NewUnitMyceItem extends RelativeLayout {
         leftTV = (TextView) findViewById(R.id.tv_left);
         rightIV = (ImageView) findViewById(R.id.iv_right);
         midET = (EditText) findViewById(R.id.et_mid);
+        midTV = (TextView) findViewById(R.id.tv_mid);
+
         TypedArray a  =context.obtainStyledAttributes(attrs,R.styleable.style_common);
         String leftStr = a.getString(R.styleable.style_common_txt_left);
         if(leftStr!=null){
@@ -49,7 +56,13 @@ public class NewUnitMyceItem extends RelativeLayout {
         leftW = a.getDimension(R.styleable.style_common_minwidth,0);
         leftTV.setMinWidth((int) leftW);
         boolean edit = a.getBoolean(R.styleable.style_common_boo_edit,false);
-        midET.setEnabled(edit);
+       if(edit){
+           midTV.setVisibility(View.GONE);
+           removeView(midTV);
+       }else{
+           midET.setVisibility(View.GONE);
+           removeView(midET);
+       }
 
     }
 }

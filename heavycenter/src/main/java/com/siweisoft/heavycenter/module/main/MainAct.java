@@ -9,9 +9,12 @@ import android.view.ViewGroup;
 
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
+import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
+
+import cn.jpush.android.api.JPushInterface;
 
 public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSelectListener {
 
@@ -28,6 +31,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
             return;
         }
         dothing();
+
     }
 
 
@@ -60,11 +64,17 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     @Override
     public void onBackPressed() {
-        FragManager.getInstance().clearTopWith(activity.getSupportFragmentManager(), getP().getD().getIndex(), new OnFinishListener() {
-            @Override
-            public void onFinish(Object o) {
-                MainAct.super.onBackPressed();
-            }
-        });
+        if(FragManager.getInstance().getFragMaps().get(getP().getD().getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getP().getD().getIndex()).size()>1){
+            FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
+        }else{
+            MainAct.super.onBackPressed();
+        }
+
+//        FragManager.getInstance().clearTopWith(activity.getSupportFragmentManager(), getP().getD().getIndex(), new OnFinishListener() {
+//            @Override
+//            public void onFinish(Object o) {
+//                MainAct.super.onBackPressed();
+//            }
+//        });
     }
 }

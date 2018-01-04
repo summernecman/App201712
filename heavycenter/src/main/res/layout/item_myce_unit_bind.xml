@@ -7,6 +7,9 @@
             type="String" />
     </data>
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:background="@color/color_base_graybg"
@@ -15,7 +18,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:layout_height="70dp">
+        android:layout_height="match_parent">
 <ImageView
     android:src="@drawable/bg_hv_check"
     android:layout_width="20dp"
@@ -45,4 +48,12 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/divide"
+            android:background="@color/color_item_content_gap"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_item_content_gap_size"/>
+    </RelativeLayout>
 </layout>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_main_order_detail"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="vertical"
+        android:background="@drawable/icon_hv_main_order_detail"
+        >
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <RelativeLayout
+            android:layout_width="110dp"
+            android:layout_height="wrap_content">
+            <com.siweisoft.heavycenter.module.view.circle.CircleBar
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="车"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:text="混凝土"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:singleLine="true"
+                    android:layout_marginLeft="14dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:text="C30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"/>
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/bg_hv_sel_yel_blue_stroke"
+                    android:singleLine="true"
+                    android:layout_marginLeft="7dp"
+                    android:textColor="@color/color_yell_blue"
+                    android:textSize="8.5sp"
+                    android:text="沪A2345"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_hv_sharp2_blue_solid"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="11sp"
+                android:text="发往"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:text="上海绿地"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:text="10/198t"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:text="沪12344"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:text="驾驶员"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:text="联系电话"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "开始时间"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "送货地址"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "计划开始时间"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "备用签收规则"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "物料名称"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "指定承运车辆"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_hv_local"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</layout>

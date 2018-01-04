@@ -16,32 +16,57 @@
             style_common:txt_mid ="新建物料"
             style_common:iv_left ="@drawable/icon_hv_back"
             style_common:iv_right ="@drawable/icon_hv_scan"
-            style_common:iv_right2 ="@drawable/icon_hv_add"
+            style_common:iv_right2 ="@drawable/icon_hv_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "物料名称"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "物料规格"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "仓库"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "最大库存"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "安全库存"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_left = "送货区域"
+            style_common:txt_mid = "请输入"
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="wrap_content"/>
+
     </LinearLayout>
 </layout>

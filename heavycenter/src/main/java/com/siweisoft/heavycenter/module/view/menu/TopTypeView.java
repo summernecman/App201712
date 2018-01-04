@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ import com.siweisoft.heavycenter.R;
 
 import java.util.ArrayList;
 
-public class TopTypeView extends RelativeLayout {
+public class TopTypeView extends RelativeLayout implements View.OnClickListener{
 
 
 
@@ -42,6 +43,8 @@ public class TopTypeView extends RelativeLayout {
             TextView t= (TextView) LayoutInflater.from(context).inflate(R.layout.item_main_msg_top_txt,null);
             t.setText(strs[i]);
             viewGroup.addView(t,new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,1));
+            t.setTag(R.id.position,i);
+            t.setOnClickListener(this);
             textViews.add(t);
         }
     }
@@ -89,5 +92,15 @@ public class TopTypeView extends RelativeLayout {
         textViews.get(index).setText(str);
     }
 
+    public ViewPager getViewPager() {
+        return viewPager;
+    }
 
+    @Override
+    public void onClick(View v) {
+        int i= (int) v.getTag(R.id.position);
+        if(getViewPager()!=null){
+            getViewPager().setCurrentItem(i,true);
+        }
+    }
 }

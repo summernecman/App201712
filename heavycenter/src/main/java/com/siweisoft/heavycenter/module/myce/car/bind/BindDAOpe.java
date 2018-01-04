@@ -6,8 +6,18 @@ import android.content.Context;
 
 import com.siweisoft.heavycenter.base.AppDAOpe;
 
+import java.util.ArrayList;
+
 public class BindDAOpe extends AppDAOpe {
     public BindDAOpe(Context context) {
         super(context);
+    }
+
+    public ArrayList<String> getData(){
+        ArrayList<String> data = new ArrayList<>();
+        for(int i=0;i<100;i++){
+            data.add(""+i);
+        }
+        return data;
     }
 }

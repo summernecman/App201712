@@ -30,7 +30,7 @@ public class CheckUIOpe extends AppUIOpe<FragMainStoreCheckBinding>{
     }
 
     public void LoadListData(List<String> s) {
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_store, BR.item_main_store, s){
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_store_check, BR.item_main_store_check, s){
 
             int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
             int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);
@@ -38,8 +38,6 @@ public class CheckUIOpe extends AppUIOpe<FragMainStoreCheckBinding>{
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
-                ItemMainStoreBinding storeBinding = (ItemMainStoreBinding) holder.viewDataBinding;
-                storeBinding.getRoot().setSelected(position%2==0?true:false);
             }
         });
     }

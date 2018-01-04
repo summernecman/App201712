@@ -6,6 +6,14 @@
             name="item_main_store_check"
             type="String" />
     </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:gravity="center_vertical"
@@ -23,6 +31,7 @@
             android:layout_height="wrap_content" />
 
         <LinearLayout
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -36,6 +45,11 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:layout_marginTop="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:textSize="16sp"
@@ -45,6 +59,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -58,11 +73,16 @@
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:background="@drawable/bg_hv_sharp2_gray_stroke"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:textSize="16sp"
                 android:text="5677T"
-                android:background="@color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -76,4 +96,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
+        <View
+            android:background="@color/color_grey_300"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </RelativeLayout>
 </layout>

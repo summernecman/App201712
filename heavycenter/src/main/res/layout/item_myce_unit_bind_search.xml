@@ -6,19 +6,29 @@
             name="item_myce_unit_bind_search"
             type="String" />
     </data>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:id="@+id/swipe"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/bg_hv_sharp10_gray_solid"
-        android:paddingTop="1dp"
-        android:paddingBottom="1dp">
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_hv_sharp20_gray_solid"
+>
 
         <EditText
             android:layout_marginLeft="20dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:hint="请输入单位名称"
             android:background="@color/transparent"
             android:layout_weight="1"
@@ -28,7 +38,8 @@
         <ImageView
             android:layout_marginRight="10dp"
             android:src="@drawable/icon_hv_search"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
+            android:layout_width="17dp"
+            android:layout_height="17dp" />
+    </LinearLayout>
     </LinearLayout>
 </layout>

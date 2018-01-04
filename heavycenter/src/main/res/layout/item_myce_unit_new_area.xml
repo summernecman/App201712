@@ -10,11 +10,18 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/color_item_content"
-    android:paddingLeft="@dimen/dimen_item_content_left_padding">
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:background="@color/white"
+>
 
 
     <LinearLayout
+        android:background="@drawable/bg_hv_sharp2_gray_stroke"
+        android:paddingRight="5dp"
+        android:paddingLeft="7dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:gravity="center_vertical"
@@ -24,19 +31,22 @@
 
         <ImageView
             android:src="@drawable/icon_hv_sel_y"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
 
         <TextView
-            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
             android:text="123"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <ImageView
+            android:layout_marginLeft="10dp"
             android:src="@drawable/icon_arraw"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
     </LinearLayout>
 
 </LinearLayout>

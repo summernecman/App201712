@@ -7,4 +7,10 @@ import com.siweisoft.heavycenter.base.AppFrag;
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
 
+    @Override
+    public void initData() {
+        super.initData();
+        getP().getU().initRecycle();
+        getP().getU().LoadListData(getP().getD().getData());
+    }
 }
