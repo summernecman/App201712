@@ -16,16 +16,27 @@
 
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
+            style_common:iv_left ="@drawable/icon_hv_back"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            style_common:iv_right2 ="@drawable/icon_hv_add"
             style_common:txt_mid ="车辆管理"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <com.siweisoft.heavycenter.module.view.menu.TopTypeView
-            android:id="@+id/topview"
-            style_toptypeview:txts="发货中,我的车辆,收货中"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent">
+            <com.siweisoft.heavycenter.module.view.menu.TopTypeView
+                android:id="@+id/topview"
+                style_toptypeview:txts="发货中,我的车辆,收货中"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
+            <LinearLayout
+                android:layout_below="@id/topview"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
                 <com.android.lib.view.viewpager.ScrollbleViewPager
@@ -34,5 +45,15 @@
                     android:layout_centerInParent="true"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <com.siweisoft.heavycenter.module.view.menu.ScrollMenu
+                android:id="@+id/scrollmenu"
+                android:layout_marginTop="-3dp"
+                android:layout_below="@id/topview"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"/>
+
+        </RelativeLayout>
             </LinearLayout>
 </layout>

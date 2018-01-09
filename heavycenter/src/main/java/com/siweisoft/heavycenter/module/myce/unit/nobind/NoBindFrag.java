@@ -8,7 +8,6 @@ import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.myce.unit.bind.BindFrag;
-import com.siweisoft.heavycenter.module.myce.unit.newunit.NewFrag;
 
 import butterknife.OnClick;
 

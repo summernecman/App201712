@@ -34,19 +34,25 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
     }
 
     private void init(Context context, AttributeSet attrs){
-        LayoutInflater.from(context).inflate(R.layout.item_main_msg_top,this,true);
-        LinearLayout viewGroup = (LinearLayout) findViewById(R.id.ll_root);
+
         TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.style_toptypeview);
         String txts = a.getString(R.styleable.style_toptypeview_txts);
         strs = txts.split(",");
-        for(int i=0;i<strs.length;i++){
-            TextView t= (TextView) LayoutInflater.from(context).inflate(R.layout.item_main_msg_top_txt,null);
-            t.setText(strs[i]);
-            viewGroup.addView(t,new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,1));
-            t.setTag(R.id.position,i);
-            t.setOnClickListener(this);
-            textViews.add(t);
+
+        if(true){
+            LayoutInflater.from(context).inflate(R.layout.item_main_msg_top,this,true);
+            LinearLayout viewGroup = (LinearLayout) findViewById(R.id.ll_root);
+
+            for(int i=0;i<strs.length;i++){
+                TextView t= (TextView) LayoutInflater.from(context).inflate(R.layout.item_main_msg_top_txt,null);
+                t.setText(strs[i]);
+                viewGroup.addView(t,new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,1));
+                t.setTag(R.id.position,i);
+                t.setOnClickListener(this);
+                textViews.add(t);
+            }
         }
+
     }
 
 
@@ -83,6 +89,9 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
 
             }
         });
+        if(viewPager.getAdapter()!=null&&viewPager.getAdapter().getCount()>0){
+            viewPager.setCurrentItem(0);
+        }
     }
 
     public void setTxt(int index,String str){

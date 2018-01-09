@@ -15,6 +15,7 @@
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:txt_mid ="仓库"
+            style_common:iv_left = "@drawable/icon_hv_back"
             style_common:iv_right = "@drawable/icon_hv_scan"
             style_common:iv_right2 = "@drawable/icon_hv_panku"
             android:layout_width="match_parent"
@@ -49,7 +50,7 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:text="沪A2345"
+                android:text="C30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <View
@@ -60,7 +61,7 @@
         </LinearLayout>
 
 
-        <com.siweisoft.heavycenter.module.view.progress.ProgressView
+        <com.siweisoft.heavycenter.module.view.store.StoreView
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
@@ -87,13 +88,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:textSize="18sp"
+                    android:textColor="#f6ab12"
+                    android:textSize="22sp"
                     android:text="1500t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:text="今入"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -113,14 +115,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:textSize="18sp"
+                    android:textColor="#30e5a3"
+                    android:textSize="22sp"
                     android:text="1500t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:textSize="10sp"
-                    android:text="今入"
+                    android:textSize="12sp"
+                    android:text="今出"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -140,14 +143,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:textSize="18sp"
+                    android:textColor="#ff6600"
+                    android:textSize="22sp"
                     android:text="1500t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:textSize="10sp"
-                    android:text="今入"
+                    android:textSize="12sp"
+                    android:text="盘点盈亏"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

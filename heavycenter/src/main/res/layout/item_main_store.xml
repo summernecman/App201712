@@ -16,8 +16,8 @@
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:background="@drawable/bg_hv_sel_dark_light"
-        android:paddingTop="10dp"
-        android:paddingBottom="15dp">
+        android:paddingTop="12dp"
+        android:paddingBottom="17dp">
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

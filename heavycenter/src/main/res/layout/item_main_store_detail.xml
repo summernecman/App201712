@@ -6,9 +6,14 @@
             name="item_main_store_detail"
             type="String" />
     </data>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        >
+    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -46,4 +51,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent" />
     </LinearLayout>
+        <View
+            android:background="@color/color_grey_200"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </RelativeLayout>
 </layout>

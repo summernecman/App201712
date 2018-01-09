@@ -4,10 +4,20 @@ package com.siweisoft.heavycenter.module.acct.regist;
 
 import android.content.Context;
 
+import com.android.lib.util.MD5Util;
+import com.android.lib.util.NullUtil;
+import com.android.lib.util.StringUtil;
+import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
-import com.siweisoft.heavycenter.databinding.FragRegistBinding;
+import com.siweisoft.heavycenter.data.netd.acct.code.CodeReqBean;
+import com.siweisoft.heavycenter.data.netd.acct.regist.RegistReqBean;
+import com.siweisoft.heavycenter.databinding.FragAcctRegistBinding;
 
-public class RegistUIOpe extends AppUIOpe<FragRegistBinding> {
+public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
+
+    RegistReqBean registReqBean = new RegistReqBean();
+
+    CodeReqBean codeReqBean = new CodeReqBean();
 
     public RegistUIOpe(Context context) {
         super(context);
@@ -17,4 +27,39 @@ public class RegistUIOpe extends AppUIOpe<FragRegistBinding> {
         //GlideApp.with(context).asBitmap().load(url).centerCrop().into(bind.image);
     }
 
+
+    public boolean go(){
+        if(NullUtil.isStrEmpty(bind.phone.getText())){
+            ToastUtil.getInstance().showLong(getActivity(),"请输入手机号");
+            return false;
+        }
+        if(NullUtil.isStrEmpty(bind.securycode.getText().toString())){
+            ToastUtil.getInstance().showLong(getActivity(),"请输入验证码");
+            return false;
+        }
+
+        if(!bind.pwd.getText().toString().equals(bind.repwd.getText().toString())){
+            ToastUtil.getInstance().showLong(getActivity(),"密码不一致");
+            return false;
+        }
+        if(!bind.ivCheck.isSelected()){
+            ToastUtil.getInstance().showLong(getActivity(),"请同意协议");
+            return false;
+        }
+        return true;
+    }
+
+    public RegistReqBean getRegistReqBean() {
+        registReqBean.setTrueName(bind.phone.getText().toString());
+        registReqBean.setTel(bind.phone.getText().toString());
+        registReqBean.setPassWord(MD5Util.md5(bind.phone.getText().toString()));
+        registReqBean.setSecurityCode(bind.securycode.getText().toString());
+        return registReqBean;
+    }
+
+    public CodeReqBean getCodeReqBean() {
+        codeReqBean.setTel(bind.phone.getText().toString());
+        codeReqBean.setType("1");
+        return codeReqBean;
+    }
 }

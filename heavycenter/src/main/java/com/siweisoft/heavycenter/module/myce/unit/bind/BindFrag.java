@@ -10,9 +10,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.trans.detail.TransDetailFrag;
-import com.siweisoft.heavycenter.module.myce.unit.newunit.NewFrag;
+import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
 
 import butterknife.OnClick;
 

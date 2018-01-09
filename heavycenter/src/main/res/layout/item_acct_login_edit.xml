@@ -21,18 +21,21 @@
                 android:layout_height="20dp" />
 
             <EditText
+                android:singleLine="true"
+                android:textColorHint="@color/color_grey_700"
+                android:id="@+id/et_txt"
                 android:paddingLeft="10dp"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 android:textColor="@color/white"
-                android:text="123333"
                 android:background="@color/transparent"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" />
 
             <ImageView
+                android:alpha="0.5"
+                android:id="@+id/iv_right"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/icon_hv_clear"
                 android:layout_width="20dp"
                 android:layout_height="20dp" />
 

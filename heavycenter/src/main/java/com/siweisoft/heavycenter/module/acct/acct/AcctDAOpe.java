@@ -17,6 +17,8 @@ public class AcctDAOpe extends AppDAOpe {
 
     private ArrayList<Fragment> frags;
 
+    private int index=0;
+
     public AcctDAOpe(Context context) {
         super(context);
         initPages();
@@ -43,4 +45,11 @@ public class AcctDAOpe extends AppDAOpe {
         return frags;
     }
 
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
 }

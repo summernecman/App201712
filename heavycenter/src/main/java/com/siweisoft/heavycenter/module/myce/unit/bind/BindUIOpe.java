@@ -43,12 +43,26 @@ public class BindUIOpe extends AppUIOpe<FragMyceUnitBindBinding>{
     }
 
     public void LoadListData(List<String> s, final ViewListener listener) {
+
+
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_myce_unit_bind, BR.item_myce_unit_bind, s,listener){
+
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {
                 super.onBindViewHolder(holder, position, payloads);
                 ItemMyceUnitBindBinding binding = (ItemMyceUnitBindBinding) holder.viewDataBinding;
-                //binding.tvRoot.setOnClickListener(this);
+                if(selecPos==position){
+                    binding.ivSel.setSelected(true);
+                }else{
+                    binding.ivSel.setSelected(false);
+                }
+            }
+
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+                selecPos = (int) v.getTag(R.id.position);
+                notifyDataSetChanged();
             }
         });
 

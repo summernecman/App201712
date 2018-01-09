@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_acct_role"
+            type="String" />
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:layout_marginTop="100dp"
+            android:text="选择角色"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:src="@drawable/icon_hv_role"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:text="请选择正确的角色\n一经选择无法更改"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_driver"
+                android:text="驾驶员"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/drawable_hv_bg_btn_login"
+                android:layout_marginTop="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <TextView
+                android:id="@+id/tv_notdriver"
+                android:text="非驾驶员"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/drawable_hv_bg_btn_login"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

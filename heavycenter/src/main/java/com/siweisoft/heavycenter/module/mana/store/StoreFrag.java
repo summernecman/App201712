@@ -27,9 +27,6 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     @OnClick({R.id.ftv_right2})
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.ftv_back:
-                ((MainAct)(getActivity())).getP().getU().switchDrawer();
-                break;
             case R.id.ftv_right2:
                 FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),getIndex(),new NewFrag());
                 break;

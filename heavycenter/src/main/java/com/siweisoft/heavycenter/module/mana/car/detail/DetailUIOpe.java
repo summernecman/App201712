@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.mana.car.detail;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
@@ -13,6 +14,7 @@ import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.FragManaCarDetailBinding;
+import com.siweisoft.heavycenter.databinding.ItemManaCarDetailDriverBinding;
 
 import java.util.List;
 
@@ -29,9 +31,24 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 
     public void LoadListData(List<String> s) {
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_car_detail_driver, BR.item_mana_car_detail_driver, s){
+
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {
                 super.onBindViewHolder(holder, position, payloads);
+                ItemManaCarDetailDriverBinding binding = (ItemManaCarDetailDriverBinding) holder.viewDataBinding;
+
+                if(selecPos == position){
+                    binding.ivCheck.setSelected(true);
+                }else{
+                    binding.ivCheck.setSelected(false);
+                }
+            }
+
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+                selecPos = (int) v.getTag(R.id.position);
+                notifyDataSetChanged();
             }
         });
     }

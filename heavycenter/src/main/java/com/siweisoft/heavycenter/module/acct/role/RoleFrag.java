@@ -15,9 +15,10 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
 
     @OnClick({R.id.tv_notdriver,R.id.tv_driver})
     public void onClick(View v){
+        super.onClick(v);
         switch (v.getId()){
             case R.id.tv_notdriver:
-                getP().getU().showTip(new View.OnClickListener() {
+                getP().getU().showTip(getIndex(),new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         switch (v.getId()){
@@ -29,7 +30,7 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                 });
                 break;
             case R.id.tv_driver:
-                getP().getU().showTip(new View.OnClickListener() {
+                getP().getU().showTip(getIndex(),new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         switch (v.getId()){

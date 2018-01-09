@@ -24,24 +24,21 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             style_common:txt_left = "仓库编号"
             style_common:txt_mid = "请输入"
-            style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
+            style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             style_common:txt_left = "最大库存"
             style_common:txt_mid = "请输入"
-            style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
+            style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             style_common:txt_left = "安全库存"
             style_common:txt_mid = "请输入"
-            style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
+            style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

@@ -11,8 +11,9 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:id="@+id/swipe"
+
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@color/white"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -22,21 +23,22 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@drawable/bg_hv_sharp20_gray_solid"
 >
 
         <EditText
+            android:id="@+id/et_name"
+            android:paddingLeft="10dp"
             android:layout_marginLeft="20dp"
             android:textSize="14sp"
-            android:hint="请输入单位名称"
             android:background="@color/transparent"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
 
         <ImageView
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="13dp"
             android:src="@drawable/icon_hv_search"
             android:layout_width="17dp"
             android:layout_height="17dp" />

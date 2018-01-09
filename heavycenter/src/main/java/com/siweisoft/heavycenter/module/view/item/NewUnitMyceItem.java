@@ -62,6 +62,7 @@ public class NewUnitMyceItem extends RelativeLayout {
        }else{
            midET.setVisibility(View.GONE);
            removeView(midET);
+           midTV.setText(a.getString(R.styleable.style_common_txt_two));
        }
 
     }

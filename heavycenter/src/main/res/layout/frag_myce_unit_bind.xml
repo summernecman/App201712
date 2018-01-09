@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:SmartRefreshLayout="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_myce_unit_bind"
@@ -22,11 +23,13 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.input.SearchBindUnitMyceItem
+            android:elevation="2dp"
             android:text="请输入单位名称"
             android:layout_width="match_parent"
-            android:layout_height="40dp" />
+            android:layout_height="50dp" />
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            SmartRefreshLayout:srlEnableLoadmore="false"
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">

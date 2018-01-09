@@ -24,10 +24,8 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
     @OnClick({R.id.ftv_right2})
     public void onClick(View v) {
+        super.onClick(v);
         switch (v.getId()){
-            case R.id.ftv_back:
-                ((MainAct)getActivity()).getP().getU().switchDrawer();
-                break;
             case R.id.ftv_right2:
                 FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new CheckFrag());
         }

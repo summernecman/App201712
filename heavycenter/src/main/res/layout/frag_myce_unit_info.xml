@@ -15,6 +15,7 @@
             android:id="@+id/title"
             style_common:txt_mid ="单位信息"
             style_common:boo_edit = "false"
+            style_common:iv_left ="@drawable/icon_hv_back"
             style_common:iv_right ="@drawable/icon_hv_scan"
             style_common:iv_right2 ="@drawable/icon_hv_quit"
             android:layout_width="match_parent"
@@ -24,48 +25,45 @@
             style_common:txt_left = "单位名称"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
+            android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             style_common:txt_left = "单位简称"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
+            android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/upunit"
             style_common:txt_left = "上级单位"
             style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
+            android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/addr"
             style_common:txt_left = "单位地址"
             style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
+            android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/area"
             style_common:txt_left = "送货区域"
             style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
+            android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             style_common:txt_left = "联系人"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
+            android:layout_height="wrap_content"/>
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             style_common:txt_left = "联系电话"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 </layout>

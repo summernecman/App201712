@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:DashView="http://schemas.android.com/apk/res-auto">
+<layout xmlns:DashView="http://schemas.android.com/apk/res-auto"
+    xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="item_main_trans"
@@ -132,15 +133,30 @@
                     android:text="驾驶员"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <TextView
-                    android:background="@drawable/bg_hv_yell_solid_2"
+
+
+                <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    android:padding="1dp"
                     android:singleLine="true"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
+                    android:visibility="visible"
+                    style_common:color_one="@color/color_hv_yelll"
+                    style_common:stroke="0dp"
+                    style_common:color_stroke="@color/red"
+                    style_common:corner="2dp"
+                    style_common:color_txt="@color/white"
+
+                    style_common:color_two="@color/color_red_800"
+                    style_common:stroke_two="2dp"
+                    style_common:color_stroke_two="@color/color_hv_yelll"
+                    style_common:corner_two="5dp"
+                    style_common:color_txt_two="@color/white"
+                    style_common:boo_one="false"
                     android:text="发往"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
 
                 <TextView
                     android:singleLine="true"
@@ -193,19 +209,36 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="1dp"/>
-                <TextView
+
+
+                <com.siweisoft.heavycenter.module.view.text.BgTextView
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:background="@drawable/drawable_hv_bg_btn_login"
+
+
                     android:singleLine="true"
-                    android:layout_marginLeft="15dp"
-                    android:textColor="@color/black"
-                    android:textSize="17sp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15sp"
+                    android:visibility="visible"
+                    style_common:color_one="@color/color_hv_yelll"
+                    style_common:stroke="0dp"
+                    style_common:color_stroke="@color/red"
+                    style_common:corner="2dp"
+                    style_common:color_txt="@color/black"
+
+                    style_common:color_two="@color/color_red_800"
+                    style_common:stroke_two="2dp"
+                    style_common:color_stroke_two="@color/color_hv_yelll"
+                    style_common:corner_two="5dp"
+                    style_common:color_txt_two="@color/white"
+                    style_common:boo_one="false"
                     android:text="确认"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
+
             </LinearLayout>
         </LinearLayout>
             <com.android.lib.view.line.view.HorizonDashView

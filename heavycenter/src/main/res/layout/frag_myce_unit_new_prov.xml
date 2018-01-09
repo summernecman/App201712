@@ -9,18 +9,20 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
+        android:background="@color/white"
         android:orientation="vertical">
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
-            style_common:txt_mid ="新建单位"
-            style_common:iv_right ="@drawable/icon_hv_scan"
-            style_common:iv_right2= "@drawable/icon_hv_save"
+            style_common:iv_left = "@drawable/icon_hv_back"
+            style_common:iv_right = "@drawable/icon_hv_scan"
+            style_common:iv_right2 = "@drawable/icon_hv_save"
+            style_common:txt_mid ="送货区域"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycle"
+            android:layout_marginRight="50dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

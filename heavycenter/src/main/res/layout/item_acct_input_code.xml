@@ -21,10 +21,13 @@
                 android:layout_height="20dp" />
 
             <EditText
+                android:id="@+id/et_txt"
+                android:singleLine="true"
+                android:textColorHint="@color/color_grey_700"
+                android:hint="请输入验证码"
                 android:paddingLeft="10dp"
                 android:textSize="18sp"
                 android:textColor="@color/white"
-                android:text="123333"
                 android:background="@color/transparent"
                 android:layout_weight="1"
                 android:layout_width="0dp"

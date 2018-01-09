@@ -9,6 +9,7 @@ import com.siweisoft.heavycenter.base.AppDAOpe;
 import java.util.ArrayList;
 
 public class BindDAOpe extends AppDAOpe {
+
     public BindDAOpe(Context context) {
         super(context);
     }

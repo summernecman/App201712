@@ -1,5 +1,7 @@
 package com.android.lib.util;
 
+import android.graphics.Color;
+
 /**
  * Created by ${viwmox} on 2016-08-29.
  */
@@ -132,6 +134,13 @@ public class ColorUtil {
             }
         }
         return new int[]{r, g, b};
+    }
+
+    public int getGradualColor(int star,int end,double per){
+        int r = (int) (Color.red(star)+(Color.red(end)-Color.red(star))*per);
+        int g = (int) (Color.green(star)+(Color.green(end)-Color.green(star))*per);
+        int b = (int) (Color.blue(star)+(Color.blue(end)-Color.blue(star))*per);
+        return Color.rgb(r,g,b);
     }
 
 }

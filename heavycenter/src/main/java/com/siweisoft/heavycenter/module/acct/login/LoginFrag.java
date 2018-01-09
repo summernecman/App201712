@@ -4,10 +4,16 @@ package com.siweisoft.heavycenter.module.acct.login;
 
 import android.view.View;
 
+import com.android.lib.network.bean.res.BaseResBean;
+import com.android.lib.network.netadapter.UINetAdapter;
 import com.android.lib.util.FragmentUtil2;
+import com.android.lib.util.GsonUtil;
 import com.android.lib.util.IntentUtil;
+import com.android.lib.util.ToastUtil;
+import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 import com.siweisoft.heavycenter.module.acct.regist.RegistFrag;
 import com.siweisoft.heavycenter.module.acct.repwd.RepwdFrag;
@@ -28,13 +34,25 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.login:
-                ((AcctAct)getActivity()).showAndHidden(RoleFrag.class);
+                if(getP().getU().go()){
+                    getP().getD().login(getP().getU().getLoginReqBean(), new UINetAdapter(getActivity()) {
+                        @Override
+                        public void onNetWorkResult(boolean success, BaseResBean o) {
+                            LoginResBean loginResBean = GsonUtil.getInstance().fromJson(o.getData().toString(),LoginResBean.class);
+                            if(loginResBean.getCode().equals("200")){
+                                FragManager.getInstance().startFragment(activity.getSupportFragmentManager(),getIndex(),new RoleFrag());
+                            }else{
+                                ToastUtil.getInstance().showLong(getActivity(),loginResBean.getMessage());
+                            }
+                        }
+                    });
+                }
                 break;
             case R.id.regist:
-                ((AcctAct)getActivity()).showAndHidden(RegistFrag.class);
+                FragManager.getInstance().startFragment(activity.getSupportFragmentManager(),getIndex(),new RegistFrag());
                 break;
             case R.id.repwd:
-                ((AcctAct)getActivity()).showAndHidden(RepwdFrag.class);
+                FragManager.getInstance().startFragment(activity.getSupportFragmentManager(),getIndex(),new RepwdFrag());
                 break;
         }
     }

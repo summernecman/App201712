@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <EditText
+            android:singleLine="true"
             android:textSize="14dp"
             android:layout_marginLeft="15dp"
             android:id="@+id/et_mid"
@@ -29,8 +30,11 @@
             android:layout_height="match_parent"/>
 
         <TextView
+            android:paddingLeft="15dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_grey_300"
             android:id="@+id/tv_mid"
-            android:textSize="14dp"
+            android:textSize="15dp"
             android:layout_marginLeft="15dp"
             android:background="@null"
             android:layout_weight="1"
@@ -43,6 +47,7 @@
             android:layout_marginRight="@dimen/dimen_item_content_right_txt_right_padding"
             android:layout_width="@dimen/dimen_item_content_right_icon_size"
             android:layout_height="@dimen/dimen_item_content_right_icon_size" />
+
 
     </LinearLayout>
 

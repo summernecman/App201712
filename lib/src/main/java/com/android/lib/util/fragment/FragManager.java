@@ -402,6 +402,28 @@ public class FragManager {
         }
     }
 
+
+    public void add(final FragmentActivity fragmentActivity, int id, Fragment now,int anim1,int anim2) {
+        if (fragMaps.get(id) == null) {
+            fragMaps.put(id, new ArrayList<Fragment>());
+        }
+        if (fragMaps.get(id) != null && fragMaps.get(id).size() > 0) {
+            Fragment fragment = fragMaps.get(id).get(fragMaps.get(id).size() - 1);
+            fragMaps.get(id).add(now);
+            FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(anim1, anim2);
+            transaction.hide(fragment);
+            transaction.add(id, now);
+            transaction.commitAllowingStateLoss();
+        } else {
+            fragMaps.get(id).add(now);
+            FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
+            transaction.setCustomAnimations(anim1, anim2);
+            transaction.add(id, now);
+            transaction.commitAllowingStateLoss();
+        }
+    }
+
     public void addNoAnim(final FragmentActivity fragmentActivity, int id, Fragment now) {
         if (fragMaps.get(id) == null) {
             fragMaps.put(id, new ArrayList<Fragment>());

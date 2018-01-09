@@ -6,7 +6,15 @@ import com.android.lib.bean.BaseBean;
 
 public class XYBean extends BaseBean {
 
-    public int x;
+    public double x;
 
-    public int y;
+    public double y;
+
+    public XYBean() {
+    }
+
+    public XYBean(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
 }

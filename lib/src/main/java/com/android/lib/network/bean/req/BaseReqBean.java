@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class BaseReqBean extends BaseBean implements Serializable {
 
     public static final String _ID = "_id";
+
     private String _id;
 
     private Object data;

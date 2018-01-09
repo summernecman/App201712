@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:style_toptypeview="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_main_weigts"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/color_block_back"
+        >
+
+        <com.android.lib.view.title.TitleView
+            android:id="@+id/title"
+            style_common:iv_left ="@drawable/icon_hv_person"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            style_common:iv_right2 ="@drawable/icon_hv_add"
+            style_common:txt_mid ="地磅"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <com.siweisoft.heavycenter.module.view.menu.TopTypeView
+            android:id="@+id/topview"
+            style_toptypeview:txts="1号,2号,3号,4号,5号"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"/>
+
+
+  <android.support.v4.view.ViewPager
+      android:layout_below="@+id/topview"
+      android:id="@+id/viewpager"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+
+    <com.siweisoft.heavycenter.module.view.menu.ScrollMenu
+        android:layout_marginTop="-3dp"
+        android:id="@+id/scrollmenu"
+        android:layout_below="@id/topview"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"/>
+</RelativeLayout>
+    </LinearLayout>
+</layout>

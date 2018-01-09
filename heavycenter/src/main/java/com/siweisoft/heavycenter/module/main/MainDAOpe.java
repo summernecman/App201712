@@ -3,28 +3,19 @@ package com.siweisoft.heavycenter.module.main;
 //by summer on 17-08-23.
 
 import android.Manifest;
-import android.app.Fragment;
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.widget.RelativeLayout;
 
 import com.android.lib.base.fragment.BaseUIFrag;
-import com.android.lib.network.NetWork;
-import com.android.lib.network.bean.req.BaseReqBean;
-import com.android.lib.network.bean.res.BaseResBean;
-import com.android.lib.network.onNetWrokResAdapter;
-import com.android.lib.util.GsonUtil;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.system.PermissionUtil;
 import com.android.lib.view.bottommenu.BottomMenuBean;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppDAOpe;
-import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.module.main.msg.MsgFrag;
 import com.siweisoft.heavycenter.module.main.order.OrderFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
-import com.siweisoft.heavycenter.module.main.weigt.WeigtFrag;
+import com.siweisoft.heavycenter.module.main.weigts.WeigtsFrag;
 
 import java.util.ArrayList;
 
@@ -51,8 +42,8 @@ public class MainDAOpe extends AppDAOpe {
         }
         menudata.clear();
         RelativeLayout v0 = new RelativeLayout(context);v0.setId(11111+0);
-        BaseUIFrag fragment0 = new WeigtFrag(); fragment0.setIndex(0);
-        menudata.add(new BottomMenuBean("地磅", R.drawable.drawable_main_bottom_weight,new WeigtFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        BaseUIFrag fragment0 = new WeigtsFrag(); fragment0.setIndex(0);
+        menudata.add(new BottomMenuBean("地磅", R.drawable.drawable_main_bottom_weight,new WeigtsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
         RelativeLayout v1 = new RelativeLayout(context);v1.setId(11111+1);
         BaseUIFrag fragment1 = new TransFrag(); fragment1.setIndex(1);

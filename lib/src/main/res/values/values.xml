@@ -31,5 +31,19 @@
         <attr name="boo_edit" format="boolean"/>
         <attr name="iv_right2" format="reference"/>
         <attr name="minwidth" format="dimension"/>
+        <attr name="boo_one" format="boolean"/>
+        <attr name="boo_two" format="boolean"/>
+        <attr name="color_one" format="color"/>
+        <attr name="color_two" format="color"/>
+        <attr name="color_stroke" format="color"/>
+        <attr name="color_stroke_two" format="color"/>
+        <attr name="color_txt" format="color"/>
+        <attr name="color_txt_two" format="color"/>
+        <attr name="stroke" format="dimension"/>
+        <attr name="stroke_two" format="dimension"/>
+        <attr name="corner" format="dimension"/>
+        <attr name="corner_two" format="dimension"/>
+        <attr name="txt_two" format="string"/>
+        <attr name="txt_three" format="string"/>
     </declare-styleable>
 </resources>

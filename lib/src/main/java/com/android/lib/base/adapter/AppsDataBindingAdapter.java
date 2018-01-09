@@ -24,6 +24,7 @@ public class AppsDataBindingAdapter extends RecyclerView.Adapter<AppViewHolder> 
     protected int layout;
     protected ViewListener viewListener;
     protected Context context;
+    protected int selecPos = -1;
 
 
     public AppsDataBindingAdapter(Context context, int layout, int vari, List list) {

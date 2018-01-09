@@ -3,13 +3,9 @@ package com.siweisoft.heavycenter.module.mana.user;
 //by summer on 2017-12-14.
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
-import com.android.lib.base.listener.ViewListener;
-import com.android.lib.bean.AppViewHolder;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;

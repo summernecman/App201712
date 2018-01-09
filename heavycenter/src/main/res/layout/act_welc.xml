@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_item="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+   >
     <data>
         <variable
             name="act_welc"
@@ -16,6 +17,27 @@
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <com.siweisoft.heavycenter.module.view.text.BgTextView
+            android:visibility="gone"
+            style_common:color_one="@color/color_hv_yelll"
+            style_common:stroke="2dp"
+            style_common:color_stroke="@color/red"
+            style_common:corner="5dp"
+            style_common:color_txt="@color/black"
+
+            style_common:color_two="@color/color_red_800"
+            style_common:stroke_two="2dp"
+            style_common:color_stroke_two="@color/color_hv_yelll"
+            style_common:corner_two="5dp"
+            style_common:color_txt_two="@color/white"
+
+            style_common:boo_one="true"
+            android:padding="10dp"
+            android:layout_centerInParent="true"
+            android:text="12344"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
     </RelativeLayout>

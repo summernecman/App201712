@@ -13,6 +13,7 @@ import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
+import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -64,10 +65,19 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     @Override
     public void onBackPressed() {
+        if(FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT)!=null&&FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()>0){
+            activity.getSupportFragmentManager().beginTransaction().remove(
+                    FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).get(
+                            FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1))
+                    .commit();
+            FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).remove(FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1);
+        }else if(FragManager.getInstance().getFragMaps().get(getP().getU().getPos_drawer())!=null&&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_drawer()).size()>0){
+            FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
+        }else
         if(FragManager.getInstance().getFragMaps().get(getP().getD().getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getP().getD().getIndex()).size()>1){
             FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
         }else{
-            MainAct.super.onBackPressed();
+            finish();
         }
 
 //        FragManager.getInstance().clearTopWith(activity.getSupportFragmentManager(), getP().getD().getIndex(), new OnFinishListener() {

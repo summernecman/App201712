@@ -15,6 +15,7 @@
 
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
+            style_common:iv_left ="@drawable/icon_hv_back"
             style_common:iv_right ="@drawable/icon_hv_scan"
             style_common:iv_right2 ="@drawable/icon_hv_save"
             style_common:txt_mid ="车辆详情"
@@ -39,12 +40,12 @@
                 android:layout_height="match_parent">
                 <ImageView
                     android:layout_weight="1"
-                    android:src="@drawable/icon_hv_driveid"
+                    android:src="@drawable/icon_hv_car"
                     android:layout_width="match_parent"
                     android:layout_height="0dp" />
 
                 <TextView
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:text="上传车辆照片"
                     android:textColor="@color/color_hv_txt_dark"
                     android:layout_width="wrap_content"
@@ -70,7 +71,7 @@
                     android:layout_height="0dp" />
 
                 <TextView
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:text="上传车辆照片"
                     android:textColor="@color/color_hv_txt_dark"
                     android:layout_width="wrap_content"
@@ -86,22 +87,46 @@
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
+            android:layout_height="wrap_content"/>
 
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            style_common:txt_left = "车辆自重"
-            style_common:txt_mid = "请输入"
-            style_common:boo_edit = "true"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
-
-
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            style_common:txt_left = "车辆载重"
-            style_common:txt_mid = "请输入"
-            style_common:boo_edit = "true"
+            android:layout_height="wrap_content">
+            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+                style_common:txt_left = "车辆自重"
+                style_common:txt_mid = "请输入"
+                style_common:boo_edit = "true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textSize="17sp"
+                android:textColor="@color/color_hv_yelll"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:text="t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
+            android:layout_height="wrap_content">
+            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+                style_common:txt_left = "车辆载重"
+                style_common:txt_mid = "请输入"
+                style_common:boo_edit = "true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textSize="17sp"
+                android:textColor="@color/color_hv_yelll"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:text="t"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
@@ -118,9 +143,10 @@
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
+            android:layout_height="wrap_content"/>
 
         <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="1dp"
             android:id="@+id/recycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

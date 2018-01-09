@@ -41,14 +41,14 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
                 ItemManaCarMyBinding binding = (ItemManaCarMyBinding) holder.viewDataBinding;
-                binding.llContent.setTag(com.android.lib.R.id.data, list.get(position));
-                binding.llContent.setTag(com.android.lib.R.id.position, position);
-                binding.llContent.setOnClickListener(this);
+                binding.llContainer.setTag(com.android.lib.R.id.data, list.get(position));
+                binding.llContainer.setTag(com.android.lib.R.id.position, position);
+                binding.llContainer.setOnClickListener(this);
 
                 binding.executePendingBindings();//加一行，问题解决
 
                 binding.swipe.setShowMode(SwipeLayout.ShowMode.PullOut);
-                binding.swipe.addDrag(SwipeLayout.DragEdge.Right,binding.bottomWrapper);
+                binding.swipe.addDrag(SwipeLayout.DragEdge.Right,binding.menu);
                 binding.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {
                     @Override
                     public void onClose(SwipeLayout layout) {

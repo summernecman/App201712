@@ -11,12 +11,13 @@
         android:id="@+id/content_acct"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/color_hv_base"
         android:orientation="vertical">
 
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:txt_mid ="用户管理"
-            style_common:iv_left ="@drawable/icon_hv_person"
+            style_common:iv_left ="@drawable/icon_hv_back"
             style_common:iv_right = "@drawable/icon_hv_scan"
             style_common:iv_right2 = "@drawable/icon_hv_add"
             android:layout_width="match_parent"
