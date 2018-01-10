@@ -4,8 +4,12 @@ package com.siweisoft.heavycenter.module.view.input;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.v4.view.ViewCompat;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -15,13 +19,15 @@ import android.widget.TextView;
 
 import com.siweisoft.heavycenter.R;
 
-public class EditLoginAcctItem extends RelativeLayout implements View.OnClickListener{
+public class EditLoginAcctItem extends RelativeLayout implements View.OnClickListener,View.OnTouchListener{
 
     private ImageView leftIV;
 
     private ImageView rightIV;
 
     private EditText editText;
+
+    private TextView codeText;
 
     public EditLoginAcctItem(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -43,6 +49,30 @@ public class EditLoginAcctItem extends RelativeLayout implements View.OnClickLis
         editText = (EditText) findViewById(R.id.et_txt);
         editText.setHint(a.getString(R.styleable.style_common_txt_mid));
         rightIV.setOnClickListener(this);
+        rightIV.setOnTouchListener(this);
+        boolean showcode = a.getBoolean(R.styleable.style_common_boo_one,false);
+        codeText = (TextView) findViewById(R.id.tv_code);
+        if(showcode){
+            codeText.setVisibility(View.VISIBLE);
+            rightIV.setVisibility(View.GONE);
+        }else{
+            codeText.setVisibility(View.GONE);
+            rightIV.setVisibility(View.VISIBLE);
+        }
+        if(a.getInt(R.styleable.style_common_txt_maxlenth,-1)!=-1){
+            editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(a.getInt(R.styleable.style_common_txt_maxlenth,-1))});
+        }
+        switch (a.getInt(R.styleable.style_common_inputType,-1)){
+            case 0:
+                editText.setInputType(InputType.TYPE_CLASS_PHONE|InputType.TYPE_CLASS_NUMBER);
+                break;
+            case 1:
+                editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD|InputType.TYPE_CLASS_TEXT);
+                break;
+            case 2:
+                editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD|InputType.TYPE_CLASS_TEXT);
+                break;
+        }
 
     }
 
@@ -57,5 +87,29 @@ public class EditLoginAcctItem extends RelativeLayout implements View.OnClickLis
 
     public String getText(){
         return editText.getText().toString();
+    }
+
+    public TextView getCodeText() {
+        return codeText;
+    }
+
+    public EditText getEditText() {
+        return editText;
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                ViewCompat.setScaleX(v,0.7f);
+                ViewCompat.setScaleY(v,0.7f);
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                ViewCompat.setScaleX(v,1f);
+                ViewCompat.setScaleY(v,1f);
+                break;
+        }
+        return false;
     }
 }

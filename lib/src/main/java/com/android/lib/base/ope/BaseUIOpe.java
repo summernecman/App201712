@@ -5,6 +5,7 @@ import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 
 import com.android.lib.base.activity.BaseUIActivity;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.databinding.LayoutBaseuiWithouttitleBinding;
 
@@ -39,7 +40,7 @@ public class BaseUIOpe<A extends ViewDataBinding> {
     }
 
 
-    public void initUI(){
+    public void initUI(BaseUIFrag baseUIFrag){
 
     }
 

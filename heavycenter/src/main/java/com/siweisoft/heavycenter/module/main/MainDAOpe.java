@@ -16,6 +16,7 @@ import com.siweisoft.heavycenter.module.main.order.OrderFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
 import com.siweisoft.heavycenter.module.main.weigts.WeigtsFrag;
+import com.siweisoft.heavycenter.module.myce.MyceFrag;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,8 @@ public class MainDAOpe extends AppDAOpe {
     private int index=0;
 
     private boolean isRead = true;
+
+    MyceFrag myceFrag = new MyceFrag();
 
 
     public MainDAOpe(Context context) {
@@ -63,6 +66,10 @@ public class MainDAOpe extends AppDAOpe {
         return menudata;
     }
 
+
+    public MyceFrag getMyceFrag() {
+        return myceFrag;
+    }
 
     private String[] permissions = new String[]{
             Manifest.permission.ACCESS_FINE_LOCATION,

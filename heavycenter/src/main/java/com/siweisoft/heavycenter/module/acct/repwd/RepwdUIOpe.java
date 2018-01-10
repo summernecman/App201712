@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.acct.repwd;
 
 import android.content.Context;
 
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.util.MD5Util;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.ToastUtil;
@@ -29,13 +30,23 @@ public class RepwdUIOpe extends AppUIOpe<FragAcctRepwdBinding> {
        // GlideApp.with(context).asBitmap().load(url).centerCrop().into(bind.image);
     }
 
+    @Override
+    public void initUI(BaseUIFrag baseUIFrag) {
+        super.initUI(baseUIFrag);
+        bind.code.getCodeText().setOnClickListener(baseUIFrag);
+    }
+
 
     public boolean go(){
         if(NullUtil.isStrEmpty(bind.phone.getText())){
             ToastUtil.getInstance().showLong(getActivity(),"请输入手机号");
             return false;
         }
-        if(NullUtil.isStrEmpty(bind.securycode.getText().toString())){
+        if(bind.phone.getText().length()!=11){
+            ToastUtil.getInstance().showLong(getActivity(),"手机号格式不正确");
+            return false;
+        }
+        if(NullUtil.isStrEmpty(bind.code.getText().toString())){
             ToastUtil.getInstance().showLong(getActivity(),"请输入验证码");
             return false;
         }
@@ -44,12 +55,28 @@ public class RepwdUIOpe extends AppUIOpe<FragAcctRepwdBinding> {
             ToastUtil.getInstance().showLong(getActivity(),"密码不一致");
             return false;
         }
+        if(bind.pwd.getText().toString().length()<6 || bind.pwd.getText().toString().length()>18){
+            ToastUtil.getInstance().showLong(getActivity(),"密码为6-18位数字和字母");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean canGetCode(){
+        if(NullUtil.isStrEmpty(bind.phone.getText())){
+            ToastUtil.getInstance().showLong(getActivity(),"请输入手机号");
+            return false;
+        }
+        if(bind.phone.getText().length()!=11){
+            ToastUtil.getInstance().showLong(getActivity(),"手机号格式不正确");
+            return false;
+        }
         return true;
     }
 
     public ForGetReqBean getforGetReqBean() {
         forGetReqBean.setTel(bind.phone.getText().toString());
-        forGetReqBean.setSecurityCode(bind.securycode.getText().toString());
+        forGetReqBean.setSecurityCode(bind.code.getText().toString());
         forGetReqBean.setNewPwd(MD5Util.md5(bind.repwd.getText().toString()));
         return forGetReqBean;
     }

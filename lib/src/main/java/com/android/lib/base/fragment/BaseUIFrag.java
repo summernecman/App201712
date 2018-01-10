@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.lib.R;
+import com.android.lib.base.interf.FragI;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseOpes;
 import com.android.lib.base.ope.BaseUIOpe;
@@ -24,6 +25,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -44,6 +46,8 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
      */
     BaseOpes<A, B> opes;
 
+    private ArrayList<FragI> fragIs = new ArrayList<>();
+
     public BaseUIFrag() {
 
     }
@@ -53,6 +57,9 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
+        for(int i=0;i<fragIs.size();i++){
+            fragIs.get(i).onCreate(savedInstanceState);
+        }
     }
 
     @Override
@@ -70,12 +77,16 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             parent.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         }
         unbinder = ButterKnife.bind(this, group);
+        for(int i=0;i<fragIs.size();i++){
+            fragIs.get(i).onCreateView(inflater,container,savedInstanceState);
+        }
         return group;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getP().getU().initUI(this);
         doThing();
         HandleUtil.getInstance().postDelayed(new Runnable() {
             @Override
@@ -83,7 +94,9 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                 initData();
             }
         }, 1000);
-
+        for(int i=0;i<fragIs.size();i++){
+            fragIs.get(i).onViewCreated(view,savedInstanceState);
+        }
     }
 
     public void doThing() {
@@ -99,6 +112,9 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     public void onDestroyView() {
         unbinder.unbind();
         super.onDestroyView();
+        for(int i=0;i<fragIs.size();i++){
+            fragIs.get(i).onDestroyView();
+        }
     }
 
     /**
@@ -164,8 +180,11 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         EventBus.getDefault().unregister(this);
+        for(int i=0;i<fragIs.size();i++){
+            fragIs.get(i).onDestroy();
+        }
+        super.onDestroy();
     }
 
     /**
@@ -180,11 +199,19 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         }
     }
 
+    public void onRestart(){
+
+    }
+
     public int getIndex() {
         return index;
     }
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    public void addFragListener(FragI fragI){
+        fragIs.add(fragI);
     }
 }

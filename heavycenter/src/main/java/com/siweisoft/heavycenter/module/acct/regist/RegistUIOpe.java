@@ -4,14 +4,18 @@ package com.siweisoft.heavycenter.module.acct.regist;
 
 import android.content.Context;
 
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.util.MD5Util;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.acct.code.CodeReqBean;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginReqBean;
 import com.siweisoft.heavycenter.data.netd.acct.regist.RegistReqBean;
 import com.siweisoft.heavycenter.databinding.FragAcctRegistBinding;
+
+import cn.jpush.android.api.JPushInterface;
 
 public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
 
@@ -19,21 +23,28 @@ public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
 
     CodeReqBean codeReqBean = new CodeReqBean();
 
+    LoginReqBean loginReqBean = new LoginReqBean();
+
     public RegistUIOpe(Context context) {
         super(context);
     }
 
-    public void initBg(String url){
-        //GlideApp.with(context).asBitmap().load(url).centerCrop().into(bind.image);
+    @Override
+    public void initUI(BaseUIFrag baseUIFrag) {
+        super.initUI(baseUIFrag);
+        bind.code.getCodeText().setOnClickListener(baseUIFrag);
     }
-
 
     public boolean go(){
         if(NullUtil.isStrEmpty(bind.phone.getText())){
             ToastUtil.getInstance().showLong(getActivity(),"请输入手机号");
             return false;
         }
-        if(NullUtil.isStrEmpty(bind.securycode.getText().toString())){
+        if(bind.phone.getText().length()!=11){
+            ToastUtil.getInstance().showLong(getActivity(),"手机号格式不正确");
+            return false;
+        }
+        if(NullUtil.isStrEmpty(bind.code.getText().toString())){
             ToastUtil.getInstance().showLong(getActivity(),"请输入验证码");
             return false;
         }
@@ -42,8 +53,24 @@ public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
             ToastUtil.getInstance().showLong(getActivity(),"密码不一致");
             return false;
         }
-        if(!bind.ivCheck.isSelected()){
+        if(bind.pwd.getText().toString().length()<6 || bind.pwd.getText().toString().length()>18){
+            ToastUtil.getInstance().showLong(getActivity(),"密码为6-18位数字和字母");
+            return false;
+        }
+        if(!bind.tvRead.getCheckIV().isSelected()){
             ToastUtil.getInstance().showLong(getActivity(),"请同意协议");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean canGetCode(){
+        if(NullUtil.isStrEmpty(bind.phone.getText())){
+            ToastUtil.getInstance().showLong(getActivity(),"请输入手机号");
+            return false;
+        }
+        if(bind.phone.getText().length()!=11){
+            ToastUtil.getInstance().showLong(getActivity(),"手机号格式不正确");
             return false;
         }
         return true;
@@ -52,8 +79,8 @@ public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
     public RegistReqBean getRegistReqBean() {
         registReqBean.setTrueName(bind.phone.getText().toString());
         registReqBean.setTel(bind.phone.getText().toString());
-        registReqBean.setPassWord(MD5Util.md5(bind.phone.getText().toString()));
-        registReqBean.setSecurityCode(bind.securycode.getText().toString());
+        registReqBean.setPassWord(MD5Util.md5(bind.pwd.getText().toString()));
+        registReqBean.setSecurityCode(bind.code.getText().toString());
         return registReqBean;
     }
 
@@ -61,5 +88,15 @@ public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
         codeReqBean.setTel(bind.phone.getText().toString());
         codeReqBean.setType("1");
         return codeReqBean;
+    }
+
+    public LoginReqBean getLoginReqBean() {
+        loginReqBean.setIdentityType(1);
+        loginReqBean.setTel(bind.phone.getText().toString());
+        loginReqBean.setPassWord(MD5Util.md5(bind.pwd.getText().toString()));
+        loginReqBean.setInputPwd(bind.pwd.getText().toString());
+        loginReqBean.setDeviceId(JPushInterface.getRegistrationID(getActivity()));
+        loginReqBean.setDeviceType(1);
+        return loginReqBean;
     }
 }

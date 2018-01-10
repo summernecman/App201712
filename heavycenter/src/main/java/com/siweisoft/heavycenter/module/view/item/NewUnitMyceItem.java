@@ -66,4 +66,12 @@ public class NewUnitMyceItem extends RelativeLayout {
        }
 
     }
+
+    public EditText getMidET() {
+        return midET;
+    }
+
+    public TextView getMidTV() {
+        return midTV;
+    }
 }

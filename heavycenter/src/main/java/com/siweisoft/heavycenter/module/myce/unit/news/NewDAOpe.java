@@ -5,8 +5,12 @@ package com.siweisoft.heavycenter.module.myce.unit.news;
 import android.content.Context;
 
 import com.siweisoft.heavycenter.base.AppDAOpe;
+import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
 
 public class NewDAOpe extends AppDAOpe {
+
+    ListResBean.ResultsBean unit;
+
     public NewDAOpe(Context context) {
         super(context);
     }

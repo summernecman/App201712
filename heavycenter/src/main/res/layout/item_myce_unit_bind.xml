@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item_myce_unit_bind"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.unit.list.ListResBean.ResultsBean" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -34,7 +34,7 @@
                 <TextView
                     android:textSize="15sp"
                     android:textColor="@color/color_grey_900"
-                    android:text="绿地建筑工程有限责任公司"
+                    android:text="@{item_myce_unit_bind.companyName}"
                     android:id="@+id/tv_com_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -43,7 +43,7 @@
                     android:layout_marginTop="10dp"
                     android:textSize="15sp"
                     android:textColor="@color/gray"
-                    android:text="王先生"
+                    android:text="@{item_myce_unit_bind.contactName}"
                     android:id="@+id/tv_mana_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

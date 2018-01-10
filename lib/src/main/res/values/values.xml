@@ -45,5 +45,8 @@
         <attr name="corner_two" format="dimension"/>
         <attr name="txt_two" format="string"/>
         <attr name="txt_three" format="string"/>
+        <attr name="txt_maxlenth" format="integer"/>
+        <attr name="inputType" format="integer"/>
+
     </declare-styleable>
 </resources>

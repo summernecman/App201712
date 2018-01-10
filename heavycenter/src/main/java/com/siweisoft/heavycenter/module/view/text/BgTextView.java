@@ -25,7 +25,7 @@ import android.widget.TextView;
 import com.siweisoft.heavycenter.R;
 
 @SuppressLint("AppCompatCustomView")
-public class BgTextView extends TextView{
+public class BgTextView extends TextView {
 
 
 
@@ -74,21 +74,5 @@ public class BgTextView extends TextView{
                 new int[]{a.getColor(R.styleable.style_common_color_txt,Color.BLACK),a.getColor(R.styleable.style_common_color_txt_two,Color.WHITE)});
         setTextColor(colorStateList);
 
-
-    }
-
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                setPressed(true);
-                break;
-            case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL:
-                setPressed(false);
-                break;
-        }
-        return true;
     }
 }

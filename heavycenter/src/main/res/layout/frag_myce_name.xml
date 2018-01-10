@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_name"
             style_common:minwidth ="40dp"
             style_common:txt_left = "姓名"
             style_common:txt_mid = "请输入"
@@ -30,6 +31,7 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:visibility="gone"
             style_common:minwidth ="40dp"
             style_common:txt_left = "手机号"
             style_common:txt_mid = "请输入"
@@ -39,6 +41,7 @@
 
 
         <LinearLayout
+            android:visibility="gone"
             android:background="@color/color_item_content"
             android:paddingLeft="@dimen/dimen_item_content_left_padding"
             android:gravity="center_vertical"
@@ -112,6 +115,7 @@
 
 
         <TextView
+            android:visibility="gone"
             android:layout_marginLeft="10dp"
             android:textColor="@color/gray"
             android:textSize="12sp"

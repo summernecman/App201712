@@ -106,9 +106,10 @@ public class FragManager {
                     if (fragMaps.get(index).get(fragMaps.get(index).size() - 1) instanceof BaseUIFrag) {
                         BaseUIFrag fragment2 = (BaseUIFrag) fragMaps.get(index).get(fragMaps.get(index).size() - 1);
                         transaction.show(fragment2);
-                        if (fragment2.getArguments() != null && fragment2.getArguments().getInt(ValueConstant.FARG_REQ) != 0) {
-                            fragment2.onResult(fragment2.getArguments().getInt(ValueConstant.FARG_REQ), bundle);
+                        if (fragment2.getArguments() != null) {
+                            fragment2.getArguments().putAll(bundle);
                         }
+                        fragment2.onRestart();
                     }
 
                 }

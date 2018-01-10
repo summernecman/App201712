@@ -26,7 +26,7 @@
             android:layout_height="0dp">
 
             <TextView
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="110dp"
                 android:text="账号密码登录"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -36,15 +36,18 @@
 
             <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
                 android:id="@+id/phone"
+                style_common:txt_maxlenth = "11"
                 style_common:txt_mid = "请输入用户名"
                 style_common:iv_right = "@drawable/icon_hv_clear"
                 style_common:iv_left="@drawable/icon_hv_phone"
                 android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                style_common:inputType="0"
                 />
 
             <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+                style_common:inputType="1"
                 style_common:txt_mid = "请输入密码"
                 style_common:iv_left="@drawable/icon_hv_pwd"
                 android:layout_marginTop="5dp"
@@ -63,16 +66,34 @@
                 android:layout_gravity="right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <TextView
+
+
+
+            <com.siweisoft.heavycenter.module.view.text.BgTextView
+                android:gravity="center"
                 android:id="@+id/login"
                 android:text="登录"
-                android:textSize="22sp"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:background="@drawable/drawable_hv_bg_btn_login"
                 android:layout_marginTop="30dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+
+                android:singleLine="true"
+                android:textSize="22sp"
+                android:visibility="visible"
+                style_common:color_one="@color/color_hv_yelll"
+                style_common:stroke="0dp"
+                style_common:color_stroke="@color/red"
+                style_common:corner="20dp"
+                style_common:color_txt="@color/white"
+
+                style_common:color_two="@color/color_grey_400"
+                style_common:stroke_two="0dp"
+                style_common:color_stroke_two="@color/color_hv_yelll"
+                style_common:corner_two="20dp"
+                style_common:color_txt_two="@color/color_hv_yelll"
+                style_common:boo_one="true"
                 android:layout_width="match_parent"
-                android:layout_height="45dp" />
+                android:layout_height="40dp" />
 
 
             <TextView
@@ -80,7 +101,7 @@
                 android:layout_marginTop="15dp"
                 android:textSize="16sp"
                 android:text="新用户注册"
-                android:textColor="#f6ab12"
+                android:textColor="@color/color_press_yell_grey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

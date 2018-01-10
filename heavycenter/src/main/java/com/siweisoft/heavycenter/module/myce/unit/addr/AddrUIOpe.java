@@ -13,7 +13,6 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitAddrBinding;
 import com.siweisoft.heavycenter.databinding.ItemMyceUnitAddrBinding;
-import com.siweisoft.heavycenter.databinding.ItemMyceUnitBindBinding;
 
 import java.util.List;
 

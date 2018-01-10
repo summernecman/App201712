@@ -2,15 +2,21 @@ package com.siweisoft.heavycenter.module.myce.unit.bind;
 
 //by summer on 2017-12-19.
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
+import com.android.lib.constant.ValueConstant;
+import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.fragment.FragManager;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
 import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
+
+import java.io.Serializable;
 
 import butterknife.OnClick;
 
@@ -21,7 +27,13 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
         super.initData();
         getP().getU().initRefresh(this);
         getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getData(),this);
+        getP().getD().getData(new UINetAdapter<ListResBean>(getActivity()) {
+            @Override
+            public void onResult(boolean success, String msg, ListResBean o) {
+                super.onResult(success, msg, o);
+                getP().getU().LoadListData(o,BindFrag.this);
+            }
+        });
     }
 
 
@@ -47,6 +59,11 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
             case ViewListener.TYPE_ONCLICK:
                 switch (v.getId()){
                     case R.id.tv_root:
+                        if(getArguments().getInt(ValueConstant.DATA_DATA,-1)==BindDAOpe.BIND_UNIT){
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable(ValueConstant.DATA_DATA2, (Serializable) v.getTag(R.id.data));
+                            FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex(),bundle);
+                        }
                        // FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new SearchFrag());
                         break;
                 }
@@ -58,6 +75,12 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         refreshlayout.finishRefresh(2000);
-        getP().getU().LoadListData(getP().getD().getData(),this);
+        getP().getD().getData(new UINetAdapter<ListResBean>(getActivity()) {
+            @Override
+            public void onResult(boolean success, String msg, ListResBean o) {
+                super.onResult(success, msg, o);
+                getP().getU().LoadListData(o,BindFrag.this);
+            }
+        });
     }
 }

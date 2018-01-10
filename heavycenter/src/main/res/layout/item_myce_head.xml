@@ -52,13 +52,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                             <TextView
-                                android:text="12333"
+                                android:singleLine="true"
+                                android:layout_weight="1"
+                                android:id="@+id/tv_name"
+                                android:text="11111111"
                                 android:textSize="23sp"
                                 android:textColor="@color/white"
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content" />
 
                             <ImageView
+                                android:layout_marginRight="5dp"
                                 android:id="@+id/iv_nameedit"
                                 android:layout_marginLeft="25dp"
                                 android:src="@drawable/icon_hv_myce_edit"
@@ -67,6 +71,8 @@
                         </LinearLayout>
 
                         <TextView
+                            android:singleLine="true"
+                            android:id="@+id/tv_role"
                             android:text="管理员"
                             android:textSize="14sp"
                             android:textColor="@color/white"
@@ -74,6 +80,8 @@
                             android:layout_height="wrap_content" />
 
                         <TextView
+                            android:singleLine="true"
+                            android:id="@+id/tv_phone"
                             android:layout_marginTop="5dp"
                             android:text="18741414141"
                             android:textSize="20sp"

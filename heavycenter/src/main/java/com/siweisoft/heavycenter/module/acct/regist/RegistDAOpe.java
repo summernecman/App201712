@@ -7,6 +7,8 @@ import android.content.Context;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.android.lib.network.netadapter.UINetAdapter;
+import com.android.lib.network.news.NetAdapter;
+import com.android.lib.network.news.NetI;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.thread.ThreadUtil;
@@ -15,7 +17,9 @@ import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.acct.code.CodeReqBean;
 import com.siweisoft.heavycenter.data.netd.acct.code.CodeResBean;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.acct.regist.RegistReqBean;
+import com.siweisoft.heavycenter.data.netd.acct.regist.RegistResBean;
 
 public class RegistDAOpe extends AppDAOpe {
 
@@ -29,7 +33,7 @@ public class RegistDAOpe extends AppDAOpe {
         return "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513325040026&di=9e408824bb71605801a3e73997457851&imgtype=0&src=http%3A%2F%2Fbbs.static.coloros.com%2Fdata%2Fattachment%2Fforum%2F201503%2F06%2F183706dti1utuig1rqa13y.jpg";
     }
 
-    public void regist(RegistReqBean reqBean, UINetAdapter adapter){
+    public void regist(RegistReqBean reqBean, NetI<RegistResBean> adapter){
         reqBean.setIdentityType(RegistReqBean.IDENTITY_TYPE_PHONE);
         NetDataOpe.onRegist(getActivity(), NetValue.获取地址("/user/insertAPP"),reqBean,adapter);
     }
@@ -39,11 +43,10 @@ public class RegistDAOpe extends AppDAOpe {
     }
 
     public void getCode(CodeReqBean reqBean){
-        NetDataOpe.getCode(getActivity(), NetValue.获取地址("/user/getSecurityCode"), reqBean, new OnNetWorkReqAdapter(getActivity()) {
+        NetDataOpe.getCode(getActivity(), NetValue.获取地址("/user/getSecurityCode"), reqBean, new NetAdapter<CodeResBean>(getActivity()) {
             @Override
-            public void onNetWorkResult(boolean success, BaseResBean o) {
-                CodeResBean codeResBean = GsonUtil.getInstance().fromJson(o.getData().toString(),CodeResBean.class);
-                ToastUtil.getInstance().showLong(getActivity(),codeResBean.getMessage());
+            public void onNetFinish(boolean haveData, String url, BaseResBean o) {
+                ToastUtil.getInstance().showLong(getActivity(),o.getResult()+":"+o.getMessage());
             }
         });
     }

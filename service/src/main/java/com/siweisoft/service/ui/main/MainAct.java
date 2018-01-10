@@ -304,18 +304,18 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
     final static String tag = "em";
 
     private void reconnect() {
-        //LoadUtil.getInstance().onStartLoading(this, tag);
+        //LoadUtil.getInstance().onStartLoading(this, url);
         EMClient.getInstance().login(Value.getUserInfo().getPhone(), "111111", new EMCallBack() {//回调
             @Override
             public void onSuccess() {
                 EMClient.getInstance().groupManager().loadAllGroups();
                 EMClient.getInstance().chatManager().loadAllConversations();
-                //LoadUtil.getInstance().onStopLoading(tag);
+                //LoadUtil.getInstance().onStopLoading(url);
             }
 
             @Override
             public void onError(int code, String error) {
-                //LoadUtil.getInstance().onStopLoading(tag);
+                //LoadUtil.getInstance().onStopLoading(url);
                 finish();
             }
 

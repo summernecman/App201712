@@ -20,10 +20,10 @@
             android:layout_height="match_parent">
 
         <TextView
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="110dp"
             android:text="选择角色"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -42,25 +42,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
+
+
+
+            <com.siweisoft.heavycenter.module.view.text.BgTextView
+                android:gravity="center"
                 android:id="@+id/tv_driver"
                 android:text="驾驶员"
-                android:textSize="22sp"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:background="@drawable/drawable_hv_bg_btn_login"
                 android:layout_marginTop="35dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+
+                android:singleLine="true"
+                android:textSize="22sp"
+                android:visibility="visible"
+                style_common:color_one="@color/color_hv_yelll"
+                style_common:stroke="0dp"
+                style_common:color_stroke="@color/red"
+                style_common:corner="20dp"
+                style_common:color_txt="@color/white"
+
+                style_common:color_two="@color/color_grey_400"
+                style_common:stroke_two="0dp"
+                style_common:color_stroke_two="@color/color_hv_yelll"
+                style_common:corner_two="20dp"
+                style_common:color_txt_two="@color/color_hv_yelll"
+                style_common:boo_one="true"
                 android:layout_width="match_parent"
                 android:layout_height="40dp" />
 
-            <TextView
+
+
+            <com.siweisoft.heavycenter.module.view.text.BgTextView
+                android:gravity="center"
                 android:id="@+id/tv_notdriver"
                 android:text="非驾驶员"
-                android:textSize="22sp"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:background="@drawable/drawable_hv_bg_btn_login"
                 android:layout_marginTop="10dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+
+                android:singleLine="true"
+                android:textSize="22sp"
+                android:visibility="visible"
+                style_common:color_one="@color/color_hv_yelll"
+                style_common:stroke="0dp"
+                style_common:color_stroke="@color/red"
+                style_common:corner="20dp"
+                style_common:color_txt="@color/white"
+
+                style_common:color_two="@color/color_grey_400"
+                style_common:stroke_two="0dp"
+                style_common:color_stroke_two="@color/color_hv_yelll"
+                style_common:corner_two="20dp"
+                style_common:color_txt_two="@color/color_hv_yelll"
+                style_common:boo_one="true"
                 android:layout_width="match_parent"
                 android:layout_height="40dp" />
 

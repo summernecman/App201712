@@ -13,6 +13,7 @@
         android:background="@color/color_base_graybg"
         android:orientation="vertical">
 <include
+    android:id="@+id/ll_head"
     layout="@layout/item_myce_head"/>
 
         <com.android.lib.view.item.ItemView

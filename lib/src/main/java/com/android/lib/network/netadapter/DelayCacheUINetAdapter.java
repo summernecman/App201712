@@ -50,7 +50,7 @@ public abstract class DelayCacheUINetAdapter extends UINetChacheAdapter {
 //                        @Override
 //                        public void run() {
 //                            onNetWorkResult(true, baseResBean);
-//                            LoadUtil.getInstance().onStopLoading(tag);
+//                            LoadUtil.getInstance().onStopLoading(url);
 //                        }
 //                    }, delay);
 //                } else {
@@ -58,7 +58,7 @@ public abstract class DelayCacheUINetAdapter extends UINetChacheAdapter {
 //                        @Override
 //                        public void run() {
 //                            onNetWorkResult(true, baseResBean);
-//                            LoadUtil.getInstance().onStopLoading(tag);
+//                            LoadUtil.getInstance().onStopLoading(url);
 //                        }
 //                    }, delay);
 //                }

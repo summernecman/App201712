@@ -38,10 +38,10 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     private void dothing(){
         getP().getU().initPages(getP().getD().getMenudata(),this);
-        getP().getU().initDrawerMenu();
-       if(!getP().getD().isRead()){
-           getP().getU().nobind();
-       }
+        getP().getU().initDrawerMenu(getP().getD().getMyceFrag());
+        if(!getP().getD().isRead()){
+            getP().getU().nobind();
+        }
     }
 
     @Override
@@ -71,7 +71,10 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
                             FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1))
                     .commit();
             FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).remove(FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1);
-        }else if(FragManager.getInstance().getFragMaps().get(getP().getU().getPos_drawer())!=null&&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_drawer()).size()>0){
+        }else
+        if(getP().getD().getIndex()==getP().getU().getPos_content()
+                &&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_content())!=null
+                &&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_content()).size()>0){
             FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
         }else
         if(FragManager.getInstance().getFragMaps().get(getP().getD().getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getP().getD().getIndex()).size()>1){

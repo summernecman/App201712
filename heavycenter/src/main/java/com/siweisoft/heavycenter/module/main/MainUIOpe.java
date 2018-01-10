@@ -44,10 +44,9 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
     }
 
 
-    public void initDrawerMenu(){
+    public void initDrawerMenu(MyceFrag myceFrag ){
         pos_drawer = FragManager.getInstance().addId(bind.incloud.leftDrawer.getId());
-        AppFrag appFrag = new MyceFrag();
-        FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),pos_drawer,appFrag);
+        FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),pos_drawer,myceFrag);
     }
 
     public void initPages(final ArrayList<BottomMenuBean> pages,OnAppItemSelectListener listener){

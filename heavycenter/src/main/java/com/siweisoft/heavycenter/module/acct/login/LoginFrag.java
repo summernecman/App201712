@@ -4,21 +4,25 @@ package com.siweisoft.heavycenter.module.acct.login;
 
 import android.view.View;
 
-import com.android.lib.network.bean.res.BaseResBean;
-import com.android.lib.network.netadapter.UINetAdapter;
-import com.android.lib.util.FragmentUtil2;
-import com.android.lib.util.GsonUtil;
+import com.android.lib.network.news.NetAdapter;
+import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
-import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
-import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
+import com.siweisoft.heavycenter.data.netd.other.city.CityReqBean;
+import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
+import com.siweisoft.heavycenter.data.netd.unit.news.NewResBean;
+import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.module.acct.regist.RegistFrag;
 import com.siweisoft.heavycenter.module.acct.repwd.RepwdFrag;
 import com.siweisoft.heavycenter.module.acct.role.RoleFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
+
+import java.util.ArrayList;
 
 import butterknife.OnClick;
 
@@ -27,7 +31,8 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
     @Override
     public void initData() {
         super.initData();
-        getP().getU().initBg(getP().getD().getImageUrl());
+
+        NetDataOpe.getCity(getActivity(),new CityReqBean(),new NetAdapter<ArrayList<CityResBean>>(getActivity()));
     }
 
     @OnClick({R.id.login,R.id.regist,R.id.repwd})
@@ -35,14 +40,16 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
         switch (v.getId()){
             case R.id.login:
                 if(getP().getU().go()){
-                    getP().getD().login(getP().getU().getLoginReqBean(), new UINetAdapter(getActivity()) {
+                    getP().getD().login(getP().getU().getLoginReqBean(), new UINetAdapter<LoginResBean>(getActivity()) {
                         @Override
-                        public void onNetWorkResult(boolean success, BaseResBean o) {
-                            LoginResBean loginResBean = GsonUtil.getInstance().fromJson(o.getData().toString(),LoginResBean.class);
-                            if(loginResBean.getCode().equals("200")){
-                                FragManager.getInstance().startFragment(activity.getSupportFragmentManager(),getIndex(),new RoleFrag());
-                            }else{
-                                ToastUtil.getInstance().showLong(getActivity(),loginResBean.getMessage());
+                        public void onResult(boolean success, String msg, LoginResBean loginResBean) {
+                            if(success){
+                                LocalValue.saveLoginInfo(loginResBean);
+                                if(loginResBean.getUserType()== UserTypeReqBean.USER_TYPE_DRIVER || loginResBean.getUserType()== UserTypeReqBean.USER_TYPE_GENERAL){
+                                    IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+                                }else{
+                                    FragManager.getInstance().startFragment(activity.getSupportFragmentManager(),getIndex(),new RoleFrag());
+                                }
                             }
                         }
                     });

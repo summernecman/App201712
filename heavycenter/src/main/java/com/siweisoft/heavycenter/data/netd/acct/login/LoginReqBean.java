@@ -18,6 +18,8 @@ public class LoginReqBean extends BaseReqBean {
 
     private int deviceType;
 
+    private String inputPwd;
+
     public LoginReqBean() {
     }
 
@@ -67,5 +69,13 @@ public class LoginReqBean extends BaseReqBean {
 
     public void setDeviceType(int deviceType) {
         this.deviceType = deviceType;
+    }
+
+    public String getInputPwd() {
+        return inputPwd;
+    }
+
+    public void setInputPwd(String inputPwd) {
+        this.inputPwd = inputPwd;
     }
 }

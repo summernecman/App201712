@@ -15,9 +15,9 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitBindBinding;
 import com.siweisoft.heavycenter.databinding.ItemMyceUnitBindBinding;
-import com.siweisoft.heavycenter.databinding.ItemTransBinding;
 
 import java.util.List;
 
@@ -42,10 +42,10 @@ public class BindUIOpe extends AppUIOpe<FragMyceUnitBindBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<String> s, final ViewListener listener) {
+    public void LoadListData(ListResBean o, final ViewListener listener) {
 
 
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_myce_unit_bind, BR.item_myce_unit_bind, s,listener){
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_myce_unit_bind, BR.item_myce_unit_bind, o.getResults(),listener){
 
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {

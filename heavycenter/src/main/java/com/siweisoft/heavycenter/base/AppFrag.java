@@ -26,9 +26,7 @@ public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends 
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_back:
-                if(FragManager.getInstance().getFragMaps().get(getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getIndex()).size()>1){
-                    FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex());
-                }
+                getActivity().onBackPressed();
                 break;
         }
     }

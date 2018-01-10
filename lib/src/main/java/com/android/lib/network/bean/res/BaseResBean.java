@@ -22,6 +22,8 @@ public class BaseResBean implements Serializable {
 
     private String code;
 
+    private Object result;
+
     public BaseResBean() {
 
     }
@@ -83,6 +85,14 @@ public class BaseResBean implements Serializable {
         this.message = message;
     }
 
+    public Object getResult() {
+        return result;
+    }
+
+    public void setResult(Object result) {
+        this.result = result;
+    }
+
     @Override
     public String toString() {
         return "BaseResBean{" +
@@ -94,4 +104,6 @@ public class BaseResBean implements Serializable {
                 ", code='" + code + '\'' +
                 '}';
     }
+
+
 }

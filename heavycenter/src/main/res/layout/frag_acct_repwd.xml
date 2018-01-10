@@ -43,7 +43,7 @@
                     android:layout_height="0dp">
 
                     <TextView
-                        android:layout_marginTop="100dp"
+                        android:layout_marginTop="110dp"
                         android:text="忘记密码"
                         android:textColor="@color/white"
                         android:textSize="18sp"
@@ -52,6 +52,7 @@
 
 
                     <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+                        style_common:inputType="0"
                         android:id="@+id/phone"
                         style_common:txt_mid = "请输入手机号"
                         style_common:iv_left="@drawable/icon_hv_phone"
@@ -60,46 +61,20 @@
                         android:layout_height="40dp"
                         />
 
-                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:background="@drawable/drawable_bg_edit"
-                        android:orientation="horizontal"
+                    <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+                        android:id="@+id/code"
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_height="40dp">
-
-                        <ImageView
-                            android:layout_marginLeft="10dp"
-                            android:src="@drawable/icon_hv_phone"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp" />
-
-                        <EditText
-                            android:id="@+id/securycode"
-                            android:singleLine="true"
-                            android:textColorHint="@color/color_grey_700"
-                            android:hint="请输入验证码"
-                            android:paddingLeft="10dp"
-                            android:textSize="18sp"
-                            android:textColor="@color/white"
-                            android:background="@color/transparent"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent" />
-
-                        <TextView
-                            android:id="@+id/code"
-                            android:gravity="center_vertical|right"
-                            android:text="获取验证码"
-                            android:textSize="15sp"
-                            android:textColor="@color/color_hv_yelll"
-                            android:layout_marginRight="10dp"
-                            android:src="@drawable/icon_hv_clear"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent" />
-
-                    </LinearLayout>
+                        android:layout_height="40dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        style_common:iv_left="@drawable/icon_hv_pwd"
+                        style_common:boo_one = "true"
+                        style_common:txt_mid="请输入验证码" />
 
                     <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+                        style_common:inputType="1"
                         android:id="@+id/pwd"
                         style_common:txt_mid = "设置新密码"
                         style_common:iv_left="@drawable/icon_hv_pwd"
@@ -108,6 +83,7 @@
                         android:layout_height="40dp"
                         />
                     <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
+                        style_common:inputType="1"
                         android:id="@+id/repwd"
                         style_common:txt_mid = "重复新密码"
                         style_common:iv_left="@drawable/icon_hv_pwd"
@@ -132,16 +108,32 @@
 
 
                     </LinearLayout>
-                    <TextView
+
+                    <com.siweisoft.heavycenter.module.view.text.BgTextView
+                        android:gravity="center"
                         android:id="@+id/regist"
                         android:text="保存"
-                        android:textSize="22sp"
-                        android:textColor="@color/white"
-                        android:gravity="center"
-                        android:background="@drawable/drawable_hv_bg_btn_login"
                         android:layout_marginTop="30dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+
+                        android:singleLine="true"
+                        android:textSize="22sp"
+                        android:visibility="visible"
+                        style_common:color_one="@color/color_hv_yelll"
+                        style_common:stroke="0dp"
+                        style_common:color_stroke="@color/red"
+                        style_common:corner="20dp"
+                        style_common:color_txt="@color/white"
+
+                        style_common:color_two="@color/color_grey_400"
+                        style_common:stroke_two="0dp"
+                        style_common:color_stroke_two="@color/color_hv_yelll"
+                        style_common:corner_two="20dp"
+                        style_common:color_txt_two="@color/color_hv_yelll"
+                        style_common:boo_one="true"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp" />
+                        android:layout_height="40dp" />
 
                 </LinearLayout>
 

@@ -4,9 +4,11 @@ package com.siweisoft.heavycenter.module.acct.acct;
 
 import android.os.Bundle;
 
+import com.android.lib.network.news.NetAdapter;
 import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
+import com.siweisoft.heavycenter.data.netd.acct.logout.LogOutResBean;
 import com.siweisoft.heavycenter.module.acct.login.LoginFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
 
@@ -40,6 +42,7 @@ public class AcctAct extends AppAct<AcctUIOpe,AcctDAOpe> {
         if(FragManager.getInstance().getFragMaps().get(getP().getD().getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getP().getD().getIndex()).size()>1){
             FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
         }else{
+            getP().getD().logOut(new NetAdapter<LogOutResBean>(this));
             super.onBackPressed();
         }
     }

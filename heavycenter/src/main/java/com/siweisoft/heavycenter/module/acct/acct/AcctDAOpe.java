@@ -5,7 +5,12 @@ package com.siweisoft.heavycenter.module.acct.acct;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
+import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.acct.logout.LogOutReqBean;
+import com.siweisoft.heavycenter.data.netd.acct.logout.LogOutResBean;
 import com.siweisoft.heavycenter.module.acct.login.LoginFrag;
 import com.siweisoft.heavycenter.module.acct.regist.RegistFrag;
 import com.siweisoft.heavycenter.module.acct.repwd.RepwdFrag;
@@ -51,5 +56,11 @@ public class AcctDAOpe extends AppDAOpe {
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    public void logOut( NetI<LogOutResBean> adapter){
+        LogOutReqBean logOutReqBean = new LogOutReqBean();
+        logOutReqBean.setTel(LocalValue.getLoginInfo().getTel());
+        NetDataOpe.logOut(getActivity(),"/user/appExit",logOutReqBean,adapter);
     }
 }
