@@ -21,7 +21,7 @@ public class ListResBean extends BaseBean {
     private int pageIndex;
     private int pageCount;
     private int pageSize;
-    private List<ResultsBean> results;
+    private List<UnitInfo> results;
 
     public int getTotalCount() {
         return totalCount;
@@ -55,15 +55,15 @@ public class ListResBean extends BaseBean {
         this.pageSize = pageSize;
     }
 
-    public List<ResultsBean> getResults() {
+    public List<UnitInfo> getResults() {
         return results;
     }
 
-    public void setResults(List<ResultsBean> results) {
+    public void setResults(List<UnitInfo> results) {
         this.results = results;
     }
 
-    public static class ResultsBean {
+    public static class UnitInfo extends BaseBean {
         /**
          * businessLicense :
          * belongArea : 210000

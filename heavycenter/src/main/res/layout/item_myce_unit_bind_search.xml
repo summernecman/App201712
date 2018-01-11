@@ -38,6 +38,7 @@
             android:layout_height="match_parent" />
 
         <ImageView
+            android:id="@+id/iv_search"
             android:layout_marginRight="13dp"
             android:src="@drawable/icon_hv_search"
             android:layout_width="17dp"

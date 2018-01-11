@@ -199,7 +199,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         }
     }
 
-    public void onRestart(){
+    public void onRestart(int res,Bundle bundle){
 
     }
 

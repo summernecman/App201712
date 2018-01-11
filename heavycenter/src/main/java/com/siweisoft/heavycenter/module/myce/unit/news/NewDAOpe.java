@@ -9,7 +9,7 @@ import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
 
 public class NewDAOpe extends AppDAOpe {
 
-    ListResBean.ResultsBean unit;
+    ListResBean.UnitInfo unit;
 
     public NewDAOpe(Context context) {
         super(context);

@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item_myce_unit_new_area"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.other.city.CityResBean.ProvinceListBean" />
     </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -19,6 +19,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_pros"
         android:background="@drawable/bg_hv_sharp2_gray_stroke"
         android:paddingRight="5dp"
         android:paddingLeft="7dp"
@@ -35,11 +36,12 @@
             android:layout_height="15dp" />
 
         <TextView
+            android:singleLine="true"
             android:layout_weight="1"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textColor="@color/black"
             android:layout_marginLeft="5dp"
-            android:text="123"
+            android:text="@{item_myce_unit_new_area.value}"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
 

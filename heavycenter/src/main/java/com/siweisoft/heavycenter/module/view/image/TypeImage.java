@@ -33,6 +33,8 @@ public class TypeImage extends ImageView {
                 break;
             case TYPE_NULL:
                 setBackgroundResource(R.drawable.icon_hv_myce_unit_new_area_null);
+            default:
+                setBackgroundResource(R.drawable.icon_hv_myce_unit_new_area_null);
                 break;
         }
     }

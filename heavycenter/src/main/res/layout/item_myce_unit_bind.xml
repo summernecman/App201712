@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item_myce_unit_bind"
-            type="com.siweisoft.heavycenter.data.netd.unit.list.ListResBean.ResultsBean" />
+            type="com.siweisoft.heavycenter.data.netd.unit.list.ListResBean.UnitInfo" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"

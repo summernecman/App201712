@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item_main_msg_all"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean.ResultsBean" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,7 +31,7 @@
                 <TextView
                     android:textColor="@color/black"
                     android:textSize="17sp"
-                    android:text="张先生"
+                    android:text="@{item_main_msg_all.senderName}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -49,19 +49,15 @@
             <TextView
                 android:textColor="@color/gray"
                 android:textSize="15sp"
-                android:text="fdsfdsfdsfdsfdsfsfdsffffffffffffdsffffffffffffffffff"
+                android:text="@{item_main_msg_all.messageContent}"
                 android:padding="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
 
-            <View
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
-                android:background="@color/color_grey_400"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
+
             <LinearLayout
+                android:visibility="gone"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"

@@ -6,6 +6,10 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import com.android.lib.base.ope.BaseDAOpe;
+import com.android.lib.network.news.NetI;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
+import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
 import com.siweisoft.heavycenter.module.main.msg.all.AllFrag;
 import com.siweisoft.heavycenter.module.main.msg.car.CarFrag;
 import com.siweisoft.heavycenter.module.main.msg.publics.PubFrag;
@@ -29,5 +33,6 @@ public class MsgDAOpe extends BaseDAOpe {
         pages.add(new SysFrag());
         return pages;
     }
+
 
 }

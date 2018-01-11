@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item_myce_unit_new_city"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.other.city.CityResBean.ProvinceListBean.CityListBean" />
     </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -30,15 +30,16 @@
         android:layout_height="wrap_content">
 
         <com.siweisoft.heavycenter.module.view.image.TypeImage
-            android:src="@drawable/icon_hv_sel_y"
+            android:id="@+id/typeimage"
             android:layout_width="15dp"
             android:layout_height="15dp" />
 
         <TextView
-            android:textSize="18sp"
+            android:singleLine="true"
+            android:textSize="17sp"
             android:textColor="@color/black"
             android:layout_marginLeft="5dp"
-            android:text="123"
+            android:text="@{item_myce_unit_new_city.value}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

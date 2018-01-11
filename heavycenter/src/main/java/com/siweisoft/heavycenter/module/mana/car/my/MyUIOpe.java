@@ -16,6 +16,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.databinding.FragManaCarMyBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaCarMyBinding;
 
@@ -35,7 +36,7 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<String> s, ViewListener listener){
+    public void LoadListData(List<CarsResBean.ResultsBean> s, ViewListener listener){
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_car_my, BR.item_mana_car_my,s,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {

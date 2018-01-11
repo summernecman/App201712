@@ -59,6 +59,23 @@ public class LoginResBean extends BaseBean {
 
     public static final String USER_ROLE_SYS_ADMIN_CN = "系统管理员";
 
+    public static final int BIND_UNIT_STATE_UNBIND = 0;
+
+    public static final int BIND_UNIT_STATE_CHECK = 1;
+
+    public static final int BIND_UNIT_STATE_BINDED = 2;
+
+    public static final int BIND_UNIT_STATE_REJECT = 3;
+
+    public static final String BIND_UNIT_STATE_UNBIND_CN = "未绑定";
+
+    public static final String BIND_UNIT_STATE_CHECK_CN = "审核中";
+
+    public static final String BIND_UNIT_STATE_BINDED_CN = "已绑定";
+
+    public static final String BIND_UNIT_STATE_REJECT_CN = "绑定失败";
+
+
     private String userRole;
     private int loginStatus;
 

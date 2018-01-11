@@ -9,6 +9,7 @@ import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
 import com.siweisoft.heavycenter.databinding.FragManaUserBinding;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<String> s) {
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_user, BR.item_mana_user, s));
+    public void LoadListData(List<UnitUserResBean.ResultsBean> data) {
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_user, BR.item_mana_user, data));
 
     }
 

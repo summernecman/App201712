@@ -7,7 +7,7 @@
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/content_acct"
+        android:id="@+id/act_acct"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/icon_hv_bg"

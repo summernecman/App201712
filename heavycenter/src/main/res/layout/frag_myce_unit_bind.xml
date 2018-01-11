@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.input.SearchBindUnitMyceItem
+            android:id="@+id/search"
             android:elevation="2dp"
             android:text="请输入单位名称"
             android:layout_width="match_parent"

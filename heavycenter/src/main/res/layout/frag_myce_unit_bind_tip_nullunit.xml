@@ -38,7 +38,7 @@
 
                 <ImageView
                     android:layout_centerVertical="true"
-                    android:id="@+id/tv_close"
+                    android:id="@+id/iv_close"
                     android:src="@drawable/icon_hv_close"
                     android:layout_alignParentRight="true"
                     android:layout_width="20dp"
@@ -84,7 +84,7 @@
                     android:layout_marginBottom="10dp"
                     android:paddingLeft="30dp"
                     android:paddingRight="30dp"
-                    android:id="@+id/tv_no"
+                    android:id="@+id/tv_close"
                     android:text="返回"
                     android:textSize="22sp"
                     android:textColor="@color/white"
@@ -103,7 +103,7 @@
                         android:layout_marginBottom="10dp"
                         android:paddingLeft="30dp"
                         android:paddingRight="30dp"
-                        android:id="@+id/tv_yes"
+                        android:id="@+id/tv_sure"
                         android:text="确定"
                         android:textSize="22sp"
                         android:textColor="@color/white"

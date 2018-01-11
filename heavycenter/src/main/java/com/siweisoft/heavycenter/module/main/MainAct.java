@@ -7,19 +7,14 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
-import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
-import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
-
-import cn.jpush.android.api.JPushInterface;
 
 public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSelectListener {
 
-    public static final int ID_ALL_ROOT = R.id.content_frame;
+    public static final int ID_ALL_ROOT = R.id.act_main;
 
     public static final int ID_CONTENT = R.id.content_content;
 
@@ -42,6 +37,9 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         if(!getP().getD().isRead()){
             getP().getU().nobind();
         }
+
+
+
     }
 
     @Override

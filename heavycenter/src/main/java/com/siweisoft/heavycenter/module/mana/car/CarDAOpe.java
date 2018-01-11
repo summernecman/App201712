@@ -5,7 +5,12 @@ package com.siweisoft.heavycenter.module.mana.car;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
+import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsReqBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.module.mana.car.my.MyFrag;
 import com.siweisoft.heavycenter.module.mana.car.receipt.ReceiptFrag;
 import com.siweisoft.heavycenter.module.mana.car.send.SendFrag;
@@ -25,5 +30,6 @@ public class CarDAOpe extends AppDAOpe {
         ReceiptFrag receiptFrag = new ReceiptFrag(); receiptFrag.setIndex(index);pages.add(receiptFrag);
         return pages;
     }
+
 
 }

@@ -5,19 +5,27 @@ package com.siweisoft.heavycenter.module.myce.unit.area.prov;
 import android.content.Context;
 
 import com.siweisoft.heavycenter.base.AppDAOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class ProvDAOpe extends AppDAOpe {
+
+    private List<CityResBean.ProvinceListBean> pro ;
+
     public ProvDAOpe(Context context) {
         super(context);
     }
 
-    public ArrayList<String> getData(){
-        ArrayList<String> data = new ArrayList<>();
-        for(int i=0;i<100;i++){
-            data.add(""+i);
+
+
+    public List<CityResBean.ProvinceListBean> getPro() {
+        if(pro==null){
+            pro = LocalValue.getProlList();
         }
-        return data;
+        return pro;
     }
 }

@@ -4,11 +4,13 @@ package com.siweisoft.heavycenter.module.myce.unit.bind;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.fragment.FragManager;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -16,13 +18,18 @@ import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
+import com.siweisoft.heavycenter.data.netd.unit.search.SearchReqBean;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitBindBinding;
 import com.siweisoft.heavycenter.databinding.ItemMyceUnitBindBinding;
+import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
+import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
 import java.util.List;
 
 public class BindUIOpe extends AppUIOpe<FragMyceUnitBindBinding>{
 
+    private SearchReqBean searchReqBean = new SearchReqBean();
 
     public BindUIOpe(Context context) {
         super(context);
@@ -66,5 +73,19 @@ public class BindUIOpe extends AppUIOpe<FragMyceUnitBindBinding>{
             }
         });
 
+    }
+
+
+    public void showTip(View.OnClickListener onClickListener){
+        DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
+        diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_nullunit,null));
+        diaLogCenterFrag.setOnClickListener(onClickListener);
+        FragManager.getInstance().cover(getActivity(), MainAct.ID_ALL_ROOT,diaLogCenterFrag,R.anim.fade_in,R.anim.fade_out);
+    }
+
+
+    public SearchReqBean getSearchReqBean() {
+        searchReqBean.setKeyword(bind.search.getEditText().getText().toString());
+        return searchReqBean;
     }
 }

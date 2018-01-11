@@ -15,7 +15,7 @@ import com.siweisoft.heavycenter.module.main.MainAct;
 public class AcctAct extends AppAct<AcctUIOpe,AcctDAOpe> {
 
 
-    public static final int ROOT_ID = R.id.content_acct;
+    public static final int ROOT_ID = R.id.act_acct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

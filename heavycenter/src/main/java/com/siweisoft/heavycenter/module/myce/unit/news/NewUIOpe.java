@@ -26,7 +26,7 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
         return newReqBean;
     }
 
-    public void initUI(ListResBean.ResultsBean unit){
+    public void initUI(ListResBean.UnitInfo unit){
         bind.itemUnitname.getMidET().setText(StringUtil.getStr(unit.getCompanyName()));
         bind.itemNunitshortname.getMidTV().setText(StringUtil.getStr(unit.getAbbreviationName()));
         bind.upunit.getMidTV().setText(StringUtil.getStr(unit.getCompanyName()));

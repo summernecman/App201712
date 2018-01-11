@@ -33,7 +33,7 @@ public class CityResBean extends BaseBean {
         this.provinceList = provinceList;
     }
 
-    public static class ProvinceListBean {
+    public static class ProvinceListBean extends BaseBean{
         /**
          * name : 340000
          * value : 安徽
@@ -43,6 +43,15 @@ public class CityResBean extends BaseBean {
         private String name;
         private String value;
         private List<CityListBean> cityList;
+
+        private int checkStatus;
+
+        public static final int CHECK_STATE_FULL = 3;
+
+        public static final int CHECK_STATE_HALF = 2;
+
+        public static final int CHECK_STATE_NULL = 1;
+
 
         public String getName() {
             return name;
@@ -68,7 +77,15 @@ public class CityResBean extends BaseBean {
             this.cityList = cityList;
         }
 
-        public static class CityListBean {
+        public int getCheckStatus() {
+            return checkStatus;
+        }
+
+        public void setCheckStatus(int checkStatus) {
+            this.checkStatus = checkStatus;
+        }
+
+        public static class CityListBean extends BaseBean{
             /**
              * name : 340100
              * value : 合肥市
@@ -78,6 +95,13 @@ public class CityResBean extends BaseBean {
             private String name;
             private String value;
             private int checkStatus;
+
+            public static final int CHECK_STATE_FULL = 3;
+
+            public static final int CHECK_STATE_HALF = 2;
+
+            public static final int CHECK_STATE_NULL = 1;
+
 
             public String getName() {
                 return name;

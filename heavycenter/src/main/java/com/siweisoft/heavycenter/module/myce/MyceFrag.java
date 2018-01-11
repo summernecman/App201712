@@ -4,9 +4,16 @@ package com.siweisoft.heavycenter.module.myce;
 
 import android.view.View;
 
+import com.android.lib.network.news.NetAdapter;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.unit.info.InfoReqBean;
+import com.siweisoft.heavycenter.data.netd.unit.info.InfoResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.mana.car.CarFrag;
 import com.siweisoft.heavycenter.module.mana.good.GoodFrag;
@@ -25,6 +32,26 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
         super.initData();
         setIndex(((MainAct)(getActivity())).getP().getU().getPos_content());
         getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().isRead());
+
+        InfoReqBean reqBean = new InfoReqBean();
+        reqBean.setId(32);
+        NetDataOpe.Unit.getInfo(getActivity(),reqBean,new NetAdapter<InfoResBean>(getActivity()){
+            @Override
+            public void onResult(boolean success, String msg, InfoResBean o) {
+                super.onResult(success, msg, o);
+                LogUtil.E(o);
+            }
+        });
+
+
+
+
+
+
+
+
+
+
     }
 
     @OnClick({R.id.item_car,R.id.item_good,R.id.item_store,R.id.item_user,R.id.item_unit,R.id.iv_nameedit,R.id.ftv_right})
@@ -54,7 +81,16 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 ((MainAct)getActivity()).getP().getD().setIndex(getIndex());
                 break;
             case R.id.item_unit:
-                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), getIndex(),System.currentTimeMillis()%2==0?new BindFrag():new com.siweisoft.heavycenter.module.myce.unit.info.InfoFrag());
+                switch (LocalValue.getLoginInfo().getBindCompanyState()){
+                    case LoginResBean.BIND_UNIT_STATE_BINDED:
+                        FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), getIndex(),new com.siweisoft.heavycenter.module.myce.unit.info.InfoFrag());
+                        break;
+                    case LoginResBean.BIND_UNIT_STATE_CHECK:
+                    case LoginResBean.BIND_UNIT_STATE_REJECT:
+                    case LoginResBean.BIND_UNIT_STATE_UNBIND:
+                        FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), getIndex(),new BindFrag());
+                        break;
+                }
                 ((MainAct)getActivity()).getP().getD().setIndex(getIndex());
                 break;
             case R.id.iv_nameedit:

@@ -95,7 +95,8 @@ public class ItemView extends RelativeLayout{
        // divider.setBackgroundColor(bgDivider);
     }
 
-
-
+    public TextView getRightTV() {
+        return rightTV;
+    }
 }
 

@@ -29,4 +29,8 @@ public class SearchBindUnitMyceItem extends LinearLayout {
         editText.setHint(a.getString(R.styleable.style_common_txt_mid));
 
     }
+
+    public EditText getEditText() {
+        return editText;
+    }
 }

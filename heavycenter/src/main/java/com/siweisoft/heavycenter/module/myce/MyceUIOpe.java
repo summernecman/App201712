@@ -49,6 +49,25 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                 bind.llHead.tvRole.setText(LoginResBean.USER_ROLE_SYS_ADMIN_CN);
                 break;
         }
+
+        switch (LocalValue.getLoginInfo().getBindCompanyState()){
+            case LoginResBean.BIND_UNIT_STATE_UNBIND:
+                bind.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_UNBIND_CN);
+                break;
+            case LoginResBean.BIND_UNIT_STATE_CHECK:
+                bind.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_CHECK_CN);
+                break;
+            case LoginResBean.BIND_UNIT_STATE_BINDED:
+                bind.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_BINDED_CN);
+                break;
+            case LoginResBean.BIND_UNIT_STATE_REJECT:
+                bind.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_REJECT_CN);
+                break;
+
+
+        }
+
+
     }
 
     public void hideOrShowManageFunction(boolean show){

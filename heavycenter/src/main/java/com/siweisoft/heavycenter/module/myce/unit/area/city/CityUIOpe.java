@@ -11,8 +11,11 @@ import com.android.lib.bean.AppViewHolder;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitNewCityBinding;
+import com.siweisoft.heavycenter.databinding.ItemMyceUnitNewCityBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CityUIOpe extends AppUIOpe<FragMyceUnitNewCityBinding>{
@@ -27,13 +30,19 @@ public class CityUIOpe extends AppUIOpe<FragMyceUnitNewCityBinding>{
         bind.recycle.setLayoutManager(new GridLayoutManager(context,3));
     }
 
-    public void LoadListData(List<String> s, final ViewListener listener) {
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_myce_unit_new_city, BR.item_myce_unit_new_city, s,listener){
+    public void LoadListData(final List<CityResBean.ProvinceListBean.CityListBean> data, final ViewListener listener) {
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_myce_unit_new_city, BR.item_myce_unit_new_city, data,listener){
             @Override
-            public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {
-                super.onBindViewHolder(holder, position, payloads);
+            public void onBindViewHolder(AppViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
+                ItemMyceUnitNewCityBinding binding = (ItemMyceUnitNewCityBinding) holder.viewDataBinding;
+                binding.typeimage.setType(data.get(position).getCheckStatus());
             }
         });
+    }
+
+    public void notifyDataSetChanged(){
+        bind.recycle.getAdapter().notifyDataSetChanged();
     }
 
 }

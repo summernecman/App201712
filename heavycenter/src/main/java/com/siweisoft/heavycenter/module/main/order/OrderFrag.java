@@ -5,7 +5,6 @@ package com.siweisoft.heavycenter.module.main.order;
 import android.content.Intent;
 import android.view.View;
 
-import com.android.lib.bean.TitleBean;
 import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.LogUtil;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -46,7 +45,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
                 }
                 DialogListFrag frag = new DialogListFrag();
                 frag.init(strs);
-                FragmentUtil2.getInstance().addNoAnim(getActivity(),R.id.content_frame,frag);
+                FragmentUtil2.getInstance().addNoAnim(getActivity(),R.id.act_main,frag);
                 break;
         }
     }
