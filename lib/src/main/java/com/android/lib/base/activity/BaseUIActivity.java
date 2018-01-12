@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.android.lib.R;
+import com.android.lib.base.interf.BackUII;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseOpes;
 import com.android.lib.base.ope.BaseUIOpe;
@@ -22,6 +23,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 
@@ -39,6 +41,8 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
      * 操作类
      */
     protected BaseOpes<A, B> opes;
+
+    ArrayList<BackUII> backUIIS = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,5 +150,14 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
         EventBus.getDefault().unregister(this);
     }
 
+    @Override
+    public void onBackPressed() {
+        for(int i=0;i<backUIIS.size();i++){
+            backUIIS.get(i).OnBackPress();
+        }
+    }
 
+    public void addBackUII(BackUII backUII){
+        backUIIS.add(backUII);
+    }
 }

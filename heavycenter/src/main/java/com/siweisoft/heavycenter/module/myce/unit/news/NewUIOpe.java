@@ -6,7 +6,7 @@ import android.content.Context;
 
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
-import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
+import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.unit.news.NewReqBean;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitNewBinding;
 
@@ -26,7 +26,7 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
         return newReqBean;
     }
 
-    public void initUI(ListResBean.UnitInfo unit){
+    public void initUI(UnitInfo unit){
         bind.itemUnitname.getMidET().setText(StringUtil.getStr(unit.getCompanyName()));
         bind.itemNunitshortname.getMidTV().setText(StringUtil.getStr(unit.getAbbreviationName()));
         bind.upunit.getMidTV().setText(StringUtil.getStr(unit.getCompanyName()));

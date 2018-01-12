@@ -11,6 +11,7 @@ import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
+import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.module.myce.unit.addr.AddrFrag;
 import com.siweisoft.heavycenter.module.myce.unit.area.prov.ProvFrag;
 import com.siweisoft.heavycenter.module.myce.unit.bind.BindDAOpe;
@@ -46,7 +47,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         switch (res){
             case 3:
                 if(getArguments()!=null && getArguments().getSerializable(ValueConstant.DATA_DATA2)!=null){
-                    ListResBean.UnitInfo unit = (ListResBean.UnitInfo) getArguments().getSerializable(ValueConstant.DATA_DATA2);
+                    UnitInfo unit = (UnitInfo) getArguments().getSerializable(ValueConstant.DATA_DATA2);
                     getP().getU().initUI(unit);
                 }
                 break;

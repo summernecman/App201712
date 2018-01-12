@@ -8,6 +8,7 @@ import com.android.lib.util.GsonUtil;
 import com.android.lib.util.NetWorkUtil;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.ToastUtil;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Array;
@@ -49,7 +50,13 @@ public  class NetAdapter<A> implements NetI<A> {
             if(type instanceof ParameterizedType ){
                 ParameterizedType parameterizedType = (ParameterizedType) type;
                 Class<A> a = (Class<A>) parameterizedType.getActualTypeArguments()[0];
-                A aa =GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),a);
+                A aa = null;
+                try {
+                    aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),a);
+                } catch (JsonSyntaxException e) {
+                    e.printStackTrace();
+                } finally {
+                }
                 if (!"200".equals(baseResBean.getCode())) {
                     onResult(false,baseResBean.getMessage(), aa);
                 } else {

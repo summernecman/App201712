@@ -2,6 +2,7 @@ package com.android.lib.util.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ListFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -67,6 +68,14 @@ public class FragManager {
         fragMaps.clear();
     }
 
+
+    public void clearAll(FragmentManager manager) {
+        for(int i=0;i<fragMaps.size();i++){
+            clearAll(manager,i);
+        }
+        viewIds.clear();
+        fragMaps.clear();
+    }
 
     public void finish(FragmentManager manager, int index) {
         if (fragMaps.get(index) != null) {

@@ -7,6 +7,7 @@ import com.android.lib.util.GsonUtil;
 import com.android.lib.util.NetWorkUtil;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.ToastUtil;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.ParameterizedType;
@@ -40,7 +41,13 @@ public  class NetArrayAdapter<A> implements NetArrayI<A> {
             getClass().getSimpleName();
             Class<A> a = (Class<A>) ((ParameterizedType) type).getActualTypeArguments()[0];
 
-            ArrayList<A> aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),new TypeToken<ArrayList<A>>(){}.getType());
+            ArrayList<A> aa = null;
+            try {
+                aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),new TypeToken<ArrayList<A>>(){}.getType());
+            } catch (JsonSyntaxException e) {
+                e.printStackTrace();
+            } finally {
+            }
 
             if (!"200".equals(baseResBean.getCode())) {
                 onResult(false,baseResBean.getMessage(), aa);

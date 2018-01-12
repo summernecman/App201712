@@ -21,7 +21,6 @@ import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchReqBean;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitBindBinding;
 import com.siweisoft.heavycenter.databinding.ItemMyceUnitBindBinding;
-import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 

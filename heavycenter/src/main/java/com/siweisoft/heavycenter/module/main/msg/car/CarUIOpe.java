@@ -12,6 +12,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
 import com.siweisoft.heavycenter.databinding.FragMainMsgCarBinding;
 
 import java.util.List;
@@ -28,23 +29,25 @@ public class CarUIOpe extends BaseUIOpe<FragMainMsgCarBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<String> s){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_car, BR.item_main_msg_car,s));
+    public void LoadListData(List<MsgsResBean.ResultsBean> data){
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_all, BR.item_main_msg_all,data));
     }
 
-    public void initRefresh(){
-        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000);
-            }
-        });
-        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadmore(2000);
-            }
-        });
+    public void initRefresh(OnRefreshListener onRefreshListener,OnLoadmoreListener onLoadmoreListener){
+        bind.refreshLayout.setOnRefreshListener(onRefreshListener);
+        bind.refreshLayout.setOnLoadmoreListener(onLoadmoreListener);
+    }
+
+    public void finishRefresh(){
+        bind.refreshLayout.finishRefresh();
+    }
+
+    public void finishLoadmore(){
+        bind.refreshLayout.finishLoadmore();
+    }
+
+    public void autoRefresh(){
+        bind.refreshLayout.autoRefresh();
     }
 
 }

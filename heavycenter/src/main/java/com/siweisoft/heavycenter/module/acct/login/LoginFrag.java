@@ -49,16 +49,6 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
             }
         });
 
-        InfoReqBean reqBean = new InfoReqBean();
-        reqBean.setId(140);
-        reqBean.setIsApp(1);
-        NetDataOpe.User.getInfo(getActivity(),reqBean,new NetAdapter<InfoResBean>(getActivity()){
-            @Override
-            public void onResult(boolean success, String msg, InfoResBean o) {
-                super.onResult(success, msg, o);
-                LogUtil.E(o);
-            }
-        });
     }
 
     @OnClick({R.id.login,R.id.regist,R.id.repwd})

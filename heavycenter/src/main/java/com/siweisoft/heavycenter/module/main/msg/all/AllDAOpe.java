@@ -27,6 +27,7 @@ public class AllDAOpe extends BaseDAOpe {
         msgsReqBean.setUserId(LocalValue.getLoginInfo().getUserId());
         msgsReqBean.setPageIndex(0);
         msgsReqBean.setPageSize(100);
+        msgsReqBean.setMessageCate(MsgsReqBean.MESSAGE_CATE_ALL);
         NetDataOpe.Msg.list(getActivity(),msgsReqBean,adapter);
     }
 

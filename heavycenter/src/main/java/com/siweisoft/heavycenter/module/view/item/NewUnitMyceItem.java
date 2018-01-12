@@ -74,4 +74,8 @@ public class NewUnitMyceItem extends RelativeLayout {
     public TextView getMidTV() {
         return midTV;
     }
+
+    public void setMidTVTxt(String Str){
+        midTV.setText(Str);
+    }
 }

@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.lib.R;
+import com.android.lib.base.activity.BaseUIActivity;
+import com.android.lib.base.interf.BackUII;
 import com.android.lib.base.interf.FragI;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseOpes;
@@ -33,7 +35,7 @@ import butterknife.Unbinder;
 /**
  * Created by summer on 2016/4/16 0016 16:03.
  */
-public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, View.OnLongClickListener {
+public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, View.OnLongClickListener,BackUII {
 
     /**
      * fragment所属的层次
@@ -213,5 +215,19 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     public void addFragListener(FragI fragI){
         fragIs.add(fragI);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(getActivity() instanceof BaseUIActivity){
+            BaseUIActivity activity = (BaseUIActivity) getActivity();
+            activity.addBackUII(this);
+        }
+    }
+
+
+    public void OnBackPress(){
+
     }
 }

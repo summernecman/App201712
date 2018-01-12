@@ -5,6 +5,11 @@ package com.siweisoft.heavycenter.module.main.msg.trans;
 import android.content.Context;
 
 import com.android.lib.base.ope.BaseDAOpe;
+import com.android.lib.network.news.NetI;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
+import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
 
 import java.util.ArrayList;
 
@@ -21,6 +26,15 @@ public class TransDAOpe extends BaseDAOpe {
             data.add(""+i);
         }
         return data;
+    }
+
+    public void getMsgTrans(NetI<MsgsResBean> adapter){
+        MsgsReqBean msgsReqBean = new MsgsReqBean();
+        msgsReqBean.setUserId(LocalValue.getLoginInfo().getUserId());
+        msgsReqBean.setPageIndex(0);
+        msgsReqBean.setPageSize(100);
+        msgsReqBean.setMessageCate(MsgsReqBean.MESSAGE_CATE_TRANS);
+        NetDataOpe.Msg.list(getActivity(),msgsReqBean,adapter);
     }
 
 }

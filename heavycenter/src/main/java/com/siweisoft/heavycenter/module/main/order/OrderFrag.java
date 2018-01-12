@@ -24,7 +24,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
     @Override
     public void initData() {
         super.initData();
-        getP().getU().initPages(fragment,getP().getD().getPages());
+        getP().getU().initPages(fragment,getP().getD().getPages(getIndex()));
     }
 
 

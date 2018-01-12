@@ -13,9 +13,13 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
+import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
+import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
 
 import java.io.Serializable;
@@ -77,11 +81,21 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
 
                     @Override
                     public void onClick(View vv) {
-                        ListResBean.UnitInfo unitInfo = (ListResBean.UnitInfo) v.getTag(R.id.data);
+                        UnitInfo unitInfo = (UnitInfo) v.getTag(R.id.data);
                         getP().getD().bindUnit(unitInfo.getId(), new UINetAdapter<BindResBean>(getActivity()) {
                             @Override
                             public void onResult(boolean success, String msg, BindResBean o) {
                                 super.onResult(success, msg, o);
+                                getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                    @Override
+                                    public void onResult(boolean success, String msg, LoginResBean o) {
+                                        super.onResult(success, msg, o);
+                                        if(success){
+                                            LocalValue.saveLoginInfo(o);
+                                            ((MainAct)getActivity()).ddd();
+                                        }
+                                    }
+                                });
                             }
                         });
 

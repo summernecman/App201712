@@ -10,10 +10,12 @@ import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
+import com.siweisoft.heavycenter.data.netd.user.info.InfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
 
@@ -47,5 +49,12 @@ public class BindDAOpe extends AppDAOpe {
         bindReqBean.setBindOperateType(BindReqBean.BIND_OPERATE_TYPE_SEARCH);
         bindReqBean.setIsManager(BindReqBean.IS_MANAGER_NO);
         NetDataOpe.User.binUnit(getActivity(),bindReqBean,adapter);
+    }
+
+    public void getInfo(NetI<LoginResBean> adapter){
+        InfoReqBean infoReqBean = new InfoReqBean();
+        infoReqBean.setIsApp(1);
+        infoReqBean.setId(LocalValue.getLoginInfo().getUserId());
+        NetDataOpe.User.getInfo(getActivity(),infoReqBean,adapter);
     }
 }

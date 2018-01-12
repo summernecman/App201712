@@ -21,13 +21,8 @@ public abstract class UINetAdapter<A extends BaseBean> extends NetAdapter<A> {
 
     @Override
     public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
-        try {
-            super.onNetFinish(haveData, url, baseResBean);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            stopLoading();
-        }
+        super.onNetFinish(haveData, url, baseResBean);
+        stopLoading();
     }
 
     public void stopLoading(){

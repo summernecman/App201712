@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.order.detail.DetailFrag;
 
@@ -22,7 +23,7 @@ public class DoingFrag extends AppFrag<DoingUIOpe,DoingDAOpe> implements ViewLis
     public void onInterupt(int type, View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                FragManager.getInstance().startFragment(activity.getSupportFragmentManager(),getIndex(),new DetailFrag());
+                FragManager2.getInstance().start(activity,getIndex(),new DetailFrag(),null,0);
                 break;
         }
     }

@@ -30,6 +30,7 @@ import com.siweisoft.heavycenter.data.netd.other.city.CityReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
+import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.unit.news.NewReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.news.NewResBean;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchReqBean;
@@ -40,6 +41,8 @@ import com.siweisoft.heavycenter.data.netd.user.info.InfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.info.InfoResBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
+import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindReqBean;
+import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeResBean;
 
@@ -95,7 +98,7 @@ public class NetDataOpe {
             NetGet.getData(context,NetValue.获取地址("/company/search"),reqBean,adapter);
         }
 
-        public static void getInfo(Context context, com.siweisoft.heavycenter.data.netd.unit.info.InfoReqBean reqBean, NetI<com.siweisoft.heavycenter.data.netd.unit.info.InfoResBean> adapter) {
+        public static void getInfo(Context context, com.siweisoft.heavycenter.data.netd.unit.info.InfoReqBean reqBean, NetI<UnitInfo> adapter) {
             NetGet.getData(context,NetValue.获取地址("/company/getDetail"),reqBean,adapter);
         }
 
@@ -118,8 +121,12 @@ public class NetDataOpe {
             NetGet.postData(context,NetValue.获取地址("/user/bindCompany"),reqBean,adapter);
         }
 
+        public static void unBinUnit(Context context, UnBindReqBean reqBean, NetI<UnBindResBean> adapter) {
+            NetGet.postData(context,NetValue.获取地址("/user/unBindCompany"),reqBean,adapter);
+        }
 
-        public static void getInfo(Context context, InfoReqBean reqBean, NetI<InfoResBean> adapter) {
+
+        public static void getInfo(Context context, InfoReqBean reqBean, NetI<LoginResBean> adapter) {
             NetGet.getData(context,NetValue.获取地址("/user/getDetail"),reqBean,adapter);
         }
 

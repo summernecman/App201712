@@ -9,9 +9,20 @@ public class MsgsReqBean extends BaseReqBean {
 
     //全部、运输、车辆、公告、系统
 
+
+    public static final int MESSAGE_CATE_ALL = 0;
+
+    public static final int MESSAGE_CATE_TRANS = 2;
+
+    public static final int MESSAGE_CATE_CAR = 3;
+
+    public static final int MESSAGE_CATE_PUB = 4;
+
+    public static final int MESSAGE_CATE_SYS = 1;
+
     private int userId;
 
-    private String messageCate;
+    private int messageCate;
 
     private int pageIndex;
 
@@ -28,11 +39,11 @@ public class MsgsReqBean extends BaseReqBean {
         this.userId = userId;
     }
 
-    public String getMessageCate() {
+    public int getMessageCate() {
         return messageCate;
     }
 
-    public void setMessageCate(String messageCate) {
+    public void setMessageCate(int messageCate) {
         this.messageCate = messageCate;
     }
 

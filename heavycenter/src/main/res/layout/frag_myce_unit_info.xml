@@ -3,7 +3,7 @@
     <data>
         <variable
             name="frag_myce_unit_info"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,44 +22,48 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_name"
             style_common:txt_left = "单位名称"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_short"
             style_common:txt_left = "单位简称"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/upunit"
+            android:id="@+id/item_ununit"
             style_common:txt_left = "上级单位"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/addr"
+            android:id="@+id/item_addr"
             style_common:txt_left = "单位地址"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/area"
+            android:id="@+id/item_area"
             style_common:txt_left = "送货区域"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            style_common:txt_left = "联系人"
+            android:id="@+id/item_contact"
+            style_common:txt_left = "联系人  "
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_phone"
             style_common:txt_left = "联系电话"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"

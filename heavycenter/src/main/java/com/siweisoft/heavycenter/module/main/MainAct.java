@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 
@@ -31,22 +32,26 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     }
 
 
-    private void dothing(){
+    public void dothing(){
+        FragManager.getInstance().clear();
         getP().getU().initPages(getP().getD().getMenudata(),this);
         getP().getU().initDrawerMenu(getP().getD().getMyceFrag());
-        if(!getP().getD().isRead()){
+        ddd();
+    }
+
+    public void ddd(){
+        if(!getP().getD().isBindUnit()){
             getP().getU().nobind();
+        }else{
+            getP().getU().removenobind();
         }
-
-
-
     }
 
     @Override
     public void onAppItemSelect(ViewGroup viewGroup, View view, int position) {
         getP().getU().setCurrentItem(position);
-        getP().getD().setIndex(position);
-        if(getP().getD().isRead()){
+        getP().getD().setIndex(getP().getD().getMenudata().get(position).getContainerView().getId());
+        if(getP().getD().isBindUnit()){
             FragManager.getInstance().clearAll(getSupportFragmentManager(),getP().getU().getPos_content());
         }
     }
@@ -61,25 +66,26 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         dothing();
     }
 
-    @Override
-    public void onBackPressed() {
-        if(FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT)!=null&&FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()>0){
-            activity.getSupportFragmentManager().beginTransaction().remove(
-                    FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).get(
-                            FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1))
-                    .commit();
-            FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).remove(FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1);
-        }else
-        if(getP().getD().getIndex()==getP().getU().getPos_content()
-                &&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_content())!=null
-                &&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_content()).size()>0){
-            FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
-        }else
-        if(FragManager.getInstance().getFragMaps().get(getP().getD().getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getP().getD().getIndex()).size()>1){
-            FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
-        }else{
-            finish();
-        }
+//    @Override
+//    public void onBackPressed() {
+
+//        if(FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT)!=null&&FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()>0){
+//            activity.getSupportFragmentManager().beginTransaction().remove(
+//                    FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).get(
+//                            FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1))
+//                    .commit();
+//            FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).remove(FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1);
+//        }else
+//        if(getP().getD().getIndex()==getP().getU().getPos_content()
+//                &&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_content())!=null
+//                &&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_content()).size()>0){
+//            FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
+//        }else
+//        if(FragManager.getInstance().getFragMaps().get(getP().getD().getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getP().getD().getIndex()).size()>1){
+//            FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
+//        }else{
+//            finish();
+//        }
 
 //        FragManager.getInstance().clearTopWith(activity.getSupportFragmentManager(), getP().getD().getIndex(), new OnFinishListener() {
 //            @Override
@@ -87,5 +93,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 //                MainAct.super.onBackPressed();
 //            }
 //        });
-    }
+
+
+//    }
 }

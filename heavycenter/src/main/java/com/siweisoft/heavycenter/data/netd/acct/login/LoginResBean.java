@@ -4,40 +4,34 @@ package com.siweisoft.heavycenter.data.netd.acct.login;
 
 import com.android.lib.bean.BaseBean;
 
+import java.util.List;
+
 public class LoginResBean extends BaseBean {
 
 
     /**
-     * userId : 112
+     * userId : 140
      * passWord : e10adc3949ba59abbe56e057f20f883e
-     * tel : 18721607438
-     * trueName : 18721607438
+     * tel : 18721607419
+     * trueName : 唐杰
      * userPhoto :
-     * companyId : 0
-     * bindCompanyState : 0
-     * bindCompanyTime :
-     * companyName :
-     * abbreviationName :
-     * userType : 0
+     * companyId : 32
+     * bindCompanyState : 2
+     * bindCompanyTime : 1515663494000
+     * companyName : huluwaCompany3
+     * abbreviationName : hulu3
+     * userType : 2
      * deviceType : 1
      * deviceId : 1104a89792ac1fc2d38
-     * userRole : 1
+     * userRole : admin
      * loginStatus : 1
+     * wareHouseCount : 2
+     * productCount : 4
+     * userCount : 8
+     * vehicleCount : 7
+     * branchCompanyList : [{"branchId":35,"companyName":"huluwaCompany6","abbreviationName":"hulu6"},{"branchId":32,"companyName":"huluwaCompany3","abbreviationName":"hulu3"},{"branchId":34,"companyName":"huluwaCompany5","abbreviationName":"hulu5"},{"branchId":36,"companyName":"huluwaCompany7","abbreviationName":"huluwa7"}]
      */
 
-    private int userId;
-    private String passWord;
-    private String tel;
-    private String trueName;
-    private String userPhoto;
-    private int companyId;
-    private int bindCompanyState;
-    private String bindCompanyTime;
-    private String companyName;
-    private String abbreviationName;
-    private int userType;
-    private int deviceType;
-    private String deviceId;
 
     public static final String USER_ROLE_DRIVER = "driver";
 
@@ -76,9 +70,27 @@ public class LoginResBean extends BaseBean {
     public static final String BIND_UNIT_STATE_REJECT_CN = "绑定失败";
 
 
+
+    private int userId;
+    private String passWord;
+    private String tel;
+    private String trueName;
+    private String userPhoto;
+    private int companyId;
+    private int bindCompanyState;
+    private String bindCompanyTime;
+    private String companyName;
+    private String abbreviationName;
+    private int userType;
+    private int deviceType;
+    private String deviceId;
     private String userRole;
     private int loginStatus;
-
+    private int wareHouseCount;
+    private int productCount;
+    private int userCount;
+    private int vehicleCount;
+    private List<BranchCompanyListBean> branchCompanyList;
 
     public int getUserId() {
         return userId;
@@ -184,6 +196,13 @@ public class LoginResBean extends BaseBean {
         this.deviceId = deviceId;
     }
 
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
 
     public int getLoginStatus() {
         return loginStatus;
@@ -193,11 +212,79 @@ public class LoginResBean extends BaseBean {
         this.loginStatus = loginStatus;
     }
 
-    public String getUserRole() {
-        return userRole;
+    public int getWareHouseCount() {
+        return wareHouseCount;
     }
 
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
+    public void setWareHouseCount(int wareHouseCount) {
+        this.wareHouseCount = wareHouseCount;
+    }
+
+    public int getProductCount() {
+        return productCount;
+    }
+
+    public void setProductCount(int productCount) {
+        this.productCount = productCount;
+    }
+
+    public int getUserCount() {
+        return userCount;
+    }
+
+    public void setUserCount(int userCount) {
+        this.userCount = userCount;
+    }
+
+    public int getVehicleCount() {
+        return vehicleCount;
+    }
+
+    public void setVehicleCount(int vehicleCount) {
+        this.vehicleCount = vehicleCount;
+    }
+
+    public List<BranchCompanyListBean> getBranchCompanyList() {
+        return branchCompanyList;
+    }
+
+    public void setBranchCompanyList(List<BranchCompanyListBean> branchCompanyList) {
+        this.branchCompanyList = branchCompanyList;
+    }
+
+    public static class BranchCompanyListBean {
+        /**
+         * branchId : 35
+         * companyName : huluwaCompany6
+         * abbreviationName : hulu6
+         */
+
+        private int branchId;
+        private String companyName;
+        private String abbreviationName;
+
+        public int getBranchId() {
+            return branchId;
+        }
+
+        public void setBranchId(int branchId) {
+            this.branchId = branchId;
+        }
+
+        public String getCompanyName() {
+            return companyName;
+        }
+
+        public void setCompanyName(String companyName) {
+            this.companyName = companyName;
+        }
+
+        public String getAbbreviationName() {
+            return abbreviationName;
+        }
+
+        public void setAbbreviationName(String abbreviationName) {
+            this.abbreviationName = abbreviationName;
+        }
     }
 }

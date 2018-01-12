@@ -4,16 +4,11 @@ package com.siweisoft.heavycenter.module.myce;
 
 import android.view.View;
 
-import com.android.lib.network.news.NetAdapter;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
-import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
-import com.siweisoft.heavycenter.data.netd.unit.info.InfoReqBean;
-import com.siweisoft.heavycenter.data.netd.unit.info.InfoResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.mana.car.CarFrag;
 import com.siweisoft.heavycenter.module.mana.good.GoodFrag;
@@ -31,20 +26,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     public void initData() {
         super.initData();
         setIndex(((MainAct)(getActivity())).getP().getU().getPos_content());
-        getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().isRead());
-
-        InfoReqBean reqBean = new InfoReqBean();
-        reqBean.setId(32);
-        NetDataOpe.Unit.getInfo(getActivity(),reqBean,new NetAdapter<InfoResBean>(getActivity()){
-            @Override
-            public void onResult(boolean success, String msg, InfoResBean o) {
-                super.onResult(success, msg, o);
-                LogUtil.E(o);
-            }
-        });
-
-
-
+        getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().isBindUnit());
 
 
 

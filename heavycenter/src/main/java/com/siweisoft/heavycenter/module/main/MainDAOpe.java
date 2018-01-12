@@ -11,6 +11,8 @@ import com.android.lib.util.system.PermissionUtil;
 import com.android.lib.view.bottommenu.BottomMenuBean;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppDAOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.module.main.msg.MsgFrag;
 import com.siweisoft.heavycenter.module.main.order.OrderFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
@@ -27,8 +29,6 @@ public class MainDAOpe extends AppDAOpe {
     private PermissionUtil permissionUtil;
 
     private int index=0;
-
-    private boolean isRead = true;
 
     MyceFrag myceFrag = new MyceFrag();
 
@@ -112,8 +112,11 @@ public class MainDAOpe extends AppDAOpe {
         this.index = index;
     }
 
-    public boolean isRead() {
+    public boolean isBindUnit() {
         //绑定了单位== true
-        return true;
+        if(LocalValue.getLoginInfo().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_BINDED){
+            return true;
+        }
+        return false;
     }
 }
