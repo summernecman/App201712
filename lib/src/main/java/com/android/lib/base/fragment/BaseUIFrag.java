@@ -15,8 +15,10 @@ import com.android.lib.base.interf.FragI;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseOpes;
 import com.android.lib.base.ope.BaseUIOpe;
+import com.android.lib.bean.databean.Value;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.fragment.two.FragKey;
 import com.android.lib.util.system.HandleUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
 
@@ -35,7 +37,7 @@ import butterknife.Unbinder;
 /**
  * Created by summer on 2016/4/16 0016 16:03.
  */
-public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, View.OnLongClickListener,BackUII {
+public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, View.OnLongClickListener {
 
     /**
      * fragment所属的层次
@@ -49,6 +51,8 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     BaseOpes<A, B> opes;
 
     private ArrayList<FragI> fragIs = new ArrayList<>();
+
+    BaseUIActivity baseUIActivity;
 
     public BaseUIFrag() {
 
@@ -217,17 +221,12 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         fragIs.add(fragI);
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if(getActivity() instanceof BaseUIActivity){
-            BaseUIActivity activity = (BaseUIActivity) getActivity();
-            activity.addBackUII(this);
-        }
+
+    public String getContainerName() {
+        return getArguments().getString(ValueConstant.CONTAINER_NAME);
     }
 
-
-    public void OnBackPress(){
-
+    public BaseUIActivity getBaseUIActivity() {
+        return (BaseUIActivity) getActivity();
     }
 }

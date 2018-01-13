@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -19,10 +20,28 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     public static final int ID_CONTENT = R.id.content_content;
 
+    public static final String 地磅 = "地磅";
+
+    public static final String 运输单 = "运输单";
+
+    public static final String 订单 = "订单";
+
+    public static final String 仓库 = "仓库";
+
+    public static final String 消息 = "消息";
+
+    public static final String 个人中心 = "个人中心";
+
+    public static final String 主界面 = "主界面";
+
+    public static final String 对话框 = "对话框";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getP().getD().testData();
         getP().getU().setBottomMenuViewData(getP().getD().getMenudata());
         if(!getP().getD().getPermissionUtil().isAllGranted(activity,getP().getD().getPermissions())){
             return;
@@ -34,8 +53,8 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     public void dothing(){
         FragManager.getInstance().clear();
-        getP().getU().initPages(getP().getD().getMenudata(),this);
         getP().getU().initDrawerMenu(getP().getD().getMyceFrag());
+        getP().getU().initPages(getP().getD().getMenudata(),this);
         ddd();
     }
 
@@ -49,10 +68,12 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     @Override
     public void onAppItemSelect(ViewGroup viewGroup, View view, int position) {
+        FragManager2.getInstance().clear((BaseUIActivity) activity,MainAct.主界面);
         getP().getU().setCurrentItem(position);
         getP().getD().setIndex(getP().getD().getMenudata().get(position).getContainerView().getId());
+        setMoudle(getP().getD().getMenudata().get(position).getName());
         if(getP().getD().isBindUnit()){
-            FragManager.getInstance().clearAll(getSupportFragmentManager(),getP().getU().getPos_content());
+            //FragManager.getInstance().clearAll(getSupportFragmentManager(),getP().getU().getPos_content());
         }
     }
 
@@ -96,4 +117,10 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
 
 //    }
+
+
+    @Override
+    public void onBackPressed() {
+        FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle());
+    }
 }

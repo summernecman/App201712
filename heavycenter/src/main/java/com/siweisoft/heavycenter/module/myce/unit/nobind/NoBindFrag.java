@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.myce.unit.nobind;
 import android.view.View;
 
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -18,7 +19,7 @@ public class NoBindFrag extends AppFrag<NoBindUIOpe,NoBindDAOpe> {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bind:
-                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), ((MainAct)getActivity()).getP().getU().getPos_content(),new BindFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new BindFrag());
                 break;
         }
     }

@@ -4,7 +4,7 @@ package com.siweisoft.heavycenter.module.myce;
 
 import android.view.View;
 
-import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -28,18 +28,12 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
         setIndex(((MainAct)(getActivity())).getP().getU().getPos_content());
         getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().isBindUnit());
 
-
-
-
-
-
-
     }
 
     @OnClick({R.id.item_car,R.id.item_good,R.id.item_store,R.id.item_user,R.id.item_unit,R.id.iv_nameedit,R.id.ftv_right})
     public void onClick(View v){
 
-        FragManager.getInstance().clearAll(((MainAct)(getActivity())).getSupportFragmentManager(),getIndex());
+        FragManager2.getInstance().clear(getBaseUIActivity(),MainAct.主界面);
         switch (v.getId()){
             case R.id.login:
                 break;
@@ -47,46 +41,45 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
 
                 break;
             case R.id.item_car:
-                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), getIndex(),new CarFrag());
-                ((MainAct)getActivity()).getP().getD().setIndex(getIndex());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new CarFrag());
+
                 break;
             case R.id.item_good:
-                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), getIndex(),new GoodFrag());
-                ((MainAct)getActivity()).getP().getD().setIndex(getIndex());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new GoodFrag());
                 break;
             case R.id.item_store:
-                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), getIndex(),new StoreFrag());
-                ((MainAct)getActivity()).getP().getD().setIndex(getIndex());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new StoreFrag());
                 break;
             case R.id.item_user:
-                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), getIndex(),new UserFrag());
-                ((MainAct)getActivity()).getP().getD().setIndex(getIndex());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new UserFrag());
                 break;
             case R.id.item_unit:
                 switch (LocalValue.getLoginInfo().getBindCompanyState()){
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
-                        FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), getIndex(),new com.siweisoft.heavycenter.module.myce.unit.info.InfoFrag());
+                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new com.siweisoft.heavycenter.module.myce.unit.info.InfoFrag());
                         break;
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
-                        FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), getIndex(),new BindFrag());
+                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new BindFrag());
                         break;
                 }
-                ((MainAct)getActivity()).getP().getD().setIndex(getIndex());
                 break;
             case R.id.iv_nameedit:
-                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), getIndex(),new NameFrag());
-                ((MainAct)getActivity()).getP().getD().setIndex(getIndex());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new NameFrag());
                 break;
             case R.id.ftv_right:
                 InfoFrag infoFrag = new InfoFrag();
-                infoFrag.setOnClickListener(this);
-                FragManager.getInstance().addId(MainAct.ID_ALL_ROOT);
-                FragManager.getInstance().cover(getActivity(), MainAct.ID_ALL_ROOT,infoFrag,R.anim.fade_in,R.anim.fade_out);
+                infoFrag.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FragManager2.getInstance().setFinishAnim(R.anim.scale_in,R.anim.scale_out).finish(getBaseUIActivity(),MainAct.主界面);
+                    }
+                });
+                FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,infoFrag);
                 break;
         }
-
+        getBaseUIActivity().setMoudle(MainAct.主界面);
         ((MainAct)getActivity()).getP().getU().switchDrawer();
     }
 }

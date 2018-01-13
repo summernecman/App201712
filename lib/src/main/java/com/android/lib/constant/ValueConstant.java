@@ -62,6 +62,13 @@ public class ValueConstant {
     public static final String APPNUM = "APPNUM";
     public static final String IS_SHOW_DANMU = "ishsowdanmu";
     public static final String INDEX_DANMU = "INDEX_DANMU";
+
+
+    public static final String FRAG_KEY = "FRAG_KEY";
+
+    public static final String CONTAINER_NAME = "CONTAINER_NAME";
+
+    public static final String VIEW_ID = "VIEW_ID";
     /**
      * 网络无连接
      */

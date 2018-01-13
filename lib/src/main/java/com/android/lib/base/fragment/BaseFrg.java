@@ -24,9 +24,12 @@ public class BaseFrg extends Fragment {
      */
     protected Fragment fragment;
 
+    private long uniqueid;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        uniqueid = System.currentTimeMillis();
         fragment = this;
         layoutInflater = LayoutInflater.from(getActivity());
     }
@@ -38,5 +41,9 @@ public class BaseFrg extends Fragment {
         if (context instanceof FragmentActivity) {
             activity = (FragmentActivity) context;
         }
+    }
+
+    public long getUniqueid() {
+        return uniqueid;
     }
 }

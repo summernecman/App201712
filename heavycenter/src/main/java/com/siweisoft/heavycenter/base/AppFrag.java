@@ -7,6 +7,7 @@ import android.view.View;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseUIOpe;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
@@ -32,13 +33,6 @@ public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends 
         }
     }
 
-    @Override
-    public void OnBackPress() {
-        if(getActivity() instanceof  MainAct){
-            MainAct mainAct = (MainAct) getActivity();
-            if(getIndex()==mainAct.getP().getD().getIndex()){
-                FragManager2.getInstance().finish(activity,getIndex(),null);
-            }
-        }
-    }
+
+
 }

@@ -25,6 +25,12 @@ public abstract class UINetAdapter<A extends BaseBean> extends NetAdapter<A> {
         stopLoading();
     }
 
+    @Override
+    public void onResult(boolean success, String msg, A o) {
+        stopLoading();
+        super.onResult(success, msg, o);
+    }
+
     public void stopLoading(){
         LoadUtil.getInstance().onStopLoading(this.url);
     }

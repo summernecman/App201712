@@ -13,6 +13,7 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.module.main.msg.MsgFrag;
 import com.siweisoft.heavycenter.module.main.order.OrderFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
@@ -21,6 +22,7 @@ import com.siweisoft.heavycenter.module.main.weigts.WeigtsFrag;
 import com.siweisoft.heavycenter.module.myce.MyceFrag;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainDAOpe extends AppDAOpe {
 
@@ -46,23 +48,23 @@ public class MainDAOpe extends AppDAOpe {
         menudata.clear();
         RelativeLayout v0 = new RelativeLayout(context);v0.setId(11111+0);
         BaseUIFrag fragment0 = new WeigtsFrag(); fragment0.setIndex(0);
-        menudata.add(new BottomMenuBean("地磅", R.drawable.drawable_main_bottom_weight,new WeigtsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        menudata.add(new BottomMenuBean(MainAct.地磅, R.drawable.drawable_main_bottom_weight,new WeigtsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
         RelativeLayout v1 = new RelativeLayout(context);v1.setId(11111+1);
         BaseUIFrag fragment1 = new TransFrag(); fragment1.setIndex(1);
-        menudata.add(new BottomMenuBean("运输单", R.drawable.drawable_main_bottom_trans,new TransFrag(),v1,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        menudata.add(new BottomMenuBean(MainAct.运输单, R.drawable.drawable_main_bottom_trans,new TransFrag(),v1,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
         RelativeLayout v2 = new RelativeLayout(context);v2.setId(11111+2);
         BaseUIFrag fragment2 = new TransFrag(); fragment2.setIndex(2);
-        menudata.add(new BottomMenuBean("订单", R.drawable.drawable_main_bottom_order,new OrderFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        menudata.add(new BottomMenuBean(MainAct.订单, R.drawable.drawable_main_bottom_order,new OrderFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
         RelativeLayout v3 = new RelativeLayout(context);v3.setId(11111+3);
         BaseUIFrag fragment3 = new TransFrag(); fragment3.setIndex(3);
-        menudata.add(new BottomMenuBean("仓库", R.drawable.drawable_main_bottom_store,new StoreFrag(),v3,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        menudata.add(new BottomMenuBean(MainAct.仓库, R.drawable.drawable_main_bottom_store,new StoreFrag(),v3,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
         RelativeLayout v4 = new RelativeLayout(context);v4.setId(11111+4);
         BaseUIFrag fragment4 = new TransFrag(); fragment4.setIndex(4);
-        menudata.add(new BottomMenuBean("消息", R.drawable.drawable_main_bottom_msg,new MsgFrag(),v4,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        menudata.add(new BottomMenuBean(MainAct.消息, R.drawable.drawable_main_bottom_msg,new MsgFrag(),v4,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         return menudata;
     }
 
@@ -118,5 +120,38 @@ public class MainDAOpe extends AppDAOpe {
             return true;
         }
         return false;
+    }
+
+
+    public void testData(){
+        LoginResBean loginResBean = new LoginResBean();
+        loginResBean.setAbbreviationName("公司简称");
+        loginResBean.setBindCompanyState(LoginResBean.BIND_UNIT_STATE_BINDED);
+        loginResBean.setBindCompanyTime("2017-10-11");
+
+        List<LoginResBean.BranchCompanyListBean> branchCompanyList = new ArrayList<>();
+        LoginResBean.BranchCompanyListBean branchCompanyListBean = new LoginResBean.BranchCompanyListBean();
+        branchCompanyListBean.setAbbreviationName("公司简称");
+        branchCompanyListBean.setBranchId(40);
+        branchCompanyListBean.setCompanyName("id为40的公司");
+        branchCompanyList.add(branchCompanyListBean);
+        loginResBean.setBranchCompanyList(branchCompanyList);
+        loginResBean.setCompanyId(40);
+        loginResBean.setCompanyName("公司名称");
+        loginResBean.setDeviceId("fdjfoewhgiehgoir");
+        loginResBean.setDeviceType(1);
+        loginResBean.setLoginStatus(1);
+        loginResBean.setPassWord("123456");
+        loginResBean.setProductCount(10);
+        loginResBean.setTel("18721607438");
+        loginResBean.setTrueName("唐杰");
+        loginResBean.setUserCount(10);
+        loginResBean.setUserId(150);
+        loginResBean.setUserPhoto("1747494443");
+        loginResBean.setUserRole(LoginResBean.USER_ROLE_ADMIN);
+        loginResBean.setUserType(UserTypeReqBean.USER_TYPE_GENERAL);
+        loginResBean.setVehicleCount(10);
+        loginResBean.setWareHouseCount(10);
+        LocalValue.saveLoginInfo(loginResBean);
     }
 }

@@ -15,6 +15,7 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragKey;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.android.lib.view.bottommenu.BottomMenuBean;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -61,8 +62,14 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
 //            }
 //        }
 
-        pos_drawer = FragManager.getInstance().addId(bind.incloud.leftDrawer.getId());
-        FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),pos_drawer,myceFrag);
+//        pos_drawer = FragManager.getInstance().addId(bind.incloud.leftDrawer.getId());
+//        FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),pos_drawer,myceFrag);
+
+        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(bind.incloud.leftDrawer.getId(),new MyceFrag());
+        fragmentTransaction.commitNow();
+
+
     }
 
     public void initPages(final ArrayList<BottomMenuBean> pages,OnAppItemSelectListener listener){
@@ -78,39 +85,33 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
             public void onFinish(Object o) {
                 if(!load){
                     for(int i=0;i<views.size();i++){
-                        FragManager2.getInstance().start(getActivity(),views.get(i).getId(),pages.get(i).getFragment(),null,i);
+                        FragManager2.getInstance().start(
+                                getActivity(),
+                                pages.get(i).getName(),
+                                pages.get(i).getContainerView().getId(),
+                                pages.get(i).getFragment());
                     }
                     load = true;
                 }
             }
         }));
+        bind.content.setCurrentItem(0);
     }
 
     public void nobind(){
-        boolean have = false;
-        @SuppressLint("RestrictedApi") List<Fragment> fragmentList = getActivity().getSupportFragmentManager().getFragments();
-        for(int i=0;fragmentList!=null && i<fragmentList.size();i++){
-            if(fragmentList.get(i) instanceof  NoBindFrag){
-                have = true;
-                break;
-            }
-        }
-
-
-        if(!have){
-            NoBindFrag noBindFrag = new NoBindFrag();
-            FragManager.getInstance().add(getActivity(),MainAct.ID_CONTENT,noBindFrag);
-        }
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.add(MainAct.ID_CONTENT,new NoBindFrag(),NoBindFrag.class.getName());
+        transaction.commitNow();
     }
 
     public void removenobind(){
-        @SuppressLint("RestrictedApi") List<Fragment> fragmentList = getActivity().getSupportFragmentManager().getFragments();
-        for(int i=0;fragmentList!=null && i<fragmentList.size();i++){
-            if(fragmentList.get(i) instanceof  NoBindFrag){
-                FragManager.getInstance().removeJustInNormal(getActivity(),fragmentList.get(i));
-                break;
-            }
+        Fragment fragment = getActivity().getSupportFragmentManager().findFragmentByTag(NoBindFrag.class.getName());
+        if(fragment==null){
+            return;
         }
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.remove(fragment);
+        transaction.commitNow();
     }
 
     public void setCurrentItem(int item){

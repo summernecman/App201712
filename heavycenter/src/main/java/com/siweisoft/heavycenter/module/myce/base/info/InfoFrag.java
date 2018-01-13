@@ -22,16 +22,11 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
 
     }
 
-    public void close(){
-        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
-    }
-
     @OnClick({R.id.iv_close})
     public void onClick(View v) {
         if(onClickListener!=null){
             onClickListener.onClick(v);
         }
-        close();
     }
 
     public void setOnClickListener(View.OnClickListener onClickListener) {

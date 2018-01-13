@@ -26,10 +26,8 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
 
     @OnClick({R.id.ftv_right})
     public void onClick(View v) {
+        super.onClick(v);
         switch (v.getId()){
-            case R.id.ftv_back:
-                ((MainAct)(getActivity())).getP().getU().switchDrawer();
-                break;
             case R.id.ftv_right:
                 FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),getIndex(),new NewFrag());
                 break;

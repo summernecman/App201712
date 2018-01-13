@@ -42,7 +42,8 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
      */
     protected BaseOpes<A, B> opes;
 
-    ArrayList<BackUII> backUIIS = new ArrayList<>();
+    private String moudle ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,14 +151,12 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
         EventBus.getDefault().unregister(this);
     }
 
-    @Override
-    public void onBackPressed() {
-        for(int i=0;i<backUIIS.size();i++){
-            backUIIS.get(i).OnBackPress();
-        }
+
+    public String getMoudle() {
+        return moudle;
     }
 
-    public void addBackUII(BackUII backUII){
-        backUIIS.add(backUII);
+    public void setMoudle(String moudle) {
+        this.moudle = moudle;
     }
 }

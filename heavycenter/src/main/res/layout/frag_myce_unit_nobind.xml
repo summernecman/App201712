@@ -14,7 +14,6 @@
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:txt_mid ="绑定单位"
-            style_common:iv_left ="@drawable/icon_hv_back"
             style_common:iv_right ="@drawable/icon_hv_scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

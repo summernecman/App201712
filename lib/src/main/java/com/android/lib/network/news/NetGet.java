@@ -32,6 +32,8 @@ import java.util.Map;
  */
 public class NetGet {
 
+    public static boolean test = true;
+
     private NetGet() {
 
     }
@@ -51,6 +53,10 @@ public class NetGet {
 
         RequestParams requestParams = new RequestParams(url);
         requestParams.setUseCookie(true);
+        if(test){
+            requestParams.setConnectTimeout(1000);
+            requestParams.setReadTimeout(2000);
+        }
         requestParams.setHeader("Cookie", SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse));
         Map<String, String> map = GsonUtil.getInstance().
                 fromJson(jsonstr,
@@ -114,6 +120,10 @@ public class NetGet {
 
         RequestParams requestParams = new RequestParams(url);
         requestParams.setUseCookie(true);
+        if(test){
+            requestParams.setConnectTimeout(1000);
+            requestParams.setReadTimeout(2000);
+        }
         requestParams.setHeader("Cookie", SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse));
         Map<String, String> map = GsonUtil.getInstance().
                 fromJson(jsonstr,
@@ -177,6 +187,10 @@ public class NetGet {
 
         RequestParams requestParams = new RequestParams(url);
         requestParams.setUseCookie(true);
+        if(test){
+            requestParams.setConnectTimeout(1000);
+            requestParams.setReadTimeout(2000);
+        }
         requestParams.setHeader("Cookie", SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse));
         Map<String, String> map = GsonUtil.getInstance().
                 fromJson(jsonstr,

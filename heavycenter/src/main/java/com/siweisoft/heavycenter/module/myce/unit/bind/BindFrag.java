@@ -9,6 +9,7 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
@@ -45,16 +46,13 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
 
     @OnClick({R.id.ftv_right,R.id.ftv_right2,R.id.iv_search})
     public void onClick(View v) {
+        super.onClick(v);
         switch (v.getId()){
-            case R.id.ftv_back:
-                if(FragManager.getInstance().getFragMaps().get(getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getIndex()).size()>0){
-                    FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex());
-                }
             case R.id.ftv_right:
 
                 break;
             case R.id.ftv_right2:
-                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),getIndex(),new NewFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),MainAct.ID_CONTENT,new NewFrag());
                 break;
             case R.id.iv_search:
                 getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(getActivity()){

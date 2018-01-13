@@ -19,11 +19,11 @@ public class OrderDAOpe extends BaseDAOpe {
     }
 
 
-    public ArrayList<Fragment> getPages(int index){
+    public ArrayList<Fragment> getPages(){
         ArrayList<Fragment> pages = new ArrayList<>();
-        BeginFrag beginFrag = new BeginFrag();beginFrag.setIndex(index); pages.add(beginFrag);
-        DoingFrag doingFrag = new DoingFrag(); doingFrag.setIndex(index); pages.add(doingFrag);
-        DoneFrag doneFrag = new DoneFrag(); doneFrag.setIndex(index); pages.add(doneFrag);
+        BeginFrag beginFrag = new BeginFrag(); pages.add(beginFrag);
+        DoingFrag doingFrag = new DoingFrag();  pages.add(doingFrag);
+        DoneFrag doneFrag = new DoneFrag(); pages.add(doneFrag);
         return pages;
     }
 

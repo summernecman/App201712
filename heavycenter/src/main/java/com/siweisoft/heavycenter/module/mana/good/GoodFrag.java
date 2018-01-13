@@ -25,10 +25,8 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
 
     @OnClick({R.id.ftv_right2})
     public void onClick(View v) {
+        super.onClick(v);
         switch (v.getId()){
-            case R.id.ftv_back:
-                ((MainAct)(getActivity())).getP().getU().switchDrawer();
-                break;
             case R.id.ftv_right2:
                 FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),getIndex(),new NewFrag());
                 break;

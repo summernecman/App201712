@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
 import com.android.lib.R;
+import com.android.lib.base.activity.BaseUIActivity;
+import com.android.lib.base.fragment.BaseFrg;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.constant.ValueConstant;
 
@@ -15,82 +17,157 @@ import java.util.HashMap;
 
 public class FragManager2  {
 
-    private static  FragManager2 instance;
+    private static HashMap<String,Container> map = new HashMap<>();
 
-    private HashMap<Integer,ArrayList<BaseUIFrag>> map = new HashMap<>();
-
+    private int anim1,anim2,anim3,anim4,anim5,anim6;
 
 
     public static FragManager2 getInstance(){
-        if(instance==null){
-            instance = new FragManager2();
-        }
-        return instance;
+        return new FragManager2();
     }
 
-    public void start(FragmentActivity activity, int viewid, BaseUIFrag fragment, Bundle bundle,int req){
-        initFragList(viewid);
-        if(fragment.getArguments()==null){
-            fragment.setArguments(new Bundle());
-        }
-        fragment.getArguments().putInt(ValueConstant.FRAG_POSITION,viewid);
+    public void start(BaseUIActivity activity, String moudle, int viewid, BaseUIFrag fragment, int req){
+        checkMap(moudle,viewid);
+        checkArguments(fragment);
         fragment.getArguments().putInt(ValueConstant.FARG_REQ,req);
+        start(activity,moudle,viewid,fragment);
+    }
+
+    public void start(BaseUIActivity activity, String moudle, int viewid,BaseUIFrag fragment){
+        checkMap(moudle,viewid);
+        checkArguments(fragment);
+        activity.setMoudle(moudle);
+        fragment.getArguments().putString(ValueConstant.CONTAINER_NAME,moudle);
+        fragment.getArguments().putInt(ValueConstant.VIEW_ID,viewid);
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out, R.anim.anim_push_right_in, R.anim.anim_push_left_out);
-        if(haveLastFrag(viewid)){
-            transaction.hide(getLastFrag(viewid));
+        transaction.setCustomAnimations(getAnim1(),getAnim2());
+        if(map.get(moudle).haveLast()){
+            transaction.hide(map.get(moudle).getLast());
         }
-        transaction.add(viewid,fragment,viewid+":"+map.get(viewid).size());
+        transaction.add(viewid,fragment,fragment.getUniqueid()+"");
         transaction.commitNowAllowingStateLoss();
-        getFragment(viewid).add(fragment);
+        map.get(moudle).addFrag(fragment);
     }
 
-    public void finish(FragmentActivity activity,int viewid,Bundle bundle){
 
+    public void start(BaseUIActivity activity, String moudle,BaseUIFrag fragment){
+       if(map.get(moudle)==null){
+           return;
+       }
+       if( map.get(moudle).getViewid()==-1){
+           return;
+       }
+       start(activity,moudle,map.get(moudle).getViewid(),fragment);
+    }
+
+    public void start(BaseUIActivity activity, String moudle,BaseUIFrag fragment,int req){
+        checkArguments(fragment);
+        fragment.getArguments().putInt(ValueConstant.FARG_REQ,req);
+        start(activity,moudle,fragment);
+    }
+
+
+    public void finish(BaseUIActivity activity, String moudle){
+        if(!map.get(moudle).haveLast()){
+            return;
+        }
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out, R.anim.anim_push_right_in, R.anim.anim_push_left_out);
-        transaction.remove(getLastFrag(viewid));
-        if(haveLastBeforeFrag(viewid)){
-            transaction.show(getLastBeforeFrag(viewid));
-            getLastBeforeFrag(viewid).onRestart(getLastFrag(viewid).getArguments().getInt(ValueConstant.FARG_REQ),bundle);
+        transaction.setCustomAnimations(getAnim5(),getAnim6(),getAnim5(),getAnim6());
+        transaction.remove(map.get(moudle).getLast());
+        if(map.get(moudle).haveLastBefore()){
+            transaction.show(map.get(moudle).getLastBefore());
+        }
+        map.get(moudle).removeLast();
+        transaction.commitNowAllowingStateLoss();
+    }
+
+    public void finish(BaseUIActivity activity,String moudle,Bundle bundle){
+        finish(activity,moudle);
+        if(map.get(moudle).haveLast()){
+            map.get(moudle).getLast().onRestart(map.get(moudle).getLast().getArguments().getInt(ValueConstant.FARG_REQ),bundle);
+        }
+    }
+
+    public void clear(BaseUIActivity activity,String moudle){
+        if(map.get(moudle)==null){
+            return;
+        }
+        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+        while (map.get(moudle).haveLast()){
+            transaction.remove(map.get(moudle).getLast());
+            map.get(moudle).removeLast();
         }
         transaction.commitNowAllowingStateLoss();
-        getFragment(viewid).remove(map.get(viewid).size()-1);
     }
 
-    private void initFragList(int viewid){
-        if(map.get(viewid)==null){
-            map.put(viewid,new ArrayList<BaseUIFrag>());
+
+
+    private void checkMap(String moudle,int viewid){
+        if(map.get(moudle)==null){
+            map.put(moudle,new Container(moudle,viewid));
         }
     }
 
-
-    private boolean haveLastFrag(int viewid){
-        if(map.get(viewid).size()>0){
-            return true;
+    private void checkArguments(BaseUIFrag baseUIFrag){
+        if(baseUIFrag.getArguments()==null){
+            baseUIFrag.setArguments(new Bundle());
         }
-        return false;
     }
 
-    private boolean haveLastBeforeFrag(int viewid){
-        if(map.get(viewid).size()-1>0){
-            return true;
+    public int getAnim1() {
+        if(anim1==0){
+            anim1 =R.anim.anim_push_right_in;
         }
-        return false;
+        return anim1;
     }
 
-    private BaseUIFrag getLastFrag(int viewid){
-        return map.get(viewid).get(map.get(viewid).size()-1);
+    public int getAnim2() {
+        if(anim2==0){
+            anim2 =R.anim.anim_push_left_out;
+        }
+        return anim2;
     }
 
-    private BaseUIFrag getLastBeforeFrag(int viewid){
-        return map.get(viewid).get(map.get(viewid).size()-2);
+    public int getAnim3() {
+        if(anim3==0){
+            anim3 =R.anim.anim_push_right_in;
+        }
+        return anim3;
     }
 
-    private ArrayList<BaseUIFrag> getFragment(int viewid){
-        return map.get(viewid);
+    public int getAnim4() {
+        if(anim4==0){
+            anim4 =R.anim.anim_push_left_out;
+        }
+        return anim4;
     }
 
+    public int getAnim5() {
+        if(anim5==0){
+            anim5 =R.anim.anim_push_left_in;
+        }
+        return anim5;
+    }
 
+    public int getAnim6() {
+        if(anim6==0){
+            anim6 =R.anim.anim_push_right_out;
+        }
+        return anim6;
+    }
+
+    public FragManager2 setStartAnim(int anim1, int anim2, int anim3, int anim4) {
+        this.anim1 = anim1;
+        this.anim2 = anim2;
+        this.anim3 = anim3;
+        this.anim4 = anim4;
+        return this;
+    }
+
+    public FragManager2 setFinishAnim(int anim5, int anim6) {
+        this.anim5 = anim5;
+        this.anim6 = anim6;
+        return this;
+    }
 
 }
