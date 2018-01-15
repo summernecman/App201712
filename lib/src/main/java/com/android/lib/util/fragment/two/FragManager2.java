@@ -26,10 +26,13 @@ public class FragManager2  {
         return new FragManager2();
     }
 
-    public void start(BaseUIActivity activity, String moudle, int viewid, BaseUIFrag fragment, int req){
+
+
+
+    public void start(BaseUIActivity activity, String moudle, int viewid, BaseUIFrag fragment, Bundle bundle){
         checkMap(moudle,viewid);
         checkArguments(fragment);
-        fragment.getArguments().putInt(ValueConstant.FARG_REQ,req);
+        fragment.getArguments().putAll(bundle);
         start(activity,moudle,viewid,fragment);
     }
 
@@ -60,33 +63,32 @@ public class FragManager2  {
        start(activity,moudle,map.get(moudle).getViewid(),fragment);
     }
 
-    public void start(BaseUIActivity activity, String moudle,BaseUIFrag fragment,int req){
+    public void start(BaseUIActivity activity, String moudle,BaseUIFrag fragment,Bundle bundle){
         checkArguments(fragment);
-        fragment.getArguments().putInt(ValueConstant.FARG_REQ,req);
+        fragment.getArguments().putAll(bundle);
         start(activity,moudle,fragment);
     }
 
 
-    public void finish(BaseUIActivity activity, String moudle){
+    public boolean finish(BaseUIActivity activity, String moudle){
+        if(moudle==null || map.get(moudle)==null){
+            return false;
+        }
         if(!map.get(moudle).haveLast()){
-            return;
+            return false;
         }
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(getAnim5(),getAnim6(),getAnim5(),getAnim6());
         transaction.remove(map.get(moudle).getLast());
         if(map.get(moudle).haveLastBefore()){
             transaction.show(map.get(moudle).getLastBefore());
+            map.get(moudle).getLastBefore().onRestart(map.get(moudle).getLast().getArguments().getInt(ValueConstant.FARG_REQ),map.get(moudle).getLast().getArguments());
         }
         map.get(moudle).removeLast();
         transaction.commitNowAllowingStateLoss();
+        return true;
     }
 
-    public void finish(BaseUIActivity activity,String moudle,Bundle bundle){
-        finish(activity,moudle);
-        if(map.get(moudle).haveLast()){
-            map.get(moudle).getLast().onRestart(map.get(moudle).getLast().getArguments().getInt(ValueConstant.FARG_REQ),bundle);
-        }
-    }
 
     public void clear(BaseUIActivity activity,String moudle){
         if(map.get(moudle)==null){

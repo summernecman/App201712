@@ -32,7 +32,7 @@ import java.util.Map;
  */
 public class NetGet {
 
-    public static boolean test = true;
+    public static boolean test = false;
 
     private NetGet() {
 
@@ -235,6 +235,70 @@ public class NetGet {
             @Override
             public void onFinished() {
                 LogUtil.E("onFinished-->");
+            }
+        });
+    }
+
+
+    public static void file(Context context, final String url, FilesBean data, final NetI netI) {
+        LogUtil.E(url);
+        final String jsonstr = GsonUtil.getInstance().toJson(data);
+        LogUtil.E(jsonstr);
+        if (!netI.onNetStart(url, jsonstr)) {
+            BaseResBean res = new BaseResBean();
+            res.setErrorCode(ValueConstant.ERROR_CODE_NET_NO_CONNETCT);
+            res.setErrorMessage(ValueConstant.ERROR_STR_NET_NO_CONNETCT);
+            // res.setData(jsonstr);
+            netI.onNetFinish(false, url, res);
+            return;
+        }
+
+        LogUtil.E(url + "---" + ValueConstant.cookieFromResponse);
+        RequestParams requestParams = new RequestParams(url);
+
+
+        List<KeyValue> list = new ArrayList<>();
+        for (int i = 0; i < data.getData().size(); i++) {
+            list.add(new KeyValue("file", data.getData().get(i).getFile()));
+            //requestParams.addBodyParameter("file"+i, data.getData().get(i).getFile(),null);
+        }
+        MultipartBody body = new MultipartBody(list, "UTF-8");
+        requestParams.setRequestBody(body);
+        requestParams.setMultipart(true);
+
+        x.http().post(requestParams, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String response) {
+                LogUtil.E("gson", "" + response);
+                if (response == null) {
+                    BaseResBean res = new BaseResBean();
+                    res.setErrorCode(ValueConstant.ERROR_CODE_RES_NULL);
+                    res.setErrorMessage(ValueConstant.ERROR_STR_RES_NULL);
+                    netI.onNetFinish(false, url, res);
+                } else {
+                    BaseResBean baseResBean = GsonUtil.getInstance().fromJson(response.toString(), BaseResBean.class);
+                    netI.onNetFinish(true, url, baseResBean);
+                }
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                BaseResBean baseResBean = new BaseResBean();
+                baseResBean.setErrorCode(ValueConstant.ERROR_CODE_VOLLEY_FAIL);
+                baseResBean.setErrorMessage(ex.getMessage() == null ? "" : ex.getMessage());
+                baseResBean.setException(true);
+                netI.onNetFinish(false, url, baseResBean);
+                LogUtil.E(ex == null ? "" : ex.getMessage());
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                LogUtil.E(cex);
+            }
+
+            @Override
+            public void onFinished() {
+                LogUtil.E("");
             }
         });
     }

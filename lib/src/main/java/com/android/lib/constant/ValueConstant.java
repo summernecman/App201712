@@ -27,6 +27,7 @@ public class ValueConstant {
      */
     public static final String DATA_INTENT = "DATA_INTENT";
     public static final String DATA_RES = "DATA_RES";
+    public static final String DATA_RES2 = "DATA_RES2";
     public static final String DATA_DATA = "DATA_DATA";
     public static final String DATA_DATA2 = "DATA_DATA2";
     public static final String DATA_INTENT2 = "DATA_INTENT2";
