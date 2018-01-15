@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.main.store.detail;
 import android.view.View;
 
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -27,7 +28,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-                FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new CheckFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new CheckFrag());
         }
     }
 }

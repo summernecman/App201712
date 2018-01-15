@@ -172,4 +172,8 @@ public class FragManager2  {
         return this;
     }
 
+    public void clear(){
+        map = null;
+    }
+
 }

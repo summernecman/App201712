@@ -2,9 +2,13 @@ package com.siweisoft.heavycenter.module.myce;
 
 //by summer on 2017-12-14.
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.lib.util.IntentUtil;
+import com.android.lib.util.UriUtils;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -31,7 +35,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
 
     }
 
-    @OnClick({R.id.item_car,R.id.item_good,R.id.item_store,R.id.item_user,R.id.item_unit,R.id.iv_nameedit,R.id.ftv_right})
+    @OnClick({R.id.item_car,R.id.item_good,R.id.item_store,R.id.item_user,R.id.item_unit,R.id.iv_nameedit,R.id.ftv_right,R.id.iv_head})
     public void onClick(View v){
 
         FragManager2.getInstance().clear(getBaseUIActivity(),MainAct.主界面);
@@ -79,8 +83,20 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 });
                 FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,infoFrag);
                 break;
+            case R.id.iv_head:
+                IntentUtil.getInstance().photoShowFromphone(this,01);
+                break;
         }
         getBaseUIActivity().setMoudle(MainAct.主界面);
         ((MainAct)getActivity()).getP().getU().switchDrawer();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data==null){
+            return;
+        }
+        UriUtils.getPath(getActivity(),data.getData());
     }
 }

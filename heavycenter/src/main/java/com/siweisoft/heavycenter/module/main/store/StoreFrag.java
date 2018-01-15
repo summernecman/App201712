@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -32,7 +33,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 ((MainAct)getActivity()).getP().getU().switchDrawer();
                 break;
             case R.id.ftv_right2:
-                FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new CheckFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new CheckFrag());
         }
     }
 
@@ -40,7 +41,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     public void onInterupt(int type, View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new DetailFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new DetailFrag());
                 break;
         }
     }

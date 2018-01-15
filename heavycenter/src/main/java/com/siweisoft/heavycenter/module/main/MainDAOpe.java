@@ -127,7 +127,7 @@ public class MainDAOpe extends AppDAOpe {
     public void testData(){
         LoginResBean loginResBean = new LoginResBean();
         loginResBean.setAbbreviationName("公司简称");
-        loginResBean.setBindCompanyState(LoginResBean.BIND_UNIT_STATE_UNBIND);
+        loginResBean.setBindCompanyState(LoginResBean.BIND_UNIT_STATE_BINDED);
         loginResBean.setBindCompanyTime("2017-10-11");
 
         List<LoginResBean.BranchCompanyListBean> branchCompanyList = new ArrayList<>();

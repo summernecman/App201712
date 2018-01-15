@@ -4,14 +4,14 @@ import android.content.Context;
 
 import com.android.lib.bean.BaseBean;
 import com.android.lib.network.bean.res.BaseResBean;
-import com.android.lib.util.GsonUtil;
-import com.android.lib.util.NetWorkUtil;
-import com.android.lib.util.NullUtil;
-import com.android.lib.util.ToastUtil;
+import com.android.lib.util.*;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public  class NetAdapter<A> implements NetI<A> {
 
+    public static boolean cache = true;
     protected Context context;
     protected String url;
 
@@ -39,32 +40,49 @@ public  class NetAdapter<A> implements NetI<A> {
     @Override
     public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
         if (!haveData) {
-            onResult(false,baseResBean.getMessage(), null);
-        } else {
-
-            if(!NullUtil.isStrEmpty(baseResBean.getMessage())){
-                ToastUtil.getInstance().showLong(context,baseResBean.getMessage());
+            if(cache){
+                BaseResBean resBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(url),BaseResBean.class);
+                deal(haveData,url,baseResBean);
+            }else{
+                onResult(false,baseResBean.getMessage(), null);
             }
 
-            Type type = getClass().getGenericSuperclass();
-            if(type instanceof ParameterizedType ){
-                ParameterizedType parameterizedType = (ParameterizedType) type;
-                Class<A> a = (Class<A>) parameterizedType.getActualTypeArguments()[0];
-                A aa = null;
-                try {
+        } else {
+            if(!NullUtil.isStrEmpty(baseResBean.getMessage())){
+                ToastUtil.getInstance().showShort(context,baseResBean.getMessage());
+            }
+            if(cache){
+                SPUtil.getInstance().saveStr(url,GsonUtil.getInstance().toJson(baseResBean));
+            }
+            deal(haveData,url,baseResBean);
+        }
+    }
+
+    private void deal(boolean haveData, String url, BaseResBean baseResBean){
+        Type type = getClass().getGenericSuperclass();
+        if(type instanceof ParameterizedType ){
+            ParameterizedType parameterizedType = (ParameterizedType) type;
+            Class<A> a = (Class<A>) parameterizedType.getActualTypeArguments()[0];
+            A aa = null;
+
+            try {
+                Object o = new JSONTokener(GsonUtil.getInstance().toJson(baseResBean.getResult())).nextValue();
+                if(o instanceof JSONObject){
                     aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),a);
-                } catch (JsonSyntaxException e) {
-                    e.printStackTrace();
-                } finally {
+                }else if(o instanceof JSONArray){
+                    aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),new TypeToken<ArrayList<A>>(){}.getType());
                 }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }finally {
                 if (!"200".equals(baseResBean.getCode())) {
                     onResult(false,baseResBean.getMessage(), aa);
                 } else {
                     onResult(true,baseResBean.getMessage(), aa);
                 }
             }
-
         }
+
     }
 
     @Override

@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.main.store.news;
 import android.view.View;
 
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -29,7 +30,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 ((MainAct)getActivity()).getP().getU().switchDrawer();
                 break;
             case R.id.ftv_right2:
-                FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new CheckFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new CheckFrag());
         }
     }
 }

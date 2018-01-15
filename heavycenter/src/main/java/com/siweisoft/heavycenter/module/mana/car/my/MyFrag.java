@@ -50,7 +50,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
             @Override
             public void onResult(boolean success, String msg, CarsResBean o) {
                 super.onResult(success, msg, o);
-                getP().getU().LoadListData(o.getResults(),getArguments().getString(ValueConstant.DATA_POSITION),MyFrag.this);
+                getP().getU().LoadListData(o,getArguments().getString(ValueConstant.DATA_POSITION),MyFrag.this);
                 getP().getU().finishRefresh();
             }
         });

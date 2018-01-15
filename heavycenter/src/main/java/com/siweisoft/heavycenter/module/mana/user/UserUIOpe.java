@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.bean.AppViewHolder;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -59,6 +61,23 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
             }
         });
 
+    }
+
+    public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener){
+        bind.refreshLayout.setOnRefreshListener(refreshListener);
+        bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
+    }
+
+    public void finishRefresh(){
+        bind.refreshLayout.finishRefresh();
+    }
+
+    public void finishLoadmore(){
+        bind.refreshLayout.finishLoadmore();
+    }
+
+    public void autoRefresh(){
+        bind.refreshLayout.autoRefresh();
     }
 
 }

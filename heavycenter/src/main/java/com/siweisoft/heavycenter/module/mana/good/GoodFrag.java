@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -28,7 +29,7 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),getIndex(),new NewFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new NewFrag());
                 break;
         }
     }

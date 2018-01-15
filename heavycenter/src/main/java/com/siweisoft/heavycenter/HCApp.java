@@ -7,7 +7,11 @@ import android.content.Context;
 import com.android.lib.aplication.LibAplication;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.exception.exception.CrashHander;
+import com.android.lib.network.news.NetAdapter;
+import com.android.lib.network.news.NetGet;
+import com.android.lib.network.news.NetI;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.baidu.mapapi.SDKInitializer;
 import com.bumptech.glide.Glide;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -55,7 +59,15 @@ public class HCApp extends LibAplication implements OnFinishListener{
         CrashHander.getInstance().init(getBaseContext(),this);
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
-        FragManager.getInstance().clear();
+        FragManager2.getInstance().clear();
+
+        if(true){
+            NetGet.test = true;
+            NetAdapter.cache = true;
+        }else{
+            NetGet.test = false;
+            NetAdapter.cache = false;
+        }
     }
 
     @Override

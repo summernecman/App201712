@@ -37,8 +37,11 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<CarsResBean.ResultsBean> s, final String moudle, ViewListener listener){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_car_my, BR.item_mana_car_my,s,listener){
+    public void LoadListData(CarsResBean cars, final String moudle, ViewListener listener){
+        if(cars==null){
+            return;
+        }
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_car_my, BR.item_mana_car_my,cars.getResults(),listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);

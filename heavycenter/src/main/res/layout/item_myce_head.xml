@@ -36,6 +36,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
+                            android:id="@+id/iv_head"
                         android:src="@drawable/icon_hv_myce_head"
                         android:layout_width="130dp"
                         android:layout_height="130dp" />

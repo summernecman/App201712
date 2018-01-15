@@ -8,6 +8,7 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
@@ -41,7 +42,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     public void onInterupt(int type, View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new TransDetailFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new TransDetailFrag());
                 break;
         }
     }

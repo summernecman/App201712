@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.main.trans.search;
 import android.view.View;
 
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 
@@ -17,7 +18,7 @@ public class SearchFrag extends AppFrag<SearchUIOpe,SearchDAOpe> {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ll_root:
-                FragManager.getInstance().removeJustInNormal(activity,this,R.anim.anim_push_up_in, R.anim.anim_push_up_out);
+                FragManager2.getInstance().setFinishAnim(R.anim.anim_push_up_in, R.anim.anim_push_up_out).finish(getBaseUIActivity(),getContainerName());
                 break;
         }
     }

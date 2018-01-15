@@ -32,7 +32,7 @@ import java.util.Map;
  */
 public class NetGet {
 
-    public static boolean test = false;
+    public static boolean test = true;
 
     private NetGet() {
 

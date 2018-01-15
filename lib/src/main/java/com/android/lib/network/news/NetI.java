@@ -5,6 +5,7 @@ import com.android.lib.network.bean.res.BaseResBean;
 
 public interface NetI<A> {
 
+
     boolean onNetStart(String url, String gson);
 
     void onNetFinish(boolean haveData, String url, BaseResBean baseResBean);
