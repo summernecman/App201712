@@ -4,12 +4,10 @@ package com.siweisoft.heavycenter.module.mana.car;
 
 import android.view.View;
 
-import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.mana.car.news.NewFrag;
 
@@ -24,14 +22,15 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
 
     }
 
-    @OnClick({R.id.ftv_right})
+    @OnClick({R.id.ftv_right2})
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()){
-            case R.id.ftv_right:
-                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),getIndex(),new NewFrag());
+            case R.id.ftv_right2:
+                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,MainAct.ID_CONTENT,new NewFrag());
                 break;
         }
+
     }
 
 }

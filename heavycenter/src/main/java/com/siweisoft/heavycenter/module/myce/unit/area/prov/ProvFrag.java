@@ -9,6 +9,7 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.databean.Value;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -17,6 +18,8 @@ import com.siweisoft.heavycenter.module.myce.unit.area.city.CityFrag;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import butterknife.OnClick;
 
 public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListener{
 
@@ -34,7 +37,7 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(ValueConstant.DATA_POSITION2, (int) v.getTag(R.id.position));
                 bundle.putSerializable(ValueConstant.DATA_DATA, (Serializable) v.getTag(R.id.data));
-                FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(), getIndex(),new CityFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new CityFrag(),bundle);
                 break;
         }
     }
@@ -63,12 +66,14 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
         getP().getU().notifyDataSetChanged();
 
         String s= "";
+        String s2= "";
         for(int i=0;i<getP().getD().getPro().size();i++){
             if(getP().getD().getPro().get(i).getCheckStatus()== CityResBean.ProvinceListBean.CHECK_STATE_NULL){
                 continue;
             }
             if(getP().getD().getPro().get(i).getCheckStatus()== CityResBean.ProvinceListBean.CHECK_STATE_FULL){
                 s+=getP().getD().getPro().get(i).getValue()+",";
+                s2+=getP().getD().getPro().get(i).getName()+",";
                 continue;
             }
             if(getP().getD().getPro().get(i).getCityList()==null){
@@ -77,12 +82,28 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
             for(int j=0;j<getP().getD().getPro().get(i).getCityList().size();j++){
                 if(getP().getD().getPro().get(i).getCityList().get(j).getCheckStatus()== CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_FULL){
                     s+=getP().getD().getPro().get(i).getCityList().get(j).getValue()+",";
+                    s2+=getP().getD().getPro().get(i).getCityList().get(j).getName()+",";
                 }
             }
         }
         if(s.endsWith(",")){
-            s= s.substring(s.length()-1,s.length());
+            s= s.substring(0,s.length()-1);
+            s2= s2.substring(0,s2.length()-1);
         }
         getArguments().putString(ValueConstant.DATA_RES,s);
+        getArguments().putString(ValueConstant.DATA_RES2,s2);
+    }
+
+
+    @OnClick({R.id.ftv_right2})
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+            case R.id.ftv_right2:
+                getArguments().putString(ValueConstant.DATA_RES, getArguments().getString(ValueConstant.DATA_RES));
+                getArguments().putString(ValueConstant.DATA_RES2, getArguments().getString(ValueConstant.DATA_RES2));
+                getBaseUIActivity().onBackPressed();
+                break;
+        }
     }
 }

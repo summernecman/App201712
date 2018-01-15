@@ -20,7 +20,7 @@ public class AllFrag extends AppFrag<AllUIOpe,AllDAOpe> implements OnRefreshList
     public void initData() {
         super.initData();
         getP().getU().initRefresh(this,this);
-
+        getP().getU().autoRefresh();
     }
 
 

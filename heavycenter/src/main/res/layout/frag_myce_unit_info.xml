@@ -58,7 +58,7 @@
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_contact"
-            style_common:txt_left = "联系人  "
+            style_common:txt_left = "联系人    "
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

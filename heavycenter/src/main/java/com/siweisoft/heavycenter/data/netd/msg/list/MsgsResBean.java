@@ -78,6 +78,32 @@ public class MsgsResBean extends BaseBean {
          * sendTime : 1515656604000
          */
 
+        public static final String MSG_TYPE_UPDATE = "update";
+        public static final String MSG_TYPE_INVITE_D = "inviteD";
+        public static final String MSG_TYPE_INVITE_U = "inviteU";
+        public static final String MSG_TYPE_INVITE_M = "inviteM";
+        public static final String MSG_TYPE_APPLY_D = "applyD";
+        public static final String MSG_TYPE_APPLY_U = "applyU";
+        public static final String MSG_TYPE_INFO = "info";
+
+
+        public static final int AUDITOR_STATE_CHECKING = 0;//未审核
+
+        public static final int AUDITOR_STATE_AGREEED = 1;//接受
+
+        public static final int AUDITOR_STATE_REJECT = 2;//拒绝
+
+        public static final int AUDITOR_STATE_NONEED = 3;//不用审核
+
+        public static final String AUDITOR_STATE_CHECKING_CN = "";//未审核
+
+        public static final String AUDITOR_STATE_AGREEED_CN = "已接受";//接受
+
+        public static final String AUDITOR_STATE_REJECT_CN = "已拒绝";//拒绝
+
+        public static final String AUDITOR_STATE_NONEED_CN = "不用审核";//不用审核
+
+
         private String senderName;
         private String messageType;
         private int sender;

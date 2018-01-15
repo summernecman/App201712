@@ -10,6 +10,7 @@ import com.siweisoft.heavycenter.module.main.MainAct;
 
 public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> {
 
+
     @Override
     public void initData() {
         super.initData();

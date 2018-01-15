@@ -70,35 +70,61 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
     public void onInterupt(int type, final View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                if(getArguments().getInt(ValueConstant.DATA_DATA,-1)==BindDAOpe.BIND_UNIT){
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable(ValueConstant.DATA_DATA2, (Serializable) v.getTag(R.id.data));
-                    FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex(),bundle);
+                if(getArguments().getInt(ValueConstant.DATA_DATA,-1)==BindDAOpe.UP_UNIT){
+                    getArguments().putSerializable(ValueConstant.DATA_DATA2, (Serializable) v.getTag(R.id.data));
+                    getBaseUIActivity().onBackPressed();
+                    return;
                 }
-                getP().getU().showTip(new View.OnClickListener(){
+                final UnitInfo unitInfo = (UnitInfo) v.getTag(R.id.data);
 
+                getP().getD().getUnitInfo(unitInfo.getId(), new UINetAdapter<UnitInfo>(getActivity()) {
                     @Override
-                    public void onClick(View vv) {
-                        UnitInfo unitInfo = (UnitInfo) v.getTag(R.id.data);
-                        getP().getD().bindUnit(unitInfo.getId(), new UINetAdapter<BindResBean>(getActivity()) {
-                            @Override
-                            public void onResult(boolean success, String msg, BindResBean o) {
-                                super.onResult(success, msg, o);
-                                getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
-                                    @Override
-                                    public void onResult(boolean success, String msg, LoginResBean o) {
-                                        super.onResult(success, msg, o);
-                                        if(success){
-                                            LocalValue.saveLoginInfo(o);
-                                            ((MainAct)getActivity()).ddd();
-                                        }
-                                    }
-                                });
-                            }
-                        });
+                    public void onResult(boolean success, String msg, UnitInfo o) {
+                        super.onResult(success, msg, o);
+                        if(o.getCompanyIsNull()==UnitInfo.COMPANY_NULL){
+                            getP().getU().showTip(new View.OnClickListener(){
+                                @Override
+                                public void onClick(View vv) {
 
+                                    getP().getD().bindUnit(unitInfo.getId(), true,new UINetAdapter<BindResBean>(getActivity()) {
+                                        @Override
+                                        public void onResult(boolean success, String msg, BindResBean o) {
+                                            super.onResult(success, msg, o);
+                                            getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                                @Override
+                                                public void onResult(boolean success, String msg, LoginResBean o) {
+                                                    super.onResult(success, msg, o);
+                                                    if(success){
+                                                        LocalValue.saveLoginInfo(o);
+                                                        ((MainAct)getActivity()).ddd();
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                        }else{
+                            getP().getD().bindUnit(unitInfo.getId(),false, new UINetAdapter<BindResBean>(getActivity()) {
+                                @Override
+                                public void onResult(boolean success, String msg, BindResBean o) {
+                                    super.onResult(success, msg, o);
+                                    getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                        @Override
+                                        public void onResult(boolean success, String msg, LoginResBean o) {
+                                            super.onResult(success, msg, o);
+                                            if(success){
+                                                LocalValue.saveLoginInfo(o);
+                                                ((MainAct)getActivity()).ddd();
+                                            }
+                                        }
+                                    });
+                                }
+                            });
+                        }
                     }
                 });
+
                 // FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new SearchFrag());
                 break;
         }

@@ -4,18 +4,18 @@ package com.siweisoft.heavycenter.module.myce.unit.bind;
 
 import android.content.Context;
 
-import com.android.lib.network.bean.res.BaseResBean;
-import com.android.lib.network.news.NetAdapter;
 import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.unit.info.UnitInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
+import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
-import com.siweisoft.heavycenter.data.netd.user.info.InfoReqBean;
+import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
 
@@ -42,19 +42,29 @@ public class BindDAOpe extends AppDAOpe {
         NetDataOpe.Unit.search(getActivity(),reqBean,adapter);
     }
 
-    public void bindUnit(int companyId, NetI<BindResBean> adapter){
+    public void bindUnit(int companyId, boolean ismanager,NetI<BindResBean> adapter){
         BindReqBean bindReqBean = new BindReqBean();
         bindReqBean.setId(LocalValue.getLoginInfo().getUserId());
         bindReqBean.setCompanyId(companyId);
         bindReqBean.setBindOperateType(BindReqBean.BIND_OPERATE_TYPE_SEARCH);
-        bindReqBean.setIsManager(BindReqBean.IS_MANAGER_NO);
+        bindReqBean.setIsManager(ismanager?BindReqBean.IS_MANAGER_YES:BindReqBean.IS_MANAGER_NO);
+        if(ismanager){
+            bindReqBean.setMangerId(LocalValue.getLoginInfo().getUserId());
+        }
         NetDataOpe.User.binUnit(getActivity(),bindReqBean,adapter);
     }
 
     public void getInfo(NetI<LoginResBean> adapter){
-        InfoReqBean infoReqBean = new InfoReqBean();
-        infoReqBean.setIsApp(1);
-        infoReqBean.setId(LocalValue.getLoginInfo().getUserId());
-        NetDataOpe.User.getInfo(getActivity(),infoReqBean,adapter);
+        UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
+        userInfoReqBean.setIsApp(1);
+        userInfoReqBean.setId(LocalValue.getLoginInfo().getUserId());
+        NetDataOpe.User.getInfo(getActivity(), userInfoReqBean,adapter);
+    }
+
+
+    public void getUnitInfo(int id,NetI<UnitInfo> adapter){
+        UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
+        unitInfoReqBean.setId(id);
+        NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean,adapter);
     }
 }

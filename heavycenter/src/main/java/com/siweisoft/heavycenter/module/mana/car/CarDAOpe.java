@@ -3,17 +3,14 @@ package com.siweisoft.heavycenter.module.mana.car;
 //by summer on 2017-12-14.
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.android.lib.network.news.NetI;
+import com.android.lib.base.fragment.BaseUIFrag;
+import com.android.lib.constant.ValueConstant;
 import com.siweisoft.heavycenter.base.AppDAOpe;
-import com.siweisoft.heavycenter.data.locd.LocalValue;
-import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsReqBean;
-import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.module.mana.car.my.MyFrag;
-import com.siweisoft.heavycenter.module.mana.car.receipt.ReceiptFrag;
-import com.siweisoft.heavycenter.module.mana.car.send.SendFrag;
 
 import java.util.ArrayList;
 
@@ -25,9 +22,9 @@ public class CarDAOpe extends AppDAOpe {
 
     public ArrayList<Fragment> getPages(int index){
         ArrayList<Fragment> pages = new ArrayList<>();
-        SendFrag sendFrag = new SendFrag(); sendFrag.setIndex(index);pages.add(sendFrag);
-        MyFrag myFrag = new MyFrag(); myFrag.setIndex(index);pages.add(myFrag);
-        ReceiptFrag receiptFrag = new ReceiptFrag(); receiptFrag.setIndex(index);pages.add(receiptFrag);
+        BaseUIFrag sendFrag = new MyFrag(); sendFrag.setArguments(new Bundle());sendFrag.getArguments().putString(ValueConstant.DATA_POSITION,CarsReqBean.WHAT_FH);pages.add(sendFrag);
+        BaseUIFrag myFrag = new MyFrag(); myFrag.setArguments(new Bundle());myFrag.getArguments().putString(ValueConstant.DATA_POSITION,CarsReqBean.WHAT_MY);pages.add(myFrag);
+        BaseUIFrag receiptFrag = new MyFrag(); receiptFrag.setArguments(new Bundle());receiptFrag.getArguments().putString(ValueConstant.DATA_POSITION,CarsReqBean.WHAT_SH);pages.add(receiptFrag);
         return pages;
     }
 

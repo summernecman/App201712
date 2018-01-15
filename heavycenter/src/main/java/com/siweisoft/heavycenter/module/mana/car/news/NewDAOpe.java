@@ -4,10 +4,28 @@ package com.siweisoft.heavycenter.module.mana.car.news;
 
 import android.content.Context;
 
+import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewReqBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
 
 public class NewDAOpe extends AppDAOpe {
+
+    CarNewReqBean carNewReqBean = new CarNewReqBean();
+
     public NewDAOpe(Context context) {
         super(context);
+    }
+
+    public CarNewReqBean getCarNewReqBean() {
+        carNewReqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        carNewReqBean.setCreater(LocalValue.getLoginInfo().getUserId());
+        return carNewReqBean;
+    }
+
+    public void newCar(CarNewReqBean carNewReqBean, NetI<CarNewResBean> adapter){
+        NetDataOpe.Mana.Car.newCar(getActivity(),carNewReqBean,adapter);
     }
 }

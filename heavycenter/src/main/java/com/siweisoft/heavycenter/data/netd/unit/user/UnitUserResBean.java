@@ -86,6 +86,14 @@ public class UnitUserResBean extends BaseBean {
         private int bindCompanyState;
         private int status;
 
+        public final static int STATUS_ONLINE = 1;
+
+        public final static int STATUS_OFFLINE = 0;
+
+        public final static String STATUS_ONLINE_CN = "在线";
+
+        public final static String STATUS_OFFLINE_CN = "离线";
+
         public String getTrueName() {
             return trueName;
         }

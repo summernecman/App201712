@@ -2,11 +2,13 @@ package com.siweisoft.heavycenter.module.myce.unit.area.city;
 
 //by summer on 2017-12-19.
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
@@ -45,9 +47,9 @@ public class CityFrag extends AppFrag<CityUIOpe,CityDAOpe> implements ViewListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                getArguments().putSerializable(ValueConstant.DATA_DATA, (Serializable) getP().getD().getCitys());
+                getArguments().putSerializable(ValueConstant.DATA_DATA, getP().getD().getCitys());
                 getArguments().putInt(ValueConstant.DATA_POSITION2,getP().getD().getProindex());
-                FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex());
+                FragManager2.getInstance().finish(getBaseUIActivity(),getContainerName());
                 break;
         }
     }

@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.siweisoft.heavycenter.BR;
@@ -27,6 +28,12 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
+    }
+
+    @Override
+    public void initUI(BaseUIFrag baseUIFrag) {
+        super.initUI(baseUIFrag);
+        bind.llInput.setVisibility(View.GONE);
     }
 
     public void LoadListData(List<String> s) {

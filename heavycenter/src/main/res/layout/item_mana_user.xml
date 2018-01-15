@@ -41,9 +41,10 @@
                 >
 
                 <ImageView
+                    android:id="@+id/iv_head"
                     android:src="@drawable/drawable_hv_mana_user"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp" />
+                    android:layout_width="55dp"
+                    android:layout_height="55dp" />
                 <LinearLayout
                     android:layout_marginLeft="10dp"
                     android:gravity="center_vertical"
@@ -77,6 +78,7 @@
                             android:layout_width="0dp"
                             android:layout_height="1dp"/>
                         <TextView
+                            android:id="@+id/tv_state"
                             android:background="@drawable/bg_hv_sharp8_yell_stroke"
                             android:singleLine="true"
                             android:layout_marginLeft="10dp"
@@ -93,11 +95,11 @@
 
 
                     <TextView
+                        android:id="@+id/tv_des"
                         android:layout_marginTop="5dp"
                         android:singleLine="true"
                         android:textColor="@color/color_hv_txt_dark"
                         android:textSize="16.5sp"
-                        android:text=""
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>

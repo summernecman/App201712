@@ -66,7 +66,7 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
 //        FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),pos_drawer,myceFrag);
 
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(bind.incloud.leftDrawer.getId(),new MyceFrag());
+        fragmentTransaction.add(bind.incloud.leftDrawer.getId(),myceFrag);
         fragmentTransaction.commitNow();
 
 
@@ -84,13 +84,11 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
             @Override
             public void onFinish(Object o) {
                 if(!load){
+                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     for(int i=0;i<views.size();i++){
-                        FragManager2.getInstance().start(
-                                getActivity(),
-                                pages.get(i).getName(),
-                                pages.get(i).getContainerView().getId(),
-                                pages.get(i).getFragment());
+                        fragmentTransaction.add(pages.get(i).getContainerView().getId(),pages.get(i).getFragment());
                     }
+                    fragmentTransaction.commitNow();
                     load = true;
                 }
             }

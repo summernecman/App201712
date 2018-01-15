@@ -17,7 +17,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements OnRefreshList
     public void initData() {
         super.initData();
         getP().getU().initRefresh(this,this);
-
+        getP().getU().autoRefresh();
     }
 
 

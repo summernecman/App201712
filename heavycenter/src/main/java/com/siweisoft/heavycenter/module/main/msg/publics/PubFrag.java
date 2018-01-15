@@ -17,6 +17,7 @@ public class PubFrag extends AppFrag<PubUIOpe,PubDAOpe> implements OnRefreshList
     public void initData() {
         super.initData();
         getP().getU().initRefresh(this,this);
+        getP().getU().autoRefresh();
 
     }
 

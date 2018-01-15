@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <EditText
+
             android:singleLine="true"
             android:textSize="14dp"
             android:layout_marginLeft="15dp"
@@ -30,9 +31,10 @@
             android:layout_height="match_parent"/>
 
         <TextView
+            android:singleLine="true"
             android:paddingLeft="15dp"
             android:gravity="center_vertical"
-            android:textColor="@color/color_grey_300"
+            android:textColor="@color/color_grey_500"
             android:id="@+id/tv_mid"
             android:textSize="15dp"
             android:layout_marginLeft="15dp"

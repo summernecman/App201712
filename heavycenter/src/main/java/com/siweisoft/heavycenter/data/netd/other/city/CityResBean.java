@@ -46,11 +46,11 @@ public class CityResBean extends BaseBean {
 
         private int checkStatus;
 
-        public static final int CHECK_STATE_FULL = 3;
+        public static final int CHECK_STATE_FULL = 2;
 
-        public static final int CHECK_STATE_HALF = 2;
+        public static final int CHECK_STATE_HALF = 1;
 
-        public static final int CHECK_STATE_NULL = 1;
+        public static final int CHECK_STATE_NULL = 0;
 
 
         public String getName() {
@@ -96,11 +96,11 @@ public class CityResBean extends BaseBean {
             private String value;
             private int checkStatus;
 
-            public static final int CHECK_STATE_FULL = 3;
+            public static final int CHECK_STATE_FULL = 2;
 
-            public static final int CHECK_STATE_HALF = 2;
+            public static final int CHECK_STATE_HALF = 1;
 
-            public static final int CHECK_STATE_NULL = 1;
+            public static final int CHECK_STATE_NULL = 0;
 
 
             public String getName() {

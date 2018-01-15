@@ -23,11 +23,6 @@ public class NameFrag extends AppFrag<NameUIOpe,NameDAOpe> {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()){
-            case R.id.ftv_back:
-                if(FragManager.getInstance().getFragMaps().get(getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getIndex()).size()>0){
-                    FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex());
-                }
-                break;
             case R.id.ftv_right2:
                 getP().getD().reName(getP().getU().getReNameReqBean(), new UINetAdapter<ReNameResBean>(getActivity()) {
                     @Override
@@ -38,9 +33,9 @@ public class NameFrag extends AppFrag<NameUIOpe,NameDAOpe> {
                             loginResBean.setTrueName(getP().getU().getReNameReqBean().getTrueName());
                             LocalValue.saveLoginInfo(loginResBean);
                             ToastUtil.getInstance().showLong(getActivity(),baseResBean.getMessage());
-                            ((MainAct)getActivity()).getP().getD().getMyceFrag().getP().getU().initUI(((MainAct)getActivity()).getP().getD().getMyceFrag());
+                            ((MainAct)getActivity()).getP().getD().getMyceFrag().getP().getU().initUI(null);
                         }
-                        FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex());
+                       getBaseUIActivity().onBackPressed();
                     }
                 });
                 break;

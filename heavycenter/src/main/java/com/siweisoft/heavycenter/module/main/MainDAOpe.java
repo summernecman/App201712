@@ -116,7 +116,8 @@ public class MainDAOpe extends AppDAOpe {
 
     public boolean isBindUnit() {
         //绑定了单位== true
-        if(LocalValue.getLoginInfo().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_BINDED){
+        if(LocalValue.getLoginInfo().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_BINDED ||
+                LocalValue.getLoginInfo().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_CHECK ){
             return true;
         }
         return false;
@@ -126,7 +127,7 @@ public class MainDAOpe extends AppDAOpe {
     public void testData(){
         LoginResBean loginResBean = new LoginResBean();
         loginResBean.setAbbreviationName("公司简称");
-        loginResBean.setBindCompanyState(LoginResBean.BIND_UNIT_STATE_BINDED);
+        loginResBean.setBindCompanyState(LoginResBean.BIND_UNIT_STATE_UNBIND);
         loginResBean.setBindCompanyTime("2017-10-11");
 
         List<LoginResBean.BranchCompanyListBean> branchCompanyList = new ArrayList<>();

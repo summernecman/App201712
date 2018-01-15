@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.view.item;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +65,21 @@ public class NewUnitMyceItem extends RelativeLayout {
            removeView(midET);
            midTV.setText(a.getString(R.styleable.style_common_txt_two));
        }
+
+        switch (a.getInt(R.styleable.style_common_inputType,-1)){
+            case 0:
+                midET.setInputType(InputType.TYPE_CLASS_PHONE|InputType.TYPE_CLASS_NUMBER);
+                break;
+            case 1:
+                midET.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD|InputType.TYPE_CLASS_TEXT);
+                break;
+            case 2:
+                midET.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD|InputType.TYPE_CLASS_TEXT);
+                break;
+            case 3:
+                midET.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL|InputType.TYPE_CLASS_NUMBER);
+                break;
+        }
 
     }
 

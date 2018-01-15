@@ -16,7 +16,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements OnRefre
     public void initData() {
         super.initData();
         getP().getU().initRefresh(this,this);
-
+        getP().getU().autoRefresh();
     }
 
 

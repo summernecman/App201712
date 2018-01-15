@@ -4,11 +4,11 @@ package com.siweisoft.heavycenter.data.netd.unit.info;
 
 import com.android.lib.network.bean.req.BaseReqBean;
 
-public class InfoReqBean extends BaseReqBean {
+public class UnitInfoReqBean extends BaseReqBean {
 
     private int id;
 
-    public InfoReqBean() {
+    public UnitInfoReqBean() {
     }
 
     public int getId() {

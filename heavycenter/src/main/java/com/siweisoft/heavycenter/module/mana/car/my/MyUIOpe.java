@@ -16,6 +16,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.databinding.FragManaCarMyBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaCarMyBinding;
@@ -36,7 +37,7 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<CarsResBean.ResultsBean> s, ViewListener listener){
+    public void LoadListData(List<CarsResBean.ResultsBean> s, final String moudle, ViewListener listener){
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_car_my, BR.item_mana_car_my,s,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
@@ -47,40 +48,42 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
                 binding.llContainer.setOnClickListener(this);
 
                 binding.executePendingBindings();//加一行，问题解决
+                if(CarsReqBean.WHAT_MY.equals(moudle)){
+                    binding.swipe.setShowMode(SwipeLayout.ShowMode.PullOut);
+                    binding.swipe.addDrag(SwipeLayout.DragEdge.Right,binding.menu);
+                    binding.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {
+                        @Override
+                        public void onClose(SwipeLayout layout) {
+                            //when the SurfaceView totally cover the BottomView.
+                        }
 
-                binding.swipe.setShowMode(SwipeLayout.ShowMode.PullOut);
-                binding.swipe.addDrag(SwipeLayout.DragEdge.Right,binding.menu);
-                binding.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {
-                    @Override
-                    public void onClose(SwipeLayout layout) {
-                        //when the SurfaceView totally cover the BottomView.
-                    }
+                        @Override
+                        public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
+                            //you are swiping.
+                        }
 
-                    @Override
-                    public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
-                        //you are swiping.
-                    }
+                        @Override
+                        public void onStartOpen(SwipeLayout layout) {
 
-                    @Override
-                    public void onStartOpen(SwipeLayout layout) {
+                        }
 
-                    }
+                        @Override
+                        public void onOpen(SwipeLayout layout) {
+                            //when the BottomView totally show.
+                        }
 
-                    @Override
-                    public void onOpen(SwipeLayout layout) {
-                        //when the BottomView totally show.
-                    }
+                        @Override
+                        public void onStartClose(SwipeLayout layout) {
 
-                    @Override
-                    public void onStartClose(SwipeLayout layout) {
+                        }
 
-                    }
+                        @Override
+                        public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
+                            //when user's hand released.
+                        }
+                    });
+                }
 
-                    @Override
-                    public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
-                        //when user's hand released.
-                    }
-                });
             }
         });
         bind.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -104,18 +107,20 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
         });
     }
 
-    public void initRefresh(){
-        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000);
-            }
-        });
-        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadmore(2000);
-            }
-        });
+    public void initRefresh(OnRefreshListener refreshListener,OnLoadmoreListener loadmoreListener){
+        bind.refreshLayout.setOnRefreshListener(refreshListener);
+        bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
+    }
+
+    public void finishRefresh(){
+        bind.refreshLayout.finishRefresh();
+    }
+
+    public void finishLoadmore(){
+        bind.refreshLayout.finishLoadmore();
+    }
+
+    public void autoRefresh(){
+        bind.refreshLayout.autoRefresh();
     }
 }

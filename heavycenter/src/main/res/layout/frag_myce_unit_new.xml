@@ -50,7 +50,7 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/unitaddr"
             style_common:txt_left = "单位地址"
-            style_common:txt_two ="请选择"
+            style_common:txt_two ="上海同和国际大厦ABC"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "false"
             style_common:iv_right = "@drawable/icon_arraw"
@@ -69,13 +69,14 @@
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/unitcontact"
-            style_common:txt_left = "联系人"
+            style_common:txt_left = "联系人    "
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/unitphone"
+            style_common:inputType="0"
             style_common:txt_left = "联系电话"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "true"

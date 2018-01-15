@@ -4,13 +4,13 @@ package com.siweisoft.heavycenter.data.netd.user.info;
 
 import com.android.lib.network.bean.req.BaseReqBean;
 
-public class InfoReqBean extends BaseReqBean {
+public class UserInfoReqBean extends BaseReqBean {
 
     private int id;
 
     private int isApp;
 
-    public InfoReqBean() {
+    public UserInfoReqBean() {
     }
 
     public int getId() {

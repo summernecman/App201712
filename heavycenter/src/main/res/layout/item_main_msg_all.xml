@@ -35,14 +35,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
+                <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    android:id="@+id/tv_des"
+                    android:paddingTop="1dp"
+                    android:paddingBottom="1dp"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="7dp"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="10sp"
+                    android:visibility="gone"
+                    style_common:color_one="@color/white"
+                    style_common:stroke="1dp"
+                    style_common:color_stroke="@color/color_hv_yelll"
+                    style_common:corner="5dp"
+                    style_common:color_txt="@color/color_hv_yelll"
+
+                    style_common:color_two="@color/color_red_800"
+                    style_common:stroke_two="2dp"
+                    style_common:color_stroke_two="@color/color_hv_yelll"
+                    style_common:corner_two="5dp"
+                    style_common:color_txt_two="@color/white"
+                    style_common:boo_one="false"
+                    android:text="接受"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
                 <View
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="1dp"/>
                 <TextView
+                    android:id="@+id/tv_date"
                     android:textColor="@color/gray"
                     android:textSize="13sp"
-                    android:text="2017/12/13 12:33"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -57,6 +83,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_fuction"
                 android:visibility="gone"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
@@ -68,6 +95,7 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"/>
                 <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    android:id="@+id/bt_reject"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
                     android:paddingLeft="12dp"
@@ -93,6 +121,7 @@
                     android:layout_height="wrap_content" />
 
                 <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    android:id="@+id/bt_agree"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
                     android:paddingLeft="12dp"
@@ -120,6 +149,7 @@
 
 
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 </layout>

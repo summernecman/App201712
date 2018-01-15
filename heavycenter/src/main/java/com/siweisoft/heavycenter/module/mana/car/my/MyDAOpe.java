@@ -26,13 +26,13 @@ public class MyDAOpe extends AppDAOpe {
         return data;
     }
 
-    public void Cars(NetI<CarsResBean> adapter){
+    public void Cars(String moudle,NetI<CarsResBean> adapter){
         CarsReqBean carsReqBean = new CarsReqBean();
         carsReqBean.setIsApp(1);
         carsReqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
         carsReqBean.setPageIndex(0);
         carsReqBean.setPageSize(1000);
-        carsReqBean.setWhat(CarsReqBean.WHAT_MY);
+        carsReqBean.setWhat(moudle);
         NetDataOpe.Mana.Car.Cars(getActivity(),carsReqBean,adapter);
     }
 }

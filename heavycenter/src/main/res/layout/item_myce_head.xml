@@ -30,9 +30,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <LinearLayout
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="30dp"
                     android:orientation="horizontal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <ImageView
@@ -74,7 +74,7 @@
                             android:singleLine="true"
                             android:id="@+id/tv_role"
                             android:text="管理员"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -82,7 +82,7 @@
                         <TextView
                             android:singleLine="true"
                             android:id="@+id/tv_phone"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="10dp"
                             android:text="18741414141"
                             android:textSize="20sp"
                             android:textColor="@color/white"
