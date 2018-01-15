@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/App201712.iml" filepath="$PROJECT_DIR$/.idea/App201712.iml" />
-      <module fileurl="file://E:\project\App201712\App201712.iml" filepath="E:\project\App201712\App201712.iml" />
+      <module fileurl="file://$PROJECT_DIR$/App201712.iml" filepath="$PROJECT_DIR$/App201712.iml" />
       <module fileurl="file://$PROJECT_DIR$/heavycenter/heavycenter.iml" filepath="$PROJECT_DIR$/heavycenter/heavycenter.iml" />
-      <module fileurl="file://E:\project\App201712\heavycenter\heavycenter.iml" filepath="E:\project\App201712\heavycenter\heavycenter.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
-      <module fileurl="file://E:\project\App201712\lib\lib.iml" filepath="E:\project\App201712\lib\lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/myapplication/myapplication.iml" filepath="$PROJECT_DIR$/myapplication/myapplication.iml" />
-      <module fileurl="file://E:\project\App201712\myapplication\myapplication.iml" filepath="E:\project\App201712\myapplication\myapplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
-      <module fileurl="file://E:\project\App201712\service\service.iml" filepath="E:\project\App201712\service\service.iml" />
     </modules>
   </component>
 </project>
