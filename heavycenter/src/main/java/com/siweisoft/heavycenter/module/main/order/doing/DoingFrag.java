@@ -25,7 +25,7 @@ public class DoingFrag extends AppFrag<DoingUIOpe,DoingDAOpe> implements ViewLis
     public void onInterupt(int type, View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.订单,new DetailFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.订单,MainAct.订单ID,new DetailFrag());
                 break;
         }
     }

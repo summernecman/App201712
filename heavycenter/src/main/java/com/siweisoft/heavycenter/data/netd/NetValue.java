@@ -9,7 +9,7 @@ import com.android.lib.util.SPUtil;
 
 public class NetValue {
 
-    public static final String 奔溃日志 = "http://www.summernecro.com:8079/server/crash/sendCrash";
+    public static final String 奔溃日志 = "http://www.summernecro.com:8888/server/crash/sendCrash";
 
     public static final String HTTP前缀 = "http://";
 

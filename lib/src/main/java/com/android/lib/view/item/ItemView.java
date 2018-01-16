@@ -98,5 +98,9 @@ public class ItemView extends RelativeLayout{
     public TextView getRightTV() {
         return rightTV;
     }
+
+    public TextView getLeftTV() {
+        return leftTV;
+    }
 }
 

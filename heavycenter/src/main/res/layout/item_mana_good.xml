@@ -4,15 +4,32 @@
     <data>
         <variable
             name="item_mana_good"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean.ResultsBean" />
     </data>
+    <com.daimajia.swipe.SwipeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        >
 
+    <TextView
+        android:textSize="22sp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text="停用"
+        android:orientation="horizontal"
+        android:background="@color/red"
+        android:id="@+id/munu"
+        android:layout_width="55dp"
+        android:weightSum="1"
+        android:layout_height="match_parent"/>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="80dp">
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/swipe"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:paddingTop="5dp"
@@ -42,7 +59,7 @@
                         android:singleLine="true"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:text="石子"
+                        android:text="@{item_mana_good.warehouseName}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -52,13 +69,6 @@
                         android:layout_width="0dp"
                         android:layout_height="1dp"/>
 
-                    <TextView
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:text="A区-15#"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -68,29 +78,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp">
                     <TextView
+                        android:id="@+id/tv_minstock"
                         android:layout_weight="1"
                         android:singleLine="true"
                         android:textColor="@color/gray"
                         android:textSize="14sp"
-                        android:text="送货区域12345"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:id="@+id/tv_maxstock"
                         android:layout_weight="1"
                         android:layout_marginLeft="10dp"
                         android:singleLine="true"
                         android:textColor="@color/gray"
                         android:textSize="14sp"
-                        android:text="送货区域12345"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
         <View
+            android:layout_alignParentBottom="true"
             android:background="@color/color_grey_400"
             android:layout_width="match_parent"
             android:layout_height="1px"/>
     </RelativeLayout>
+
+    </com.daimajia.swipe.SwipeLayout>
 </layout>

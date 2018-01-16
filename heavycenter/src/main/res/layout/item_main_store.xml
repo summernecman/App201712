@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item_main_store"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean.ResultsBean" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,7 +26,7 @@
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:text="A-15号"
+                android:text="@{item_main_store.warehouseName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -35,7 +35,7 @@
                 android:layout_marginLeft="14dp"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:text="混凝土"
+                android:text="@{item_main_store.productName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -44,7 +44,7 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:text="C30"
+                android:text="@{item_main_store.specifications}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <View
@@ -54,15 +54,16 @@
 
 
             <TextView
+                android:id="@+id/tv_current"
                 android:singleLine="true"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:text="剩余：1900.5t"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <com.siweisoft.heavycenter.module.view.progress.ProgressView
+            android:id="@+id/pv_progress"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

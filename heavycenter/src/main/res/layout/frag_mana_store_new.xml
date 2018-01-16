@@ -22,13 +22,16 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            style_common:txt_left = "仓库编号"
+            android:id="@+id/item_name"
+            style_common:txt_left = "仓库名称"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_maxstock"
+            style_common:inputType="3"
             style_common:txt_left = "最大库存"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "true"
@@ -36,6 +39,8 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_minstock"
+            style_common:inputType="3"
             style_common:txt_left = "安全库存"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "true"

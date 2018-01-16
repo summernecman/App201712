@@ -63,7 +63,7 @@ public class CarsResBean extends BaseBean {
         this.results = results;
     }
 
-    public static class ResultsBean {
+    public static class ResultsBean extends BaseBean{
         /**
          * vehicleId : 18
          * carLicenseNo : 沪A22224
@@ -80,6 +80,14 @@ public class CarsResBean extends BaseBean {
          * companyName : huluwaCompany3
          */
 
+        public static final int STATUS_ON = 1;
+
+        public static final int STATUS_OFF = 0;
+
+        public static final String STATUS_ON_CN = "启用";
+
+        public static final String STATUS_OFF_CN = "停用";
+
         private int vehicleId;
         private String carLicenseNo;
         private String specifications;
@@ -89,7 +97,7 @@ public class CarsResBean extends BaseBean {
         private int emptyWeight;
         private String icCard;
         private int status;
-        private Object trueName;
+        private String trueName;
         private String tel;
         private int companyId;
         private String companyName;
@@ -166,11 +174,11 @@ public class CarsResBean extends BaseBean {
             this.status = status;
         }
 
-        public Object getTrueName() {
+        public String getTrueName() {
             return trueName;
         }
 
-        public void setTrueName(Object trueName) {
+        public void setTrueName(String trueName) {
             this.trueName = trueName;
         }
 

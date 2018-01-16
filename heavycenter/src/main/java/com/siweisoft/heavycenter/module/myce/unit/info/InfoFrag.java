@@ -8,8 +8,10 @@ import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
+import com.siweisoft.heavycenter.module.main.MainAct;
 
 import butterknife.OnClick;
 
@@ -44,7 +46,16 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                                 public void onResult(boolean success, String msg, UnBindResBean o) {
                                     super.onResult(success, msg, o);
                                     if(success){
-                                       // LocalValue.getLoginInfo().set
+                                        getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                            @Override
+                                            public void onResult(boolean success, String msg, LoginResBean o) {
+                                                super.onResult(success, msg, o);
+                                                if(success){
+                                                    LocalValue.saveLoginInfo(o);
+                                                    ((MainAct)getBaseUIActivity()).reStart();
+                                                }
+                                            }
+                                        });
                                     }
                                 }
                             });

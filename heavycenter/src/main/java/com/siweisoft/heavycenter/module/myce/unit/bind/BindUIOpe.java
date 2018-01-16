@@ -79,7 +79,7 @@ public class BindUIOpe extends AppUIOpe<FragMyceUnitBindBinding>{
     public void showTip(View.OnClickListener onClickListener){
         DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
         diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_nullunit,null));
-        diaLogCenterFrag.setOnClickListener(onClickListener);
+        diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_y,R.id.tv_n);
         FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(),MainAct.主界面,diaLogCenterFrag);
     }
 

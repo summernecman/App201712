@@ -19,7 +19,7 @@ public class NoBindFrag extends AppFrag<NoBindUIOpe,NoBindDAOpe> {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.bind:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new BindFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new BindFrag());
                 break;
             case R.id.ftv_back:
                 ((MainAct)getActivity()).getP().getU().switchDrawer();

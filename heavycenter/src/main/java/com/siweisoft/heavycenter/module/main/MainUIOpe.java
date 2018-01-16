@@ -98,7 +98,7 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
 
     public void nobind(){
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.add(MainAct.ID_CONTENT,new NoBindFrag(),NoBindFrag.class.getName());
+        transaction.add(MainAct.主界面ID,new NoBindFrag(),NoBindFrag.class.getName());
         transaction.commitNow();
     }
 

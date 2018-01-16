@@ -173,7 +173,7 @@ public class FragManager2  {
     }
 
     public void clear(){
-        map = null;
+        map = new HashMap<>();
     }
 
 }

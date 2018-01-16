@@ -4,9 +4,12 @@ package com.siweisoft.heavycenter.module.mana.user;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.daimajia.swipe.SwipeLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
@@ -21,6 +24,10 @@ import java.util.List;
 
 public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
 
+    public final static String 解除绑定 = "解除绑定";
+
+    public final static String 重新邀请 = "重新邀请";
+
     public UserUIOpe(Context context) {
         super(context);
     }
@@ -29,12 +36,21 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(final List<UnitUserResBean.ResultsBean> data) {
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_user, BR.item_mana_user, data){
+    public void LoadListData(final List<UnitUserResBean.ResultsBean> data, ViewListener listener) {
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_user, BR.item_mana_user, data,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
-                ItemManaUserBinding binding = (ItemManaUserBinding) viewHolder.viewDataBinding;
+                ItemManaUserBinding binding = (ItemManaUserBinding) holder.viewDataBinding;
+
+                if(data.get(position).getStatus()== UnitUserResBean.ResultsBean.STATUS_ONLINE){
+                    binding.tvState.setText(UnitUserResBean.ResultsBean.STATUS_ONLINE_CN);
+                    binding.ivHead.setSelected(true);
+                }else{
+                    binding.tvState.setText(UnitUserResBean.ResultsBean.STATUS_OFFLINE_CN);
+                    binding.ivHead.setSelected(false);
+                }
+
                 switch (data.get(position).getBindCompanyState()){
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
                         binding.tvState.setText(LoginResBean.BIND_UNIT_STATE_BINDED_CN);
@@ -49,14 +65,36 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
                         binding.tvState.setText(LoginResBean.BIND_UNIT_STATE_UNBIND_CN);
                         break;
                         default:
-                            if(data.get(position).getStatus()== UnitUserResBean.ResultsBean.STATUS_ONLINE){
-                                binding.tvState.setText(UnitUserResBean.ResultsBean.STATUS_ONLINE_CN);
-                                binding.ivHead.setSelected(true);
-                            }else{
-                                binding.tvState.setText(UnitUserResBean.ResultsBean.STATUS_OFFLINE_CN);
-                                binding.ivHead.setSelected(false);
-                        }
                             break;
+                }
+
+
+                switch (data.get(position).getBindCompanyState()){
+                    case LoginResBean.BIND_UNIT_STATE_BINDED:
+                        binding.munu.setText(解除绑定);
+                        binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
+                        break;
+                        default:
+                            binding.munu.setText(重新邀请);
+                            binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
+                            break;
+                }
+
+                binding.munu.setOnClickListener(this);
+                binding.munu.setTag(R.id.position,position);
+                binding.munu.setTag(R.id.data,data.get(position));
+                binding.munu.setTag(R.id.data1,binding.swipe);
+
+            }
+
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+                switch (v.getId()){
+                    case R.id.munu:
+                        SwipeLayout swipeLayout = (SwipeLayout) v.getTag(R.id.data1);
+                        swipeLayout.close(true);
+                        break;
                 }
             }
         });

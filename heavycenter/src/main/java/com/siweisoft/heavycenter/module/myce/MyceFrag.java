@@ -35,6 +35,11 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
 
     }
 
+    public void init(){
+        getP().getU().initUI(this);
+        getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().isBindUnit());
+    }
+
     @OnClick({R.id.item_car,R.id.item_good,R.id.item_store,R.id.item_user,R.id.item_unit,R.id.iv_nameedit,R.id.ftv_right,R.id.iv_head})
     public void onClick(View v){
 
@@ -46,32 +51,32 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
 
                 break;
             case R.id.item_car:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new CarFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new CarFrag());
 
                 break;
             case R.id.item_good:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new GoodFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new GoodFrag());
                 break;
             case R.id.item_store:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new StoreFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new StoreFrag());
                 break;
             case R.id.item_user:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new UserFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new UserFrag());
                 break;
             case R.id.item_unit:
                 switch (LocalValue.getLoginInfo().getBindCompanyState()){
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
-                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new com.siweisoft.heavycenter.module.myce.unit.info.InfoFrag());
+                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new com.siweisoft.heavycenter.module.myce.unit.info.InfoFrag());
                         break;
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
-                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new BindFrag());
+                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new BindFrag());
                         break;
                 }
                 break;
             case R.id.iv_nameedit:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,new NameFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new NameFrag());
                 break;
             case R.id.ftv_right:
                 InfoFrag infoFrag = new InfoFrag();
@@ -81,7 +86,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                         FragManager2.getInstance().setFinishAnim(R.anim.scale_in,R.anim.scale_out).finish(getBaseUIActivity(),MainAct.主界面);
                     }
                 });
-                FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIActivity(),MainAct.主界面,MainAct.ID_CONTENT,infoFrag);
+                FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,infoFrag);
                 break;
             case R.id.iv_head:
                 IntentUtil.getInstance().photoShowFromphone(this,01);
@@ -97,6 +102,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
         if(data==null){
             return;
         }
+
         UriUtils.getPath(getActivity(),data.getData());
     }
 }

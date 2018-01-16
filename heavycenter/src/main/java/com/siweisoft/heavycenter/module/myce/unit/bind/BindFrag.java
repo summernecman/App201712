@@ -2,13 +2,11 @@ package com.siweisoft.heavycenter.module.myce.unit.bind;
 
 //by summer on 2017-12-19.
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -52,7 +50,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
 
                 break;
             case R.id.ftv_right2:
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),MainAct.ID_CONTENT,new NewFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),MainAct.主界面ID,new NewFrag());
                 break;
             case R.id.iv_search:
                 getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(getActivity()){
@@ -85,27 +83,33 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
                             getP().getU().showTip(new View.OnClickListener(){
                                 @Override
                                 public void onClick(View vv) {
-
-                                    getP().getD().bindUnit(unitInfo.getId(), true,new UINetAdapter<BindResBean>(getActivity()) {
-                                        @Override
-                                        public void onResult(boolean success, String msg, BindResBean o) {
-                                            super.onResult(success, msg, o);
-                                            getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                    switch (vv.getId()){
+                                        case R.id.tv_n:
+                                            break;
+                                        case R.id.tv_y:
+                                            getP().getD().bindUnit(unitInfo.getId(), true,new UINetAdapter<BindResBean>(getActivity()) {
                                                 @Override
-                                                public void onResult(boolean success, String msg, LoginResBean o) {
+                                                public void onResult(boolean success, String msg, BindResBean o) {
                                                     super.onResult(success, msg, o);
-                                                    if(success){
-                                                        LocalValue.saveLoginInfo(o);
-                                                        ((MainAct)getActivity()).ddd();
-                                                    }
+                                                    getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                                        @Override
+                                                        public void onResult(boolean success, String msg, LoginResBean o) {
+                                                            super.onResult(success, msg, o);
+                                                            if(success){
+                                                                LocalValue.saveLoginInfo(o);
+                                                                getBaseUIActivity().onBackPressed();
+                                                                ((MainAct)getActivity()).reStart();
+                                                            }
+                                                        }
+                                                    });
                                                 }
                                             });
-                                        }
-                                    });
+                                            break;
+                                    }
                                 }
                             });
                         }else{
-                            getP().getD().bindUnit(unitInfo.getId(),false, new UINetAdapter<BindResBean>(getActivity()) {
+                            getP().getD().bindUnit(unitInfo.getId(), false,new UINetAdapter<BindResBean>(getActivity()) {
                                 @Override
                                 public void onResult(boolean success, String msg, BindResBean o) {
                                     super.onResult(success, msg, o);
@@ -115,7 +119,8 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
                                             super.onResult(success, msg, o);
                                             if(success){
                                                 LocalValue.saveLoginInfo(o);
-                                                ((MainAct)getActivity()).ddd();
+                                                getBaseUIActivity().onBackPressed();
+                                                ((MainAct)getActivity()).reStart();
                                             }
                                         }
                                     });

@@ -9,16 +9,11 @@ import android.view.ViewGroup;
 
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 
 public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSelectListener {
-
-    public static final int ID_ALL_ROOT = R.id.act_main;
-
-    public static final int ID_CONTENT = R.id.content_content;
 
     public static final String 地磅 = "地磅";
 
@@ -37,11 +32,26 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     public static final String 对话框 = "对话框";
 
 
+    public static final int 地磅ID = 11111;
+
+    public static final int 运输单ID = 11112;
+
+    public static final int 订单ID = 11113;
+
+    public static final int 仓库ID = 11114;
+
+    public static final int 消息ID = 11115;
+
+    public static final int 主界面ID = R.id.content_content;
+
+    public static final int 对话框ID = R.id.act_main;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getP().getD().testData();
+        //getP().getD().testData();
         getP().getU().setBottomMenuViewData(getP().getD().getMenudata());
         if(!getP().getD().getPermissionUtil().isAllGranted(activity,getP().getD().getPermissions())){
             return;
@@ -54,15 +64,16 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     public void dothing(){
         getP().getU().initDrawerMenu(getP().getD().getMyceFrag());
         getP().getU().initPages(getP().getD().getMenudata(),this);
-        ddd();
+        reStart();
     }
 
-    public void ddd(){
+    public void reStart(){
         if(!getP().getD().isBindUnit()){
             getP().getU().nobind();
         }else{
             getP().getU().removenobind();
         }
+        getP().getD().getMyceFrag().init();
     }
 
 

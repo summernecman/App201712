@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.mana.car.my;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
@@ -26,6 +27,8 @@ import java.util.List;
 public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
 
 
+    CarsResBean cars;
+
     public MyUIOpe(Context context) {
         super(context);
         initRecycle();
@@ -37,10 +40,11 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(CarsResBean cars, final String moudle, ViewListener listener){
-        if(cars==null){
+    public void LoadListData(CarsResBean data, final String moudle, ViewListener listener){
+        if(data==null){
             return;
         }
+        this.cars = data;
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_car_my, BR.item_mana_car_my,cars.getResults(),listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
@@ -52,8 +56,19 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
 
                 binding.executePendingBindings();//加一行，问题解决
                 if(CarsReqBean.WHAT_MY.equals(moudle)){
+                    if(cars.getResults().get(position).getStatus()== CarsResBean.ResultsBean.STATUS_OFF){
+                        binding.menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
+                        binding.menu.setText(CarsResBean.ResultsBean.STATUS_ON_CN);
+                    }else{
+                        binding.menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
+                        binding.menu.setText(CarsResBean.ResultsBean.STATUS_OFF_CN);
+                    }
                     binding.swipe.setShowMode(SwipeLayout.ShowMode.PullOut);
                     binding.swipe.addDrag(SwipeLayout.DragEdge.Right,binding.menu);
+                    binding.menu.setOnClickListener(this);
+                    binding.menu.setTag(R.id.data,list.get(position));
+                    binding.menu.setTag(R.id.data1,binding.swipe);
+                    binding.menu.setTag(R.id.position,position);
                     binding.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {
                         @Override
                         public void onClose(SwipeLayout layout) {
@@ -86,7 +101,17 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
                         }
                     });
                 }
+            }
 
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+                switch (v.getId()){
+                    case R.id.menu:
+                        SwipeLayout swipeLayout = (SwipeLayout) v.getTag(R.id.data1);
+                        swipeLayout.close(true);
+                        break;
+                }
             }
         });
         bind.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -110,7 +135,19 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
         });
     }
 
-    public void initRefresh(OnRefreshListener refreshListener,OnLoadmoreListener loadmoreListener){
+    public CarsResBean getCars() {
+        return cars;
+    }
+
+    public void setCars(CarsResBean cars) {
+        this.cars = cars;
+    }
+
+    public void notifyDataSetChanged(){
+        bind.recycle.getAdapter().notifyDataSetChanged();
+    }
+
+    public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener){
         bind.refreshLayout.setOnRefreshListener(refreshListener);
         bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
     }

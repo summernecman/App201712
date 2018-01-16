@@ -9,8 +9,13 @@ import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserReqBean;
+import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserResBean;
 import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
 import com.siweisoft.heavycenter.data.netd.unit.user.UnitUsersReqBean;
+import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindReqBean;
+import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
 
 import java.util.ArrayList;
 
@@ -34,6 +39,21 @@ public class UserDAOpe extends AppDAOpe {
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);
         NetDataOpe.Unit.unitUsers(getActivity(),reqBean,adapter);
+    }
+
+    public void addUser(String tel, NetI<AddUserResBean> adapter){
+        AddUserReqBean reqBean = new AddUserReqBean();
+        reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        reqBean.setUserId(LocalValue.getLoginInfo().getUserId());
+        reqBean.setUserRole(LoginResBean.USER_ROLE_GENERAL);
+        NetDataOpe.Mana.User.addUser(getActivity(),reqBean,adapter);
+    }
+
+    public void unBindUser(int userid, NetI<UnBindResBean> adapter){
+        UnBindReqBean reqBean = new UnBindReqBean();
+        reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        reqBean.setId(userid);
+        NetDataOpe.User.unBinUnit(getActivity(),reqBean,adapter);
     }
 
 }

@@ -26,6 +26,7 @@
 
     <color name="color_hv_weightview_start">#f6ab12</color>
 
+    <color name="color_hv_red">#ff6600</color>
 
     <color name="color_hv_weightview_end">#30e5a3</color>
 </resources>

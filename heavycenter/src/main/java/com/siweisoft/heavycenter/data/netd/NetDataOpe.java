@@ -4,6 +4,8 @@ package com.siweisoft.heavycenter.data.netd;
 
 import android.content.Context;
 
+import com.android.lib.bean.FileBean;
+import com.android.lib.bean.FilesBean;
 import com.android.lib.network.news.NetArrayI;
 import com.android.lib.network.news.NetGet;
 import com.android.lib.network.news.NetI;
@@ -23,8 +25,18 @@ import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarReqBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarResBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.add.NewStoreReqBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.add.NewStoreResBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreReqBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresReqBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
+import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserReqBean;
+import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserResBean;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealResBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
@@ -48,6 +60,9 @@ import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeResBean;
+
+import java.io.File;
+import java.util.ArrayList;
 
 public class NetDataOpe {
 
@@ -88,7 +103,7 @@ public class NetDataOpe {
         NetGet.getData(context,NetValue.获取地址("/company/insert"),reqBean,adapter);
     }
 
-    public static void getCity(Context context, CityReqBean reqBean, NetArrayI<CityResBean> adapter) {
+    public static void getCity(Context context, CityReqBean reqBean, NetI<ArrayList<CityResBean>> adapter) {
         NetGet.getData(context,NetValue.获取地址("/metadata/getCity"),reqBean,adapter);
     }
 
@@ -109,6 +124,7 @@ public class NetDataOpe {
         public static void createUnit(Context context, NewReqBean reqBean, NetI<NewResBean> adapter) {
             NetGet.postData(context,NetValue.获取地址("/company/insert"),reqBean,adapter);
         }
+
     }
 
     public static class Msg{
@@ -139,6 +155,16 @@ public class NetDataOpe {
         }
 
 
+        public static void RePhoto(Context context, String path,final NetI netI){
+            FilesBean data = new FilesBean();
+            data.setData(new ArrayList<FileBean>());
+            data.getData().add(new FileBean(new File(path)));
+            NetGet.file(context,"/uploadPic/picture",data,netI);
+        }
+
+
+
+
     }
 
     public static class Mana{
@@ -147,6 +173,18 @@ public class NetDataOpe {
 
             public static void sotresInfo(Context context, StoresReqBean reqBean, NetI<StoresResBean> adapter) {
                 NetGet.getData(context,NetValue.获取地址("/wareHouse/list"),reqBean,adapter);
+            }
+
+            public static void newStore(Context context, NewStoreReqBean reqBean, NetI<NewStoreResBean> adapter) {
+                NetGet.postData(context,NetValue.获取地址("/wareHouse/insert"),reqBean,adapter);
+            }
+
+            public static void statusStore(Context context, StatusStoresReqBean reqBean, NetI<StatusStoresResBean> adapter) {
+                NetGet.postData(context,NetValue.获取地址("/wareHouse/updateWareHouseStatus"),reqBean,adapter);
+            }
+
+            public static void checkStore(Context context, CheckStoreReqBean reqBean, NetI<CheckStoreResBean> adapter) {
+                NetGet.postData(context,NetValue.获取地址("/wareHouse/inventory"),reqBean,adapter);
             }
 
         }
@@ -162,6 +200,17 @@ public class NetDataOpe {
                 NetGet.postData(context,NetValue.获取地址("/vehicle/insert"),reqBean,adapter);
             }
 
+            public static void statusCar(Context context, StopCarReqBean reqBean, NetI<StopCarResBean> adapter) {
+                NetGet.postData(context,NetValue.获取地址("/vehicle/startOrStop"),reqBean,adapter);
+            }
+
+        }
+
+        public static class User{
+
+            public static void addUser(Context context, AddUserReqBean reqBean, NetI<AddUserResBean> adapter) {
+                NetGet.postData(context,NetValue.获取地址("/user/insertUserApp"),reqBean,adapter);
+            }
 
         }
 

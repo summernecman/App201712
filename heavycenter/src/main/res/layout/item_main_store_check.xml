@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item_main_store_check"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean.ResultsBean" />
     </data>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
@@ -12,20 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp">
+>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:id="@+id/swipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
 >
         <TextView
             android:textColor="@color/black"
             android:gravity="center"
             android:textSize="18sp"
-            android:text="A-15"
+            android:text="@{item_main_store_check.warehouseName}"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
@@ -40,7 +41,7 @@
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:text="防冻剂"
+                android:text="@{item_main_store_check.productName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -53,26 +54,31 @@
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:text="GD809"
+                android:text="@{item_main_store_check.specifications}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/tv_current"
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:text="5677T"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:inputType="number"
+                android:digits="0123456789."
+                android:id="@+id/et_input"
                 android:background="@drawable/bg_hv_sharp2_gray_stroke"
                 android:layout_marginTop="5dp"
                 android:paddingLeft="15dp"
@@ -82,22 +88,22 @@
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:textSize="16sp"
-                android:text="5677T"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_after"
             android:textColor="@color/black"
             android:gravity="center"
             android:textSize="16sp"
-            android:text="-5677T"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
         <View
+            android:layout_alignParentBottom="true"
             android:background="@color/color_grey_300"
             android:layout_width="match_parent"
             android:layout_height="1px"/>

@@ -10,10 +10,15 @@ import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresReqBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
 
 import java.util.ArrayList;
 
 public class StoreDAOpe extends AppDAOpe {
+
+    private StatusStoresReqBean statusStoresReqBean = new StatusStoresReqBean();
+
     public StoreDAOpe(Context context) {
         super(context);
     }
@@ -33,7 +38,15 @@ public class StoreDAOpe extends AppDAOpe {
         reqBean.setIsApp(1);
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);
-        reqBean.setStatus(StoresReqBean.STATUS_ON);
+        reqBean.setStatus(StoresReqBean.STATUS_ALL);
         NetDataOpe.Mana.Store.sotresInfo(getActivity(),reqBean,adapter);
+    }
+
+    public void statusStore(StatusStoresReqBean statusStoresReqBean, NetI<StatusStoresResBean> adapter){
+        NetDataOpe.Mana.Store.statusStore(getActivity(),statusStoresReqBean,adapter);
+    }
+
+    public StatusStoresReqBean getStatusStoresReqBean() {
+        return statusStoresReqBean;
     }
 }

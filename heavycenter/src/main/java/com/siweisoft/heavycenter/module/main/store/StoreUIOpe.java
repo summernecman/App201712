@@ -9,11 +9,14 @@ import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.StringUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainStoreBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainOrderDoneBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainStoreBinding;
@@ -26,27 +29,36 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
         super(context);
     }
 
-    public void initRefresh(){
-        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000);
-            }
-        });
-        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadmore(2000);
-            }
-        });
+
+    public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener){
+        bind.refreshLayout.setOnRefreshListener(refreshListener);
+        bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
+    }
+
+    public void finishRefresh(){
+        bind.refreshLayout.finishRefresh();
+    }
+
+    public void finishLoadmore(){
+        bind.refreshLayout.finishLoadmore();
+    }
+
+    public void autoRefresh(){
+        bind.refreshLayout.autoRefresh();
+    }
+
+
+
+    public void notifyDataSetChanged(){
+        bind.recycle.getAdapter().notifyDataSetChanged();
     }
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<String> s, ViewListener listener) {
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_store, BR.item_main_store, s,listener){
+    public void LoadListData(final StoresResBean o, ViewListener listener) {
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_store, BR.item_main_store, o.getResults(),listener){
 
             int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
             int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);
@@ -56,6 +68,12 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
                 super.onBindViewHolder(holder, position);
                 ItemMainStoreBinding storeBinding = (ItemMainStoreBinding) holder.viewDataBinding;
                 storeBinding.getRoot().setSelected(position%2==0?true:false);
+                storeBinding.tvCurrent.setText("剩余:"+StringUtil.getStr(o.getResults().get(position).getCurrentStock()));
+
+                storeBinding.pvProgress.setValue(o.getResults().get(position).getMaxStock(),
+                        o.getResults().get(position).getMinStock(),
+                        o.getResults().get(position).getCurrentStock());
+
             }
         });
     }

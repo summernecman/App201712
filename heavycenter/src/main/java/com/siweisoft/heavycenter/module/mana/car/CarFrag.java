@@ -27,7 +27,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,MainAct.ID_CONTENT,new NewFrag());
+                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,MainAct.主界面ID,new NewFrag());
                 break;
         }
 

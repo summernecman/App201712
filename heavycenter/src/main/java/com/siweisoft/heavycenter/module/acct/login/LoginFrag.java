@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.acct.login;
 
 import android.view.View;
 
+import com.android.lib.network.news.NetAdapter;
 import com.android.lib.network.news.NetArrayAdapter;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
@@ -31,12 +32,11 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
     public void initData() {
         super.initData();
 
-        NetDataOpe.getCity(getActivity(),new CityReqBean(),new NetArrayAdapter<CityResBean>(getActivity()){
+        NetDataOpe.getCity(getActivity(),new CityReqBean(),new NetAdapter<ArrayList<CityResBean>>(getActivity()){
+
             @Override
             public void onResult(boolean success, String msg, ArrayList<CityResBean> o) {
-              LocalValue.saveCitysInfo(o);
-              getP().getD().saveProMapInfo();
-              getP().getD().initDATA();
+                super.onResult(success, msg, o);
             }
         });
 

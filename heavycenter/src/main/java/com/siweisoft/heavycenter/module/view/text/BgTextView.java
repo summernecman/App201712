@@ -66,6 +66,7 @@ public class BgTextView extends TextView {
         StateListDrawable stateListDrawable = new StateListDrawable();
         stateListDrawable.addState(new int[]{android.R.attr.state_pressed},hideDrawable);
         stateListDrawable.addState(new int[]{android.R.attr.state_focused},hideDrawable);
+        stateListDrawable.addState(new int[]{android.R.attr.state_selected},hideDrawable);
         stateListDrawable.addState(new int[]{},showDrawable);
         setBackground(stateListDrawable);
 

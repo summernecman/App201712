@@ -4,7 +4,9 @@ package com.siweisoft.heavycenter.module.view.item;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.InputFilter;
 import android.text.InputType;
+import android.text.method.DigitsKeyListener;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,8 @@ public class NewUnitMyceItem extends RelativeLayout {
     private float leftW = 0;
 
     private TextView midTV;
+
+    private boolean edit = false;
 
 
 
@@ -56,13 +60,11 @@ public class NewUnitMyceItem extends RelativeLayout {
         }
         leftW = a.getDimension(R.styleable.style_common_minwidth,0);
         leftTV.setMinWidth((int) leftW);
-        boolean edit = a.getBoolean(R.styleable.style_common_boo_edit,false);
+        edit = a.getBoolean(R.styleable.style_common_boo_edit,false);
        if(edit){
            midTV.setVisibility(View.GONE);
-           removeView(midTV);
        }else{
            midET.setVisibility(View.GONE);
-           removeView(midET);
            midTV.setText(a.getString(R.styleable.style_common_txt_two));
        }
 
@@ -78,7 +80,12 @@ public class NewUnitMyceItem extends RelativeLayout {
                 break;
             case 3:
                 midET.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL|InputType.TYPE_CLASS_NUMBER);
+                //midTV.setKeyListener(DigitsKeyListener.getInstance("0123456789."));
                 break;
+        }
+
+        if(a.getInt(R.styleable.style_common_txt_maxlenth,-1)!=-1){
+            midET.setFilters(new InputFilter[]{new InputFilter.LengthFilter(a.getInt(R.styleable.style_common_txt_maxlenth,-1))});
         }
 
     }
@@ -91,7 +98,31 @@ public class NewUnitMyceItem extends RelativeLayout {
         return midTV;
     }
 
+    public String getMidEtTxt(){
+        return midET.getText().toString();
+    }
+
+    public String getMidTvTxt(){
+        return midTV.getText().toString();
+    }
+
     public void setMidTVTxt(String Str){
+        midET.setVisibility(View.GONE);
+        midTV.setVisibility(View.VISIBLE);
         midTV.setText(Str);
+    }
+
+
+
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
+        if(edit){
+            midTV.setVisibility(View.GONE);
+            removeView(midTV);
+        }else{
+            midET.setVisibility(View.GONE);
+            removeView(midET);
+        }
     }
 }

@@ -5,10 +5,13 @@ package com.siweisoft.heavycenter.module.mana.car.detail;
 import android.content.Context;
 
 import com.siweisoft.heavycenter.base.AppDAOpe;
+import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 
 import java.util.ArrayList;
 
 public class DetailDAOpe extends AppDAOpe {
+
+    private CarsResBean.ResultsBean carinfo;
 
     public DetailDAOpe(Context context) {
         super(context);
@@ -20,5 +23,13 @@ public class DetailDAOpe extends AppDAOpe {
             data.add(""+i);
         }
         return data;
+    }
+
+    public CarsResBean.ResultsBean getCarinfo() {
+        return carinfo;
+    }
+
+    public void setCarinfo(CarsResBean.ResultsBean carinfo) {
+        this.carinfo = carinfo;
     }
 }

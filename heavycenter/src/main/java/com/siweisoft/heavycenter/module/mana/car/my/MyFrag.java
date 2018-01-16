@@ -2,12 +2,12 @@ package com.siweisoft.heavycenter.module.mana.car.my;
 
 //by summer on 2017-12-19.
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -15,11 +15,9 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
-import com.siweisoft.heavycenter.module.mana.car.news.NewFrag;
-
-import butterknife.OnClick;
 
 public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
 
@@ -34,7 +32,27 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
     public void onInterupt(int type, View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,MainAct.ID_CONTENT,new DetailFrag());
+                switch (v.getId()){
+                    case R.id.menu:
+                        final CarsResBean.ResultsBean bean = (CarsResBean.ResultsBean) v.getTag(R.id.data);
+                        getP().getD().statusCar(bean.getVehicleId(), bean.getStatus(), new UINetAdapter<StopCarResBean>(getActivity()) {
+                            @Override
+                            public void onResult(boolean success, String msg, StopCarResBean o) {
+                                super.onResult(success, msg, o);
+                                if(success){
+                                    bean.setStatus(bean.getStatus()== CarsResBean.ResultsBean.STATUS_ON?CarsResBean.ResultsBean.STATUS_OFF:CarsResBean.ResultsBean.STATUS_ON);
+                                    getP().getU().notifyDataSetChanged();
+                                }
+                            }
+                        });
+                        break;
+                        default:
+                            final CarsResBean.ResultsBean bean1 = (CarsResBean.ResultsBean) v.getTag(R.id.data);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable(ValueConstant.DATA_DATA,bean1);
+                            FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,MainAct.主界面ID,new DetailFrag(),bundle);
+                            break;
+                }
                 break;
         }
     }

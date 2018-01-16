@@ -24,6 +24,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
         super.initUI(baseUIFrag);
         bind.llHead.tvName.setText(StringUtil.getStr(LocalValue.getLoginInfo().getTrueName()));
         bind.llHead.tvPhone.setText(StringUtil.getStr(LocalValue.getLoginInfo().getTel()));
+        bind.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getAbbreviationName()));
         if(LocalValue.getLoginInfo().getUserRole()==null){
             if(LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.USER_TYPE_DRIVER){
                 bind.llHead.tvRole.setText(UserTypeReqBean.USER_TYPE_DRIVER_CN);
@@ -64,9 +65,12 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                 bind.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_REJECT_CN);
                 break;
 
-
         }
 
+        bind.itemStore.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getWareHouseCount()));
+        bind.itemGood.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getProductCount()));
+        bind.itemUser.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getUserCount()));
+        bind.itemCar.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getVehicleCount()));
 
     }
 

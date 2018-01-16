@@ -23,6 +23,8 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
 
     View customerView;
 
+    int[] views ;
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -32,9 +34,12 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
             viewGroup.removeAllViews();
             viewGroup.addView(customerView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
         }
-        View close =  getView().findViewById(R.id.iv_close);if(close!=null){close.setOnClickListener(this);}
-        View yes =  getView().findViewById(R.id.tv_sure);if(close!=null){yes.setOnClickListener(this);}
-        View no =  getView().findViewById(R.id.tv_close);if(close!=null){yes.setOnClickListener(this);}
+        if(views!=null){
+            for(int i=0;i<views.length;i++){
+                View view1 = getView().findViewById(views[i]);
+                view1.setOnClickListener(this);
+            }
+        }
     }
 
     public void close(){
@@ -53,8 +58,6 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
 
     }
 
-    @Optional
-    @OnClick({R.id.tv_close,R.id.tv_sure,R.id.iv_close})
     public void onClick(View v) {
         if(onClickListener!=null){
             onClickListener.onClick(v);
@@ -64,7 +67,8 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
 
 
 
-    public void setOnClickListener(View.OnClickListener onClickListener) {
+    public void setOnClickListener(View.OnClickListener onClickListener,int... views) {
         this.onClickListener = onClickListener;
+        this.views = views;
     }
 }

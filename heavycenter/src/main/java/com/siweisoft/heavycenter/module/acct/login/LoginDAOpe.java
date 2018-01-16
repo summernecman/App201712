@@ -36,7 +36,7 @@ public class LoginDAOpe extends AppDAOpe {
         NetDataOpe.onLogin(getActivity(), NetValue.获取地址("/user/appLogin"),reqBean,adapter);
     }
 
-    public void getCity(CityReqBean reqBean, NetArrayI<CityResBean> adapter){
+    public void getCity(CityReqBean reqBean, NetI<ArrayList<CityResBean>> adapter){
         NetDataOpe.getCity(getActivity(),reqBean,adapter);
     }
 

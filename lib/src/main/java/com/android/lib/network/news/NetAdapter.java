@@ -51,9 +51,7 @@ public  class NetAdapter<A> implements NetI<A> {
             if(!NullUtil.isStrEmpty(baseResBean.getMessage())){
                 ToastUtil.getInstance().showShort(context,baseResBean.getMessage());
             }
-            if(cache){
-                SPUtil.getInstance().saveStr(url,GsonUtil.getInstance().toJson(baseResBean));
-            }
+            SPUtil.getInstance().saveStr(url,GsonUtil.getInstance().toJson(baseResBean));
             deal(haveData,url,baseResBean);
         }
     }
@@ -62,15 +60,15 @@ public  class NetAdapter<A> implements NetI<A> {
         Type type = getClass().getGenericSuperclass();
         if(type instanceof ParameterizedType ){
             ParameterizedType parameterizedType = (ParameterizedType) type;
-            Class<A> a = (Class<A>) parameterizedType.getActualTypeArguments()[0];
             A aa = null;
-
             try {
                 Object o = new JSONTokener(GsonUtil.getInstance().toJson(baseResBean.getResult())).nextValue();
                 if(o instanceof JSONObject){
-                    aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),a);
+                    Class<A> a = (Class<A>) parameterizedType.getActualTypeArguments()[0];
+                     aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),a);
                 }else if(o instanceof JSONArray){
-                    aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),new TypeToken<ArrayList<A>>(){}.getType());
+                    TypeToken<?> typeToken = TypeToken.get(parameterizedType.getActualTypeArguments()[0]);
+                     aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),typeToken.getType());
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
