@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.myce.unit.bind;
+package com.siweisoft.heavycenter.module.myce.unit.list;
 
 //by summer on 2017-12-19.
 
@@ -25,7 +25,7 @@ import java.io.Serializable;
 
 import butterknife.OnClick;
 
-public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListener,OnRefreshListener {
+public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListener,OnRefreshListener {
 
     @Override
     public void initData() {
@@ -36,7 +36,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
             @Override
             public void onResult(boolean success, String msg, ListResBean o) {
                 super.onResult(success, msg, o);
-                getP().getU().LoadListData(o,BindFrag.this);
+                getP().getU().LoadListData(o,ListFrag.this);
             }
         });
     }
@@ -57,7 +57,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
                     @Override
                     public void onResult(boolean success, String msg, SearchResBean o) {
                         super.onResult(success, msg, o);
-                        getP().getU().LoadListData(o,BindFrag.this);
+                        getP().getU().LoadListData(o,ListFrag.this);
                     }
                 });
                 break;
@@ -68,7 +68,8 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
     public void onInterupt(int type, final View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                if(getArguments().getInt(ValueConstant.DATA_DATA,-1)==BindDAOpe.UP_UNIT){
+                if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.UP_UNIT
+                        ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.SEL_UNIT){
                     getArguments().putSerializable(ValueConstant.DATA_DATA2, (Serializable) v.getTag(R.id.data));
                     getBaseUIActivity().onBackPressed();
                     return;
@@ -143,7 +144,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
             @Override
             public void onResult(boolean success, String msg, ListResBean o) {
                 super.onResult(success, msg, o);
-                getP().getU().LoadListData(o,BindFrag.this);
+                getP().getU().LoadListData(o,ListFrag.this);
             }
         });
     }

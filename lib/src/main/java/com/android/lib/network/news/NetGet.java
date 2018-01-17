@@ -32,13 +32,17 @@ import java.util.Map;
  */
 public class NetGet {
 
-    public static boolean test = true;
+    public static boolean test = false;
 
     private NetGet() {
 
     }
 
     public static void postData(final Context context, final String url, final BaseBean reqBean, final NetI netI) {
+        if(test){
+            netI.onNetFinish(true, url, null);
+            return;
+        }
         LogUtil.E("input-->" + url);
         final String jsonstr = GsonUtil.getInstance().toJson(reqBean);
         LogUtil.E("input-->" + jsonstr);
@@ -53,10 +57,7 @@ public class NetGet {
 
         RequestParams requestParams = new RequestParams(url);
         requestParams.setUseCookie(true);
-        if(test){
-            requestParams.setConnectTimeout(1000);
-            requestParams.setReadTimeout(2000);
-        }
+
         requestParams.setHeader("Cookie", SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse));
         Map<String, String> map = GsonUtil.getInstance().
                 fromJson(jsonstr,
@@ -106,6 +107,10 @@ public class NetGet {
 
 
     public static void getData(final Context context, final String url, final BaseBean reqBean, final NetI netI) {
+        if(test){
+            netI.onNetFinish(true, url, null);
+            return;
+        }
         LogUtil.E("input-->" + url);
         final String jsonstr = GsonUtil.getInstance().toJson(reqBean);
         LogUtil.E("input-->" + jsonstr);
@@ -120,10 +125,6 @@ public class NetGet {
 
         RequestParams requestParams = new RequestParams(url);
         requestParams.setUseCookie(true);
-        if(test){
-            requestParams.setConnectTimeout(1000);
-            requestParams.setReadTimeout(2000);
-        }
         requestParams.setHeader("Cookie", SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse));
         Map<String, String> map = GsonUtil.getInstance().
                 fromJson(jsonstr,
@@ -173,6 +174,10 @@ public class NetGet {
     }
 
     public static void getData(final Context context, final String url, final BaseBean reqBean, final NetArrayI netI) {
+        if(test){
+            netI.onNetFinish(true, url, null);
+            return;
+        }
         LogUtil.E("input-->" + url);
         final String jsonstr = GsonUtil.getInstance().toJson(reqBean);
         LogUtil.E("input-->" + jsonstr);
@@ -187,10 +192,6 @@ public class NetGet {
 
         RequestParams requestParams = new RequestParams(url);
         requestParams.setUseCookie(true);
-        if(test){
-            requestParams.setConnectTimeout(1000);
-            requestParams.setReadTimeout(2000);
-        }
         requestParams.setHeader("Cookie", SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse));
         Map<String, String> map = GsonUtil.getInstance().
                 fromJson(jsonstr,
@@ -240,9 +241,13 @@ public class NetGet {
     }
 
 
-    public static void file(Context context, final String url, FilesBean data, final NetI netI) {
+    public static void file(Context context, final String url,List<KeyValue> list, final NetI netI) {
+        if(test){
+            netI.onNetFinish(true, url, null);
+            return;
+        }
         LogUtil.E(url);
-        final String jsonstr = GsonUtil.getInstance().toJson(data);
+        final String jsonstr = GsonUtil.getInstance().toJson(list);
         LogUtil.E(jsonstr);
         if (!netI.onNetStart(url, jsonstr)) {
             BaseResBean res = new BaseResBean();
@@ -256,12 +261,6 @@ public class NetGet {
         LogUtil.E(url + "---" + ValueConstant.cookieFromResponse);
         RequestParams requestParams = new RequestParams(url);
 
-
-        List<KeyValue> list = new ArrayList<>();
-        for (int i = 0; i < data.getData().size(); i++) {
-            list.add(new KeyValue("file", data.getData().get(i).getFile()));
-            //requestParams.addBodyParameter("file"+i, data.getData().get(i).getFile(),null);
-        }
         MultipartBody body = new MultipartBody(list, "UTF-8");
         requestParams.setRequestBody(body);
         requestParams.setMultipart(true);

@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.daimajia.swipe.SimpleSwipeListener;
 import com.daimajia.swipe.SwipeLayout;
@@ -16,8 +17,13 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
+import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
+import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
+import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainOrderBeginBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainOrderBeginBinding;
+import com.siweisoft.heavycenter.databinding.ItemManaGoodBinding;
 
 import java.util.List;
 
@@ -35,9 +41,12 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<String> s){
+    public void LoadListData(final OrdersRes s){
+        if(s==null){
+            return;
+        }
 
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s){
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s.getResults()){
 
             int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
             int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);
@@ -47,6 +56,12 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                 super.onBindViewHolder(holder, position);
                 ItemMainOrderBeginBinding beginBinding = (ItemMainOrderBeginBinding) holder.viewDataBinding;
                 beginBinding.getRoot().setSelected(position%2==0?true:false);
+                if(NewsOrderReqBean.发货.equals(s.getResults().get(position).getOrderType())){
+                    beginBinding.tvType.setText("发往");
+                }else{
+                    beginBinding.tvType.setText("来自");
+                }
+
             }
         });
 //        bind.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -70,18 +85,22 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 //        });
     }
 
-    public void initRefresh(){
-        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000);
-            }
-        });
-        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadmore(2000);
-            }
-        });
+
+    public void initRefresh(OnRefreshListener refreshListener,OnLoadmoreListener loadmoreListener){
+        bind.refreshLayout.setOnRefreshListener(refreshListener);
+        bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
+    }
+
+    public void finishRefresh(){
+        bind.refreshLayout.finishRefresh();
+    }
+
+    public void finishLoadmore(){
+        bind.refreshLayout.finishLoadmore();
+    }
+
+
+    public void autoRefresh(){
+        bind.refreshLayout.autoRefresh();
     }
 }

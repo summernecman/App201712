@@ -24,7 +24,7 @@ public class RoleUIOpe extends AppUIOpe<FragAcctRoleBinding> {
 
     public void showTip(int index,View.OnClickListener onClickListener){
         DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
-        diaLogCenterFrag.setOnClickListener(onClickListener);
+        diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_sure);
         FragManager.getInstance().cover(getActivity(), AcctAct.ROOT_ID,diaLogCenterFrag,R.anim.fade_in,R.anim.fade_out);
     }
 

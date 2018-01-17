@@ -7,12 +7,14 @@ import android.view.View;
 
 import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.siweisoft.heavycenter.R;
 import com.android.lib.view.dialog.list.DialogListFrag;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.order.news.NewOrderFrag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +31,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
 
 
 
-    @OnClick({R.id.ftv_right,R.id.ftv_title})
+    @OnClick({R.id.ftv_right,R.id.ftv_title,R.id.ftv_right2})
     public void onClick(View v){
         switch (v.getId()){
             case R.id.ftv_back:
@@ -46,6 +48,9 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
                 DialogListFrag frag = new DialogListFrag();
                 frag.init(strs);
                 FragmentUtil2.getInstance().addNoAnim(getActivity(),R.id.act_main,frag);
+                break;
+            case R.id.ftv_right2:
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.订单,MainAct.订单ID,new NewOrderFrag());
                 break;
         }
     }

@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.myce.unit.bind;
+package com.siweisoft.heavycenter.module.myce.unit.list;
 
 //by summer on 2017-12-19.
 
@@ -19,14 +19,16 @@ import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
 
-public class BindDAOpe extends AppDAOpe {
+public class ListDAOpe extends AppDAOpe {
 
 
     public static final int BIND_UNIT = 0;
 
     public static final int UP_UNIT = 1;
 
-    public BindDAOpe(Context context) {
+    public static final int SEL_UNIT = 2;
+
+    public ListDAOpe(Context context) {
         super(context);
     }
 

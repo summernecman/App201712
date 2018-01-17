@@ -7,8 +7,11 @@ import android.view.View;
 
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.util.StringUtil;
+import com.siweisoft.heavycenter.GlideApp;
+import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.databinding.FragMyceBinding;
@@ -22,6 +25,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
+        GlideApp.with(context).asBitmap().load(NetValue.获取地址(LocalValue.getLoginInfo().getUserPhoto())).placeholder(R.drawable.icon_hv_myce_head).centerCrop().into(bind.llHead.ivHead);
         bind.llHead.tvName.setText(StringUtil.getStr(LocalValue.getLoginInfo().getTrueName()));
         bind.llHead.tvPhone.setText(StringUtil.getStr(LocalValue.getLoginInfo().getTel()));
         bind.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getAbbreviationName()));

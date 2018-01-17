@@ -4,8 +4,10 @@ package com.siweisoft.heavycenter.module.main.order;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
+import android.view.View;
 
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -16,9 +18,14 @@ import java.util.ArrayList;
 
 public class OrderUIOpe extends BaseUIOpe<FragMainOrderBinding>{
 
+
+
     public OrderUIOpe(Context context) {
         super(context);
+
     }
+
+
 
     public void initPages(Fragment fragment, ArrayList<Fragment> pages){
         bind.llCntent.setOffscreenPageLimit(pages.size());

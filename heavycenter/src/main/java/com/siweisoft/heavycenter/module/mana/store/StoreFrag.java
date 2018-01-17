@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.mana.store;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.FragManager;
@@ -22,6 +23,8 @@ import com.siweisoft.heavycenter.module.mana.store.news.NewFrag;
 import butterknife.OnClick;
 
 public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
+
+    public static final int 选择一个仓库=1;
 
     @Override
     public void initData() {
@@ -62,6 +65,13 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                            }
                        });
                        break;
+                       default:
+                           if(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库){
+                               StoresResBean.ResultsBean d = (StoresResBean.ResultsBean) v.getTag(R.id.data);
+                               getArguments().putSerializable(ValueConstant.DATA_DATA2,d);
+                               getBaseUIActivity().onBackPressed();
+                           }
+                           break;
                }
                 break;
         }

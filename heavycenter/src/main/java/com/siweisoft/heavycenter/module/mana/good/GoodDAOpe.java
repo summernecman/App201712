@@ -4,7 +4,12 @@ package com.siweisoft.heavycenter.module.mana.good;
 
 import android.content.Context;
 
+import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListReq;
+import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 
 import java.util.ArrayList;
 
@@ -19,6 +24,13 @@ public class GoodDAOpe extends AppDAOpe {
             data.add(""+i);
         }
         return data;
+    }
+
+    public void listGood(NetI<GoodListRes> adapter){
+        GoodListReq goodListReq = new GoodListReq();
+        goodListReq.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        goodListReq.setIsApp(1);
+        NetDataOpe.Mana.Good.listGood(getActivity(),goodListReq,adapter);
     }
 
 }

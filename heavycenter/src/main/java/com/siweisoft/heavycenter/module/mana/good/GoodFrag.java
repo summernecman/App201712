@@ -5,22 +5,24 @@ package com.siweisoft.heavycenter.module.mana.good;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
-import com.android.lib.util.fragment.FragManager;
+import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.module.mana.good.news.NewFrag;
 
 import butterknife.OnClick;
 
-public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListener{
+public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListener,OnRefreshListener{
     @Override
     public void initData() {
         super.initData();
-        getP().getU().initRefresh();
+        getP().getU().initRefresh(this);
         getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getData(),this);
+        getP().getU().autoRefresh();
     }
 
 
@@ -42,5 +44,17 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
                 //FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new CheckFrag());
                 break;
         }
+    }
+
+    @Override
+    public void onRefresh(RefreshLayout refreshlayout) {
+        getP().getD().listGood(new UINetAdapter<GoodListRes>(getActivity()) {
+            @Override
+            public void onResult(boolean success, String msg, GoodListRes o) {
+                super.onResult(success, msg, o);
+                getP().getU().LoadListData(o,GoodFrag.this);
+                getP().getU().finishRefresh();
+            }
+        });
     }
 }

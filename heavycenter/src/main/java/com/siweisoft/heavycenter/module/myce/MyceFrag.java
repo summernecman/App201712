@@ -2,26 +2,31 @@ package com.siweisoft.heavycenter.module.myce;
 
 //by summer on 2017-12-14.
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 
+import com.android.lib.network.bean.res.BaseResBean;
+import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.UriUtils;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.mana.car.CarFrag;
 import com.siweisoft.heavycenter.module.mana.good.GoodFrag;
 import com.siweisoft.heavycenter.module.mana.store.StoreFrag;
 import com.siweisoft.heavycenter.module.mana.user.UserFrag;
 import com.siweisoft.heavycenter.module.myce.name.NameFrag;
-import com.siweisoft.heavycenter.module.myce.unit.bind.BindFrag;
+import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
 import com.siweisoft.heavycenter.module.myce.base.info.InfoFrag;
+
+import java.io.File;
 
 import butterknife.OnClick;
 
@@ -71,7 +76,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
-                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new BindFrag());
+                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new ListFrag());
                         break;
                 }
                 break;
@@ -102,7 +107,28 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
         if(data==null){
             return;
         }
+        LogUtil.E(Environment.getDownloadCacheDirectory().getPath());
+        File file = new File(UriUtils.getPath(getActivity(), data.getData()));
+        LogUtil.E(file.exists());
+        getP().getD().updateHead(UriUtils.getPath(getActivity(), data.getData()), new UINetAdapter<UpdateHeadResBean>(getActivity()) {
+            @Override
+            public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
+                stopLoading();
+                if(haveData){
+                    LoginResBean loginResBean = LocalValue.getLoginInfo();
+                    String s = baseResBean.getResult().toString();
+                    if(s!=null){
+                        if(s.trim().startsWith("[")){
+                            s= s.substring(1,s.length()-1).trim();
+                        }
+                        loginResBean.setUserPhoto(s);
+                        LocalValue.saveLoginInfo(loginResBean);
+                        getP().getU().initUI(MyceFrag.this);
+                    }
+                }
+            }
+        });
 
-        UriUtils.getPath(getActivity(),data.getData());
+
     }
 }

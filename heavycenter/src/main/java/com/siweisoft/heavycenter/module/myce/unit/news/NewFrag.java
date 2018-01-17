@@ -2,7 +2,6 @@ package com.siweisoft.heavycenter.module.myce.unit.news;
 
 //by summer on 2017-12-19.
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,18 +9,16 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.StringUtil;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.unit.news.NewResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.myce.unit.addr.AddrFrag;
 import com.siweisoft.heavycenter.module.myce.unit.area.prov.ProvFrag;
-import com.siweisoft.heavycenter.module.myce.unit.bind.BindDAOpe;
-import com.siweisoft.heavycenter.module.myce.unit.bind.BindFrag;
+import com.siweisoft.heavycenter.module.myce.unit.list.ListDAOpe;
+import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
 
 import butterknife.OnClick;
 
@@ -37,9 +34,9 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,new AddrFrag(),bundle);
                 break;
             case R.id.upunit:
-                bundle.putInt(ValueConstant.DATA_DATA, BindDAOpe.UP_UNIT);
+                bundle.putInt(ValueConstant.DATA_DATA, ListDAOpe.UP_UNIT);
                 bundle.putInt(ValueConstant.FARG_REQ,3);
-                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,new BindFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,new ListFrag(),bundle);
                 break;
             case R.id.area:
                 bundle.putInt(ValueConstant.FARG_REQ,4);

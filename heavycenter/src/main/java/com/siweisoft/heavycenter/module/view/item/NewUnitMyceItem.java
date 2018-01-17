@@ -106,6 +106,10 @@ public class NewUnitMyceItem extends RelativeLayout {
         return midTV.getText().toString();
     }
 
+    public TextView getLeftTV() {
+        return leftTV;
+    }
+
     public void setMidTVTxt(String Str){
         midET.setVisibility(View.GONE);
         midTV.setVisibility(View.VISIBLE);

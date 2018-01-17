@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.myce.unit.bind;
+package com.siweisoft.heavycenter.module.myce.unit.list;
 
 //by summer on 2017-12-19.
 
@@ -10,7 +10,6 @@ import android.view.View;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -20,18 +19,18 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchReqBean;
-import com.siweisoft.heavycenter.databinding.FragMyceUnitBindBinding;
+import com.siweisoft.heavycenter.databinding.FragMyceUnitListBinding;
 import com.siweisoft.heavycenter.databinding.ItemMyceUnitBindBinding;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
 import java.util.List;
 
-public class BindUIOpe extends AppUIOpe<FragMyceUnitBindBinding>{
+public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
 
     private SearchReqBean searchReqBean = new SearchReqBean();
 
-    public BindUIOpe(Context context) {
+    public ListUIOpe(Context context) {
         super(context);
     }
 

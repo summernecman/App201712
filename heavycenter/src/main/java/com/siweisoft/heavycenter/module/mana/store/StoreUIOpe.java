@@ -23,6 +23,7 @@ import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresReqBean
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
 import com.siweisoft.heavycenter.databinding.FragManaStoreBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaGoodBinding;
+import com.siweisoft.heavycenter.databinding.ItemManaStoreBinding;
 
 import java.util.List;
 
@@ -40,11 +41,11 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
         if(o==null){
             return;
         }
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_good, BR.item_mana_good, o.getResults(),listener){
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_store, BR.item_mana_store, o.getResults(),listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
-                ItemManaGoodBinding binding = (ItemManaGoodBinding) holder.viewDataBinding;
+                ItemManaStoreBinding binding = (ItemManaStoreBinding) holder.viewDataBinding;
                 binding.tvMaxstock.setText("最大库存:"+ StringUtil.getStr(o.getResults().get(position).getMaxStock())+"t");
                 binding.tvMinstock.setText("最大库存:"+ StringUtil.getStr(o.getResults().get(position).getMinStock())+"t");
 

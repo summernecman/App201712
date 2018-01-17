@@ -34,25 +34,29 @@ public  class NetAdapter<A> implements NetI<A> {
     public boolean onNetStart(String url, String gson) {
         this.url = url;
         boolean isNetOk = NetWorkUtil.getInstance().getNetisAvailable(context);
+        if(NetGet.test){
+            return true;
+        }
         return isNetOk;
     }
 
     @Override
     public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
         if (!haveData) {
+            onResult(false,baseResBean.getMessage(), null);
+        } else {
             if(cache){
+                ToastUtil.getInstance().showShort(context,"当前为无网络测试环境");
                 BaseResBean resBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(url),BaseResBean.class);
-                deal(haveData,url,baseResBean);
+                deal(haveData,url,resBean);
             }else{
-                onResult(false,baseResBean.getMessage(), null);
+                if(!NullUtil.isStrEmpty(baseResBean.getMessage())){
+                    ToastUtil.getInstance().showShort(context,baseResBean.getMessage());
+                }
+                SPUtil.getInstance().saveStr(url,GsonUtil.getInstance().toJson(baseResBean));
+                deal(haveData,url,baseResBean);
             }
 
-        } else {
-            if(!NullUtil.isStrEmpty(baseResBean.getMessage())){
-                ToastUtil.getInstance().showShort(context,baseResBean.getMessage());
-            }
-            SPUtil.getInstance().saveStr(url,GsonUtil.getInstance().toJson(baseResBean));
-            deal(haveData,url,baseResBean);
         }
     }
 

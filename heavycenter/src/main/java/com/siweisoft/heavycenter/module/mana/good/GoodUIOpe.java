@@ -14,6 +14,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.databinding.FragManaGoodBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaGoodBinding;
 
@@ -25,27 +26,16 @@ public class GoodUIOpe extends AppUIOpe<FragManaGoodBinding> {
         super(context);
     }
 
-    public void initRefresh(){
-        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000);
-            }
-        });
-        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadmore(2000);
-            }
-        });
-    }
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<String> s, final ViewListener listener) {
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_good, BR.item_mana_good, s,listener){
+    public void LoadListData(GoodListRes o, final ViewListener listener) {
+        if(o==null){
+            return;
+        }
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_good, BR.item_mana_good, o.getResults(),listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {
                 super.onBindViewHolder(holder, position, payloads);
@@ -53,6 +43,19 @@ public class GoodUIOpe extends AppUIOpe<FragManaGoodBinding> {
                 binding.swipe.setOnClickListener(this);
             }
         });
+    }
+
+    public void initRefresh(OnRefreshListener refreshListener){
+        bind.refreshLayout.setOnRefreshListener(refreshListener);
+    }
+
+    public void finishRefresh(){
+        bind.refreshLayout.finishRefresh();
+    }
+
+
+    public void autoRefresh(){
+        bind.refreshLayout.autoRefresh();
     }
 
 

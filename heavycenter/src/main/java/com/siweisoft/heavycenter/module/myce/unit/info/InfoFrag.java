@@ -38,9 +38,9 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                 @Override
                 public void onClick(View vv) {
                     switch (vv.getId()){
-                        case R.id.tv_close:
+                        case R.id.close:
                             break;
-                        case R.id.tv_sure:
+                        case R.id.sure:
                             getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(getActivity()) {
                                 @Override
                                 public void onResult(boolean success, String msg, UnBindResBean o) {

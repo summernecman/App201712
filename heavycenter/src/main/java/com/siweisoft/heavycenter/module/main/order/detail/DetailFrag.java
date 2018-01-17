@@ -10,6 +10,5 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     public void initData() {
         super.initData();
         getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getData());
     }
 }

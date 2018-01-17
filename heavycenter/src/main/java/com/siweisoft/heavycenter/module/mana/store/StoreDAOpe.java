@@ -38,7 +38,7 @@ public class StoreDAOpe extends AppDAOpe {
         reqBean.setIsApp(1);
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);
-        reqBean.setStatus(StoresReqBean.STATUS_ALL);
+       // reqBean.setStatus(StoresReqBean.STATUS_ALL);
         NetDataOpe.Mana.Store.sotresInfo(getActivity(),reqBean,adapter);
     }
 
