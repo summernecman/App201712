@@ -60,6 +60,8 @@ public class ItemView extends RelativeLayout{
 
     private int color_txt_right;
 
+    private TextView midTV;
+
 
 
     public ItemView(Context context, AttributeSet attrs) {
@@ -75,6 +77,7 @@ public class ItemView extends RelativeLayout{
         rightTV = (TextView) findViewById(R.id.iv_right_content);
         right2 = findViewById(R.id.rl_right2);
         rightIV = (ImageView) findViewById(R.id.iv_right_icon);
+        midTV = (TextView) findViewById(R.id.tv_mid);
         divider = findViewById(R.id.divide);
         TypedArray t = context.obtainStyledAttributes(attrs,R.styleable.style_common);
         textleftStr= t.getString(R.styleable.style_common_txt_left);
@@ -101,6 +104,10 @@ public class ItemView extends RelativeLayout{
 
     public TextView getLeftTV() {
         return leftTV;
+    }
+
+    public TextView getMidTV() {
+        return midTV;
     }
 }
 

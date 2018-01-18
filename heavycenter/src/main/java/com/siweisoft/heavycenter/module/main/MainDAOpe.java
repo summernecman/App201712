@@ -46,23 +46,31 @@ public class MainDAOpe extends AppDAOpe {
             menudata = new ArrayList<>();
         }
         menudata.clear();
-        RelativeLayout v0 = new RelativeLayout(context);v0.setId(11111+0);
+
+
+        RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainAct.地磅ID);
         BaseUIFrag fragment0 = new WeigtsFrag(); fragment0.setIndex(0);
         menudata.add(new BottomMenuBean(MainAct.地磅, R.drawable.drawable_main_bottom_weight,new WeigtsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
-        RelativeLayout v1 = new RelativeLayout(context);v1.setId(11111+1);
+        RelativeLayout v1 = new RelativeLayout(context);v1.setId(MainAct.运输单ID);
         BaseUIFrag fragment1 = new TransFrag(); fragment1.setIndex(1);
         menudata.add(new BottomMenuBean(MainAct.运输单, R.drawable.drawable_main_bottom_trans,new TransFrag(),v1,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
-        RelativeLayout v2 = new RelativeLayout(context);v2.setId(11111+2);
-        BaseUIFrag fragment2 = new TransFrag(); fragment2.setIndex(2);
-        menudata.add(new BottomMenuBean(MainAct.订单, R.drawable.drawable_main_bottom_order,new OrderFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        if(LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.USER_TYPE_DRIVER){
+            RelativeLayout v2 = new RelativeLayout(context);v2.setId(MainAct.地图ID);
+            BaseUIFrag fragment2 = new TransFrag(); fragment2.setIndex(2);
+            menudata.add(new BottomMenuBean(MainAct.地图, R.drawable.drawable_main_bottom_order,new OrderFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }else{
+            RelativeLayout v2 = new RelativeLayout(context);v2.setId(MainAct.订单ID);
+            BaseUIFrag fragment2 = new TransFrag(); fragment2.setIndex(2);
+            menudata.add(new BottomMenuBean(MainAct.订单, R.drawable.drawable_main_bottom_order,new OrderFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
-        RelativeLayout v3 = new RelativeLayout(context);v3.setId(11111+3);
-        BaseUIFrag fragment3 = new TransFrag(); fragment3.setIndex(3);
-        menudata.add(new BottomMenuBean(MainAct.仓库, R.drawable.drawable_main_bottom_store,new StoreFrag(),v3,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+            RelativeLayout v3 = new RelativeLayout(context);v3.setId(MainAct.仓库ID);
+            BaseUIFrag fragment3 = new TransFrag(); fragment3.setIndex(3);
+            menudata.add(new BottomMenuBean(MainAct.仓库, R.drawable.drawable_main_bottom_store,new StoreFrag(),v3,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }
 
-        RelativeLayout v4 = new RelativeLayout(context);v4.setId(11111+4);
+        RelativeLayout v4 = new RelativeLayout(context);v4.setId(MainAct.消息ID);
         BaseUIFrag fragment4 = new TransFrag(); fragment4.setIndex(4);
         menudata.add(new BottomMenuBean(MainAct.消息, R.drawable.drawable_main_bottom_msg,new MsgFrag(),v4,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         return menudata;

@@ -9,8 +9,10 @@ import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.acct.logout.LogOutReqBean;
 import com.siweisoft.heavycenter.data.netd.acct.logout.LogOutResBean;
+import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 import com.siweisoft.heavycenter.module.acct.login.LoginFrag;
 import com.siweisoft.heavycenter.module.acct.regist.RegistFrag;
 import com.siweisoft.heavycenter.module.acct.repwd.RepwdFrag;
@@ -61,6 +63,14 @@ public class AcctDAOpe extends AppDAOpe {
     public void logOut( NetI<LogOutResBean> adapter){
         LogOutReqBean logOutReqBean = new LogOutReqBean();
         logOutReqBean.setTel(LocalValue.getLoginInfo().getTel());
-        NetDataOpe.logOut(getActivity(),"/user/appExit",logOutReqBean,adapter);
+        NetDataOpe.logOut(getActivity(),logOutReqBean,adapter);
+    }
+
+    public void getInfo(NetI<LoginResBean> adapter){
+
+        UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
+        userInfoReqBean.setId(LocalValue.getLoginInfo().getUserId());
+        userInfoReqBean.setIsApp(1);
+        NetDataOpe.User.getInfo(getActivity(),userInfoReqBean,adapter);
     }
 }

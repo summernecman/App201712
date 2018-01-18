@@ -71,16 +71,47 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
 
         }
 
-        bind.itemStore.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getWareHouseCount()));
-        bind.itemGood.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getProductCount()));
-        bind.itemUser.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getUserCount()));
-        bind.itemCar.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getVehicleCount()));
+        if(LocalValue.getLoginInfo().getUserType()==UserTypeReqBean.USER_TYPE_DRIVER){
+            bind.itemStore.setVisibility(View.GONE);
+            bind.itemGood.setVisibility(View.GONE);
+            bind.itemUser.setVisibility(View.GONE);
+            bind.itemCar.setVisibility(View.GONE);
+
+            bind.itemDriver.setVisibility(View.VISIBLE);
+            bind.llCar.setVisibility(View.VISIBLE);
+
+          //  bind.tvEmptyweight.setText(LocalValue.getLoginInfo());
+            bind.itemDriver.getLeftTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getCarLicenseNo()));
+            bind.itemDriver.getMidTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getCarBrand()));
+            //bind.itemDriver.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getEmptyWeight()));
+            bind.tvEmptyweight.setText("自重: "+StringUtil.getStr(LocalValue.getLoginInfo().getEmptyWeight()));
+            bind.tvMaxweight.setText("载重: "+StringUtil.getStr(LocalValue.getLoginInfo().getMaxCapacity()));
+
+
+
+        }else{
+            bind.itemStore.setVisibility(View.VISIBLE);
+            bind.itemGood.setVisibility(View.VISIBLE);
+            bind.itemUser.setVisibility(View.VISIBLE);
+            bind.itemCar.setVisibility(View.VISIBLE);
+
+
+            bind.itemStore.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getWareHouseCount()));
+            bind.itemGood.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getProductCount()));
+            bind.itemUser.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getUserCount()));
+            bind.itemCar.getRightTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getVehicleCount()));
+            GlideApp.with(context).asBitmap().load(NetValue.获取地址(LocalValue.getLoginInfo().getDriverNoPhoto())).placeholder(R.drawable.icon_hv_car).centerCrop().into(bind.ivCar);
+            GlideApp.with(context).asBitmap().load(NetValue.获取地址(LocalValue.getLoginInfo().getVehicleLicensePhoto())).placeholder(R.drawable.icon_hv_car).centerCrop().into(bind.ivDirver);
+
+            bind.itemDriver.setVisibility(View.GONE);
+            bind.llCar.setVisibility(View.GONE);
+        }
 
     }
 
     public void hideOrShowManageFunction(boolean show){
         int vis = View.VISIBLE;
-        if(show){
+        if(show&& LocalValue.getLoginInfo().getUserType()==UserTypeReqBean.USER_TYPE_GENERAL){
             vis = View.VISIBLE;
         }else{
             vis = View.GONE;

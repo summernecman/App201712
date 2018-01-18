@@ -28,10 +28,12 @@ public class WeightView extends View{
     private double lengh = ScreenUtil.mw*15;
 
     private ArrayList<WeightBean[]> p = new ArrayList<>();
-    private int num = 180;
-    private double e = 360/180d;
+    private double num = 120;
+    private double e = 360/(num);
 
     private Paint paint = new Paint();
+
+    private boolean done = false;
 
 
 
@@ -54,17 +56,28 @@ public class WeightView extends View{
             return;
         }
         setLayerType( LAYER_TYPE_SOFTWARE , null);
-        for(int i=0;i<180;i++){
-            WeightBean[] beans  = new WeightBean[]{new WeightBean(),new WeightBean()};
-            beans[0].x = -r*Math.sin(Math.toRadians(e*i))+w/2;
-            beans[0].y = r*Math.cos(Math.toRadians(e*i))+h/2;
-            beans[0].color = ColorUtil.getInstance().getGradualColor(getResources().getColor(R.color.color_hv_weightview_start),getResources().getColor(R.color.color_hv_weightview_end),i/180d);
-            beans[1].x = -(r-lengh)*Math.sin(Math.toRadians(e*i))+w/2;
-            beans[1].y = (r-lengh)*Math.cos(Math.toRadians(e*i))+h/2;
-            p.add(beans);
-        }
+       new Thread(new Runnable() {
+           @Override
+           public void run() {
+               for(int i=0;i<num;i++){
+                   WeightBean[] beans  = new WeightBean[]{new WeightBean(),new WeightBean()};
+                   beans[0].x = -r*Math.sin(Math.toRadians(e*i))+w/2;
+                   beans[0].y = r*Math.cos(Math.toRadians(e*i))+h/2;
+                   beans[0].color = ColorUtil.getInstance().getGradualColor(getResources().getColor(R.color.color_hv_weightview_start),getResources().getColor(R.color.color_hv_weightview_end),i/num);
+                   beans[1].x = -(r-lengh)*Math.sin(Math.toRadians(e*i))+w/2;
+                   beans[1].y = (r-lengh)*Math.cos(Math.toRadians(e*i))+h/2;
+                   p.add(beans);
+                   try {
+                       Thread.sleep(10);
+                   } catch (InterruptedException e1) {
+                       e1.printStackTrace();
+                   }
+                   postInvalidate();
+               }
+           }
+       }).start();
         paint.setAntiAlias(true);
-        paint.setStrokeWidth(3);
+        paint.setStrokeWidth(2);
 
     }
 
@@ -73,7 +86,7 @@ public class WeightView extends View{
         super.onDraw(canvas);
         for(int i=0;i<p.size();i++){
             paint.setColor(p.get(i)[0].color);
-            paint.setShadowLayer(3,0,0,p.get(i)[0].color);
+            //paint.setShadowLayer(3,0,0,p.get(i)[0].color);
             canvas.drawLine((float) p.get(i)[0].x,(float)p.get(i)[0].y,(float)p.get(i)[1].x,(float)p.get(i)[1].y,paint);
         }
     }

@@ -29,4 +29,24 @@ public class UpdateHeadReqBean extends BaseReqBean {
     public static final String 组织机构代码证= "ZZJG";
 
     public static final String 建议反馈= "JYFK";
+
+    private int id;
+
+    private int companyId;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -25,9 +26,9 @@ import butterknife.OnClick;
 
 public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
 
+
     @Override
-    public void initData() {
-        super.initData();
+    public void lazyInit() {
         getP().getU().initRefresh(this,this);
         getP().getU().initRecycle();
         getP().getU().autoRefresh();

@@ -2,9 +2,11 @@ package com.siweisoft.heavycenter.module.mana.good;
 
 //by summer on 2017-12-14.
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -31,7 +33,9 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new NewFrag());
+                Bundle bundle = new Bundle();
+                bundle.putInt(ValueConstant.FARG_REQ,1);
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new NewFrag(),bundle);
                 break;
         }
     }
@@ -56,5 +60,20 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
                 getP().getU().finishRefresh();
             }
         });
+    }
+
+    @Override
+    public void onRestart(int res, Bundle bundle) {
+        super.onRestart(res, bundle);
+        switch (res){
+            case 1:
+                if(bundle==null || bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
+                    return;
+                }
+                if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
+                    getP().getU().autoRefresh();
+                }
+                break;
+        }
     }
 }

@@ -69,7 +69,6 @@ public class NewUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
-        bind.llInput.setVisibility(View.GONE);
     }
 
     public void LoadListData(List<String> s) {

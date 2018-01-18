@@ -56,6 +56,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                         public void onResult(boolean success, String msg, NewsGoodRes o) {
                             super.onResult(success, msg, o);
                             if(success){
+                                getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
                                 getBaseUIActivity().onBackPressed();
                             }
                         }

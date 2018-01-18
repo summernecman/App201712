@@ -116,6 +116,12 @@ public class NewUnitMyceItem extends RelativeLayout {
         midTV.setText(Str);
     }
 
+    public void setMidEtTxt(String Str){
+        midET.setVisibility(View.VISIBLE);
+        midTV.setVisibility(View.GONE);
+        midET.setText(Str);
+    }
+
 
 
 

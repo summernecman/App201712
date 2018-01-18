@@ -26,13 +26,13 @@ public class BeginDAOpe extends AppDAOpe {
         return data;
     }
 
-    public void orders(NetI<OrdersRes> adapter){
+    public void orders(String type,NetI<OrdersRes> adapter){
         OrdersReq ordersReq = new OrdersReq();
         ordersReq.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
         ordersReq.setIsApp(1);
         ordersReq.setPageIndex(0);
         ordersReq.setPageSize(1000);
-        ordersReq.setOrderStatus(OrdersReq.STATUS_NEW);
+        ordersReq.setOrderStatus(type);
         NetDataOpe.Order.orders(getActivity(),ordersReq,adapter);
     }
 }

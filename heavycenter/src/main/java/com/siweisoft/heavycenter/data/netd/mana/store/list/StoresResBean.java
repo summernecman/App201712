@@ -82,7 +82,7 @@ public class StoresResBean extends BaseBean {
         private String locate;
         private int warehouseId;
         private String companyName;
-        private int maxStock;
+        private float maxStock;
         private float productMaxStock;
         private float productMinStock;
         private float currentStock;
@@ -124,11 +124,11 @@ public class StoresResBean extends BaseBean {
             this.companyName = companyName;
         }
 
-        public int getMaxStock() {
+        public float getMaxStock() {
             return maxStock;
         }
 
-        public void setMaxStock(int maxStock) {
+        public void setMaxStock(float maxStock) {
             this.maxStock = maxStock;
         }
 

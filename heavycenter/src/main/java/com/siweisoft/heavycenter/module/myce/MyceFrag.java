@@ -3,6 +3,7 @@ package com.siweisoft.heavycenter.module.myce;
 //by summer on 2017-12-14.
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 
@@ -16,13 +17,17 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
+import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.mana.car.CarFrag;
 import com.siweisoft.heavycenter.module.mana.good.GoodFrag;
 import com.siweisoft.heavycenter.module.mana.store.StoreFrag;
 import com.siweisoft.heavycenter.module.mana.user.UserFrag;
+import com.siweisoft.heavycenter.module.myce.car.bind.BindFrag;
 import com.siweisoft.heavycenter.module.myce.name.NameFrag;
+import com.siweisoft.heavycenter.module.myce.sett.SetFrag;
 import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
 import com.siweisoft.heavycenter.module.myce.base.info.InfoFrag;
 
@@ -36,8 +41,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     public void initData() {
         super.initData();
         setIndex(((MainAct)(getActivity())).getP().getU().getPos_content());
-        getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().isBindUnit());
-
+        init();
     }
 
     public void init(){
@@ -45,7 +49,20 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
         getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().isBindUnit());
     }
 
-    @OnClick({R.id.item_car,R.id.item_good,R.id.item_store,R.id.item_user,R.id.item_unit,R.id.iv_nameedit,R.id.ftv_right,R.id.iv_head})
+    public void initUINET(){
+        getP().getD().getInfo(new UINetAdapter<LoginResBean>(getActivity()) {
+            @Override
+            public void onResult(boolean success, String msg, LoginResBean o) {
+                super.onResult(success, msg, o);
+                if(success){
+                    LocalValue.saveLoginInfo(o);
+                    init();
+                }
+            }
+        });
+    }
+
+    @OnClick({R.id.item_car,R.id.item_good,R.id.item_store,R.id.item_user,R.id.item_unit,R.id.iv_nameedit,R.id.ftv_right,R.id.iv_head,R.id.item_setting,R.id.iv_car,R.id.iv_dirver,R.id.item_driver})
     public void onClick(View v){
 
         FragManager2.getInstance().clear(getBaseUIActivity(),MainAct.主界面);
@@ -96,6 +113,16 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
             case R.id.iv_head:
                 IntentUtil.getInstance().photoShowFromphone(this,01);
                 break;
+            case R.id.item_setting:
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new SetFrag());
+                break;
+            case R.id.iv_car:
+                IntentUtil.getInstance().photoShowFromphone(this,02);
+            case R.id.iv_dirver:
+                IntentUtil.getInstance().photoShowFromphone(this,03);
+            case R.id.item_driver:
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new BindFrag());
+                break;
         }
         getBaseUIActivity().setMoudle(MainAct.主界面);
         ((MainAct)getActivity()).getP().getU().switchDrawer();
@@ -110,20 +137,71 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
         LogUtil.E(Environment.getDownloadCacheDirectory().getPath());
         File file = new File(UriUtils.getPath(getActivity(), data.getData()));
         LogUtil.E(file.exists());
-        getP().getD().updateHead(UriUtils.getPath(getActivity(), data.getData()), new UINetAdapter<UpdateHeadResBean>(getActivity()) {
+        String type = "";
+        switch (requestCode){
+            case 1:
+                type = UpdateHeadReqBean.头像;
+                break;
+            case 2:
+                type = UpdateHeadReqBean.车辆照片;
+                break;
+            case 3:
+                type = UpdateHeadReqBean.行驶证照片;
+                break;
+        }
+        final String finalType = type;
+        getP().getD().uploadPhoto(UriUtils.getPath(getActivity(), data.getData()),type, new UINetAdapter<UpdateHeadResBean>(getActivity()) {
             @Override
             public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                 stopLoading();
                 if(haveData){
-                    LoginResBean loginResBean = LocalValue.getLoginInfo();
+                    final LoginResBean loginResBean = LocalValue.getLoginInfo();
                     String s = baseResBean.getResult().toString();
                     if(s!=null){
                         if(s.trim().startsWith("[")){
                             s= s.substring(1,s.length()-1).trim();
                         }
-                        loginResBean.setUserPhoto(s);
-                        LocalValue.saveLoginInfo(loginResBean);
-                        getP().getU().initUI(MyceFrag.this);
+                        switch (finalType){
+                            case UpdateHeadReqBean.头像:
+                                final String finalS = s;
+                                getP().getD().updateHead(new UINetAdapter<UpdateHeadResBean>(getContext()) {
+                                    @Override
+                                    public void onResult(boolean success, String msg, UpdateHeadResBean o) {
+                                        super.onResult(success, msg, o);
+                                        loginResBean.setUserPhoto(finalS);
+                                        LocalValue.saveLoginInfo(loginResBean);
+                                        getP().getU().initUI(MyceFrag.this);
+                                    }
+                                });
+                                break;
+                            case UpdateHeadReqBean.车辆照片:
+                                loginResBean.setVehicleLicense(s);
+                                LocalValue.saveLoginInfo(loginResBean);
+                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(getActivity()) {
+                                    @Override
+                                    public void onResult(boolean success, String msg, UpdateCarRes o) {
+                                        super.onResult(success, msg, o);
+                                        if(success){
+                                            getP().getU().initUI(MyceFrag.this);
+                                        }
+                                    }
+                                });
+                                break;
+                            case UpdateHeadReqBean.行驶证照片:
+                                loginResBean.setVehicleLicensePhoto(s);
+                                LocalValue.saveLoginInfo(loginResBean);
+                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(getActivity()) {
+                                    @Override
+                                    public void onResult(boolean success, String msg, UpdateCarRes o) {
+                                        super.onResult(success, msg, o);
+                                        if(success){
+                                            getP().getU().initUI(MyceFrag.this);
+                                        }
+                                    }
+                                });
+                                break;
+                        }
+
                     }
                 }
             }

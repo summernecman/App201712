@@ -21,6 +21,8 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     public static final String 订单 = "订单";
 
+    public static final String 地图 = "地图";
+
     public static final String 仓库 = "仓库";
 
     public static final String 消息 = "消息";
@@ -41,6 +43,8 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     public static final int 仓库ID = 11114;
 
     public static final int 消息ID = 11115;
+
+    public static final int 地图ID = 11116;
 
     public static final int 主界面ID = R.id.content_content;
 
@@ -85,6 +89,10 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         setMoudle(getP().getD().getMenudata().get(position).getName());
         if(getP().getD().isBindUnit()){
             //FragManager.getInstance().clearAll(getSupportFragmentManager(),getP().getU().getPos_content());
+        }
+        if(!getP().getD().getMenudata().get(position).getFragment().isInit()){
+            getP().getD().getMenudata().get(position).getFragment().lazyInit();
+            getP().getD().getMenudata().get(position).getFragment().setInited();
         }
     }
 

@@ -48,6 +48,12 @@ public class SysUIOpe extends BaseUIOpe<FragMainMsgSysBinding>{
                     case MsgsResBean.ResultsBean.AUDITOR_STATE_CHECKING:
                         switch (data.get(position).getMessageType()){
                             case MsgsResBean.ResultsBean.MSG_TYPE_APPLY_D:
+                                binding.llFuction.setVisibility(View.VISIBLE);
+                                binding.btAgree.setOnClickListener(this);
+                                binding.btReject.setOnClickListener(this);
+                                binding.btAgree.setTag(R.id.data,data.get(position));
+                                binding.btReject.setOnClickListener(this);
+                                binding.btReject.setTag(R.id.data,data.get(position));
                                 break;
                             case MsgsResBean.ResultsBean.MSG_TYPE_APPLY_U:
                                 binding.llFuction.setVisibility(View.VISIBLE);

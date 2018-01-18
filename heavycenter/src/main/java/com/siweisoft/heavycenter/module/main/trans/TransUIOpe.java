@@ -13,11 +13,14 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
 import com.baidu.mapapi.map.BaiduMap;
+import com.github.florent37.viewanimator.ViewAnimator;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.databinding.FragMainTransBinding;
 import com.siweisoft.heavycenter.databinding.ItemTransBinding;
 
@@ -69,14 +72,30 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
     public void search(OnFinishListener onFinishListener){
         if(bind.title.getRightIV2().isSelected()){
             bind.title.getRightIV2().setSelected(false);
-            onFinishListener.onFinish(false);
+            bind.search.getRoot().setVisibility(View.GONE);
+            onFinishListener.onFinish(true);
         }else{
             bind.title.getRightIV2().setSelected(true);
-            onFinishListener.onFinish(true);
+            ViewAnimator.animate(bind.search.getRoot()).alpha(0,1).translationY(-bind.search.getRoot().getHeight(),0).accelerate().duration(300).start();
+            bind.search.getRoot().setVisibility(View.VISIBLE);
+            onFinishListener.onFinish(false);
         }
 
     }
 
+    public void refreshSearch(){
+        bind.title.getRightIV2().setSelected(false);
+        bind.search.getRoot().setVisibility(View.GONE);
+    }
+
+
+    public TransReq getTransReq(TransReq transReq) {
+        transReq.setMateriel(bind.search.itemGood.getMidEtTxt());
+        transReq.setCompanyName(bind.search.itemUnitname.getMidEtTxt());
+        transReq.setCompanyAddress(bind.search.itemUnitaddr.getMidEtTxt());
+        transReq.setCarLicenseNo(bind.search.itemUnitcar.getMidEtTxt());
+        return transReq;
+    }
 
 
 }

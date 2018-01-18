@@ -25,6 +25,17 @@
             android:gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_mid"
+            android:layout_marginLeft="15dp"
+            android:text="文字内容"
+            android:textSize="13sp"
+            android:textColor="@color/color_grey_500"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
         <View
             android:layout_weight="1"
             android:layout_width="0dp"

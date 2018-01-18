@@ -54,6 +54,8 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     BaseUIActivity baseUIActivity;
 
+    private boolean isInit = false;
+
     public BaseUIFrag() {
 
     }
@@ -110,6 +112,10 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     }
 
     public void initData() {
+
+    }
+
+    public void lazyInit(){
 
     }
 
@@ -228,5 +234,13 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     public BaseUIActivity getBaseUIActivity() {
         return (BaseUIActivity) getActivity();
+    }
+
+    public void setInited() {
+        isInit = true;
+    }
+
+    public boolean isInit() {
+        return isInit;
     }
 }

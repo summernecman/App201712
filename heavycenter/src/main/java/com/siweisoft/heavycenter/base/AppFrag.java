@@ -8,12 +8,15 @@ import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.constant.ValueConstant;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.module.main.MainAct;
 
 public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseUIFrag<A,B> {
+
+
 
     @Override
     public void doThing() {
@@ -33,6 +36,10 @@ public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends 
         }
     }
 
-
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        LogUtil.E("66666666666666666666666666666"+isVisibleToUser+":"+getClass().getSimpleName());
+    }
 
 }

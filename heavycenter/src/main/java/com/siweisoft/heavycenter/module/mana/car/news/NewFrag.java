@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.mana.car.news;
 
 import android.view.View;
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -23,6 +24,10 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                         @Override
                         public void onResult(boolean success, String msg, CarNewResBean o) {
                             super.onResult(success, msg, o);
+                            if(success){
+                                getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
+                                getBaseUIActivity().onBackPressed();
+                            }
                         }
                     });
                 }

@@ -54,6 +54,7 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
                                 LocalValue.saveLoginReq(getP().getU().getLoginReqBean());
                                 LocalValue.saveLoginInfo(loginResBean);
                                 if(loginResBean.getUserType()== UserTypeReqBean.USER_TYPE_DRIVER || loginResBean.getUserType()== UserTypeReqBean.USER_TYPE_GENERAL){
+                                    LocalValue.setAutoLogin(true);
                                     IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
                                 }else{
                                     FragManager.getInstance().startFragment(activity.getSupportFragmentManager(),getIndex(),new RoleFrag());

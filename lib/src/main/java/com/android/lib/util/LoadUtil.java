@@ -97,6 +97,9 @@ public class LoadUtil {
 
         public MyDialog(Context context, int themeResId) {
             super(context, themeResId);
+            if(context==null){
+                return;
+            }
         }
 
         public String getTag() {

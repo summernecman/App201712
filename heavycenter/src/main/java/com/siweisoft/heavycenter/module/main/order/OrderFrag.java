@@ -23,13 +23,12 @@ import butterknife.OnClick;
 
 public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
 
+
     @Override
-    public void initData() {
-        super.initData();
+    public void lazyInit() {
         getP().getU().initPages(fragment,getP().getD().getPages());
+
     }
-
-
 
     @OnClick({R.id.ftv_right,R.id.ftv_title,R.id.ftv_right2})
     public void onClick(View v){

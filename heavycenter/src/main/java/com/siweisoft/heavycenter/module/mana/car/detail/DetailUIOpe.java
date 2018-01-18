@@ -11,11 +11,17 @@ import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
+import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.BR;
+import com.siweisoft.heavycenter.GlideApp;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarReq;
 import com.siweisoft.heavycenter.databinding.FragManaCarDetailBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaCarDetailDriverBinding;
 
@@ -36,10 +42,6 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
         bind.llInput.setVisibility(View.GONE);
-        bind.itemBrand.setEdit(false);
-        bind.itemEmptyweight.setEdit(false);
-        bind.itemMaxweight.setEdit(false);
-        bind.itemIccard.setEdit(false);
     }
 
     public void LoadListData(List<String> s) {
@@ -68,10 +70,41 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 
     public void initData(CarsResBean.ResultsBean data){
 
-        bind.itemBrand.setMidTVTxt(StringUtil.getStr(data.getCarBrand()));
-        bind.itemEmptyweight.setMidTVTxt(StringUtil.getStr(data.getEmptyWeight()));
-        bind.itemMaxweight.setMidTVTxt(StringUtil.getStr(data.getMaxCapacity()));
-        bind.itemIccard.setMidTVTxt(StringUtil.getStr(data.getIcCard()));
+        bind.itemBrand.setMidEtTxt(StringUtil.getStr(data.getCarBrand()));
+        bind.itemEmptyweight.setMidEtTxt(StringUtil.getStr(data.getEmptyWeight()));
+        bind.itemMaxweight.setMidEtTxt(StringUtil.getStr(data.getMaxCapacity()));
+        bind.itemIccard.setMidEtTxt(StringUtil.getStr(data.getIcCard()));
         bind.title.getMidTV().setText(StringUtil.getStr(data.getCarLicenseNo()));
     }
+
+    public UpdateCarReq getUpdateCarReq(UpdateCarReq updateCarReq) {
+        updateCarReq.setCarBrand(bind.itemBrand.getMidEtTxt());
+        updateCarReq.setEmptyWeight(Float.parseFloat(bind.itemEmptyweight.getMidEtTxt()));
+        updateCarReq.setMaxCapacity(Float.parseFloat(bind.itemMaxweight.getMidEtTxt()));
+        updateCarReq.setIcCard(bind.itemIccard.getMidEtTxt());
+        return updateCarReq;
+    }
+
+    public void initPhoto(UpdateCarReq updateCarReq){
+        GlideApp.with(context).asBitmap().load(NetValue.获取地址(updateCarReq.getVehiclePhoto())).placeholder(R.drawable.icon_hv_car).centerCrop().into(bind.ivVehiclePhoto);
+        GlideApp.with(context).asBitmap().load(NetValue.获取地址(updateCarReq.getVehicleLicensePhoto())).placeholder(R.drawable.icon_hv_driveid).centerCrop().into(bind.ivVehicleLicensePhoto);
+    }
+
+    public boolean canGo(){
+        if(NullUtil.isStrEmpty(bind.itemBrand.getMidEtTxt())){
+            ToastUtil.getInstance().showShort(getActivity(),"请输入车辆品牌");
+            return  false;
+        }
+        if(NullUtil.isStrEmpty(bind.itemEmptyweight.getMidEtTxt())){
+            ToastUtil.getInstance().showShort(getActivity(),"请输入车辆自重");
+            return  false;
+        }
+
+        if(NullUtil.isStrEmpty(bind.itemMaxweight.getMidEtTxt())){
+            ToastUtil.getInstance().showShort(getActivity(),"请输入车辆载重");
+            return  false;
+        }
+        return true;
+    }
+
 }

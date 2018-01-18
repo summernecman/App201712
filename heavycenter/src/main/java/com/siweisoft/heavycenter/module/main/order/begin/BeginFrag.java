@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.main.order.begin;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -37,11 +38,11 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().orders(new UINetAdapter<OrdersRes>(getActivity()) {
+        getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),new UINetAdapter<OrdersRes>(getActivity()) {
             @Override
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);
-                getP().getU().LoadListData(o);
+                getP().getU().LoadListData(getArguments().getString(ValueConstant.DATA_DATA),o);
                 getP().getU().finishRefresh();
             }
         });

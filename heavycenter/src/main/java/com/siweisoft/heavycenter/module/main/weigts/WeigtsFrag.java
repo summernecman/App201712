@@ -15,10 +15,15 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
     @Override
     public void initData() {
         super.initData();
+        lazyInit();
+        setInited();
+    }
+
+    @Override
+    public void lazyInit() {
         getP().getU().bind.title.getMidTV().setText(JPushInterface.getRegistrationID(activity)+"");
         getP().getU().initPages(this,getP().getD().getPages());
     }
-
 
     @Override
     public void onClick(View v) {

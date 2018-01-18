@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.data.locd;
 
 //by summer on 2018-01-10.
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.SPUtil;
 import com.google.gson.reflect.TypeToken;
@@ -44,7 +45,13 @@ public class LocalValue {
             "云南","浙江","",
     };
 
+    public static boolean isAutoLogin(){
+        return  SPUtil.getInstance().getBoolean(ValueConstant.AUTO_LOGIN);
+    }
 
+    public static void setAutoLogin(boolean autoLogin){
+        SPUtil.getInstance().saveBoolean(ValueConstant.AUTO_LOGIN,autoLogin);
+    }
 
     public static LoginResBean getLoginInfo(){
         return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(LOGIN_INFO),LoginResBean.class);

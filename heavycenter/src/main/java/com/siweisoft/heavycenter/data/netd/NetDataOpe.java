@@ -18,12 +18,16 @@ import com.siweisoft.heavycenter.data.netd.acct.regist.RegistReqBean;
 import com.siweisoft.heavycenter.data.netd.acct.regist.RegistResBean;
 import com.siweisoft.heavycenter.data.netd.acct.rename.ReNameReqBean;
 import com.siweisoft.heavycenter.data.netd.acct.rename.ReNameResBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.bind.BindCarReq;
+import com.siweisoft.heavycenter.data.netd.mana.car.bind.BindCarRes;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarResBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarReq;
+import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListReq;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.names.NamesReq;
@@ -52,6 +56,8 @@ import com.siweisoft.heavycenter.data.netd.order.news.NewOrderRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
+import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
+import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.data.netd.unit.info.UnitInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
@@ -62,6 +68,8 @@ import com.siweisoft.heavycenter.data.netd.unit.search.SearchReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
 import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
 import com.siweisoft.heavycenter.data.netd.unit.user.UnitUsersReqBean;
+import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
+import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
@@ -100,8 +108,8 @@ public class NetDataOpe {
         NetGet.postData(context,moudle,reqBean,adapter);
     }
 
-    public static void logOut(Context context, String moudle, LogOutReqBean reqBean, NetI<LogOutResBean> adapter) {
-        NetGet.postData(context,moudle,reqBean,adapter);
+    public static void logOut(Context context, LogOutReqBean reqBean, NetI<LogOutResBean> adapter) {
+        NetGet.postData(context,NetValue.获取地址("/user/appExit"),reqBean,adapter);
     }
 
     public static void reName(Context context, ReNameReqBean reqBean, NetI<ReNameResBean> adapter) {
@@ -133,6 +141,16 @@ public class NetDataOpe {
         public static void orders(Context context, OrdersReq reqBean, NetI<OrdersRes> adapter) {
             NetGet.getData(context,NetValue.获取地址("/orders/list"),reqBean,adapter);
         }
+
+    }
+
+    public static class Trans{
+
+
+        public static void transs(Context context, TransReq reqBean, NetI<TransRes> adapter) {
+            NetGet.postData(context,NetValue.获取地址("/ysRecord/list"),reqBean,adapter);
+        }
+
 
     }
 
@@ -191,6 +209,9 @@ public class NetDataOpe {
         }
 
 
+        public static void updatePhoto(Context context, UpdateHeadReqBean reqBean, NetI<UpdateHeadResBean> adapter) {
+            NetGet.getData(context,NetValue.获取地址("/user/updatePhoto"),reqBean,adapter);
+        }
 
 
 
@@ -232,6 +253,15 @@ public class NetDataOpe {
 
             public static void statusCar(Context context, StopCarReqBean reqBean, NetI<StopCarResBean> adapter) {
                 NetGet.postData(context,NetValue.获取地址("/vehicle/startOrStop"),reqBean,adapter);
+            }
+
+            public static void updateCar(Context context, UpdateCarReq reqBean, NetI<UpdateCarRes> adapter) {
+                NetGet.postData(context,NetValue.获取地址("/vehicle/update"),reqBean,adapter);
+            }
+
+
+            public static void bindCar(Context context, BindCarReq reqBean, NetI<BindCarRes> adapter) {
+                NetGet.postData(context,NetValue.获取地址("/vehicle/bindVehicle"),reqBean,adapter);
             }
 
         }

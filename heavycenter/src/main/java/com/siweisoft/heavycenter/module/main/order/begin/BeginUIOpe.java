@@ -23,6 +23,8 @@ import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainOrderBeginBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainOrderBeginBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainOrderDoingBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainOrderDoneBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaGoodBinding;
 
 import java.util.List;
@@ -41,29 +43,62 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(final OrdersRes s){
+    public void LoadListData(String type,final OrdersRes s){
         if(s==null){
             return;
         }
 
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s.getResults()){
+        switch (type){
+            case OrdersReq.STATUS_NEW:
+                bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s.getResults()){
 
-            int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
-            int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);
+                    int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
+                    int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);
 
-            @Override
-            public void onBindViewHolder(AppViewHolder holder, int position) {
-                super.onBindViewHolder(holder, position);
-                ItemMainOrderBeginBinding beginBinding = (ItemMainOrderBeginBinding) holder.viewDataBinding;
-                beginBinding.getRoot().setSelected(position%2==0?true:false);
-                if(NewsOrderReqBean.发货.equals(s.getResults().get(position).getOrderType())){
-                    beginBinding.tvType.setText("发往");
-                }else{
-                    beginBinding.tvType.setText("来自");
-                }
+                    @Override
+                    public void onBindViewHolder(AppViewHolder holder, int position) {
+                        super.onBindViewHolder(holder, position);
+                        ItemMainOrderBeginBinding beginBinding = (ItemMainOrderBeginBinding) holder.viewDataBinding;
+                        beginBinding.getRoot().setSelected(position%2==0?true:false);
+                        if(NewsOrderReqBean.发货.equals(s.getResults().get(position).getOrderType())){
+                            beginBinding.tvType.setText("发往");
+                        }else{
+                            beginBinding.tvType.setText("来自");
+                        }
 
-            }
-        });
+                    }
+                });
+                break;
+            case OrdersReq.STATUS_ING:
+                bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_doing, BR.item_main_order_doing, s.getResults()) {
+
+                    int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
+                    int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);
+
+                    @Override
+                    public void onBindViewHolder(AppViewHolder holder, int position) {
+                        super.onBindViewHolder(holder, position);
+                        ItemMainOrderDoingBinding doingBinding = (ItemMainOrderDoingBinding) holder.viewDataBinding;
+                        doingBinding.getRoot().setSelected(position % 2 == 0 ? true : false);
+                    }
+                });
+                break;
+            case OrdersReq.STATUS_DONE:
+                bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_done, BR.item_main_order_done,s.getResults()){
+
+                    int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
+                    int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);
+
+                    @Override
+                    public void onBindViewHolder(AppViewHolder holder, int position) {
+                        super.onBindViewHolder(holder, position);
+                        ItemMainOrderDoneBinding doneBinding = (ItemMainOrderDoneBinding) holder.viewDataBinding;
+                        doneBinding.getRoot().setSelected(position%2==0?true:false);
+                    }
+                });
+                break;
+        }
+
 //        bind.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
 //            @Override
 //            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {

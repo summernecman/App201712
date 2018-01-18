@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.mana.store;
 
 //by summer on 2017-12-14.
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
@@ -41,7 +42,9 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new NewFrag());
+                Bundle bundle = new Bundle();
+                bundle.putInt(ValueConstant.FARG_REQ,1);
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new NewFrag(),bundle);
                 break;
         }
     }
@@ -92,5 +95,20 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                getP().getU().LoadListData(o,StoreFrag.this);
             }
         });
+    }
+
+    @Override
+    public void onRestart(int res, Bundle bundle) {
+        super.onRestart(res, bundle);
+        switch (res){
+            case 1:
+                if(bundle==null|| bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
+                    return;
+                }
+                if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
+                    getP().getU().autoRefresh();
+                }
+                break;
+        }
     }
 }
