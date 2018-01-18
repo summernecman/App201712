@@ -35,33 +35,36 @@ public class SysUIOpe extends BaseUIOpe<FragMainMsgSysBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(final List<MsgsResBean.ResultsBean> data, ViewListener listener){
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_all, BR.item_main_msg_all,data,listener){
+    public void LoadListData(final MsgsResBean o, ViewListener listener){
+        if(o==null){
+            return;
+        }
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_all, BR.item_main_msg_all,o.getResults(),listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
                 ItemMainMsgAllBinding binding = (ItemMainMsgAllBinding) holder.viewDataBinding;
                 binding.llFuction.setVisibility(View.GONE);
                 binding.tvDes.setVisibility(View.GONE);
-                binding.tvDate.setText(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(data.get(position).getSendTime())));
-                switch (data.get(position).getAuditState()){
+                binding.tvDate.setText(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(o.getResults().get(position).getSendTime())));
+                switch (o.getResults().get(position).getAuditState()){
                     case MsgsResBean.ResultsBean.AUDITOR_STATE_CHECKING:
-                        switch (data.get(position).getMessageType()){
+                        switch (o.getResults().get(position).getMessageType()){
                             case MsgsResBean.ResultsBean.MSG_TYPE_APPLY_D:
                                 binding.llFuction.setVisibility(View.VISIBLE);
                                 binding.btAgree.setOnClickListener(this);
                                 binding.btReject.setOnClickListener(this);
-                                binding.btAgree.setTag(R.id.data,data.get(position));
+                                binding.btAgree.setTag(R.id.data,o.getResults().get(position));
                                 binding.btReject.setOnClickListener(this);
-                                binding.btReject.setTag(R.id.data,data.get(position));
+                                binding.btReject.setTag(R.id.data,o.getResults().get(position));
                                 break;
                             case MsgsResBean.ResultsBean.MSG_TYPE_APPLY_U:
                                 binding.llFuction.setVisibility(View.VISIBLE);
                                 binding.btAgree.setOnClickListener(this);
                                 binding.btReject.setOnClickListener(this);
-                                binding.btAgree.setTag(R.id.data,data.get(position));
+                                binding.btAgree.setTag(R.id.data,o.getResults().get(position));
                                 binding.btReject.setOnClickListener(this);
-                                binding.btReject.setTag(R.id.data,data.get(position));
+                                binding.btReject.setTag(R.id.data,o.getResults().get(position));
                                 break;
                             case MsgsResBean.ResultsBean.MSG_TYPE_INFO:
                                 break;

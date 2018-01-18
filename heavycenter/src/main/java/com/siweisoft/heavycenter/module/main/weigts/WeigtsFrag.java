@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.main.weigts;
 
 import android.view.View;
 
+import com.android.lib.util.system.HandleUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -23,6 +24,9 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
     public void lazyInit() {
         getP().getU().bind.title.getMidTV().setText(JPushInterface.getRegistrationID(activity)+"");
         getP().getU().initPages(this,getP().getD().getPages());
+
+        startLoading();
+
     }
 
     @Override

@@ -48,6 +48,10 @@ public  class NetAdapter<A> implements NetI<A> {
             if(cache){
                 ToastUtil.getInstance().showShort(context,"当前为无网络测试环境");
                 BaseResBean resBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(url),BaseResBean.class);
+                if(resBean ==null){
+                    resBean = new BaseResBean();
+                    resBean.setCode("000");
+                }
                 deal(haveData,url,resBean);
             }else{
                 if(!NullUtil.isStrEmpty(baseResBean.getMessage())){

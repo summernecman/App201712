@@ -49,7 +49,9 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
     }
 
     public void LoadListData(ListResBean o, final ViewListener listener) {
-
+    if(o==null){
+        return;
+    }
 
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_myce_unit_bind, BR.item_myce_unit_bind, o.getResults(),listener){
 

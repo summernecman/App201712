@@ -22,6 +22,7 @@ import com.android.lib.util.fragment.two.FragKey;
 import com.android.lib.util.system.HandleUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
 
+import com.wang.avi.AVLoadingIndicatorView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -56,6 +57,8 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     private boolean isInit = false;
 
+    private ViewGroup parent;
+
     public BaseUIFrag() {
 
     }
@@ -76,7 +79,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             index = getArguments().getInt(ValueConstant.FRAG_POSITION);
         }
         View group = inflater.inflate(getLayoutID(), null);
-        ViewGroup parent = (ViewGroup) group.findViewById(R.id.container);
+        parent = (ViewGroup) group.findViewById(R.id.container);
         if (getP()!=null && getP().getU() != null && getP().getU().getBind().getRoot() != null) {
             ViewGroup viewGroup = (ViewGroup) getP().getU().getBind().getRoot().getParent();
             if (viewGroup != null) {
@@ -242,5 +245,20 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     public boolean isInit() {
         return isInit;
+    }
+    View  v;
+    public void startLoading(){
+          v = LayoutInflater.from(activity).inflate(R.layout.dialog_loading,null);
+        AVLoadingIndicatorView avLoadingIndicatorView = (AVLoadingIndicatorView) v.findViewById(R.id.av);
+        parent.addView(v,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        avLoadingIndicatorView.show();
+
+
+    }
+
+    public void stopLoading(){
+        if(v!=null){
+            parent.removeView(v);
+        }
     }
 }

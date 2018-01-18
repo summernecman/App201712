@@ -41,7 +41,7 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
             public void onResult(boolean success, String msg, MsgsResBean o) {
                 super.onResult(success, msg, o);
                 getP().getU().finishRefresh();
-                getP().getU().LoadListData(o.getResults(),SysFrag.this);
+                getP().getU().LoadListData(o,SysFrag.this);
             }
         });
     }
