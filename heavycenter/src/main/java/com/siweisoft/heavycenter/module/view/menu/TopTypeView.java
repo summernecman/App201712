@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.lib.util.LogUtil;
 import com.siweisoft.heavycenter.R;
 
 import java.util.ArrayList;
@@ -62,13 +63,15 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
             index = strs.length;
         }
     }
-
     public void setViewPager(ViewPager viewPager) {
         this.viewPager = viewPager;
         this.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-             
+//                textViews.get(position).setTextSize(TypedValue.COMPLEX_UNIT_SP,15+5*(1-positionOffset));
+//                if((position+1)<textViews.size()){
+//                    textViews.get((position+1)).setTextSize(TypedValue.COMPLEX_UNIT_SP,15+5*(positionOffset));
+//                }
             }
 
             @Override

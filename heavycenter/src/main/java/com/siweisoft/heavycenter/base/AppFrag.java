@@ -36,10 +36,4 @@ public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends 
         }
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        LogUtil.E("66666666666666666666666666666"+isVisibleToUser+":"+getClass().getSimpleName());
-    }
-
 }

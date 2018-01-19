@@ -3,7 +3,9 @@ package com.siweisoft.heavycenter.data.netd.order.list;
 //by summer on 2018-01-17.
 
 import com.android.lib.bean.BaseBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrdersRes extends BaseBean {
@@ -64,15 +66,24 @@ public class OrdersRes extends BaseBean {
     }
 
     public static class ResultsBean extends BaseBean{
+
+
         /**
-         * orderId : 45
-         * orderNo : 2018011715
+         * orderId : 46
+         * orderNo : 2018011716
          * orderType : S
          * productName : 混凝土
-         * specification : C50
-         * planNumber : 2000
-         * shdwName : 雨后
+         * specification : C30
+         * planNumber : 200
+         * shdwName : 搞搞搞
          * fhdwName : 干干干
+         * planTime : 1516118400000
+         * address : 
+         * shdwQName : 搞搞搞有限公司
+         * fhdwQName : 干干干有限公司
+         * signRule : 收货单位直接签收
+         * orderStatus : new
+         * vehicleList : [{"trueName":"驾驶员A","maxCapacity":25,"tel":"18721607200","vehicleId":45,"carLicenseNo":"沪A12332"},{"trueName":null,"maxCapacity":25,"tel":null,"vehicleId":44,"carLicenseNo":"沪A8485"}]
          */
 
         private int orderId;
@@ -83,6 +94,13 @@ public class OrdersRes extends BaseBean {
         private int planNumber;
         private String shdwName;
         private String fhdwName;
+        private long planTime;
+        private String address;
+        private String shdwQName;
+        private String fhdwQName;
+        private String signRule;
+        private String orderStatus;
+        private List<CarsResBean.ResultsBean> vehicleList = new ArrayList<>();
 
         public int getOrderId() {
             return orderId;
@@ -146,6 +164,62 @@ public class OrdersRes extends BaseBean {
 
         public void setFhdwName(String fhdwName) {
             this.fhdwName = fhdwName;
+        }
+
+        public long getPlanTime() {
+            return planTime;
+        }
+
+        public void setPlanTime(long planTime) {
+            this.planTime = planTime;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getShdwQName() {
+            return shdwQName;
+        }
+
+        public void setShdwQName(String shdwQName) {
+            this.shdwQName = shdwQName;
+        }
+
+        public String getFhdwQName() {
+            return fhdwQName;
+        }
+
+        public void setFhdwQName(String fhdwQName) {
+            this.fhdwQName = fhdwQName;
+        }
+
+        public String getSignRule() {
+            return signRule;
+        }
+
+        public void setSignRule(String signRule) {
+            this.signRule = signRule;
+        }
+
+        public String getOrderStatus() {
+            return orderStatus;
+        }
+
+        public void setOrderStatus(String orderStatus) {
+            this.orderStatus = orderStatus;
+        }
+
+        public List<CarsResBean.ResultsBean> getVehicleList() {
+            return vehicleList;
+        }
+
+        public void setVehicleList(List<CarsResBean.ResultsBean> vehicleList) {
+            this.vehicleList = vehicleList;
         }
     }
 }

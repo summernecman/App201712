@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.data.netd.mana.store.list;
 
 import com.android.lib.bean.BaseBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StoresResBean extends BaseBean {
@@ -21,7 +22,7 @@ public class StoresResBean extends BaseBean {
     private int pageIndex;
     private int pageCount;
     private int pageSize;
-    private List<ResultsBean> results;
+    private List<StoreDetail> results = new ArrayList<>();
 
     public int getTotalCount() {
         return totalCount;
@@ -55,161 +56,13 @@ public class StoresResBean extends BaseBean {
         this.pageSize = pageSize;
     }
 
-    public List<ResultsBean> getResults() {
+    public List<StoreDetail> getResults() {
         return results;
     }
 
-    public void setResults(List<ResultsBean> results) {
+    public void setResults(List<StoreDetail> results) {
         this.results = results;
     }
 
-    public static class ResultsBean extends BaseBean{
-        /**
-         * locate :
-         * warehouseId : 93
-         * companyName : qwe
-         * maxStock : 250
-         * productMaxStock : 0.1
-         * productMinStock : 0.1
-         * currentStock : 0.1
-         * warehouseName : 仓库1
-         * specifications :
-         * productName :
-         * minStock : 100.6
-         * status : 1
-         */
 
-        private String locate;
-        private int warehouseId;
-        private String companyName;
-        private float maxStock;
-        private float productMaxStock;
-        private float productMinStock;
-        private float currentStock;
-        private String warehouseName;
-        private String specifications;
-        private String productName;
-        private float minStock;
-        private int status;
-
-        public static final int STATUS_OFF = 0;
-
-        public static final int STATUS_ON = 1;
-
-        public static final String STATUS_OFF_CN = "禁用";
-
-        public static final String STATUS_ON_CN = "启用";
-
-        public String getLocate() {
-            return locate;
-        }
-
-        public void setLocate(String locate) {
-            this.locate = locate;
-        }
-
-        public int getWarehouseId() {
-            return warehouseId;
-        }
-
-        public void setWarehouseId(int warehouseId) {
-            this.warehouseId = warehouseId;
-        }
-
-        public String getCompanyName() {
-            return companyName;
-        }
-
-        public void setCompanyName(String companyName) {
-            this.companyName = companyName;
-        }
-
-        public float getMaxStock() {
-            return maxStock;
-        }
-
-        public void setMaxStock(float maxStock) {
-            this.maxStock = maxStock;
-        }
-
-        public float getProductMaxStock() {
-            return productMaxStock;
-        }
-
-        public void setProductMaxStock(float productMaxStock) {
-            this.productMaxStock = productMaxStock;
-        }
-
-        public float getProductMinStock() {
-            return productMinStock;
-        }
-
-        public void setProductMinStock(float productMinStock) {
-            this.productMinStock = productMinStock;
-        }
-
-        public float getCurrentStock() {
-            return currentStock;
-        }
-
-        public void setCurrentStock(float currentStock) {
-            this.currentStock = currentStock;
-        }
-
-        public String getWarehouseName() {
-            return warehouseName;
-        }
-
-        public void setWarehouseName(String warehouseName) {
-            this.warehouseName = warehouseName;
-        }
-
-        public String getSpecifications() {
-            return specifications;
-        }
-
-        public void setSpecifications(String specifications) {
-            this.specifications = specifications;
-        }
-
-        public String getProductName() {
-            return productName;
-        }
-
-        public void setProductName(String productName) {
-            this.productName = productName;
-        }
-
-        public float getMinStock() {
-            return minStock;
-        }
-
-        public void setMinStock(float minStock) {
-            this.minStock = minStock;
-        }
-
-        public int getStatus() {
-            return status;
-        }
-
-        public void setStatus(int status) {
-            this.status = status;
-        }
-
-        public static int getStatusOff() {
-            return STATUS_OFF;
-        }
-
-        public static int getStatusOn() {
-            return STATUS_ON;
-        }
-
-        public static String getStatusOffCn() {
-            return STATUS_OFF_CN;
-        }
-
-        public static String getStatusOnCn() {
-            return STATUS_ON_CN;
-        }
-    }
 }

@@ -10,8 +10,11 @@ import com.android.lib.exception.exception.CrashHander;
 import com.android.lib.network.news.NetAdapter;
 import com.android.lib.network.news.NetGet;
 import com.android.lib.network.news.NetI;
+import com.android.lib.network.newsf.NetFAdapter;
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.android.lib.view.refresh.MyClassicsFooter;
+import com.android.lib.view.refresh.MyClassicsHeader;
 import com.baidu.mapapi.SDKInitializer;
 import com.bumptech.glide.Glide;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -36,7 +39,7 @@ public class HCApp extends LibAplication implements OnFinishListener{
             @Override
             public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
                 layout.setPrimaryColorsId(R.color.color_base, android.R.color.white);//全局设置主题颜色
-                return new ClassicsHeader(context);//.setTimeFormat(new DynamicTimeFormat("更新于 %s"));//指定为经典Header，默认是 贝塞尔雷达Header
+                return new MyClassicsHeader(context);//.setTimeFormat(new DynamicTimeFormat("更新于 %s"));//指定为经典Header，默认是 贝塞尔雷达Header
             }
         });
         //设置全局的Footer构建器
@@ -45,7 +48,7 @@ public class HCApp extends LibAplication implements OnFinishListener{
             public RefreshFooter createRefreshFooter(Context context, RefreshLayout layout) {
                 layout.setPrimaryColorsId(R.color.color_base, android.R.color.white);//全局设置主题颜色
                 //指定为经典Footer，默认是 BallPulseFooter
-                return new ClassicsFooter(context);
+                return new MyClassicsFooter(context);
             }
         });
     }
@@ -61,12 +64,14 @@ public class HCApp extends LibAplication implements OnFinishListener{
         JPushInterface.init(this);
         FragManager2.getInstance().clear();
 
-        if(true){
+        if(false){
             NetGet.test = true;
             NetAdapter.cache = true;
+            NetFAdapter.cache = true;
         }else{
             NetGet.test = false;
             NetAdapter.cache = false;
+            NetFAdapter.cache = false;
         }
     }
 

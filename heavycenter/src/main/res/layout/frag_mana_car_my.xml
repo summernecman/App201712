@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:style_common="http://schemas.android.com/tools">
     <data>
         <variable
             name="frag_mana_car_sending"
@@ -12,6 +13,16 @@
         android:orientation="vertical"
         android:background="@color/color_grey_300"
         >
+
+        <com.android.lib.view.title.TitleView
+            android:visibility="gone"
+            android:id="@+id/cartitle"
+            style_common:txt_mid ="车辆列表"
+            style_common:iv_left ="@drawable/icon_hv_back"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"

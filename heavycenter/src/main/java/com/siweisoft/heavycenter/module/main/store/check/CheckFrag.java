@@ -7,6 +7,7 @@ import android.view.View;
 import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 
 import butterknife.OnClick;
@@ -21,6 +22,7 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
             @Override
             public void onResult(boolean success, String msg, StoresResBean o) {
                 super.onResult(success, msg, o);
+                getP().getD().setStoresResBean(o);
                 getP().getU().LoadListData(o);
             }
         });
@@ -31,7 +33,17 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-
+                if(getP().getD().canGo()){
+                    getP().getD().checkStore(getP().getD().getCheckStoreReqBean(getP().getD().getStoresResBean()), new UINetAdapter<CheckStoreResBean>(getActivity()) {
+                        @Override
+                        public void onResult(boolean success, String msg, CheckStoreResBean o) {
+                            super.onResult(success, msg, o);
+                            if(success){
+                                getBaseUIActivity().onBackPressed();
+                            }
+                        }
+                    });
+                }
                 break;
         }
     }

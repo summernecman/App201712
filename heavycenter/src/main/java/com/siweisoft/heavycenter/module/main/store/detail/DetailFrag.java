@@ -4,10 +4,13 @@ package com.siweisoft.heavycenter.module.main.store.detail;
 
 import android.view.View;
 
+import com.android.lib.constant.ValueConstant;
+import com.android.lib.network.newsf.UIFNetAdapter;
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.store.check.CheckFrag;
 
@@ -18,9 +21,19 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     @Override
     public void initData() {
         super.initData();
-        getP().getU().initRefresh();
         getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getData());
+        getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UIFNetAdapter<StoreDetail>(this) {
+            @Override
+            public void onResult(boolean success, String msg, StoreDetail o) {
+                super.onResult(success, msg, o);
+              if(success){
+                  getP().getU().initRefresh();
+                  getP().getU().initUI(o);
+              }
+                //getP().getU().LoadListData(getP().getD().getData());
+            }
+        });
+
     }
 
     @OnClick({R.id.ftv_right2})

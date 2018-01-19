@@ -31,7 +31,7 @@ public class BeginDAOpe extends AppDAOpe {
         ordersReq.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
         ordersReq.setIsApp(1);
         ordersReq.setPageIndex(0);
-        ordersReq.setPageSize(1000);
+        ordersReq.setPageSize(20);
         ordersReq.setOrderStatus(type);
         NetDataOpe.Order.orders(getActivity(),ordersReq,adapter);
     }

@@ -10,6 +10,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 
+import com.siweisoft.heavycenter.R;
+
 import java.text.DecimalFormat;
 
 public class CircleBar extends View {
@@ -26,7 +28,7 @@ public class CircleBar extends View {
 
     int mCircleColor;
     int mCircleBgColor;
-    private float mCircleRatio=0.02f;//圆环宽度占比
+    private float mCircleRatio=0.03f;//圆环宽度占比
     private boolean mIsDrawValue=false;
 
     public CircleBar(Context context) {
@@ -54,14 +56,14 @@ public class CircleBar extends View {
 
 
         mColorWheelPaint = new Paint();
-        mColorWheelPaint.setColor(mCircleColor);//设置画笔颜色
+        mColorWheelPaint.setColor(context.getResources().getColor(R.color.color_hv_yelll));//设置画笔颜色
         mColorWheelPaint.setStyle(Paint.Style.STROKE);// 空心,只绘制轮廓线
         mColorWheelPaint.setStrokeCap(Paint.Cap.ROUND);// 圆角画笔
         mColorWheelPaint.setAntiAlias(true);// 去锯齿
 
 
         mDefaultWheelPaint = new Paint();
-        mDefaultWheelPaint.setColor(mCircleBgColor);//背景色
+        mDefaultWheelPaint.setColor(context.getResources().getColor(R.color.color_grey_600));//背景色
         mDefaultWheelPaint.setStyle(Paint.Style.STROKE);
         mDefaultWheelPaint.setStrokeCap(Paint.Cap.ROUND);
         mDefaultWheelPaint.setAntiAlias(true);
@@ -96,9 +98,6 @@ public class CircleBar extends View {
          */
         canvas.drawArc(mColorWheelRectangle, 0, 359, false, mDefaultWheelPaint);
         canvas.drawArc(mColorWheelRectangle, 270, mSweepAnglePer, false, mColorWheelPaint);
-        if(mIsDrawValue) {
-            canvas.drawText(mProgress + "%", getWidth() / 2, baseLineY, mTextPaint);
-        }
 
     }
 
@@ -131,7 +130,7 @@ public class CircleBar extends View {
         mColorWheelRectangle.set(circleStrokeWidth , circleStrokeWidth , getWidth() - circleStrokeWidth , getWidth() - circleStrokeWidth);// 设置矩形
         mColorWheelPaint.setStrokeWidth(circleStrokeWidth);
         mDefaultWheelPaint.setStrokeWidth(circleStrokeWidth);
-        mColorWheelPaint.setShadowLayer(circleStrokeWidth, 0, 0,mCircleColor);// 设置阴影
+        mColorWheelPaint.setShadowLayer(circleStrokeWidth, 0, 0,getContext().getResources().getColor(R.color.color_hv_yelll));// 设置阴影
     }
 
     /**

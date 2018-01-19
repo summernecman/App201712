@@ -40,6 +40,8 @@ import com.siweisoft.heavycenter.data.netd.mana.store.add.NewStoreReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.add.NewStoreResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreResBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.detail.StoreDetailReq;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresReqBean;
@@ -50,6 +52,9 @@ import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealResBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
+import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarReq;
+import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarRes;
+import com.siweisoft.heavycenter.data.netd.order.detail.OrderDetailReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewOrderRes;
@@ -142,6 +147,14 @@ public class NetDataOpe {
             NetGet.getData(context,NetValue.获取地址("/orders/list"),reqBean,adapter);
         }
 
+
+        public static void addCar(Context context, AddCarReq reqBean, NetI<AddCarRes> adapter) {
+            NetGet.postData(context,NetValue.获取地址("/orders/addVehicle"),reqBean,adapter);
+        }
+
+        public static void detail(Context context, OrderDetailReq reqBean, NetI<OrdersRes.ResultsBean> adapter) {
+            NetGet.getData(context,NetValue.获取地址("/orders/getDetail"),reqBean,adapter);
+        }
     }
 
     public static class Trans{
@@ -236,6 +249,10 @@ public class NetDataOpe {
 
             public static void checkStore(Context context, CheckStoreReqBean reqBean, NetI<CheckStoreResBean> adapter) {
                 NetGet.postData(context,NetValue.获取地址("/wareHouse/inventory"),reqBean,adapter);
+            }
+
+            public static void detail(Context context, StoreDetailReq reqBean, NetI<StoreDetail> adapter) {
+                NetGet.getData(context,NetValue.获取地址("/wareHouse/getDetail"),reqBean,adapter);
             }
 
         }

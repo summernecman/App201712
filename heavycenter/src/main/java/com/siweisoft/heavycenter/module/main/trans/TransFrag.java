@@ -11,6 +11,7 @@ import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -21,16 +22,15 @@ import com.siweisoft.heavycenter.module.main.trans.search.SearchFrag;
 
 import butterknife.OnClick;
 
-public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewListener,OnRefreshListener {
+public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener {
 
 
 
     @Override
     public void lazyInit() {
-        getP().getU().initRefresh(this);
+        getP().getU().initRefresh(this,this);
         getP().getU().initRecycle();
-        //getP().getU().LoadListData(getP().getD().getData(),this);
-        getP().getU().LoadListData(getP().getD().getData(),this);
+        getP().getU().autoRefresh();
     }
 
     @Override
@@ -75,5 +75,11 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     public void onRefresh(RefreshLayout refreshlayout) {
         refreshlayout.finishRefresh(2000);
         getP().getU().LoadListData(getP().getD().getData(),this);
+    }
+
+    @Override
+    public void onLoadmore(RefreshLayout refreshlayout) {
+        getP().getU().LoadListData(getP().getD().getData(),this);
+        getP().getU().finishLoadmore();
     }
 }

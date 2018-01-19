@@ -19,6 +19,11 @@ public class TransDAOpe extends BaseDAOpe {
 
     private TransReq transReq = new TransReq();
 
+    private TransRes transRes = new TransRes();
+
+    private int pageIndex = 0;
+
+
     public TransDAOpe(Context context) {
         super(context);
     }
@@ -29,6 +34,9 @@ public class TransDAOpe extends BaseDAOpe {
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();
+        for(int i=0;i<5;i++){
+            data.add("");
+        }
         return data;
     }
 
@@ -50,11 +58,23 @@ public class TransDAOpe extends BaseDAOpe {
         transReq.setIsApp(1);
         transReq.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
         transReq.setPageIndex(0);
-        transReq.setPageSize(1000);
+        transReq.setPageSize(200);
         return transReq;
     }
 
     public void transs(TransReq transReq, NetI<TransRes> adapter){
         NetDataOpe.Trans.transs(getActivity(),transReq,adapter);
+    }
+
+    public TransRes getTransRes() {
+        return transRes;
+    }
+
+    public int getPageIndex() {
+        return pageIndex;
+    }
+
+    public void setPageIndex(int pageIndex) {
+        this.pageIndex = pageIndex;
     }
 }

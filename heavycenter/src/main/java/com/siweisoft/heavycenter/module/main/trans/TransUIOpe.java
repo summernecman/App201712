@@ -35,16 +35,6 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
         //initRecycle();
     }
 
-    public void initRefresh(OnRefreshListener onRefreshListener){
-        bind.refreshLayout.setOnRefreshListener(onRefreshListener);
-        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadmore(2000);
-            }
-        });
-    }
-
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
@@ -82,6 +72,28 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
         }
 
     }
+
+    public void initRefresh(OnRefreshListener onRefreshListener,OnLoadmoreListener onLoadmoreListener){
+        bind.refreshLayout.setOnRefreshListener(onRefreshListener);
+        bind.refreshLayout.setOnLoadmoreListener(onLoadmoreListener);
+    }
+
+    public void finishRefresh(){
+        bind.refreshLayout.finishRefresh();
+    }
+
+    public void finishLoadmore(){
+        bind.refreshLayout.finishLoadmore();
+    }
+
+    public void autoRefresh(){
+        bind.refreshLayout.autoRefresh();
+    }
+
+    public void notifyDataSetChanged(){
+        bind.recycle.getAdapter().notifyDataSetChanged();
+    }
+
 
     public void refreshSearch(){
         bind.title.getRightIV2().setSelected(false);

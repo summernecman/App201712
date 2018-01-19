@@ -5,9 +5,11 @@ package com.siweisoft.heavycenter.module.main.store.check;
 import android.content.Context;
 
 import com.android.lib.network.news.NetI;
+import com.android.lib.util.GsonUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.mana.store.check.Check;
 import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresReqBean;
@@ -19,6 +21,8 @@ public class CheckDAOpe extends AppDAOpe {
 
 
     CheckStoreReqBean checkStoreReqBean = new CheckStoreReqBean();
+
+    private StoresResBean storesResBean;
 
     public CheckDAOpe(Context context) {
         super(context);
@@ -41,10 +45,18 @@ public class CheckDAOpe extends AppDAOpe {
         return checkStoreReqBean;
     }
 
-    public CheckStoreReqBean getCheckStoreReqBean(StoresResBean.ResultsBean data) {
-        checkStoreReqBean.setUserId(LocalValue.getLoginInfo().getUserId());
-        checkStoreReqBean.setWarehouseId(data.getWarehouseId());
-
+    public CheckStoreReqBean getCheckStoreReqBean(StoresResBean data) {
+        getCheckStoreReqBean().setUserId(LocalValue.getLoginInfo().getUserId());
+        ArrayList<Check> checks = new ArrayList<>();
+        for(int i=0;i<data.getResults().size();i++){
+            Check check  = new Check();
+            check.setBeforeAdjust(data.getResults().get(i).getCurrentStock());
+            check.setAfterAdjust(data.getResults().get(i).getAfterAdjust());
+            check.setWarehouseId(data.getResults().get(i).getWarehouseId());
+            check.setProductId(data.getResults().get(i).getProductId());
+            checks.add(check);
+        }
+        checkStoreReqBean.setWareHouseListString(GsonUtil.getInstance().toJson(checks));
         return checkStoreReqBean;
     }
 
@@ -55,7 +67,23 @@ public class CheckDAOpe extends AppDAOpe {
         reqBean.setIsApp(1);
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);
-        reqBean.setStatus(StoresReqBean.STATUS_ALL);
         NetDataOpe.Mana.Store.sotresInfo(getActivity(),reqBean,adapter);
+    }
+
+    public boolean canGo(){
+        for(int i=0;i<getStoresResBean().getResults().size();i++){
+            if(getStoresResBean().getResults().get(i).getAfterAdjust()<0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public StoresResBean getStoresResBean() {
+        return storesResBean;
+    }
+
+    public void setStoresResBean(StoresResBean storesResBean) {
+        this.storesResBean = storesResBean;
     }
 }

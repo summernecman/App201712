@@ -3,23 +3,44 @@
     <data>
         <variable
             name="frag_main_order_detail"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.order.list.OrdersRes.ResultsBean" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical"
-       android:clickable="true"
-        >
+        android:clickable="true">
+
+        <ImageView
+            android:background="@drawable/icon_hv_main_order_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/icon_hv_main_order_detail"
+       android:clickable="true"
+        >
+
+        <com.android.lib.view.title.TitleView
+            android:id="@+id/title"
+            style_common:iv_left ="@drawable/icon_hv_back"
+            style_common:iv_right ="@drawable/icon_hv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
         >
     <LinearLayout
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,6 +48,7 @@
         android:gravity="center_vertical"
         >
         <RelativeLayout
+            android:visibility="gone"
             android:layout_width="110dp"
             android:layout_height="wrap_content">
             <com.siweisoft.heavycenter.module.view.circle.CircleBar
@@ -54,6 +76,7 @@
 
 
         <LinearLayout
+            android:layout_marginLeft="20dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -68,7 +91,7 @@
                     android:singleLine="true"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:text="混凝土"
+                    android:text="@{frag_main_order_detail.productName}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -77,7 +100,7 @@
                     android:layout_marginLeft="14dp"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:text="C30"
+                    android:text="@{frag_main_order_detail.specification}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <View
@@ -85,13 +108,13 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"/>
                 <TextView
+                    android:text='@{"计划:"+frag_main_order_detail.planNumber}'
                     android:layout_marginRight="15dp"
                     android:background="@drawable/bg_hv_sel_yel_blue_stroke"
                     android:singleLine="true"
                     android:layout_marginLeft="7dp"
                     android:textColor="@color/color_yell_blue"
                     android:textSize="8.5sp"
-                    android:text="沪A2345"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -99,20 +122,20 @@
 
 
             <TextView
+                android:id="@+id/tv_ordertype"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_hv_sharp2_blue_solid"
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textSize="11sp"
-                android:text="发往"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/tv_unit"
                 android:layout_marginTop="5dp"
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:text="上海绿地"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -122,6 +145,7 @@
     </LinearLayout>
         
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             
@@ -171,7 +195,17 @@
 
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_starttime"
             style_common:txt_left = "开始时间"
+            style_common:txt_two = ""
+            style_common:boo_edit = "false"
+            style_common:iv_right = "@drawable/icon_arraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_endtime"
+            style_common:txt_left = "结束时间"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "false"
             style_common:iv_right = "@drawable/icon_arraw"
@@ -179,14 +213,15 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_addr"
             style_common:txt_left = "送货地址"
-            style_common:txt_mid = "请输入"
             style_common:boo_edit = "false"
             style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_plantime"
             style_common:txt_left = "计划开始时间"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "false"
@@ -195,6 +230,7 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/item_rule"
             style_common:txt_left = "备用签收规则"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "false"
@@ -202,27 +238,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            style_common:txt_left = "物料名称"
-            style_common:txt_mid = "请输入"
-            style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+<LinearLayout
+    android:orientation="vertical"
+    android:id="@+id/ll_drivers"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             style_common:txt_left = "指定承运车辆"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_hv_local"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <ImageView
+            android:id="@+id/iv_local"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_hv_local"
+            android:layout_width="20sp"
+            android:layout_height="20sp" />
+    </RelativeLayout>
         <android.support.v7.widget.RecyclerView
             android:background="@color/white"
             android:id="@+id/recycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+</LinearLayout>
     </LinearLayout>
+    </RelativeLayout>
 </layout>

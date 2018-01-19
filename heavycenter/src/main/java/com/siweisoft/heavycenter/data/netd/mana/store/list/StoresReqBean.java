@@ -10,7 +10,6 @@ public class StoresReqBean extends BaseReqBean {
 
     public static final int STATUS_OFF = 0;
 
-    public static final int STATUS_ALL = -1;
 
     private int companyId;
 

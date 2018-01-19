@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item_mana_store"
-            type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean.ResultsBean" />
+            type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail" />
     </data>
     <com.daimajia.swipe.SwipeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

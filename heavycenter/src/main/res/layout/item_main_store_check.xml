@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item_main_store_check"
-            type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean.ResultsBean" />
+            type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail" />
     </data>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
@@ -76,6 +76,9 @@
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:text='@{""+item_main_store_check.currentStock}'
+                android:maxEms="10"
+                android:singleLine="true"
                 android:inputType="number"
                 android:digits="0123456789."
                 android:id="@+id/et_input"

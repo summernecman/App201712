@@ -22,6 +22,8 @@
             android:layout_height="wrap_content"/>
 
             <LinearLayout
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:background="@color/color_grey_300"
@@ -39,7 +41,7 @@
                 <TextView
                     android:textSize="15sp"
                     android:gravity="center"
-                    android:text="物料名称\n及规格"
+                    android:text="物料名称\n规格"
                     android:textColor="@color/color_grey_700"
                     android:layout_weight="1"
                     android:layout_width="0dp"

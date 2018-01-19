@@ -8,6 +8,7 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.network.newsf.UIFNetAdapter;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -17,12 +18,14 @@ import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealResBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
 
+import java.util.ArrayList;
+
 public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshListener,OnLoadmoreListener ,ViewListener{
 
     @Override
     public void initData() {
         super.initData();
-        getP().getD().setMoudle(getArguments().getInt(ValueConstant.DATA_POSITION));
+        getP().getD().setMoudle(getArguments().getString(ValueConstant.DATA_POSITION));
         getP().getU().initRefresh(this,this);
         getP().getU().autoRefresh();
 
@@ -31,17 +34,30 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        getP().getU().finishLoadmore();
+        getP().getD().setPageindex(getP().getD().getPageindex()+1);
+        getP().getD().getMsgSys(new UIFNetAdapter<MsgsResBean>(this) {
+            @Override
+            public void onResult(boolean success, String msg, MsgsResBean o) {
+                super.onResult(success, msg, o);
+                getP().getU().finishLoadmore();
+                getP().getD().addData(o);
+                getP().getU().notifyDataSetChanged();
+
+            }
+        });
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().getMsgSys(new UINetAdapter<MsgsResBean>(getActivity()) {
+        getP().getD().setPageindex(0);
+        getP().getD().getMsgsResBean().setResults(new ArrayList<MsgsResBean.ResultsBean>());
+        getP().getD().getMsgSys(new UIFNetAdapter<MsgsResBean>(this) {
             @Override
             public void onResult(boolean success, String msg, MsgsResBean o) {
                 super.onResult(success, msg, o);
+                getP().getD().addData(o);
                 getP().getU().finishRefresh();
-                getP().getU().LoadListData(o,SysFrag.this);
+                getP().getU().LoadListData(getP().getD().getMsgsResBean(),SysFrag.this);
             }
         });
     }

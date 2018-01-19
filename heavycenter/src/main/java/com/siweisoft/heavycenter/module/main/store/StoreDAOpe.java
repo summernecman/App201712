@@ -15,6 +15,10 @@ import java.util.ArrayList;
 
 public class StoreDAOpe extends BaseDAOpe {
 
+    private int pageIndex = 0;
+
+    private StoresResBean storesResBean = new StoresResBean();
+
     public StoreDAOpe(Context context) {
         super(context);
     }
@@ -31,9 +35,26 @@ public class StoreDAOpe extends BaseDAOpe {
         StoresReqBean reqBean = new StoresReqBean();
         reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
         reqBean.setIsApp(1);
-        reqBean.setPageIndex(0);
-        reqBean.setPageSize(1000);
-        reqBean.setStatus(StoresReqBean.STATUS_ALL);
+        reqBean.setPageIndex(getPageIndex());
+        reqBean.setPageSize(20);
         NetDataOpe.Mana.Store.sotresInfo(getActivity(),reqBean,adapter);
+    }
+
+    public StoresResBean getStoresResBean() {
+        return storesResBean;
+    }
+
+    public void addData(StoresResBean data){
+        if(data!=null&&data.getResults()!=null){
+            storesResBean.getResults().addAll(data.getResults());
+        }
+    }
+
+    public int getPageIndex() {
+        return pageIndex;
+    }
+
+    public void setPageIndex(int pageIndex) {
+        this.pageIndex = pageIndex;
     }
 }

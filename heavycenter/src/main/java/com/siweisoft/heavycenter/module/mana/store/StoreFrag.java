@@ -16,6 +16,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -56,7 +57,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
             case ViewListener.TYPE_ONCLICK:
                switch (v.getId()){
                    case R.id.munu:
-                       final StoresResBean.ResultsBean data  = (StoresResBean.ResultsBean) v.getTag(R.id.data);
+                       final StoreDetail data  = (StoreDetail) v.getTag(R.id.data);
                        getP().getD().statusStore(getP().getU().getStatusStoresReqBean(getP().getD().getStatusStoresReqBean(),data.getWarehouseId(),data.getStatus()), new UINetAdapter<StatusStoresResBean>(getActivity()) {
                            @Override
                            public void onResult(boolean success, String msg, StatusStoresResBean o) {
@@ -70,7 +71,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                        break;
                        default:
                            if(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库){
-                               StoresResBean.ResultsBean d = (StoresResBean.ResultsBean) v.getTag(R.id.data);
+                               StoreDetail d = (StoreDetail) v.getTag(R.id.data);
                                getArguments().putSerializable(ValueConstant.DATA_DATA2,d);
                                getBaseUIActivity().onBackPressed();
                            }

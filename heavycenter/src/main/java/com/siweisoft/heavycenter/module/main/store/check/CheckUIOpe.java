@@ -10,10 +10,12 @@ import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.databinding.FragMainStoreCheckBinding;
 import com.siweisoft.heavycenter.databinding.FragManaStoreListBinding;
@@ -49,10 +51,16 @@ public class CheckUIOpe extends AppUIOpe<FragMainStoreCheckBinding>{
                     @Override
                     public void afterTextChanged(Editable s) {
                         super.afterTextChanged(s);
-                        itemMainStoreCheckBinding.tvAfter.setText(StringUtil.getStr( Float.parseFloat(s.toString())- o.getResults().get(position).getCurrentStock())+"t");
+                        String ss = s.toString();
+                        if(NullUtil.isStrEmpty(ss.trim())){
+                            ss= "0";
+                        }
+                        itemMainStoreCheckBinding.tvAfter.setText(StringUtil.getStr( Float.parseFloat(ss.toString())- o.getResults().get(position).getCurrentStock())+"t");
+                        o.getResults().get(position).setAfterAdjust(Float.parseFloat(ss.toString()));
                     }
                 });
             }
         });
     }
+
 }

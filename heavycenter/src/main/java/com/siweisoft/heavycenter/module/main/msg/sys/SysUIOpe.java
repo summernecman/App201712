@@ -96,6 +96,7 @@ public class SysUIOpe extends BaseUIOpe<FragMainMsgSysBinding>{
         });
     }
 
+
     public void initRefresh(OnRefreshListener onRefreshListener,OnLoadmoreListener onLoadmoreListener){
         bind.refreshLayout.setOnRefreshListener(onRefreshListener);
         bind.refreshLayout.setOnLoadmoreListener(onLoadmoreListener);

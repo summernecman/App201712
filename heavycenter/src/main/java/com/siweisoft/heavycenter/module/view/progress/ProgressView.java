@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.android.lib.util.ScreenUtil;
 import com.siweisoft.heavycenter.R;
 
 public class ProgressView extends RelativeLayout {
@@ -20,6 +21,10 @@ public class ProgressView extends RelativeLayout {
 
     View minV;
 
+    View child;
+
+    float w= ScreenUtil.w;
+
 
     public ProgressView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -28,23 +33,29 @@ public class ProgressView extends RelativeLayout {
 
     private void init(Context context, @Nullable AttributeSet attrs){
         LayoutInflater.from(context).inflate(R.layout.item_store_progress,this,true);
+        child = getChildAt(0);
         nowV = findViewById(R.id.now);
         minV = findViewById(R.id.min);
 
     }
 
-    public void setValue(float max,float min,float now){
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+    }
+
+    public void setValues(float max, float min, float now){
         proValue.max = max;
         proValue.min = min;
         proValue.now = now;
 
         RelativeLayout.LayoutParams p = (LayoutParams) nowV.getLayoutParams();
-        p.width = (int) (getWidth()*proValue.now/proValue.max);
+        p.width = (int) (w*proValue.now/proValue.max);
         nowV.setLayoutParams(p);
 
 
         RelativeLayout.LayoutParams q = (LayoutParams) minV.getLayoutParams();
-        q.leftMargin = (int) (getWidth()*proValue.min/proValue.max);
+        q.leftMargin = (int) (w*proValue.min/proValue.max);
         minV.setLayoutParams(q);
 
 

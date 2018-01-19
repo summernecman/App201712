@@ -27,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp">
             <TextView
+                android:id="@+id/tv_minwuliao"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:text="物料安全：700t"
@@ -34,6 +35,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_minstore"
                 android:textSize="10sp"
                 android:textColor="@color/white"
                 android:text="仓库安全：600t"
@@ -50,16 +52,18 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp">
             <TextView
+                android:id="@+id/tv_maxwuliao"
                 android:textSize="15sp"
                 android:textColor="@color/white"
-                android:text="物料安全：700t"
+                android:text="物料最大：700t"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_maxstore"
                 android:textSize="10sp"
                 android:textColor="@color/white"
-                android:text="仓库安全：600t"
+                android:text="仓库最大：600t"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

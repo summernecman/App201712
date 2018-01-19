@@ -73,7 +73,7 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
                 storeBinding.getRoot().setSelected(position%2==0?true:false);
                 storeBinding.tvCurrent.setText("剩余:"+StringUtil.getStr(o.getResults().get(position).getCurrentStock()));
 
-                storeBinding.pvProgress.setValue(o.getResults().get(position).getMaxStock(),
+                storeBinding.pvProgress.setValues(o.getResults().get(position).getMaxStock(),
                         o.getResults().get(position).getMinStock(),
                         o.getResults().get(position).getCurrentStock());
 

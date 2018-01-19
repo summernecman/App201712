@@ -18,6 +18,7 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
@@ -50,12 +51,12 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
                 binding.tvMinstock.setText("最大库存:"+ StringUtil.getStr(o.getResults().get(position).getMinStock())+"t");
 
                 switch (o.getResults().get(position).getStatus()){
-                    case StoresResBean.ResultsBean.STATUS_OFF:
-                        binding.munu.setText(StoresResBean.ResultsBean.STATUS_ON_CN);
+                    case StoreDetail.STATUS_OFF:
+                        binding.munu.setText(StoreDetail.STATUS_ON_CN);
                         binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
                         break;
                     default:
-                        binding.munu.setText(StoresResBean.ResultsBean.STATUS_OFF_CN);
+                        binding.munu.setText(StoreDetail.STATUS_OFF_CN);
                         binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
                         break;
                 }
@@ -99,11 +100,11 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
     public StatusStoresReqBean getStatusStoresReqBean(StatusStoresReqBean reqBean,int storeid, int  status) {
         reqBean.setId(storeid);
         switch (status){
-            case StoresResBean.ResultsBean.STATUS_OFF:
-                status = StoresResBean.ResultsBean.STATUS_ON;
+            case StoreDetail.STATUS_OFF:
+                status = StoreDetail.STATUS_ON;
                 break;
-            case StoresResBean.ResultsBean.STATUS_ON:
-                status = StoresResBean.ResultsBean.STATUS_OFF;
+            case StoreDetail.STATUS_ON:
+                status = StoreDetail.STATUS_OFF;
                 break;
         }
         reqBean.setStatus(status);

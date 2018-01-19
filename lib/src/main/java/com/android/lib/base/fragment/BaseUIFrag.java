@@ -257,7 +257,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     }
 
     public void stopLoading(){
-        if(v!=null){
+        if(v!=null && v.getParent()==parent){
             parent.removeView(v);
         }
     }

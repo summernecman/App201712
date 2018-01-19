@@ -13,6 +13,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.good.names.NamesRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.news.NewsGoodRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.mana.good.lists.NamesFrag;
@@ -89,7 +90,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 break;
             case 3:
                 if(bundle.getSerializable(ValueConstant.DATA_DATA2)!=null){
-                    StoresResBean.ResultsBean d = (StoresResBean.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA2);
+                    StoreDetail d = (StoreDetail) bundle.getSerializable(ValueConstant.DATA_DATA2);
                     getP().getD().getNewsGoodReq().setWarehouseId(d.getWarehouseId());
                     getP().getD().getNewsGoodReq().setWarehouseName(d.getWarehouseName());
                 }

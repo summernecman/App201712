@@ -21,12 +21,20 @@ import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 
 public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
 
+    public static final int TYPE_SEL  = 1;
+
+
     @Override
     public void initData() {
         super.initData();
+        if(getArguments().getInt(ValueConstant.FARG_REQ,-1)==TYPE_SEL){
+            getP().getU().bind.cartitle.setVisibility(View.VISIBLE);
+        }
         getP().getU().initRefresh(this,this);
         getP().getU().autoRefresh();
     }
+
+
 
     @Override
     public void onInterupt(int type, View v) {
@@ -50,7 +58,12 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
                             final CarsResBean.ResultsBean bean1 = (CarsResBean.ResultsBean) v.getTag(R.id.data);
                             Bundle bundle = new Bundle();
                             bundle.putSerializable(ValueConstant.DATA_DATA,bean1);
-                            FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,MainAct.主界面ID,new DetailFrag(),bundle);
+                            if(getArguments().getInt(ValueConstant.FARG_REQ,-1)==MyFrag.TYPE_SEL){
+                                getArguments().putAll(bundle);
+                                getBaseUIActivity().onBackPressed();
+                            }else{
+                                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,MainAct.主界面ID,new DetailFrag(),bundle);
+                            }
                             break;
                 }
                 break;

@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.data.netd.mana.car.list;
 
 import com.android.lib.bean.BaseBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarsResBean extends BaseBean {
@@ -21,7 +22,7 @@ public class CarsResBean extends BaseBean {
     private int pageIndex;
     private int pageCount;
     private int pageSize;
-    private List<ResultsBean> results;
+    private List<ResultsBean> results = new ArrayList<>();
 
     public int getTotalCount() {
         return totalCount;
