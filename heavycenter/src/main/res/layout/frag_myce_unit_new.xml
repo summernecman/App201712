@@ -30,7 +30,7 @@
             android:layout_height="45dp"/>
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_nunitshortname"
-            android:maxLength="4"
+            style_common:txt_maxlenth="4"
             style_common:txt_left = "单位简称"
             style_common:txt_mid = "请输入"
             style_common:boo_edit = "true"

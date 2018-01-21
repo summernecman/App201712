@@ -42,7 +42,14 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
         bind.llInput.setVisibility(View.GONE);
+        bind.reinput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bind.itemCarlicenseno.setMidEtTxt("");
+            }
+        });
     }
+
 
     public void LoadListData(List<String> s) {
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_car_detail_driver, BR.item_mana_car_detail_driver, s){

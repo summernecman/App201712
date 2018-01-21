@@ -43,6 +43,11 @@ public class NewUIOpe extends AppUIOpe<FragManaStoreNewBinding> {
             return false;
         }
 
+        if(Float.parseFloat(bind.itemMaxstock.getMidEtTxt())<Float.parseFloat(bind.itemMinstock.getMidEtTxt())){
+            ToastUtil.getInstance().showShort(getActivity(),"输入错误 最大库存小于安全库存");
+            return false;
+        }
+
         return true;
     }
 

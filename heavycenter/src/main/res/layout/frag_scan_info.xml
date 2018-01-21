@@ -3,7 +3,7 @@
     <data>
         <variable
             name="frag_scan_info"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -48,14 +48,14 @@
             <TextView
                 android:textSize="22sp"
                 android:textColor="@color/black"
-                android:text="赵云飞"
+                android:text="@{frag_scan_info.trueName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
                 android:textSize="12sp"
                 android:textColor="@color/color_grey_600"
                 android:layout_marginTop="1dp"
-                android:text="12333333333"
+                android:text="@{frag_scan_info.tel}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -63,7 +63,7 @@
                 android:textSize="12sp"
                 android:textColor="@color/color_grey_600"
                 android:layout_marginTop="1dp"
-                android:text="上海12333333公司"
+                android:text="@{frag_scan_info.companyName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

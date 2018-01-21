@@ -19,25 +19,33 @@ import butterknife.OnClick;
 
 public class NameFrag extends AppFrag<NameUIOpe,NameDAOpe> {
 
+
+    @Override
+    public void initData() {
+        super.initData();
+
+    }
+
     @OnClick({R.id.ftv_right2})
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-                getP().getD().reName(getP().getU().getReNameReqBean(), new UINetAdapter<ReNameResBean>(getActivity()) {
-                    @Override
-                    public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
-                        stopLoading();
-                        if("200".equals(baseResBean.getCode())){
-                            LoginResBean loginResBean = LocalValue.getLoginInfo();
-                            loginResBean.setTrueName(getP().getU().getReNameReqBean().getTrueName());
-                            LocalValue.saveLoginInfo(loginResBean);
-                            ToastUtil.getInstance().showLong(getActivity(),baseResBean.getMessage());
-                            ((MainAct)getActivity()).getP().getD().getMyceFrag().getP().getU().initUI(null);
+                if(getP().getU().canGo()){
+                    getP().getD().reName(getP().getU().getReNameReqBean(), new UINetAdapter<ReNameResBean>(getActivity()) {
+                        @Override
+                        public void onResult(boolean success, String msg, ReNameResBean o) {
+                            super.onResult(success, msg, o);
+                            if(success){
+                                LoginResBean loginResBean = LocalValue.getLoginInfo();
+                                loginResBean.setTrueName(getP().getU().getReNameReqBean().getTrueName());
+                                LocalValue.saveLoginInfo(loginResBean);
+                                ((MainAct)getActivity()).getP().getD().getMyceFrag().getP().getU().initUI(null);
+                            }
+                            getBaseUIActivity().onBackPressed();
                         }
-                       getBaseUIActivity().onBackPressed();
-                    }
-                });
+                    });
+                }
                 break;
         }
     }

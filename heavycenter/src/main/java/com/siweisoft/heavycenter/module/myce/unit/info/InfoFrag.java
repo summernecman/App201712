@@ -61,6 +61,7 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                             });
                             break;
                     }
+                    getBaseUIActivity().onBackPressed();
                 }
             });
             break;

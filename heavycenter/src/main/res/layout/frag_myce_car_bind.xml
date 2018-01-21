@@ -14,6 +14,7 @@
         android:orientation="vertical">
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
+            style_common:iv_left="@drawable/icon_hv_back"
             style_common:txt_mid ="绑定车辆"
             style_common:iv_right2 ="@drawable/icon_hv_sel_y"
             style_common:iv_right ="@drawable/icon_hv_scan"

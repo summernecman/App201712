@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_item_content"
+    android:background="@drawable/drawable_press_blue_while"
     android:paddingLeft="@dimen/dimen_item_content_left_padding">
     <LinearLayout
         android:gravity="center_vertical"
@@ -51,7 +51,7 @@
             <TextView
                 android:textSize="12.5sp"
                 android:layout_centerInParent="true"
-                android:text="3"
+                android:text=""
                 android:gravity="center"
                 android:id="@+id/iv_right_content"
                 android:layout_marginRight="@dimen/dimen_item_content_right_txt_right_padding"

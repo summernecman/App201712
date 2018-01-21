@@ -9,10 +9,11 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
 import com.siweisoft.heavycenter.data.netd.order.rule.Rule;
 
-public class RuleFrag extends BaseUIFrag<RuleUIOpe,RuleDAOpe> implements ViewListener{
+public class RuleFrag extends AppFrag<RuleUIOpe,RuleDAOpe> implements ViewListener{
 
     @Override
     public void initData() {

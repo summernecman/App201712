@@ -34,7 +34,9 @@ public class ToastUtil {
      * @param msg
      */
     public void showShort(Context context, String msg) {
+        if(context!=null){
         Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**

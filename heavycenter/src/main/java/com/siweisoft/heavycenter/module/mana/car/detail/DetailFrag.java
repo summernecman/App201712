@@ -29,6 +29,8 @@ import butterknife.OnClick;
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
 
+    public static final String TYPE_NEW = "TYPE_NEW";
+
     @Override
     public void initData() {
         super.initData();
@@ -54,6 +56,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
                         @Override
                         public void onResult(boolean success, String msg, UpdateCarRes o) {
                             super.onResult(success, msg, o);
+
                         }
                     });
                 }

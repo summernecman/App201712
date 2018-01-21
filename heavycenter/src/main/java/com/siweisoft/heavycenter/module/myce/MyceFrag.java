@@ -103,8 +103,8 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
             case R.id.ftv_right:
                 InfoFrag infoFrag = new InfoFrag();
                 infoFrag.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                        @Override
+                        public void onClick(View v) {
                         FragManager2.getInstance().setFinishAnim(R.anim.scale_in,R.anim.scale_out).finish(getBaseUIActivity(),MainAct.主界面);
                     }
                 });

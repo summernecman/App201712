@@ -37,6 +37,9 @@ public class CheckUIOpe extends AppUIOpe<FragMainStoreCheckBinding>{
     }
 
     public void LoadListData(final StoresResBean o) {
+        if(o==null){
+            return;
+        }
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_store_check, BR.item_main_store_check, o.getResults()){
 
             int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);

@@ -21,6 +21,8 @@ public class FragManager2  {
 
     private int anim1,anim2,anim3,anim4,anim5,anim6;
 
+    private boolean hideLast = true;
+
 
     public static FragManager2 getInstance(){
         return new FragManager2();
@@ -45,7 +47,9 @@ public class FragManager2  {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(getAnim1(),getAnim2());
         if(map.get(moudle).haveLast()){
+            if(hideLast){
             transaction.hide(map.get(moudle).getLast());
+            }
         }
         transaction.add(viewid,fragment,fragment.getUniqueid()+"");
         transaction.commitNowAllowingStateLoss();
@@ -176,4 +180,9 @@ public class FragManager2  {
         map = new HashMap<>();
     }
 
+
+    public FragManager2 setHideLast(boolean hideLast) {
+        this.hideLast = hideLast;
+        return this;
+    }
 }

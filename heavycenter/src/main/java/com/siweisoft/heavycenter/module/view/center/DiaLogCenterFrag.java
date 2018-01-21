@@ -43,14 +43,7 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
     }
 
     public void close(){
-        if(FragManager.getInstance().getFragMaps().get(AcctAct.ROOT_ID)!=null&&FragManager.getInstance().getFragMaps().get(AcctAct.ROOT_ID).size()>0){
-            activity.getSupportFragmentManager().beginTransaction().remove(
-                    FragManager.getInstance().getFragMaps().get(AcctAct.ROOT_ID).get(
-                            FragManager.getInstance().getFragMaps().get(AcctAct.ROOT_ID).size()-1))
-                    .commit();
-            FragManager.getInstance().getFragMaps().get(AcctAct.ROOT_ID).remove(FragManager.getInstance().getFragMaps().get(AcctAct.ROOT_ID).size()-1);
-        }
-        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+
     }
 
     public void setCustomView(View v){

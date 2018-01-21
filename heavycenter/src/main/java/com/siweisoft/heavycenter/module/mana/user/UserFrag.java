@@ -58,7 +58,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
             @Override
             public void onResult(boolean success, String msg, UnitUserResBean o) {
                 super.onResult(success, msg, o);
-                getP().getU().LoadListData(o.getResults(),UserFrag.this);
+                getP().getU().LoadListData(o,UserFrag.this);
                 getP().getU().finishRefresh();
             }
         });

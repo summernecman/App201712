@@ -48,7 +48,7 @@ public class CheckDAOpe extends AppDAOpe {
     public CheckStoreReqBean getCheckStoreReqBean(StoresResBean data) {
         getCheckStoreReqBean().setUserId(LocalValue.getLoginInfo().getUserId());
         ArrayList<Check> checks = new ArrayList<>();
-        for(int i=0;i<data.getResults().size();i++){
+        for(int i=0;data!=null && data.getResults()!=null && i<data.getResults().size();i++){
             Check check  = new Check();
             check.setBeforeAdjust(data.getResults().get(i).getCurrentStock());
             check.setAfterAdjust(data.getResults().get(i).getAfterAdjust());
@@ -71,7 +71,7 @@ public class CheckDAOpe extends AppDAOpe {
     }
 
     public boolean canGo(){
-        for(int i=0;i<getStoresResBean().getResults().size();i++){
+        for(int i=0;getStoresResBean()!=null && getStoresResBean().getResults()!=null && i<getStoresResBean().getResults().size();i++){
             if(getStoresResBean().getResults().get(i).getAfterAdjust()<0){
                 return false;
             }

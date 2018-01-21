@@ -109,6 +109,7 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp" />
                 <TextView
+                        android:background="@drawable/bg_hv_sharp2_yell_stroke"
                     android:singleLine="true"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/color_base_txt_heavycenter_y"
@@ -212,8 +213,8 @@
 
 
                 <com.siweisoft.heavycenter.module.view.text.BgTextView
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
 

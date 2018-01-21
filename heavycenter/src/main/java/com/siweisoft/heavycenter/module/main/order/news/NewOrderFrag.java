@@ -69,6 +69,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 break;
             case R.id.item_starttime:
                 TimePickerDialog.Builder builder = new TimePickerDialog.Builder();
+                builder.setThemeColor(getResources().getColor(R.color.color_hv_base));
                 builder.setCallBack(new OnDateSetListener() {
                     @Override
                     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {

@@ -36,7 +36,12 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(final List<UnitUserResBean.ResultsBean> data, ViewListener listener) {
+    public void LoadListData(final UnitUserResBean o, ViewListener listener) {
+        if(o==null){
+            return;
+        }
+        final List<UnitUserResBean.ResultsBean> data = o.getResults();
+
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_user, BR.item_mana_user, data,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {

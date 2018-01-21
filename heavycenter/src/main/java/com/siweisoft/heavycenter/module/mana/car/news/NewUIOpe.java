@@ -19,6 +19,7 @@ import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewReqBean;
 import com.siweisoft.heavycenter.databinding.FragManaCarDetailBinding;
 import com.siweisoft.heavycenter.databinding.FragManaCarNewBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaCarDetailDriverBinding;
+import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 
 import java.util.List;
 
@@ -27,7 +28,9 @@ public class NewUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 
     public NewUIOpe(Context context) {
         super(context);
+        bind.title.getMidTV().setText("新建车辆");
     }
+
 
     public CarNewReqBean getCarNewReqBean(CarNewReqBean carNewReqBean) {
         carNewReqBean.setCarLicenseNo(bind.itemCarlicenseno.getMidET().getText().toString());

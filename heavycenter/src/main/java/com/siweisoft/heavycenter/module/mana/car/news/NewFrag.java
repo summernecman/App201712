@@ -14,6 +14,8 @@ import butterknife.OnClick;
 
 public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
 
+
+
     @OnClick({R.id.ftv_right2})
     public void onClick(View v) {
         super.onClick(v);

@@ -13,11 +13,11 @@ import com.siweisoft.heavycenter.R;
 @SuppressLint("AppCompatCustomView")
 public class TypeImage extends ImageView {
 
-    public static final int TYPE_FULL = 3;
+    public static final int TYPE_FULL = 2;
 
-    public static final int TYPE_HELF = 2;
+    public static final int TYPE_HELF = 1;
 
-    public static final int TYPE_NULL = 1;
+    public static final int TYPE_NULL = 0;
 
     public TypeImage(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);

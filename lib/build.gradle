@@ -29,15 +29,7 @@ android {
         main {
             res.srcDirs = [
                     'src/main/res',
-                    'src/main/res/timepick',
                     'src/main/res/base',
-                    'src/main/res/dialog',
-                    'src/main/res/image',
-                    'src/main/res/satellite',
-                    'src/main/res/home',
-                    'src/main/res/animstyle',
-                    'src/main/res/bottom',
-                    'src/main/res/time',
             ]
             jniLibs.srcDirs = [
                     'libDir',
