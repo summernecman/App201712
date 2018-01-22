@@ -19,7 +19,7 @@ public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getActivity()).getP().getU().switchDrawer();
+                ((MainAct)activity).getP().getU().switchDrawer();
                 break;
         }
     }

@@ -40,6 +40,11 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
     }
 
     public void LoadListData(List<String> s, final ViewListener listener) {
+//        if(o==null || o.getResults()==null || o.getResults().size()==0){
+//            getFrag().showTips("暂无数据");
+//            return;
+//        }
+//        getFrag().removeTips();
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_trans, BR.item_main_trans, s,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {

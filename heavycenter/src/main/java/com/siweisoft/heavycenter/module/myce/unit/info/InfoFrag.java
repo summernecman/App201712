@@ -20,7 +20,7 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
     @Override
     public void initData() {
         super.initData();
-        getP().getD().getInfo(new UINetAdapter<UnitInfo>(getActivity()) {
+        getP().getD().getInfo(new UINetAdapter<UnitInfo>(activity) {
             @Override
             public void onResult(boolean success, String msg, UnitInfo o) {
                 super.onResult(success, msg, o);
@@ -41,7 +41,7 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                         case R.id.close:
                             break;
                         case R.id.sure:
-                            getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(getActivity()) {
+                            getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(activity) {
                                 @Override
                                 public void onResult(boolean success, String msg, UnBindResBean o) {
                                     super.onResult(success, msg, o);

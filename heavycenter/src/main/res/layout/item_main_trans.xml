@@ -87,7 +87,7 @@
                 <TextView
                     android:singleLine="true"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/hv_dimen_text_title"
                     android:text="混凝土"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -96,7 +96,7 @@
                     android:singleLine="true"
                     android:layout_marginLeft="14dp"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/hv_dimen_text_title"
                     android:text="C30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -130,7 +130,7 @@
                 <TextView
                     android:singleLine="true"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/hv_dimen_text"
                     android:text="驾驶员"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -163,7 +163,7 @@
                     android:singleLine="true"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/hv_dimen_text"
                     android:text="10t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -193,7 +193,7 @@
                 <TextView
                     android:singleLine="true"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/hv_dimen_text"
                     android:text="上海绿地"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -201,7 +201,7 @@
                     android:singleLine="true"
                     android:layout_marginLeft="15dp"
                     android:textColor="@color/color_hv_yelll"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/hv_dimen_text_title"
                     android:text="0t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

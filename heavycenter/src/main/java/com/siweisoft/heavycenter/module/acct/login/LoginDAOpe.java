@@ -40,29 +40,5 @@ public class LoginDAOpe extends AppDAOpe {
         NetDataOpe.getCity(getActivity(),reqBean,adapter);
     }
 
-    public void saveProMapInfo(){
-        ArrayList<CityResBean> cityResBeans =  LocalValue.getCitysInfo();
-        HashMap<String,CityResBean.ProvinceListBean> map = new HashMap<>();
-        for(int i=0;i<cityResBeans.size();i++){
-            for(int j=0;j<cityResBeans.get(i).getProvinceList().size();j++){
-                map.put(cityResBeans.get(i).getProvinceList().get(j).getValue(),cityResBeans.get(i).getProvinceList().get(j));
-            }
-        }
-        LocalValue.saveProMap(map);
-    }
 
-    public void initDATA(){
-        List<CityResBean.ProvinceListBean> pro = new ArrayList<>();
-
-        HashMap<String,CityResBean.ProvinceListBean> map = LocalValue.getProMap();
-        for(int i=0;i<LocalValue.pros.length;i++){
-            CityResBean.ProvinceListBean provinceListBean = map.get(LocalValue.pros[i]);
-            if(provinceListBean==null){
-                provinceListBean = new CityResBean.ProvinceListBean();
-                provinceListBean.setValue("");
-            }
-            pro.add(provinceListBean);
-        }
-        LocalValue.saveProlList(pro);
-    }
 }

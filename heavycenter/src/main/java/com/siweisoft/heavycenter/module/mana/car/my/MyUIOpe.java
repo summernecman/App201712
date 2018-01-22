@@ -41,9 +41,11 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
     }
 
     public void LoadListData(CarsResBean data, final String moudle, ViewListener listener){
-        if(data==null){
+        if(data==null || data.getResults()==null || data.getResults().size()==0){
+            getFrag().showTips("暂无数据");
             return;
         }
+        getFrag().removeTips();
         this.cars = data;
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_car_my, BR.item_mana_car_my,cars.getResults(),listener){
             @Override

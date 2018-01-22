@@ -34,7 +34,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getActivity()).getP().getU().switchDrawer();
+                ((MainAct)activity).getP().getU().switchDrawer();
                 break;
             case R.id.ftv_right:
                 IntentIntegrator.forSupportFragment(OrderFrag.this).initiateScan();
@@ -46,7 +46,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
                 }
                 DialogListFrag frag = new DialogListFrag();
                 frag.init(strs);
-                FragmentUtil2.getInstance().addNoAnim(getActivity(),R.id.act_main,frag);
+                FragmentUtil2.getInstance().addNoAnim(activity,R.id.act_main,frag);
                 break;
             case R.id.ftv_right2:
                 FragManager2.getInstance().start(getBaseUIActivity(),MainAct.订单,MainAct.订单ID,new NewOrderFrag());

@@ -13,6 +13,8 @@
         android:background="@color/color_base_graybg"
         android:orientation="vertical">
 <include
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
     android:id="@+id/ll_head"
     layout="@layout/item_myce_head"/>
 

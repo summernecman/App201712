@@ -40,17 +40,17 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     @Override
     public void initData() {
         super.initData();
-        setIndex(((MainAct)(getActivity())).getP().getU().getPos_content());
+        setIndex(((MainAct)(activity)).getP().getU().getPos_content());
         init();
     }
 
     public void init(){
         getP().getU().initUI(this);
-        getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().isBindUnit());
+        getP().getU().hideOrShowManageFunction(((MainAct)(activity)).getP().getD().isBindUnit());
     }
 
     public void initUINET(){
-        getP().getD().getInfo(new UINetAdapter<LoginResBean>(getActivity()) {
+        getP().getD().getInfo(new UINetAdapter<LoginResBean>(activity) {
             @Override
             public void onResult(boolean success, String msg, LoginResBean o) {
                 super.onResult(success, msg, o);
@@ -125,7 +125,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
         }
         getBaseUIActivity().setMoudle(MainAct.主界面);
-        ((MainAct)getActivity()).getP().getU().switchDrawer();
+        ((MainAct)activity).getP().getU().switchDrawer();
     }
 
     @Override
@@ -135,7 +135,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
             return;
         }
         LogUtil.E(Environment.getDownloadCacheDirectory().getPath());
-        File file = new File(UriUtils.getPath(getActivity(), data.getData()));
+        File file = new File(UriUtils.getPath(activity, data.getData()));
         LogUtil.E(file.exists());
         String type = "";
         switch (requestCode){
@@ -150,7 +150,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
         }
         final String finalType = type;
-        getP().getD().uploadPhoto(UriUtils.getPath(getActivity(), data.getData()),type, new UINetAdapter<UpdateHeadResBean>(getActivity()) {
+        getP().getD().uploadPhoto(UriUtils.getPath(activity, data.getData()),type, new UINetAdapter<UpdateHeadResBean>(activity) {
             @Override
             public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                 stopLoading();
@@ -177,7 +177,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                             case UpdateHeadReqBean.车辆照片:
                                 loginResBean.setVehicleLicense(s);
                                 LocalValue.saveLoginInfo(loginResBean);
-                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(getActivity()) {
+                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(activity) {
                                     @Override
                                     public void onResult(boolean success, String msg, UpdateCarRes o) {
                                         super.onResult(success, msg, o);
@@ -190,7 +190,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                             case UpdateHeadReqBean.行驶证照片:
                                 loginResBean.setVehicleLicensePhoto(s);
                                 LocalValue.saveLoginInfo(loginResBean);
-                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(getActivity()) {
+                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(activity) {
                                     @Override
                                     public void onResult(boolean success, String msg, UpdateCarRes o) {
                                         super.onResult(success, msg, o);

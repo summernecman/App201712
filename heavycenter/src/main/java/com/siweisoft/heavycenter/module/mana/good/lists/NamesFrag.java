@@ -18,7 +18,7 @@ public class NamesFrag extends AppFrag<NamesUIOpe,NamesDAOpe> implements ViewLis
     @Override
     public void initData() {
         super.initData();
-        getP().getD().NamesGood(new UINetAdapter<NamesRes>(getActivity()) {
+        getP().getD().NamesGood(new UINetAdapter<NamesRes>(activity) {
             @Override
             public void onResult(boolean success, String msg, NamesRes o) {
                 super.onResult(success, msg, o);

@@ -20,6 +20,7 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarReq;
 import com.siweisoft.heavycenter.databinding.FragManaCarDetailBinding;
@@ -48,6 +49,9 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                 bind.itemCarlicenseno.setMidEtTxt("");
             }
         });
+        if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.getLoginInfo().getUserRole())){
+            bind.title.getRightIV2().setVisibility(View.GONE);
+        }
     }
 
 

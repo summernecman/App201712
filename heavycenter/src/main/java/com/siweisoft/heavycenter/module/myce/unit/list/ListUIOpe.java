@@ -34,15 +34,6 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
         super(context);
     }
 
-    public void initRefresh(OnRefreshListener onRefreshListener){
-        bind.refreshLayout.setOnRefreshListener(onRefreshListener);
-        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
-            @Override
-            public void onLoadmore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadmore(2000);
-            }
-        });
-    }
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
@@ -80,7 +71,7 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
     public void showTip(View.OnClickListener onClickListener){
         DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
         diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_nullunit,null));
-        diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_y,R.id.tv_n);
+        diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_y,R.id.tv_n,R.id.tv_close);
         FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(),MainAct.主界面,diaLogCenterFrag);
     }
 
@@ -88,5 +79,24 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
     public SearchReqBean getSearchReqBean() {
         searchReqBean.setKeyword(bind.search.getEditText().getText().toString());
         return searchReqBean;
+    }
+    public void initRefresh(OnRefreshListener onRefreshListener){
+        bind.refreshLayout.setOnRefreshListener(onRefreshListener);
+    }
+
+    public void finishRefresh(){
+        bind.refreshLayout.finishRefresh();
+    }
+
+    public void finishLoadmore(){
+        bind.refreshLayout.finishLoadmore();
+    }
+
+    public void autoRefresh(){
+        bind.refreshLayout.autoRefresh();
+    }
+
+    public void notifyDataSetChanged(){
+        bind.recycle.getAdapter().notifyDataSetChanged();
     }
 }

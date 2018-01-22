@@ -37,9 +37,11 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
     }
 
     public void LoadListData(final UnitUserResBean o, ViewListener listener) {
-        if(o==null){
+        if(o==null || o.getResults()==null || o.getResults().size()==0){
+            getFrag().showTips("暂无数据");
             return;
         }
+        getFrag().removeTips();
         final List<UnitUserResBean.ResultsBean> data = o.getResults();
 
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_user, BR.item_mana_user, data,listener){

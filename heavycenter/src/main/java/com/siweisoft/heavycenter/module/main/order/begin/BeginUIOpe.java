@@ -47,10 +47,11 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
     }
 
     public void LoadListData(final String type, final OrdersRes s, ViewListener listener){
-        if(s==null){
+        if(s==null || s.getResults()==null || s.getResults().size()==0){
+            getFrag().showTips("暂无数据");
             return;
         }
-
+        getFrag().removeTips();
         switch (type){
             case OrdersReq.STATUS_NEW:
                 bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s.getResults(),listener){
@@ -65,8 +66,10 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                         beginBinding.getRoot().setSelected(position%2==0?true:false);
                         if(NewsOrderReqBean.发货.equals(s.getResults().get(position).getOrderType())){
                             beginBinding.tvType.setText("发往");
+                            beginBinding.tvType.setSelected(false);
                         }else{
                             beginBinding.tvType.setText("来自");
+                            beginBinding.tvType.setSelected(true);
                         }
                         beginBinding.tvPlantime.setText(StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
                         beginBinding.getRoot().setTag(R.id.type,type);

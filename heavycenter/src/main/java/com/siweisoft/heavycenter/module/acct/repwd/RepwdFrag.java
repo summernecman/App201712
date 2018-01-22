@@ -35,7 +35,7 @@ public class RepwdFrag extends AppFrag<RepwdUIOpe,RepwdDAOpe> {
                         public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                             if(baseResBean.getCode().equals("200")){
                                 ToastUtil.getInstance().showLong(getContext(),"更换密码成功");
-                                FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex());
+                                getBaseUIActivity().onBackPressed();
                             }else{
                                 ToastUtil.getInstance().showLong(getContext(),baseResBean.getMessage());
                             }

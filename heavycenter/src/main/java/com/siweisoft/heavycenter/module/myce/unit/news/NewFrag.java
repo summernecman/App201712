@@ -64,6 +64,13 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
     public void onRestart(int res, Bundle bundle) {
         super.onRestart(res, bundle);
         switch (res){
+            case 2:
+                if(bundle==null || bundle.getString(ValueConstant.DATA_DATA)==null){
+                    return;
+                }
+                getP().getD().getUnit().setCompanyAddress(bundle.getString(ValueConstant.DATA_DATA));
+                getP().getU().initUI(getP().getD().getUnit());
+                break;
             case 3:
                 if(bundle!=null && bundle.getSerializable(ValueConstant.DATA_DATA2)!=null){
                     UnitInfo unit = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
@@ -78,10 +85,6 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 }
                 getP().getD().getUnit().setBelongArea(StringUtil.getStr(bundle.getString(ValueConstant.DATA_RES2)));
                 getP().getD().getUnit().setBelongAreaDes(StringUtil.getStr(bundle.getString(ValueConstant.DATA_RES)));
-                getP().getU().initUI(getP().getD().getUnit());
-                break;
-            case 2:
-                getP().getD().getUnit().setCompanyAddress("上海同和国际大厦ABC");
                 getP().getU().initUI(getP().getD().getUnit());
                 break;
         }

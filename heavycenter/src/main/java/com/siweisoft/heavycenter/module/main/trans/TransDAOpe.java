@@ -28,9 +28,7 @@ public class TransDAOpe extends BaseDAOpe {
         super(context);
     }
 
-    public MapUtil getMapUtil() {
-       return MapUtil.getInstance();
-    }
+
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();
@@ -40,19 +38,6 @@ public class TransDAOpe extends BaseDAOpe {
         return data;
     }
 
-    public void  stopMap(){
-        if(getMapUtil().getLocationClient()==null){
-            return;
-        }
-        getMapUtil().getLocationClient().stop();
-    }
-
-    public void startMap(){
-        if(getMapUtil().getLocationClient()==null){
-            return;
-        }
-        getMapUtil().getLocationClient().start();
-    }
 
     public TransReq getTransReq() {
         transReq.setIsApp(1);

@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.myce.unit.list;
 
 //by summer on 2017-12-19.
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
@@ -9,6 +10,7 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -32,13 +34,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
         super.initData();
         getP().getU().initRefresh(this);
         getP().getU().initRecycle();
-        getP().getD().getData(new UINetAdapter<ListResBean>(getActivity()) {
-            @Override
-            public void onResult(boolean success, String msg, ListResBean o) {
-                super.onResult(success, msg, o);
-                getP().getU().LoadListData(o,ListFrag.this);
-            }
-        });
+        getP().getU().autoRefresh();
     }
 
 
@@ -50,10 +46,12 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
 
                 break;
             case R.id.ftv_right2:
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),MainAct.主界面ID,new NewFrag());
+                Bundle bundle = new Bundle();
+                bundle.putInt(ValueConstant.FARG_REQ,1);
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),MainAct.主界面ID,new NewFrag(),bundle);
                 break;
             case R.id.iv_search:
-                getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(getActivity()){
+                getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(activity){
                     @Override
                     public void onResult(boolean success, String msg, SearchResBean o) {
                         super.onResult(success, msg, o);
@@ -76,7 +74,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                 }
                 final UnitInfo unitInfo = (UnitInfo) v.getTag(R.id.data);
 
-                getP().getD().getUnitInfo(unitInfo.getId(), new UINetAdapter<UnitInfo>(getActivity()) {
+                getP().getD().getUnitInfo(unitInfo.getId(), new UINetAdapter<UnitInfo>(activity) {
                     @Override
                     public void onResult(boolean success, String msg, UnitInfo o) {
                         super.onResult(success, msg, o);
@@ -88,7 +86,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                         case R.id.tv_n:
                                             break;
                                         case R.id.tv_y:
-                                            getP().getD().bindUnit(unitInfo.getId(), true,new UINetAdapter<BindResBean>(getActivity()) {
+                                            getP().getD().bindUnit(unitInfo.getId(), true,new UINetAdapter<BindResBean>(activity) {
                                                 @Override
                                                 public void onResult(boolean success, String msg, BindResBean o) {
                                                     super.onResult(success, msg, o);
@@ -99,7 +97,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                                             if(success){
                                                                 LocalValue.saveLoginInfo(o);
                                                                 getBaseUIActivity().onBackPressed();
-                                                                ((MainAct)getActivity()).reStart();
+                                                                ((MainAct)activity).reStart();
                                                             }
                                                         }
                                                     });
@@ -107,10 +105,11 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                             });
                                             break;
                                     }
+                                    getBaseUIActivity().onBackPressed();
                                 }
                             });
                         }else{
-                            getP().getD().bindUnit(unitInfo.getId(), false,new UINetAdapter<BindResBean>(getActivity()) {
+                            getP().getD().bindUnit(unitInfo.getId(), false,new UINetAdapter<BindResBean>(activity) {
                                 @Override
                                 public void onResult(boolean success, String msg, BindResBean o) {
                                     super.onResult(success, msg, o);
@@ -121,7 +120,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                             if(success){
                                                 LocalValue.saveLoginInfo(o);
                                                 getBaseUIActivity().onBackPressed();
-                                                ((MainAct)getActivity()).reStart();
+                                                ((MainAct)activity).reStart();
                                             }
                                         }
                                     });
@@ -139,13 +138,24 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        refreshlayout.finishRefresh(2000);
-        getP().getD().getData(new UINetAdapter<ListResBean>(getActivity()) {
+        getP().getD().getData(new UINetAdapter<ListResBean>(activity) {
             @Override
             public void onResult(boolean success, String msg, ListResBean o) {
                 super.onResult(success, msg, o);
                 getP().getU().LoadListData(o,ListFrag.this);
+                getP().getU().finishRefresh();
             }
         });
     }
+
+    @Override
+    public void onRestart(int res, Bundle bundle) {
+        super.onRestart(res, bundle);
+        switch (res){
+            case 1:
+                getP().getU().autoRefresh();
+                break;
+        }
+    }
+
 }

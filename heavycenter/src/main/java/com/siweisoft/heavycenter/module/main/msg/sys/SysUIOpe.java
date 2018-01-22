@@ -36,9 +36,11 @@ public class SysUIOpe extends BaseUIOpe<FragMainMsgSysBinding>{
     }
 
     public void LoadListData(final MsgsResBean o, ViewListener listener){
-        if(o==null){
+        if(o==null || o.getResults()==null || o.getResults().size()==0){
+            getFrag().showTips("暂无数据");
             return;
         }
+        getFrag().removeTips();
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_msg_all, BR.item_main_msg_all,o.getResults(),listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {

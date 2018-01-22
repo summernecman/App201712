@@ -20,8 +20,8 @@
             android:id="@+id/tv_left_content"
             android:layout_marginLeft="8dp"
             android:text="文字内容"
-            android:textSize="@dimen/dimen_item_content_txt_size"
-            android:textColor="@color/color_item_content_left_txt_color"
+            android:textSize="@dimen/hv_dimen_text_title"
+            android:textColor="@color/hv_color_text_title"
             android:gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />

@@ -32,7 +32,7 @@ public class NameFrag extends AppFrag<NameUIOpe,NameDAOpe> {
         switch (v.getId()){
             case R.id.ftv_right2:
                 if(getP().getU().canGo()){
-                    getP().getD().reName(getP().getU().getReNameReqBean(), new UINetAdapter<ReNameResBean>(getActivity()) {
+                    getP().getD().reName(getP().getU().getReNameReqBean(), new UINetAdapter<ReNameResBean>(activity) {
                         @Override
                         public void onResult(boolean success, String msg, ReNameResBean o) {
                             super.onResult(success, msg, o);
@@ -40,7 +40,7 @@ public class NameFrag extends AppFrag<NameUIOpe,NameDAOpe> {
                                 LoginResBean loginResBean = LocalValue.getLoginInfo();
                                 loginResBean.setTrueName(getP().getU().getReNameReqBean().getTrueName());
                                 LocalValue.saveLoginInfo(loginResBean);
-                                ((MainAct)getActivity()).getP().getD().getMyceFrag().getP().getU().initUI(null);
+                                ((MainAct)activity).getP().getD().getMyceFrag().getP().getU().initUI(null);
                             }
                             getBaseUIActivity().onBackPressed();
                         }

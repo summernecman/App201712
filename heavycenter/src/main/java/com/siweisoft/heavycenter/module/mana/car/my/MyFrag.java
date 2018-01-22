@@ -29,6 +29,8 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
         super.initData();
         if(getArguments().getInt(ValueConstant.FARG_REQ,-1)==TYPE_SEL){
             getP().getU().bind.cartitle.setVisibility(View.VISIBLE);
+        }else{
+            getP().getU().bind.cartitle.setVisibility(View.GONE);
         }
         getP().getU().initRefresh(this,this);
         getP().getU().autoRefresh();
@@ -43,7 +45,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
                 switch (v.getId()){
                     case R.id.menu:
                         final CarsResBean.ResultsBean bean = (CarsResBean.ResultsBean) v.getTag(R.id.data);
-                        getP().getD().statusCar(bean.getVehicleId(), bean.getStatus(), new UINetAdapter<StopCarResBean>(getActivity()) {
+                        getP().getD().statusCar(bean.getVehicleId(), bean.getStatus(), new UINetAdapter<StopCarResBean>(activity) {
                             @Override
                             public void onResult(boolean success, String msg, StopCarResBean o) {
                                 super.onResult(success, msg, o);
@@ -77,7 +79,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().Cars(getArguments().getString(ValueConstant.DATA_POSITION),new UINetAdapter<CarsResBean>(getActivity()) {
+        getP().getD().Cars(getArguments().getString(ValueConstant.DATA_POSITION),new UINetAdapter<CarsResBean>(activity) {
             @Override
             public void onResult(boolean success, String msg, CarsResBean o) {
                 super.onResult(success, msg, o);

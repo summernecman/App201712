@@ -22,6 +22,7 @@ public class BaseUIOpe<A extends ViewDataBinding> {
     public int[] variableId;
     public A bind;
     protected Context context;
+    protected  BaseUIFrag frag;
 
 
     public BaseUIOpe(Context context) {
@@ -80,5 +81,13 @@ public class BaseUIOpe<A extends ViewDataBinding> {
 
     public void setVariableId(int[] variableId) {
         this.variableId = variableId;
+    }
+
+    public BaseUIFrag getFrag() {
+        return frag;
+    }
+
+    public void setFrag(BaseUIFrag frag) {
+        this.frag = frag;
     }
 }

@@ -5,17 +5,20 @@ package com.siweisoft.heavycenter.module.acct.regist;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.interf.OnLoadingInterf;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.netadapter.UINetAdapter;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.code.CodeResBean;
 import com.siweisoft.heavycenter.data.netd.acct.regist.RegistResBean;
+import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 import com.siweisoft.heavycenter.module.acct.role.RoleFrag;
 
 import org.jetbrains.annotations.Nullable;
@@ -44,9 +47,9 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
                             if(baseResBean.getCode().equals("200")){
                                 ToastUtil.getInstance().showLong(getContext(),"注册成功");
                                 LocalValue.saveLoginReq(getP().getU().getLoginReqBean());
-                                FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex());
+                                getBaseUIActivity().onBackPressed();
                                 Bundle bundle = new Bundle();bundle.putBoolean("regist",true);
-                                FragManager.getInstance().startFragment(activity.getSupportFragmentManager(),getIndex(),new RoleFrag(),bundle);
+                                FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号ID,new RoleFrag(),bundle);
                             }else{
                                 ToastUtil.getInstance().showLong(getContext(),baseResBean.getMessage());
                             }

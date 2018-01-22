@@ -35,7 +35,7 @@
                     <TextView
                         android:singleLine="true"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/hv_dimen_text_title"
                         android:text="@{item_main_order_begin.productName}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -44,7 +44,7 @@
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/white"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/hv_dimen_text_title"
                         android:text="@{item_main_order_begin.specification}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -87,7 +87,7 @@
                 android:singleLine="true"
                 android:layout_marginLeft="8dp"
                 android:textColor="@color/white"
-                android:textSize="15sp"
+                android:textSize="@dimen/hv_dimen_text"
                 android:text="@{item_main_order_begin.shdwName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -103,7 +103,7 @@
                 android:singleLine="true"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/color_hv_txt_dark"
-                android:textSize="12sp"
+                android:textSize="@dimen/hv_dimen_text_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

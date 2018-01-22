@@ -15,7 +15,6 @@
         >
 
         <com.android.lib.view.title.TitleView
-            android:visibility="gone"
             android:id="@+id/cartitle"
             style_common:txt_mid ="车辆列表"
             style_common:iv_left ="@drawable/icon_hv_back"

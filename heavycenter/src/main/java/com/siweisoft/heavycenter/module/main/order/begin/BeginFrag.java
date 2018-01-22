@@ -50,7 +50,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),new UINetAdapter<OrdersRes>(getActivity()) {
+        getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),new UINetAdapter<OrdersRes>(activity) {
             @Override
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);

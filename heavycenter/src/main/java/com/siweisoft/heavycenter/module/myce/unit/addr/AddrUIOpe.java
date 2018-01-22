@@ -3,11 +3,21 @@ package com.siweisoft.heavycenter.module.myce.unit.addr;
 //by summer on 2017-12-19.
 
 import android.content.Context;
+import android.databinding.ViewDataBinding;
+import android.support.v7.widget.LinearLayoutManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.interf.OnFinishListener;
+import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.LogUtil;
+import com.android.lib.util.StringUtil;
+import com.baidu.mapapi.search.core.PoiInfo;
+import com.baidu.mapapi.search.poi.PoiAddrInfo;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -23,14 +33,22 @@ public class AddrUIOpe extends AppUIOpe<FragMyceUnitAddrBinding>{
         super(context);
     }
 
-    public void LoadListData(List<String> s, final ViewListener listener) {
+    public void LoadListData(final List<PoiInfo> addrs, final ViewListener listener) {
 
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_myce_unit_addr, BR.item_myce_unit_addr, s,listener){
+        bind.recycle.setLayoutManager(new LinearLayoutManager(getActivity()));
+        for(int i=0;i<addrs.size();i++){
+            LogUtil.E(addrs.get(i).address);
+        }
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_myce_unit_addr, BR.item_myce_unit_addr, addrs,listener){
 
             @Override
-            public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {
-                super.onBindViewHolder(holder, position, payloads);
+            public void onBindViewHolder(AppViewHolder holder, int position) {
                 ItemMyceUnitAddrBinding binding = (ItemMyceUnitAddrBinding) holder.viewDataBinding;
+                binding.getRoot().setTag(com.android.lib.R.id.data, list.get(position));
+                binding.getRoot().setTag(com.android.lib.R.id.position, position);
+                binding.getRoot().setOnClickListener(this);
+                binding.getRoot().setOnLongClickListener(this);
+                binding.tvTxt.setText(StringUtil.getStr(addrs.get(position).address));
             }
 
             @Override
@@ -41,5 +59,19 @@ public class AddrUIOpe extends AppUIOpe<FragMyceUnitAddrBinding>{
             }
         });
 
+    }
+
+    public void notifyDataSetChanged(){
+        bind.recycle.getAdapter().notifyDataSetChanged();
+    }
+
+    public void initInput(final OnFinishListener onFinishListener){
+        bind.search.getEditText().addTextChangedListener(new BaseTextWather(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                super.afterTextChanged(s);
+                onFinishListener.onFinish(s.toString());
+            }
+        });
     }
 }

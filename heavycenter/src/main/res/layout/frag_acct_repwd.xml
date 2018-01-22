@@ -10,6 +10,7 @@
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/icon_hv_bg"
             android:orientation="vertical">
 
             <ImageView
@@ -54,6 +55,7 @@
                     <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
                         style_common:inputType="0"
                         android:id="@+id/phone"
+                        style_common:txt_maxlenth="11"
                         style_common:txt_mid = "请输入手机号"
                         style_common:iv_left="@drawable/icon_hv_phone"
                         android:layout_marginTop="30dp"

@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.lib.R;
 import com.android.lib.base.activity.BaseUIActivity;
@@ -26,6 +28,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -102,7 +105,9 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         HandleUtil.getInstance().postDelayed(new Runnable() {
             @Override
             public void run() {
-                initData();
+                if(isAttach()){
+                    initData();
+                }
             }
         }, 1000);
         for(int i=0;i<fragIs.size();i++){
@@ -161,6 +166,8 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                 Constructor<B> bc = b.getConstructor(Context.class);
                 A aa = ac.newInstance(activity);
                 B bb = bc.newInstance(activity);
+                aa.setFrag(this);
+                bb.setFrag(this);
                 opes = new BaseOpes<>(aa, bb);
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
@@ -236,7 +243,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     }
 
     public BaseUIActivity getBaseUIActivity() {
-        return (BaseUIActivity) getActivity();
+        return (BaseUIActivity) activity;
     }
 
     public void setInited() {
@@ -247,6 +254,8 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         return isInit;
     }
     View  v;
+
+    View tips;
     public void startLoading(){
           v = LayoutInflater.from(activity).inflate(R.layout.dialog_loading,null);
         AVLoadingIndicatorView avLoadingIndicatorView = (AVLoadingIndicatorView) v.findViewById(R.id.av);
@@ -259,6 +268,21 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     public void stopLoading(){
         if(v!=null && v.getParent()==parent){
             parent.removeView(v);
+        }
+    }
+
+    public void showTips(String txt){
+        tips = LayoutInflater.from(activity).inflate(R.layout.item_tips,null);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        parent.addView(tips,params);
+        TextView textView = tips.findViewById(R.id.tv_txt);
+        textView.setText(txt);
+    }
+
+    public void removeTips(){
+        if(tips!=null && tips.getParent()==parent){
+            parent.removeView(tips);
         }
     }
 }

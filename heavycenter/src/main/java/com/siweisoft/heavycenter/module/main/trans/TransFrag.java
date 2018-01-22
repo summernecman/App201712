@@ -46,7 +46,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)getActivity()).getP().getU().switchDrawer();
+                ((MainAct)activity).getP().getU().switchDrawer();
                 break;
             case R.id.ftv_right2:
                 getP().getU().search(new OnFinishListener() {
@@ -54,7 +54,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                     public void onFinish(Object o) {
                         boolean b = (boolean) o;
                         if(b){
-                            getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq()), new UINetAdapter<TransRes>(getActivity()) {
+                            getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq()), new UINetAdapter<TransRes>(activity) {
                                 @Override
                                 public void onResult(boolean success, String msg, TransRes o) {
                                     super.onResult(success, msg, o);

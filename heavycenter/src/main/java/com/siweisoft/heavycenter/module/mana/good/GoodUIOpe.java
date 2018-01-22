@@ -32,9 +32,11 @@ public class GoodUIOpe extends AppUIOpe<FragManaGoodBinding> {
     }
 
     public void LoadListData(GoodListRes o, final ViewListener listener) {
-        if(o==null){
+        if(o==null || o.getResults()==null || o.getResults().size()==0){
+            getFrag().showTips("暂无数据");
             return;
         }
+        getFrag().removeTips();
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_good, BR.item_mana_good, o.getResults(),listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {

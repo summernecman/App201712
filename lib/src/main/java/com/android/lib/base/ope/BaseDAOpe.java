@@ -3,6 +3,7 @@ package com.android.lib.base.ope;
 import android.content.Context;
 
 import com.android.lib.base.activity.BaseUIActivity;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.bean.LayoutDABean;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public class BaseDAOpe implements BaseOpe {
      * 上下文
      */
     protected Context context;
+
+    protected BaseUIFrag frag;
 
     private BaseDAOpe() {
 
@@ -50,5 +53,13 @@ public class BaseDAOpe implements BaseOpe {
             data.add(getData(objects[i]));
         }
         return data;
+    }
+
+    public BaseUIFrag getFrag() {
+        return frag;
+    }
+
+    public void setFrag(BaseUIFrag frag) {
+        this.frag = frag;
     }
 }

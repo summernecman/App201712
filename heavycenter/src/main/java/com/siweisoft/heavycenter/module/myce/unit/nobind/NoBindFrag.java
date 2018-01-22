@@ -21,7 +21,7 @@ public class NoBindFrag extends AppFrag<NoBindUIOpe,NoBindDAOpe> {
                 FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new ListFrag());
                 break;
             case R.id.ftv_back:
-                ((MainAct)getActivity()).getP().getU().switchDrawer();
+                ((MainAct)activity).getP().getU().switchDrawer();
                 break;
         }
     }

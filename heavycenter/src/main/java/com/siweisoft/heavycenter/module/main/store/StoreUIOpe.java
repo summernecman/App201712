@@ -58,9 +58,11 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
     }
 
     public void LoadListData(final StoresResBean o, ViewListener listener) {
-        if(o==null){
+        if(o==null || o.getResults()==null || o.getResults().size()==0){
+            getFrag().showTips("暂无数据");
             return;
         }
+        getFrag().removeTips();
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_store, BR.item_main_store, o.getResults(),listener){
 
             int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);

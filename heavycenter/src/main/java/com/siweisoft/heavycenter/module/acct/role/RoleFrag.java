@@ -42,7 +42,7 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                                                stopLoading();
                                                if("200".equals(baseResBean.getCode())){
                                                    if(getArguments().getBoolean("regist")){
-                                                       FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex());
+                                                       getBaseUIActivity().onBackPressed();
                                                    }else{
                                                        LoginResBean resBean = LocalValue.getLoginInfo();
                                                        resBean.setUserType(UserTypeReqBean.USER_TYPE_GENERAL);
@@ -56,6 +56,7 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                                });
                                 break;
                         }
+                        getBaseUIActivity().onBackPressed();
                     }
                 });
                 break;
@@ -77,7 +78,7 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                                                 stopLoading();
                                                 if("200".equals(baseResBean.getCode())){
                                                     if(getArguments().getBoolean("regist")){
-                                                        FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex());
+                                                        getBaseUIActivity().onBackPressed();
                                                     }else{
                                                         LoginResBean resBean = LocalValue.getLoginInfo();
                                                         resBean.setUserType(UserTypeReqBean.USER_TYPE_DRIVER);
@@ -91,6 +92,7 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                                 });
                                 break;
                         }
+                        getBaseUIActivity().onBackPressed();
                     }
                 });
                 break;

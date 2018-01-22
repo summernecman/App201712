@@ -58,6 +58,9 @@ public class LoadUtil {
     }
 
     public void onStartLoading(Context activity, String tag) {
+        if(activity==null){
+            return;
+        }
         MyDialog dialog = new MyDialog(activity, R.style.swdialog);
         dialogs.add(dialog);
         dialog.setTag(tag);
@@ -97,9 +100,6 @@ public class LoadUtil {
 
         public MyDialog(Context context, int themeResId) {
             super(context, themeResId);
-            if(context==null){
-                return;
-            }
         }
 
         public String getTag() {

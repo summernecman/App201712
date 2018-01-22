@@ -31,7 +31,7 @@ public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends 
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_back:
-                getActivity().onBackPressed();
+                activity.onBackPressed();
                 break;
         }
     }

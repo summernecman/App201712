@@ -111,7 +111,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
 
     public void hideOrShowManageFunction(boolean show){
         int vis = View.VISIBLE;
-        if(show&& LocalValue.getLoginInfo().getUserType()==UserTypeReqBean.USER_TYPE_GENERAL){
+        if(show&& LocalValue.getLoginInfo().getUserType()==UserTypeReqBean.USER_TYPE_GENERAL&&!LoginResBean.USER_ROLE_GENERAL.equals(LocalValue.getLoginInfo().getUserRole())){
             vis = View.VISIBLE;
         }else{
             vis = View.GONE;

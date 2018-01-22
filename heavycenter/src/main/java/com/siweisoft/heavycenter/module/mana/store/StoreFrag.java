@@ -88,7 +88,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().storesInfo(new UINetAdapter<StoresResBean>(getActivity()) {
+        getP().getD().storesInfo(new UINetAdapter<StoresResBean>(activity) {
             @Override
             public void onResult(boolean success, String msg, StoresResBean o) {
                 super.onResult(success, msg, o);

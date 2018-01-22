@@ -106,7 +106,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
                                 VideoChatFrag videoChatFrag = new VideoChatFrag();
                                 videoChatFrag.setArguments(new Bundle());
                                 videoChatFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, videoBean);
-                                FragmentUtil2.getInstance().add(fragment.getActivity(), Value.FULLSCREEN, videoChatFrag);
+                                FragmentUtil2.getInstance().add(activity, Value.FULLSCREEN, videoChatFrag);
                                 break;
                         }
                     }
@@ -120,7 +120,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
 //                }
 //                DialogListFrag frag = new DialogListFrag();
 //                frag.init(strs);
-//                FragmentUtil2.getInstance().add(fragment.getActivity(), Value.ROOTID_TWO, frag);
+//                FragmentUtil2.getInstance().add(fragment.activity, Value.ROOTID_TWO, frag);
 //                frag.setOnAppItemsClickListener(new OnAppItemClickListener() {
 //                    @Override
 //                    public void onAppItemClick(View view, int position) {
