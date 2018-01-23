@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.util.fragment.FragManager;
@@ -23,7 +24,9 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
 
     View customerView;
 
+
     int[] views ;
+
 
 
     @Override
@@ -34,6 +37,7 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
             viewGroup.removeAllViews();
             viewGroup.addView(customerView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
         }
+
         if(views!=null){
             for(int i=0;i<views.length;i++){
                 View view1 = getView().findViewById(views[i]);
@@ -64,4 +68,5 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
         this.onClickListener = onClickListener;
         this.views = views;
     }
+
 }

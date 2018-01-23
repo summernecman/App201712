@@ -117,7 +117,9 @@ public class SysUIOpe extends BaseUIOpe<FragMainMsgSysBinding>{
     }
 
     public void notifyDataSetChanged(){
-        bind.recycle.getAdapter().notifyDataSetChanged();
+        if(bind.recycle.getAdapter()!=null){
+            bind.recycle.getAdapter().notifyDataSetChanged();
+        }
     }
 
 }

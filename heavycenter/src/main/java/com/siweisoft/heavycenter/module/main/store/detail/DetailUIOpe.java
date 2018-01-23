@@ -49,6 +49,6 @@ public class DetailUIOpe extends BaseUIOpe<FragMainStoreDetailBinding>{
 
     public void initUI( StoreDetail storeDetail){
         bind.setVariable(BR.frag_main_store_detail,storeDetail);
-        bind.store.setTxt(storeDetail.getMinStock(),storeDetail.getProductMinStock(),storeDetail.getMaxStock(),storeDetail.getProductMaxStock());
+        bind.store.setTxt(storeDetail.getMinStock(),storeDetail.getProductMinStock(),storeDetail.getMaxStock(),storeDetail.getProductMaxStock(),storeDetail.getCurrentStock());
     }
 }

@@ -64,7 +64,7 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
 
     @Override
     public void onInterupt(int type, View v) {
-        MsgsResBean.ResultsBean data = (MsgsResBean.ResultsBean) v.getTag(R.id.data);
+        final MsgsResBean.ResultsBean data = (MsgsResBean.ResultsBean) v.getTag(R.id.data);
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 switch (v.getId()){
@@ -74,6 +74,7 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
                             public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                                 stopLoading();
                                 if("200".equals(baseResBean.getCode())){
+                                    data.setAuditState(MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED);
                                     getP().getU().notifyDataSetChanged();
                                 }
                             }
@@ -85,7 +86,8 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
                             public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                                 stopLoading();
                                 if("200".equals(baseResBean.getCode())){
-
+                                    data.setAuditState(MsgsResBean.ResultsBean.AUDITOR_STATE_REJECT);
+                                    getP().getU().notifyDataSetChanged();
                                 }
                             }
                         });

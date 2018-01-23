@@ -3,7 +3,9 @@ package com.siweisoft.heavycenter.module.acct.role;
 //by summer on 2017-12-18.
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -23,10 +25,18 @@ public class RoleUIOpe extends AppUIOpe<FragAcctRoleBinding> {
         super(context);
     }
 
-    public void showTip(int index,View.OnClickListener onClickListener){
+    public void showTip(boolean dirver,View.OnClickListener onClickListener){
         DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.frag_acct_role_tip,null);
+        TextView textView = view.findViewById(R.id.tv_type);
+        if(dirver){
+            textView.setText("驾驶员");
+        }else{
+            textView.setText("非驾驶员");
+        }
+        diaLogCenterFrag.setCustomView(view);
         diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_sure,R.id.tv_close);
-        FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).start(getActivity(),AcctAct.账号,AcctAct.账号ID,diaLogCenterFrag);
+        FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(),AcctAct.账号,AcctAct.账号ID,diaLogCenterFrag);
     }
 
     public UserTypeReqBean getUserTypeReqBean() {

@@ -30,11 +30,11 @@ public class MyceDAOpe extends AppDAOpe {
         super(context);
     }
 
-    public void uploadPhoto(String path, String type, NetI<UpdateHeadResBean> adapter){
+    public void uploadPhoto(File f, String type, NetI<UpdateHeadResBean> adapter){
         List<KeyValue> keyValues = new ArrayList<>();
         keyValues.add(new KeyValue(UpdateHeadReqBean.用户id,LocalValue.getLoginInfo().getUserId()));
         keyValues.add(new KeyValue(UpdateHeadReqBean.文件类型,type));
-        keyValues.add(new KeyValue(UpdateHeadReqBean.文件路径,new File(path)));
+        keyValues.add(new KeyValue(UpdateHeadReqBean.文件路径,f));
         NetDataOpe.User.uploadPhoto(getActivity(),keyValues,adapter);
     }
 

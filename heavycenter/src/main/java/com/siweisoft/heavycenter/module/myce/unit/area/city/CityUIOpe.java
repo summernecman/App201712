@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.NullUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -32,6 +33,8 @@ public class CityUIOpe extends AppUIOpe<FragMyceUnitNewCityBinding>{
 
     public void LoadListData(final List<CityResBean.ProvinceListBean.CityListBean> data, final ViewListener listener) {
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_myce_unit_new_city, BR.item_myce_unit_new_city, data,listener){
+
+
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
@@ -42,7 +45,9 @@ public class CityUIOpe extends AppUIOpe<FragMyceUnitNewCityBinding>{
     }
 
     public void notifyDataSetChanged(){
-        bind.recycle.getAdapter().notifyDataSetChanged();
+        if(bind.recycle.getAdapter()!=null){
+            bind.recycle.getAdapter().notifyDataSetChanged();
+        }
     }
 
 }

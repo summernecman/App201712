@@ -23,9 +23,14 @@ import butterknife.OnClick;
 
 public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListener{
 
+    public static final String 选择一个城市 = "选择一个城市";
+
+    public static final String 选择多个城市 = "选择多个城市";
+
     @Override
     public void initData() {
         super.initData();
+        getP().getD().setState(getArguments().getString(ValueConstant.DATA_DATA));
         getP().getU().initRecycle();
         getP().getU().LoadListData(getP().getD().getPro(),this);
     }
@@ -37,6 +42,7 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(ValueConstant.DATA_POSITION2, (int) v.getTag(R.id.position));
                 bundle.putSerializable(ValueConstant.DATA_DATA, (Serializable) v.getTag(R.id.data));
+                bundle.putString(ValueConstant.DATA_DATA2,getP().getD().getState());
                 FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new CityFrag(),bundle);
                 break;
         }

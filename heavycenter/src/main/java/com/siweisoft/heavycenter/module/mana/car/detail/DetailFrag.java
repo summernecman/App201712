@@ -17,6 +17,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
@@ -31,13 +32,22 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
     public static final String TYPE_NEW = "TYPE_NEW";
 
+    public static final String TYPE_DETAIL = "TYPE_DETAIL";
+
     @Override
     public void initData() {
         super.initData();
-        getP().getD().setCarinfo((CarsResBean.ResultsBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
-        getP().getU().initData(getP().getD().getCarinfo());
-        getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getData());
+        getP().getD().setType(getArguments().getString(ValueConstant.DATA_DATA2));
+        switch (getP().getD().getType()){
+            case TYPE_NEW:
+                break;
+            case TYPE_DETAIL:
+                getP().getD().setCarinfo((CarsResBean.ResultsBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
+                getP().getU().initData(getP().getD().getCarinfo());
+                getP().getU().initRecycle();
+                getP().getU().LoadListData(getP().getD().getData());
+                break;
+        }
     }
 
     @OnClick({R.id.ll_vehicleLicensePhoto,R.id.ll_vehiclePhoto,R.id.ftv_right2})
@@ -51,14 +61,32 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
                 IntentUtil.getInstance().photoShowFromphone(this,02);
                 break;
             case R.id.ftv_right2:
-                if(getP().getU().canGo()){
-                    getP().getD().updateCar(getP().getU().getUpdateCarReq(getP().getD().getUpdateCarReq()), new UINetAdapter<UpdateCarRes>(getContext()) {
-                        @Override
-                        public void onResult(boolean success, String msg, UpdateCarRes o) {
-                            super.onResult(success, msg, o);
-
+                switch (getP().getD().getType()){
+                    case TYPE_NEW:
+                        if(getP().getU().canNewGo()){
+                            getP().getD().newCar(getP().getU().getCarNewReqBean(getP().getD().getCarNewReqBean()), new UINetAdapter<CarNewResBean>(getActivity()) {
+                                @Override
+                                public void onResult(boolean success, String msg, CarNewResBean o) {
+                                    super.onResult(success, msg, o);
+                                    if(success){
+                                        getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
+                                        getBaseUIActivity().onBackPressed();
+                                    }
+                                }
+                            });
                         }
-                    });
+                        break;
+                    case TYPE_DETAIL:
+                        if(getP().getU().canGo()){
+                            getP().getD().updateCar(getP().getU().getUpdateCarReq(getP().getD().getUpdateCarReq()), new UINetAdapter<UpdateCarRes>(getContext()) {
+                                @Override
+                                public void onResult(boolean success, String msg, UpdateCarRes o) {
+                                    super.onResult(success, msg, o);
+
+                                }
+                            });
+                        }
+                        break;
                 }
                 break;
         }
@@ -98,9 +126,11 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
                         switch (requestCode){
                             case 01:
                                 getP().getD().getUpdateCarReq().setVehicleLicensePhoto(s);
+                                getP().getD().getCarNewReqBean().setVehicleLicensePhoto(s);
                                 break;
                             case 02:
                                 getP().getD().getUpdateCarReq().setVehiclePhoto(s);
+                                getP().getD().getCarNewReqBean().setVehiclePhoto(s);
                                 break;
                         }
                         getP().getU().initPhoto(getP().getD().getUpdateCarReq());

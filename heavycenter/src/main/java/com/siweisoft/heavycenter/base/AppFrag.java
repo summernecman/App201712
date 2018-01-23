@@ -21,7 +21,7 @@ public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends 
     @Override
     public void doThing() {
         super.doThing();
-        if(getView().findViewById(R.id.ftv_back)!=null){
+        if(getView()!=null && getView().findViewById(R.id.ftv_back)!=null){
             getView().findViewById(R.id.ftv_back).setOnClickListener(this);
         }
     }

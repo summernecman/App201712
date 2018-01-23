@@ -4,6 +4,8 @@
         <variable
             name="frag_main_store_detail"
             type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail" />
+
+        <import type="com.android.lib.util.StringUtil" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -32,7 +34,7 @@
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:text="@{frag_main_store_detail.warehouseName}"
+                android:text="@{StringUtil.getStr(frag_main_store_detail.warehouseName)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -41,7 +43,7 @@
                 android:layout_marginLeft="14dp"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:text="@{frag_main_store_detail.productName}"
+                android:text="@{StringUtil.getStr(frag_main_store_detail.productName)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -50,7 +52,7 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:text="@{frag_main_store_detail.specifications}"
+                android:text="@{StringUtil.getStr(frag_main_store_detail.specifications)}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <View
@@ -76,13 +78,14 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
+
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:background="@color/white"
+                android:background="@drawable/bg_hv_sharp2_white_solid"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="5dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:layout_weight="1"
@@ -91,7 +94,7 @@
                 <TextView
                     android:textColor="#f6ab12"
                     android:textSize="22sp"
-                    android:text='@{frag_main_store_detail.todayStorage+"t"}'
+                    android:text='@{StringUtil.getStr(frag_main_store_detail.todayStorage)+"t"}'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -105,11 +108,11 @@
             <LinearLayout
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:background="@color/white"
+                android:background="@drawable/bg_hv_sharp2_white_solid"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:layout_weight="1"
@@ -118,7 +121,7 @@
                 <TextView
                     android:textColor="#30e5a3"
                     android:textSize="22sp"
-                    android:text='@{frag_main_store_detail.todayOutStorage+"t"}'
+                    android:text='@{StringUtil.getStr(frag_main_store_detail.todayOutStorage)+"t"}'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -133,11 +136,11 @@
             <LinearLayout
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:background="@color/white"
+                android:background="@drawable/bg_hv_sharp2_white_solid"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:layout_weight="1"
@@ -146,7 +149,7 @@
                 <TextView
                     android:textColor="#ff6600"
                     android:textSize="22sp"
-                    android:text='@{frag_main_store_detail.todayProfitNum+"t"}'
+                    android:text='@{StringUtil.getStr(frag_main_store_detail.todayProfitNum)+"t"}'
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

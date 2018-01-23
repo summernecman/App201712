@@ -17,6 +17,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -31,6 +32,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     @Override
     public void initData() {
         super.initData();
+        getP().getU().setSwipe(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库?false:true);
         getP().getU().initRefresh(this,this);
         getP().getU().initRecycle();
         getP().getU().autoRefresh();
@@ -88,7 +90,11 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().storesInfo(new UINetAdapter<StoresResBean>(activity) {
+        int state = StoresReqBean.STATUS_ALL;
+        if(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库){
+            state = StoresReqBean.STATUS_ON;
+        }
+        getP().getD().storesInfo(state,new UINetAdapter<StoresResBean>(activity) {
             @Override
             public void onResult(boolean success, String msg, StoresResBean o) {
                 super.onResult(success, msg, o);
@@ -103,11 +109,11 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
         super.onRestart(res, bundle);
         switch (res){
             case 1:
-                if(bundle==null|| bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
+                if(bundle==null|| !bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
                     return;
                 }
                 if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
-                    getP().getU().autoRefresh();
+                    getP().getU().autoRefresh(600);
                 }
                 break;
         }

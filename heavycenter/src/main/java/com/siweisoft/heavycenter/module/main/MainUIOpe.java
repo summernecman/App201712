@@ -66,14 +66,17 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
 //        pos_drawer = FragManager.getInstance().addId(bind.incloud.leftDrawer.getId());
 //        FragManager.getInstance().startFragment(getActivity().getSupportFragmentManager(),pos_drawer,myceFrag);
 
-        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(bind.incloud.leftDrawer.getId(),myceFrag);
-        fragmentTransaction.commitNow();
+        FragManager2.getInstance().setAnim(false).start(getActivity(),MainAct.个人中心,bind.incloud.leftDrawer.getId(),myceFrag);
+
+//        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+//        fragmentTransaction.add(bind.incloud.leftDrawer.getId(),myceFrag);
+//        fragmentTransaction.commitNow();
 
 
     }
 
     public void initPages(final ArrayList<BottomMenuBean> pages,OnAppItemSelectListener listener){
+        FragManager2.getInstance().clear();
         bind.content.setOffscreenPageLimit(pages.size());
         bind.bottommenu.setViewPager(bind.content);
         bind.bottommenu.setOnAppItemClickListener(listener);
@@ -85,11 +88,10 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
             @Override
             public void onFinish(Object o) {
                 if(!load){
-                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    for(int i=0;i<views.size();i++){
-                        fragmentTransaction.add(pages.get(i).getContainerView().getId(),pages.get(i).getFragment());
-                    }
-                    fragmentTransaction.commitNow();
+
+                  for(int i=0;i<pages.size();i++){
+                      FragManager2.getInstance().setAnim(false).start(getActivity(),pages.get(i).getName(),pages.get(i).getContainerView().getId(),pages.get(i).getFragment());
+                  }
                     load = true;
                 }
             }

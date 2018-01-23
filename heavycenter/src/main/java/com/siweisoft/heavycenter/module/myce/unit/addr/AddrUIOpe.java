@@ -62,7 +62,9 @@ public class AddrUIOpe extends AppUIOpe<FragMyceUnitAddrBinding>{
     }
 
     public void notifyDataSetChanged(){
-        bind.recycle.getAdapter().notifyDataSetChanged();
+        if(bind.recycle.getAdapter()!=null){
+            bind.recycle.getAdapter().notifyDataSetChanged();
+        }
     }
 
     public void initInput(final OnFinishListener onFinishListener){

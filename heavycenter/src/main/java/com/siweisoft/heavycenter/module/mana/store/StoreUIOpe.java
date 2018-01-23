@@ -30,6 +30,8 @@ import java.util.List;
 
 public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
 
+    private boolean swipe = true;
+
     public StoreUIOpe(Context context) {
         super(context);
     }
@@ -68,6 +70,7 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
                 binding.munu.setTag(R.id.data,o.getResults().get(position));
                 binding.munu.setTag(R.id.data1,binding.swipe);
 
+                binding.swipe.setRightSwipeEnabled(isSwipe());
             }
         });
     }
@@ -89,6 +92,10 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
         bind.refreshLayout.autoRefresh();
     }
 
+    public void autoRefresh(int delay){
+        bind.refreshLayout.autoRefresh(delay);
+    }
+
 
     public void statusStore(StatusStoresReqBean statusStoresReqBean){
 
@@ -96,7 +103,9 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
 
 
     public void notifyDataSetChanged(){
-        bind.recycle.getAdapter().notifyDataSetChanged();
+        if(bind.recycle.getAdapter()!=null){
+            bind.recycle.getAdapter().notifyDataSetChanged();
+        }
     }
 
     public StatusStoresReqBean getStatusStoresReqBean(StatusStoresReqBean reqBean,int storeid, int  status) {
@@ -113,4 +122,12 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
         return reqBean;
     }
 
+
+    public boolean isSwipe() {
+        return swipe;
+    }
+
+    public void setSwipe(boolean swipe) {
+        this.swipe = swipe;
+    }
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
@@ -61,8 +62,9 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
             return;
         }
         dothing();
-
     }
+
+
 
 
     public void dothing(){
@@ -140,8 +142,17 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     @Override
     public void onBackPressed() {
-        if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle())){
-            super.onBackPressed();
+        switch (getMoudle()){
+            case MainAct.主界面:
+                if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle(),false)){
+                    super.onBackPressed();
+                }
+                break;
+                default:
+                    if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle(),true)){
+                        super.onBackPressed();
+                    }
+                    break;
         }
     }
 }

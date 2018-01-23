@@ -22,6 +22,7 @@ import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarReq;
 import com.siweisoft.heavycenter.databinding.FragManaCarDetailBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaCarDetailDriverBinding;
@@ -114,6 +115,40 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
         if(NullUtil.isStrEmpty(bind.itemMaxweight.getMidEtTxt())){
             ToastUtil.getInstance().showShort(getActivity(),"请输入车辆载重");
             return  false;
+        }
+        return true;
+    }
+
+
+    public CarNewReqBean getCarNewReqBean(CarNewReqBean carNewReqBean) {
+        carNewReqBean.setCarLicenseNo(bind.itemCarlicenseno.getMidET().getText().toString());
+        carNewReqBean.setCarBrand(bind.itemBrand.getMidET().getText().toString());
+        carNewReqBean.setMaxCapacity(Integer.parseInt(bind.itemMaxweight.getMidET().getText().toString()));
+        carNewReqBean.setEmptyWeight(Integer.parseInt(bind.itemEmptyweight.getMidET().getText().toString()));
+        carNewReqBean.setIcCard(bind.itemIccard.getMidET().getText().toString());
+        return carNewReqBean;
+    }
+
+    public boolean canNewGo(){
+        if(NullUtil.isStrEmpty(bind.itemCarlicenseno.getMidET().getText().toString())){
+            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+            return false;
+        }
+        if(NullUtil.isStrEmpty(bind.itemBrand.getMidET().getText().toString())){
+            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+            return false;
+        }
+        if(NullUtil.isStrEmpty(bind.itemMaxweight.getMidET().getText().toString())){
+            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+            return false;
+        }
+        if(NullUtil.isStrEmpty(bind.itemEmptyweight.getMidET().getText().toString())){
+            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+            return false;
+        }
+        if(NullUtil.isStrEmpty(bind.itemIccard.getMidET().getText().toString())){
+            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+            return false;
         }
         return true;
     }

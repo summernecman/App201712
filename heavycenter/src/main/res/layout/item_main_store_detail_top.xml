@@ -13,6 +13,7 @@
 
 
         <com.siweisoft.heavycenter.module.view.progress.ProgressView
+            android:id="@+id/progress"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="32dp"
@@ -20,31 +21,34 @@
             android:layout_height="wrap_content"/>
 
         <LinearLayout
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:id="@+id/ll_min"
             android:background="@drawable/icon_hv_main_store_lt"
             android:layout_marginTop="45dp"
-            android:layout_marginLeft="50dp"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="50dp">
             <TextView
                 android:id="@+id/tv_minwuliao"
-                android:textSize="14sp"
+                android:textSize="@dimen/hv_dimen_text"
                 android:textColor="@color/white"
-                android:text="物料安全：700t"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/tv_minstore"
-                android:textSize="10sp"
                 android:textColor="@color/white"
-                android:text="仓库安全：600t"
+                android:textSize="@dimen/hv_dimen_text_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
 
         <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ll_max"
+            android:gravity="center_vertical"
             android:background="@drawable/icon_hv_main_store_rt"
             android:layout_marginTop="45dp"
             android:layout_alignParentRight="true"
@@ -53,28 +57,28 @@
             android:layout_height="50dp">
             <TextView
                 android:id="@+id/tv_maxwuliao"
-                android:textSize="15sp"
+                android:textSize="@dimen/hv_dimen_text"
                 android:textColor="@color/white"
-                android:text="物料最大：700t"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:gravity="center_vertical"
                 android:id="@+id/tv_maxstore"
-                android:textSize="10sp"
+                android:textSize="@dimen/hv_dimen_text"
                 android:textColor="@color/white"
-                android:text="仓库最大：600t"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <TextView
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:id="@+id/tv_current"
             android:paddingLeft="5dp"
             android:background="@drawable/icon_hv_main_store_tip_ld"
-            android:layout_marginLeft="200dp"
             android:textSize="14sp"
             android:textColor="@color/black"
-            android:text="当前：600t"
             android:layout_width="wrap_content"
             android:layout_height="30dp" />
 

@@ -24,7 +24,9 @@ public class ToastUtil {
      * @param context
      */
     public void showSueess(Context context) {
-        Toast.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
+        if(context!=null) {
+            Toast.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -45,7 +47,9 @@ public class ToastUtil {
      * @param msg
      */
     public void showLong(Context context, String msg) {
-        Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
+        if(context!=null) {
+            Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -58,7 +62,9 @@ public class ToastUtil {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
+                if(context!=null) {
+                    Toast.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -74,7 +80,9 @@ public class ToastUtil {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+                if(context!=null) {
+                    Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -90,7 +98,10 @@ public class ToastUtil {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+                if(context!=null) {
+                    Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -106,7 +117,10 @@ public class ToastUtil {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
+                if(context!=null) {
+                    Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

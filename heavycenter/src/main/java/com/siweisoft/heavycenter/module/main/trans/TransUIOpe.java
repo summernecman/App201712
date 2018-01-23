@@ -96,7 +96,9 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
     }
 
     public void notifyDataSetChanged(){
-        bind.recycle.getAdapter().notifyDataSetChanged();
+        if(bind.recycle.getAdapter()!=null){
+            bind.recycle.getAdapter().notifyDataSetChanged();
+        }
     }
 
 

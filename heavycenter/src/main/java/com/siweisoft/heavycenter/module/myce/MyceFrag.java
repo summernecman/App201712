@@ -32,8 +32,10 @@ import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
 import com.siweisoft.heavycenter.module.myce.base.info.InfoFrag;
 
 import java.io.File;
+import java.io.IOException;
 
 import butterknife.OnClick;
+import id.zelory.compressor.Compressor;
 
 public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
 
@@ -105,7 +107,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 infoFrag.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                        FragManager2.getInstance().setFinishAnim(R.anim.scale_in,R.anim.scale_out).finish(getBaseUIActivity(),MainAct.主界面);
+                        FragManager2.getInstance().setFinishAnim(R.anim.scale_in,R.anim.scale_out).finish(getBaseUIActivity(),MainAct.主界面,false);
                     }
                 });
                 FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,infoFrag);
@@ -134,9 +136,13 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
         if(data==null){
             return;
         }
-        LogUtil.E(Environment.getDownloadCacheDirectory().getPath());
-        File file = new File(UriUtils.getPath(activity, data.getData()));
-        LogUtil.E(file.exists());
+        File file;
+        try {
+            file = new Compressor(getActivity()).compressToFile(new File(UriUtils.getPath(activity, data.getData())));
+        } catch (IOException e) {
+            e.printStackTrace();
+            file = new File(UriUtils.getPath(activity, data.getData()));
+        }
         String type = "";
         switch (requestCode){
             case 1:
@@ -150,7 +156,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
         }
         final String finalType = type;
-        getP().getD().uploadPhoto(UriUtils.getPath(activity, data.getData()),type, new UINetAdapter<UpdateHeadResBean>(activity) {
+        getP().getD().uploadPhoto(file,type, new UINetAdapter<UpdateHeadResBean>(activity) {
             @Override
             public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                 stopLoading();

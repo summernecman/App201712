@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.main.store.check;
 
 import android.view.View;
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -22,8 +23,11 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
             @Override
             public void onResult(boolean success, String msg, StoresResBean o) {
                 super.onResult(success, msg, o);
-                getP().getD().setStoresResBean(o);
-                getP().getU().LoadListData(o);
+                if(success){
+                    getP().getD().setStoresResBean(o);
+                    getP().getU().LoadListData(getP().getD().getStoresResBean());
+                    getP().getD().setInitdata(true);
+                }
             }
         });
     }
@@ -39,6 +43,7 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
                         public void onResult(boolean success, String msg, CheckStoreResBean o) {
                             super.onResult(success, msg, o);
                             if(success){
+                                getArguments().putBoolean(ValueConstant.FRAG_KEY,true);
                                 getBaseUIActivity().onBackPressed();
                             }
                         }

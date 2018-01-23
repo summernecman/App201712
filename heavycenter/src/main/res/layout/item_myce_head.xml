@@ -10,7 +10,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:background="@color/color_base"
-            android:layout_height="210dp">
+            android:layout_height="190dp">
             <ImageView
                 android:scaleType="centerCrop"
                 android:src="@drawable/icon_hv_myce_bg"

@@ -16,6 +16,9 @@ public class ScreenUtil {
      * 宽度
      */
     public static float w;
+
+
+    public static float 字宽度;
     /**
      * 1dp对应的屏幕px
      */
@@ -49,6 +52,7 @@ public class ScreenUtil {
         w = size[0];
         h = size[1];
         mw = context.getResources().getDimension(R.dimen.dimen_1);
+        字宽度= context.getResources().getDimension(R.dimen.dimen_1sp);
         return size;
     }
 

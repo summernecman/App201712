@@ -71,7 +71,7 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
     public void showTip(View.OnClickListener onClickListener){
         DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
         diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_nullunit,null));
-        diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_y,R.id.tv_n,R.id.tv_close);
+        diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_y,R.id.tv_n,R.id.iv_close);
         FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(),MainAct.主界面,diaLogCenterFrag);
     }
 
@@ -97,6 +97,8 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
     }
 
     public void notifyDataSetChanged(){
-        bind.recycle.getAdapter().notifyDataSetChanged();
+        if(bind.recycle.getAdapter()!=null){
+            bind.recycle.getAdapter().notifyDataSetChanged();
+        }
     }
 }

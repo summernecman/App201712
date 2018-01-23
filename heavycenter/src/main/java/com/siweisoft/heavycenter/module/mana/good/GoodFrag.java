@@ -67,11 +67,11 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
         super.onRestart(res, bundle);
         switch (res){
             case 1:
-                if(bundle==null || bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
+                if(bundle==null || !bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
                     return;
                 }
                 if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
-                    getP().getU().autoRefresh();
+                    getP().getU().autoRefresh(600);
                 }
                 break;
         }

@@ -82,7 +82,14 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             index = getArguments().getInt(ValueConstant.FRAG_POSITION);
         }
         View group = inflater.inflate(getLayoutID(), null);
-        parent = (ViewGroup) group.findViewById(R.id.container);
+
+        return group;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        parent = (ViewGroup) view.findViewById(R.id.container);
         if (getP()!=null && getP().getU() != null && getP().getU().getBind().getRoot() != null) {
             ViewGroup viewGroup = (ViewGroup) getP().getU().getBind().getRoot().getParent();
             if (viewGroup != null) {
@@ -90,22 +97,16 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             }
             parent.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         }
-        unbinder = ButterKnife.bind(this, group);
+        unbinder = ButterKnife.bind(this, view);
         for(int i=0;i<fragIs.size();i++){
-            fragIs.get(i).onCreateView(inflater,container,savedInstanceState);
+            fragIs.get(i).onCreateView(null,null,savedInstanceState);
         }
-        return group;
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         getP().getU().initUI(this);
-        doThing();
         HandleUtil.getInstance().postDelayed(new Runnable() {
             @Override
             public void run() {
                 if(isAttach()){
+                    doThing();
                     initData();
                 }
             }
@@ -116,11 +117,15 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     }
 
     public void doThing() {
-
+        if(getView()==null){
+            return;
+        }
     }
 
     public void initData() {
-
+        if(getView()==null){
+            return;
+        }
     }
 
     public void lazyInit(){

@@ -6,6 +6,7 @@ import android.content.Context;
 
 import com.android.lib.network.news.NetI;
 import com.android.lib.util.GsonUtil;
+import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
@@ -23,6 +24,9 @@ public class CheckDAOpe extends AppDAOpe {
     CheckStoreReqBean checkStoreReqBean = new CheckStoreReqBean();
 
     private StoresResBean storesResBean;
+
+    private boolean initdata = false;
+
 
     public CheckDAOpe(Context context) {
         super(context);
@@ -71,7 +75,15 @@ public class CheckDAOpe extends AppDAOpe {
     }
 
     public boolean canGo(){
-        for(int i=0;getStoresResBean()!=null && getStoresResBean().getResults()!=null && i<getStoresResBean().getResults().size();i++){
+        if(!isInitdata()){
+            ToastUtil.getInstance().showShort(getActivity(),"数据还没初始化");
+            return false;
+        }
+        if(getStoresResBean()==null){
+            ToastUtil.getInstance().showShort(getActivity(),"数据初始化失败,请打开重试");
+            return false;
+        }
+        for(int i=0;getStoresResBean().getResults()!=null && i<getStoresResBean().getResults().size();i++){
             if(getStoresResBean().getResults().get(i).getAfterAdjust()<0){
                 return false;
             }
@@ -84,6 +96,17 @@ public class CheckDAOpe extends AppDAOpe {
     }
 
     public void setStoresResBean(StoresResBean storesResBean) {
+        for(int i=0;storesResBean!=null&&storesResBean.getResults()!=null && i<storesResBean.getResults().size();i++){
+            storesResBean.getResults().get(i).setAfterAdjust(storesResBean.getResults().get(i).getCurrentStock());
+        }
         this.storesResBean = storesResBean;
+    }
+
+    public boolean isInitdata() {
+        return initdata;
+    }
+
+    public void setInitdata(boolean initdata) {
+        this.initdata = initdata;
     }
 }

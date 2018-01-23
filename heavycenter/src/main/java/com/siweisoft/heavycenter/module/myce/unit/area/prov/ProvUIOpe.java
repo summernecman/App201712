@@ -48,7 +48,9 @@ public class ProvUIOpe extends AppUIOpe<FragMyceUnitNewProvBinding>{
     }
 
     public void notifyDataSetChanged(){
-        bind.recycle.getAdapter().notifyDataSetChanged();;
+        if(bind.recycle.getAdapter()!=null){
+            bind.recycle.getAdapter().notifyDataSetChanged();
+        }
     }
 
 }

@@ -33,6 +33,7 @@ public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
         bind.code.getCodeText().setOnClickListener(baseUIFrag);
+        bind.tvRead.getCheckIV().setSelected(true);
     }
 
     public boolean go(){

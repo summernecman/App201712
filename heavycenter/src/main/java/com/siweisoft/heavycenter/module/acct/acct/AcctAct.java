@@ -30,6 +30,7 @@ public class AcctAct extends AppAct<AcctUIOpe,AcctDAOpe> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FragManager2.getInstance().clear();
         if(LocalValue.isAutoLogin()){
             getP().getD().getInfo(new UINetAdapter<LoginResBean>(this) {
                 @Override
@@ -44,19 +45,19 @@ public class AcctAct extends AppAct<AcctUIOpe,AcctDAOpe> {
                         getP().getD().setIndex(FragManager.getInstance().addId(账号ID));
                         //getP().getU().initPages(activity,getP().getD().getFrags());
 
-                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.add(账号ID,new LoginFrag());
-                        transaction.commitNowAllowingStateLoss();
-                        //FragManager2.getInstance().start((BaseUIActivity) activity,账号,账号ID,new LoginFrag());
+//                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                        transaction.add(账号ID,new LoginFrag());
+//                        transaction.commitNowAllowingStateLoss();
+
+
+                        FragManager2.getInstance().setAnim(false).start((BaseUIActivity) activity,账号,账号ID,new LoginFrag());
                        // FragManager.getInstance().startFragment(activity.getSupportFragmentManager(),getP().getD().getIndex(),new LoginFrag());
                     }
                 }
             });
             return;
         }
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(账号ID,new LoginFrag());
-        transaction.commitNowAllowingStateLoss();
+        FragManager2.getInstance().setAnim(false).start((BaseUIActivity) activity,账号,账号ID,new LoginFrag());
     }
 
     public void showAndHidden(Class c){
@@ -65,7 +66,7 @@ public class AcctAct extends AppAct<AcctUIOpe,AcctDAOpe> {
 
     @Override
     public void onBackPressed() {
-        if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle())){
+        if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle(),true)){
             super.onBackPressed();
         }
     }

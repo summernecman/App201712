@@ -43,7 +43,9 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 ((MainAct)getActivity()).getP().getU().switchDrawer();
                 break;
             case R.id.ftv_right2:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.仓库,MainAct.仓库ID,new CheckFrag());
+                Bundle bundle = new Bundle();
+                bundle.putInt(ValueConstant.FARG_REQ,1);
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.仓库,MainAct.仓库ID,new CheckFrag(),bundle);
         }
     }
 
@@ -54,6 +56,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 StoreDetail storeDetail = (StoreDetail) v.getTag(R.id.data);
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.DATA_DATA,storeDetail.getWarehouseId());
+                bundle.putInt(ValueConstant.FARG_REQ,2);
                 FragManager2.getInstance().start(getBaseUIActivity(),MainAct.仓库,MainAct.仓库ID,new DetailFrag(),bundle);
                 break;
         }
@@ -86,5 +89,22 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 getP().getU().finishRefresh();
             }
         });
+    }
+
+    @Override
+    public void onRestart(int res, Bundle bundle) {
+        super.onRestart(res, bundle);
+        switch (res){
+            case 1:
+                if(bundle!=null&&bundle.getBoolean(ValueConstant.FRAG_KEY,false)){
+                    getP().getU().autoRefresh(600);
+                }
+                break;
+            case 2:
+                if(bundle!=null&&bundle.getBoolean(ValueConstant.FRAG_KEY,false)){
+                    getP().getU().autoRefresh(600);
+                }
+                break;
+        }
     }
 }

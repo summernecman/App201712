@@ -153,6 +153,9 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
         super.onRestart(res, bundle);
         switch (res){
             case 1:
+                if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_RES,false)){
+                    return;
+                }
                 getP().getU().autoRefresh();
                 break;
         }

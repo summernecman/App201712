@@ -1,6 +1,7 @@
 package com.android.lib.aplication;
 
 import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 import android.support.v4.app.FragmentActivity;
 
 import com.android.lib.R;
@@ -21,7 +22,7 @@ import java.util.List;
 /**
  * 用于一些跟应用程序生命周期一致的处理
  */
-public class LibAplication extends Application {
+public class LibAplication extends MultiDexApplication {
 
 
     @Override

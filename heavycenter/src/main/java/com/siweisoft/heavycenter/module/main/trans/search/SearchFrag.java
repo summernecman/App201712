@@ -18,7 +18,7 @@ public class SearchFrag extends AppFrag<SearchUIOpe,SearchDAOpe> {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ll_root:
-                FragManager2.getInstance().setFinishAnim(R.anim.anim_push_up_in, R.anim.anim_push_up_out).finish(getBaseUIActivity(),getContainerName());
+                FragManager2.getInstance().setFinishAnim(R.anim.anim_push_up_in, R.anim.anim_push_up_out).finish(getBaseUIActivity(),getContainerName(),false);
                 break;
         }
     }

@@ -6,6 +6,7 @@ import android.content.Context;
 
 import com.android.lib.network.news.NetArrayI;
 import com.android.lib.network.news.NetI;
+import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
@@ -54,6 +55,14 @@ public class UserDAOpe extends AppDAOpe {
         reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
         reqBean.setId(userid);
         NetDataOpe.User.unBinUnit(getActivity(),reqBean,adapter);
+    }
+
+    public boolean canUnBind(int userid){
+        if(LocalValue.getLoginInfo().getUserId()==userid){
+            ToastUtil.getInstance().showShort(getActivity(),"不能解绑自己");
+            return false;
+        }
+        return true;
     }
 
 }

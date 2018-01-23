@@ -73,13 +73,15 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                         UnitUserResBean.ResultsBean resultsBean  = (UnitUserResBean.ResultsBean) v.getTag(R.id.data);
                         switch (resultsBean.getBindCompanyState()){
                             case LoginResBean.BIND_UNIT_STATE_BINDED:
-                                getP().getD().unBindUser(resultsBean.getUserId(), new UINetAdapter<UnBindResBean>(activity) {
-                                    @Override
-                                    public void onResult(boolean success, String msg, UnBindResBean o) {
-                                        super.onResult(success, msg, o);
-                                        getP().getU().autoRefresh();
-                                    }
-                                });
+                                if(getP().getD().canUnBind(resultsBean.getUserId())){
+                                    getP().getD().unBindUser(resultsBean.getUserId(), new UINetAdapter<UnBindResBean>(activity) {
+                                        @Override
+                                        public void onResult(boolean success, String msg, UnBindResBean o) {
+                                            super.onResult(success, msg, o);
+                                            getP().getU().autoRefresh();
+                                        }
+                                    });
+                                }
                                 break;
                             default:
                                 getP().getD().addUser(resultsBean.getTel(), new UINetAdapter<AddUserResBean>(activity) {

@@ -43,6 +43,7 @@ public class GoodUIOpe extends AppUIOpe<FragManaGoodBinding> {
                 super.onBindViewHolder(holder, position, payloads);
                 ItemManaGoodBinding binding = (ItemManaGoodBinding) holder.viewDataBinding;
                 binding.swipe.setOnClickListener(this);
+                binding.swipe.setRightSwipeEnabled(false);
             }
         });
     }
@@ -58,6 +59,10 @@ public class GoodUIOpe extends AppUIOpe<FragManaGoodBinding> {
 
     public void autoRefresh(){
         bind.refreshLayout.autoRefresh();
+    }
+
+    public void autoRefresh(int delay){
+        bind.refreshLayout.autoRefresh(delay);
     }
 
 
