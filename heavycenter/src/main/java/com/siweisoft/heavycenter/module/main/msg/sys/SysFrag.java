@@ -65,34 +65,35 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
     @Override
     public void onInterupt(int type, View v) {
         final MsgsResBean.ResultsBean data = (MsgsResBean.ResultsBean) v.getTag(R.id.data);
+        String status = MsgDealReqBean.AUDII_STATUS_YES;
+        int auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED;
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.bt_agree:
-                        getP().getD().dealMss(data.getMessageId(), MsgDealReqBean.AUDII_STATUS_YES, new UINetAdapter<MsgDealResBean>(getContext()) {
-                            @Override
-                            public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
-                                stopLoading();
-                                if("200".equals(baseResBean.getCode())){
-                                    data.setAuditState(MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED);
-                                    getP().getU().notifyDataSetChanged();
-                                }
-                            }
-                        });
+                        status = MsgDealReqBean.AUDII_STATUS_YES;
+                        auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED;
                         break;
                     case R.id.bt_reject:
-                        getP().getD().dealMss(data.getMessageId(), MsgDealReqBean.AUDII_STATUS_NO, new UINetAdapter<MsgDealResBean>(getContext()) {
-                            @Override
-                            public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
-                                stopLoading();
-                                if("200".equals(baseResBean.getCode())){
-                                    data.setAuditState(MsgsResBean.ResultsBean.AUDITOR_STATE_REJECT);
-                                    getP().getU().notifyDataSetChanged();
-                                }
-                            }
-                        });
+                        status = MsgDealReqBean.AUDII_STATUS_NO;
+                        auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_REJECT;
+                        break;
+                    case R.id.bt_mana:
+                        status = MsgDealReqBean.AUDII_STATUS_YES;
+                        auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED;
                         break;
                 }
+                final int finalAuditstate = auditstate;
+                getP().getD().dealMss(data.getMessageId(), status, new UINetAdapter<MsgDealResBean>(getContext()) {
+                    @Override
+                    public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
+                        stopLoading();
+                        if("200".equals(baseResBean.getCode())){
+                            data.setAuditState(finalAuditstate);
+                            getP().getU().notifyDataSetChanged();
+                        }
+                    }
+                });
                 break;
         }
     }

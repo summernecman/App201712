@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.data.netd.unit.list;
 
 import com.android.lib.bean.BaseBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListResBean extends BaseBean {
@@ -21,7 +22,7 @@ public class ListResBean extends BaseBean {
     private int pageIndex;
     private int pageCount;
     private int pageSize;
-    private List<UnitInfo> results;
+    private List<UnitInfo> results = new ArrayList<>();
 
     public int getTotalCount() {
         return totalCount;

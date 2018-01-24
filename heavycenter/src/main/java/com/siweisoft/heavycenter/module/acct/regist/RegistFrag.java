@@ -45,13 +45,13 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
                         @Override
                         public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                             if(baseResBean.getCode().equals("200")){
-                                ToastUtil.getInstance().showLong(getContext(),"注册成功");
+                                ToastUtil.getInstance().showShort(getContext(),"注册成功");
                                 LocalValue.saveLoginReq(getP().getU().getLoginReqBean());
                                 getBaseUIActivity().onBackPressed();
                                 Bundle bundle = new Bundle();bundle.putBoolean("regist",true);
                                 FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号ID,new RoleFrag(),bundle);
                             }else{
-                                ToastUtil.getInstance().showLong(getContext(),baseResBean.getMessage());
+                                ToastUtil.getInstance().showShort(getContext(),baseResBean.getMessage());
                             }
                             stopLoading();
                         }

@@ -48,10 +48,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style_common:txt_left=""
-            style_common:txt_right="5"
+            style_common:txt_right=""
             style_common:iv_left="@drawable/icon_hv_myce_good"
             style_common:iv_right="@drawable/icon_hv_into"
-            style_common:txt_right_bg="@drawable/bg_cricle_yel"
             style_common:bg_divider="@color/color_item_content_gap"
             />
 

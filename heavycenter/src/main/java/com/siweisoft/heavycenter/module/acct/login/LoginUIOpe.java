@@ -34,12 +34,12 @@ public class LoginUIOpe extends AppUIOpe<FragAcctLoginBinding> {
 
     public boolean go(){
         if(NullUtil.isStrEmpty(bind.phone.getText().toLowerCase())){
-            ToastUtil.getInstance().showLong(getActivity(),"手机号不能为空");
+            ToastUtil.getInstance().showShort(getActivity(),"手机号不能为空");
             return false;
         }
 
         if(NullUtil.isStrEmpty(bind.phone.getText().toLowerCase())){
-            ToastUtil.getInstance().showLong(getActivity(),"密码不能为空");
+            ToastUtil.getInstance().showShort(getActivity(),"密码不能为空");
             return false;
         }
         return true;

@@ -26,7 +26,7 @@ public class NewUIOpe extends AppUIOpe<FragManaGoodNewBinding>{
         return true;
     }
 
-    public boolean canGo(){
+    public boolean canGo(NewsGoodReq newsGoodReq){
         if(NullUtil.isStrEmpty(bind.itemWuniaoname.getMidTvTxt())){
             ToastUtil.getInstance().showShort(getActivity(),"请选择物料");
             return false;
@@ -49,6 +49,11 @@ public class NewUIOpe extends AppUIOpe<FragManaGoodNewBinding>{
         }
         if(Float.parseFloat(bind.itemMaxstock.getMidEtTxt())<Float.parseFloat(bind.itemMinstock.getMidEtTxt())){
             ToastUtil.getInstance().showShort(getActivity(),"最大库存不应该小于安全库存");
+            return false;
+        }
+
+        if(Float.parseFloat(bind.itemMaxstock.getMidEtTxt())>newsGoodReq.getMaxStock()){
+            ToastUtil.getInstance().showShort(getActivity(),"最大物料库存不应该大于最大仓库库存");
             return false;
         }
         return true;

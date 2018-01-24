@@ -43,23 +43,23 @@ public class NewUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 
     public boolean canGo(){
         if(NullUtil.isStrEmpty(bind.itemCarlicenseno.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+            ToastUtil.getInstance().showShort(getActivity(),"请输入车牌号");
             return false;
         }
         if(NullUtil.isStrEmpty(bind.itemBrand.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+            ToastUtil.getInstance().showShort(getActivity(),"请输入车牌号");
             return false;
         }
         if(NullUtil.isStrEmpty(bind.itemMaxweight.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+            ToastUtil.getInstance().showShort(getActivity(),"请输入车牌号");
             return false;
         }
         if(NullUtil.isStrEmpty(bind.itemEmptyweight.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+            ToastUtil.getInstance().showShort(getActivity(),"请输入车牌号");
             return false;
         }
         if(NullUtil.isStrEmpty(bind.itemIccard.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+            ToastUtil.getInstance().showShort(getActivity(),"请输入车牌号");
             return false;
         }
         return true;

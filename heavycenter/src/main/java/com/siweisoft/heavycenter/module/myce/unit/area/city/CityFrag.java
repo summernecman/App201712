@@ -16,6 +16,8 @@ import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import butterknife.OnClick;
+
 public class CityFrag extends AppFrag<CityUIOpe,CityDAOpe> implements ViewListener{
 
 
@@ -61,10 +63,11 @@ public class CityFrag extends AppFrag<CityUIOpe,CityDAOpe> implements ViewListen
         }
     }
 
-    @Override
+    @OnClick({R.id.ftv_right2})
     public void onClick(View v) {
+        super.onClick(v);
         switch (v.getId()){
-            case R.id.ftv_back:
+            case R.id.ftv_right2:
                 getArguments().putSerializable(ValueConstant.DATA_DATA, getP().getD().getCitys());
                 getArguments().putInt(ValueConstant.DATA_POSITION2,getP().getD().getProindex());
                 getBaseUIActivity().onBackPressed();

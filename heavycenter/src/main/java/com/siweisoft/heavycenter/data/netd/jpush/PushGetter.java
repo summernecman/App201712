@@ -15,10 +15,10 @@ public class PushGetter extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        ToastUtil.getInstance().showLong(context,intent.getAction());
+        ToastUtil.getInstance().showShort(context,intent.getAction());
         if(intent.getExtras()!=null){
             Bundle bundle = intent.getExtras();
-            ToastUtil.getInstance().showLong(context,bundle.getString(JPushInterface.EXTRA_TITLE)+":"+bundle.getString(JPushInterface.EXTRA_MESSAGE)+":"+bundle.getString(JPushInterface.EXTRA_EXTRA));
+            ToastUtil.getInstance().showShort(context,bundle.getString(JPushInterface.EXTRA_TITLE)+":"+bundle.getString(JPushInterface.EXTRA_MESSAGE)+":"+bundle.getString(JPushInterface.EXTRA_EXTRA));
         }
     }
 }

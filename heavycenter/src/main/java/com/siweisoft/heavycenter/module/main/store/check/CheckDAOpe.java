@@ -96,8 +96,18 @@ public class CheckDAOpe extends AppDAOpe {
     }
 
     public void setStoresResBean(StoresResBean storesResBean) {
+        boolean havenullproduct = false;
         for(int i=0;storesResBean!=null&&storesResBean.getResults()!=null && i<storesResBean.getResults().size();i++){
+            if(storesResBean.getResults().get(i).getProductId()==-1){
+                storesResBean.getResults().remove(i);
+                i--;
+                havenullproduct = true;
+                continue;
+            }
             storesResBean.getResults().get(i).setAfterAdjust(storesResBean.getResults().get(i).getCurrentStock());
+        }
+        if(havenullproduct){
+            ToastUtil.getInstance().showShort(getActivity(),"部分仓库因为没有物料不能盘点");
         }
         this.storesResBean = storesResBean;
     }

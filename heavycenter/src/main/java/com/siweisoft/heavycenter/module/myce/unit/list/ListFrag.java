@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.myce.unit.list;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
@@ -27,7 +28,7 @@ import java.io.Serializable;
 
 import butterknife.OnClick;
 
-public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListener,OnRefreshListener {
+public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListener,OnRefreshListener,OnFinishListener {
 
     @Override
     public void initData() {
@@ -35,6 +36,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
         getP().getU().initRefresh(this);
         getP().getU().initRecycle();
         getP().getU().autoRefresh();
+        getP().getU().实时搜索(this);
     }
 
 
@@ -138,11 +140,13 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
+        getP().getU().clearKey();
         getP().getD().getData(new UINetAdapter<ListResBean>(activity) {
             @Override
             public void onResult(boolean success, String msg, ListResBean o) {
                 super.onResult(success, msg, o);
-                getP().getU().LoadListData(o,ListFrag.this);
+                getP().getD().setNetUnits(o);
+                getP().getU().LoadListData(getP().getD().getSelUnits(""),ListFrag.this);
                 getP().getU().finishRefresh();
             }
         });
@@ -161,4 +165,8 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
         }
     }
 
+    @Override
+    public void onFinish(Object o) {
+        getP().getU().LoadListData(getP().getD().getSelUnits(o.toString()),ListFrag.this);
+    }
 }

@@ -12,7 +12,6 @@ import com.android.lib.network.newsf.UIFNetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarReq;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarRes;
@@ -62,7 +61,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                 if(bundle==null|| bundle.getSerializable(ValueConstant.DATA_DATA)==null){
                     return;
                 }
-                final CarsResBean.ResultsBean bean = (CarsResBean.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA);
+                final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) bundle.getSerializable(ValueConstant.DATA_DATA);
                 getP().getD().addCar(bean.getVehicleId(), AddCarReq.添加,new NetAdapter<AddCarRes>(getContext()){
                     @Override
                     public void onResult(boolean success, String msg, AddCarRes o) {
@@ -83,7 +82,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
             case ViewListener.TYPE_ONCLICK:
                 switch (v.getId()){
                     case R.id.menu:
-                        final CarsResBean.ResultsBean bean = (CarsResBean.ResultsBean) v.getTag(R.id.data);
+                        final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
                         getP().getD().addCar(bean.getVehicleId(), AddCarReq.移除,new NetAdapter<AddCarRes>(getContext()){
                             @Override
                             public void onResult(boolean success, String msg, AddCarRes o) {

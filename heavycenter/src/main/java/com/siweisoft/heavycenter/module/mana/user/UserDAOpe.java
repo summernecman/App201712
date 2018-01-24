@@ -4,7 +4,6 @@ package com.siweisoft.heavycenter.module.mana.user;
 
 import android.content.Context;
 
-import com.android.lib.network.news.NetArrayI;
 import com.android.lib.network.news.NetI;
 import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;

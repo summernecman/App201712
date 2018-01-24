@@ -11,7 +11,6 @@ import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.daimajia.swipe.SwipeLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
@@ -21,8 +20,6 @@ import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.databinding.FragManaCarMyBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaCarMyBinding;
-
-import java.util.List;
 
 public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
 
@@ -51,19 +48,19 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
-                ItemManaCarMyBinding binding = (ItemManaCarMyBinding) holder.viewDataBinding;
+                final ItemManaCarMyBinding binding = (ItemManaCarMyBinding) holder.viewDataBinding;
                 binding.llContainer.setTag(com.android.lib.R.id.data, list.get(position));
                 binding.llContainer.setTag(com.android.lib.R.id.position, position);
                 binding.llContainer.setOnClickListener(this);
 
                 binding.executePendingBindings();//加一行，问题解决
                 if(CarsReqBean.WHAT_MY.equals(moudle)){
-                    if(cars.getResults().get(position).getStatus()== CarsResBean.ResultsBean.STATUS_OFF){
+                    if(cars.getResults().get(position).getStatus()== CarsResBean.CarInfoRes.STATUS_OFF){
                         binding.menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
-                        binding.menu.setText(CarsResBean.ResultsBean.STATUS_ON_CN);
+                        binding.menu.setText(CarsResBean.CarInfoRes.STATUS_ON_CN);
                     }else{
                         binding.menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
-                        binding.menu.setText(CarsResBean.ResultsBean.STATUS_OFF_CN);
+                        binding.menu.setText(CarsResBean.CarInfoRes.STATUS_OFF_CN);
                     }
                     binding.swipe.setShowMode(SwipeLayout.ShowMode.PullOut);
                     binding.swipe.addDrag(SwipeLayout.DragEdge.Right,binding.menu);
@@ -84,7 +81,12 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
 
                         @Override
                         public void onStartOpen(SwipeLayout layout) {
-
+                            for(int i=0;i<bind.recycle.getChildCount();i++){
+                                SwipeLayout swipeLayout= bind.recycle.getChildAt(i).findViewById(R.id.swipe);
+                                if(swipeLayout!=binding.swipe){
+                                    swipeLayout.close(true);
+                                }
+                            }
                         }
 
                         @Override

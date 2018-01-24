@@ -2,6 +2,7 @@ package com.android.lib.util;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.widget.Toast;
 
 /**
@@ -37,7 +38,7 @@ public class ToastUtil {
      */
     public void showShort(Context context, String msg) {
         if(context!=null){
-        Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
         }
     }
 

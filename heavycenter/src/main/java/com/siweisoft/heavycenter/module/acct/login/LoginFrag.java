@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.network.news.NetAdapter;
-import com.android.lib.network.news.NetArrayAdapter;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
 import com.android.lib.util.fragment.FragManager;

@@ -51,7 +51,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,new ProvFrag(),bundle);
                 break;
             case R.id.ftv_right2:
-                if(getP().getU().canGo()){
+                if(getP().getU().canGo(getP().getD().getNewsGoodReq())){
                     getP().getD().NewsGood(getP().getU().getNewsGoodReq(getP().getD().getNewsGoodReq()), new UINetAdapter<NewsGoodRes>(getActivity()) {
                         @Override
                         public void onResult(boolean success, String msg, NewsGoodRes o) {
@@ -91,6 +91,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
             case 3:
                 if(bundle.getSerializable(ValueConstant.DATA_DATA2)!=null){
                     StoreDetail d = (StoreDetail) bundle.getSerializable(ValueConstant.DATA_DATA2);
+                    getP().getD().getNewsGoodReq().setMaxStock(d.getMaxStock());
                     getP().getD().getNewsGoodReq().setWarehouseId(d.getWarehouseId());
                     getP().getD().getNewsGoodReq().setWarehouseName(d.getWarehouseName());
                 }

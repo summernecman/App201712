@@ -30,7 +30,7 @@ public class StoreDetail extends BaseBean {
     private String warehouseName;
     private String specifications;
     private String productName;
-    private int productId;
+    private int productId=-1;
     private float minStock;
     private int status;
     private String allProfitNum;

@@ -16,6 +16,7 @@
             style_common:txt_mid ="送货区域"
             style_common:iv_left ="@drawable/icon_hv_back"
             style_common:iv_right ="@drawable/icon_hv_scan"
+            style_common:iv_right2 ="@drawable/icon_hv_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

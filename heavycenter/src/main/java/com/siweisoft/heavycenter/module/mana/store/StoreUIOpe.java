@@ -4,12 +4,15 @@ package com.siweisoft.heavycenter.module.mana.store;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.network.news.NetI;
 import com.android.lib.util.StringUtil;
+import com.daimajia.swipe.SwipeLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -50,9 +53,9 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
-                ItemManaStoreBinding binding = (ItemManaStoreBinding) holder.viewDataBinding;
+                final ItemManaStoreBinding binding = (ItemManaStoreBinding) holder.viewDataBinding;
                 binding.tvMaxstock.setText("最大库存:"+ StringUtil.getStr(o.getResults().get(position).getMaxStock())+"t");
-                binding.tvMinstock.setText("最大库存:"+ StringUtil.getStr(o.getResults().get(position).getMinStock())+"t");
+                binding.tvMinstock.setText("安全库存:"+ StringUtil.getStr(o.getResults().get(position).getMinStock())+"t");
 
                 switch (o.getResults().get(position).getStatus()){
                     case StoreDetail.STATUS_OFF:
@@ -71,6 +74,77 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
                 binding.munu.setTag(R.id.data1,binding.swipe);
 
                 binding.swipe.setRightSwipeEnabled(isSwipe());
+
+
+                binding.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {
+                    @Override
+                    public void onStartOpen(SwipeLayout layout) {
+                        for(int i=0;i<bind.recycle.getChildCount();i++){
+                            SwipeLayout swipeLayout= bind.recycle.getChildAt(i).findViewById(R.id.swipe);
+                            if(swipeLayout!=binding.swipe){
+                                swipeLayout.close(true);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onOpen(SwipeLayout layout) {
+
+                    }
+
+                    @Override
+                    public void onStartClose(SwipeLayout layout) {
+
+                    }
+
+                    @Override
+                    public void onClose(SwipeLayout layout) {
+
+                    }
+
+                    @Override
+                    public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
+
+                    }
+
+                    @Override
+                    public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
+
+                    }
+                });
+            }
+
+
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+                switch (v.getId()){
+                    case R.id.munu:
+                        SwipeLayout swipeLayout = (SwipeLayout) v.getTag(R.id.data1);
+                        swipeLayout.close(true);
+                        break;
+                }
+            }
+        });
+
+
+        bind.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                switch (newState){
+                    case RecyclerView.SCROLL_STATE_DRAGGING:
+                        for(int i=0;i<recyclerView.getChildCount();i++){
+                            SwipeLayout swipeLayout= recyclerView.getChildAt(i).findViewById(R.id.swipe);
+                            swipeLayout.close(true);
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
             }
         });
     }

@@ -4,9 +4,13 @@ package com.siweisoft.heavycenter.module.welc.welc;
 
 import android.content.Context;
 
+import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
+import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,5 +50,12 @@ public class WelcDAOpe extends AppDAOpe {
             pro.add(provinceListBean);
         }
         LocalValue.saveProlList(pro);
+    }
+
+    public void getInfo(NetI<LoginResBean> adapter){
+        UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
+        userInfoReqBean.setId(LocalValue.getLoginInfo().getUserId());
+        userInfoReqBean.setIsApp(1);
+        NetDataOpe.User.getInfo(getActivity(),userInfoReqBean,adapter);
     }
 }

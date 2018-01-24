@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.myce.unit.list;
 import android.content.Context;
 
 import com.android.lib.network.news.NetI;
+import com.android.lib.util.NullUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
@@ -27,6 +28,11 @@ public class ListDAOpe extends AppDAOpe {
     public static final int UP_UNIT = 1;
 
     public static final int SEL_UNIT = 2;
+
+    ListResBean netUnits = new ListResBean();
+
+
+    ListResBean selUnits = new ListResBean();
 
     public ListDAOpe(Context context) {
         super(context);
@@ -68,5 +74,32 @@ public class ListDAOpe extends AppDAOpe {
         UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
         unitInfoReqBean.setId(id);
         NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean,adapter);
+    }
+
+    public ListResBean getNetUnits() {
+        return netUnits;
+    }
+
+    public void setNetUnits(ListResBean netUnits) {
+        this.netUnits = netUnits;
+    }
+
+    public ListResBean getSelUnits(String key) {
+        if(NullUtil.isStrEmpty(key)){
+            return netUnits;
+        }
+        selUnits.getResults().clear();
+        for(int i=0;i<getNetUnits().getResults().size();i++){
+            if((getNetUnits().getResults().get(i).getAbbreviationName()+getNetUnits().getResults().get(i).getCompanyAddress()+""+
+                    getNetUnits().getResults().get(i).getCompanyName()+""+getNetUnits().getResults().get(i).getContactName()
+                    +getNetUnits().getResults().get(i).getContactPhone()).contains(key)){
+                selUnits.getResults().add(getNetUnits().getResults().get(i));
+            }
+        }
+        return selUnits;
+    }
+
+    public void setSelUnits(ListResBean selUnits) {
+        this.selUnits = selUnits;
     }
 }

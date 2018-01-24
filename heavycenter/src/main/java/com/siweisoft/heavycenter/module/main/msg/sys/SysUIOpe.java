@@ -52,31 +52,21 @@ public class SysUIOpe extends BaseUIOpe<FragMainMsgSysBinding>{
                 switch (o.getResults().get(position).getAuditState()){
                     case MsgsResBean.ResultsBean.AUDITOR_STATE_CHECKING:
                         switch (o.getResults().get(position).getMessageType()){
-                            case MsgsResBean.ResultsBean.MSG_TYPE_APPLY_D:
-                                binding.llFuction.setVisibility(View.VISIBLE);
-                                binding.btAgree.setOnClickListener(this);
-                                binding.btReject.setOnClickListener(this);
-                                binding.btAgree.setTag(R.id.data,o.getResults().get(position));
-                                binding.btReject.setOnClickListener(this);
-                                binding.btReject.setTag(R.id.data,o.getResults().get(position));
-                                break;
-                            case MsgsResBean.ResultsBean.MSG_TYPE_APPLY_U:
-                                binding.llFuction.setVisibility(View.VISIBLE);
-                                binding.btAgree.setOnClickListener(this);
-                                binding.btReject.setOnClickListener(this);
-                                binding.btAgree.setTag(R.id.data,o.getResults().get(position));
-                                binding.btReject.setOnClickListener(this);
-                                binding.btReject.setTag(R.id.data,o.getResults().get(position));
-                                break;
-                            case MsgsResBean.ResultsBean.MSG_TYPE_INFO:
-                                break;
-                            case MsgsResBean.ResultsBean.MSG_TYPE_INVITE_D:
-                                break;
                             case MsgsResBean.ResultsBean.MSG_TYPE_INVITE_M:
-                                break;
-                            case MsgsResBean.ResultsBean.MSG_TYPE_UPDATE:
+                                binding.llFuction.setVisibility(View.VISIBLE);
+                                binding.btMana.setOnClickListener(this);
+                                binding.btReject.setOnClickListener(this);
+                                binding.btMana.setTag(R.id.data,o.getResults().get(position));
+                                binding.btReject.setOnClickListener(this);
+                                binding.btReject.setTag(R.id.data,o.getResults().get(position));
                                 break;
                             default:
+                                binding.llFuction.setVisibility(View.VISIBLE);
+                                binding.btAgree.setOnClickListener(this);
+                                binding.btReject.setOnClickListener(this);
+                                binding.btAgree.setTag(R.id.data,o.getResults().get(position));
+                                binding.btReject.setOnClickListener(this);
+                                binding.btReject.setTag(R.id.data,o.getResults().get(position));
                                 break;
 
                         }

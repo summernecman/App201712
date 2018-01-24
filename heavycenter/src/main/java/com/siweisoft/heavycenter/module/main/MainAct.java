@@ -56,12 +56,15 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtil.E("111111111111111");
         //getP().getD().testData();
+        LogUtil.E("222222222222222");
         getP().getU().setBottomMenuViewData(getP().getD().getMenudata());
         if(!getP().getD().getPermissionUtil().isAllGranted(activity,getP().getD().getPermissions())){
             return;
         }
         dothing();
+        LogUtil.E("333333333333333333333");
     }
 
 

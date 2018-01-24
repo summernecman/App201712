@@ -16,56 +16,18 @@
             android:id="@+id/title"
             style_common:iv_left="@drawable/icon_hv_back"
             style_common:txt_mid ="绑定车辆"
-            style_common:iv_right2 ="@drawable/icon_hv_sel_y"
             style_common:iv_right ="@drawable/icon_hv_scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
+        <com.siweisoft.heavycenter.module.view.input.SearchBindUnitMyceItem
+            android:id="@+id/search"
+            android:elevation="2dp"
+            android:text="请输入车牌号"
             android:layout_width="match_parent"
-            android:layout_height="40dp">
-
-            <TextView
-                android:layout_marginRight="10dp"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:layout_marginLeft="10dp"
-                android:text="车牌号"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:background="@color/transparent"
-                android:hint="请输入"
-                android:textSize="14sp"
-                android:textColor="@color/color_grey_300"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:background="@drawable/bg_hv_sharp9_yell_solid"
-                android:textSize="14sp"
-                android:textColor="@color/white"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="确定"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
+            android:layout_height="50dp" />
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            app:srlEnablePureScrollMode="true"
-            app:srlEnableLoadmore="true"
-            app:srlDragRate="0.1"
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">

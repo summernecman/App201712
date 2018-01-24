@@ -11,9 +11,6 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -21,9 +18,7 @@ import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
-import com.siweisoft.heavycenter.databinding.FragMainOrderBeginBinding;
 import com.siweisoft.heavycenter.databinding.FragMainOrderDetailBinding;
-import com.siweisoft.heavycenter.databinding.ItemMainOrderBeginBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainOrderDetailDriverBinding;
 
 import java.util.Date;
@@ -85,7 +80,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
         bind.itemRule.setMidTVTxt(StringUtil.getStr(res.getSignRule()));
     }
 
-    public void initdata(List<CarsResBean.ResultsBean> list, ViewListener listener ){
+    public void initdata(List<CarsResBean.CarInfoRes> list, ViewListener listener ){
         bind.recycle.setAdapter(new AppsDataBindingAdapter(getActivity(),R.layout.item_main_order_detail_driver,BR.item_main_order_detail_driver,list,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {

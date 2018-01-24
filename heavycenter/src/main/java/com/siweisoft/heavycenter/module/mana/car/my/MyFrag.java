@@ -44,22 +44,23 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
             case ViewListener.TYPE_ONCLICK:
                 switch (v.getId()){
                     case R.id.menu:
-                        final CarsResBean.ResultsBean bean = (CarsResBean.ResultsBean) v.getTag(R.id.data);
+                        final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
                         getP().getD().statusCar(bean.getVehicleId(), bean.getStatus(), new UINetAdapter<StopCarResBean>(activity) {
                             @Override
                             public void onResult(boolean success, String msg, StopCarResBean o) {
                                 super.onResult(success, msg, o);
                                 if(success){
-                                    bean.setStatus(bean.getStatus()== CarsResBean.ResultsBean.STATUS_ON?CarsResBean.ResultsBean.STATUS_OFF:CarsResBean.ResultsBean.STATUS_ON);
+                                    bean.setStatus(bean.getStatus()== CarsResBean.CarInfoRes.STATUS_ON? CarsResBean.CarInfoRes.STATUS_OFF: CarsResBean.CarInfoRes.STATUS_ON);
                                     getP().getU().notifyDataSetChanged();
                                 }
                             }
                         });
                         break;
                         default:
-                            final CarsResBean.ResultsBean bean1 = (CarsResBean.ResultsBean) v.getTag(R.id.data);
+                            final CarsResBean.CarInfoRes bean1 = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
                             Bundle bundle = new Bundle();
                             bundle.putSerializable(ValueConstant.DATA_DATA,bean1);
+                            bundle.putInt(ValueConstant.FARG_REQ,1);
                             if(getArguments().getInt(ValueConstant.FARG_REQ,-1)==MyFrag.TYPE_SEL){
                                 getArguments().putAll(bundle);
                                 getBaseUIActivity().onBackPressed();
@@ -87,5 +88,18 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
                 getP().getU().finishRefresh();
             }
         });
+    }
+
+    @Override
+    public void onRestart(int res, Bundle bundle) {
+        super.onRestart(res, bundle);
+        switch (res){
+            case 1:
+                if(bundle==null|| !bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
+                    return;
+                }
+                getP().getU().autoRefresh();
+                break;
+        }
     }
 }

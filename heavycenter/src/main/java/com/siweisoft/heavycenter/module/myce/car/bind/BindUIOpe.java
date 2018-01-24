@@ -5,9 +5,12 @@ package com.siweisoft.heavycenter.module.myce.car.bind;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.interf.OnFinishListener;
+import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.daimajia.swipe.SwipeLayout;
@@ -34,7 +37,14 @@ public class BindUIOpe extends AppUIOpe<FragMyceCarBindBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-
+    public void 实时搜索(final OnFinishListener listener){
+        bind.search.getEditText().addTextChangedListener(new BaseTextWather(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                listener.onFinish(s.toString());
+            }
+        });
+    }
 
     public void LoadListData(CarsResBean data,ViewListener listener){
         if(data==null){
@@ -99,9 +109,8 @@ public class BindUIOpe extends AppUIOpe<FragMyceCarBindBinding>{
         }
     }
 
-    public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener){
+    public void initRefresh(OnRefreshListener refreshListener){
         bind.refreshLayout.setOnRefreshListener(refreshListener);
-        bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
     }
 
     public void finishRefresh(){
@@ -114,5 +123,14 @@ public class BindUIOpe extends AppUIOpe<FragMyceCarBindBinding>{
 
     public void autoRefresh(){
         bind.refreshLayout.autoRefresh();
+    }
+
+
+    public String getKeyWord(){
+        return bind.search.getEditText().getText().toString();
+    }
+
+    public void clearKey(){
+        bind.search.getEditText().setText("");
     }
 }

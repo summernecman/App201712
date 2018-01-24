@@ -4,10 +4,14 @@ package com.siweisoft.heavycenter.module.myce.unit.list;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.interf.OnFinishListener;
+import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -37,6 +41,15 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
+    }
+
+    public void 实时搜索(final OnFinishListener listener){
+        bind.search.getEditText().addTextChangedListener(new BaseTextWather(){
+            @Override
+            public void afterTextChanged(Editable s) {
+                listener.onFinish(s.toString());
+            }
+        });
     }
 
     public void LoadListData(ListResBean o, final ViewListener listener) {
@@ -100,5 +113,13 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
         if(bind.recycle.getAdapter()!=null){
             bind.recycle.getAdapter().notifyDataSetChanged();
         }
+    }
+
+    public String getKeyWord(){
+        return bind.search.getEditText().getText().toString();
+    }
+
+    public void clearKey(){
+        bind.search.getEditText().setText("");
     }
 }

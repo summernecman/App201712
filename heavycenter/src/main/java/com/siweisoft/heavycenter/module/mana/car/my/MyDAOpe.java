@@ -46,7 +46,7 @@ public class MyDAOpe extends AppDAOpe {
         StopCarReqBean reqBean = new StopCarReqBean();
         reqBean.setEditer(LocalValue.getLoginInfo().getUserId());
         reqBean.setId(carid);
-        reqBean.setStatus(status==CarsResBean.ResultsBean.STATUS_OFF?CarsResBean.ResultsBean.STATUS_ON:CarsResBean.ResultsBean.STATUS_OFF);
+        reqBean.setStatus(status== CarsResBean.CarInfoRes.STATUS_OFF? CarsResBean.CarInfoRes.STATUS_ON: CarsResBean.CarInfoRes.STATUS_OFF);
         NetDataOpe.Mana.Car.statusCar(getActivity(),reqBean,adapter);
     }
 

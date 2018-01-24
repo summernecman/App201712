@@ -120,8 +120,10 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
             case R.id.iv_car:
                 IntentUtil.getInstance().photoShowFromphone(this,02);
+                break;
             case R.id.iv_dirver:
                 IntentUtil.getInstance().photoShowFromphone(this,03);
+                break;
             case R.id.item_driver:
                 FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new BindFrag());
                 break;

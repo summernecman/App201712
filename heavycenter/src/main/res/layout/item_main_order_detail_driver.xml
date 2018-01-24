@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item_main_order_detail_driver"
-            type="com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean.ResultsBean" />
+            type="com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean.CarInfoRes" />
     </data>
 
     <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"

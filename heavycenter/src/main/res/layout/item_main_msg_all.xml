@@ -148,6 +148,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
+                <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    android:id="@+id/bt_mana"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15sp"
+                    android:visibility="gone"
+                    style_common:color_one="@color/color_hv_yelll"
+                    style_common:stroke="0dp"
+                    style_common:color_stroke="@color/red"
+                    style_common:corner="5dp"
+                    style_common:color_txt="@color/white"
+
+                    style_common:color_two="@color/color_red_800"
+                    style_common:stroke_two="2dp"
+                    style_common:color_stroke_two="@color/color_hv_yelll"
+                    style_common:corner_two="5dp"
+                    style_common:color_txt_two="@color/white"
+                    style_common:boo_one="false"
+                    android:text="设为管理员"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
 
 
             </LinearLayout>

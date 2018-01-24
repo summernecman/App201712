@@ -100,7 +100,7 @@ public class OrdersRes extends BaseBean {
         private String fhdwQName;
         private String signRule;
         private String orderStatus;
-        private List<CarsResBean.ResultsBean> vehicleList = new ArrayList<>();
+        private List<CarsResBean.CarInfoRes> vehicleList = new ArrayList<>();
 
         public int getOrderId() {
             return orderId;
@@ -214,11 +214,11 @@ public class OrdersRes extends BaseBean {
             this.orderStatus = orderStatus;
         }
 
-        public List<CarsResBean.ResultsBean> getVehicleList() {
+        public List<CarsResBean.CarInfoRes> getVehicleList() {
             return vehicleList;
         }
 
-        public void setVehicleList(List<CarsResBean.ResultsBean> vehicleList) {
+        public void setVehicleList(List<CarsResBean.CarInfoRes> vehicleList) {
             this.vehicleList = vehicleList;
         }
     }

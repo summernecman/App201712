@@ -6,6 +6,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.android.lib.base.fragment.BaseUIFrag;
+import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.GlideApp;
 import com.siweisoft.heavycenter.R;
@@ -54,6 +55,12 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                 default:
                     bind.itemDriver.setVisibility(View.GONE);
                     break;
+            }
+
+            if(NullUtil.isStrEmpty(LocalValue.getLoginInfo().getCarLicenseNo())){
+                bind.llCar.setVisibility(View.GONE);
+            }else{
+                bind.llCar.setVisibility(View.VISIBLE);
             }
 
         }else{

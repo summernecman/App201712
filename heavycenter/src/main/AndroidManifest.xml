@@ -34,6 +34,13 @@
 
         </activity>
 
+
+        <activity android:name=".module.main.test.TestAct"
+            android:screenOrientation="portrait">
+
+
+        </activity>
+
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"

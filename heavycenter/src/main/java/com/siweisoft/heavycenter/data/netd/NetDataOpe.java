@@ -20,6 +20,7 @@ import com.siweisoft.heavycenter.data.netd.acct.rename.ReNameReqBean;
 import com.siweisoft.heavycenter.data.netd.acct.rename.ReNameResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.bind.BindCarReq;
 import com.siweisoft.heavycenter.data.netd.mana.car.bind.BindCarRes;
+import com.siweisoft.heavycenter.data.netd.mana.car.info.CarInfoReq;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewReqBean;
@@ -227,6 +228,11 @@ public class NetDataOpe {
         }
 
 
+        public static void updateDriver(Context context, UpdateHeadReqBean reqBean, NetI<UpdateHeadResBean> adapter) {
+            NetGet.postData(context,NetValue.获取地址("/user/updateDriverInfo"),reqBean,adapter);
+        }
+
+
 
 
     }
@@ -279,6 +285,11 @@ public class NetDataOpe {
 
             public static void bindCar(Context context, BindCarReq reqBean, NetI<BindCarRes> adapter) {
                 NetGet.postData(context,NetValue.获取地址("/vehicle/bindVehicle"),reqBean,adapter);
+            }
+
+
+            public static void infoCar(Context context, CarInfoReq reqBean, NetI<CarsResBean.CarInfoRes> adapter) {
+                NetGet.getData(context,NetValue.获取地址("/vehicle/getDetail"),reqBean,adapter);
             }
 
         }

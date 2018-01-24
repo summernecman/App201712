@@ -6,15 +6,24 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.network.news.NetAdapter;
+import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
+import com.android.lib.util.LogUtil;
+import com.android.lib.util.fragment.FragManager;
+import com.android.lib.util.fragment.two.FragManager2;
+import com.android.lib.util.system.HandleUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
+import com.siweisoft.heavycenter.module.acct.login.LoginFrag;
+import com.siweisoft.heavycenter.module.main.MainAct;
 
 import java.util.ArrayList;
 
@@ -27,31 +36,42 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
         super.onCreate(savedInstanceState);
         getP().getU().initBg(getP().getD().getImageUrl());
 
+        if(LocalValue.getProMap()!=null&&LocalValue.getProMap().size()>0){
+            AutoLogin();
+        }else{
+            NetDataOpe.getCity(activity,new CityReqBean(),new NetAdapter<ArrayList<CityResBean>>(activity){
 
-        NetDataOpe.getCity(activity,new CityReqBean(),new NetAdapter<ArrayList<CityResBean>>(activity){
-
-            @Override
-            public void onResult(boolean success, String msg, final ArrayList<CityResBean> o) {
-                super.onResult(success, msg, o);
-                if(success){
-                   new AsyncTask<String, String, String>() {
-                       @Override
-                       protected String doInBackground(String... strings) {
-                           LocalValue.saveCitysInfo(o);
-                           getP().getD().saveProMapInfo();
-                           getP().getD().initDATA();
-                           return null;
-                       }
-
-                       @Override
-                       protected void onPostExecute(String s) {
-                           super.onPostExecute(s);
-                           IntentUtil.startActivityWithFinish(WelcAct.this, AcctAct.class,null);
-                       }
-                   }.execute();
+                @Override
+                public void onResult(boolean success, String msg, final ArrayList<CityResBean> o) {
+                    super.onResult(success, msg, o);
+                    if(success){
+                        LocalValue.saveCitysInfo(o);
+                        getP().getD().saveProMapInfo();
+                        getP().getD().initDATA();
+                        AutoLogin();
+                    }
                 }
-            }
-        });
+            });
+        }
+    }
+
+    private void AutoLogin(){
+        if(LocalValue.isAutoLogin()){
+            getP().getD().getInfo(new UINetAdapter<LoginResBean>(WelcAct.this) {
+                @Override
+                public void onResult(boolean success, String msg, LoginResBean o) {
+                    super.onResult(success, msg, o);
+                    if(success){
+                        LocalValue.saveLoginInfo(o);
+                        IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+                    }else{
+                        IntentUtil.startActivityWithFinish(WelcAct.this, AcctAct.class,null);
+                    }
+                }
+            });
+        }else{
+            IntentUtil.startActivityWithFinish(WelcAct.this, AcctAct.class,null);
+        }
     }
 
     @OnClick({R.id.image})

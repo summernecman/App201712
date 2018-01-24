@@ -4,22 +4,16 @@ package com.siweisoft.heavycenter.module.acct.login;
 
 import android.content.Context;
 
-import com.android.lib.network.netadapter.UINetAdapter;
-import com.android.lib.network.news.NetArrayI;
 import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
-import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginReqBean;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
-import com.siweisoft.heavycenter.data.netd.acct.regist.RegistReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class LoginDAOpe extends AppDAOpe {
 

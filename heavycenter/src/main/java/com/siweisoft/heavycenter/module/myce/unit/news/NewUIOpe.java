@@ -37,23 +37,23 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
 
     public boolean canGo(){
         if(NullUtil.isStrEmpty(bind.itemUnitname.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"单位名称为空");
+            ToastUtil.getInstance().showShort(getActivity(),"单位名称为空");
             return false;
         }
         if(NullUtil.isStrEmpty(bind.itemNunitshortname.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"单位简称为空");
+            ToastUtil.getInstance().showShort(getActivity(),"单位简称为空");
             return false;
         }
         if(NullUtil.isStrEmpty(bind.unitaddr.getMidTV().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"单位地址为空");
+            ToastUtil.getInstance().showShort(getActivity(),"单位地址为空");
             return false;
         }
         if(NullUtil.isStrEmpty(bind.unitcontact.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"联系人为空");
+            ToastUtil.getInstance().showShort(getActivity(),"联系人为空");
             return false;
         }
         if(NullUtil.isStrEmpty(bind.unitphone.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"联系电话为空");
+            ToastUtil.getInstance().showShort(getActivity(),"联系电话为空");
             return false;
         }
         return true;

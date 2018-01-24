@@ -21,7 +21,6 @@ import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
-import com.siweisoft.heavycenter.module.myce.MyceFrag;
 
 import java.io.File;
 
@@ -38,14 +37,24 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     public void initData() {
         super.initData();
         getP().getD().setType(getArguments().getString(ValueConstant.DATA_DATA2));
+        getP().getU().init(getP().getD().getType());
         switch (getP().getD().getType()){
             case TYPE_NEW:
                 break;
             case TYPE_DETAIL:
-                getP().getD().setCarinfo((CarsResBean.ResultsBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
-                getP().getU().initData(getP().getD().getCarinfo());
-                getP().getU().initRecycle();
-                getP().getU().LoadListData(getP().getD().getData());
+                getP().getD().setCarinfo((CarsResBean.CarInfoRes) getArguments().getSerializable(ValueConstant.DATA_DATA));
+                getP().getD().infoCar(getP().getD().getCarInfoReq(getP().getD().getCarinfo()), new UINetAdapter<CarsResBean.CarInfoRes>(getActivity()) {
+                    @Override
+                    public void onResult(boolean success, String msg, CarsResBean.CarInfoRes o) {
+                        super.onResult(success, msg, o);
+                        if(success){
+                            getP().getD().setCarinfo(o);
+                            getP().getU().initData(getP().getD().getCarinfo());
+                            getP().getU().initRecycle();
+                            getP().getU().LoadListData(getP().getD().getData());
+                        }
+                    }
+                });
                 break;
         }
     }
@@ -64,7 +73,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
                 switch (getP().getD().getType()){
                     case TYPE_NEW:
                         if(getP().getU().canNewGo()){
-                            getP().getD().newCar(getP().getU().getCarNewReqBean(getP().getD().getCarNewReqBean()), new UINetAdapter<CarNewResBean>(getActivity()) {
+                            getP().getD().newCar(getP().getU().getCarNewReqBean(getP().getD().getCarNewReqBean(getP().getD().getCarinfo())), new UINetAdapter<CarNewResBean>(getActivity()) {
                                 @Override
                                 public void onResult(boolean success, String msg, CarNewResBean o) {
                                     super.onResult(success, msg, o);
@@ -78,11 +87,14 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
                         break;
                     case TYPE_DETAIL:
                         if(getP().getU().canGo()){
-                            getP().getD().updateCar(getP().getU().getUpdateCarReq(getP().getD().getUpdateCarReq()), new UINetAdapter<UpdateCarRes>(getContext()) {
+                            getP().getD().updateCar(getP().getU().getUpdateCarReq(getP().getD().getUpdateCarReq(getP().getD().getCarinfo())), new UINetAdapter<UpdateCarRes>(getContext()) {
                                 @Override
                                 public void onResult(boolean success, String msg, UpdateCarRes o) {
                                     super.onResult(success, msg, o);
-
+                                    if(success){
+                                        getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
+                                        getBaseUIActivity().onBackPressed();
+                                    }
                                 }
                             });
                         }
@@ -100,9 +112,6 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
         if(data==null){
             return;
         }
-        LogUtil.E(Environment.getDownloadCacheDirectory().getPath());
-        File file = new File(UriUtils.getPath(getActivity(), data.getData()));
-        LogUtil.E(file.exists());
         String s= "";
         switch (requestCode){
             case 01:
@@ -117,7 +126,6 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
             public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                 stopLoading();
                 if(haveData){
-                    LoginResBean loginResBean = LocalValue.getLoginInfo();
                     String s = baseResBean.getResult().toString();
                     if(s!=null){
                         if(s.trim().startsWith("[")){
@@ -125,15 +133,13 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
                         }
                         switch (requestCode){
                             case 01:
-                                getP().getD().getUpdateCarReq().setVehicleLicensePhoto(s);
-                                getP().getD().getCarNewReqBean().setVehicleLicensePhoto(s);
+                                getP().getD().getCarinfo().setVehicleLicensePhoto(s);
                                 break;
                             case 02:
-                                getP().getD().getUpdateCarReq().setVehiclePhoto(s);
-                                getP().getD().getCarNewReqBean().setVehiclePhoto(s);
+                                getP().getD().getCarinfo().setVehiclePhoto(s);
                                 break;
                         }
-                        getP().getU().initPhoto(getP().getD().getUpdateCarReq());
+                        getP().getU().initPhoto(getP().getD().getCarinfo().getVehiclePhoto(),getP().getD().getCarinfo().getVehicleLicensePhoto());
                     }
                 }
             }

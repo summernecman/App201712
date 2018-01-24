@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.myce.car.bind;
 import android.content.Context;
 
 import com.android.lib.network.news.NetI;
+import com.android.lib.util.NullUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
@@ -18,6 +19,11 @@ import java.util.ArrayList;
 public class BindDAOpe extends AppDAOpe {
 
     BindCarReq bindCarReq  = new BindCarReq();
+
+    CarsResBean netCars = new CarsResBean();
+
+
+    CarsResBean selCars = new CarsResBean();
 
     public BindDAOpe(Context context) {
         super(context);
@@ -52,4 +58,29 @@ public class BindDAOpe extends AppDAOpe {
         NetDataOpe.Mana.Car.bindCar(getActivity(),getBindCarReq(),adapter);
     }
 
+    public CarsResBean getNetCars() {
+        return netCars;
+    }
+
+    public void setNetCars(CarsResBean netCars) {
+        this.netCars = netCars;
+    }
+
+    public CarsResBean getSelCars(String key) {
+        if(NullUtil.isStrEmpty(key)){
+            return netCars;
+        }
+        selCars.getResults().clear();
+        for(int i=0;netCars!=null &&netCars.getResults()!=null && i<netCars.getResults().size();i++){
+            if((netCars.getResults().get(i).getCarBrand()+""+netCars.getResults().get(i).getCarLicenseNo()+netCars.getResults().get(i).getCompanyName()+netCars.getResults().get(i).getIcCard()
+                    +netCars.getResults().get(i).getSpecifications()+netCars.getResults().get(i).getTel()+""+netCars.getResults().get(i).getTrueName()).contains(key)){
+                selCars.getResults().add(netCars.getResults().get(i));
+            }
+        }
+        return selCars;
+    }
+
+    public void setSelCars(CarsResBean selCars) {
+        this.selCars = selCars;
+    }
 }

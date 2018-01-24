@@ -3,13 +3,11 @@ package com.siweisoft.heavycenter.module.mana.car.detail;
 //by summer on 2017-12-19.
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.fragment.BaseUIFrag;
-import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
@@ -43,15 +41,29 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
-        bind.llInput.setVisibility(View.GONE);
-        bind.reinput.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bind.itemCarlicenseno.setMidEtTxt("");
-            }
-        });
-        if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.getLoginInfo().getUserRole())){
-            bind.title.getRightIV2().setVisibility(View.GONE);
+
+    }
+
+    public void init(String type){
+        switch (type){
+            case DetailFrag.TYPE_DETAIL:
+                bind.llInput.setVisibility(View.GONE);
+                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.getLoginInfo().getUserRole())){
+                    bind.title.getRightIV2().setVisibility(View.GONE);
+                }
+                break;
+            case DetailFrag.TYPE_NEW:
+                bind.llInput.setVisibility(View.VISIBLE);
+                bind.reinput.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bind.itemCarlicenseno.setMidEtTxt("");
+                    }
+                });
+                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.getLoginInfo().getUserRole())){
+                    bind.title.getRightIV2().setVisibility(View.GONE);
+                }
+                break;
         }
     }
 
@@ -80,13 +92,15 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
         });
     }
 
-    public void initData(CarsResBean.ResultsBean data){
+    public void initData(CarsResBean.CarInfoRes data){
 
         bind.itemBrand.setMidEtTxt(StringUtil.getStr(data.getCarBrand()));
         bind.itemEmptyweight.setMidEtTxt(StringUtil.getStr(data.getEmptyWeight()));
         bind.itemMaxweight.setMidEtTxt(StringUtil.getStr(data.getMaxCapacity()));
         bind.itemIccard.setMidEtTxt(StringUtil.getStr(data.getIcCard()));
         bind.title.getMidTV().setText(StringUtil.getStr(data.getCarLicenseNo()));
+        GlideApp.with(context).asBitmap().load(NetValue.获取地址(data.getVehiclePhoto())).placeholder(R.drawable.icon_hv_car).centerCrop().into(bind.ivVehiclePhoto);
+        GlideApp.with(context).asBitmap().load(NetValue.获取地址(data.getVehicleLicensePhoto())).placeholder(R.drawable.icon_hv_driveid).centerCrop().into(bind.ivVehicleLicensePhoto);
     }
 
     public UpdateCarReq getUpdateCarReq(UpdateCarReq updateCarReq) {
@@ -97,9 +111,9 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
         return updateCarReq;
     }
 
-    public void initPhoto(UpdateCarReq updateCarReq){
-        GlideApp.with(context).asBitmap().load(NetValue.获取地址(updateCarReq.getVehiclePhoto())).placeholder(R.drawable.icon_hv_car).centerCrop().into(bind.ivVehiclePhoto);
-        GlideApp.with(context).asBitmap().load(NetValue.获取地址(updateCarReq.getVehicleLicensePhoto())).placeholder(R.drawable.icon_hv_driveid).centerCrop().into(bind.ivVehicleLicensePhoto);
+    public void initPhoto(String vehiclephoto,String vehiclelicensephot0){
+        GlideApp.with(context).asBitmap().load(NetValue.获取地址(vehiclephoto)).placeholder(R.drawable.icon_hv_car).centerCrop().into(bind.ivVehiclePhoto);
+        GlideApp.with(context).asBitmap().load(NetValue.获取地址(vehiclelicensephot0)).placeholder(R.drawable.icon_hv_driveid).centerCrop().into(bind.ivVehicleLicensePhoto);
     }
 
     public boolean canGo(){
@@ -129,28 +143,25 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
         return carNewReqBean;
     }
 
-    public boolean canNewGo(){
-        if(NullUtil.isStrEmpty(bind.itemCarlicenseno.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+    public boolean canNewGo() {
+        if (NullUtil.isStrEmpty(bind.itemCarlicenseno.getMidET().getText().toString())) {
+            ToastUtil.getInstance().showShort(getActivity(), "请输入车牌号");
             return false;
         }
-        if(NullUtil.isStrEmpty(bind.itemBrand.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+        if (NullUtil.isStrEmpty(bind.itemBrand.getMidET().getText().toString())) {
+            ToastUtil.getInstance().showShort(getActivity(), "请输入车辆品牌");
             return false;
         }
-        if(NullUtil.isStrEmpty(bind.itemMaxweight.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+        if (NullUtil.isStrEmpty(bind.itemMaxweight.getMidET().getText().toString())) {
+            ToastUtil.getInstance().showShort(getActivity(), "请输入车辆载重");
             return false;
         }
-        if(NullUtil.isStrEmpty(bind.itemEmptyweight.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
-            return false;
-        }
-        if(NullUtil.isStrEmpty(bind.itemIccard.getMidET().getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入车牌号");
+        if (NullUtil.isStrEmpty(bind.itemEmptyweight.getMidET().getText().toString())) {
+            ToastUtil.getInstance().showShort(getActivity(), "请输入车辆自重");
             return false;
         }
         return true;
     }
+
 
 }

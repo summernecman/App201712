@@ -84,7 +84,7 @@ public class LoginResBean extends BaseBean {
     private int userType;
     private int deviceType;
     private String deviceId;
-    private String userRole;
+    private String userRole = USER_ROLE_GENERAL;
     private int loginStatus;
     private int wareHouseCount;
     private int productCount;
