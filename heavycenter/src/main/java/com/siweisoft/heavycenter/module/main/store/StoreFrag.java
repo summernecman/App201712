@@ -46,6 +46,12 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
                 FragManager2.getInstance().start(getBaseUIActivity(),MainAct.仓库,MainAct.仓库ID,new CheckFrag(),bundle);
+            case R.id.ftv_right:
+                if(getActivity() instanceof MainAct){
+                    MainAct mainAct = (MainAct) getActivity();
+                    mainAct.dealScan(this);
+                }
+                break;
         }
     }
 

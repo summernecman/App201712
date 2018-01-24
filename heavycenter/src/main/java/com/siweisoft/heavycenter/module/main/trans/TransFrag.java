@@ -68,6 +68,12 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
 
                 getP().getU().refreshSearch();
                 break;
+            case R.id.ftv_right:
+                if(getActivity() instanceof MainAct){
+                    MainAct mainAct = (MainAct) getActivity();
+                    mainAct.dealScan(this);
+                }
+                break;
         }
     }
 

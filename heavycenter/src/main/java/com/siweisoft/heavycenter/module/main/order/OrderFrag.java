@@ -36,9 +36,6 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
             case R.id.ftv_back:
                 ((MainAct)activity).getP().getU().switchDrawer();
                 break;
-            case R.id.ftv_right:
-                IntentIntegrator.forSupportFragment(OrderFrag.this).initiateScan();
-                break;
             case R.id.ftv_title:
                 List<String> strs = new ArrayList<>();
                 for(int i=0;i<10;i++){
@@ -51,18 +48,16 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
             case R.id.ftv_right2:
                 FragManager2.getInstance().start(getBaseUIActivity(),MainAct.订单,MainAct.订单ID,new NewOrderFrag());
                 break;
+            case R.id.ftv_right:
+                if(getActivity() instanceof MainAct){
+                    MainAct mainAct = (MainAct) getActivity();
+                    mainAct.dealScan(this);
+                }
+                break;
         }
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null) {
-            LogUtil.E(result.getContents());
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
+
 
 
 }

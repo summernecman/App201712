@@ -4,6 +4,8 @@ package com.siweisoft.heavycenter.base;
 
 import android.view.View;
 
+import butterknife.OnClick;
+import butterknife.Optional;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseUIOpe;
@@ -21,18 +23,24 @@ public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends 
     @Override
     public void doThing() {
         super.doThing();
-        if(getView()!=null && getView().findViewById(R.id.ftv_back)!=null){
-            getView().findViewById(R.id.ftv_back).setOnClickListener(this);
-        }
+
     }
 
-    @Override
+    @Optional
+    @OnClick({R.id.ftv_back,R.id.ftv_right})
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_back:
                 activity.onBackPressed();
                 break;
+            case R.id.ftv_right:
+                if(getActivity() instanceof MainAct){
+                    MainAct mainAct = (MainAct) getActivity();
+                    mainAct.dealScan(this);
+                }
+                break;
+
         }
     }
 

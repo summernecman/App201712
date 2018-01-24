@@ -31,6 +31,12 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
             case R.id.ftv_back:
                 ((MainAct)activity).getP().getU().switchDrawer();
                 break;
+            case R.id.ftv_right:
+                if(getActivity() instanceof MainAct){
+                    MainAct mainAct = (MainAct) getActivity();
+                    mainAct.dealScan(this);
+                }
+                break;
         }
     }
 }

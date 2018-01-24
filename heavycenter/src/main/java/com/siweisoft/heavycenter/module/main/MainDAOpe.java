@@ -21,6 +21,7 @@ import com.siweisoft.heavycenter.module.main.store.StoreFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
 import com.siweisoft.heavycenter.module.main.weigts.WeigtsFrag;
 import com.siweisoft.heavycenter.module.myce.MyceFrag;
+import com.siweisoft.heavycenter.module.scan.ScanDAOpe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,8 @@ public class MainDAOpe extends AppDAOpe {
     private int index=0;
 
     MyceFrag myceFrag = new MyceFrag();
+
+    ScanDAOpe scanDAOpe;
 
 
     public MainDAOpe(Context context) {
@@ -153,9 +156,13 @@ public class MainDAOpe extends AppDAOpe {
         loginResBean.setUserId(150);
         loginResBean.setUserPhoto("1747494443");
         loginResBean.setUserRole(LoginResBean.USER_ROLE_ADMIN);
-        loginResBean.setUserType(UserTypeReqBean.USER_TYPE_DRIVER);
+        loginResBean.setUserType(UserTypeReqBean.USER_TYPE_GENERAL);
         loginResBean.setVehicleCount(10);
         loginResBean.setWareHouseCount(10);
         LocalValue.saveLoginInfo(loginResBean);
+    }
+
+    public ScanDAOpe getScanDAOpe() {
+        return scanDAOpe;
     }
 }

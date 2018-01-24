@@ -64,7 +64,7 @@ public class HCApp extends LibAplication implements OnFinishListener{
         JPushInterface.init(this);
         FragManager2.getInstance().clear();
 
-        if(false){
+        if(true){
             NetGet.test = true;
             NetAdapter.cache = true;
             NetFAdapter.cache = true;

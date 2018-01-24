@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.main;
 
 //by summer on 17-08-23.
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -10,9 +11,13 @@ import android.view.ViewGroup;
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
+import com.siweisoft.heavycenter.base.AppFrag;
 
 public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSelectListener {
 
@@ -56,15 +61,12 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogUtil.E("111111111111111");
-        //getP().getD().testData();
-        LogUtil.E("222222222222222");
+        getP().getD().testData();
         getP().getU().setBottomMenuViewData(getP().getD().getMenudata());
         if(!getP().getD().getPermissionUtil().isAllGranted(activity,getP().getD().getPermissions())){
             return;
         }
         dothing();
-        LogUtil.E("333333333333333333333");
     }
 
 
@@ -111,38 +113,6 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         dothing();
     }
 
-//    @Override
-//    public void onBackPressed() {
-
-//        if(FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT)!=null&&FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()>0){
-//            activity.getSupportFragmentManager().beginTransaction().remove(
-//                    FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).get(
-//                            FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1))
-//                    .commit();
-//            FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).remove(FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1);
-//        }else
-//        if(getP().getD().getIndex()==getP().getU().getPos_content()
-//                &&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_content())!=null
-//                &&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_content()).size()>0){
-//            FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
-//        }else
-//        if(FragManager.getInstance().getFragMaps().get(getP().getD().getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getP().getD().getIndex()).size()>1){
-//            FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
-//        }else{
-//            finish();
-//        }
-
-//        FragManager.getInstance().clearTopWith(activity.getSupportFragmentManager(), getP().getD().getIndex(), new OnFinishListener() {
-//            @Override
-//            public void onFinish(Object o) {
-//                MainAct.super.onBackPressed();
-//            }
-//        });
-
-
-//    }
-
-
     @Override
     public void onBackPressed() {
         switch (getMoudle()){
@@ -156,6 +126,26 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
                         super.onBackPressed();
                     }
                     break;
+        }
+    }
+
+    AppFrag appFrag;
+
+    public void dealScan(AppFrag appFrag){
+        this.appFrag = appFrag;
+        ToastUtil.getInstance().showShort(activity,appFrag.getClass().getSimpleName());
+        new IntentIntegrator(this).initiateScan();
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            LogUtil.E(result.getContents());
+            getP().getD().getScanDAOpe().logic(this.appFrag,result.getContents());
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 }
