@@ -53,7 +53,7 @@ public class TestDAOpe extends AppDAOpe {
         RelativeLayout v1 = new RelativeLayout(context);v1.setId(MainAct.运输单ID);
         menudata.add(new BottomMenuBean(MainAct.运输单, R.drawable.drawable_main_bottom_trans,new TransFrag(),v1,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
-        if(LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.USER_TYPE_DRIVER){
+        if(LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.驾驶员){
             RelativeLayout v2 = new RelativeLayout(context);v2.setId(MainAct.地图ID);
             menudata.add(new BottomMenuBean(MainAct.地图, R.drawable.drawable_main_bottom_order,new MapFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         }else{
@@ -151,7 +151,7 @@ public class TestDAOpe extends AppDAOpe {
         loginResBean.setUserId(150);
         loginResBean.setUserPhoto("1747494443");
         loginResBean.setUserRole(LoginResBean.USER_ROLE_ADMIN);
-        loginResBean.setUserType(UserTypeReqBean.USER_TYPE_DRIVER);
+        loginResBean.setUserType(UserTypeReqBean.驾驶员);
         loginResBean.setVehicleCount(10);
         loginResBean.setWareHouseCount(10);
         LocalValue.saveLoginInfo(loginResBean);

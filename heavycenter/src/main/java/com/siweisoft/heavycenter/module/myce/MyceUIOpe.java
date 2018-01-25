@@ -31,7 +31,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
         bind.llHead.tvPhone.setText(StringUtil.getStr(LocalValue.getLoginInfo().getTel()));
         bind.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.getLoginInfo().getAbbreviationName()));
 
-        if(LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.USER_TYPE_DRIVER){
+        if(LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.驾驶员){
             bind.llHead.tvRole.setText(UserTypeReqBean.USER_TYPE_DRIVER_CN);
 
             bind.itemStore.setVisibility(View.GONE);
@@ -62,6 +62,9 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
             }else{
                 bind.llCar.setVisibility(View.VISIBLE);
             }
+
+            GlideApp.with(context).asBitmap().load(NetValue.获取地址(LocalValue.getLoginInfo().getVehicleLicensePhoto())).centerCrop().into(bind.ivDirver);
+            GlideApp.with(context).asBitmap().load(NetValue.获取地址(LocalValue.getLoginInfo().getVehiclePhoto())).centerCrop().into(bind.ivCar);
 
         }else{
             bind.llHead.tvRole.setText(UserTypeReqBean.USER_TYPE_GENERAL_CN);
@@ -121,7 +124,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
 
     public void hideOrShowManageFunction(boolean show){
         int vis = View.VISIBLE;
-        if(show&& LocalValue.getLoginInfo().getUserType()==UserTypeReqBean.USER_TYPE_GENERAL&&!LoginResBean.USER_ROLE_GENERAL.equals(LocalValue.getLoginInfo().getUserRole())){
+        if(show&& LocalValue.getLoginInfo().getUserType()==UserTypeReqBean.非驾驶员 &&!LoginResBean.USER_ROLE_GENERAL.equals(LocalValue.getLoginInfo().getUserRole())){
             vis = View.VISIBLE;
         }else{
             vis = View.GONE;

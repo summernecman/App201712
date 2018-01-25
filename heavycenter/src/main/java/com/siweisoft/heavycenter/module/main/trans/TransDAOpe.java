@@ -47,6 +47,8 @@ public class TransDAOpe extends BaseDAOpe {
         return transReq;
     }
 
+
+
     public void transs(TransReq transReq, NetI<TransRes> adapter){
         NetDataOpe.Trans.transs(getActivity(),transReq,adapter);
     }

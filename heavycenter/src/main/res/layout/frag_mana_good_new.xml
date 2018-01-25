@@ -54,6 +54,7 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_maxstock"
             style_common:inputType="3"
+            style_common:txt_maxlenth="11"
             style_common:txt_left = "最大库存"
             style_common:txt_two ="请选择"
             style_common:txt_mid = "请输入"
@@ -65,6 +66,7 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_minstock"
             style_common:inputType="3"
+            style_common:txt_maxlenth="11"
             style_common:txt_left = "安全库存"
             style_common:txt_two ="请选择"
             style_common:txt_mid = "请输入"

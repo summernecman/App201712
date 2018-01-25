@@ -5,11 +5,15 @@ package com.siweisoft.heavycenter.module.myce.base.info;
 import android.content.Context;
 
 import com.android.lib.base.fragment.BaseUIFrag;
+import com.android.lib.util.GsonUtil;
+import com.android.lib.util.ScreenUtil;
+import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
-import com.siweisoft.heavycenter.databinding.FragMyceSetAboutBinding;
+import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
 import com.siweisoft.heavycenter.databinding.FragScanInfoBinding;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 public class InfoUIOpe extends AppUIOpe<FragScanInfoBinding>{
 
@@ -22,5 +26,14 @@ public class InfoUIOpe extends AppUIOpe<FragScanInfoBinding>{
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
         bind.setVariable(BR.frag_scan_info, LocalValue.getLoginInfo());
+    }
+
+    public void initScan(){
+        UserInfo userInfo = new UserInfo();
+        userInfo.setID(LocalValue.getLoginInfo().getUserId());
+        userInfo.setType("HCUser");
+        userInfo.setName(StringUtil.getStr(LocalValue.getLoginInfo().getTrueName()));
+        userInfo.setMobile(StringUtil.getStr(LocalValue.getLoginInfo().getTel()));
+        bind.ivScan.setImageBitmap(CodeUtils.createImage(GsonUtil.getInstance().toJson(userInfo), (int) (ScreenUtil.mw*180), (int) (ScreenUtil.mw*180), null));
     }
 }

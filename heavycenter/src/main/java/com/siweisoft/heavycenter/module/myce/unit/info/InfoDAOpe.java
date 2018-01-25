@@ -18,13 +18,14 @@ import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
 public class InfoDAOpe extends AppDAOpe {
 
 
+
     public InfoDAOpe(Context context) {
         super(context);
     }
 
-    public void getInfo(NetI<UnitInfo> adapter){
+    public void getInfo(int id,NetI<UnitInfo> adapter){
         UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
-        unitInfoReqBean.setId(LocalValue.getLoginInfo().getCompanyId());
+        unitInfoReqBean.setId(id==-1?LocalValue.getLoginInfo().getCompanyId():id);
         NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean,adapter);
     }
 

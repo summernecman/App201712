@@ -91,6 +91,7 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
 
                   for(int i=0;i<pages.size();i++){
                       FragManager2.getInstance().setAnim(false).start(getActivity(),pages.get(i).getName(),pages.get(i).getContainerView().getId(),pages.get(i).getFragment());
+                      getActivity().setMoudle(pages.get(i).getName());
                   }
                     load = true;
                 }

@@ -7,7 +7,6 @@ import android.view.View;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -34,7 +33,7 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                             @Override
                             public void onResult(boolean success, String msg, LoginResBean o) {
                                 getP().getU().getUserTypeReqBean().setId(o.getUserId());
-                                getP().getU().getUserTypeReqBean().setUserType((R.id.tv_driver==vv.getId())?UserTypeReqBean.USER_TYPE_DRIVER:UserTypeReqBean.USER_TYPE_GENERAL);
+                                getP().getU().getUserTypeReqBean().setUserType((R.id.tv_driver==vv.getId())?UserTypeReqBean.驾驶员 :UserTypeReqBean.非驾驶员);
                                 getP().getD().setUserType(getP().getU().getUserTypeReqBean(), new UINetAdapter<UserTypeResBean>(getContext()) {
                                     @Override
                                     public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
@@ -45,7 +44,7 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                                                 getBaseUIActivity().onBackPressed();
                                             }else{
                                                 LoginResBean resBean = LocalValue.getLoginInfo();
-                                                resBean.setUserType((R.id.tv_driver==vv.getId())?UserTypeReqBean.USER_TYPE_DRIVER:UserTypeReqBean.USER_TYPE_GENERAL);
+                                                resBean.setUserType((R.id.tv_driver==vv.getId())?UserTypeReqBean.驾驶员 :UserTypeReqBean.非驾驶员);
                                                 LocalValue.saveLoginInfo(resBean);
                                                 IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
                                             }

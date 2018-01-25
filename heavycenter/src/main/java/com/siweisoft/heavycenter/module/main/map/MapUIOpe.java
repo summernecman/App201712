@@ -23,4 +23,8 @@ public class MapUIOpe extends BaseUIOpe<FragMainMapBinding>{
         super(context);
     }
 
+    public void initMap(){
+
+    }
+
 }

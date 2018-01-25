@@ -6,7 +6,6 @@ import android.Manifest;
 import android.content.Context;
 import android.widget.RelativeLayout;
 
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.util.system.PermissionUtil;
 import com.android.lib.view.bottommenu.BottomMenuBean;
 import com.siweisoft.heavycenter.R;
@@ -20,6 +19,7 @@ import com.siweisoft.heavycenter.module.main.order.OrderFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
 import com.siweisoft.heavycenter.module.main.weigts.WeigtsFrag;
+import com.siweisoft.heavycenter.module.main.weigts.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.myce.MyceFrag;
 import com.siweisoft.heavycenter.module.scan.ScanDAOpe;
 
@@ -51,14 +51,18 @@ public class MainDAOpe extends AppDAOpe {
         }
         menudata.clear();
 
-
-        RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainAct.地磅ID);
-        menudata.add(new BottomMenuBean(MainAct.地磅, R.drawable.drawable_main_bottom_weight,new WeigtsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        if(LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.驾驶员){
+            RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainAct.地磅ID);
+            menudata.add(new BottomMenuBean(MainAct.地磅, R.drawable.drawable_main_bottom_weight,new DetailFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }else{
+            RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainAct.地磅ID);
+            menudata.add(new BottomMenuBean(MainAct.地磅, R.drawable.drawable_main_bottom_weight,new WeigtsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }
 
         RelativeLayout v1 = new RelativeLayout(context);v1.setId(MainAct.运输单ID);
         menudata.add(new BottomMenuBean(MainAct.运输单, R.drawable.drawable_main_bottom_trans,new TransFrag(),v1,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
-        if(LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.USER_TYPE_DRIVER){
+        if(LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.驾驶员){
             RelativeLayout v2 = new RelativeLayout(context);v2.setId(MainAct.地图ID);
             menudata.add(new BottomMenuBean(MainAct.地图, R.drawable.drawable_main_bottom_order,new MapFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         }else{
@@ -156,13 +160,16 @@ public class MainDAOpe extends AppDAOpe {
         loginResBean.setUserId(150);
         loginResBean.setUserPhoto("1747494443");
         loginResBean.setUserRole(LoginResBean.USER_ROLE_ADMIN);
-        loginResBean.setUserType(UserTypeReqBean.USER_TYPE_GENERAL);
+        loginResBean.setUserType(UserTypeReqBean.非驾驶员);
         loginResBean.setVehicleCount(10);
         loginResBean.setWareHouseCount(10);
         LocalValue.saveLoginInfo(loginResBean);
     }
 
     public ScanDAOpe getScanDAOpe() {
+        if(scanDAOpe==null){
+            scanDAOpe = new ScanDAOpe(getActivity());
+        }
         return scanDAOpe;
     }
 }

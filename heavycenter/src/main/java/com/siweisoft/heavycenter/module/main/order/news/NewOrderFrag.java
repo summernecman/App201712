@@ -37,6 +37,7 @@ import butterknife.OnClick;
 
 public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
 
+
     @Override
     public void initData() {
         super.initData();

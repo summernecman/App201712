@@ -37,6 +37,9 @@ public  class NetAdapter<A> implements NetI<A> {
         if(NetGet.test){
             return true;
         }
+        if(!isNetOk){
+            ToastUtil.getInstance().showShort(context,"无网络");
+        }
         return isNetOk;
     }
 

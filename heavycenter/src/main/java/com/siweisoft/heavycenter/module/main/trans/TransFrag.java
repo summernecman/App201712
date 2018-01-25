@@ -24,7 +24,7 @@ import butterknife.OnClick;
 
 public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener {
 
-
+    public static final String TAG = TransFrag.class.getSimpleName();
 
     @Override
     public void lazyInit() {
@@ -78,9 +78,17 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     }
 
     @Override
-    public void onRefresh(RefreshLayout refreshlayout) {
-        refreshlayout.finishRefresh(2000);
-        getP().getU().LoadListData(getP().getD().getData(),this);
+    public void onRefresh(final RefreshLayout refreshlayout) {
+
+        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq()), new UINetAdapter<TransRes>(activity) {
+            @Override
+            public void onResult(boolean success, String msg, TransRes o) {
+                super.onResult(success, msg, o);
+                refreshlayout.finishRefresh();
+                getP().getU().LoadListData(getP().getD().getData(),TransFrag.this);
+            }
+        });
+
     }
 
     @Override

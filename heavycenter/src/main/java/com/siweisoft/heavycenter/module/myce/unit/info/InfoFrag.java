@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.myce.unit.info;
 
 import android.view.View;
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -20,7 +21,8 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
     @Override
     public void initData() {
         super.initData();
-        getP().getD().getInfo(new UINetAdapter<UnitInfo>(activity) {
+
+        getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(activity) {
             @Override
             public void onResult(boolean success, String msg, UnitInfo o) {
                 super.onResult(success, msg, o);

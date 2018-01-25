@@ -8,8 +8,6 @@ import android.view.View;
 import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 import com.siweisoft.heavycenter.R;
 import com.android.lib.view.dialog.list.DialogListFrag;
 import com.siweisoft.heavycenter.base.AppFrag;

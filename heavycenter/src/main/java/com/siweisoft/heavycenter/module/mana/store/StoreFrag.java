@@ -77,6 +77,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                                StoreDetail d = (StoreDetail) v.getTag(R.id.data);
                                getArguments().putSerializable(ValueConstant.DATA_DATA2,d);
                                getBaseUIActivity().onBackPressed();
+                               return;
                            }
                            StoreDetail storeDetail = (StoreDetail) v.getTag(R.id.data);
                            Bundle bundle = new Bundle();

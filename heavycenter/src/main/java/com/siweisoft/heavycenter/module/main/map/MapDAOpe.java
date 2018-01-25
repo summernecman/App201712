@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.main.map;
 import android.content.Context;
 
 import com.android.lib.base.ope.BaseDAOpe;
+import com.siweisoft.heavycenter.module.view.map.MapUtil;
 
 import java.util.ArrayList;
 
@@ -20,5 +21,24 @@ public class MapDAOpe extends BaseDAOpe {
             data.add(""+i);
         }
         return data;
+    }
+
+    public MapUtil getMapUtil() {
+        return MapUtil.getInstance();
+    }
+
+
+    public void  stopMap(){
+        if(getMapUtil().getLocationClient()==null){
+            return;
+        }
+        getMapUtil().getLocationClient().stop();
+    }
+
+    public void startMap(){
+        if(getMapUtil().getLocationClient()==null){
+            return;
+        }
+        getMapUtil().getLocationClient().start();
     }
 }

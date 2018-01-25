@@ -13,11 +13,11 @@ import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSelectListener {
 
@@ -61,7 +61,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getP().getD().testData();
+        //getP().getD().testData();
         getP().getU().setBottomMenuViewData(getP().getD().getMenudata());
         if(!getP().getD().getPermissionUtil().isAllGranted(activity,getP().getD().getPermissions())){
             return;
@@ -134,18 +134,28 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     public void dealScan(AppFrag appFrag){
         this.appFrag = appFrag;
         ToastUtil.getInstance().showShort(activity,appFrag.getClass().getSimpleName());
-        new IntentIntegrator(this).initiateScan();
+        Intent intent = new Intent(this, CaptureActivity.class);
+        startActivityForResult(intent, 1);
     }
 
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null) {
-            LogUtil.E(result.getContents());
-            getP().getD().getScanDAOpe().logic(this.appFrag,result.getContents());
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            //处理扫描结果（在界面上显示）
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    getP().getD().getScanDAOpe().logic(this.appFrag,result);
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    ToastUtil.getInstance().showShort(this,"解析二维码失败");
+                }
+            }
         }
     }
 }

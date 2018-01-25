@@ -5,10 +5,12 @@ package com.siweisoft.heavycenter.module.myce.sett;
 import android.view.View;
 
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.IntentUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.logout.LogOutResBean;
+import com.siweisoft.heavycenter.module.welc.welc.WelcAct;
 
 import butterknife.OnClick;
 
@@ -25,7 +27,7 @@ public class SetFrag extends AppFrag<SetUIOpe,SetDAOpe> {
                     public void onResult(boolean success, String msg, LogOutResBean o) {
                         super.onResult(success, msg, o);
                         LocalValue.setAutoLogin(false);
-                        getActivity().finish();
+                        IntentUtil.startActivityWithFinish(getActivity(),WelcAct.class,null);
                     }
                 });
                 break;

@@ -44,13 +44,13 @@ public class UnitInfo extends BaseBean {
         protected String remark;
         protected String editTime;
         protected String companyUrl;
-        protected int companyLng;
+        protected float companyLng;
         protected int highCompany;
         protected String creditLevel;
         protected String companyPropery;
         protected String companyFax;
         protected int id;
-        protected int companyLat;
+        protected float companyLat;
         protected String abbreviationName;
         protected int companyType;
         protected int contactId;
@@ -125,13 +125,6 @@ public class UnitInfo extends BaseBean {
             this.companyUrl = companyUrl;
         }
 
-        public int getCompanyLng() {
-            return companyLng;
-        }
-
-        public void setCompanyLng(int companyLng) {
-            this.companyLng = companyLng;
-        }
 
         public int getHighCompany() {
             return highCompany;
@@ -171,14 +164,6 @@ public class UnitInfo extends BaseBean {
 
         public void setId(int id) {
             this.id = id;
-        }
-
-        public int getCompanyLat() {
-            return companyLat;
-        }
-
-        public void setCompanyLat(int companyLat) {
-            this.companyLat = companyLat;
         }
 
         public String getAbbreviationName() {
@@ -355,5 +340,21 @@ public class UnitInfo extends BaseBean {
 
     public void setBelongAreaDes(String belongAreaDes) {
         this.belongAreaDes = belongAreaDes;
+    }
+
+    public float getCompanyLng() {
+        return companyLng;
+    }
+
+    public void setCompanyLng(float companyLng) {
+        this.companyLng = companyLng;
+    }
+
+    public float getCompanyLat() {
+        return companyLat;
+    }
+
+    public void setCompanyLat(float companyLat) {
+        this.companyLat = companyLat;
     }
 }

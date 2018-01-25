@@ -62,6 +62,8 @@ import com.siweisoft.heavycenter.data.netd.order.news.NewOrderRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
+import com.siweisoft.heavycenter.data.netd.scan.weight.WeightReq;
+import com.siweisoft.heavycenter.data.netd.scan.weight.WeightRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.data.netd.unit.info.UnitInfoReqBean;
@@ -324,6 +326,16 @@ public class NetDataOpe {
             }
 
         }
+
+    }
+
+
+    public static class Scan{
+
+        public static void triggerWeigh(Context context, WeightReq reqBean, NetI<WeightRes> adapter) {
+            NetGet.postData(context,"http://172.26.1.15:8080/zhongxin/weigh/triggerWeigh",reqBean,adapter);
+        }
+
 
     }
 

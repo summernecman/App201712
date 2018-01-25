@@ -17,8 +17,9 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
     View.OnClickListener onClickListener;
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void initData() {
+        super.initData();
+        getP().getU().initScan();
 
     }
 

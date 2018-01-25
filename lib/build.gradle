@@ -79,7 +79,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'////如果glideapp找不到 build-make project
     compile 'com.j256.ormlite:ormlite-core:4.48'//本地数据库存储
     compile 'com.j256.ormlite:ormlite-android:4.48'
-    compile 'com.journeyapps:zxing-android-embedded:3.5.0'//二维码扫码
+    //compile 'com.journeyapps:zxing-android-embedded:3.5.0'//二维码扫码
+    compile 'cn.yipianfengye.android:zxing-library:2.2'
     compile 'org.xutils:xutils:3.5.0'//网络请求
     //compile 'com.github.lecho:hellocharts-android:v1.5.8'//图表控件
 //    compile 'fm.jiecao:jiecaovideoplayer:5.8.1'//视频控件

@@ -73,6 +73,10 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
                 binding.munu.setTag(R.id.data,o.getResults().get(position));
                 binding.munu.setTag(R.id.data1,binding.swipe);
 
+                binding.rlRoot.setOnClickListener(this);
+                binding.rlRoot.setTag(R.id.position,position);
+                binding.rlRoot.setTag(R.id.data,o.getResults().get(position));
+
                 binding.swipe.setRightSwipeEnabled(isSwipe());
 
 

@@ -12,6 +12,7 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.StringUtil;
 import com.baidu.mapapi.map.BaiduMap;
 import com.github.florent37.viewanimator.ViewAnimator;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -116,5 +117,16 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
         return transReq;
     }
 
+
+    public void  clearSel() {
+        bind.search.itemGood.getMidET().setText("");
+        bind.search.itemUnitname.getMidET().setText("");
+        bind.search.itemUnitaddr.getMidET().setText("");
+        bind.search.itemUnitcar.getMidET().setText("");
+    }
+
+    public void setUnit(String unitname){
+        bind.search.itemUnitname.getMidET().setText(StringUtil.getStr(unitname));
+    }
 
 }
