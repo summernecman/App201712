@@ -56,7 +56,7 @@ public class DetailDAOpe extends AppDAOpe {
 
     public void updateHead(String path,String type, NetI<UpdateHeadResBean> adapter){
         List<KeyValue> keyValues = new ArrayList<>();
-        keyValues.add(new KeyValue(UpdateHeadReqBean.用户id, LocalValue.getLoginInfo().getUserId()));
+        keyValues.add(new KeyValue(UpdateHeadReqBean.用户id, LocalValue.get登录返回信息().getUserId()));
         keyValues.add(new KeyValue(UpdateHeadReqBean.文件类型,type));
         keyValues.add(new KeyValue(UpdateHeadReqBean.文件路径,new File(path)));
         NetDataOpe.User.uploadPhoto(getActivity(),keyValues,adapter);
@@ -71,7 +71,7 @@ public class DetailDAOpe extends AppDAOpe {
         updateCarReq.setCarLicenseNo(carinfo.getCarLicenseNo());
         updateCarReq.setVehiclePhoto(carinfo.getVehiclePhoto());
         updateCarReq.setVehicleLicensePhoto(carinfo.getVehicleLicensePhoto());
-        updateCarReq.setEditer(LocalValue.getLoginInfo().getUserId());
+        updateCarReq.setEditer(LocalValue.get登录返回信息().getUserId());
         return updateCarReq;
     }
 
@@ -79,8 +79,8 @@ public class DetailDAOpe extends AppDAOpe {
     public CarNewReqBean getCarNewReqBean(CarsResBean.CarInfoRes carinfo) {
         carNewReqBean.setVehicleLicensePhoto(carinfo.getVehicleLicensePhoto());
         carNewReqBean.setVehiclePhoto(carinfo.getVehiclePhoto());
-        carNewReqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
-        carNewReqBean.setCreater(LocalValue.getLoginInfo().getUserId());
+        carNewReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        carNewReqBean.setCreater(LocalValue.get登录返回信息().getUserId());
         return carNewReqBean;
     }
 

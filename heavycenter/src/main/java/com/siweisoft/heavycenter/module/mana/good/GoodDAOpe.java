@@ -28,7 +28,7 @@ public class GoodDAOpe extends AppDAOpe {
 
     public void listGood(NetI<GoodListRes> adapter){
         GoodListReq goodListReq = new GoodListReq();
-        goodListReq.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        goodListReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         goodListReq.setIsApp(1);
         NetDataOpe.Mana.Good.listGood(getActivity(),goodListReq,adapter);
     }

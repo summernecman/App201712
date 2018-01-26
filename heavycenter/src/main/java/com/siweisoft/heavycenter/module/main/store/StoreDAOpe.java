@@ -33,7 +33,7 @@ public class StoreDAOpe extends BaseDAOpe {
 
     public void storesInfo(NetI<StoresResBean> adapter){
         StoresReqBean reqBean = new StoresReqBean();
-        reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setIsApp(1);
         reqBean.setPageIndex(getPageIndex());
         reqBean.setPageSize(20);

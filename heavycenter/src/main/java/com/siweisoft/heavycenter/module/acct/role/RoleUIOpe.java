@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -36,11 +35,11 @@ public class RoleUIOpe extends AppUIOpe<FragAcctRoleBinding> {
         }
         diaLogCenterFrag.setCustomView(view);
         diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_sure,R.id.tv_close);
-        FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(),AcctAct.账号,AcctAct.账号ID,diaLogCenterFrag);
+        FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(),AcctAct.账号,AcctAct.账号界面根布局,diaLogCenterFrag);
     }
 
     public UserTypeReqBean getUserTypeReqBean() {
-        //userTypeReqBean.setId(LocalValue.getLoginInfo());
+        //userTypeReqBean.setId(LocalValue.get登录返回信息());
         return userTypeReqBean;
     }
 }

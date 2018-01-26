@@ -52,12 +52,12 @@ public class ListDAOpe extends AppDAOpe {
 
     public void bindUnit(int companyId, boolean ismanager,NetI<BindResBean> adapter){
         BindReqBean bindReqBean = new BindReqBean();
-        bindReqBean.setId(LocalValue.getLoginInfo().getUserId());
+        bindReqBean.setId(LocalValue.get登录返回信息().getUserId());
         bindReqBean.setCompanyId(companyId);
         bindReqBean.setBindOperateType(BindReqBean.BIND_OPERATE_TYPE_SEARCH);
         bindReqBean.setIsManager(ismanager?BindReqBean.IS_MANAGER_YES:BindReqBean.IS_MANAGER_NO);
         if(ismanager){
-            bindReqBean.setMangerId(LocalValue.getLoginInfo().getUserId());
+            bindReqBean.setMangerId(LocalValue.get登录返回信息().getUserId());
         }
         NetDataOpe.User.binUnit(getActivity(),bindReqBean,adapter);
     }
@@ -65,8 +65,8 @@ public class ListDAOpe extends AppDAOpe {
     public void getInfo(NetI<LoginResBean> adapter){
         UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
         userInfoReqBean.setIsApp(1);
-        userInfoReqBean.setId(LocalValue.getLoginInfo().getUserId());
-        NetDataOpe.User.getInfo(getActivity(), userInfoReqBean,adapter);
+        userInfoReqBean.setId(LocalValue.get登录返回信息().getUserId());
+        NetDataOpe.User.get用户信息(getActivity(), userInfoReqBean,adapter);
     }
 
 

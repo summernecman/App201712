@@ -10,8 +10,6 @@ import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
-import com.siweisoft.heavycenter.module.main.trans.search.SearchFrag;
-import com.siweisoft.heavycenter.module.view.map.MapUtil;
 
 import java.util.ArrayList;
 
@@ -41,7 +39,7 @@ public class TransDAOpe extends BaseDAOpe {
 
     public TransReq getTransReq() {
         transReq.setIsApp(1);
-        transReq.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        transReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         transReq.setPageIndex(0);
         transReq.setPageSize(200);
         return transReq;

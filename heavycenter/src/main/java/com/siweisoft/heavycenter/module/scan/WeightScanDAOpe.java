@@ -17,8 +17,6 @@ import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.scan.weight.WeightReq;
 import com.siweisoft.heavycenter.data.netd.scan.weight.WeightRes;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
-import com.siweisoft.heavycenter.module.main.map.MapFrag;
-import com.siweisoft.heavycenter.module.main.trans.TransFrag;
 
 public class WeightScanDAOpe extends BaseDAOpe {
 
@@ -31,13 +29,13 @@ public class WeightScanDAOpe extends BaseDAOpe {
     public void logic(final AppFrag appFrag, UserInfo userInfo){
 
 
-        if( LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.驾驶员){
+        if( LocalValue.get登录返回信息().getUserType()== UserTypeReqBean.驾驶员){
             ToastUtil.getInstance().showShort(getActivity(),"称重");
             //默认扫码地磅处理
             WeightReq weightReq = new WeightReq();
             weightReq.setCompanyId(userInfo.getCompanyID());
             weightReq.setDbNo(userInfo.getNo());
-            weightReq.setUserId(StringUtil.getStr(LocalValue.getLoginInfo().getUserId()));
+            weightReq.setUserId(StringUtil.getStr(LocalValue.get登录返回信息().getUserId()));
             NetDataOpe.Scan.triggerWeigh(context, weightReq,new NetAdapter<WeightRes>(getActivity()){
                 @Override
                 public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
@@ -48,7 +46,7 @@ public class WeightScanDAOpe extends BaseDAOpe {
             return;
         }
 
-        if( LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.非驾驶员){
+        if( LocalValue.get登录返回信息().getUserType()== UserTypeReqBean.非驾驶员){
             ToastUtil.getInstance().showLong(getActivity(), "查看地磅信息");
             return;
         }

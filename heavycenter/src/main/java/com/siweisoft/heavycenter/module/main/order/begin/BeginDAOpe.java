@@ -28,7 +28,7 @@ public class BeginDAOpe extends AppDAOpe {
 
     public void orders(String type,NetI<OrdersRes> adapter){
         OrdersReq ordersReq = new OrdersReq();
-        ordersReq.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        ordersReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         ordersReq.setIsApp(1);
         ordersReq.setPageIndex(0);
         ordersReq.setPageSize(20);

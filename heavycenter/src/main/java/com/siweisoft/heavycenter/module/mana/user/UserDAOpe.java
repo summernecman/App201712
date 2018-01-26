@@ -34,7 +34,7 @@ public class UserDAOpe extends AppDAOpe {
 
     public void unitUsers(NetI<UnitUserResBean> adapter){
         UnitUsersReqBean reqBean = new UnitUsersReqBean();
-        reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setIsApp(1);
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);
@@ -43,21 +43,21 @@ public class UserDAOpe extends AppDAOpe {
 
     public void addUser(String tel, NetI<AddUserResBean> adapter){
         AddUserReqBean reqBean = new AddUserReqBean();
-        reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
-        reqBean.setUserId(LocalValue.getLoginInfo().getUserId());
+        reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        reqBean.setUserId(LocalValue.get登录返回信息().getUserId());
         reqBean.setUserRole(LoginResBean.USER_ROLE_GENERAL);
         NetDataOpe.Mana.User.addUser(getActivity(),reqBean,adapter);
     }
 
     public void unBindUser(int userid, NetI<UnBindResBean> adapter){
         UnBindReqBean reqBean = new UnBindReqBean();
-        reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setId(userid);
         NetDataOpe.User.unBinUnit(getActivity(),reqBean,adapter);
     }
 
     public boolean canUnBind(int userid){
-        if(LocalValue.getLoginInfo().getUserId()==userid){
+        if(LocalValue.get登录返回信息().getUserId()==userid){
             ToastUtil.getInstance().showShort(getActivity(),"不能解绑自己");
             return false;
         }

@@ -148,4 +148,16 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
     public void setOnAppItemLongClickListener(OnAppItemLongClickListener onAppItemLongClickListener) {
         this.onAppItemLongClickListener = onAppItemLongClickListener;
     }
+
+    public void setSelect(int pos){
+        LogUtil.E(pos);
+        for(int i=0;tabViews!=null&&i<tabViews.size();i++){
+            LogUtil.E(i);
+            if(i==pos){
+                tabViews.get(i).setSelected(true);
+            }else{
+                tabViews.get(i).setSelected(false);
+            }
+        }
+    }
 }

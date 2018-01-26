@@ -92,11 +92,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     public void onAppItemSelect(ViewGroup viewGroup, View view, int position) {
         FragManager2.getInstance().clear((BaseUIActivity) activity,MainAct.主界面);
         getP().getU().setCurrentItem(position);
-        getP().getD().setIndex(getP().getD().getMenudata().get(position).getContainerView().getId());
         setMoudle(getP().getD().getMenudata().get(position).getName());
-        if(getP().getD().isBindUnit()){
-            //FragManager.getInstance().clearAll(getSupportFragmentManager(),getP().getU().getPos_content());
-        }
         if(!getP().getD().getMenudata().get(position).getFragment().isInit()){
             getP().getD().getMenudata().get(position).getFragment().lazyInit();
             getP().getD().getMenudata().get(position).getFragment().setInited();

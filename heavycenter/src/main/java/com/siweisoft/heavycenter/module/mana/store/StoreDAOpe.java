@@ -35,7 +35,7 @@ public class StoreDAOpe extends AppDAOpe {
 
     public void storesInfo(int state,NetI<StoresResBean> adapter){
         StoresReqBean reqBean = new StoresReqBean();
-        reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setIsApp(1);
         switch (state){
             case StoresReqBean.STATUS_ALL:

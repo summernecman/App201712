@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.NullUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.android.lib.view.pickerview.TimePickerDialog;
@@ -21,7 +20,6 @@ import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewOrderRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
 import com.siweisoft.heavycenter.data.netd.order.rule.Rule;
-import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.order.news.rule.RuleFrag;
@@ -133,10 +131,10 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 }
                 UnitInfo unitInfo = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
                 if(NewsOrderReqBean.发货.equals(getP().getD().getNewsOrderReqBean().getOrderType())){
-                    getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(LocalValue.getLoginInfo().getCompanyId());
+                    getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(LocalValue.get登录返回信息().getCompanyId());
                     getP().getD().getNewsOrderReqBean().setReceiveCompanyId(unitInfo.getId());
                 }else{
-                    getP().getD().getNewsOrderReqBean().setReceiveCompanyId(LocalValue.getLoginInfo().getCompanyId());
+                    getP().getD().getNewsOrderReqBean().setReceiveCompanyId(LocalValue.get登录返回信息().getCompanyId());
                     getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(unitInfo.getId());
                 }
                 getP().getD().getNewsOrderReqBean().setTempCompanyName(unitInfo.getCompanyName());
@@ -154,4 +152,28 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
         }
         getP().getU().init(getP().getD().getNewsOrderReqBean());
     }
+
+
+    public void setUnit(int id){
+        getP().getD().getInfo(id, new UINetAdapter<UnitInfo>(getActivity()) {
+            @Override
+            public void onResult(boolean success, String msg, UnitInfo unitInfo) {
+                super.onResult(success, msg, unitInfo);
+                if(success){
+                    if(NewsOrderReqBean.发货.equals(getP().getD().getNewsOrderReqBean().getOrderType())){
+                        getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(LocalValue.get登录返回信息().getCompanyId());
+                        getP().getD().getNewsOrderReqBean().setReceiveCompanyId(unitInfo.getId());
+                    }else{
+                        getP().getD().getNewsOrderReqBean().setReceiveCompanyId(LocalValue.get登录返回信息().getCompanyId());
+                        getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(unitInfo.getId());
+                    }
+                    getP().getD().getNewsOrderReqBean().setTempCompanyName(unitInfo.getCompanyName());
+                    getP().getD().getNewsOrderReqBean().setTempCompany(unitInfo.getId());
+                    getP().getD().getNewsOrderReqBean().setAddress(unitInfo.getCompanyAddress());
+                    getP().getU().init(getP().getD().getNewsOrderReqBean());
+                }
+            }
+        });
+    }
+
 }

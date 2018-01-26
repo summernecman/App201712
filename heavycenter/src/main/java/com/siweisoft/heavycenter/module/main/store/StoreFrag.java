@@ -33,7 +33,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     public void lazyInit() {
         getP().getU().initRefresh(this,this);
         getP().getU().initRecycle();
-        getP().getU().autoRefresh();
+        onRefresh(null);
     }
 
     @OnClick({R.id.ftv_right2})

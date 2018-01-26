@@ -2,30 +2,18 @@ package com.siweisoft.heavycenter.module.scan;
 
 import android.content.Context;
 import com.android.lib.base.ope.BaseDAOpe;
-import com.android.lib.network.bean.res.BaseResBean;
-import com.android.lib.network.news.NetAdapter;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.NullUtil;
-import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
-import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
-import com.siweisoft.heavycenter.data.netd.scan.weight.WeightReq;
-import com.siweisoft.heavycenter.data.netd.scan.weight.WeightRes;
 import com.siweisoft.heavycenter.data.netd.unit.info.UnitInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
-import com.siweisoft.heavycenter.module.main.map.MapFrag;
-import com.siweisoft.heavycenter.module.main.order.news.NewOrderFrag;
-import com.siweisoft.heavycenter.module.main.trans.TransFrag;
-import com.siweisoft.heavycenter.module.main.weigts.weight.WeigtFrag;
-import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
 
 /**
  * Created by summer on 2018/1/25 0:33.
@@ -77,7 +65,7 @@ public class ScanDAOpe extends BaseDAOpe {
                 UserInfoReqBean infoReqBean = new UserInfoReqBean();
                 infoReqBean.setIsApp(1);
                 infoReqBean.setId(userInfo.getID());
-                NetDataOpe.User.getInfo(getActivity(), infoReqBean, new UINetAdapter<LoginResBean>(getActivity()) {
+                NetDataOpe.User.get用户信息(getActivity(), infoReqBean, new UINetAdapter<LoginResBean>(getActivity()) {
                     @Override
                     public void onResult(boolean success, String msg, LoginResBean o) {
                         super.onResult(success, msg, o);

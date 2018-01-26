@@ -11,7 +11,6 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -35,7 +34,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
         super.initData();
         getP().getU().initRefresh(this);
         getP().getU().initRecycle();
-        getP().getU().autoRefresh();
+        onRefresh(null);
         getP().getU().实时搜索(this);
     }
 
@@ -97,7 +96,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                                         public void onResult(boolean success, String msg, LoginResBean o) {
                                                             super.onResult(success, msg, o);
                                                             if(success){
-                                                                LocalValue.saveLoginInfo(o);
+                                                                LocalValue.save登录返回信息(o);
                                                                 getBaseUIActivity().onBackPressed();
                                                                 ((MainAct)activity).reStart();
                                                             }
@@ -120,7 +119,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                         public void onResult(boolean success, String msg, LoginResBean o) {
                                             super.onResult(success, msg, o);
                                             if(success){
-                                                LocalValue.saveLoginInfo(o);
+                                                LocalValue.save登录返回信息(o);
                                                 getBaseUIActivity().onBackPressed();
                                                 ((MainAct)activity).reStart();
                                             }
@@ -160,7 +159,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                 if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_RES,false)){
                     return;
                 }
-                getP().getU().autoRefresh();
+                onRefresh(null);
                 break;
         }
     }

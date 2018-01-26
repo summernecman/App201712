@@ -48,7 +48,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
         switch (type){
             case DetailFrag.TYPE_DETAIL:
                 bind.llInput.setVisibility(View.GONE);
-                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.getLoginInfo().getUserRole())){
+                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
                     bind.title.getRightIV2().setVisibility(View.GONE);
                 }
                 break;
@@ -60,7 +60,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                         bind.itemCarlicenseno.setMidEtTxt("");
                     }
                 });
-                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.getLoginInfo().getUserRole())){
+                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
                     bind.title.getRightIV2().setVisibility(View.GONE);
                 }
                 break;

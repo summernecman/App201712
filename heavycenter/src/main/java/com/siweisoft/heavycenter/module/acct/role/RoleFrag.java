@@ -21,6 +21,8 @@ import butterknife.OnClick;
 
 public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
 
+    public static String 直接登录 = "直接登录";
+
     @OnClick({R.id.tv_notdriver,R.id.tv_driver})
     public void onClick(final View vv){
         super.onClick(vv);
@@ -29,25 +31,22 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
             public void onClick(final View v) {
                 switch (v.getId()){
                     case R.id.tv_sure:
-                        getP().getD().login(LocalValue.getLoginReq(), new UINetAdapter<LoginResBean>(getContext()) {
+                        getP().getD().login(LocalValue.get登录参数(), new UINetAdapter<LoginResBean>(getContext(),false) {
                             @Override
-                            public void onResult(boolean success, String msg, LoginResBean o) {
+                            public void onSuccess(LoginResBean o) {
                                 getP().getU().getUserTypeReqBean().setId(o.getUserId());
                                 getP().getU().getUserTypeReqBean().setUserType((R.id.tv_driver==vv.getId())?UserTypeReqBean.驾驶员 :UserTypeReqBean.非驾驶员);
+                                LocalValue.save登录返回信息(o);
                                 getP().getD().setUserType(getP().getU().getUserTypeReqBean(), new UINetAdapter<UserTypeResBean>(getContext()) {
                                     @Override
-                                    public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
-                                        super.onNetFinish(haveData, url, baseResBean);
-                                        stopLoading();
-                                        if("200".equals(baseResBean.getCode())){
-                                            if(getArguments().getBoolean("regist")){
-                                                getBaseUIActivity().onBackPressed();
-                                            }else{
-                                                LoginResBean resBean = LocalValue.getLoginInfo();
-                                                resBean.setUserType((R.id.tv_driver==vv.getId())?UserTypeReqBean.驾驶员 :UserTypeReqBean.非驾驶员);
-                                                LocalValue.saveLoginInfo(resBean);
-                                                IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
-                                            }
+                                    public void onSuccess(UserTypeResBean o) {
+                                        if(getArguments().getBoolean(直接登录,false)){
+                                            LoginResBean resBean = LocalValue.get登录返回信息();
+                                            resBean.setUserType((R.id.tv_driver==vv.getId())?UserTypeReqBean.驾驶员 :UserTypeReqBean.非驾驶员);
+                                            LocalValue.save登录返回信息(resBean);
+                                            IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+                                        }else{
+                                            getBaseUIActivity().onBackPressed();
                                         }
                                     }
                                 });

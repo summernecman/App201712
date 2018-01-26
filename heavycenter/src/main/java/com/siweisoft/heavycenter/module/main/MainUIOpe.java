@@ -14,6 +14,7 @@ import android.view.View;
 import com.android.lib.base.adapter.HomePageAdapter;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragKey;
@@ -128,6 +129,11 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
         }else{
             bind.drawerLayout.openDrawer(Gravity.LEFT);
         }
+    }
+
+    public void unSelectBottomMenu(){
+        LogUtil.E("unSelectBottomMenu");
+        bind.bottommenu.setSelect(-1);
     }
 
     public int getPos_content() {

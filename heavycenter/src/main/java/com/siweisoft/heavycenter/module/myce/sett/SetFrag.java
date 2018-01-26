@@ -9,6 +9,7 @@ import com.android.lib.util.IntentUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginReqBean;
 import com.siweisoft.heavycenter.data.netd.acct.logout.LogOutResBean;
 import com.siweisoft.heavycenter.module.welc.welc.WelcAct;
 
@@ -26,7 +27,10 @@ public class SetFrag extends AppFrag<SetUIOpe,SetDAOpe> {
                     @Override
                     public void onResult(boolean success, String msg, LogOutResBean o) {
                         super.onResult(success, msg, o);
-                        LocalValue.setAutoLogin(false);
+                        LocalValue.set自动登录(false);
+                        LoginReqBean loginReqBean = LocalValue.get登录参数();
+                        loginReqBean.setInputPwd("");
+                        LocalValue.save登录参数(loginReqBean);
                         IntentUtil.startActivityWithFinish(getActivity(),WelcAct.class,null);
                     }
                 });

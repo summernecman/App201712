@@ -9,8 +9,6 @@ import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class ProvDAOpe extends AppDAOpe {
@@ -27,7 +25,7 @@ public class ProvDAOpe extends AppDAOpe {
 
     public List<CityResBean.ProvinceListBean> getPro() {
         if(pro==null){
-            pro = LocalValue.getProlList();
+            pro = LocalValue.get省市排序列表();
         }
         return pro;
     }

@@ -8,13 +8,10 @@ import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
-import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarReq;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarRes;
 import com.siweisoft.heavycenter.data.netd.order.detail.OrderDetailReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
-
-import java.util.ArrayList;
 
 public class DetailDAOpe extends AppDAOpe {
 
@@ -38,7 +35,7 @@ public class DetailDAOpe extends AppDAOpe {
     public void addCar(int carid, String oper, NetI<AddCarRes> adapter){
         AddCarReq addCarReq = new AddCarReq();
         addCarReq.setId(getData().getOrderId());
-        addCarReq.setEditer(LocalValue.getLoginInfo().getUserId());
+        addCarReq.setEditer(LocalValue.get登录返回信息().getUserId());
         addCarReq.setVehicleList(carid);
         addCarReq.setOper(oper);
         NetDataOpe.Order.addCar(getActivity(),addCarReq,adapter);

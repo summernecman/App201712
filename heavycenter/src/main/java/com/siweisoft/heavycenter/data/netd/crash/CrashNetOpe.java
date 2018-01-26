@@ -27,7 +27,7 @@ public class CrashNetOpe extends BaseDAOpe{
         crash.setCreatedtime(DateFormatUtil.getNowStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS));
         crash.setError(txt);
         CrashBean.UserBeanBean userBeanBean = new CrashBean.UserBeanBean();
-        LoginResBean loginResBean = LocalValue.getLoginInfo();
+        LoginResBean loginResBean = LocalValue.get登录返回信息();
         if(loginResBean!=null){
             userBeanBean.setId(loginResBean.getUserId());
             userBeanBean.setName(loginResBean.getTrueName());

@@ -36,7 +36,7 @@ public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
         bind.tvRead.getCheckIV().setSelected(true);
     }
 
-    public boolean go(){
+    public boolean is都输入好了(){
         if(NullUtil.isStrEmpty(bind.phone.getText())){
             ToastUtil.getInstance().showShort(getActivity(),"请输入手机号");
             return false;
@@ -65,7 +65,7 @@ public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
         return true;
     }
 
-    public boolean canGetCode(){
+    public boolean is可以点击验证码(){
         if(NullUtil.isStrEmpty(bind.phone.getText())){
             ToastUtil.getInstance().showShort(getActivity(),"请输入手机号");
             return false;

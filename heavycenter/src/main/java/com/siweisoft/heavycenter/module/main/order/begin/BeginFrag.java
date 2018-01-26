@@ -27,7 +27,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
     public void initData() {
         super.initData();
         getP().getU().initRefresh(this,this);
-        getP().getU().autoRefresh();
+        onRefresh(null);
     }
 
     @Override

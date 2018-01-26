@@ -2,18 +2,12 @@ package com.siweisoft.heavycenter.module.welc.welc;
 
 //by summer on 2017-12-14.
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
-import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.network.news.NetAdapter;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
-import com.android.lib.util.LogUtil;
-import com.android.lib.util.fragment.FragManager;
-import com.android.lib.util.fragment.two.FragManager2;
-import com.android.lib.util.system.HandleUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -22,7 +16,6 @@ import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
-import com.siweisoft.heavycenter.module.acct.login.LoginFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
 
 import java.util.ArrayList;
@@ -34,35 +27,27 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getP().getU().initBg(getP().getD().getImageUrl());
-
-        if(LocalValue.getProMap()!=null&&LocalValue.getProMap().size()>0){
+        if(LocalValue.get省市列表接口数据()!=null&&LocalValue.get省市列表接口数据().size()>0){
             AutoLogin();
         }else{
-            NetDataOpe.getCity(activity,new CityReqBean(),new NetAdapter<ArrayList<CityResBean>>(activity){
-
+            NetDataOpe.get省市列表接口数据(activity,new CityReqBean(),new NetAdapter<ArrayList<CityResBean>>(activity){
                 @Override
-                public void onResult(boolean success, String msg, final ArrayList<CityResBean> o) {
-                    super.onResult(success, msg, o);
-                    if(success){
-                        LocalValue.saveCitysInfo(o);
-                        getP().getD().saveProMapInfo();
-                        getP().getD().initDATA();
-                        AutoLogin();
-                    }
+                public void onSuccess(ArrayList<CityResBean> o) {
+                    LocalValue.save省市列表接口数据(o);
+                    AutoLogin();
                 }
             });
         }
     }
 
     private void AutoLogin(){
-        if(LocalValue.isAutoLogin()){
-            getP().getD().getInfo(new UINetAdapter<LoginResBean>(WelcAct.this) {
+        if(LocalValue.is自动登录()){
+            getP().getD().get用户信息(new UINetAdapter<LoginResBean>(WelcAct.this) {
                 @Override
                 public void onResult(boolean success, String msg, LoginResBean o) {
                     super.onResult(success, msg, o);
                     if(success){
-                        LocalValue.saveLoginInfo(o);
+                        LocalValue.save登录返回信息(o);
                         IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
                     }else{
                         IntentUtil.startActivityWithFinish(WelcAct.this, AcctAct.class,null);

@@ -50,7 +50,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
                 }
                 if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
                     MyFrag myFrag = (MyFrag) getP().getD().getPages().get(1);
-                    myFrag.getP().getU().autoRefresh();
+                    myFrag. onRefresh(null);;
                 }
                 break;
         }

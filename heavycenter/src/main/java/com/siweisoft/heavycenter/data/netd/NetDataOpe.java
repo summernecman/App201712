@@ -104,8 +104,8 @@ public class NetDataOpe {
         NetGet.postData(context,moudle,reqBean,adapter);
     }
 
-    public static void onLogin(Context context,String moudle, LoginReqBean reqBean, NetI<LoginResBean> adapter) {
-        NetGet.postData(context,moudle,reqBean,adapter);
+    public static void onLogin(Context context, LoginReqBean reqBean, NetI<LoginResBean> adapter) {
+        NetGet.postDataGetCookie(context,NetValue.获取地址("/user/appLogin"),reqBean,adapter);
     }
 
     public static void updatePwd(Context context, String moudle, ForGetReqBean reqBean, NetI<ForGetResBean> adapter) {
@@ -132,7 +132,7 @@ public class NetDataOpe {
         NetGet.getData(context,NetValue.获取地址("/company/insert"),reqBean,adapter);
     }
 
-    public static void getCity(Context context, CityReqBean reqBean, NetI<ArrayList<CityResBean>> adapter) {
+    public static void get省市列表接口数据(Context context, CityReqBean reqBean, NetI<ArrayList<CityResBean>> adapter) {
         NetGet.getData(context,NetValue.获取地址("/metadata/getCity"),reqBean,adapter);
     }
 
@@ -215,7 +215,7 @@ public class NetDataOpe {
         }
 
 
-        public static void getInfo(Context context, UserInfoReqBean reqBean, NetI<LoginResBean> adapter) {
+        public static void get用户信息(Context context, UserInfoReqBean reqBean, NetI<LoginResBean> adapter) {
             NetGet.getData(context,NetValue.获取地址("/user/getDetail"),reqBean,adapter);
         }
 

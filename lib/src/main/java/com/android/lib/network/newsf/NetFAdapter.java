@@ -107,5 +107,15 @@ public  class NetFAdapter<A> implements NetI<A> {
 
     }
 
+    @Override
+    public void onSuccess(A o) {
+
+    }
+
+    @Override
+    public void onFail(boolean haveData, String msg) {
+
+    }
+
 
 }

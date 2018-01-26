@@ -40,7 +40,7 @@ public class BindDAOpe extends AppDAOpe {
     public void Cars(NetI<CarsResBean> adapter){
         CarsReqBean carsReqBean = new CarsReqBean();
         carsReqBean.setIsApp(1);
-        carsReqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        carsReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         carsReqBean.setPageIndex(0);
         carsReqBean.setPageSize(1000);
         carsReqBean.setWhat(CarsReqBean.WHAT_MY);
@@ -52,9 +52,9 @@ public class BindDAOpe extends AppDAOpe {
     }
 
     public void bindCar(int carid,NetI<BindCarRes> adapter){
-        getBindCarReq().setCurrentDriver(LocalValue.getLoginInfo().getUserId());
+        getBindCarReq().setCurrentDriver(LocalValue.get登录返回信息().getUserId());
         getBindCarReq().setId(carid);
-        getBindCarReq().setEditer(LocalValue.getLoginInfo().getUserId());
+        getBindCarReq().setEditer(LocalValue.get登录返回信息().getUserId());
         NetDataOpe.Mana.Car.bindCar(getActivity(),getBindCarReq(),adapter);
     }
 

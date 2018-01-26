@@ -30,7 +30,7 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
         newReqBean.setCompanyLat("0");
         newReqBean.setCompanyLng("0");
         newReqBean.setContactName(bind.unitcontact.getMidET().getText().toString());
-        newReqBean.setCreater(LocalValue.getLoginInfo().getUserId());
+        newReqBean.setCreater(LocalValue.get登录返回信息().getUserId());
         newReqBean.setHighCompany(unitInfo.getId());
         return newReqBean;
     }

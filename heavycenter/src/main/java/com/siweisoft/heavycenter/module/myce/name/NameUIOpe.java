@@ -12,7 +12,6 @@ import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.rename.ReNameReqBean;
 import com.siweisoft.heavycenter.databinding.FragMyceNameBinding;
-import com.siweisoft.heavycenter.databinding.FragMyceSetAboutBinding;
 
 public class NameUIOpe extends AppUIOpe<FragMyceNameBinding>{
 
@@ -26,7 +25,7 @@ public class NameUIOpe extends AppUIOpe<FragMyceNameBinding>{
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
-        bind.itemName.setMidEtTxt(StringUtil.getStr(LocalValue.getLoginInfo().getTrueName()));
+        bind.itemName.setMidEtTxt(StringUtil.getStr(LocalValue.get登录返回信息().getTrueName()));
     }
 
     public boolean canGo(){
@@ -38,7 +37,7 @@ public class NameUIOpe extends AppUIOpe<FragMyceNameBinding>{
     }
 
     public ReNameReqBean getReNameReqBean() {
-        reNameReqBean.setId(LocalValue.getLoginInfo().getUserId());
+        reNameReqBean.setId(LocalValue.get登录返回信息().getUserId());
         reNameReqBean.setTrueName(bind.itemName.getMidET().getText().toString());
         return reNameReqBean;
     }

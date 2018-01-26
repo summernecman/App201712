@@ -94,4 +94,5 @@ dependencies {
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-4'//下拉刷新
     compile 'id.zelory:compressor:2.1.0'//图片压缩
     compile 'com.android.support:multidex:1.0.2'//并将 Dalvik 可执行文件分包库添加为依赖项
+    implementation 'me.drakeet.support:toastcompat:1.0.2'
 }

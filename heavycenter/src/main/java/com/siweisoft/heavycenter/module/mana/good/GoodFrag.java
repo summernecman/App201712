@@ -24,7 +24,7 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
         super.initData();
         getP().getU().initRefresh(this);
         getP().getU().initRecycle();
-        getP().getU().autoRefresh();
+        onRefresh(null);
     }
 
 

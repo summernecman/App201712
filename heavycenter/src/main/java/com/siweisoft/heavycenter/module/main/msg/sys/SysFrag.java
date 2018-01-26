@@ -27,7 +27,7 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
         super.initData();
         getP().getD().setMoudle(getArguments().getString(ValueConstant.DATA_POSITION));
         getP().getU().initRefresh(this,this);
-        getP().getU().autoRefresh();
+        onRefresh(null);
 
     }
 

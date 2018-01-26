@@ -20,7 +20,7 @@ public class NewDAOpe extends AppDAOpe {
     }
 
     public NewsGoodReq getNewsGoodReq() {
-        newsGoodReq.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        newsGoodReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         return newsGoodReq;
     }
 

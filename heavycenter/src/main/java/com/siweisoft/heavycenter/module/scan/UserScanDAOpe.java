@@ -40,13 +40,14 @@ public class UserScanDAOpe extends BaseDAOpe {
         }
 
 
-        if(appFrag.getClass().getName().equals(NewOrderFrag.class.getName()) &&( LocalValue.getLoginInfo().getUserType()==UserTypeReqBean.非驾驶员)){
+        if(appFrag.getClass().getName().equals(NewOrderFrag.class.getName()) &&( LocalValue.get登录返回信息().getUserType()==UserTypeReqBean.非驾驶员)){
             ToastUtil.getInstance().showShort(getActivity(),"新建订单选定单位");
             NewOrderFrag newOrderFrag = (NewOrderFrag) appFrag;
+            newOrderFrag.setUnit(scaned.getCompanyId());
             return;
         }
 
-        if(appFrag.getClass().getName().equals(MapFrag.class.getName())&&( LocalValue.getLoginInfo().getUserType()==UserTypeReqBean.驾驶员)){
+        if(appFrag.getClass().getName().equals(MapFrag.class.getName())&&( LocalValue.get登录返回信息().getUserType()==UserTypeReqBean.驾驶员)){
             ToastUtil.getInstance().showShort(getActivity(),"驾驶员扫码地图 地图中心改为单位所在位置");
             MapFrag mapFrag = (MapFrag) appFrag;
             return;
@@ -60,7 +61,7 @@ public class UserScanDAOpe extends BaseDAOpe {
 
 
 
-        if(appFrag.getClass().getName().equals(DetailFrag.class.getName())&&( LocalValue.getLoginInfo().getUserType()==UserTypeReqBean.非驾驶员)
+        if(appFrag.getClass().getName().equals(DetailFrag.class.getName())&&( LocalValue.get登录返回信息().getUserType()==UserTypeReqBean.非驾驶员)
                 &&( scaned.getUserType()==UserTypeReqBean.驾驶员)){
             ToastUtil.getInstance().showShort(getActivity(),"作为选定的当前驾驶员");
             DetailFrag detailFrag = (DetailFrag) appFrag;
@@ -69,23 +70,23 @@ public class UserScanDAOpe extends BaseDAOpe {
 
 
         if((scaned.getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED)&&(
-                (LocalValue.getLoginInfo().getUserRole()==LoginResBean.USER_ROLE_ADMIN)
-                        ||(LocalValue.getLoginInfo().getUserRole()==LoginResBean.USER_ROLE_SUPER_ADMIN))){
+                (LocalValue.get登录返回信息().getUserRole()==LoginResBean.USER_ROLE_ADMIN)
+                        ||(LocalValue.get登录返回信息().getUserRole()==LoginResBean.USER_ROLE_SUPER_ADMIN))){
             ToastUtil.getInstance().showShort(getActivity(),"管理员发送邀请");
             return;
         }
 
-        if(LocalValue.getLoginInfo().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED){
+        if(LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED){
             ToastUtil.getInstance().showShort(getActivity(),"绑定单位，通知所有管理人员");
 
         }
 
-        if((LocalValue.getLoginInfo().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED)&&(
+        if((LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED)&&(
                 (scaned.getUserRole()==LoginResBean.USER_ROLE_ADMIN)
                         ||(scaned.getUserRole()==LoginResBean.USER_ROLE_SUPER_ADMIN))){
             ToastUtil.getInstance().showShort(getActivity(),"绑定单位，通知被扫用户");
             BindReqBean bindReqBean = new BindReqBean();
-            bindReqBean.setId(LocalValue.getLoginInfo().getUserId());
+            bindReqBean.setId(LocalValue.get登录返回信息().getUserId());
             bindReqBean.setCompanyId(scaned.getCompanyId());
             bindReqBean.setIsManager(BindReqBean.IS_MANAGER_NO);
             bindReqBean.setMangerId(0);
@@ -101,10 +102,10 @@ public class UserScanDAOpe extends BaseDAOpe {
             return;
         }
 
-        if((LocalValue.getLoginInfo().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED)&&(scaned.getUserRole()==LoginResBean.USER_ROLE_GENERAL)){
+        if((LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED)&&(scaned.getUserRole()==LoginResBean.USER_ROLE_GENERAL)){
             ToastUtil.getInstance().showShort(getActivity(),"绑定单位，通知所有管理人员");
             BindReqBean bindReqBean = new BindReqBean();
-            bindReqBean.setId(LocalValue.getLoginInfo().getUserId());
+            bindReqBean.setId(LocalValue.get登录返回信息().getUserId());
             bindReqBean.setCompanyId(scaned.getCompanyId());
             bindReqBean.setIsManager(BindReqBean.IS_MANAGER_NO);
             bindReqBean.setMangerId(0);

@@ -37,7 +37,7 @@ public class SysDAOpe extends BaseDAOpe {
 
     public void getMsgSys(NetI<MsgsResBean> adapter){
         MsgsReqBean msgsReqBean = new MsgsReqBean();
-        msgsReqBean.setUserId(LocalValue.getLoginInfo().getUserId());
+        msgsReqBean.setUserId(LocalValue.get登录返回信息().getUserId());
         msgsReqBean.setPageIndex(getPageindex());
         msgsReqBean.setPageSize(20);
         msgsReqBean.setMessageCate(getMoudle());
@@ -46,7 +46,7 @@ public class SysDAOpe extends BaseDAOpe {
 
     public void dealMss(int messageId, String auditStatus, NetI<MsgDealResBean> adapter){
         MsgDealReqBean msgDealReqBean = new MsgDealReqBean();
-        msgDealReqBean.setUserId(LocalValue.getLoginInfo().getUserId());
+        msgDealReqBean.setUserId(LocalValue.get登录返回信息().getUserId());
         msgDealReqBean.setMessageId(messageId);
         msgDealReqBean.setAuditStatus(auditStatus);
         NetDataOpe.Msg.deal(getActivity(),msgDealReqBean,adapter);

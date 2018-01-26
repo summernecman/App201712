@@ -12,7 +12,6 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
-import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 import com.siweisoft.heavycenter.module.acct.regist.RegistFrag;
 import com.siweisoft.heavycenter.module.acct.repwd.RepwdFrag;
@@ -33,31 +32,27 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.login:
-                if(getP().getU().go()){
-                    getP().getD().login(getP().getU().getLoginReqBean(), new UINetAdapter<LoginResBean>(activity) {
+                if(getP().getU().is输入完全()){
+                    getP().getD().go登录(getP().getU().getLoginReqBean(), new UINetAdapter<LoginResBean>(activity) {
                         @Override
-                        public void onResult(boolean success, String msg, LoginResBean loginResBean) {
-                            if(success){
-                                LocalValue.saveLoginReq(getP().getU().getLoginReqBean());
-                                LocalValue.saveLoginInfo(loginResBean);
-                                if(loginResBean.getUserType()== UserTypeReqBean.驾驶员 || loginResBean.getUserType()== UserTypeReqBean.非驾驶员){
-                                    LocalValue.setAutoLogin(true);
-                                    IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
-                                }else{
-                                    FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号ID,new RoleFrag());
-                                }
+                        public void onSuccess(LoginResBean loginResBean) {
+                            LocalValue.save登录参数(getP().getU().getLoginReqBean());
+                            LocalValue.save登录返回信息(loginResBean);
+                            if(loginResBean.is选择了角色()){
+                                LocalValue.set自动登录(true);
+                                IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+                            }else{
+                                FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号界面根布局,new RoleFrag());
                             }
                         }
                     });
                 }
                 break;
             case R.id.regist:
-                FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号ID,new RegistFrag());
-                //FragManager.getInstance().startFragment(activity.getSupportFragmentManager(),getIndex(),new RegistFrag());
+                FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号界面根布局,new RegistFrag());
                 break;
             case R.id.repwd:
-                FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号ID,new RepwdFrag());
-                //FragManager.getInstance().startFragment(activity.getSupportFragmentManager(),getIndex(),new RepwdFrag());
+                FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号界面根布局,new RepwdFrag());
                 break;
         }
     }

@@ -30,7 +30,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     public void lazyInit() {
         getP().getU().initRefresh(this,this);
         getP().getU().initRecycle();
-        getP().getU().autoRefresh();
+        onRefresh(null);
     }
 
     @Override

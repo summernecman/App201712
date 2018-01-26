@@ -53,7 +53,7 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                                             public void onResult(boolean success, String msg, LoginResBean o) {
                                                 super.onResult(success, msg, o);
                                                 if(success){
-                                                    LocalValue.saveLoginInfo(o);
+                                                    LocalValue.save登录返回信息(o);
                                                     ((MainAct)getBaseUIActivity()).reStart();
                                                 }
                                             }

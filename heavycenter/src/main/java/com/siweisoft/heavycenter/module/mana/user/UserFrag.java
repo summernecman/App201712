@@ -30,7 +30,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
         super.initData();
         getP().getU().initRecycle();
         getP().getU().initRefresh(this,this);
-        getP().getU().autoRefresh();
+        onRefresh(null);
 
 
     }
@@ -78,7 +78,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                         @Override
                                         public void onResult(boolean success, String msg, UnBindResBean o) {
                                             super.onResult(success, msg, o);
-                                            getP().getU().autoRefresh();
+                                            onRefresh(null);
                                         }
                                     });
                                 }
@@ -88,7 +88,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                     @Override
                                     public void onResult(boolean success, String msg, AddUserResBean o) {
                                         super.onResult(success, msg, o);
-                                        getP().getU().autoRefresh();
+                                        onRefresh(null);
                                     }
                                 });
                                 break;
@@ -108,7 +108,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                     return;
                 }
                 if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
-                    getP().getU().autoRefresh();
+                    onRefresh(null);
                 }
                 break;
         }

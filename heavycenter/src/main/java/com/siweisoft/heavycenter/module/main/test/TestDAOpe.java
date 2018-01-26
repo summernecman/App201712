@@ -53,7 +53,7 @@ public class TestDAOpe extends AppDAOpe {
         RelativeLayout v1 = new RelativeLayout(context);v1.setId(MainAct.运输单ID);
         menudata.add(new BottomMenuBean(MainAct.运输单, R.drawable.drawable_main_bottom_trans,new TransFrag(),v1,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
-        if(LocalValue.getLoginInfo().getUserType()== UserTypeReqBean.驾驶员){
+        if(LocalValue.get登录返回信息().getUserType()== UserTypeReqBean.驾驶员){
             RelativeLayout v2 = new RelativeLayout(context);v2.setId(MainAct.地图ID);
             menudata.add(new BottomMenuBean(MainAct.地图, R.drawable.drawable_main_bottom_order,new MapFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         }else{
@@ -117,8 +117,8 @@ public class TestDAOpe extends AppDAOpe {
 
     public boolean isBindUnit() {
         //绑定了单位== true
-        if(LocalValue.getLoginInfo().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_BINDED ||
-                LocalValue.getLoginInfo().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_CHECK ){
+        if(LocalValue.get登录返回信息().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_BINDED ||
+                LocalValue.get登录返回信息().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_CHECK ){
             return true;
         }
         return false;
@@ -154,6 +154,6 @@ public class TestDAOpe extends AppDAOpe {
         loginResBean.setUserType(UserTypeReqBean.驾驶员);
         loginResBean.setVehicleCount(10);
         loginResBean.setWareHouseCount(10);
-        LocalValue.saveLoginInfo(loginResBean);
+        LocalValue.save登录返回信息(loginResBean);
     }
 }

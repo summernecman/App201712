@@ -30,7 +30,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
         super.initData();
         getP().getU().initRecycle();
         getP().getU().initRefresh(this);
-        getP().getU().autoRefresh();
+        onRefresh(null);
         getP().getU().实时搜索(this);
     }
 

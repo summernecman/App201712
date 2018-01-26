@@ -7,13 +7,11 @@ import android.content.Context;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.util.MD5Util;
 import com.android.lib.util.NullUtil;
-import com.android.lib.util.SPUtil;
 import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginReqBean;
 import com.siweisoft.heavycenter.databinding.FragAcctLoginBinding;
-import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -28,11 +26,11 @@ public class LoginUIOpe extends AppUIOpe<FragAcctLoginBinding> {
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
-        bind.phone.getEditText().setText(LocalValue.getLoginReq()==null?"":LocalValue.getLoginReq().getTel());
-        bind.pwd.getEditText().setText(LocalValue.getLoginReq()==null?"":LocalValue.getLoginReq().getInputPwd());
+        bind.phone.getEditText().setText(LocalValue.get登录参数()==null?"":LocalValue.get登录参数().getTel());
+        bind.pwd.getEditText().setText(LocalValue.get登录参数()==null?"":LocalValue.get登录参数().getInputPwd());
     }
 
-    public boolean go(){
+    public boolean is输入完全(){
         if(NullUtil.isStrEmpty(bind.phone.getText().toLowerCase())){
             ToastUtil.getInstance().showShort(getActivity(),"手机号不能为空");
             return false;

@@ -4,10 +4,7 @@ package com.siweisoft.heavycenter.module.myce.name;
 
 import android.view.View;
 
-import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.ToastUtil;
-import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -37,9 +34,9 @@ public class NameFrag extends AppFrag<NameUIOpe,NameDAOpe> {
                         public void onResult(boolean success, String msg, ReNameResBean o) {
                             super.onResult(success, msg, o);
                             if(success){
-                                LoginResBean loginResBean = LocalValue.getLoginInfo();
+                                LoginResBean loginResBean = LocalValue.get登录返回信息();
                                 loginResBean.setTrueName(getP().getU().getReNameReqBean().getTrueName());
-                                LocalValue.saveLoginInfo(loginResBean);
+                                LocalValue.save登录返回信息(loginResBean);
                                 ((MainAct)activity).getP().getD().getMyceFrag().getP().getU().initUI(null);
                             }
                             getBaseUIActivity().onBackPressed();

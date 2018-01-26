@@ -110,7 +110,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                     initData();
                 }
             }
-        }, 1000);
+        }, 1500);
         for(int i=0;i<fragIs.size();i++){
             fragIs.get(i).onViewCreated(view,savedInstanceState);
         }

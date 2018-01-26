@@ -8,6 +8,7 @@ import android.view.View;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.network.newsf.UIFNetAdapter;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -36,7 +37,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
         getP().getU().setSwipe(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库?false:true);
         getP().getU().initRefresh(this,this);
         getP().getU().initRecycle();
-        getP().getU().autoRefresh();
+        onRefresh(null);
 
     }
 
@@ -101,7 +102,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
         if(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库){
             state = StoresReqBean.STATUS_ON;
         }
-        getP().getD().storesInfo(state,new UINetAdapter<StoresResBean>(activity) {
+        getP().getD().storesInfo(state,new UIFNetAdapter<StoresResBean>(this) {
             @Override
             public void onResult(boolean success, String msg, StoresResBean o) {
                 super.onResult(success, msg, o);

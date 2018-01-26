@@ -3,6 +3,7 @@ package com.siweisoft.heavycenter.data.netd.acct.login;
 //by summer on 2018-01-09.
 
 import com.android.lib.bean.BaseBean;
+import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 
 import java.util.List;
 
@@ -377,6 +378,13 @@ public class LoginResBean extends BaseBean {
 
     public void setVehicleId(int vehicleId) {
         this.vehicleId = vehicleId;
+    }
+
+    public boolean is选择了角色(){
+        if(getUserType()== UserTypeReqBean.驾驶员 || getUserType()== UserTypeReqBean.非驾驶员){
+            return true;
+        }
+        return false;
     }
 
     public static class BranchCompanyListBean {

@@ -27,6 +27,6 @@ public class RoleDAOpe extends AppDAOpe {
     }
 
     public void login(LoginReqBean reqBean, NetI<LoginResBean> adapter){
-        NetDataOpe.onLogin(getActivity(), NetValue.获取地址("/user/appLogin"),reqBean,adapter);
+        NetDataOpe.onLogin(getActivity(),reqBean,adapter);
     }
 }

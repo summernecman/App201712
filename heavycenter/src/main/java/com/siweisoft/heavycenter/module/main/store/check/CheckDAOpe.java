@@ -45,12 +45,12 @@ public class CheckDAOpe extends AppDAOpe {
     }
 
     public CheckStoreReqBean getCheckStoreReqBean() {
-        checkStoreReqBean.setUserId(LocalValue.getLoginInfo().getUserId());
+        checkStoreReqBean.setUserId(LocalValue.get登录返回信息().getUserId());
         return checkStoreReqBean;
     }
 
     public CheckStoreReqBean getCheckStoreReqBean(StoresResBean data) {
-        getCheckStoreReqBean().setUserId(LocalValue.getLoginInfo().getUserId());
+        getCheckStoreReqBean().setUserId(LocalValue.get登录返回信息().getUserId());
         ArrayList<Check> checks = new ArrayList<>();
         for(int i=0;data!=null && data.getResults()!=null && i<data.getResults().size();i++){
             Check check  = new Check();
@@ -67,7 +67,7 @@ public class CheckDAOpe extends AppDAOpe {
 
     public void storesInfo(NetI<StoresResBean> adapter){
         StoresReqBean reqBean = new StoresReqBean();
-        reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setIsApp(1);
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);

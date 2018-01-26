@@ -23,10 +23,15 @@ public  class NetAdapter<A> implements NetI<A> {
     protected Context context;
     protected String url;
 
+    protected boolean showTips = true;
+
     public NetAdapter(Context context) {
         this.context = context;
-        Type type = this.getClass().getGenericSuperclass();
-        getClass().getSimpleName();
+    }
+
+    public NetAdapter(Context context,boolean isshow) {
+        this.context = context;
+        showTips = isshow;
     }
 
 
@@ -49,7 +54,9 @@ public  class NetAdapter<A> implements NetI<A> {
             onResult(false,baseResBean.getMessage(), null);
         } else {
             if(cache){
-                ToastUtil.getInstance().showShort(context,"当前为无网络测试环境");
+                if(showTips){
+                    ToastUtil.getInstance().showShort(context,"当前为无网络测试环境");
+                }
                 BaseResBean resBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(url),BaseResBean.class);
                 if(resBean ==null){
                     resBean = new BaseResBean();
@@ -57,8 +64,8 @@ public  class NetAdapter<A> implements NetI<A> {
                 }
                 deal(haveData,url,resBean);
             }else{
-                if(!NullUtil.isStrEmpty(baseResBean.getMessage())){
-                    ToastUtil.getInstance().showShort(context,baseResBean.getMessage());
+                if(!NullUtil.isStrEmpty(baseResBean.getMessage())&& showTips){
+                    ToastUtil.getInstance().showShort(context.getApplicationContext(),baseResBean.getMessage());
                 }
                 SPUtil.getInstance().saveStr(url,GsonUtil.getInstance().toJson(baseResBean));
                 deal(haveData,url,baseResBean);
@@ -96,11 +103,23 @@ public  class NetAdapter<A> implements NetI<A> {
 
     @Override
     public void onResult(boolean success, String msg, A o) {
-
+        if(success){
+            onSuccess(o);
+        }
     }
 
     @Override
     public void onProgress(long total, long current) {
+
+    }
+
+    @Override
+    public void onSuccess(A o) {
+
+    }
+
+    @Override
+    public void onFail(boolean haveData, String msg) {
 
     }
 

@@ -20,7 +20,7 @@ public class SetDAOpe extends AppDAOpe {
 
     public void logOut( NetI<LogOutResBean> adapter){
         LogOutReqBean logOutReqBean = new LogOutReqBean();
-        logOutReqBean.setTel(LocalValue.getLoginInfo().getTel());
+        logOutReqBean.setTel(LocalValue.get登录返回信息().getTel());
         NetDataOpe.logOut(getActivity(),logOutReqBean,adapter);
     }
 }

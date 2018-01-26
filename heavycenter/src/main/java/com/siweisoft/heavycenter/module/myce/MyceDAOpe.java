@@ -9,8 +9,6 @@ import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
-import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarReqBean;
-import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarReq;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
@@ -32,7 +30,7 @@ public class MyceDAOpe extends AppDAOpe {
 
     public void uploadPhoto(File f, String type, NetI<UpdateHeadResBean> adapter){
         List<KeyValue> keyValues = new ArrayList<>();
-        keyValues.add(new KeyValue(UpdateHeadReqBean.用户id,LocalValue.getLoginInfo().getUserId()));
+        keyValues.add(new KeyValue(UpdateHeadReqBean.用户id,LocalValue.get登录返回信息().getUserId()));
         keyValues.add(new KeyValue(UpdateHeadReqBean.文件类型,type));
         keyValues.add(new KeyValue(UpdateHeadReqBean.文件路径,f));
         NetDataOpe.User.uploadPhoto(getActivity(),keyValues,adapter);
@@ -40,22 +38,22 @@ public class MyceDAOpe extends AppDAOpe {
 
     public void updateHead(NetI<UpdateHeadResBean> adapter){
         UpdateHeadReqBean updateHeadReqBean = new UpdateHeadReqBean();
-        updateHeadReqBean.setId(LocalValue.getLoginInfo().getUserId());
-        updateHeadReqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        updateHeadReqBean.setId(LocalValue.get登录返回信息().getUserId());
+        updateHeadReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         NetDataOpe.User.updatePhoto(getActivity(),updateHeadReqBean,adapter);
     }
 
     public void updateCar(NetI<UpdateCarRes> adapter){
         UpdateCarReq updateCarReq = new UpdateCarReq();
-        updateCarReq.setId(LocalValue.getLoginInfo().getVehicleId());
-        updateCarReq.setCarLicenseNo(LocalValue.getLoginInfo().getCarLicenseNo());
-        updateCarReq.setCarBrand(LocalValue.getLoginInfo().getCarBrand());
-        updateCarReq.setVehiclePhoto(LocalValue.getLoginInfo().getVehiclePhoto());
-        updateCarReq.setVehicleLicensePhoto(LocalValue.getLoginInfo().getVehicleLicensePhoto());
-        updateCarReq.setMaxCapacity(LocalValue.getLoginInfo().getMaxCapacity());
-        updateCarReq.setEmptyWeight(LocalValue.getLoginInfo().getEmptyWeight());
-        updateCarReq.setIcCard(LocalValue.getLoginInfo().getIcCard());
-        updateCarReq.setEditer(LocalValue.getLoginInfo().getUserId());
+        updateCarReq.setId(LocalValue.get登录返回信息().getVehicleId());
+        updateCarReq.setCarLicenseNo(LocalValue.get登录返回信息().getCarLicenseNo());
+        updateCarReq.setCarBrand(LocalValue.get登录返回信息().getCarBrand());
+        updateCarReq.setVehiclePhoto(LocalValue.get登录返回信息().getVehiclePhoto());
+        updateCarReq.setVehicleLicensePhoto(LocalValue.get登录返回信息().getVehicleLicensePhoto());
+        updateCarReq.setMaxCapacity(LocalValue.get登录返回信息().getMaxCapacity());
+        updateCarReq.setEmptyWeight(LocalValue.get登录返回信息().getEmptyWeight());
+        updateCarReq.setIcCard(LocalValue.get登录返回信息().getIcCard());
+        updateCarReq.setEditer(LocalValue.get登录返回信息().getUserId());
         NetDataOpe.Mana.Car.updateCar(getActivity(),updateCarReq,adapter);
     }
 
@@ -63,9 +61,9 @@ public class MyceDAOpe extends AppDAOpe {
     public void getInfo(NetI<LoginResBean> adapter){
 
         UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
-        userInfoReqBean.setId(LocalValue.getLoginInfo().getUserId());
+        userInfoReqBean.setId(LocalValue.get登录返回信息().getUserId());
         userInfoReqBean.setIsApp(1);
-        NetDataOpe.User.getInfo(getActivity(),userInfoReqBean,adapter);
+        NetDataOpe.User.get用户信息(getActivity(),userInfoReqBean,adapter);
     }
 
 }

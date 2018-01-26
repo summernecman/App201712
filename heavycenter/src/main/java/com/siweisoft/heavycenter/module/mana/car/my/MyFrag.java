@@ -8,6 +8,7 @@ import android.view.View;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.network.newsf.UIFNetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -33,7 +34,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
             getP().getU().bind.cartitle.setVisibility(View.GONE);
         }
         getP().getU().initRefresh(this,this);
-        getP().getU().autoRefresh();
+        onRefresh(null);
     }
 
 
@@ -45,7 +46,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
                 switch (v.getId()){
                     case R.id.menu:
                         final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
-                        getP().getD().statusCar(bean.getVehicleId(), bean.getStatus(), new UINetAdapter<StopCarResBean>(activity) {
+                        getP().getD().statusCar(bean.getVehicleId(), bean.getStatus(), new UIFNetAdapter<StopCarResBean>(this) {
                             @Override
                             public void onResult(boolean success, String msg, StopCarResBean o) {
                                 super.onResult(success, msg, o);
@@ -80,7 +81,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().Cars(getArguments().getString(ValueConstant.DATA_POSITION),new UINetAdapter<CarsResBean>(activity) {
+        getP().getD().Cars(getArguments().getString(ValueConstant.DATA_POSITION),new UIFNetAdapter<CarsResBean>(this) {
             @Override
             public void onResult(boolean success, String msg, CarsResBean o) {
                 super.onResult(success, msg, o);
@@ -98,7 +99,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
                 if(bundle==null|| !bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
                     return;
                 }
-                getP().getU().autoRefresh();
+                onRefresh(null);
                 break;
         }
     }

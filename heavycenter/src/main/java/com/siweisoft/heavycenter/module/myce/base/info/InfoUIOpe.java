@@ -25,15 +25,15 @@ public class InfoUIOpe extends AppUIOpe<FragScanInfoBinding>{
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
-        bind.setVariable(BR.frag_scan_info, LocalValue.getLoginInfo());
+        bind.setVariable(BR.frag_scan_info, LocalValue.get登录返回信息());
     }
 
     public void initScan(){
         UserInfo userInfo = new UserInfo();
-        userInfo.setID(LocalValue.getLoginInfo().getUserId());
+        userInfo.setID(LocalValue.get登录返回信息().getUserId());
         userInfo.setType("HCUser");
-        userInfo.setName(StringUtil.getStr(LocalValue.getLoginInfo().getTrueName()));
-        userInfo.setMobile(StringUtil.getStr(LocalValue.getLoginInfo().getTel()));
+        userInfo.setName(StringUtil.getStr(LocalValue.get登录返回信息().getTrueName()));
+        userInfo.setMobile(StringUtil.getStr(LocalValue.get登录返回信息().getTel()));
         bind.ivScan.setImageBitmap(CodeUtils.createImage(GsonUtil.getInstance().toJson(userInfo), (int) (ScreenUtil.mw*180), (int) (ScreenUtil.mw*180), null));
     }
 }

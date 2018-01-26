@@ -13,6 +13,10 @@ public abstract class UINetAdapter<A extends BaseBean> extends NetAdapter<A> {
         super(context);
     }
 
+    public UINetAdapter(Context context, boolean isshow) {
+        super(context, isshow);
+    }
+
     @Override
     public boolean onNetStart(String url, String gson) {
         LoadUtil.getInstance().onStartLoading(context, url);

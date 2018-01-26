@@ -25,7 +25,7 @@ public class NewDAOpe extends AppDAOpe {
     }
 
     public NewStoreReqBean getNewStoreReqBean() {
-        newStoreReqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        newStoreReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         return newStoreReqBean;
     }
 }

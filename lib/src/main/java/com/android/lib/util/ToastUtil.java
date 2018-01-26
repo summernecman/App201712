@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
+import me.drakeet.support.toast.ToastCompat;
+
 /**
  * Created by ${viwmox} on 2016-05-10.
  */
@@ -26,7 +28,7 @@ public class ToastUtil {
      */
     public void showSueess(Context context) {
         if(context!=null) {
-            Toast.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
+            ToastCompat.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -38,7 +40,7 @@ public class ToastUtil {
      */
     public void showShort(Context context, String msg) {
         if(context!=null){
-            Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+            ToastCompat.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -49,7 +51,7 @@ public class ToastUtil {
      */
     public void showLong(Context context, String msg) {
         if(context!=null) {
-            Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
+            ToastCompat.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -64,7 +66,7 @@ public class ToastUtil {
             @Override
             public void run() {
                 if(context!=null) {
-                    Toast.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
+                    ToastCompat.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -82,7 +84,7 @@ public class ToastUtil {
             @Override
             public void run() {
                 if(context!=null) {
-                    Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+                    ToastCompat.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -100,7 +102,7 @@ public class ToastUtil {
             @Override
             public void run() {
                 if(context!=null) {
-                    Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+                    ToastCompat.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -119,7 +121,7 @@ public class ToastUtil {
             @Override
             public void run() {
                 if(context!=null) {
-                    Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
+                    ToastCompat.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
                 }
 
             }

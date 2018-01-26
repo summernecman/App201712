@@ -13,7 +13,6 @@ import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
-import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
@@ -23,7 +22,6 @@ import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.map.MapFrag;
 import com.siweisoft.heavycenter.module.main.order.news.NewOrderFrag;
-import com.siweisoft.heavycenter.module.main.store.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
 import com.siweisoft.heavycenter.module.myce.unit.info.InfoFrag;
 import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
@@ -46,13 +44,14 @@ public class UnitScanDAOpe extends BaseDAOpe {
         }
 
 
-        if(appFrag.getClass().getName().equals(NewOrderFrag.class.getName()) &&( LocalValue.getLoginInfo().getUserType()==UserTypeReqBean.非驾驶员)){
+        if(appFrag.getClass().getName().equals(NewOrderFrag.class.getName()) &&( LocalValue.get登录返回信息().getUserType()==UserTypeReqBean.非驾驶员)){
             ToastUtil.getInstance().showShort(getActivity(),"新建订单选定单位");
             NewOrderFrag newOrderFrag = (NewOrderFrag) appFrag;
+            newOrderFrag.setUnit(unit.getId());
             return;
         }
 
-        if(appFrag.getClass().getName().equals(MapFrag.class.getName())&&( LocalValue.getLoginInfo().getUserType()==UserTypeReqBean.驾驶员)){
+        if(appFrag.getClass().getName().equals(MapFrag.class.getName())&&( LocalValue.get登录返回信息().getUserType()==UserTypeReqBean.驾驶员)){
             ToastUtil.getInstance().showShort(getActivity(),"驾驶员扫码地图 地图中心改为单位所在位置");
             MapFrag mapFrag = (MapFrag) appFrag;
             return;
@@ -65,10 +64,10 @@ public class UnitScanDAOpe extends BaseDAOpe {
         }
 
 
-        if(LocalValue.getLoginInfo().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED){
+        if(LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED){
             ToastUtil.getInstance().showShort(getActivity(),"绑定单位，通知所有管理人员");
             BindReqBean bindReqBean = new BindReqBean();
-            bindReqBean.setId(LocalValue.getLoginInfo().getUserId());
+            bindReqBean.setId(LocalValue.get登录返回信息().getUserId());
             bindReqBean.setCompanyId(unit.getId());
             bindReqBean.setIsManager(BindReqBean.IS_MANAGER_NO);
             bindReqBean.setMangerId(0);
@@ -85,7 +84,7 @@ public class UnitScanDAOpe extends BaseDAOpe {
         }
 
 
-        if(LocalValue.getLoginInfo().getBindCompanyState()==LoginResBean.BIND_UNIT_STATE_BINDED){
+        if(LocalValue.get登录返回信息().getBindCompanyState()==LoginResBean.BIND_UNIT_STATE_BINDED){
             ToastUtil.getInstance().showShort(getActivity(),"查看单位信息（建设中）");
 
             Bundle bundle = new Bundle();
