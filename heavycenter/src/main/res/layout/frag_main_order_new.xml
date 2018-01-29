@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_main_order_new"
@@ -21,6 +22,17 @@
             style_common:iv_right2 = "@drawable/icon_hv_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            app:srlEnablePureScrollMode="true"
+            app:srlDragRate="0.2"
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -173,6 +185,7 @@
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+    </LinearLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </layout>

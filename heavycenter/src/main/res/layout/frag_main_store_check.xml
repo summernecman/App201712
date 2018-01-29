@@ -67,7 +67,6 @@
 
             <com.scwang.smartrefresh.layout.SmartRefreshLayout
                 app:srlEnablePureScrollMode="true"
-                app:srlEnableLoadmore="true"
                 app:srlDragRate="0.1"
                 android:id="@+id/refreshLayout"
                 android:layout_width="match_parent"

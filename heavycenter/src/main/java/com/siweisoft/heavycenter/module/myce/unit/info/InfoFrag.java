@@ -36,7 +36,7 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-            getP().getU().showTip(new View.OnClickListener() {
+                getP().getU().showTip(new View.OnClickListener() {
                 @Override
                 public void onClick(View vv) {
                     switch (vv.getId()){
@@ -63,7 +63,9 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                             });
                             break;
                     }
-                    getBaseUIActivity().onBackPressed();
+                    if(getP().getU().getFragManager2()!=null){
+                    getP().getU().getFragManager2().finish(getBaseUIActivity(),getBaseUIActivity().getMoudle(),false);
+                    }
                 }
             });
             break;

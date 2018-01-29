@@ -17,11 +17,7 @@
         tools:replace="android:label,android:theme">
 
         <activity android:name=".module.welc.welc.WelcAct">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".module.acct.acct.AcctAct"
             android:windowSoftInputMode="adjustPan|stateHidden"
@@ -32,15 +28,14 @@
         <activity android:name=".module.main.MainAct"
             android:screenOrientation="portrait">
 
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
 
-        <activity android:name=".module.main.test.TestAct"
-            android:screenOrientation="portrait">
-
-
-        </activity>
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

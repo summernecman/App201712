@@ -18,6 +18,8 @@ import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 public class InfoUIOpe extends AppUIOpe<FragMyceUnitInfoBinding>{
 
 
+    FragManager2 fragManager2;
+
     public InfoUIOpe(Context context) {
         super(context);
     }
@@ -40,6 +42,11 @@ public class InfoUIOpe extends AppUIOpe<FragMyceUnitInfoBinding>{
         DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
         diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_leave,null));
         diaLogCenterFrag.setOnClickListener(onClickListener,R.id.close,R.id.sure);
-        FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).setHideLast(false).start(getActivity(),MainAct.主界面,diaLogCenterFrag);
+        fragManager2= FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).setHideLast(false);
+        fragManager2.start(getActivity(),MainAct.主界面,diaLogCenterFrag);
+    }
+
+    public FragManager2 getFragManager2() {
+        return fragManager2;
     }
 }

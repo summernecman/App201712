@@ -1,8 +1,5 @@
-package com.siweisoft.heavycenter;
+package com.siweisoft.heavycenter.module.test;
 
-//by summer on 2018-01-11.
-
-import android.content.Context;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
@@ -10,11 +7,12 @@ import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by summer on 2018/1/29 20:29.
+ */
+
 public class Test {
 
-    public void unitUsers(Context context){
-
-    }
 
     public void testData(){
         LoginResBean loginResBean = new LoginResBean();
