@@ -89,7 +89,7 @@ public class LocalValue {
             }
             pro.add(provinceListBean);
         }
-        SPUtil.getInstance().saveStr(省市排序列表,GsonUtil.getInstance().toJson(list));
+        SPUtil.getInstance().saveStr(省市排序列表,GsonUtil.getInstance().toJson(pro));
     }
 
 

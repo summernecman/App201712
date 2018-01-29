@@ -2,13 +2,16 @@ package com.siweisoft.heavycenter.module.main.map;
 
 //by summer on 2017-12-11.
 
+import android.content.Intent;
 import android.view.View;
 
+import com.android.lib.constant.ValueConstant;
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
 
@@ -36,7 +39,8 @@ public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
-                    mainAct.dealScan(this);
+                    Intent intent = new Intent(mainAct, CaptureActivity.class);
+                    startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
         }

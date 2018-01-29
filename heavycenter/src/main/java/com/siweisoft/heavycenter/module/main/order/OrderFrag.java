@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.main.order;
 import android.content.Intent;
 import android.view.View;
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -13,6 +14,7 @@ import com.android.lib.view.dialog.list.DialogListFrag;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.order.news.NewOrderFrag;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +51,8 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
-                    mainAct.dealScan(this);
+                    Intent intent = new Intent(mainAct, CaptureActivity.class);
+                    startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
         }

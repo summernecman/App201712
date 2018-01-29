@@ -6,12 +6,15 @@ import android.view.View;
 
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.GsonUtil;
 import com.android.lib.util.IntentUtil;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.crash.CrashNetOpe;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeResBean;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
@@ -40,13 +43,21 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                                 getP().getD().setUserType(getP().getU().getUserTypeReqBean(), new UINetAdapter<UserTypeResBean>(getContext()) {
                                     @Override
                                     public void onSuccess(UserTypeResBean o) {
+                                        LogUtil.E("1");
                                         if(getArguments().getBoolean(直接登录,false)){
+                                            LogUtil.E("2");
                                             LoginResBean resBean = LocalValue.get登录返回信息();
+                                            LogUtil.E("3");
                                             resBean.setUserType((R.id.tv_driver==vv.getId())?UserTypeReqBean.驾驶员 :UserTypeReqBean.非驾驶员);
+                                            LogUtil.E("4");
                                             LocalValue.save登录返回信息(resBean);
+                                            LogUtil.E("5");
                                             IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+                                            LogUtil.E("6");
                                         }else{
+                                            LogUtil.E("7");
                                             getBaseUIActivity().onBackPressed();
+                                            LogUtil.E("8");
                                         }
                                     }
                                 });

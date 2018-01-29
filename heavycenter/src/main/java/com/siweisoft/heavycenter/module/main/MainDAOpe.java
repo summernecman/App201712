@@ -46,11 +46,7 @@ public class MainDAOpe extends AppDAOpe {
     }
 
     protected ArrayList<BottomMenuBean> initBottomMenuViewData(){
-        if(menudata==null){
-            menudata = new ArrayList<>();
-        }
         menudata.clear();
-
         if(LocalValue.get登录返回信息().getUserType()== UserTypeReqBean.驾驶员){
             RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainAct.地磅ID);
             menudata.add(new BottomMenuBean(MainAct.地磅, R.drawable.drawable_main_bottom_weight,new DetailFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
@@ -85,7 +81,6 @@ public class MainDAOpe extends AppDAOpe {
 
     private String[] permissions = new String[]{
             Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.VIBRATE,
             Manifest.permission.INTERNET,
@@ -93,7 +88,6 @@ public class MainDAOpe extends AppDAOpe {
             Manifest.permission.CAMERA,
             Manifest.permission.ACCESS_NETWORK_STATE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_WIFI_STATE,
             Manifest.permission.CHANGE_WIFI_STATE,
             Manifest.permission.WAKE_LOCK,
@@ -116,13 +110,7 @@ public class MainDAOpe extends AppDAOpe {
         return permissionUtil;
     }
 
-    public int getIndex() {
-        return index;
-    }
 
-    public void setIndex(int index) {
-        this.index = index;
-    }
 
     public boolean isBindUnit() {
         //绑定了单位== true

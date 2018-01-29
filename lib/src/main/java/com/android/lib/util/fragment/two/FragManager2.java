@@ -119,6 +119,13 @@ public class FragManager2  {
         transaction.commitNowAllowingStateLoss();
     }
 
+    public BaseUIFrag getCurrentFrag(String moudle){
+       if(map.get(moudle)==null){
+           return null;
+       }
+       return map.get(moudle).getLast();
+    }
+
 
 
     private void checkMap(String moudle,int viewid){

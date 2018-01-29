@@ -2,10 +2,12 @@ package com.siweisoft.heavycenter.module.main.trans;
 
 //by summer on 2017-12-11.
 
+import android.content.Intent;
 import android.view.View;
 
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.FragManager;
@@ -19,6 +21,7 @@ import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.trans.detail.TransDetailFrag;
 import com.siweisoft.heavycenter.module.main.trans.search.SearchFrag;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import butterknife.OnClick;
 
@@ -71,7 +74,8 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
-                    mainAct.dealScan(this);
+                    Intent intent = new Intent(mainAct, CaptureActivity.class);
+                    startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
         }

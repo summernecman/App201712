@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.base;
 
 //by summer on 2017-12-08.
 
+import android.content.Intent;
 import android.view.View;
 
 import butterknife.OnClick;
@@ -15,6 +16,7 @@ import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseUIFrag<A,B> {
 
@@ -37,7 +39,8 @@ public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends 
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
-                    mainAct.dealScan(this);
+                    Intent intent = new Intent(mainAct, CaptureActivity.class);
+                    startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
 

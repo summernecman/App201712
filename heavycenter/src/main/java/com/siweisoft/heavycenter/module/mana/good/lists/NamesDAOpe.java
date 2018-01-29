@@ -19,7 +19,7 @@ public class NamesDAOpe extends BaseDAOpe {
 
     public void NamesGood(NetI<NamesRes> adapter){
         NamesReq namesReq = new NamesReq();
-        namesReq.setPageIndex(0);
+        namesReq.setPageIndex(1);
         namesReq.setPageSize(100);
         NetDataOpe.Mana.Good.NamesGood(getActivity(),namesReq,adapter);
     }

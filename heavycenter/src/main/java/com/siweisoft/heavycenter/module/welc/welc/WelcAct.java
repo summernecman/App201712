@@ -27,7 +27,7 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(LocalValue.get省市列表接口数据()!=null&&LocalValue.get省市列表接口数据().size()>0){
+        if(LocalValue.get省市排序列表()!=null&&LocalValue.get省市排序列表().size()>0){
             AutoLogin();
         }else{
             NetDataOpe.get省市列表接口数据(activity,new CityReqBean(),new NetAdapter<ArrayList<CityResBean>>(activity){

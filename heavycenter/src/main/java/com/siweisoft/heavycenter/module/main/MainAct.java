@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -62,7 +63,6 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //getP().getD().testData();
-        getP().getU().setBottomMenuViewData(getP().getD().getMenudata());
         if(!getP().getD().getPermissionUtil().isAllGranted(activity,getP().getD().getPermissions())){
             return;
         }
@@ -73,6 +73,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
 
     public void dothing(){
+        getP().getU().setBottomMenuViewData(getP().getD().getMenudata());
         getP().getU().initDrawerMenu(getP().getD().getMyceFrag());
         getP().getU().initPages(getP().getD().getMenudata(),this);
         reStart();
@@ -109,45 +110,23 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         dothing();
     }
 
+
+
     @Override
     public void onBackPressed() {
-        switch (getMoudle()){
-            case MainAct.主界面:
-                if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle(),false)){
-                    super.onBackPressed();
-                }
-                break;
-                default:
-                    if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle(),true)){
-                        super.onBackPressed();
-                    }
-                    break;
+        if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle(),!getMoudle().equals(MainAct.主界面))){
+            super.onBackPressed();
         }
     }
 
-    AppFrag appFrag;
-
-    public void dealScan(AppFrag appFrag){
-        this.appFrag = appFrag;
-        ToastUtil.getInstance().showShort(activity,appFrag.getClass().getSimpleName());
-        Intent intent = new Intent(this, CaptureActivity.class);
-        startActivityForResult(intent, 1);
-    }
-
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == 1) {
-            //处理扫描结果（在界面上显示）
-            if (null != data) {
+        if (requestCode == ValueConstant.CODE_REQUSET) {
+            if (null != data && data.getExtras()!=null) {
                 Bundle bundle = data.getExtras();
-                if (bundle == null) {
-                    return;
-                }
                 if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
-                    String result = bundle.getString(CodeUtils.RESULT_STRING);
-                    getP().getD().getScanDAOpe().logic(this.appFrag,result);
+                    ToastUtil.getInstance().showShort(activity,FragManager2.getInstance().getCurrentFrag(getMoudle()).getClass().getSimpleName());
+                    getP().getD().getScanDAOpe().logic((AppFrag) FragManager2.getInstance().getCurrentFrag(getMoudle()),bundle.getString(CodeUtils.RESULT_STRING));
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
                     ToastUtil.getInstance().showShort(this,"解析二维码失败");
                 }

@@ -39,7 +39,6 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     @Override
     public void initData() {
         super.initData();
-        setIndex(((MainAct)(activity)).getP().getU().getPos_content());
         init();
     }
 
@@ -111,6 +110,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,infoFrag);
                 break;
             case R.id.iv_head:
+               // IntentUtil.getInstance().takeGetPhoto(activity);
                 IntentUtil.getInstance().photoShowFromphone(this,01);
                 break;
             case R.id.item_setting:

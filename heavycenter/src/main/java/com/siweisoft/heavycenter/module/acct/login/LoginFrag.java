@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.acct.login;
 
 //by summer on 2017-12-14.
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.activity.BaseUIActivity;
@@ -42,7 +43,9 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
                                 LocalValue.set自动登录(true);
                                 IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
                             }else{
-                                FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号界面根布局,new RoleFrag());
+                                Bundle bundle = new Bundle();
+                                bundle.putBoolean(RoleFrag.直接登录,true);
+                                FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号界面根布局,new RoleFrag(),bundle);
                             }
                         }
                     });
