@@ -4,17 +4,18 @@ package com.siweisoft.heavycenter.module.myce.unit.area.prov;
 
 import android.content.Context;
 
+import com.android.lib.util.NullUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class ProvDAOpe extends AppDAOpe {
 
     private List<CityResBean.ProvinceListBean> pro ;
+
+    private String state = ProvFrag.选择多个城市;
 
     public ProvDAOpe(Context context) {
         super(context);
@@ -24,8 +25,19 @@ public class ProvDAOpe extends AppDAOpe {
 
     public List<CityResBean.ProvinceListBean> getPro() {
         if(pro==null){
-            pro = LocalValue.getProlList();
+            pro = LocalValue.get省市排序列表();
         }
         return pro;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        if(NullUtil.isStrEmpty(state)){
+            return;
+        }
+        this.state = state;
     }
 }

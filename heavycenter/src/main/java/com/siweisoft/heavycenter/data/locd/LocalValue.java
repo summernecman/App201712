@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.data.locd;
 
 //by summer on 2018-01-10.
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.SPUtil;
 import com.google.gson.reflect.TypeToken;
@@ -15,19 +16,15 @@ import java.util.List;
 
 public class LocalValue {
 
-    public static final String ACCOUT ="HV_ACCOUT";
+    public static final String 登录返回信息 ="登录返回信息";
 
-    public static final String PSWD ="HV_PSWD";
+    public static final String 登录参数 = "登录参数";
 
-    public static final String LOGIN_INFO ="HV_LOGIN_INFO";
+    public static final String 省市列表接口数据 = "省市列表接口数据";
 
-    public static final String LOGIN_REQ = "HV_LOGIN_REQ";
+    public static final String 省Map = "省Map";
 
-    public static final String AREA_INFO = "AREA_INFO";
-
-    public static final String AREA_MAP_INFO = "AREA_MAP_INFO";
-
-    public static final String AREA_LIST_INFO = "AREA_LIST_INFO";
+    public static final String 省市排序列表 = "省市排序列表";
 
     public static final String[] pros = new String[]{
             "安徽","澳门","北京",
@@ -44,55 +41,64 @@ public class LocalValue {
             "云南","浙江","",
     };
 
-
-
-    public static LoginResBean getLoginInfo(){
-        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(LOGIN_INFO),LoginResBean.class);
+    public static boolean is自动登录(){
+        return  SPUtil.getInstance().getBoolean(ValueConstant.AUTO_LOGIN);
     }
 
-    public static void saveLoginInfo(LoginResBean loginResBean){
-        SPUtil.getInstance().saveStr(LOGIN_INFO,GsonUtil.getInstance().toJson(loginResBean));
+    public static void set自动登录(boolean autoLogin){
+        SPUtil.getInstance().saveBoolean(ValueConstant.AUTO_LOGIN,autoLogin);
     }
 
-    public static LoginReqBean getLoginReq(){
-        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(LOGIN_REQ),LoginReqBean.class);
+    public static LoginResBean get登录返回信息(){
+        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(登录返回信息),LoginResBean.class);
     }
 
-    public static void saveLoginReq(LoginReqBean loginReqBean){
-        SPUtil.getInstance().saveStr(LOGIN_REQ,GsonUtil.getInstance().toJson(loginReqBean));
+    public static void save登录返回信息(LoginResBean loginResBean){
+        SPUtil.getInstance().saveStr(登录返回信息,GsonUtil.getInstance().toJson(loginResBean));
     }
 
-    public static ArrayList<CityResBean> getCitysInfo(){
-        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(AREA_INFO),new TypeToken<ArrayList<CityResBean>>(){}.getType());
+    public static LoginReqBean get登录参数(){
+        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(登录参数),LoginReqBean.class);
     }
 
-    public static void saveCitysInfo(ArrayList<CityResBean> list){
-        SPUtil.getInstance().saveStr(AREA_INFO,GsonUtil.getInstance().toJson(list));
+    public static void save登录参数(LoginReqBean loginReqBean){
+        SPUtil.getInstance().saveStr(登录参数,GsonUtil.getInstance().toJson(loginReqBean));
+    }
+
+    public static ArrayList<CityResBean> get省市列表接口数据(){
+        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(省市列表接口数据),new TypeToken<ArrayList<CityResBean>>(){}.getType());
+    }
+
+    public static void save省市列表接口数据(ArrayList<CityResBean> list){
+        SPUtil.getInstance().saveStr(省市列表接口数据,GsonUtil.getInstance().toJson(list));
+
+        HashMap<String,CityResBean.ProvinceListBean> map = new HashMap<>();
+        for(int i=0;i<list.size();i++){
+            for(int j=0;j<list.get(i).getProvinceList().size();j++){
+                map.put(list.get(i).getProvinceList().get(j).getValue(),list.get(i).getProvinceList().get(j));
+            }
+        }
+        SPUtil.getInstance().saveStr(省Map,GsonUtil.getInstance().toJson(map));
+
+        List<CityResBean.ProvinceListBean> pro = new ArrayList<>();
+        for(int i=0;i<LocalValue.pros.length;i++){
+            CityResBean.ProvinceListBean provinceListBean = map.get(LocalValue.pros[i]);
+            if(provinceListBean==null){
+                provinceListBean = new CityResBean.ProvinceListBean();
+                provinceListBean.setValue("");
+            }
+            pro.add(provinceListBean);
+        }
+        SPUtil.getInstance().saveStr(省市排序列表,GsonUtil.getInstance().toJson(pro));
     }
 
 
-    public static HashMap<String,CityResBean.ProvinceListBean> getProMap(){
-        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(AREA_MAP_INFO),new TypeToken<HashMap<String,CityResBean.ProvinceListBean>>(){}.getType());
+    public static HashMap<String,CityResBean.ProvinceListBean> get省Map(){
+        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(省Map),new TypeToken<HashMap<String,CityResBean.ProvinceListBean>>(){}.getType());
     }
 
-    public static void saveProMap(HashMap<String,CityResBean.ProvinceListBean> map){
-        SPUtil.getInstance().saveStr(AREA_MAP_INFO,GsonUtil.getInstance().toJson(map));
+    public static List<CityResBean.ProvinceListBean> get省市排序列表(){
+        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(省市排序列表),new TypeToken<List<CityResBean.ProvinceListBean>>(){}.getType());
     }
 
-
-    public static List<CityResBean.ProvinceListBean> getProlList(){
-        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(AREA_LIST_INFO),new TypeToken<List<CityResBean.ProvinceListBean>>(){}.getType());
-    }
-
-    public static void saveProlList(List<CityResBean.ProvinceListBean> list){
-        SPUtil.getInstance().saveStr(AREA_LIST_INFO,GsonUtil.getInstance().toJson(list));
-    }
-
-    public static void saveUserId(int id){
-        SPUtil.getInstance().saveInt("hv_id",id);
-    }
-
-    public static int getUserId(){
-        return SPUtil.getInstance().getInt("hv_id");
-    }
 }

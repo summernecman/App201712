@@ -24,25 +24,6 @@ public class PermissionUtil {
     public static final int reqcode = 12345;
 
 
-    private String[] permissions = new String[]{
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.VIBRATE,
-            Manifest.permission.INTERNET,
-            Manifest.permission.RECORD_AUDIO,
-            Manifest.permission.CAMERA,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_NETWORK_STATE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_WIFI_STATE,
-            Manifest.permission.CHANGE_WIFI_STATE,
-            Manifest.permission.WAKE_LOCK,
-            Manifest.permission.MODIFY_AUDIO_SETTINGS,
-            Manifest.permission.READ_PHONE_STATE,
-            Manifest.permission.RECEIVE_BOOT_COMPLETED,
-            Manifest.permission.DISABLE_KEYGUARD
-    };
-
 
     public boolean isAllGranted(Activity context, String[] permissions){
         if (checkPermissionAllGranted(context,permissions)) {

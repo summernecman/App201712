@@ -5,9 +5,12 @@ package com.siweisoft.heavycenter.module.main.store.check;
 import android.content.Context;
 
 import com.android.lib.network.news.NetI;
+import com.android.lib.util.GsonUtil;
+import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.mana.store.check.Check;
 import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresReqBean;
@@ -19,6 +22,11 @@ public class CheckDAOpe extends AppDAOpe {
 
 
     CheckStoreReqBean checkStoreReqBean = new CheckStoreReqBean();
+
+    private StoresResBean storesResBean;
+
+    private boolean initdata = false;
+
 
     public CheckDAOpe(Context context) {
         super(context);
@@ -37,25 +45,78 @@ public class CheckDAOpe extends AppDAOpe {
     }
 
     public CheckStoreReqBean getCheckStoreReqBean() {
-        checkStoreReqBean.setUserId(LocalValue.getLoginInfo().getUserId());
+        checkStoreReqBean.setUserId(LocalValue.get登录返回信息().getUserId());
         return checkStoreReqBean;
     }
 
-    public CheckStoreReqBean getCheckStoreReqBean(StoresResBean.ResultsBean data) {
-        checkStoreReqBean.setUserId(LocalValue.getLoginInfo().getUserId());
-        checkStoreReqBean.setWarehouseId(data.getWarehouseId());
-
+    public CheckStoreReqBean getCheckStoreReqBean(StoresResBean data) {
+        getCheckStoreReqBean().setUserId(LocalValue.get登录返回信息().getUserId());
+        ArrayList<Check> checks = new ArrayList<>();
+        for(int i=0;data!=null && data.getResults()!=null && i<data.getResults().size();i++){
+            Check check  = new Check();
+            check.setBeforeAdjust(data.getResults().get(i).getCurrentStock());
+            check.setAfterAdjust(data.getResults().get(i).getAfterAdjust());
+            check.setWarehouseId(data.getResults().get(i).getWarehouseId());
+            check.setProductId(data.getResults().get(i).getProductId());
+            checks.add(check);
+        }
+        checkStoreReqBean.setWareHouseListString(GsonUtil.getInstance().toJson(checks));
         return checkStoreReqBean;
     }
 
 
     public void storesInfo(NetI<StoresResBean> adapter){
         StoresReqBean reqBean = new StoresReqBean();
-        reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setIsApp(1);
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);
-        reqBean.setStatus(StoresReqBean.STATUS_ALL);
         NetDataOpe.Mana.Store.sotresInfo(getActivity(),reqBean,adapter);
+    }
+
+    public boolean canGo(){
+        if(!isInitdata()){
+            ToastUtil.getInstance().showShort(getActivity(),"数据还没初始化");
+            return false;
+        }
+        if(getStoresResBean()==null){
+            ToastUtil.getInstance().showShort(getActivity(),"数据初始化失败,请打开重试");
+            return false;
+        }
+        for(int i=0;getStoresResBean().getResults()!=null && i<getStoresResBean().getResults().size();i++){
+            if(getStoresResBean().getResults().get(i).getAfterAdjust()<0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public StoresResBean getStoresResBean() {
+        return storesResBean;
+    }
+
+    public void setStoresResBean(StoresResBean storesResBean) {
+        boolean havenullproduct = false;
+        for(int i=0;storesResBean!=null&&storesResBean.getResults()!=null && i<storesResBean.getResults().size();i++){
+            if(storesResBean.getResults().get(i).getProductId()==-1){
+                storesResBean.getResults().remove(i);
+                i--;
+                havenullproduct = true;
+                continue;
+            }
+            storesResBean.getResults().get(i).setAfterAdjust(storesResBean.getResults().get(i).getCurrentStock());
+        }
+        if(havenullproduct){
+            ToastUtil.getInstance().showShort(getActivity(),"部分仓库因为没有物料不能盘点");
+        }
+        this.storesResBean = storesResBean;
+    }
+
+    public boolean isInitdata() {
+        return initdata;
+    }
+
+    public void setInitdata(boolean initdata) {
+        this.initdata = initdata;
     }
 }

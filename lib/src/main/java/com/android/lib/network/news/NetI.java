@@ -14,5 +14,9 @@ public interface NetI<A> {
 
     void onProgress(long total, long current);
 
+    void onSuccess(A o);
+
+    void onFail(boolean haveData,String msg);
+
 
 }

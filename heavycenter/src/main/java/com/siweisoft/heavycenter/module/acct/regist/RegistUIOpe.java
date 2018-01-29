@@ -33,44 +33,45 @@ public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
         bind.code.getCodeText().setOnClickListener(baseUIFrag);
+        bind.tvRead.getCheckIV().setSelected(true);
     }
 
-    public boolean go(){
+    public boolean is都输入好了(){
         if(NullUtil.isStrEmpty(bind.phone.getText())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入手机号");
+            ToastUtil.getInstance().showShort(getActivity(),"请输入手机号");
             return false;
         }
         if(bind.phone.getText().length()!=11){
-            ToastUtil.getInstance().showLong(getActivity(),"手机号格式不正确");
+            ToastUtil.getInstance().showShort(getActivity(),"手机号格式不正确");
             return false;
         }
         if(NullUtil.isStrEmpty(bind.code.getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入验证码");
+            ToastUtil.getInstance().showShort(getActivity(),"请输入验证码");
             return false;
         }
 
         if(!bind.pwd.getText().toString().equals(bind.repwd.getText().toString())){
-            ToastUtil.getInstance().showLong(getActivity(),"密码不一致");
+            ToastUtil.getInstance().showShort(getActivity(),"密码不一致");
             return false;
         }
         if(bind.pwd.getText().toString().length()<6 || bind.pwd.getText().toString().length()>18){
-            ToastUtil.getInstance().showLong(getActivity(),"密码为6-18位数字和字母");
+            ToastUtil.getInstance().showShort(getActivity(),"密码为6-18位数字和字母");
             return false;
         }
         if(!bind.tvRead.getCheckIV().isSelected()){
-            ToastUtil.getInstance().showLong(getActivity(),"请同意协议");
+            ToastUtil.getInstance().showShort(getActivity(),"请同意协议");
             return false;
         }
         return true;
     }
 
-    public boolean canGetCode(){
+    public boolean is可以点击验证码(){
         if(NullUtil.isStrEmpty(bind.phone.getText())){
-            ToastUtil.getInstance().showLong(getActivity(),"请输入手机号");
+            ToastUtil.getInstance().showShort(getActivity(),"请输入手机号");
             return false;
         }
         if(bind.phone.getText().length()!=11){
-            ToastUtil.getInstance().showLong(getActivity(),"手机号格式不正确");
+            ToastUtil.getInstance().showShort(getActivity(),"手机号格式不正确");
             return false;
         }
         return true;

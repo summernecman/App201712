@@ -9,16 +9,16 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
-        android:background="@color/color_base_graybg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
+
             android:paddingTop="5dp"
             android:paddingRight="5dp"
             android:paddingLeft="5dp"
             android:paddingBottom="5dp"
-            android:background="@color/white"
+            android:background="@drawable/bg_hv_press_sharp2_blue_while"
             android:layout_margin="5dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -29,8 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:textColor="@color/black"
-                    android:textSize="17sp"
+                    android:textColor="@color/hv_color_text_title"
+                    android:textSize="@dimen/hv_dimen_text_title"
                     android:text="@{item_main_msg_all.senderName}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -67,14 +67,16 @@
                     android:layout_height="1dp"/>
                 <TextView
                     android:id="@+id/tv_date"
-                    android:textColor="@color/gray"
-                    android:textSize="13sp"
+                    android:textColor="@color/hv_color_text_date"
+                    android:textSize="@dimen/hv_dimen_text_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
             <TextView
-                android:textColor="@color/gray"
-                android:textSize="15sp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/hv_color_text"
+                android:textSize="@dimen/hv_dimen_text"
                 android:text="@{item_main_msg_all.messageContent}"
                 android:padding="3dp"
                 android:layout_width="match_parent"
@@ -143,6 +145,32 @@
                     style_common:color_txt_two="@color/white"
                     style_common:boo_one="false"
                     android:text="接受"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    android:id="@+id/bt_mana"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15sp"
+                    android:visibility="gone"
+                    style_common:color_one="@color/color_hv_yelll"
+                    style_common:stroke="0dp"
+                    style_common:color_stroke="@color/red"
+                    style_common:corner="5dp"
+                    style_common:color_txt="@color/white"
+
+                    style_common:color_two="@color/color_red_800"
+                    style_common:stroke_two="2dp"
+                    style_common:color_stroke_two="@color/color_hv_yelll"
+                    style_common:corner_two="5dp"
+                    style_common:color_txt_two="@color/white"
+                    style_common:boo_one="false"
+                    android:text="设为管理员"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

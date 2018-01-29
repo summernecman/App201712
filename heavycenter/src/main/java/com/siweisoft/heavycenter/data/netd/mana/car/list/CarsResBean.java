@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.data.netd.mana.car.list;
 
 import com.android.lib.bean.BaseBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarsResBean extends BaseBean {
@@ -21,7 +22,7 @@ public class CarsResBean extends BaseBean {
     private int pageIndex;
     private int pageCount;
     private int pageSize;
-    private List<ResultsBean> results;
+    private List<CarInfoRes> results = new ArrayList<>();
 
     public int getTotalCount() {
         return totalCount;
@@ -55,15 +56,15 @@ public class CarsResBean extends BaseBean {
         this.pageSize = pageSize;
     }
 
-    public List<ResultsBean> getResults() {
+    public List<CarInfoRes> getResults() {
         return results;
     }
 
-    public void setResults(List<ResultsBean> results) {
+    public void setResults(List<CarInfoRes> results) {
         this.results = results;
     }
 
-    public static class ResultsBean extends BaseBean{
+    public static class CarInfoRes extends BaseBean{
         /**
          * vehicleId : 18
          * carLicenseNo : 沪A22224
@@ -89,18 +90,25 @@ public class CarsResBean extends BaseBean {
         public static final String STATUS_OFF_CN = "停用";
 
         private int vehicleId;
+        private String vehicleLicense;
         private String carLicenseNo;
         private String specifications;
-        private int currentDriver;
         private String carBrand;
+        private String vehiclePhoto;
+        private String vehicleLicensePhoto;
         private int maxCapacity;
         private int emptyWeight;
+        private int creater;
+        private double carLng;
+        private double carLat;
+        private int currentDriver;
         private String icCard;
         private int status;
         private String trueName;
         private String tel;
         private int companyId;
         private String companyName;
+
 
         public int getVehicleId() {
             return vehicleId;
@@ -204,6 +212,54 @@ public class CarsResBean extends BaseBean {
 
         public void setCompanyName(String companyName) {
             this.companyName = companyName;
+        }
+
+        public String getVehicleLicense() {
+            return vehicleLicense;
+        }
+
+        public void setVehicleLicense(String vehicleLicense) {
+            this.vehicleLicense = vehicleLicense;
+        }
+
+        public String getVehiclePhoto() {
+            return vehiclePhoto;
+        }
+
+        public void setVehiclePhoto(String vehiclePhoto) {
+            this.vehiclePhoto = vehiclePhoto;
+        }
+
+        public String getVehicleLicensePhoto() {
+            return vehicleLicensePhoto;
+        }
+
+        public void setVehicleLicensePhoto(String vehicleLicensePhoto) {
+            this.vehicleLicensePhoto = vehicleLicensePhoto;
+        }
+
+        public int getCreater() {
+            return creater;
+        }
+
+        public void setCreater(int creater) {
+            this.creater = creater;
+        }
+
+        public double getCarLng() {
+            return carLng;
+        }
+
+        public void setCarLng(double carLng) {
+            this.carLng = carLng;
+        }
+
+        public double getCarLat() {
+            return carLat;
+        }
+
+        public void setCarLat(double carLat) {
+            this.carLat = carLat;
         }
     }
 }

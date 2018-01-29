@@ -31,7 +31,7 @@ public class NewUIOpe extends AppUIOpe<FragManaUserNewBinding> implements View.O
         bind.one.setOnClickListener(this);views.add(bind.one);bind.one.setTag(R.id.data, LoginResBean.USER_ROLE_GENERAL);
         bind.two.setOnClickListener(this);views.add(bind.two);bind.two.setTag(R.id.data, LoginResBean.USER_ROLE_DRIVER);
         bind.three.setOnClickListener(this);views.add(bind.three);bind.three.setTag(R.id.data, LoginResBean.USER_ROLE_ADMIN);
-        bind.three.setSelected(true);
+        bind.one.setSelected(true);
 
     }
 

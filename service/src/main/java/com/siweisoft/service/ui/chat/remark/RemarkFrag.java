@@ -32,7 +32,7 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
     @Override
     public void onStart() {
         super.onStart();
-        getActivity().findViewById(R.id.ftv_right).setOnClickListener(this);
+        activity.findViewById(R.id.ftv_right).setOnClickListener(this);
     }
 
 
@@ -64,7 +64,7 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
             @Override
             public void onFinish(Object o) {
                 final VideoDetailBean videoBean = (VideoDetailBean) o;
-                getActivity().findViewById(R.id.ftv_right).setVisibility(View.VISIBLE);
+                activity.findViewById(R.id.ftv_right).setVisibility(View.VISIBLE);
                 if (SystemUtil.isWiFi(activity)) {
                     getP().getD().uploadVideo(getP().getD().getVideoBean(), videoBean);
                 } else {

@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.main;
 
 //by summer on 17-08-23.
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -9,9 +10,15 @@ import android.view.ViewGroup;
 
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
+import com.android.lib.constant.ValueConstant;
+import com.android.lib.util.LogUtil;
+import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
+import com.siweisoft.heavycenter.base.AppFrag;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSelectListener {
 
@@ -20,6 +27,8 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     public static final String 运输单 = "运输单";
 
     public static final String 订单 = "订单";
+
+    public static final String 地图 = "地图";
 
     public static final String 仓库 = "仓库";
 
@@ -42,6 +51,8 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     public static final int 消息ID = 11115;
 
+    public static final int 地图ID = 11116;
+
     public static final int 主界面ID = R.id.content_content;
 
     public static final int 对话框ID = R.id.act_main;
@@ -52,16 +63,17 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //getP().getD().testData();
-        getP().getU().setBottomMenuViewData(getP().getD().getMenudata());
         if(!getP().getD().getPermissionUtil().isAllGranted(activity,getP().getD().getPermissions())){
             return;
         }
         dothing();
-
     }
 
 
+
+
     public void dothing(){
+        getP().getU().setBottomMenuViewData(getP().getD().getMenudata());
         getP().getU().initDrawerMenu(getP().getD().getMyceFrag());
         getP().getU().initPages(getP().getD().getMenudata(),this);
         reStart();
@@ -81,10 +93,10 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     public void onAppItemSelect(ViewGroup viewGroup, View view, int position) {
         FragManager2.getInstance().clear((BaseUIActivity) activity,MainAct.主界面);
         getP().getU().setCurrentItem(position);
-        getP().getD().setIndex(getP().getD().getMenudata().get(position).getContainerView().getId());
         setMoudle(getP().getD().getMenudata().get(position).getName());
-        if(getP().getD().isBindUnit()){
-            //FragManager.getInstance().clearAll(getSupportFragmentManager(),getP().getU().getPos_content());
+        if(!getP().getD().getMenudata().get(position).getFragment().isInit()){
+            getP().getD().getMenudata().get(position).getFragment().lazyInit();
+            getP().getD().getMenudata().get(position).getFragment().setInited();
         }
     }
 
@@ -98,42 +110,27 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         dothing();
     }
 
-//    @Override
-//    public void onBackPressed() {
-
-//        if(FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT)!=null&&FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()>0){
-//            activity.getSupportFragmentManager().beginTransaction().remove(
-//                    FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).get(
-//                            FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1))
-//                    .commit();
-//            FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).remove(FragManager.getInstance().getFragMaps().get(ID_ALL_ROOT).size()-1);
-//        }else
-//        if(getP().getD().getIndex()==getP().getU().getPos_content()
-//                &&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_content())!=null
-//                &&FragManager.getInstance().getFragMaps().get(getP().getU().getPos_content()).size()>0){
-//            FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
-//        }else
-//        if(FragManager.getInstance().getFragMaps().get(getP().getD().getIndex())!=null&& FragManager.getInstance().getFragMaps().get(getP().getD().getIndex()).size()>1){
-//            FragManager.getInstance().finish(activity.getSupportFragmentManager(),getP().getD().getIndex());
-//        }else{
-//            finish();
-//        }
-
-//        FragManager.getInstance().clearTopWith(activity.getSupportFragmentManager(), getP().getD().getIndex(), new OnFinishListener() {
-//            @Override
-//            public void onFinish(Object o) {
-//                MainAct.super.onBackPressed();
-//            }
-//        });
-
-
-//    }
 
 
     @Override
     public void onBackPressed() {
-        if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle())){
+        if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle(),!getMoudle().equals(MainAct.主界面))){
             super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == ValueConstant.CODE_REQUSET) {
+            if (null != data && data.getExtras()!=null) {
+                Bundle bundle = data.getExtras();
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    ToastUtil.getInstance().showShort(activity,FragManager2.getInstance().getCurrentFrag(getMoudle()).getClass().getSimpleName());
+                    getP().getD().getScanDAOpe().logic((AppFrag) FragManager2.getInstance().getCurrentFrag(getMoudle()),bundle.getString(CodeUtils.RESULT_STRING));
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    ToastUtil.getInstance().showShort(this,"解析二维码失败");
+                }
+            }
         }
     }
 }

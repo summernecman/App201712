@@ -4,9 +4,11 @@ package com.siweisoft.heavycenter.module.main.store.check;
 
 import android.view.View;
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 
 import butterknife.OnClick;
@@ -17,11 +19,15 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
     public void initData() {
         super.initData();
         getP().getU().initRecycle();
-        getP().getD().storesInfo(new UINetAdapter<StoresResBean>(getActivity()) {
+        getP().getD().storesInfo(new UINetAdapter<StoresResBean>(activity) {
             @Override
             public void onResult(boolean success, String msg, StoresResBean o) {
                 super.onResult(success, msg, o);
-                getP().getU().LoadListData(o);
+                if(success){
+                    getP().getD().setStoresResBean(o);
+                    getP().getU().LoadListData(getP().getD().getStoresResBean());
+                    getP().getD().setInitdata(true);
+                }
             }
         });
     }
@@ -31,7 +37,18 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-
+                if(getP().getD().canGo()){
+                    getP().getD().checkStore(getP().getD().getCheckStoreReqBean(getP().getD().getStoresResBean()), new UINetAdapter<CheckStoreResBean>(activity) {
+                        @Override
+                        public void onResult(boolean success, String msg, CheckStoreResBean o) {
+                            super.onResult(success, msg, o);
+                            if(success){
+                                getArguments().putBoolean(ValueConstant.FRAG_KEY,true);
+                                getBaseUIActivity().onBackPressed();
+                            }
+                        }
+                    });
+                }
                 break;
         }
     }

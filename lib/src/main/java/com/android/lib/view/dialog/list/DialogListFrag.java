@@ -33,7 +33,7 @@ public class DialogListFrag extends BaseUIFrag<DialogListUIOpe,DialogListDAOpe> 
 
     @Override
     public void onClick(View v) {
-        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+        activity.getSupportFragmentManager().beginTransaction().remove(this).commit();
     }
 
     @Override
@@ -41,7 +41,7 @@ public class DialogListFrag extends BaseUIFrag<DialogListUIOpe,DialogListDAOpe> 
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 int pos = (int) v.getTag(R.id.position);
-                getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+                activity.getSupportFragmentManager().beginTransaction().remove(this).commit();
                 if(onAppItemsClickListener!=null){
                     onAppItemsClickListener.onAppItemClick(v,pos);
                 }

@@ -48,9 +48,16 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
     }
 
 
+    public void autoRefresh(int delay){
+        bind.refreshLayout.autoRefresh(delay);
+    }
+
+
 
     public void notifyDataSetChanged(){
-        bind.recycle.getAdapter().notifyDataSetChanged();
+        if(bind.recycle.getAdapter()!=null){
+            bind.recycle.getAdapter().notifyDataSetChanged();
+        }
     }
 
     public void initRecycle(){
@@ -58,6 +65,11 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
     }
 
     public void LoadListData(final StoresResBean o, ViewListener listener) {
+        if(o==null || o.getResults()==null || o.getResults().size()==0){
+            getFrag().showTips("暂无数据");
+            return;
+        }
+        getFrag().removeTips();
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_store, BR.item_main_store, o.getResults(),listener){
 
             int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
@@ -70,8 +82,8 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
                 storeBinding.getRoot().setSelected(position%2==0?true:false);
                 storeBinding.tvCurrent.setText("剩余:"+StringUtil.getStr(o.getResults().get(position).getCurrentStock()));
 
-                storeBinding.pvProgress.setValue(o.getResults().get(position).getMaxStock(),
-                        o.getResults().get(position).getMinStock(),
+                storeBinding.pvProgress.setValues(Math.min(o.getResults().get(position).getMaxStock(),o.getResults().get(position).getProductMaxStock()),
+                        Math.max(o.getResults().get(position).getMinStock(),o.getResults().get(position).getProductMinStock()),
                         o.getResults().get(position).getCurrentStock());
 
             }

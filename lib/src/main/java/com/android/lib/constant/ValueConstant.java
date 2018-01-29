@@ -14,6 +14,7 @@ public class ValueConstant {
     /**
      * shareprefrance
      */
+    public static final String AUTO_LOGIN = "AUTO_LOGIN";
     public static final String ACCOUT_SHAREPRE = "accout_sharepre";
     public static final String ACCOUT = "account";
     public static final String PWD = "password";

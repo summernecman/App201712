@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/drawable_press_blue_while"
+    android:paddingLeft="@dimen/dimen_item_content_left_padding">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_item_content_h">
+
+        <ImageView
+            android:id="@+id/iv_left_icon"
+            android:src="@drawable/icon_arraw"
+            android:layout_width="@dimen/dimen_item_content_left_icon_size"
+            android:layout_height="@dimen/dimen_item_content_left_icon_size" />
+
+        <TextView
+            android:id="@+id/tv_left_content"
+            android:layout_marginLeft="8dp"
+            android:text="文字内容"
+            android:textSize="@dimen/hv_dimen_text_title"
+            android:textColor="@color/hv_color_text_title"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_mid"
+            android:layout_marginLeft="15dp"
+            android:text="文字内容"
+            android:textSize="13sp"
+            android:textColor="@color/color_grey_500"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_right2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:textSize="12.5sp"
+                android:layout_centerInParent="true"
+                android:text=""
+                android:gravity="center"
+                android:id="@+id/iv_right_content"
+                android:layout_marginRight="@dimen/dimen_item_content_right_txt_right_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_right_icon"
+            android:layout_marginRight="@dimen/dimen_item_content_right_txt_right_padding"
+            android:src="@drawable/icon_arraw"
+            android:layout_width="@dimen/dimen_item_content_right_icon_size"
+            android:layout_height="@dimen/dimen_item_content_right_icon_size" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divide"
+        android:background="@color/color_item_content_gap"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_item_content_gap_size"/>
+</LinearLayout>

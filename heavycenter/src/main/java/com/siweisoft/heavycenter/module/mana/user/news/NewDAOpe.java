@@ -25,8 +25,8 @@ public class NewDAOpe extends AppDAOpe {
     }
 
     public AddUserReqBean getReqBean() {
-        reqBean.setUserId(LocalValue.getLoginInfo().getUserId());
-        reqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        reqBean.setUserId(LocalValue.get登录返回信息().getUserId());
+        reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         return reqBean;
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_myce_unit_info"
@@ -20,6 +21,17 @@
             style_common:iv_right2 ="@drawable/icon_hv_quit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            app:srlEnablePureScrollMode="true"
+            app:srlDragRate="0.1"
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_name"
@@ -69,5 +81,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+
     </LinearLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+
+
 </layout>

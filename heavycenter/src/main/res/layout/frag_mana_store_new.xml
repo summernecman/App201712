@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_mana_store_new"
@@ -20,7 +21,16 @@
             style_common:iv_right ="@drawable/icon_hv_scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        app:srlEnablePureScrollMode="true"
+        app:srlDragRate="0.1"
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_name"
             style_common:txt_left = "仓库名称"
@@ -30,6 +40,7 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_maxlenth="11"
             android:id="@+id/item_maxstock"
             style_common:inputType="3"
             style_common:txt_left = "最大库存"
@@ -39,6 +50,7 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_maxlenth="11"
             android:id="@+id/item_minstock"
             style_common:inputType="3"
             style_common:txt_left = "安全库存"
@@ -46,5 +58,8 @@
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </layout>

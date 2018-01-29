@@ -80,7 +80,7 @@ public class VideoPlayFrag extends BaseServerFrag<VideoPlayUIOpe, VideoPlayDAOpe
     @Override
     public void onStart() {
         super.onStart();
-        getActivity().findViewById(R.id.ftv_right2).setOnClickListener(this);
+        activity.findViewById(R.id.ftv_right2).setOnClickListener(this);
     }
 
 

@@ -34,10 +34,10 @@ public class RepwdFrag extends AppFrag<RepwdUIOpe,RepwdDAOpe> {
                         @Override
                         public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                             if(baseResBean.getCode().equals("200")){
-                                ToastUtil.getInstance().showLong(getContext(),"更换密码成功");
-                                FragManager.getInstance().finish(getActivity().getSupportFragmentManager(),getIndex());
+                                ToastUtil.getInstance().showShort(getContext(),"更换密码成功");
+                                getBaseUIActivity().onBackPressed();
                             }else{
-                                ToastUtil.getInstance().showLong(getContext(),baseResBean.getMessage());
+                                ToastUtil.getInstance().showShort(getContext(),baseResBean.getMessage());
                             }
                             stopLoading();
                         }

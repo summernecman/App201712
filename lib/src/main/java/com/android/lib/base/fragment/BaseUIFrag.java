@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.lib.R;
 import com.android.lib.base.activity.BaseUIActivity;
@@ -22,9 +24,11 @@ import com.android.lib.util.fragment.two.FragKey;
 import com.android.lib.util.system.HandleUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
 
+import com.wang.avi.AVLoadingIndicatorView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -54,6 +58,10 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     BaseUIActivity baseUIActivity;
 
+    private boolean isInit = false;
+
+    private ViewGroup parent;
+
     public BaseUIFrag() {
 
     }
@@ -74,7 +82,14 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             index = getArguments().getInt(ValueConstant.FRAG_POSITION);
         }
         View group = inflater.inflate(getLayoutID(), null);
-        ViewGroup parent = (ViewGroup) group.findViewById(R.id.container);
+
+        return group;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        parent = (ViewGroup) view.findViewById(R.id.container);
         if (getP()!=null && getP().getU() != null && getP().getU().getBind().getRoot() != null) {
             ViewGroup viewGroup = (ViewGroup) getP().getU().getBind().getRoot().getParent();
             if (viewGroup != null) {
@@ -82,34 +97,38 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             }
             parent.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         }
-        unbinder = ButterKnife.bind(this, group);
+        unbinder = ButterKnife.bind(this, view);
         for(int i=0;i<fragIs.size();i++){
-            fragIs.get(i).onCreateView(inflater,container,savedInstanceState);
+            fragIs.get(i).onCreateView(null,null,savedInstanceState);
         }
-        return group;
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         getP().getU().initUI(this);
-        doThing();
         HandleUtil.getInstance().postDelayed(new Runnable() {
             @Override
             public void run() {
-                initData();
+                if(isAttach()){
+                    doThing();
+                    initData();
+                }
             }
-        }, 1000);
+        }, 1500);
         for(int i=0;i<fragIs.size();i++){
             fragIs.get(i).onViewCreated(view,savedInstanceState);
         }
     }
 
     public void doThing() {
-
+        if(getView()==null){
+            return;
+        }
     }
 
     public void initData() {
+        if(getView()==null){
+            return;
+        }
+    }
+
+    public void lazyInit(){
 
     }
 
@@ -152,6 +171,8 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                 Constructor<B> bc = b.getConstructor(Context.class);
                 A aa = ac.newInstance(activity);
                 B bb = bc.newInstance(activity);
+                aa.setFrag(this);
+                bb.setFrag(this);
                 opes = new BaseOpes<>(aa, bb);
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
@@ -227,6 +248,46 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     }
 
     public BaseUIActivity getBaseUIActivity() {
-        return (BaseUIActivity) getActivity();
+        return (BaseUIActivity) activity;
+    }
+
+    public void setInited() {
+        isInit = true;
+    }
+
+    public boolean isInit() {
+        return isInit;
+    }
+    View  v;
+
+    View tips;
+    public void startLoading(){
+          v = LayoutInflater.from(activity).inflate(R.layout.dialog_loading,null);
+        AVLoadingIndicatorView avLoadingIndicatorView = (AVLoadingIndicatorView) v.findViewById(R.id.av);
+        parent.addView(v,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        avLoadingIndicatorView.show();
+
+
+    }
+
+    public void stopLoading(){
+        if(v!=null && v.getParent()==parent){
+            parent.removeView(v);
+        }
+    }
+
+    public void showTips(String txt){
+        tips = LayoutInflater.from(activity).inflate(R.layout.item_tips,null);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.CENTER_IN_PARENT);
+        parent.addView(tips,params);
+        TextView textView = tips.findViewById(R.id.tv_txt);
+        textView.setText(txt);
+    }
+
+    public void removeTips(){
+        if(tips!=null && tips.getParent()==parent){
+            parent.removeView(tips);
+        }
     }
 }

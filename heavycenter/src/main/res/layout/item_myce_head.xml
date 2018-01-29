@@ -10,7 +10,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:background="@color/color_base"
-            android:layout_height="230dp">
+            android:layout_height="190dp">
             <ImageView
                 android:scaleType="centerCrop"
                 android:src="@drawable/icon_hv_myce_bg"
@@ -19,8 +19,7 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_height="match_parent">
                 <com.android.lib.view.title.TitleView
                     android:id="@+id/title"
                     style_common:color_bg ="@color/transparent"
@@ -30,65 +29,89 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <LinearLayout
-                    android:layout_marginLeft="30dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <ImageView
+
+                    <RelativeLayout
+                        android:padding="10dp"
+                        android:layout_weight="0.8"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_centerInParent="true"
                             android:id="@+id/iv_head"
-                        android:src="@drawable/icon_hv_myce_head"
-                        android:layout_width="130dp"
-                        android:layout_height="130dp" />
+                            android:src="@drawable/icon_hv_myce_head"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </RelativeLayout>
+
+
 
                     <LinearLayout
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="13dp"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_width="0dp"
+                        android:layout_height="100dp">
                         <LinearLayout
-                            android:gravity="center_vertical"
+                            android:layout_gravity="bottom"
+                            android:layout_weight="1"
+                            android:gravity="bottom"
                             android:orientation="horizontal"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="0dp">
                             <TextView
-                                android:singleLine="true"
                                 android:layout_weight="1"
+                                android:ellipsize="marquee"
+                                android:singleLine="true"
                                 android:id="@+id/tv_name"
-                                android:text="11111111"
+                                android:text="18721654587"
                                 android:textSize="23sp"
                                 android:textColor="@color/white"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
 
                             <ImageView
+                                android:layout_marginLeft="2dp"
                                 android:layout_marginRight="5dp"
+                                android:layout_marginBottom="5dp"
                                 android:id="@+id/iv_nameedit"
-                                android:layout_marginLeft="25dp"
                                 android:src="@drawable/icon_hv_myce_edit"
-                                android:layout_width="17dp"
-                                android:layout_height="17dp" />
+                                android:layout_width="20dp"
+                                android:layout_height="20dp" />
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp">
                         <TextView
                             android:singleLine="true"
                             android:id="@+id/tv_role"
                             android:text="管理员"
-                            android:textSize="13sp"
+                            android:textSize="14sp"
                             android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
-
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp">
                         <TextView
                             android:singleLine="true"
                             android:id="@+id/tv_phone"
-                            android:layout_marginTop="10dp"
                             android:text="18741414141"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textColor="@color/white"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 

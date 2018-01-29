@@ -15,18 +15,23 @@ import com.siweisoft.heavycenter.module.mana.car.my.MyFrag;
 import java.util.ArrayList;
 
 public class CarDAOpe extends AppDAOpe {
+
+
+    private  ArrayList<Fragment> pages = new ArrayList<>();
+
     public CarDAOpe(Context context) {
         super(context);
     }
 
 
-    public ArrayList<Fragment> getPages(int index){
-        ArrayList<Fragment> pages = new ArrayList<>();
+    public void initPages(){
+        pages.clear();
         BaseUIFrag sendFrag = new MyFrag(); sendFrag.setArguments(new Bundle());sendFrag.getArguments().putString(ValueConstant.DATA_POSITION,CarsReqBean.WHAT_FH);pages.add(sendFrag);
         BaseUIFrag myFrag = new MyFrag(); myFrag.setArguments(new Bundle());myFrag.getArguments().putString(ValueConstant.DATA_POSITION,CarsReqBean.WHAT_MY);pages.add(myFrag);
         BaseUIFrag receiptFrag = new MyFrag(); receiptFrag.setArguments(new Bundle());receiptFrag.getArguments().putString(ValueConstant.DATA_POSITION,CarsReqBean.WHAT_SH);pages.add(receiptFrag);
-        return pages;
     }
 
-
+    public ArrayList<Fragment> getPages() {
+        return pages;
+    }
 }

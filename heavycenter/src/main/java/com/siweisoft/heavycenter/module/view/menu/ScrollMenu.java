@@ -25,7 +25,6 @@ public class ScrollMenu extends RelativeLayout {
 
     private float bbb = 1-aaa;
 
-    private float ccc = (bbb/aaa)/2;
 
     private int num=3;
 
@@ -51,7 +50,7 @@ public class ScrollMenu extends RelativeLayout {
             line.requestLayout();
         }
         final float trans1 =  (getWidth()/num);
-        final float trnas2 = (line.getWidth()*ccc);
+        final float trnas2 = (trans1*((1-aaa)/2));
         this.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

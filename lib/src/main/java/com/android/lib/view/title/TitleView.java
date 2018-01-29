@@ -65,6 +65,8 @@ public class TitleView extends RelativeLayout {
 
     }
 
+
+
     public TextView getMidTV() {
         return midTV;
     }

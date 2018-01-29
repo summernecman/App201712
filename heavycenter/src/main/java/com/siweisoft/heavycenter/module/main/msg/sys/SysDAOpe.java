@@ -17,7 +17,11 @@ import java.util.ArrayList;
 
 public class SysDAOpe extends BaseDAOpe {
 
-    private int moudle = -1;
+    private String moudle = "";
+
+    private int pageindex = 0;
+
+    private MsgsResBean msgsResBean = new MsgsResBean();
 
     public SysDAOpe(Context context) {
         super(context);
@@ -33,27 +37,45 @@ public class SysDAOpe extends BaseDAOpe {
 
     public void getMsgSys(NetI<MsgsResBean> adapter){
         MsgsReqBean msgsReqBean = new MsgsReqBean();
-        msgsReqBean.setUserId(LocalValue.getLoginInfo().getUserId());
-        msgsReqBean.setPageIndex(0);
-        msgsReqBean.setPageSize(100);
+        msgsReqBean.setUserId(LocalValue.get登录返回信息().getUserId());
+        msgsReqBean.setPageIndex(getPageindex());
+        msgsReqBean.setPageSize(20);
         msgsReqBean.setMessageCate(getMoudle());
         NetDataOpe.Msg.list(getActivity(),msgsReqBean,adapter);
     }
 
     public void dealMss(int messageId, String auditStatus, NetI<MsgDealResBean> adapter){
         MsgDealReqBean msgDealReqBean = new MsgDealReqBean();
-        msgDealReqBean.setUserId(LocalValue.getLoginInfo().getUserId());
+        msgDealReqBean.setUserId(LocalValue.get登录返回信息().getUserId());
         msgDealReqBean.setMessageId(messageId);
         msgDealReqBean.setAuditStatus(auditStatus);
         NetDataOpe.Msg.deal(getActivity(),msgDealReqBean,adapter);
 
     }
 
-    public int getMoudle() {
+    public String getMoudle() {
         return moudle;
     }
 
-    public void setMoudle(int moudle) {
+    public void setMoudle(String moudle) {
         this.moudle = moudle;
+    }
+
+    public int getPageindex() {
+        return pageindex;
+    }
+
+    public void setPageindex(int pageindex) {
+        this.pageindex = pageindex;
+    }
+
+    public MsgsResBean getMsgsResBean() {
+        return msgsResBean;
+    }
+
+    public void addData(MsgsResBean data){
+        if(data!=null && data.getResults()!=null){
+            msgsResBean.getResults().addAll(data.getResults());
+        }
     }
 }

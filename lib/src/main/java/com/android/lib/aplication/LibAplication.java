@@ -1,6 +1,7 @@
 package com.android.lib.aplication;
 
 import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 import android.support.v4.app.FragmentActivity;
 
 import com.android.lib.R;
@@ -12,6 +13,7 @@ import com.android.lib.util.activity.ActivityUtil;
 import com.android.lib.view.image.ImagePickerLoader;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.view.CropImageView;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import org.xutils.x;
 
@@ -21,7 +23,7 @@ import java.util.List;
 /**
  * 用于一些跟应用程序生命周期一致的处理
  */
-public class LibAplication extends Application {
+public class LibAplication extends MultiDexApplication {
 
 
     @Override
@@ -37,6 +39,7 @@ public class LibAplication extends Application {
         initSysConfig();
         initImagePicker();
         initXutils();
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
 

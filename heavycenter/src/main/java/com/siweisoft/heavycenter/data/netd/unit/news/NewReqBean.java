@@ -20,7 +20,7 @@ public class NewReqBean extends BaseReqBean {
 
     private String contactPhone;
 
-    private int highCompany;
+    private int highCompany = -1;
 
     private int creater;
 

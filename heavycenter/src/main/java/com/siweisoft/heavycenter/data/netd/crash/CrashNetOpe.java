@@ -11,7 +11,9 @@ import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.data.DateFormatUtil;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 
 public class CrashNetOpe extends BaseDAOpe{
 
@@ -25,10 +27,13 @@ public class CrashNetOpe extends BaseDAOpe{
         crash.setCreatedtime(DateFormatUtil.getNowStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS));
         crash.setError(txt);
         CrashBean.UserBeanBean userBeanBean = new CrashBean.UserBeanBean();
-        userBeanBean.setId(0);
-        userBeanBean.setName("");
-        userBeanBean.setPhone("");
-        userBeanBean.setUsertype(0);
+        LoginResBean loginResBean = LocalValue.get登录返回信息();
+        if(loginResBean!=null){
+            userBeanBean.setId(loginResBean.getUserId());
+            userBeanBean.setName(loginResBean.getTrueName());
+            userBeanBean.setPhone(loginResBean.getTel());
+            userBeanBean.setUsertype(loginResBean.getUserType());
+        }
         crash.setUserBean(userBeanBean);
         crash.setPlatform(context.getPackageName());
         baseReqBean.setData(GsonUtil.getInstance().toJson(crash));

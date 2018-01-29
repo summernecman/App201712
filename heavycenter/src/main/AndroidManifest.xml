@@ -17,15 +17,16 @@
         tools:replace="android:label,android:theme">
 
         <activity android:name=".module.welc.welc.WelcAct">
-
-        </activity>
-        <activity android:name=".module.acct.acct.AcctAct"
-            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity android:name=".module.acct.acct.AcctAct"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:screenOrientation="portrait">
+
         </activity>
 
         <activity android:name=".module.main.MainAct"
@@ -34,10 +35,9 @@
 
         </activity>
 
-        <activity
-            android:name="com.journeyapps.barcodescanner.CaptureActivity"
-            android:screenOrientation="fullSensor"
-            tools:replace="screenOrientation" />
+
+
+
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="zRI2ehMENx33kDG1qTr1GhXofbesLYWj" />

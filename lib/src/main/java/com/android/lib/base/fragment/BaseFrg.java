@@ -26,6 +26,8 @@ public class BaseFrg extends Fragment {
 
     private long uniqueid;
 
+    private boolean isAttach = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +43,14 @@ public class BaseFrg extends Fragment {
         if (context instanceof FragmentActivity) {
             activity = (FragmentActivity) context;
         }
+        isAttach = true;
     }
 
     public long getUniqueid() {
         return uniqueid;
+    }
+
+    public boolean isAttach() {
+        return isAttach;
     }
 }

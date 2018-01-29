@@ -58,6 +58,9 @@ public class LoadUtil {
     }
 
     public void onStartLoading(Context activity, String tag) {
+        if(activity==null){
+            return;
+        }
         MyDialog dialog = new MyDialog(activity, R.style.swdialog);
         dialogs.add(dialog);
         dialog.setTag(tag);

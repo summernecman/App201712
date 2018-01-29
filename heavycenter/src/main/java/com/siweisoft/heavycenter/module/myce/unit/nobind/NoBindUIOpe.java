@@ -5,7 +5,6 @@ package com.siweisoft.heavycenter.module.myce.unit.nobind;
 import android.content.Context;
 
 import com.siweisoft.heavycenter.base.AppUIOpe;
-import com.siweisoft.heavycenter.databinding.FragMyceUnitBindBinding;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitNobindBinding;
 
 public class NoBindUIOpe extends AppUIOpe<FragMyceUnitNobindBinding>{

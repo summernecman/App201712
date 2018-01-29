@@ -23,10 +23,15 @@ public  class NetAdapter<A> implements NetI<A> {
     protected Context context;
     protected String url;
 
+    protected boolean showTips = true;
+
     public NetAdapter(Context context) {
         this.context = context;
-        Type type = this.getClass().getGenericSuperclass();
-        getClass().getSimpleName();
+    }
+
+    public NetAdapter(Context context,boolean isshow) {
+        this.context = context;
+        showTips = isshow;
     }
 
 
@@ -34,45 +39,85 @@ public  class NetAdapter<A> implements NetI<A> {
     public boolean onNetStart(String url, String gson) {
         this.url = url;
         boolean isNetOk = NetWorkUtil.getInstance().getNetisAvailable(context);
+        if(NetGet.test){
+            return true;
+        }
+        if(!isNetOk){
+            ToastUtil.getInstance().showShort(context,"无网络");
+        }
         return isNetOk;
     }
 
     @Override
     public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
         if (!haveData) {
+            onResult(false,baseResBean.getMessage(), null);
+        } else {
             if(cache){
+                if(showTips){
+                    ToastUtil.getInstance().showShort(context,"当前为无网络测试环境");
+                }
                 BaseResBean resBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(url),BaseResBean.class);
-                deal(haveData,url,baseResBean);
+                if(resBean ==null){
+                    resBean = new BaseResBean();
+                    resBean.setCode("000");
+                }
+                deal(haveData,url,resBean);
             }else{
-                onResult(false,baseResBean.getMessage(), null);
+                if(!NullUtil.isStrEmpty(baseResBean.getMessage())&& showTips){
+                    ToastUtil.getInstance().showShort(context.getApplicationContext(),baseResBean.getMessage());
+                }
+                SPUtil.getInstance().saveStr(url,GsonUtil.getInstance().toJson(baseResBean));
+                deal(haveData,url,baseResBean);
             }
 
-        } else {
-            if(!NullUtil.isStrEmpty(baseResBean.getMessage())){
-                ToastUtil.getInstance().showShort(context,baseResBean.getMessage());
-            }
-            SPUtil.getInstance().saveStr(url,GsonUtil.getInstance().toJson(baseResBean));
-            deal(haveData,url,baseResBean);
         }
     }
 
+
     private void deal(boolean haveData, String url, BaseResBean baseResBean){
+        boolean isobject = false;
+        boolean isarray = false;
         Type type = getClass().getGenericSuperclass();
         if(type instanceof ParameterizedType ){
             ParameterizedType parameterizedType = (ParameterizedType) type;
             A aa = null;
             try {
+                LogUtil.E(isobject+":1"+isarray);
                 Object o = new JSONTokener(GsonUtil.getInstance().toJson(baseResBean.getResult())).nextValue();
-                if(o instanceof JSONObject){
+                LogUtil.E(isobject+":2"+isarray);
+                try {
+                    isobject = o instanceof JSONObject;
+                    LogUtil.E(isobject+":3"+isarray);
+                    if(!isobject){
+                        LogUtil.E(isobject+":4"+isarray);
+                        try {
+                            isarray = o instanceof JSONArray;
+                            LogUtil.E(isobject+":5"+isarray);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            LogUtil.E(isobject+":6"+isarray);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    LogUtil.E(isobject+":7"+isarray);
+                }
+                LogUtil.E(isobject+":8"+isarray);
+                if(isobject){
                     Class<A> a = (Class<A>) parameterizedType.getActualTypeArguments()[0];
                      aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),a);
-                }else if(o instanceof JSONArray){
+                }else if(isarray){
                     TypeToken<?> typeToken = TypeToken.get(parameterizedType.getActualTypeArguments()[0]);
                      aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),typeToken.getType());
+                }else{
+                    LogUtil.E(baseResBean.getResult());
                 }
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
+
             }finally {
+                LogUtil.E(isobject+":9"+isarray+""+baseResBean.getCode());
                 if (!"200".equals(baseResBean.getCode())) {
                     onResult(false,baseResBean.getMessage(), aa);
                 } else {
@@ -85,11 +130,23 @@ public  class NetAdapter<A> implements NetI<A> {
 
     @Override
     public void onResult(boolean success, String msg, A o) {
-
+        if(success){
+            onSuccess(o);
+        }
     }
 
     @Override
     public void onProgress(long total, long current) {
+
+    }
+
+    @Override
+    public void onSuccess(A o) {
+
+    }
+
+    @Override
+    public void onFail(boolean haveData, String msg) {
 
     }
 

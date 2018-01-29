@@ -4,7 +4,12 @@ package com.siweisoft.heavycenter.module.welc.welc;
 
 import android.content.Context;
 
+import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 
 public class WelcDAOpe extends AppDAOpe {
 
@@ -12,7 +17,10 @@ public class WelcDAOpe extends AppDAOpe {
         super(context);
     }
 
-    public String getImageUrl(){
-        return "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2137016978,933113517&fm=27&gp=0.jpg";
+
+    public void get用户信息(NetI<LoginResBean> adapter){
+        UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
+        userInfoReqBean.setId(LocalValue.get登录返回信息().getUserId());
+        NetDataOpe.User.get用户信息(getActivity(),userInfoReqBean,adapter);
     }
 }

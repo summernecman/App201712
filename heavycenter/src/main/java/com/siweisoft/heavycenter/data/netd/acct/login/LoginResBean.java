@@ -3,6 +3,7 @@ package com.siweisoft.heavycenter.data.netd.acct.login;
 //by summer on 2018-01-09.
 
 import com.android.lib.bean.BaseBean;
+import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 
 import java.util.List;
 
@@ -84,13 +85,27 @@ public class LoginResBean extends BaseBean {
     private int userType;
     private int deviceType;
     private String deviceId;
-    private String userRole;
+    private String userRole = USER_ROLE_GENERAL;
     private int loginStatus;
     private int wareHouseCount;
     private int productCount;
     private int userCount;
     private int vehicleCount;
     private List<BranchCompanyListBean> branchCompanyList;
+    private String carLat;
+    private String carLng;
+    private String carBrand;
+    private float emptyWeight;
+    private float maxCapacity;
+    private String vehicleLicensePhoto;
+    private String vehiclePhoto;
+    private String vehicleLicense;
+    private String carLicenseNo;
+    private String icCard;
+    private String userIcCard;
+    private int vehicleId;
+    private String driverNoPhoto;
+    private String driverNo;
 
     public int getUserId() {
         return userId;
@@ -250,6 +265,126 @@ public class LoginResBean extends BaseBean {
 
     public void setBranchCompanyList(List<BranchCompanyListBean> branchCompanyList) {
         this.branchCompanyList = branchCompanyList;
+    }
+
+    public String getCarLat() {
+        return carLat;
+    }
+
+    public void setCarLat(String carLat) {
+        this.carLat = carLat;
+    }
+
+    public String getCarLng() {
+        return carLng;
+    }
+
+    public void setCarLng(String carLng) {
+        this.carLng = carLng;
+    }
+
+    public String getCarBrand() {
+        return carBrand;
+    }
+
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
+    }
+
+    public float getEmptyWeight() {
+        return emptyWeight;
+    }
+
+    public void setEmptyWeight(float emptyWeight) {
+        this.emptyWeight = emptyWeight;
+    }
+
+    public float getMaxCapacity() {
+        return maxCapacity;
+    }
+
+    public void setMaxCapacity(float maxCapacity) {
+        this.maxCapacity = maxCapacity;
+    }
+
+    public String getCarLicenseNo() {
+        return carLicenseNo;
+    }
+
+    public void setCarLicenseNo(String carLicenseNo) {
+        this.carLicenseNo = carLicenseNo;
+    }
+
+    public String getIcCard() {
+        return icCard;
+    }
+
+    public void setIcCard(String icCard) {
+        this.icCard = icCard;
+    }
+
+    public String getDriverNoPhoto() {
+        return driverNoPhoto;
+    }
+
+    public void setDriverNoPhoto(String driverNoPhoto) {
+        this.driverNoPhoto = driverNoPhoto;
+    }
+
+    public String getDriverNo() {
+        return driverNo;
+    }
+
+    public void setDriverNo(String driverNo) {
+        this.driverNo = driverNo;
+    }
+
+
+    public String getVehicleLicensePhoto() {
+        return vehicleLicensePhoto;
+    }
+
+    public void setVehicleLicensePhoto(String vehicleLicensePhoto) {
+        this.vehicleLicensePhoto = vehicleLicensePhoto;
+    }
+
+    public String getVehiclePhoto() {
+        return vehiclePhoto;
+    }
+
+    public void setVehiclePhoto(String vehiclePhoto) {
+        this.vehiclePhoto = vehiclePhoto;
+    }
+
+    public String getVehicleLicense() {
+        return vehicleLicense;
+    }
+
+    public void setVehicleLicense(String vehicleLicense) {
+        this.vehicleLicense = vehicleLicense;
+    }
+
+    public String getUserIcCard() {
+        return userIcCard;
+    }
+
+    public void setUserIcCard(String userIcCard) {
+        this.userIcCard = userIcCard;
+    }
+
+    public int getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(int vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
+    public boolean is选择了角色(){
+        if(getUserType()== UserTypeReqBean.驾驶员 || getUserType()== UserTypeReqBean.非驾驶员){
+            return true;
+        }
+        return false;
     }
 
     public static class BranchCompanyListBean {

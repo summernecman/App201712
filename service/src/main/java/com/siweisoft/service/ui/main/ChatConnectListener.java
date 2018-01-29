@@ -33,7 +33,6 @@ public class ChatConnectListener implements EMConnectionListener {
 
     @Override
     public void onDisconnected(int errorCode) {
-        LogUtil.E("onDisconnected1" + errorCode);
         String s = "";
         switch (errorCode) {
             case EMError.USER_KICKED_BY_OTHER_DEVICE:
@@ -81,16 +80,13 @@ public class ChatConnectListener implements EMConnectionListener {
             EMClient.getInstance().chatroomManager().leaveChatRoom(Value.getRoom().getId());
         }
         EMClient.getInstance().logout(true);
-        LogUtil.E("onDisconnected2");
         final String finalS = s;
         app.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 ToastUtil.getInstance().showLong(app, finalS);
-                LogUtil.E("onDisconnected3");
                 FragmentUtil2.getInstance().clear();
                 ((ServieApp) app.getApplication()).exit();
-                LogUtil.E("onDisconnected4");
             }
         });
     }

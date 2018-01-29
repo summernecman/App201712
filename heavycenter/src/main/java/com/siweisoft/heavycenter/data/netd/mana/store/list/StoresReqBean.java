@@ -12,6 +12,7 @@ public class StoresReqBean extends BaseReqBean {
 
     public static final int STATUS_ALL = -1;
 
+
     private int companyId;
 
     private int isApp;
@@ -20,7 +21,7 @@ public class StoresReqBean extends BaseReqBean {
 
     private int pageIndex;
 
-    private int status;
+    private Integer status;
 
     public StoresReqBean() {
     }
@@ -57,11 +58,11 @@ public class StoresReqBean extends BaseReqBean {
         this.pageIndex = pageIndex;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }

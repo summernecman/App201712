@@ -10,9 +10,9 @@ public class UserTypeReqBean extends BaseReqBean {
 
     public static final int USER_TYPE_NULL = 0;
 
-    public static final int USER_TYPE_DRIVER = 1;
+    public static final int 驾驶员 = 1;
 
-    public static final int USER_TYPE_GENERAL = 2;
+    public static final int 非驾驶员 = 2;
 
     public static final String USER_TYPE_DRIVER_CN = "驾驶员";
 

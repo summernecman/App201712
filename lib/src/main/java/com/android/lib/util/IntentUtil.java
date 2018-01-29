@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
 
 import com.android.lib.constant.ValueConstant;
 import com.lzy.imagepicker.ui.ImageGridActivity;
@@ -133,6 +134,8 @@ public class IntentUtil {
         }
 
     }
+
+
 
     public void photosShowFromphone(Fragment fragment, int requstCode) {
         Intent intent = new Intent(fragment.getContext(), ImageGridActivity.class);

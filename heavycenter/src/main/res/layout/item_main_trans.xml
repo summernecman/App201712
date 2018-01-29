@@ -11,14 +11,14 @@
         android:id="@+id/ll_trans"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:clipToPadding="false"
         >
     <LinearLayout
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         >
         <RelativeLayout
             android:background="@color/color_item_main_trans_dark"
@@ -42,7 +42,7 @@
 
                 <TextView
                     android:text="3t"
-                    android:textSize="20sp"
+                    android:textSize="22sp"
                     android:textColor="@color/color_yell_blue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -62,7 +62,7 @@
                 DashView:hashwidth = "2dp"
                 DashView:dashcolor = "@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="1dp" />
+                android:layout_height="1px" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -87,7 +87,7 @@
                 <TextView
                     android:singleLine="true"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/hv_dimen_text_title"
                     android:text="混凝土"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -96,7 +96,7 @@
                     android:singleLine="true"
                     android:layout_marginLeft="14dp"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/hv_dimen_text_title"
                     android:text="C30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -109,6 +109,7 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp" />
                 <TextView
+                        android:background="@drawable/bg_hv_sharp2_yell_stroke"
                     android:singleLine="true"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/color_base_txt_heavycenter_y"
@@ -129,7 +130,7 @@
                 <TextView
                     android:singleLine="true"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/hv_dimen_text"
                     android:text="驾驶员"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -162,7 +163,7 @@
                     android:singleLine="true"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/hv_dimen_text"
                     android:text="10t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -192,7 +193,7 @@
                 <TextView
                     android:singleLine="true"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/hv_dimen_text"
                     android:text="上海绿地"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -200,7 +201,7 @@
                     android:singleLine="true"
                     android:layout_marginLeft="15dp"
                     android:textColor="@color/color_hv_yelll"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/hv_dimen_text_title"
                     android:text="0t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -214,8 +215,8 @@
                 <com.siweisoft.heavycenter.module.view.text.BgTextView
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
 
 
                     android:singleLine="true"
@@ -225,11 +226,11 @@
                     style_common:color_one="@color/color_hv_yelll"
                     style_common:stroke="0dp"
                     style_common:color_stroke="@color/red"
-                    style_common:corner="2dp"
+                    style_common:corner="5dp"
                     style_common:color_txt="@color/black"
 
                     style_common:color_two="@color/color_red_800"
-                    style_common:stroke_two="2dp"
+                    style_common:stroke_two="5dp"
                     style_common:color_stroke_two="@color/color_hv_yelll"
                     style_common:corner_two="5dp"
                     style_common:color_txt_two="@color/white"
@@ -248,7 +249,7 @@
                 DashView:hashwidth = "2dp"
                 DashView:dashcolor = "@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="1dp" />
+                android:layout_height="1px" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -256,7 +257,7 @@
             android:layout_marginLeft="90dp"
             android:layout_alignParentBottom="true"
             DashView:dashgap = "2dp"
-            DashView:w = "1dp"
+            DashView:w = "0.5dp"
             DashView:hashwidth = "2dp"
             DashView:dashcolor = "@color/gray"
             android:layout_width="1dp"
@@ -265,15 +266,15 @@
 
         <com.siweisoft.heavycenter.module.view.circle.UpCircleView
             android:layout_marginLeft="87.5dp"
-            android:layout_width="6dp"
-            android:layout_height="6dp" />
+            android:layout_width="5dp"
+            android:layout_height="5dp" />
 
 
         <com.siweisoft.heavycenter.module.view.circle.DownCircleView
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="87.5dp"
-            android:layout_width="6dp"
-            android:layout_height="6dp" />
+            android:layout_width="5dp"
+            android:layout_height="5dp" />
 
     </RelativeLayout>
 </layout>

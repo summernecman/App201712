@@ -39,7 +39,7 @@
 
                 <TextView
                     android:layout_marginTop="10dp"
-                    android:text="您是非驾驶员，必须先绑定单位"
+                    android:text="请绑定单位"
                     android:textSize="15sp"
                     android:textColor="@color/color_grey_500"
                     android:singleLine="true"

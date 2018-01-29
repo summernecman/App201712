@@ -8,7 +8,7 @@ public class UserInfoReqBean extends BaseReqBean {
 
     private int id;
 
-    private int isApp;
+    private int isApp = 1;
 
     public UserInfoReqBean() {
     }

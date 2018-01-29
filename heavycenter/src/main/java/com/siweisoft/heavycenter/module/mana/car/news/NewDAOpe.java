@@ -20,8 +20,8 @@ public class NewDAOpe extends AppDAOpe {
     }
 
     public CarNewReqBean getCarNewReqBean() {
-        carNewReqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
-        carNewReqBean.setCreater(LocalValue.getLoginInfo().getUserId());
+        carNewReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        carNewReqBean.setCreater(LocalValue.get登录返回信息().getUserId());
         return carNewReqBean;
     }
 

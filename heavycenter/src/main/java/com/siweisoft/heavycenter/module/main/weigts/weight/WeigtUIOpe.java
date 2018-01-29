@@ -15,4 +15,7 @@ public class WeigtUIOpe extends AppUIOpe<FragMainWeigtBinding> {
 
     public void initRefresh(){
     }
+
+
+
 }

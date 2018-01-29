@@ -34,7 +34,7 @@ public class MyDAOpe extends AppDAOpe {
     public void Cars(String moudle,NetI<CarsResBean> adapter){
         CarsReqBean carsReqBean = new CarsReqBean();
         carsReqBean.setIsApp(1);
-        carsReqBean.setCompanyId(LocalValue.getLoginInfo().getCompanyId());
+        carsReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         carsReqBean.setPageIndex(0);
         carsReqBean.setPageSize(1000);
         carsReqBean.setWhat(moudle);
@@ -44,9 +44,9 @@ public class MyDAOpe extends AppDAOpe {
 
     public void statusCar(int carid, int status, NetI<StopCarResBean> adapter){
         StopCarReqBean reqBean = new StopCarReqBean();
-        reqBean.setEditer(LocalValue.getLoginInfo().getUserId());
+        reqBean.setEditer(LocalValue.get登录返回信息().getUserId());
         reqBean.setId(carid);
-        reqBean.setStatus(status==CarsResBean.ResultsBean.STATUS_OFF?CarsResBean.ResultsBean.STATUS_ON:CarsResBean.ResultsBean.STATUS_OFF);
+        reqBean.setStatus(status== CarsResBean.CarInfoRes.STATUS_OFF? CarsResBean.CarInfoRes.STATUS_ON: CarsResBean.CarInfoRes.STATUS_OFF);
         NetDataOpe.Mana.Car.statusCar(getActivity(),reqBean,adapter);
     }
 

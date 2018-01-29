@@ -13,8 +13,6 @@ import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.LogUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
 import com.android.lib.view.dialog.list.DialogListFrag;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 import com.hyphenate.chat.EMClient;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -106,7 +104,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
                                 VideoChatFrag videoChatFrag = new VideoChatFrag();
                                 videoChatFrag.setArguments(new Bundle());
                                 videoChatFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, videoBean);
-                                FragmentUtil2.getInstance().add(fragment.getActivity(), Value.FULLSCREEN, videoChatFrag);
+                                FragmentUtil2.getInstance().add(activity, Value.FULLSCREEN, videoChatFrag);
                                 break;
                         }
                     }
@@ -120,7 +118,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
 //                }
 //                DialogListFrag frag = new DialogListFrag();
 //                frag.init(strs);
-//                FragmentUtil2.getInstance().add(fragment.getActivity(), Value.ROOTID_TWO, frag);
+//                FragmentUtil2.getInstance().add(fragment.activity, Value.ROOTID_TWO, frag);
 //                frag.setOnAppItemsClickListener(new OnAppItemClickListener() {
 //                    @Override
 //                    public void onAppItemClick(View view, int position) {
@@ -158,13 +156,13 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
         initData2();
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if(result != null) {
-            LogUtil.E(result.getContents());
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+//        if(result != null) {
+//            LogUtil.E(result.getContents());
+//        } else {
+//            super.onActivityResult(requestCode, resultCode, data);
+//        }
+//    }
 }

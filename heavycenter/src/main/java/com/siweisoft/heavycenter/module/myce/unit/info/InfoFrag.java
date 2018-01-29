@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.myce.unit.info;
 
 import android.view.View;
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -20,7 +21,8 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
     @Override
     public void initData() {
         super.initData();
-        getP().getD().getInfo(new UINetAdapter<UnitInfo>(getActivity()) {
+
+        getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(activity) {
             @Override
             public void onResult(boolean success, String msg, UnitInfo o) {
                 super.onResult(success, msg, o);
@@ -38,10 +40,10 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                 @Override
                 public void onClick(View vv) {
                     switch (vv.getId()){
-                        case R.id.tv_close:
+                        case R.id.close:
                             break;
-                        case R.id.tv_sure:
-                            getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(getActivity()) {
+                        case R.id.sure:
+                            getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(activity) {
                                 @Override
                                 public void onResult(boolean success, String msg, UnBindResBean o) {
                                     super.onResult(success, msg, o);
@@ -51,7 +53,7 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                                             public void onResult(boolean success, String msg, LoginResBean o) {
                                                 super.onResult(success, msg, o);
                                                 if(success){
-                                                    LocalValue.saveLoginInfo(o);
+                                                    LocalValue.save登录返回信息(o);
                                                     ((MainAct)getBaseUIActivity()).reStart();
                                                 }
                                             }
@@ -61,6 +63,7 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                             });
                             break;
                     }
+                    getBaseUIActivity().onBackPressed();
                 }
             });
             break;

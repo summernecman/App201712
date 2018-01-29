@@ -5,9 +5,10 @@ package com.siweisoft.heavycenter.module.view.center;
 import android.content.Context;
 
 import com.android.lib.base.ope.BaseUIOpe;
+import com.android.lib.databinding.DialogCenterBinding;
 import com.siweisoft.heavycenter.databinding.FragAcctRoleTipBinding;
 
-public class DialogCenterUIOpe extends BaseUIOpe<FragAcctRoleTipBinding> {
+public class DialogCenterUIOpe extends BaseUIOpe<DialogCenterBinding> {
 
 
     public DialogCenterUIOpe(Context context) {

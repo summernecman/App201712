@@ -12,6 +12,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.databinding.FragMainStoreBinding;
 import com.siweisoft.heavycenter.databinding.FragMainStoreDetailBinding;
 
@@ -44,5 +45,10 @@ public class DetailUIOpe extends BaseUIOpe<FragMainStoreDetailBinding>{
 
     public void LoadListData(List<String> s) {
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_store_detail, BR.item_main_store_detail, s));
+    }
+
+    public void initUI( StoreDetail storeDetail){
+        bind.setVariable(BR.frag_main_store_detail,storeDetail);
+        bind.store.setTxt(storeDetail.getMinStock(),storeDetail.getProductMinStock(),storeDetail.getMaxStock(),storeDetail.getProductMaxStock(),storeDetail.getCurrentStock());
     }
 }

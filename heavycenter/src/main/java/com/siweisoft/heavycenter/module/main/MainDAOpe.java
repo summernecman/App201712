@@ -6,7 +6,6 @@ import android.Manifest;
 import android.content.Context;
 import android.widget.RelativeLayout;
 
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.util.system.PermissionUtil;
 import com.android.lib.view.bottommenu.BottomMenuBean;
 import com.siweisoft.heavycenter.R;
@@ -14,12 +13,15 @@ import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
+import com.siweisoft.heavycenter.module.main.map.MapFrag;
 import com.siweisoft.heavycenter.module.main.msg.MsgFrag;
 import com.siweisoft.heavycenter.module.main.order.OrderFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
 import com.siweisoft.heavycenter.module.main.weigts.WeigtsFrag;
+import com.siweisoft.heavycenter.module.main.weigts.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.myce.MyceFrag;
+import com.siweisoft.heavycenter.module.scan.ScanDAOpe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,8 @@ public class MainDAOpe extends AppDAOpe {
 
     MyceFrag myceFrag = new MyceFrag();
 
+    ScanDAOpe scanDAOpe;
+
 
     public MainDAOpe(Context context) {
         super(context);
@@ -42,28 +46,30 @@ public class MainDAOpe extends AppDAOpe {
     }
 
     protected ArrayList<BottomMenuBean> initBottomMenuViewData(){
-        if(menudata==null){
-            menudata = new ArrayList<>();
-        }
         menudata.clear();
-        RelativeLayout v0 = new RelativeLayout(context);v0.setId(11111+0);
-        BaseUIFrag fragment0 = new WeigtsFrag(); fragment0.setIndex(0);
-        menudata.add(new BottomMenuBean(MainAct.地磅, R.drawable.drawable_main_bottom_weight,new WeigtsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        if(LocalValue.get登录返回信息().getUserType()== UserTypeReqBean.驾驶员){
+            RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainAct.地磅ID);
+            menudata.add(new BottomMenuBean(MainAct.地磅, R.drawable.drawable_main_bottom_weight,new DetailFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }else{
+            RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainAct.地磅ID);
+            menudata.add(new BottomMenuBean(MainAct.地磅, R.drawable.drawable_main_bottom_weight,new WeigtsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }
 
-        RelativeLayout v1 = new RelativeLayout(context);v1.setId(11111+1);
-        BaseUIFrag fragment1 = new TransFrag(); fragment1.setIndex(1);
+        RelativeLayout v1 = new RelativeLayout(context);v1.setId(MainAct.运输单ID);
         menudata.add(new BottomMenuBean(MainAct.运输单, R.drawable.drawable_main_bottom_trans,new TransFrag(),v1,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
-        RelativeLayout v2 = new RelativeLayout(context);v2.setId(11111+2);
-        BaseUIFrag fragment2 = new TransFrag(); fragment2.setIndex(2);
-        menudata.add(new BottomMenuBean(MainAct.订单, R.drawable.drawable_main_bottom_order,new OrderFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        if(LocalValue.get登录返回信息().getUserType()== UserTypeReqBean.驾驶员){
+            RelativeLayout v2 = new RelativeLayout(context);v2.setId(MainAct.地图ID);
+            menudata.add(new BottomMenuBean(MainAct.地图, R.drawable.drawable_main_bottom_order,new MapFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }else{
+            RelativeLayout v2 = new RelativeLayout(context);v2.setId(MainAct.订单ID);
+            menudata.add(new BottomMenuBean(MainAct.订单, R.drawable.drawable_main_bottom_order,new OrderFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
-        RelativeLayout v3 = new RelativeLayout(context);v3.setId(11111+3);
-        BaseUIFrag fragment3 = new TransFrag(); fragment3.setIndex(3);
-        menudata.add(new BottomMenuBean(MainAct.仓库, R.drawable.drawable_main_bottom_store,new StoreFrag(),v3,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+            RelativeLayout v3 = new RelativeLayout(context);v3.setId(MainAct.仓库ID);
+            menudata.add(new BottomMenuBean(MainAct.仓库, R.drawable.drawable_main_bottom_store,new StoreFrag(),v3,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }
 
-        RelativeLayout v4 = new RelativeLayout(context);v4.setId(11111+4);
-        BaseUIFrag fragment4 = new TransFrag(); fragment4.setIndex(4);
+        RelativeLayout v4 = new RelativeLayout(context);v4.setId(MainAct.消息ID);
         menudata.add(new BottomMenuBean(MainAct.消息, R.drawable.drawable_main_bottom_msg,new MsgFrag(),v4,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         return menudata;
     }
@@ -75,7 +81,6 @@ public class MainDAOpe extends AppDAOpe {
 
     private String[] permissions = new String[]{
             Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.VIBRATE,
             Manifest.permission.INTERNET,
@@ -83,7 +88,6 @@ public class MainDAOpe extends AppDAOpe {
             Manifest.permission.CAMERA,
             Manifest.permission.ACCESS_NETWORK_STATE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_WIFI_STATE,
             Manifest.permission.CHANGE_WIFI_STATE,
             Manifest.permission.WAKE_LOCK,
@@ -106,18 +110,12 @@ public class MainDAOpe extends AppDAOpe {
         return permissionUtil;
     }
 
-    public int getIndex() {
-        return index;
-    }
 
-    public void setIndex(int index) {
-        this.index = index;
-    }
 
     public boolean isBindUnit() {
         //绑定了单位== true
-        if(LocalValue.getLoginInfo().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_BINDED ||
-                LocalValue.getLoginInfo().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_CHECK ){
+        if(LocalValue.get登录返回信息().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_BINDED ||
+                LocalValue.get登录返回信息().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_CHECK ){
             return true;
         }
         return false;
@@ -150,9 +148,16 @@ public class MainDAOpe extends AppDAOpe {
         loginResBean.setUserId(150);
         loginResBean.setUserPhoto("1747494443");
         loginResBean.setUserRole(LoginResBean.USER_ROLE_ADMIN);
-        loginResBean.setUserType(UserTypeReqBean.USER_TYPE_GENERAL);
+        loginResBean.setUserType(UserTypeReqBean.非驾驶员);
         loginResBean.setVehicleCount(10);
         loginResBean.setWareHouseCount(10);
-        LocalValue.saveLoginInfo(loginResBean);
+        LocalValue.save登录返回信息(loginResBean);
+    }
+
+    public ScanDAOpe getScanDAOpe() {
+        if(scanDAOpe==null){
+            scanDAOpe = new ScanDAOpe(getActivity());
+        }
+        return scanDAOpe;
     }
 }

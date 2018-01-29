@@ -17,10 +17,20 @@
             android:id="@+id/title"
             style_common:iv_left ="@drawable/icon_hv_person"
             style_common:iv_right ="@drawable/icon_hv_scan"
+            style_common:iv_right2 ="@drawable/icon_hv_add"
             style_common:txt_mid ="订单"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+<RelativeLayout
+    android:background="@color/color_base"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <View
+        android:id="@+id/now"
+        android:background="@drawable/bg_hv_sharp10_gradient_yell_blue"
+        android:layout_width="200dp"
+        android:layout_height="1dp"/>
+</RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">

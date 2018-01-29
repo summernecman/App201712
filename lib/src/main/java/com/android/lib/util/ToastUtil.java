@@ -2,7 +2,10 @@ package com.android.lib.util;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.widget.Toast;
+
+import me.drakeet.support.toast.ToastCompat;
 
 /**
  * Created by ${viwmox} on 2016-05-10.
@@ -24,7 +27,9 @@ public class ToastUtil {
      * @param context
      */
     public void showSueess(Context context) {
-        Toast.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
+        if(context!=null) {
+            ToastCompat.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -34,7 +39,9 @@ public class ToastUtil {
      * @param msg
      */
     public void showShort(Context context, String msg) {
-        Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+        if(context!=null){
+            ToastCompat.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
@@ -43,7 +50,9 @@ public class ToastUtil {
      * @param msg
      */
     public void showLong(Context context, String msg) {
-        Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
+        if(context!=null) {
+            ToastCompat.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
+        }
     }
 
 
@@ -56,7 +65,9 @@ public class ToastUtil {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
+                if(context!=null) {
+                    ToastCompat.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -72,7 +83,9 @@ public class ToastUtil {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+                if(context!=null) {
+                    ToastCompat.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -88,7 +101,10 @@ public class ToastUtil {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+                if(context!=null) {
+                    ToastCompat.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -104,7 +120,10 @@ public class ToastUtil {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
+                if(context!=null) {
+                    ToastCompat.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

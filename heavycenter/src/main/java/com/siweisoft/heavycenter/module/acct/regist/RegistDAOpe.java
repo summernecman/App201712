@@ -46,7 +46,7 @@ public class RegistDAOpe extends AppDAOpe {
         NetDataOpe.getCode(getActivity(), NetValue.获取地址("/user/getSecurityCode"), reqBean, new NetAdapter<CodeResBean>(getActivity()) {
             @Override
             public void onNetFinish(boolean haveData, String url, BaseResBean o) {
-                ToastUtil.getInstance().showLong(getActivity(),o.getResult()+":"+o.getMessage());
+                ToastUtil.getInstance().showShort(getActivity(),o.getResult()+":"+o.getMessage());
             }
         });
     }

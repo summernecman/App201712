@@ -5,10 +5,16 @@ package com.siweisoft.heavycenter.module.main.store.detail;
 import android.content.Context;
 
 import com.android.lib.base.ope.BaseDAOpe;
+import com.android.lib.network.news.NetI;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.mana.store.detail.StoreDetailReq;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 
 import java.util.ArrayList;
 
 public class DetailDAOpe extends BaseDAOpe {
+
+    private StoreDetail storeDetail;
 
     public DetailDAOpe(Context context) {
         super(context);
@@ -20,5 +26,15 @@ public class DetailDAOpe extends BaseDAOpe {
             data.add(""+i);
         }
         return data;
+    }
+
+    public void detail(int id, NetI<StoreDetail> adapter){
+        StoreDetailReq storeDetailReq = new StoreDetailReq();
+        storeDetailReq.setWarehouseId(id);
+        NetDataOpe.Mana.Store.detail(getActivity(),storeDetailReq,adapter);
+    }
+
+    public StoreDetail getStoreDetail() {
+        return storeDetail;
     }
 }

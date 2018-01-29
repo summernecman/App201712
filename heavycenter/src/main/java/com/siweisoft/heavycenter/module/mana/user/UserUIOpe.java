@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.mana.user;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
@@ -36,12 +37,19 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(final List<UnitUserResBean.ResultsBean> data, ViewListener listener) {
+    public void LoadListData(final UnitUserResBean o, ViewListener listener) {
+        if(o==null || o.getResults()==null || o.getResults().size()==0){
+            getFrag().showTips("暂无数据");
+            return;
+        }
+        getFrag().removeTips();
+        final List<UnitUserResBean.ResultsBean> data = o.getResults();
+
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_user, BR.item_mana_user, data,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
-                ItemManaUserBinding binding = (ItemManaUserBinding) holder.viewDataBinding;
+                final ItemManaUserBinding binding = (ItemManaUserBinding) holder.viewDataBinding;
 
                 if(data.get(position).getStatus()== UnitUserResBean.ResultsBean.STATUS_ONLINE){
                     binding.tvState.setText(UnitUserResBean.ResultsBean.STATUS_ONLINE_CN);
@@ -85,6 +93,45 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
                 binding.munu.setTag(R.id.data,data.get(position));
                 binding.munu.setTag(R.id.data1,binding.swipe);
 
+
+
+                binding.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {
+                    @Override
+                    public void onStartOpen(SwipeLayout layout) {
+                        for(int i=0;i<bind.recycle.getChildCount();i++){
+                            SwipeLayout swipeLayout= bind.recycle.getChildAt(i).findViewById(R.id.swipe);
+                            if(swipeLayout!=binding.swipe){
+                                swipeLayout.close(true);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onOpen(SwipeLayout layout) {
+
+                    }
+
+                    @Override
+                    public void onStartClose(SwipeLayout layout) {
+
+                    }
+
+                    @Override
+                    public void onClose(SwipeLayout layout) {
+
+                    }
+
+                    @Override
+                    public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
+
+                    }
+
+                    @Override
+                    public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
+
+                    }
+                });
+
             }
 
             @Override
@@ -99,6 +146,26 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
             }
         });
 
+
+        bind.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                switch (newState){
+                    case RecyclerView.SCROLL_STATE_DRAGGING:
+                        for(int i=0;i<recyclerView.getChildCount();i++){
+                            SwipeLayout swipeLayout= recyclerView.getChildAt(i).findViewById(R.id.swipe);
+                            swipeLayout.close(true);
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
     }
 
     public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener){

@@ -71,7 +71,7 @@ public class BgTextView extends TextView {
         setBackground(stateListDrawable);
 
 
-        ColorStateList colorStateList = new ColorStateList(new int[][]{new int[] { -android.R.attr.state_pressed},new int[] { android.R.attr.state_pressed}},
+        ColorStateList colorStateList = new ColorStateList(new int[][]{new int[] { -android.R.attr.state_selected},new int[] { android.R.attr.state_selected}},
                 new int[]{a.getColor(R.styleable.style_common_color_txt,Color.BLACK),a.getColor(R.styleable.style_common_color_txt_two,Color.WHITE)});
         setTextColor(colorStateList);
 

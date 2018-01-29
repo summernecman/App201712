@@ -49,4 +49,16 @@
         <attr name="inputType" format="integer"/>
 
     </declare-styleable>
+
+
+
+    <dimen name="hv_dimen_text_title">17sp</dimen>
+    <color name="hv_color_text_title">@color/color_grey_700</color>
+
+    <dimen name="hv_dimen_text">15sp</dimen>
+    <color name="hv_color_text">@color/color_grey_500</color>
+
+
+    <dimen name="hv_dimen_text_date">13sp</dimen>
+    <color name="hv_color_text_date">@color/color_grey_500</color>
 </resources>

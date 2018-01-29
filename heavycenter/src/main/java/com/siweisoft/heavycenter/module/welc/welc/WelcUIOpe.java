@@ -4,7 +4,6 @@ package com.siweisoft.heavycenter.module.welc.welc;
 
 import android.content.Context;
 
-import com.siweisoft.heavycenter.GlideApp;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.ActWelcBinding;
 
@@ -13,9 +12,5 @@ public class WelcUIOpe extends AppUIOpe<ActWelcBinding> {
 
     public WelcUIOpe(Context context) {
         super(context);
-    }
-
-    public void initBg(String url){
-        //GlideApp.with(context).asBitmap().load(url).centerCrop().into(bind.image);
     }
 }

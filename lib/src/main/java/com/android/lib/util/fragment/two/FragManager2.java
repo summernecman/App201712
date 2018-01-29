@@ -21,6 +21,10 @@ public class FragManager2  {
 
     private int anim1,anim2,anim3,anim4,anim5,anim6;
 
+    private boolean hideLast = true;
+
+    private boolean anim = true;
+
 
     public static FragManager2 getInstance(){
         return new FragManager2();
@@ -43,9 +47,13 @@ public class FragManager2  {
         fragment.getArguments().putString(ValueConstant.CONTAINER_NAME,moudle);
         fragment.getArguments().putInt(ValueConstant.VIEW_ID,viewid);
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(getAnim1(),getAnim2());
+        if(isAnim()){
+            transaction.setCustomAnimations(getAnim1(),getAnim2());
+        }
         if(map.get(moudle).haveLast()){
+            if(hideLast){
             transaction.hide(map.get(moudle).getLast());
+            }
         }
         transaction.add(viewid,fragment,fragment.getUniqueid()+"");
         transaction.commitNowAllowingStateLoss();
@@ -70,15 +78,24 @@ public class FragManager2  {
     }
 
 
-    public boolean finish(BaseUIActivity activity, String moudle){
+
+    public boolean finish(BaseUIActivity activity, String moudle,boolean keepone){
         if(moudle==null || map.get(moudle)==null){
             return false;
         }
-        if(!map.get(moudle).haveLast()){
-            return false;
+        if(keepone){
+            if(!map.get(moudle).haveLastBefore()){
+                return false;
+            }
+        }else{
+            if(!map.get(moudle).haveLast()){
+                return false;
+            }
         }
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(getAnim5(),getAnim6(),getAnim5(),getAnim6());
+        if(isAnim()){
+            transaction.setCustomAnimations(getAnim5(),getAnim6());
+        }
         transaction.remove(map.get(moudle).getLast());
         if(map.get(moudle).haveLastBefore()){
             transaction.show(map.get(moudle).getLastBefore());
@@ -100,6 +117,13 @@ public class FragManager2  {
             map.get(moudle).removeLast();
         }
         transaction.commitNowAllowingStateLoss();
+    }
+
+    public BaseUIFrag getCurrentFrag(String moudle){
+       if(map.get(moudle)==null){
+           return null;
+       }
+       return map.get(moudle).getLast();
     }
 
 
@@ -176,4 +200,18 @@ public class FragManager2  {
         map = new HashMap<>();
     }
 
+
+    public FragManager2 setHideLast(boolean hideLast) {
+        this.hideLast = hideLast;
+        return this;
+    }
+
+    public boolean isAnim() {
+        return anim;
+    }
+
+    public FragManager2 setAnim(boolean anim) {
+        this.anim = anim;
+        return this;
+    }
 }
