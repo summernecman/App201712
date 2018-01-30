@@ -45,16 +45,31 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        getP().getU().finishLoadmore();
+        getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
+        getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(activity) {
+            @Override
+            public void onResult(boolean success, String msg, OrdersRes o) {
+                super.onResult(success, msg, o);
+                getP().getD().getOrdersRes().getResults().addAll(o.getResults());
+                getP().getU().LoadListData(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getOrdersRes(),BeginFrag.this);
+                getP().getU().finishLoadmore();
+            }
+        });
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),new UINetAdapter<OrdersRes>(activity) {
+        getP().getD().setPageIndex(0);
+        getP().getD().getOrdersRes().getResults().clear();
+        getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(activity) {
             @Override
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);
-                getP().getU().LoadListData(getArguments().getString(ValueConstant.DATA_DATA),o,BeginFrag.this);
+                if(o==null){
+                    return;
+                }
+                getP().getD().getOrdersRes().getResults().addAll(o.getResults());
+                getP().getU().LoadListData(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getOrdersRes(),BeginFrag.this);
                 getP().getU().finishRefresh();
             }
         });

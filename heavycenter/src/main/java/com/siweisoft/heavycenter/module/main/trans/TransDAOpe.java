@@ -30,18 +30,18 @@ public class TransDAOpe extends BaseDAOpe {
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();
-        for(int i=0;i<5;i++){
+        for(int i=0;i<1;i++){
             data.add("");
         }
         return data;
     }
 
 
-    public TransReq getTransReq() {
+    public TransReq getTransReq(int pageIndex) {
         transReq.setIsApp(1);
         transReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
-        transReq.setPageIndex(0);
-        transReq.setPageSize(200);
+        transReq.setPageIndex(pageIndex);
+        transReq.setPageSize(10);
         return transReq;
     }
 
@@ -59,7 +59,10 @@ public class TransDAOpe extends BaseDAOpe {
         return pageIndex;
     }
 
+
     public void setPageIndex(int pageIndex) {
         this.pageIndex = pageIndex;
     }
+
+
 }

@@ -23,7 +23,7 @@ public class OrdersRes extends BaseBean {
     private int pageIndex;
     private int pageCount;
     private int pageSize;
-    private List<ResultsBean> results;
+    private List<ResultsBean> results = new ArrayList<>();
 
     public int getTotalCount() {
         return totalCount;

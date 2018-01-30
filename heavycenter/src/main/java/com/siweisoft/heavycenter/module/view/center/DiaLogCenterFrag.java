@@ -2,8 +2,10 @@ package com.siweisoft.heavycenter.module.view.center;
 
 //by summer on 2017-12-18.
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -30,22 +32,29 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
 
     FragManager2 fragManager2;
 
+    int viewlayout;
+
+    ViewGroup container;
+
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        container =view.findViewById(R.id.rl_center);
         if(customerView!=null){
-            ViewGroup viewGroup = (ViewGroup) getView().findViewById(R.id.dialog_root);
-            viewGroup.removeAllViews();
-            viewGroup.addView(customerView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        container.addView(customerView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
         }
-
+        if(viewlayout!=0){
+            LayoutInflater.from(getContext()).inflate(viewlayout, (ViewGroup) view,true);
+        }
         if(views!=null){
             for(int i=0;i<views.length;i++){
                 View view1 = getView().findViewById(views[i]);
                 view1.setOnClickListener(this);
             }
         }
+
     }
 
     public void close(){
@@ -71,4 +80,7 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
         this.views = views;
     }
 
+    public void setViewlayout(int viewlayout) {
+        this.viewlayout = viewlayout;
+    }
 }

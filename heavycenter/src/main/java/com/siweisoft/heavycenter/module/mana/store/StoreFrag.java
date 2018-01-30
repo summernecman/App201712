@@ -23,6 +23,7 @@ import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.store.detail.DetailFrag;
+import com.siweisoft.heavycenter.module.mana.store.info.StoreInfoFrag;
 import com.siweisoft.heavycenter.module.mana.store.news.NewFrag;
 
 import butterknife.OnClick;
@@ -82,9 +83,9 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                            }
                            StoreDetail storeDetail = (StoreDetail) v.getTag(R.id.data);
                            Bundle bundle = new Bundle();
-                           bundle.putInt(ValueConstant.DATA_DATA,storeDetail.getWarehouseId());
+                           bundle.putSerializable(ValueConstant.DATA_DATA,storeDetail);
                            bundle.putInt(ValueConstant.FARG_REQ,2);
-                           FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,new DetailFrag(),bundle);
+                           FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,new StoreInfoFrag(),bundle);
                            break;
                }
                 break;

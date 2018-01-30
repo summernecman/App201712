@@ -76,7 +76,7 @@ public class UnitScanDAOpe extends BaseDAOpe {
                 public void onResult(boolean success, String msg, BindResBean o) {
                     super.onResult(success, msg, o);
                     if(success){
-                        ((MainAct)getActivity()).reStart();
+                        ((MainAct)getActivity()).netRestart();
                     }
                 }
             });

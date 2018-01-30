@@ -61,6 +61,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
 
             if(NullUtil.isStrEmpty(LocalValue.get登录返回信息().getCarLicenseNo())){
                 bind.llCar.setVisibility(View.GONE);
+                bind.itemDriver.getLeftTV().setText("绑定车辆");
             }else{
                 bind.llCar.setVisibility(View.VISIBLE);
             }

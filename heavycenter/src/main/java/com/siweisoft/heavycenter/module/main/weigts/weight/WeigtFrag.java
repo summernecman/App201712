@@ -4,8 +4,12 @@ package com.siweisoft.heavycenter.module.main.weigts.weight;
 
 import android.view.View;
 
+import butterknife.OnClick;
+import com.android.lib.constant.ValueConstant;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
+import com.siweisoft.heavycenter.module.main.MainAct;
 
 
 public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
@@ -16,12 +20,37 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
     }
 
 
-    @Override
+    @OnClick({R.id.tv_weight,R.id.ll_mz,R.id.ll_pz,R.id.ll_kc})
     public void onClick(View v) {
+        String title = "";
         switch (v.getId()){
-            case R.id.ftv_back:
-               // ((MainAct)activity).getP().getU().switchDrawer();
+            case R.id.tv_weight:
+              title ="校验";
+                break;
+            case R.id.ll_mz:
+                title ="毛重校验";
+                break;
+            case R.id.ll_pz:
+                title ="皮重校验";
+                break;
+            case R.id.ll_kc:
+                title ="扣除校验";
                 break;
         }
+
+        getP().getU().showTip(title, new View.OnClickListener() {
+            @Override
+            public void onClick(View vv) {
+                switch (vv.getId()){
+                    case R.id.tv_sure:
+
+                        break;
+                    case R.id.tv_close:
+
+                        break;
+                }
+                getP().getU().getFragManager2().finish(getBaseUIActivity(), MainAct.地磅, true);
+            }
+        });
     }
 }

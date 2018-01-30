@@ -57,7 +57,8 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                     public void onFinish(Object o) {
                         boolean b = (boolean) o;
                         if(b){
-                            getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq()), new UINetAdapter<TransRes>(activity) {
+                            getP().getD().setPageIndex(0);
+                            getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(activity) {
                                 @Override
                                 public void onResult(boolean success, String msg, TransRes o) {
                                     super.onResult(success, msg, o);
@@ -83,8 +84,8 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
 
     @Override
     public void onRefresh(final RefreshLayout refreshlayout) {
-
-        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq()), new UINetAdapter<TransRes>(activity) {
+        getP().getD().setPageIndex(0);
+        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(activity) {
             @Override
             public void onResult(boolean success, String msg, TransRes o) {
                 super.onResult(success, msg, o);
@@ -97,7 +98,14 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
-        getP().getU().LoadListData(getP().getD().getData(),this);
-        getP().getU().finishLoadmore();
+        getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
+        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(activity) {
+            @Override
+            public void onResult(boolean success, String msg, TransRes o) {
+                super.onResult(success, msg, o);
+                getP().getU().finishRefresh();
+                getP().getU().LoadListData(getP().getD().getData(),TransFrag.this);
+            }
+        });
     }
 }

@@ -14,6 +14,11 @@ import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import java.util.ArrayList;
 
 public class BeginDAOpe extends AppDAOpe {
+
+    private int pageIndex = 0;
+
+    private OrdersRes ordersRes = new OrdersRes();
+
     public BeginDAOpe(Context context) {
         super(context);
     }
@@ -26,13 +31,25 @@ public class BeginDAOpe extends AppDAOpe {
         return data;
     }
 
-    public void orders(String type,NetI<OrdersRes> adapter){
+    public void orders(String type,int pageIndex,NetI<OrdersRes> adapter){
         OrdersReq ordersReq = new OrdersReq();
         ordersReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         ordersReq.setIsApp(1);
-        ordersReq.setPageIndex(0);
-        ordersReq.setPageSize(20);
+        ordersReq.setPageIndex(pageIndex);
+        ordersReq.setPageSize(10);
         ordersReq.setOrderStatus(type);
         NetDataOpe.Order.orders(getActivity(),ordersReq,adapter);
+    }
+
+    public int getPageIndex() {
+        return pageIndex;
+    }
+
+    public void setPageIndex(int pageIndex) {
+        this.pageIndex = pageIndex;
+    }
+
+    public OrdersRes getOrdersRes() {
+        return ordersRes;
     }
 }

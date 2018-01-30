@@ -42,9 +42,9 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
 
                 break;
             case R.id.ftv_right2:
-                Bundle bundle = new Bundle();
-                bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),MainAct.主界面ID,new NewFrag(),bundle);
+//                Bundle bundle = new Bundle();
+//                bundle.putInt(ValueConstant.FARG_REQ,1);
+//                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),MainAct.主界面ID,new NewFrag(),bundle);
                 break;
             case R.id.iv_search:
 
