@@ -7,12 +7,15 @@ import android.content.Context;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.baidu.mapapi.search.poi.PoiAddrInfo;
 import com.siweisoft.heavycenter.base.AppDAOpe;
+import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.module.view.map.MapUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddrDAOpe extends AppDAOpe {
+
+    private UnitInfo unitInfo = new UnitInfo();
 
     private List<PoiInfo> addrs = new ArrayList<>();
 
@@ -53,4 +56,9 @@ public class AddrDAOpe extends AppDAOpe {
         this.addrs.clear();
         this.addrs.addAll(addrs);
     }
+
+    public UnitInfo getUnitInfo() {
+        return unitInfo;
+    }
+
 }

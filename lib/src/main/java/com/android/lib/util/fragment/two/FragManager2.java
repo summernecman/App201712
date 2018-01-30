@@ -96,13 +96,17 @@ public class FragManager2  {
         if(isAnim()){
             transaction.setCustomAnimations(getAnim5(),getAnim6());
         }
+        Bundle bundle = map.get(moudle).getLast().getArguments();
+        int res = map.get(moudle).getLast().getArguments().getInt(ValueConstant.FARG_REQ);
         transaction.remove(map.get(moudle).getLast());
         if(map.get(moudle).haveLastBefore()){
             transaction.show(map.get(moudle).getLastBefore());
-            map.get(moudle).getLastBefore().onRestart(map.get(moudle).getLast().getArguments().getInt(ValueConstant.FARG_REQ),map.get(moudle).getLast().getArguments());
         }
         map.get(moudle).removeLast();
         transaction.commitNowAllowingStateLoss();
+        if(map.get(moudle).haveLast()){
+            map.get(moudle).getLast().onRestart(res,bundle);
+        }
         return true;
     }
 

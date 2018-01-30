@@ -8,7 +8,9 @@ import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.news.NewsGoodReq;
+import com.siweisoft.heavycenter.data.netd.mana.good.upd.UpdGoodReq;
 import com.siweisoft.heavycenter.databinding.FragManaGoodNewBinding;
 
 public class NewUIOpe extends AppUIOpe<FragManaGoodNewBinding>{
@@ -16,6 +18,16 @@ public class NewUIOpe extends AppUIOpe<FragManaGoodNewBinding>{
 
     public NewUIOpe(Context context) {
         super(context);
+    }
+
+    public void edit(GoodListRes.ResultsBean o){
+        bind.title.getMidTV().setText("物料详情");
+        bind.itemWuniaoname.setMidTVTxt(StringUtil.getStr(o.getProductName()));
+        bind.itemWuliaoguige.setMidTVTxt(StringUtil.getStr(o.getSpecifications()));
+        bind.itemCangku.setMidTVTxt(StringUtil.getStr(o.getWarehouseName()));
+        bind.itemMaxstock.setMidEtTxt(StringUtil.getStr(o.getMaxStock()));
+        bind.itemMinstock.setMidEtTxt(StringUtil.getStr(o.getMinStock()));
+        bind.itemArea.setMidTVTxt(StringUtil.getStr(o.getBelongArea()));
     }
 
     public boolean canSpecsGo(NewsGoodReq newsGoodReq){
@@ -70,5 +82,12 @@ public class NewUIOpe extends AppUIOpe<FragManaGoodNewBinding>{
         newsGoodReq.setMaxStock(Float.parseFloat(bind.itemMaxstock.getMidEtTxt().toString()));
         newsGoodReq.setMinStock(Float.parseFloat(bind.itemMinstock.getMidEtTxt().toString()));
         return newsGoodReq;
+    }
+
+
+    public UpdGoodReq getUpdGoodReq(UpdGoodReq updGoodReq) {
+        updGoodReq.setMaxStock(Float.parseFloat(bind.itemMaxstock.getMidEtTxt()));
+        updGoodReq.setMinStock(Float.parseFloat(bind.itemMinstock.getMidEtTxt()));
+        return updGoodReq;
     }
 }

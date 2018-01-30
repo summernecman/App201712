@@ -53,7 +53,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
                     Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    activity.startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
         }

@@ -11,12 +11,15 @@ import android.view.ViewGroup;
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.constant.ValueConstant;
+import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
@@ -82,9 +85,20 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         if(!getP().getD().isBindUnit()){
             getP().getU().nobind();
         }else{
-            getP().getU().removenobind();
+            getP().getU().hideshowunbind(false);
         }
         getP().getD().getMyceFrag().init();
+    }
+
+    public void netRestart(){
+        getP().getD().get用户信息(new UINetAdapter<LoginResBean>(this) {
+            @Override
+            public void onSuccess(LoginResBean o) {
+                super.onSuccess(o);
+                LocalValue.save登录返回信息(o);
+                reStart();
+            }
+        });
     }
 
 
@@ -96,6 +110,16 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         if(!getP().getD().getMenudata().get(position).getFragment().isInit()){
             getP().getD().getMenudata().get(position).getFragment().lazyInit();
             getP().getD().getMenudata().get(position).getFragment().setInited();
+        }
+
+        if(position==getP().getD().getMenudata().size()-1){
+            if(!getP().getD().isBindUnit()){
+                getP().getU().hideshowunbind(false);
+            }
+        }else{
+            if(!getP().getD().isBindUnit()){
+                getP().getU().hideshowunbind(true);
+            }
         }
     }
 

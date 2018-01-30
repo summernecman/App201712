@@ -6,12 +6,15 @@ import android.Manifest;
 import android.content.Context;
 import android.widget.RelativeLayout;
 
+import com.android.lib.network.news.NetI;
 import com.android.lib.util.system.PermissionUtil;
 import com.android.lib.view.bottommenu.BottomMenuBean;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.module.main.map.MapFrag;
 import com.siweisoft.heavycenter.module.main.msg.MsgFrag;
@@ -110,12 +113,15 @@ public class MainDAOpe extends AppDAOpe {
         return permissionUtil;
     }
 
-
+    public void get用户信息(NetI<LoginResBean> adapter){
+        UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
+        userInfoReqBean.setId(LocalValue.get登录返回信息().getUserId());
+        NetDataOpe.User.get用户信息(getActivity(),userInfoReqBean,adapter);
+    }
 
     public boolean isBindUnit() {
         //绑定了单位== true
-        if(LocalValue.get登录返回信息().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_BINDED ||
-                LocalValue.get登录返回信息().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_CHECK ){
+        if(LocalValue.get登录返回信息().getBindCompanyState()== LoginResBean.BIND_UNIT_STATE_BINDED  ){
             return true;
         }
         return false;

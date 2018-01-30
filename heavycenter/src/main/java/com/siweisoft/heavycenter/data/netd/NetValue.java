@@ -19,7 +19,9 @@ public class NetValue {
 
     protected static String 测试域名 = "192.168.1.205:8080";
 
-    protected static String 域名 = 测试域名;
+    protected static String 测试域名1 = "172.26.1.15:8080";
+
+    protected static String 域名 = 测试域名1;
 
 
     protected static String 文件路径 = "/files";

@@ -23,6 +23,7 @@ import com.baidu.mapapi.search.poi.PoiIndoorResult;
 import com.baidu.mapapi.search.poi.PoiResult;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.myce.unit.area.prov.ProvFrag;
 
@@ -35,13 +36,15 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
     @Override
     public void initData() {
         super.initData();
-
         getP().getD().getMapUtil().init(activity,true);
         getP().getD().getMapUtil().registerLocationListener(activity, new BDAbstractLocationListener() {
             @Override
             public void onReceiveLocation(BDLocation bdLocation) {
                 getP().getU().bind.tvAddr.setText(StringUtil.getStr(bdLocation.getAddrStr()));
                 getP().getU().bind.tvCity.setText(StringUtil.getStr(bdLocation.getCity()));
+                getP().getD().getUnitInfo().setCompanyAddress(bdLocation.getAddrStr());
+                getP().getD().getUnitInfo().setCompanyLat(bdLocation.getLatitude());
+                getP().getD().getUnitInfo().setCompanyLng(bdLocation.getLongitude());
             }
         });
         getP().getD().startMap();
@@ -77,7 +80,10 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 PoiInfo poiInfo = (PoiInfo) v.getTag(R.id.data);
-                getArguments().putString(ValueConstant.DATA_DATA,poiInfo.address);
+                getP().getD().getUnitInfo().setCompanyAddress(poiInfo.address);
+                getP().getD().getUnitInfo().setCompanyLat(poiInfo.location.latitude);
+                getP().getD().getUnitInfo().setCompanyLng(poiInfo.location.longitude);
+                getArguments().putSerializable(ValueConstant.DATA_DATA,getP().getD().getUnitInfo());
                 getBaseUIActivity().onBackPressed();
                 break;
         }
@@ -98,7 +104,7 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
                     ToastUtil.getInstance().showShort(getActivity(),"当前地址为空 请重新定位");
                     return;
                 }
-                getArguments().putString(ValueConstant.DATA_DATA,getP().getU().bind.tvAddr.getText().toString());
+                getArguments().putSerializable(ValueConstant.DATA_DATA,getP().getD().getUnitInfo());
                 getBaseUIActivity().onBackPressed();
                 break;
             case R.id.ll_local:

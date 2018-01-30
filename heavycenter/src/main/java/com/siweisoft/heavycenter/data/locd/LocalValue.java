@@ -24,6 +24,12 @@ public class LocalValue {
 
     public static final String 省Map = "省Map";
 
+    public static final String 市名找代码 = "市名找代码";
+
+    public static final String 代码找市名 = "代码找市名";
+
+    public static final String 市Map = "市Map";
+
     public static final String 省市排序列表 = "省市排序列表";
 
     public static final String[] pros = new String[]{
@@ -73,12 +79,20 @@ public class LocalValue {
         SPUtil.getInstance().saveStr(省市列表接口数据,GsonUtil.getInstance().toJson(list));
 
         HashMap<String,CityResBean.ProvinceListBean> map = new HashMap<>();
+        HashMap<String,String> map1 = new HashMap<>();
+        HashMap<String,String> map2 = new HashMap<>();
         for(int i=0;i<list.size();i++){
             for(int j=0;j<list.get(i).getProvinceList().size();j++){
                 map.put(list.get(i).getProvinceList().get(j).getValue(),list.get(i).getProvinceList().get(j));
+                for(int k=0;k<list.get(i).getProvinceList().get(j).getCityList().size();k++){
+                    map1.put(list.get(i).getProvinceList().get(j).getCityList().get(k).getName(),list.get(i).getProvinceList().get(j).getCityList().get(k).getValue());
+                    map2.put(list.get(i).getProvinceList().get(j).getCityList().get(k).getValue(),list.get(i).getProvinceList().get(j).getCityList().get(k).getName());
+                }
             }
         }
         SPUtil.getInstance().saveStr(省Map,GsonUtil.getInstance().toJson(map));
+        SPUtil.getInstance().saveStr(市名找代码,GsonUtil.getInstance().toJson(map2));
+        SPUtil.getInstance().saveStr(代码找市名,GsonUtil.getInstance().toJson(map1));
 
         List<CityResBean.ProvinceListBean> pro = new ArrayList<>();
         for(int i=0;i<LocalValue.pros.length;i++){
@@ -100,5 +114,14 @@ public class LocalValue {
     public static List<CityResBean.ProvinceListBean> get省市排序列表(){
         return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(省市排序列表),new TypeToken<List<CityResBean.ProvinceListBean>>(){}.getType());
     }
+
+    public static HashMap<String,String> get代码从市名(){
+        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(市名找代码),new TypeToken<HashMap<String,String>>(){}.getType());
+    }
+
+    public static HashMap<String,String> get市名从代码(){
+        return GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(代码找市名),new TypeToken<HashMap<String,String>>(){}.getType());
+    }
+
 
 }

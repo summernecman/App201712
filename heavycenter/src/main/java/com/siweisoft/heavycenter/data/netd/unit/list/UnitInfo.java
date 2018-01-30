@@ -44,13 +44,13 @@ public class UnitInfo extends BaseBean {
         protected String remark;
         protected String editTime;
         protected String companyUrl;
-        protected float companyLng;
+        protected double companyLng;
         protected int highCompany;
         protected String creditLevel;
         protected String companyPropery;
         protected String companyFax;
         protected int id;
-        protected float companyLat;
+        protected double companyLat;
         protected String abbreviationName;
         protected int companyType;
         protected int contactId;
@@ -342,19 +342,19 @@ public class UnitInfo extends BaseBean {
         this.belongAreaDes = belongAreaDes;
     }
 
-    public float getCompanyLng() {
+    public double getCompanyLng() {
         return companyLng;
     }
 
-    public void setCompanyLng(float companyLng) {
+    public void setCompanyLng(double companyLng) {
         this.companyLng = companyLng;
     }
 
-    public float getCompanyLat() {
+    public double getCompanyLat() {
         return companyLat;
     }
 
-    public void setCompanyLat(float companyLat) {
+    public void setCompanyLat(double companyLat) {
         this.companyLat = companyLat;
     }
 }

@@ -41,6 +41,8 @@ public class ListDAOpe extends AppDAOpe {
     public void getData( NetI<ListResBean> adapter){
         ListReqBean listReqBean = new ListReqBean();
         listReqBean.setIsAPP(1);
+        listReqBean.setPageIndex(0);
+        listReqBean.setPageSize(1000);
         NetDataOpe.unitList(getActivity(), listReqBean,adapter);
     }
 

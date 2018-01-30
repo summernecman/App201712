@@ -17,6 +17,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealResBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
+import com.siweisoft.heavycenter.module.main.MainAct;
 
 import java.util.ArrayList;
 
@@ -65,32 +66,35 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
     @Override
     public void onInterupt(int type, View v) {
         final MsgsResBean.ResultsBean data = (MsgsResBean.ResultsBean) v.getTag(R.id.data);
-        String status = MsgDealReqBean.AUDII_STATUS_YES;
+        final String[] status = {MsgDealReqBean.AUDII_STATUS_YES};
         int auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED;
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 switch (v.getId()) {
                     case R.id.bt_agree:
-                        status = MsgDealReqBean.AUDII_STATUS_YES;
+                        status[0] = MsgDealReqBean.AUDII_STATUS_YES;
                         auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED;
                         break;
                     case R.id.bt_reject:
-                        status = MsgDealReqBean.AUDII_STATUS_NO;
+                        status[0] = MsgDealReqBean.AUDII_STATUS_NO;
                         auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_REJECT;
                         break;
                     case R.id.bt_mana:
-                        status = MsgDealReqBean.AUDII_STATUS_YES;
+                        status[0] = MsgDealReqBean.AUDII_STATUS_YES;
                         auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED;
                         break;
                 }
                 final int finalAuditstate = auditstate;
-                getP().getD().dealMss(data.getMessageId(), status, new UINetAdapter<MsgDealResBean>(getContext()) {
+                getP().getD().dealMss(data.getMessageId(), status[0], new UINetAdapter<MsgDealResBean>(getContext()) {
                     @Override
                     public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                         stopLoading();
                         if("200".equals(baseResBean.getCode())){
                             data.setAuditState(finalAuditstate);
                             getP().getU().notifyDataSetChanged();
+                            if((status[0] == MsgDealReqBean.AUDII_STATUS_YES)){
+                                ((MainAct)getBaseUIActivity()).netRestart();
+                            }
                         }
                     }
                 });

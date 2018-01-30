@@ -98,11 +98,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        int state = StoresReqBean.STATUS_ALL;
-        if(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库){
-            state = StoresReqBean.STATUS_ON;
-        }
-        getP().getD().storesInfo(state,new UIFNetAdapter<StoresResBean>(this) {
+        getP().getD().storesInfo(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库,new UIFNetAdapter<StoresResBean>(this) {
             @Override
             public void onResult(boolean success, String msg, StoresResBean o) {
                 super.onResult(success, msg, o);

@@ -1,1 +1,1 @@
-include ':lib', ':heavycenter', ':myapplication', ':service'
+include ':lib', ':heavycenter', ':service'

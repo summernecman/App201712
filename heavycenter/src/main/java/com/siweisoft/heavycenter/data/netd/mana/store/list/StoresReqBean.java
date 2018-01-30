@@ -23,6 +23,8 @@ public class StoresReqBean extends BaseReqBean {
 
     private Integer status;
 
+    private Integer isEmpty;
+
     public StoresReqBean() {
     }
 
@@ -64,5 +66,13 @@ public class StoresReqBean extends BaseReqBean {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getIsEmpty() {
+        return isEmpty;
+    }
+
+    public void setIsEmpty(Integer isEmpty) {
+        this.isEmpty = isEmpty;
     }
 }

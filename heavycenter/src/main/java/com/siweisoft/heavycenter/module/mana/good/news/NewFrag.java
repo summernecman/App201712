@@ -10,9 +10,11 @@ import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.names.NamesRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.news.NewsGoodRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
+import com.siweisoft.heavycenter.data.netd.mana.good.upd.UpdGoodRes;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -24,6 +26,36 @@ import com.siweisoft.heavycenter.module.myce.unit.area.prov.ProvFrag;
 import butterknife.OnClick;
 
 public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
+
+
+    @Override
+    public void doThing() {
+        super.doThing();
+        if(getArguments().getInt(ValueConstant.DATA_DATA,-1)!=-1){
+            getP().getD().detailGood(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<GoodListRes.ResultsBean>(getActivity()) {
+                @Override
+                public void onSuccess(GoodListRes.ResultsBean o) {
+                    super.onSuccess(o);
+                    getP().getD().setO(o);
+
+                    getP().getD().getNewsGoodReq().setBelongAreaName(getP().getD().getO().getBelongArea());
+                    getP().getD().getNewsGoodReq().setBelongArea(getP().getD().initArea(getP().getD().getO()));
+                    getP().getD().getNewsGoodReq().setWarehouseId(getP().getD().getO().getWarehouseId());
+                    getP().getD().getNewsGoodReq().setWarehouseName(getP().getD().getO().getWarehouseName());
+                    getP().getD().getNewsGoodReq().setMinStock(getP().getD().getO().getMinStock());
+                    getP().getD().getNewsGoodReq().setMaxStock(getP().getD().getO().getMaxStock());
+                    getP().getD().getNewsGoodReq().setMaterielName(getP().getD().getO().getProductName());
+                    getP().getD().getNewsGoodReq().setMaterielId(getP().getD().getO().getProductInfoId());
+                    getP().getD().getNewsGoodReq().setMaterielSpecName(getP().getD().getO().getSpecifications());
+
+
+
+
+                    getP().getU().edit(getP().getD().getO());
+                }
+            });
+        }
+    }
 
     @OnClick({R.id.item_wuniaoname,R.id.item_wuliaoguige,R.id.item_cangku,R.id.item_area,R.id.ftv_right2})
     public void onClick(View v) {
@@ -51,17 +83,29 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,new ProvFrag(),bundle);
                 break;
             case R.id.ftv_right2:
-                if(getP().getU().canGo(getP().getD().getNewsGoodReq())){
-                    getP().getD().NewsGood(getP().getU().getNewsGoodReq(getP().getD().getNewsGoodReq()), new UINetAdapter<NewsGoodRes>(getActivity()) {
-                        @Override
-                        public void onResult(boolean success, String msg, NewsGoodRes o) {
-                            super.onResult(success, msg, o);
-                            if(success){
+                if(getArguments().getInt(ValueConstant.DATA_DATA,-1)!=-1){
+                    if(getP().getU().canGo(getP().getD().getNewsGoodReq())){
+                        getP().getD().updGood(getP().getU().getUpdGoodReq(getP().getD().getUpdGoodReq(getP().getD().getNewsGoodReq())), new UINetAdapter<UpdGoodRes>(getActivity()) {
+                            @Override
+                            public void onSuccess(UpdGoodRes o) {
                                 getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
                                 getBaseUIActivity().onBackPressed();
                             }
-                        }
-                    });
+                        });
+                    }
+                }else{
+                    if(getP().getU().canGo(getP().getD().getNewsGoodReq())){
+                        getP().getD().NewsGood(getP().getU().getNewsGoodReq(getP().getD().getNewsGoodReq()), new UINetAdapter<NewsGoodRes>(getActivity()) {
+                            @Override
+                            public void onResult(boolean success, String msg, NewsGoodRes o) {
+                                super.onResult(success, msg, o);
+                                if(success){
+                                    getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
+                                    getBaseUIActivity().onBackPressed();
+                                }
+                            }
+                        });
+                    }
                 }
                 break;
         }

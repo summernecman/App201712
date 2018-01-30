@@ -6,12 +6,24 @@ import android.content.Intent;
 import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
+import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.GsonUtil;
 import com.android.lib.util.system.HandleUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.jpush.SimpleWeightMsg;
+import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
+import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
+import com.siweisoft.heavycenter.data.netd.weight.save.SaveWeightRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import butterknife.OnClick;
 import cn.jpush.android.api.JPushInterface;
 
 public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
@@ -21,6 +33,13 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
         super.initData();
         lazyInit();
         setInited();
+        getP().getD().listWeight(new UINetAdapter<WeightListRes>(getActivity()) {
+            @Override
+            public void onSuccess(WeightListRes o) {
+                super.onSuccess(o);
+
+            }
+        });
     }
 
     @Override
@@ -28,7 +47,7 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
         getP().getU().initPages(this,getP().getD().getPages());
     }
 
-    @Override
+    @OnClick({R.id.tv_save})
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
@@ -38,9 +57,40 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
                     Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    activity.startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
+                break;
+            case R.id.tv_save:
+                getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(getActivity()) {
+                    @Override
+                    public void onSuccess(SaveWeightRes o) {
+                        super.onSuccess(o);
+                    }
+                });
                 break;
         }
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void XXX(String str) {
+        JSONObject jsonObject=null;
+        try {
+            jsonObject = new JSONObject(str);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(jsonObject==null){
+            return ;
+        }
+
+        SimpleWeightMsg simpleWeightMsg = GsonUtil.getInstance().fromJson(str,SimpleWeightMsg.class);
+        WeightMsg weightMsg = GsonUtil.getInstance().fromJson(str,WeightMsg.class);
+        if(weightMsg==null|| weightMsg.getMessage()==null || weightMsg.getMessage().getOrder()==null){
+            return;
+        }
+        getP().getD().setWeightMsg(weightMsg);
+        getP().getU().initUI(getP().getD().getWeightMsg());
+
+    }
+
 }

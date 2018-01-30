@@ -67,20 +67,33 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
     }
 
     public void nobind(){
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.add(MainAct.主界面ID,new NoBindFrag(),NoBindFrag.class.getName());
-        transaction.commitNow();
+        Fragment fragment = getActivity().getSupportFragmentManager().findFragmentByTag(NoBindFrag.class.getName());
+        if(fragment!=null){
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.show(fragment);
+            transaction.commitNow();
+        }else{
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.add(MainAct.主界面ID,new NoBindFrag(),NoBindFrag.class.getName());
+            transaction.commitNow();
+        }
     }
 
-    public void removenobind(){
+
+    public void hideshowunbind(boolean show){
         Fragment fragment = getActivity().getSupportFragmentManager().findFragmentByTag(NoBindFrag.class.getName());
         if(fragment==null){
             return;
         }
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.remove(fragment);
+        if(show){
+            transaction.show(fragment);
+        }else{
+            transaction.hide(fragment);
+        }
         transaction.commitNow();
     }
+
 
     public void setCurrentItem(int item){
         if(bind.content.getAdapter().getCount()<=item){

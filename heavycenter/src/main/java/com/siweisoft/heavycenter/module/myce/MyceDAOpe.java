@@ -14,6 +14,8 @@ import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
+import com.siweisoft.heavycenter.data.netd.weight.list.WeightListReq;
+import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
 
 import org.xutils.common.util.KeyValue;
 

@@ -35,10 +35,16 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
 //        getFrag().removeTips();
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_weight_detail, BR.item_main_weight_detail, s){
             @Override
-            public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {
-                super.onBindViewHolder(holder, position, payloads);
+            public void onBindViewHolder(AppViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
             }
         });
+    }
+
+    public void  notifyDataSetChanged(){
+        if(bind.recycle.getAdapter()!=null){
+            bind.recycle.getAdapter().notifyDataSetChanged();
+        }
     }
 
 }

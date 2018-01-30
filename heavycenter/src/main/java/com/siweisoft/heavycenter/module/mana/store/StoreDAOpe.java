@@ -33,19 +33,15 @@ public class StoreDAOpe extends AppDAOpe {
         return data;
     }
 
-    public void storesInfo(int state,NetI<StoresResBean> adapter){
+    public void storesInfo(boolean sel,NetI<StoresResBean> adapter){
         StoresReqBean reqBean = new StoresReqBean();
         reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setIsApp(1);
-        switch (state){
-            case StoresReqBean.STATUS_ALL:
-                break;
-            case StoresReqBean.STATUS_OFF:
-                reqBean.setStatus(StoresReqBean.STATUS_OFF);
-                break;
-            case StoresReqBean.STATUS_ON:
-                reqBean.setStatus(StoresReqBean.STATUS_ON);
-                break;
+        if(sel){
+            reqBean.setStatus(StoresReqBean.STATUS_ON);
+            reqBean.setIsEmpty(1);
+        }else{
+
         }
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);

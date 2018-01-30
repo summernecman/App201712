@@ -41,6 +41,8 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
 
             bind.llCar.setVisibility(View.VISIBLE);
 
+            bind.llHead.llRole.setVisibility(View.GONE);
+
             //  bind.tvEmptyweight.setText(LocalValue.get登录返回信息());
             bind.itemDriver.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCarLicenseNo()));
             bind.itemDriver.getMidTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCarBrand()));

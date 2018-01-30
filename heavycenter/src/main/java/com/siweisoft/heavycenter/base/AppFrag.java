@@ -7,6 +7,8 @@ import android.view.View;
 
 import butterknife.OnClick;
 import butterknife.Optional;
+
+import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseUIOpe;
@@ -34,13 +36,18 @@ public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends 
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_back:
-                activity.onBackPressed();
+               String str = getArguments().getString(ValueConstant.CONTAINER_NAME);
+               if(str!=null){
+                   if(!FragManager2.getInstance().finish((BaseUIActivity) activity,str,!str.equals(MainAct.主界面))){
+                       activity.onBackPressed();
+                   }
+               }
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
                     Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    activity.startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
 

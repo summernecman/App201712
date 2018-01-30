@@ -17,6 +17,7 @@ import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
+import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.mana.car.CarFrag;
 import com.siweisoft.heavycenter.module.mana.good.GoodFrag;

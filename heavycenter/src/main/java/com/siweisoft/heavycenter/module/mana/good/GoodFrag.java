@@ -45,7 +45,11 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
     public void onInterupt(int type, View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                //FragManager.getInstance().startFragment(activity.getSupportFragmentManager(), getIndex(),new CheckFrag());
+                GoodListRes.ResultsBean resultsBean = (GoodListRes.ResultsBean) v.getTag(R.id.data);
+                Bundle bundle = new Bundle();
+                bundle.putInt(ValueConstant.FARG_REQ,1);
+                bundle.putInt(ValueConstant.DATA_DATA,resultsBean.getProductInfoId());
+                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new NewFrag(),bundle);
                 break;
         }
     }

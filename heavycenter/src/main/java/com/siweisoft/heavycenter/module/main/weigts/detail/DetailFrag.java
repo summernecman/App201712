@@ -6,10 +6,16 @@ import android.content.Intent;
 import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
+import com.android.lib.util.GsonUtil;
+import com.android.lib.util.SPUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
@@ -23,7 +29,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     @Override
     public void lazyInit() {
         getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getData());
+        getP().getU().LoadListData(getP().getD().getStrings());
     }
 
     @Override
@@ -36,12 +42,18 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
                     Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    activity.startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void XXX(String str) {
+        WeightMsg weightMsg = GsonUtil.getInstance().fromJson(str,WeightMsg.class);
+      getP().getD().getStrings().add(str);
+      getP().getU().notifyDataSetChanged();
 
+    }
 
 }

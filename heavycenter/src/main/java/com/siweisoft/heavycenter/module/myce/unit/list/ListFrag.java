@@ -49,6 +49,9 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
+                if(LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED){
+                    bundle.putInt(ValueConstant.FARG_REQ,2);
+                }
                 FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),MainAct.主界面ID,new NewFrag(),bundle);
                 break;
             case R.id.iv_search:
@@ -160,6 +163,13 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                     return;
                 }
                 onRefresh(null);
+                break;
+            case 2:
+                if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_RES,false)){
+                    return;
+                }
+                getBaseUIActivity().onBackPressed();
+                ((MainAct)getActivity()).netRestart();
                 break;
         }
     }

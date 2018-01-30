@@ -29,6 +29,7 @@ import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarReq;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
+import com.siweisoft.heavycenter.data.netd.mana.good.detial.GoodDetailReq;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListReq;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.names.NamesReq;
@@ -37,6 +38,8 @@ import com.siweisoft.heavycenter.data.netd.mana.good.news.NewsGoodReq;
 import com.siweisoft.heavycenter.data.netd.mana.good.news.NewsGoodRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsReq;
 import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
+import com.siweisoft.heavycenter.data.netd.mana.good.upd.UpdGoodReq;
+import com.siweisoft.heavycenter.data.netd.mana.good.upd.UpdGoodRes;
 import com.siweisoft.heavycenter.data.netd.mana.store.add.NewStoreReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.add.NewStoreResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreReqBean;
@@ -85,6 +88,10 @@ import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeResBean;
+import com.siweisoft.heavycenter.data.netd.weight.list.WeightListReq;
+import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
+import com.siweisoft.heavycenter.data.netd.weight.save.SaveWeightReq;
+import com.siweisoft.heavycenter.data.netd.weight.save.SaveWeightRes;
 
 import org.xutils.common.util.KeyValue;
 
@@ -325,6 +332,16 @@ public class NetDataOpe {
                 NetGet.getData(context,NetValue.获取地址("/materielSpec/list"),reqBean,adapter);
             }
 
+
+            public static void detailGood(Context context, GoodDetailReq reqBean, NetI<GoodListRes.ResultsBean> adapter) {
+                NetGet.getData(context,NetValue.获取地址("/product/productDetail"),reqBean,adapter);
+            }
+
+
+            public static void updGood(Context context, UpdGoodReq reqBean, NetI<UpdGoodRes> adapter) {
+                NetGet.postData(context,NetValue.获取地址("/product/updateProduct"),reqBean,adapter);
+            }
+
         }
 
     }
@@ -333,10 +350,22 @@ public class NetDataOpe {
     public static class Scan{
 
         public static void triggerWeigh(Context context, WeightReq reqBean, NetI<WeightRes> adapter) {
-            NetGet.postData(context,"http://172.26.1.15:8080/zhongxin/weigh/triggerWeigh",reqBean,adapter);
+            NetGet.postData(context,NetValue.获取地址("/weigh/triggerWeigh"),reqBean,adapter);
         }
 
 
+    }
+
+
+    public static class Weight{
+
+        public static void listWeight(Context context, WeightListReq reqBean, NetI<WeightListRes> adapter) {
+            NetGet.getData(context,NetValue.获取地址("/weighbridge/list"),reqBean,adapter);
+        }
+
+        public static void saveWeight(Context context, SaveWeightReq reqBean, NetI<SaveWeightRes> adapter) {
+            NetGet.postData(context,NetValue.获取地址("/weigh/saveWeigh"),reqBean,adapter);
+        }
     }
 
 

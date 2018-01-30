@@ -77,6 +77,16 @@ public class GoodListRes extends BaseBean{
         private String warehouseName;
         private int productInfoId;
         private String productName;
+        private int productId;
+        private int warehouseId;
+        private float maxStock;
+        private float minStock;
+        private int status;
+
+        public static int 启用 =1;
+
+        public static int 停用 = 0;
+
 
         public String getBelongArea() {
             return belongArea;
@@ -116,6 +126,46 @@ public class GoodListRes extends BaseBean{
 
         public void setProductName(String productName) {
             this.productName = productName;
+        }
+
+        public int getProductId() {
+            return productId;
+        }
+
+        public void setProductId(int productId) {
+            this.productId = productId;
+        }
+
+        public int getWarehouseId() {
+            return warehouseId;
+        }
+
+        public void setWarehouseId(int warehouseId) {
+            this.warehouseId = warehouseId;
+        }
+
+        public float getMaxStock() {
+            return maxStock;
+        }
+
+        public void setMaxStock(float maxStock) {
+            this.maxStock = maxStock;
+        }
+
+        public float getMinStock() {
+            return minStock;
+        }
+
+        public void setMinStock(float minStock) {
+            this.minStock = minStock;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
         }
     }
 }

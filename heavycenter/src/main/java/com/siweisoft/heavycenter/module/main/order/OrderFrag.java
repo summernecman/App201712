@@ -52,7 +52,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
                     Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    activity.startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
         }

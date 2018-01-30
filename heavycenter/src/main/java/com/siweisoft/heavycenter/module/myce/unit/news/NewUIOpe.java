@@ -9,6 +9,7 @@ import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.unit.news.NewReqBean;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitNewBinding;
@@ -24,13 +25,15 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
     public NewReqBean getNewReqBean(UnitInfo unitInfo) {
         newReqBean.setCompanyName(bind.itemUnitname.getMidET().getText().toString());
         newReqBean.setAbbreviationName(bind.itemNunitshortname.getMidET().getText().toString());
-        newReqBean.setCompanyAddress(bind.unitaddr.getMidET().getText().toString());
+        newReqBean.setCompanyAddress(unitInfo.getCompanyAddress());
+        newReqBean.setCompanyLat(StringUtil.getStr(unitInfo.getCompanyLat()));
+        newReqBean.setCompanyLng(StringUtil.getStr(unitInfo.getCompanyLng()));
         newReqBean.setContactPhone(bind.unitphone.getMidET().getText().toString());
         newReqBean.setBelongArea(unitInfo.getBelongArea());
-        newReqBean.setCompanyLat("0");
-        newReqBean.setCompanyLng("0");
         newReqBean.setContactName(bind.unitcontact.getMidET().getText().toString());
-        newReqBean.setCreater(LocalValue.get登录返回信息().getUserId());
+       /// if(LocalValue.get登录返回信息().getBindCompanyState()!= LoginResBean.BIND_UNIT_STATE_BINDED){
+            newReqBean.setCreater(LocalValue.get登录返回信息().getUserId());
+       ///}
         newReqBean.setHighCompany(unitInfo.getId()==0?-1:unitInfo.getId());
         return newReqBean;
     }

@@ -10,17 +10,21 @@ import java.util.ArrayList;
 
 public class DetailDAOpe extends AppDAOpe {
 
+    private ArrayList<String> strings = new ArrayList<>();
+
     public DetailDAOpe(Context context) {
         super(context);
-    }
-
-    public ArrayList<String> getData(){
-        ArrayList<String> data = new ArrayList<>();
-        for(int i=0;i<50;i++){
-            data.add("");
+        for(int i=0;i<2;i++){
+            strings.add(i+"gjrkoie[gj[opqgjeopw[qjfgeopw[qkjfgoew");
         }
-        return data;
     }
 
 
+    public ArrayList<String> getStrings() {
+        return strings;
+    }
+
+    public void setStrings(ArrayList<String> strings) {
+        this.strings = strings;
+    }
 }

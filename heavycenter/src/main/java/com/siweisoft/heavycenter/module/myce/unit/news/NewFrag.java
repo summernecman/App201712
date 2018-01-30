@@ -65,10 +65,13 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         super.onRestart(res, bundle);
         switch (res){
             case 2:
-                if(bundle==null || bundle.getString(ValueConstant.DATA_DATA)==null){
+                if(bundle==null || bundle.getSerializable(ValueConstant.DATA_DATA)==null){
                     return;
                 }
-                getP().getD().getUnit().setCompanyAddress(bundle.getString(ValueConstant.DATA_DATA));
+                UnitInfo unitInfo = (UnitInfo) bundle.getSerializable( ValueConstant.DATA_DATA);
+                getP().getD().getUnit().setCompanyLng(unitInfo.getCompanyLng());
+                getP().getD().getUnit().setCompanyLat(unitInfo.getCompanyLat());
+                getP().getD().getUnit().setCompanyAddress(unitInfo.getCompanyAddress());
                 getP().getU().initUI(getP().getD().getUnit());
                 break;
             case 3:

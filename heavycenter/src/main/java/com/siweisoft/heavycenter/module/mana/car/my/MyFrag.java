@@ -81,7 +81,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().Cars(getArguments().getString(ValueConstant.DATA_POSITION),new UIFNetAdapter<CarsResBean>(this) {
+        getP().getD().Cars(getArguments().getString(ValueConstant.DATA_POSITION),new UINetAdapter<CarsResBean>(getActivity()) {
             @Override
             public void onResult(boolean success, String msg, CarsResBean o) {
                 super.onResult(success, msg, o);
