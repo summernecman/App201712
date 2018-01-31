@@ -83,7 +83,6 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
             return ;
         }
 
-        SimpleWeightMsg simpleWeightMsg = GsonUtil.getInstance().fromJson(str,SimpleWeightMsg.class);
         WeightMsg weightMsg = GsonUtil.getInstance().fromJson(str,WeightMsg.class);
         if(weightMsg==null|| weightMsg.getMessage()==null || weightMsg.getMessage().getOrder()==null){
             return;

@@ -22,7 +22,7 @@ public class ScreenUtil {
     /**
      * 1dp对应的屏幕px
      */
-    public static float mw;
+    public static float 最小DIMEN;
     /**
      * 高度
      */
@@ -51,7 +51,7 @@ public class ScreenUtil {
         int[] size = new int[]{context.getResources().getDisplayMetrics().widthPixels, context.getResources().getDisplayMetrics().heightPixels};
         w = size[0];
         h = size[1];
-        mw = context.getResources().getDimension(R.dimen.dimen_1);
+        最小DIMEN = context.getResources().getDimension(R.dimen.dimen_1);
         字宽度= context.getResources().getDimension(R.dimen.dimen_1sp);
         return size;
     }

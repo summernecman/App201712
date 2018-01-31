@@ -88,6 +88,27 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                         ItemMainOrderDoingBinding doingBinding = (ItemMainOrderDoingBinding) holder.viewDataBinding;
                         doingBinding.getRoot().setSelected(position % 2 == 0 ? true : false);
                         doingBinding.getRoot().setTag(R.id.type,type);
+
+
+
+                        doingBinding.tvGoodname.setText(StringUtil.getStr(s.getResults().get(position).getProductName()));
+                        doingBinding.tvSpes.setText(StringUtil.getStr(s.getResults().get(position).getSpecification()));
+                        if("S".equals(s.getResults().get(position).getOrderType())){
+                            doingBinding.tvType.setText("发往");
+                            doingBinding.tvCompanyname.setText(StringUtil.getStr(s.getResults().get(position).getShdwQName()));
+                        }else{
+                            doingBinding.tvType.setText("来自");
+                            doingBinding.tvCompanyname.setText(StringUtil.getStr(s.getResults().get(position).getFhdwQName()));
+                        }
+                        doingBinding.tvStarttime.setText("开始时间："+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
+                        doingBinding.tvEndtime.setText("结束时间：");
+
+
+
+
+
+
+
                     }
                 });
                 break;
@@ -102,7 +123,15 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                         super.onBindViewHolder(holder, position);
                         ItemMainOrderDoneBinding doneBinding = (ItemMainOrderDoneBinding) holder.viewDataBinding;
                         doneBinding.getRoot().setSelected(position%2==0?true:false);
-                        doneBinding.getRoot().setTag(R.id.type,type);
+                        doneBinding.tvGoodname.setText(StringUtil.getStr(s.getResults().get(position).getProductName()));
+                        doneBinding.tvSpes.setText(StringUtil.getStr(s.getResults().get(position).getSpecification()));
+                        if("S".equals(s.getResults().get(position).getOrderType())){
+                            doneBinding.tvType.setText("发往");
+                            doneBinding.tvCompanyname.setText(StringUtil.getStr(s.getResults().get(position).getShdwQName()));
+                        }else{
+                            doneBinding.tvType.setText("来自");
+                            doneBinding.tvCompanyname.setText(StringUtil.getStr(s.getResults().get(position).getFhdwQName()));
+                        }
                     }
                 });
                 break;

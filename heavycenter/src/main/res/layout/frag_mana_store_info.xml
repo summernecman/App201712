@@ -15,7 +15,7 @@
 
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
-            style_common:txt_mid ="新建物料"
+            style_common:txt_mid ="仓库详情"
             style_common:iv_left ="@drawable/icon_hv_back"
             style_common:iv_right ="@drawable/icon_hv_scan"
             style_common:iv_right2 ="@drawable/icon_hv_save"

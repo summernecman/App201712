@@ -33,6 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/tv_goodname"
                         android:singleLine="true"
                         android:textColor="@color/white"
                         android:textSize="18sp"
@@ -41,6 +42,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:id="@+id/tv_spes"
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/white"
@@ -55,6 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/tv_type"
                         android:background="@drawable/bg_hv_sharp2_blue_solid"
                         android:singleLine="true"
                         android:textColor="@color/white"
@@ -63,6 +66,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
+                        android:id="@+id/tv_companyname"
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/white"
@@ -80,14 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:singleLine="true"
-                    android:textColor="@color/color_base_txt_heavycenter_y"
-                    android:textSize="8.5sp"
-                    android:text=" 沪A2345 "
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
+                    android:id="@+id/tv_carno"
                     android:singleLine="true"
                     android:textColor="@color/color_base_txt_heavycenter_y"
                     android:textSize="8.5sp"
@@ -100,16 +97,36 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-                android:layout_gravity="right"
-                android:gravity="center_vertical"
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="horizontal"
                 android:layout_weight="1"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:text="实发：2000t"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical|right"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:text="实发："
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_sf"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:text="2000t"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_gravity="center"
@@ -129,6 +146,7 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:id="@+id/tv_ss"
                     android:layout_gravity="center_vertical|left"
                     android:gravity="center"
                     android:singleLine="true"
@@ -140,17 +158,35 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <TextView
-                android:layout_gravity="right"
-                android:gravity="center_vertical|right"
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="horizontal"
                 android:layout_weight="1"
-                android:singleLine="true"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:text="盈亏：20t"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical|right"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:text="盈亏："
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_yk"
+                    android:layout_gravity="center_vertical|left"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:text="2000t"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </layout>

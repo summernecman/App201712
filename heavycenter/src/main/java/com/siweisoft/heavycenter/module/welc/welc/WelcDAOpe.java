@@ -8,6 +8,7 @@ import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginReqBean;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 
@@ -23,4 +24,9 @@ public class WelcDAOpe extends AppDAOpe {
         userInfoReqBean.setId(LocalValue.get登录返回信息().getUserId());
         NetDataOpe.User.get用户信息(getActivity(),userInfoReqBean,adapter);
     }
+
+    public void go登录(NetI<LoginResBean> adapter){
+        NetDataOpe.onLogin(getActivity(),LocalValue.get登录参数(),adapter);
+    }
+
 }

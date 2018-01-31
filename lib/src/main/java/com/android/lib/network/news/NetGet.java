@@ -126,66 +126,7 @@ public class NetGet {
         });
     }
 
-    public static void postDataNoCookie(final Context context, final String url, final BaseBean reqBean, final NetI netI) {
-        if(test){
-            netI.onNetFinish(true, url, null);
-            return;
-        }
-        LogUtil.E("input-->" + url);
-        final String jsonstr = GsonUtil.getInstance().toJson(reqBean);
-        LogUtil.E("input-->" + jsonstr);
-        if (!netI.onNetStart(url, jsonstr)) {
-            BaseResBean res = new BaseResBean();
-            res.setErrorCode(ValueConstant.ERROR_CODE_NET_NO_CONNETCT);
-            res.setErrorMessage(ValueConstant.ERROR_STR_NET_NO_CONNETCT);
-            // res.setData(jsonstr);
-            netI.onNetFinish(false, url, res);
-            return;
-        }
 
-        RequestParams requestParams = new RequestParams(url);
-
-        Map<String, String> map = GsonUtil.getInstance().fromJson(jsonstr,new TypeToken<Map<String, String>>() {}.getType());
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            requestParams.addBodyParameter(entry.getKey(), entry.getValue());
-        }
-
-        x.http().post(requestParams, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String response) {
-                LogUtil.E("output-->" + response);
-                if (response == null) {
-                    BaseResBean res = new BaseResBean();
-                    res.setErrorCode(ValueConstant.ERROR_CODE_RES_NULL);
-                    res.setErrorMessage(ValueConstant.ERROR_STR_RES_NULL);
-                    netI.onNetFinish(false, url, res);
-                } else {
-                    BaseResBean baseResBean = GsonUtil.getInstance().fromJson(response,BaseResBean.class);
-                    netI.onNetFinish(true, url, baseResBean);
-                }
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-                BaseResBean baseResBean = new BaseResBean();
-                baseResBean.setErrorCode(ValueConstant.ERROR_CODE_VOLLEY_FAIL);
-                baseResBean.setErrorMessage(ex.getMessage() == null ? "" : ex.getMessage());
-                baseResBean.setException(true);
-                netI.onNetFinish(false, url, baseResBean);
-                LogUtil.E(ex == null ? "Throwable" : "Throwable-->" + ex.getMessage());
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-                LogUtil.E("onCancelled-->" + cex);
-            }
-
-            @Override
-            public void onFinished() {
-                LogUtil.E("onFinished-->");
-            }
-        });
-    }
 
     public static void postData(final Context context, final String url, final BaseBean reqBean, final NetI netI) {
         if(test){
@@ -210,10 +151,12 @@ public class NetGet {
         ArrayList<String> strings = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse),new TypeToken<ArrayList<String>>(){}.getType());
         for(int i=0;strings!=null&& i<strings.size();i++){
             requestParams.addHeader("Cookie",strings.get(i));
+            LogUtil.E(strings.get(i));
         }
         Map<String, String> map = GsonUtil.getInstance().fromJson(jsonstr,new TypeToken<Map<String, String>>() {}.getType());
         for (Map.Entry<String, String> entry : map.entrySet()) {
             requestParams.addBodyParameter(entry.getKey(), entry.getValue());
+
         }
 
         x.http().post(requestParams, new Callback.CommonCallback<String>() {

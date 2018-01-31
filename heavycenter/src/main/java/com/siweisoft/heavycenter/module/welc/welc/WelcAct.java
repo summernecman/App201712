@@ -41,8 +41,8 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
     }
 
     private void AutoLogin(){
-        if(LocalValue.is自动登录()){
-            getP().getD().get用户信息(new UINetAdapter<LoginResBean>(WelcAct.this) {
+        if(LocalValue.is自动登录()&& LocalValue.get登录参数()!=null){
+            getP().getD().go登录(new UINetAdapter<LoginResBean>(WelcAct.this) {
                 @Override
                 public void onResult(boolean success, String msg, LoginResBean o) {
                     super.onResult(success, msg, o);

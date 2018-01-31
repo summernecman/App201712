@@ -45,7 +45,9 @@ public class SysUIOpe extends BaseUIOpe<FragMainMsgSysBinding>{
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
-
+                if(o.getResults()==null || o.getResults().size()==0){
+                    return;
+                }
                 ItemMainMsgAllBinding binding = (ItemMainMsgAllBinding) holder.viewDataBinding;
                 binding.llFuction.setVisibility(View.GONE);
                 binding.tvDes.setVisibility(View.GONE);

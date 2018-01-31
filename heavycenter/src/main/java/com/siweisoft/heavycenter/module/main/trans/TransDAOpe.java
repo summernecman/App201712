@@ -8,6 +8,8 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignReq;
+import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 
@@ -49,6 +51,14 @@ public class TransDAOpe extends BaseDAOpe {
 
     public void transs(TransReq transReq, NetI<TransRes> adapter){
         NetDataOpe.Trans.transs(getActivity(),transReq,adapter);
+    }
+
+    public void signTrans(int id, NetI<TransSignRes> adapter){
+        TransSignReq transSignReq = new TransSignReq();
+        transSignReq.setTransportrecordId(id);
+        transSignReq.setUserId(LocalValue.get登录返回信息().getUserId());
+        transSignReq.setSignStatus(TransSignReq.已确认);
+        NetDataOpe.Trans.signTrans(getActivity(),transSignReq,adapter);
     }
 
     public TransRes getTransRes() {

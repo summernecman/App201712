@@ -14,8 +14,6 @@ import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.module.view.progress.ProgressView;
 
-import org.w3c.dom.Text;
-
 public class StoreView extends RelativeLayout {
 
     private TextView minGoodTV;
@@ -66,16 +64,16 @@ public class StoreView extends RelativeLayout {
         currentTV.setText("当前:"+StringUtil.getStr(now)+"t");
 
         RelativeLayout.LayoutParams p = (LayoutParams) currentTV.getLayoutParams();
-        p.leftMargin = (int) ((ScreenUtil.w-ScreenUtil.mw*20)*now/(Math.min(maxstore,maxgood)));
-        if(p.leftMargin>((ScreenUtil.w-ScreenUtil.mw*20)/3)){
+        p.leftMargin = (int) ((ScreenUtil.w-ScreenUtil.最小DIMEN *20)*now/(Math.min(maxstore,maxgood)));
+        if(p.leftMargin>((ScreenUtil.w-ScreenUtil.最小DIMEN *20)/3)){
             currentTV.setBackgroundResource(R.drawable.icon_hv_main_store_tip_rd);
             p.leftMargin = (int) (p.leftMargin- (StringUtil.getStr(now).length()+2)*ScreenUtil.字宽度);
         }
         currentTV.setLayoutParams(p);
 
         RelativeLayout.LayoutParams p1 = (LayoutParams) minView.getLayoutParams();
-        p1.leftMargin = (int) ((ScreenUtil.w-ScreenUtil.mw*20)*(Math.max(mingood,minstore))/((Math.min(maxstore,maxgood))));
-        if(p1.leftMargin>((ScreenUtil.w-ScreenUtil.mw*20)/2)){
+        p1.leftMargin = (int) ((ScreenUtil.w-ScreenUtil.最小DIMEN *20)*(Math.max(mingood,minstore))/((Math.min(maxstore,maxgood))));
+        if(p1.leftMargin>((ScreenUtil.w-ScreenUtil.最小DIMEN *20)/2)){
             minView.setBackgroundResource(R.drawable.icon_hv_main_store_rt);
             p1.leftMargin = (int) (p1.leftMargin- (StringUtil.getStr(now).length()+2)*ScreenUtil.字宽度);
             p1.leftMargin = p1.leftMargin- minView.getWidth();

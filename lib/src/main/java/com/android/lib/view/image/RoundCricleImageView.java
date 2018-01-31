@@ -23,7 +23,7 @@ public class RoundCricleImageView extends ImageView {
                 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void getOutline(View view, Outline outline) {
-                    outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), ScreenUtil.mw * 4);
+                    outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), ScreenUtil.最小DIMEN * 4);
                     LogUtil.E("getoutline");
                 }
             });

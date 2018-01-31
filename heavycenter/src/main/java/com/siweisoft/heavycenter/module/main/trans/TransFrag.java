@@ -17,6 +17,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.trans.detail.TransDetailFrag;
@@ -40,7 +41,23 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     public void onInterupt(int type, View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.运输单,MainAct.运输单ID,new TransDetailFrag());
+                TransRes.ResultsBean resultsBean = (TransRes.ResultsBean) v.getTag(R.id.data);
+                switch (v.getId()){
+                    case R.id.bt_sure:
+                        getP().getD().signTrans(resultsBean.getTransportrecordId(), new UINetAdapter<TransSignRes>(getContext()) {
+                            @Override
+                            public void onResult(boolean success, String msg, TransSignRes o) {
+                                super.onResult(success, msg, o);
+                                if(success){
+                                    getP().getU().notifyDataSetChanged();
+                                }
+                            }
+                        });
+                        break;
+                        default:
+                            FragManager2.getInstance().start(getBaseUIActivity(),MainAct.运输单,MainAct.运输单ID,new TransDetailFrag());
+                            break;
+                }
                 break;
         }
     }
@@ -85,12 +102,17 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     @Override
     public void onRefresh(final RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(0);
+        getP().getD().getTransRes().getResults().clear();
         getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(activity) {
             @Override
             public void onResult(boolean success, String msg, TransRes o) {
                 super.onResult(success, msg, o);
                getP().getU().finishRefresh();
-                getP().getU().LoadListData(getP().getD().getData(),TransFrag.this);
+               if(o.getResults()!=null){
+                   getP().getD().getTransRes().getResults().addAll(o.getResults());
+                   getP().getU().LoadListData(getP().getD().getTransRes().getResults(),TransFrag.this);
+               }
+
             }
         });
 
@@ -103,8 +125,11 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, TransRes o) {
                 super.onResult(success, msg, o);
-                getP().getU().finishRefresh();
-                getP().getU().LoadListData(getP().getD().getData(),TransFrag.this);
+                getP().getU().finishLoadmore();
+                if(o.getResults()!=null){
+                    getP().getD().getTransRes().getResults().addAll(o.getResults());
+                    getP().getU().notifyDataSetChanged();
+                }
             }
         });
     }

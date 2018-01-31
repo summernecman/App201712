@@ -97,8 +97,10 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 if(getP().getU().canGo()){
                     getP().getD().newOrder(getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(activity) {
                         @Override
-                        public void onResult(boolean success, String msg, NewOrderRes o) {
-                            super.onResult(success, msg, o);
+                        public void onSuccess(NewOrderRes o) {
+                            super.onSuccess(o);
+                            getArguments().putBoolean(ValueConstant.DATA_DATA,true);
+                            getActivity().onBackPressed();
                         }
                     });
                 }

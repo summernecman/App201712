@@ -3,16 +3,17 @@ package com.siweisoft.heavycenter.module.main.order;
 //by summer on 2017-12-11.
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.FragmentUtil2;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.android.lib.view.dialog.list.DialogListFrag;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.order.begin.BeginFrag;
 import com.siweisoft.heavycenter.module.main.order.news.NewOrderFrag;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
@@ -26,7 +27,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
 
     @Override
     public void lazyInit() {
-        getP().getU().initPages(fragment,getP().getD().getPages());
+        getP().getU().initPages(fragment,getP().getD().initPages());
 
     }
 
@@ -46,7 +47,9 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
                 FragmentUtil2.getInstance().addNoAnim(activity,R.id.act_main,frag);
                 break;
             case R.id.ftv_right2:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.订单,MainAct.订单ID,new NewOrderFrag());
+                Bundle bundle = new Bundle();
+                bundle.putInt(ValueConstant.FARG_REQ,2);
+                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.订单,MainAct.订单ID,new NewOrderFrag(),bundle);
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
@@ -58,7 +61,17 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
         }
     }
 
-
-
-
+    @Override
+    public void onRestart(int res, Bundle bundle) {
+        super.onRestart(res, bundle);
+        switch (res){
+            case 2:
+                if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_DATA,false)){
+                    return;
+                }
+                BeginFrag beginFrag = (BeginFrag) getP().getD().getPages().get(0);
+                beginFrag.getP().getU().autoRefresh();
+                break;
+        }
+    }
 }

@@ -4,13 +4,11 @@ package com.siweisoft.heavycenter.module.view.weight;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.android.lib.bean.databean.XYBean;
 import com.android.lib.util.ColorUtil;
 import com.android.lib.util.ScreenUtil;
 import com.siweisoft.heavycenter.R;
@@ -25,7 +23,7 @@ public class WeightView extends View{
 
     private double r;
 
-    private double lengh = ScreenUtil.mw*15;
+    private double lengh = ScreenUtil.最小DIMEN *15;
 
     private ArrayList<WeightBean[]> p = new ArrayList<>();
     private double num = 120;

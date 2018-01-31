@@ -15,17 +15,22 @@ import java.util.ArrayList;
 
 public class OrderDAOpe extends BaseDAOpe {
 
+    ArrayList<Fragment> pages = new ArrayList<>();
+
     public OrderDAOpe(Context context) {
         super(context);
     }
 
 
-    public ArrayList<Fragment> getPages(){
-        ArrayList<Fragment> pages = new ArrayList<>();
+    public ArrayList<Fragment> initPages(){
+        pages.clear();
         BeginFrag beginFrag = new BeginFrag(); beginFrag.setArguments(new Bundle());beginFrag.getArguments().putString(ValueConstant.DATA_DATA, OrdersReq.STATUS_NEW);pages.add(beginFrag);
         BeginFrag doingFrag = new BeginFrag(); doingFrag.setArguments(new Bundle());doingFrag.getArguments().putString(ValueConstant.DATA_DATA, OrdersReq.STATUS_ING);pages.add(doingFrag);
         BeginFrag doneFrag = new BeginFrag(); doneFrag.setArguments(new Bundle());doneFrag.getArguments().putString(ValueConstant.DATA_DATA, OrdersReq.STATUS_DONE);pages.add(doneFrag);
         return pages;
     }
 
+    public ArrayList<Fragment> getPages() {
+        return pages;
+    }
 }

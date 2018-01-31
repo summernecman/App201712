@@ -34,6 +34,6 @@ public class InfoUIOpe extends AppUIOpe<FragScanInfoBinding>{
         userInfo.setType("HCUser");
         userInfo.setName(StringUtil.getStr(LocalValue.get登录返回信息().getTrueName()));
         userInfo.setMobile(StringUtil.getStr(LocalValue.get登录返回信息().getTel()));
-        bind.ivScan.setImageBitmap(CodeUtils.createImage(GsonUtil.getInstance().toJson(userInfo), (int) (ScreenUtil.mw*180), (int) (ScreenUtil.mw*180), null));
+        bind.ivScan.setImageBitmap(CodeUtils.createImage(GsonUtil.getInstance().toJson(userInfo), (int) (ScreenUtil.最小DIMEN *180), (int) (ScreenUtil.最小DIMEN *180), null));
     }
 }

@@ -37,6 +37,7 @@ public class WeightMsg extends BaseBean {
         private String time;
         private int weigh;
         private OrderBean order;
+        private float fhTare;//发货皮重
 
         public String getMessageType() {
             return messageType;
@@ -84,6 +85,14 @@ public class WeightMsg extends BaseBean {
 
         public void setOrder(OrderBean order) {
             this.order = order;
+        }
+
+        public float getFhTare() {
+            return fhTare;
+        }
+
+        public void setFhTare(float fhTare) {
+            this.fhTare = fhTare;
         }
 
         public static class OrderBean {
