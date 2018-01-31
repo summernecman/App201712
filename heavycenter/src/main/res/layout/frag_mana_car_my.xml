@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:style_common="http://schemas.android.com/tools">
+    xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_mana_car_sending"
@@ -15,6 +15,7 @@
         >
 
         <com.android.lib.view.title.TitleView
+                android:visibility="gone"
             android:id="@+id/cartitle"
             style_common:txt_mid ="车辆列表"
             style_common:iv_left ="@drawable/icon_hv_back"

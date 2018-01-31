@@ -79,10 +79,10 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
                 for(int i=0;i<textViews.size();i++){
                     if(position==i){
                         textViews.get(i).setTextColor(getResources().getColorStateList(R.color.color_hv_yelll));
-                        textViews.get(i).setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
+                        textViews.get(i).setTextSize(TypedValue.COMPLEX_UNIT_SP,19);
                     }else{
                         textViews.get(i).setTextColor(getResources().getColorStateList(R.color.white));
-                        textViews.get(i).setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
+                        textViews.get(i).setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
                     }
                 }
             }

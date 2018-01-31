@@ -69,6 +69,11 @@ public class StoreView extends RelativeLayout {
             currentTV.setBackgroundResource(R.drawable.icon_hv_main_store_tip_rd);
             p.leftMargin = (int) (p.leftMargin- (StringUtil.getStr(now).length()+2)*ScreenUtil.字宽度);
         }
+        if(p.leftMargin>((ScreenUtil.w-ScreenUtil.最小DIMEN *20))){
+            currentTV.setBackgroundResource(R.drawable.icon_hv_main_store_tip_rd);
+            p.leftMargin = (int) (ScreenUtil.w-ScreenUtil.最小DIMEN *20);
+        }
+
         currentTV.setLayoutParams(p);
 
         RelativeLayout.LayoutParams p1 = (LayoutParams) minView.getLayoutParams();

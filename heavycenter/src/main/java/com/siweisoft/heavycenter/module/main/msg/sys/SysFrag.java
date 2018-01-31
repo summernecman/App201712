@@ -13,6 +13,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealResBean;
@@ -83,6 +84,9 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
                         status[0] = MsgDealReqBean.AUDII_STATUS_YES;
                         auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED;
                         break;
+                }
+                if(v.getId()!=R.id.bt_agree||v.getId()!=R.id.bt_reject||v.getId()!=R.id.bt_mana){
+                    return;
                 }
                 final int finalAuditstate = auditstate;
                 getP().getD().dealMss(data.getMessageId(), status[0], new UINetAdapter<MsgDealResBean>(getContext()) {

@@ -11,202 +11,198 @@
         android:id="@+id/ll_trans"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:background="@drawable/bg_hv_sel_dark_light"
         >
         <LinearLayout
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
             <RelativeLayout
-                android:layout_width="90dp"
-                android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_centerInParent="true"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:layout_width="90dp"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:src="@drawable/icon_hv_myce_car"
-                    android:layout_width="70dp"
-                    android:layout_height="match_parent" >
-
-                    <com.siweisoft.heavycenter.module.view.circle.CircleBar
-                        android:id="@+id/circlebar"
-
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content">
+                <LinearLayout
                         android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content">
+                    <RelativeLayout
+                            android:src="@drawable/icon_hv_myce_car"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent">
+
+                        <com.siweisoft.heavycenter.module.view.circle.CircleBar
+                                android:id="@+id/circlebar"
+
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                            <TextView
+                                    android:text="3"
+                                    android:textSize="25sp"
+                                    android:textColor="@color/color_yell_blue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                            <TextView
+                                    android:id="@+id/tv_carnum"
+                                    android:text="车"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/color_yell_blue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
 
                     <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:id="@+id/tv_current"
+                                android:text="10"
+                                android:textSize="15sp"
+                                android:textColor="@color/color_yell_blue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:text="3"
-                            android:textSize="20sp"
-                            android:textColor="@color/color_yell_blue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <TextView
-                            android:id="@+id/tv_carnum"
-                            android:text="车"
-                            android:textSize="13sp"
-                            android:textColor="@color/color_yell_blue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                                android:id="@+id/tv_plan"
+                                android:text="/198t"
+                                android:textSize="15sp"
+                                android:textColor="@color/color_hv_yelll"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
                     </LinearLayout>
-
-
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/tv_current"
-                        android:text="10"
-                        android:textSize="13sp"
-                        android:textColor="@color/color_yell_blue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/tv_plan"
-                        android:text="/198t"
-                        android:textSize="13sp"
-                        android:textColor="@color/color_hv_yelll"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
                 </LinearLayout>
-            </LinearLayout>
 
             </RelativeLayout>
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <LinearLayout
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <LinearLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
+                      android:layout_marginLeft="20dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp">
-                        <TextView
-                            android:id="@+id/tv_goodname"
-                            android:singleLine="true"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:text="混凝土"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:id="@+id/tv_spes"
-                            android:singleLine="true"
-                            android:layout_marginLeft="14dp"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            android:text="C30"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <View
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:layout_marginTop="5dp"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="1dp"/>
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp">
                         <TextView
-                            android:id="@+id/tv_carno"
-                            android:background="@drawable/bg_hv_sel_yel_blue_stroke"
-                            android:singleLine="true"
-                            android:layout_marginLeft="7dp"
-                            android:textColor="@color/color_yell_blue"
-                            android:textSize="8.5sp"
-                            android:text="沪A2345"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                                android:id="@+id/tv_goodname"
+                                android:singleLine="true"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/hv_dimen_text_title_aaaaa"
+                                android:text="混凝土"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        <TextView
+                                android:id="@+id/tv_spes"
+                                android:singleLine="true"
+                                android:layout_marginLeft="14dp"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/hv_dimen_text_aaa"
+                                android:text="C30"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        <View
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"/>
+                        <TextView
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:id="@+id/tv_carno"
+                                android:background="@drawable/bg_hv_sel_yel_blue_stroke"
+                                android:singleLine="true"
+                                android:layout_marginLeft="7dp"
+                                android:textColor="@color/color_yell_blue"
+                                android:textSize="12sp"
+                                android:text="沪A2345"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
                     </LinearLayout>
 
 
                     <LinearLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp">
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp">
 
                         <TextView
-                            android:id="@+id/tv_type"
-                            android:background="@drawable/bg_hv_sharp2_blue_solid"
-                            android:singleLine="true"
-                            android:textColor="@color/black"
-                            android:textSize="11sp"
-                            android:text="发往"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                                android:id="@+id/tv_type"
+                                android:background="@drawable/bg_hv_sharp2_blue_solid"
+                                android:singleLine="true"
+                                android:textColor="@color/black"
+                                android:textSize="13sp"
+                                android:text="发往"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
                         <TextView
-                            android:id="@+id/tv_companyname"
-                            android:singleLine="true"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:text="上海绿地"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
+                                android:id="@+id/tv_companyname"
+                                android:singleLine="true"
+                                android:layout_marginLeft="10dp"
+                                android:textColor="@color/white"
+                                android:textSize="15sp"
+                                android:text="上海绿地"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
 
 
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/tv_starttime"
-                        android:layout_marginTop="7dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/white"
-                        android:textSize="13sp"
-                        android:text="开始时间：2017/12/09 10:00"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                            android:id="@+id/tv_starttime"
+                            android:layout_marginTop="7dp"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/color_hv_txt_dark"
+                            android:textSize="@dimen/hv_dimen_text_date_aaa"
+                            android:text="开始时间：2017/12/09 10:00"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
 
                     <TextView
-                        android:id="@+id/tv_endtime"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginTop="3dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/white"
-                        android:textSize="13sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                            android:id="@+id/tv_endtime"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="3dp"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/color_hv_txt_dark"
+                            android:textSize="@dimen/hv_dimen_text_date_aaa"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
 
-        <com.android.lib.view.line.view.VerticalDashView
-            android:layout_marginLeft="90dp"
-            android:layout_alignParentBottom="true"
-            DashView:dashgap = "2dp"
-            DashView:w = "1dp"
-            DashView:hashwidth = "2dp"
-            DashView:dashcolor = "@color/gray"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"  />
+
 
 
 

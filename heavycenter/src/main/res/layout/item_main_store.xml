@@ -16,8 +16,8 @@
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:background="@drawable/bg_hv_sel_dark_light"
-        android:paddingTop="12dp"
-        android:paddingBottom="17dp">
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp">
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             <TextView
                 android:singleLine="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text_title"
+                android:textSize="@dimen/hv_dimen_text_title_aaaaa"
                 android:text="@{item_main_store.warehouseName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -34,7 +34,7 @@
                 android:singleLine="true"
                 android:layout_marginLeft="14dp"
                 android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text"
+                android:textSize="@dimen/hv_dimen_text_aaa"
                 android:text="@{item_main_store.productName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -43,7 +43,7 @@
                 android:singleLine="true"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text"
+                android:textSize="@dimen/hv_dimen_text_aa"
                 android:text="@{item_main_store.specifications}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -57,14 +57,14 @@
                 android:id="@+id/tv_current"
                 android:singleLine="true"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text_date"
+                android:textColor="@color/hv_color_text_date"
+                android:textSize="@dimen/hv_dimen_text_title_a"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <com.siweisoft.heavycenter.module.view.progress.ProgressView
             android:id="@+id/pv_progress"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

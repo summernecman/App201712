@@ -13,13 +13,12 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-
-            android:paddingTop="5dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
-            android:paddingBottom="5dp"
-            android:background="@drawable/bg_hv_press_sharp2_blue_while"
             android:layout_margin="5dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/bg_hv_press_sharp2_blue_while"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -30,7 +29,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:textColor="@color/hv_color_text_title"
-                    android:textSize="@dimen/hv_dimen_text_title"
+                    android:textSize="@dimen/hv_dimen_text_title_aa"
                     android:text="@{item_main_msg_all.senderName}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -76,7 +75,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/hv_color_text"
-                android:textSize="@dimen/hv_dimen_text"
+                android:textSize="@dimen/hv_dimen_text_aa"
                 android:text="@{item_main_msg_all.messageContent}"
                 android:padding="3dp"
                 android:layout_width="match_parent"
@@ -117,7 +116,7 @@
                     style_common:color_stroke_two="@color/color_hv_yelll"
                     style_common:corner_two="5dp"
                     style_common:color_txt_two="@color/white"
-                    style_common:boo_one="false"
+                    style_common:boo_one="true"
                     android:text="拒绝"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -143,7 +142,7 @@
                     style_common:color_stroke_two="@color/color_hv_yelll"
                     style_common:corner_two="5dp"
                     style_common:color_txt_two="@color/white"
-                    style_common:boo_one="false"
+                    style_common:boo_one="true"
                     android:text="接受"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -169,7 +168,7 @@
                     style_common:color_stroke_two="@color/color_hv_yelll"
                     style_common:corner_two="5dp"
                     style_common:color_txt_two="@color/white"
-                    style_common:boo_one="false"
+                    style_common:boo_one="true"
                     android:text="设为管理员"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

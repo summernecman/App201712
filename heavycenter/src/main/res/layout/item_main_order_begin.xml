@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp">
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -35,7 +35,7 @@
                     <TextView
                         android:singleLine="true"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/hv_dimen_text_title"
+                        android:textSize="@dimen/hv_dimen_text_title_aaaaa"
                         android:text="@{item_main_order_begin.productName}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -44,7 +44,7 @@
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/hv_dimen_text_title"
+                        android:textSize="@dimen/hv_dimen_text_aaa"
                         android:text="@{item_main_order_begin.specification}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -57,7 +57,7 @@
                         android:singleLine="true"
                         android:layout_marginLeft="7dp"
                         android:textColor="@color/color_yell_blue"
-                        android:textSize="8.5sp"
+                        android:textSize="12sp"
                         android:text='@{"计划: "+item_main_order_begin.planNumber}'
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -77,7 +77,7 @@
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textSize="11sp"
+                android:textSize="13sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -87,7 +87,7 @@
                 android:singleLine="true"
                 android:layout_marginLeft="8dp"
                 android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text"
+                android:textSize="@dimen/hv_dimen_text_title_aa"
                 android:text="@{item_main_order_begin.shdwName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -97,13 +97,15 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"/>
             <TextView
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                 android:id="@+id/tv_plantime"
                 android:layout_gravity="right|center_vertical"
                 android:gravity="center_vertical|right"
                 android:singleLine="true"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/color_hv_txt_dark"
-                android:textSize="@dimen/hv_dimen_text_date"
+                android:textSize="@dimen/hv_dimen_text_date_aaa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

@@ -108,7 +108,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
             public void onResult(boolean success, String msg, TransRes o) {
                 super.onResult(success, msg, o);
                getP().getU().finishRefresh();
-               if(o.getResults()!=null){
+               if(o!=null&& o.getResults()!=null){
                    getP().getD().getTransRes().getResults().addAll(o.getResults());
                    getP().getU().LoadListData(getP().getD().getTransRes().getResults(),TransFrag.this);
                }

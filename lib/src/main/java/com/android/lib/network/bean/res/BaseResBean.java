@@ -16,11 +16,11 @@ public class BaseResBean implements Serializable {
 
     private String errorMessage;
 
-    private String message;
+    private String message ="";
 
     private Object data;
 
-    private String code;
+    private String code ="000";
 
     private Object result;
 

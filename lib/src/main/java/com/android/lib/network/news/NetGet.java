@@ -130,7 +130,7 @@ public class NetGet {
 
     public static void postData(final Context context, final String url, final BaseBean reqBean, final NetI netI) {
         if(test){
-            netI.onNetFinish(true, url, null);
+            netI.onNetFinish(true, url, new BaseResBean());
             return;
         }
         LogUtil.E("input-->" + url);

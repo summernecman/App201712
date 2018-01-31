@@ -51,14 +51,25 @@
     </declare-styleable>
 
 
-
+    <dimen name="hv_dimen_text_title_aaaaa">22sp</dimen>
+    <dimen name="hv_dimen_text_title_aaaa">21sp</dimen>
+    <dimen name="hv_dimen_text_title_aaa">20sp</dimen>
+    <dimen name="hv_dimen_text_title_aa">19sp</dimen>
+    <dimen name="hv_dimen_text_title_a">18sp</dimen>
     <dimen name="hv_dimen_text_title">17sp</dimen>
     <color name="hv_color_text_title">@color/color_grey_700</color>
 
+
+
+    <dimen name="hv_dimen_text_a">16sp</dimen>
+    <dimen name="hv_dimen_text_aa">17sp</dimen>
+    <dimen name="hv_dimen_text_aaa">18sp</dimen>
     <dimen name="hv_dimen_text">15sp</dimen>
     <color name="hv_color_text">@color/color_grey_500</color>
 
-
+    <dimen name="hv_dimen_text_date_a">14sp</dimen>
+    <dimen name="hv_dimen_text_date_aa">15sp</dimen>
+    <dimen name="hv_dimen_text_date_aaa">16sp</dimen>
     <dimen name="hv_dimen_text_date">13sp</dimen>
     <color name="hv_color_text_date">@color/color_grey_500</color>
 </resources>

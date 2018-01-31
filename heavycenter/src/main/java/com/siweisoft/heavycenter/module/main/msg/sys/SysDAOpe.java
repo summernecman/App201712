@@ -27,13 +27,6 @@ public class SysDAOpe extends BaseDAOpe {
         super(context);
     }
 
-    public ArrayList<String> getData(){
-        ArrayList<String> data = new ArrayList<>();
-        for(int i=0;i<100;i++){
-            data.add(""+i);
-        }
-        return data;
-    }
 
     public void getMsgSys(NetI<MsgsResBean> adapter){
         MsgsReqBean msgsReqBean = new MsgsReqBean();
@@ -52,6 +45,14 @@ public class SysDAOpe extends BaseDAOpe {
         NetDataOpe.Msg.deal(getActivity(),msgDealReqBean,adapter);
 
     }
+
+
+    public void addData(MsgsResBean data){
+        if(data!=null && data.getResults()!=null){
+            msgsResBean.getResults().addAll(data.getResults());
+        }
+    }
+
 
     public String getMoudle() {
         return moudle;
@@ -73,9 +74,4 @@ public class SysDAOpe extends BaseDAOpe {
         return msgsResBean;
     }
 
-    public void addData(MsgsResBean data){
-        if(data!=null && data.getResults()!=null){
-            msgsResBean.getResults().addAll(data.getResults());
-        }
-    }
 }

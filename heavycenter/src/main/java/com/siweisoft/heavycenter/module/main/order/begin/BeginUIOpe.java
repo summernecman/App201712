@@ -71,7 +71,7 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                             beginBinding.tvType.setText("来自");
                             beginBinding.tvType.setSelected(true);
                         }
-                        beginBinding.tvPlantime.setText(StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
+                        beginBinding.tvPlantime.setText("计划开始时间:"+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
                         beginBinding.getRoot().setTag(R.id.type,type);
                     }
                 });
