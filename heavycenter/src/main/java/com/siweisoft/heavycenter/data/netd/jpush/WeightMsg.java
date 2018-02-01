@@ -8,7 +8,7 @@ public class WeightMsg extends BaseBean {
 
 
     /**
-     * message : {"messageType":"bridge","content":"来拉货","state":"s0","time":"2018-01-30 16:49:02","weigh":20,"order":{"orderId":20,"ysdId":18,"fhdwName":"老干爹","specification":"300f","shdwName":"王尼玛","receiveCompanyId":37,"ysdNo":"","develiverCompanyId":39,"orderNo":"201801308","productName":"水泥"}}
+     * message : {"content":"来拉货","state":"s0","order":{"orderId":50,"ysdId":"","fhdwName":"老干爹","driverId":87,"specification":"C50","shdwName":"王尼玛","receiveCompanyId":37,"ysdNo":"","develiverCompanyId":39,"orderNo":"201802013","productName":"混凝土"},"messageType":"bridge"}
      */
 
     private MessageBean message;
@@ -23,29 +23,16 @@ public class WeightMsg extends BaseBean {
 
     public static class MessageBean {
         /**
-         * messageType : bridge
          * content : 来拉货
          * state : s0
-         * time : 2018-01-30 16:49:02
-         * weigh : 20
-         * order : {"orderId":20,"ysdId":18,"fhdwName":"老干爹","specification":"300f","shdwName":"王尼玛","receiveCompanyId":37,"ysdNo":"","develiverCompanyId":39,"orderNo":"201801308","productName":"水泥"}
+         * order : {"orderId":50,"ysdId":"","fhdwName":"老干爹","driverId":87,"specification":"C50","shdwName":"王尼玛","receiveCompanyId":37,"ysdNo":"","develiverCompanyId":39,"orderNo":"201802013","productName":"混凝土"}
+         * messageType : bridge
          */
 
-        private String messageType;
         private String content;
         private String state;
-        private String time;
-        private int weigh;
         private OrderBean order;
-        private float fhTare;//发货皮重
-
-        public String getMessageType() {
-            return messageType;
-        }
-
-        public void setMessageType(String messageType) {
-            this.messageType = messageType;
-        }
+        private String messageType;
 
         public String getContent() {
             return content;
@@ -63,22 +50,6 @@ public class WeightMsg extends BaseBean {
             this.state = state;
         }
 
-        public String getTime() {
-            return time;
-        }
-
-        public void setTime(String time) {
-            this.time = time;
-        }
-
-        public int getWeigh() {
-            return weigh;
-        }
-
-        public void setWeigh(int weigh) {
-            this.weigh = weigh;
-        }
-
         public OrderBean getOrder() {
             return order;
         }
@@ -87,31 +58,33 @@ public class WeightMsg extends BaseBean {
             this.order = order;
         }
 
-        public float getFhTare() {
-            return fhTare;
+        public String getMessageType() {
+            return messageType;
         }
 
-        public void setFhTare(float fhTare) {
-            this.fhTare = fhTare;
+        public void setMessageType(String messageType) {
+            this.messageType = messageType;
         }
 
-        public static class OrderBean {
+        public static class OrderBean extends BaseBean{
             /**
-             * orderId : 20
-             * ysdId : 18
+             * orderId : 50
+             * ysdId :
              * fhdwName : 老干爹
-             * specification : 300f
+             * driverId : 87
+             * specification : C50
              * shdwName : 王尼玛
              * receiveCompanyId : 37
              * ysdNo :
              * develiverCompanyId : 39
-             * orderNo : 201801308
-             * productName : 水泥
+             * orderNo : 201802013
+             * productName : 混凝土
              */
 
             private int orderId;
             private int ysdId;
             private String fhdwName;
+            private int driverId;
             private String specification;
             private String shdwName;
             private int receiveCompanyId;
@@ -142,6 +115,14 @@ public class WeightMsg extends BaseBean {
 
             public void setFhdwName(String fhdwName) {
                 this.fhdwName = fhdwName;
+            }
+
+            public int getDriverId() {
+                return driverId;
+            }
+
+            public void setDriverId(int driverId) {
+                this.driverId = driverId;
             }
 
             public String getSpecification() {

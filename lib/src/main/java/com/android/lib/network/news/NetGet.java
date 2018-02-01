@@ -64,6 +64,10 @@ public class NetGet {
         }
         requestParams.isUseCookie();
         requestParams.setUseCookie(true);
+
+//        requestParams.setReadTimeout(5000);
+//        requestParams.setConnectTimeout(5000);
+
         x.http().post(requestParams, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String response) {
@@ -148,6 +152,9 @@ public class NetGet {
         RequestParams requestParams = new RequestParams(url);
         requestParams.setUseCookie(false);
 
+//        requestParams.setReadTimeout(5000);
+//        requestParams.setConnectTimeout(5000);
+
         ArrayList<String> strings = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse),new TypeToken<ArrayList<String>>(){}.getType());
         for(int i=0;strings!=null&& i<strings.size();i++){
             requestParams.addHeader("Cookie",strings.get(i));
@@ -217,6 +224,9 @@ public class NetGet {
 
         RequestParams requestParams = new RequestParams(url);
         requestParams.setUseCookie(false);
+
+//        requestParams.setReadTimeout(5000);
+//        requestParams.setConnectTimeout(5000);
 
         ArrayList<String> strings = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse),new TypeToken<ArrayList<String>>(){}.getType());
         for(int i=0;strings!=null&& i<strings.size();i++){

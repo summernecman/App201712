@@ -8,6 +8,7 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 public class StoreDAOpe extends BaseDAOpe {
 
-    private int pageIndex = 0;
+    private int pageIndex = NetValue.PAGE_INDEX_START;
 
     private StoresResBean storesResBean = new StoresResBean();
 
@@ -23,13 +24,6 @@ public class StoreDAOpe extends BaseDAOpe {
         super(context);
     }
 
-    public ArrayList<String> getData(){
-        ArrayList<String> data = new ArrayList<>();
-        for(int i=0;i<100;i++){
-            data.add(""+i);
-        }
-        return data;
-    }
 
     public void storesInfo(NetI<StoresResBean> adapter){
         StoresReqBean reqBean = new StoresReqBean();

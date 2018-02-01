@@ -46,6 +46,9 @@ public class WeigtsDAOpe extends AppDAOpe {
     }
 
     public void saveWeight(WeightMsg weightMsg , NetI<SaveWeightRes> adapter){
+        if(weightMsg==null||weightMsg.getMessage()==null){
+            return;
+        }
         SaveWeightReq weightReq = new SaveWeightReq();
         weightReq.setOrderId(weightMsg.getMessage().getOrder().getOrderId());
         weightReq.setTransportRecordId(weightMsg.getMessage().getOrder().getYsdId());
@@ -53,21 +56,19 @@ public class WeigtsDAOpe extends AppDAOpe {
         weightReq.setState(weightMsg.getMessage().getState());
         switch (weightMsg.getMessage().getState()){
             case "s0":
+            case "r7":
                 weightReq.setWeighLocation(SaveWeightReq.皮重);
                 weightReq.setWeighing(10);
                 break;
             case "s1":
+            case "r3":
                 weightReq.setWeighLocation(SaveWeightReq.毛重);
                 weightReq.setWeighing(20);
                 break;
-            case "r3":
-                break;
-            case "r7":
-                break;
-
         }
         weightReq.setOrderId(weightMsg.getMessage().getOrder().getOrderId());
         weightReq.setDeductWeight(0);
+        weightReq.setDriverId(weightMsg.getMessage().getOrder().getDriverId());
         NetDataOpe.Weight.saveWeight(getActivity(),weightReq,adapter);
     }
 

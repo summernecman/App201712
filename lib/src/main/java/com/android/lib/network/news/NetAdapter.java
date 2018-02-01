@@ -83,27 +83,19 @@ public  class NetAdapter<A> implements NetI<A> {
             ParameterizedType parameterizedType = (ParameterizedType) type;
             A aa = null;
             try {
-                LogUtil.E(isobject+":1"+isarray);
                 Object o = new JSONTokener(GsonUtil.getInstance().toJson(baseResBean.getResult())).nextValue();
-                LogUtil.E(isobject+":2"+isarray);
                 try {
                     isobject = o instanceof JSONObject;
-                    LogUtil.E(isobject+":3"+isarray);
                     if(!isobject){
-                        LogUtil.E(isobject+":4"+isarray);
                         try {
                             isarray = o instanceof JSONArray;
-                            LogUtil.E(isobject+":5"+isarray);
                         } catch (Exception e) {
                             e.printStackTrace();
-                            LogUtil.E(isobject+":6"+isarray);
                         }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    LogUtil.E(isobject+":7"+isarray);
                 }
-                LogUtil.E(isobject+":8"+isarray);
                 if(isobject){
                     Class<A> a = (Class<A>) parameterizedType.getActualTypeArguments()[0];
                      aa = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getResult()),a);
@@ -117,7 +109,6 @@ public  class NetAdapter<A> implements NetI<A> {
                 e.printStackTrace();
 
             }finally {
-                LogUtil.E(isobject+":9"+isarray+""+baseResBean.getCode());
                 if (!"200".equals(baseResBean.getCode())) {
                     onResult(false,baseResBean.getMessage(), aa);
                 } else {

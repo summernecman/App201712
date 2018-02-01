@@ -135,6 +135,17 @@ public class MapUtil {
         }
     }
 
+
+    public void animateMapStatus2(BaiduMap map,BDLocation bdLocation){
+        map.setMyLocationConfiguration(new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL,true, BitmapDescriptorFactory.fromResource(R.drawable.drawable_setting)));
+        map.setMyLocationEnabled(true);
+        LatLng latLng = new LatLng(bdLocation.getLatitude(),bdLocation.getLongitude());
+        MapStatus.Builder builder = new MapStatus.Builder();
+        builder.target(latLng).zoom(16f);
+        map.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+    }
+
+
     public void addOverlays(BaiduMap map,LatLng... latLngs){
         if(isAdd){
             return;

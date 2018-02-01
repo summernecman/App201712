@@ -6,7 +6,7 @@ import com.android.lib.bean.BaseBean;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.util.LoadUtil;
 
-public abstract class UINetAdapter<A extends BaseBean> extends NetAdapter<A> {
+public abstract class UINetAdapter<A> extends NetAdapter<A> {
 
 
     public UINetAdapter(Context context) {

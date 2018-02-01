@@ -3,6 +3,8 @@ package com.siweisoft.heavycenter;
 //by summer on 2018-01-11.
 
 import android.content.Context;
+import android.os.Environment;
+
 import com.android.lib.util.GsonUtil;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetValue;
@@ -14,6 +16,10 @@ import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -164,4 +170,26 @@ public class Test {
     public static HashMap<String, String> getTestdata() {
         return testdata;
     }
+
+    public void saveFile(String url,String data){
+        File file = new File(Environment.getDownloadCacheDirectory()+"/hv",url.replace("\\",""));
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            FileReader fileReader = new FileReader(file);
+            char[] c = data.toCharArray();
+            fileReader.read(c,0,c.length);
+            fileReader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

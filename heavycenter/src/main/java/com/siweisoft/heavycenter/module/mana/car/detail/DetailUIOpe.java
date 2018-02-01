@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.fragment.BaseUIFrag;
+import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
@@ -22,9 +23,11 @@ import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarReq;
+import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes;
 import com.siweisoft.heavycenter.databinding.FragManaCarDetailBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaCarDetailDriverBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
@@ -41,7 +44,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {
         super.initUI(baseUIFrag);
-
+        initRecycle();
     }
 
     public void init(String type){
@@ -68,15 +71,15 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
     }
 
 
-    public void LoadListData(List<String> s) {
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_car_detail_driver, BR.item_mana_car_detail_driver, s){
+    public void LoadListData(final ArrayList<DriverRes> o, ViewListener listener) {
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_car_detail_driver, BR.item_mana_car_detail_driver, o,listener){
 
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {
                 super.onBindViewHolder(holder, position, payloads);
                 ItemManaCarDetailDriverBinding binding = (ItemManaCarDetailDriverBinding) holder.viewDataBinding;
 
-                if(selecPos == position){
+                if(o.get(position).getIsCurrentDriver()==DriverRes.是当前驾驶员){
                     binding.ivCheck.setSelected(true);
                 }else{
                     binding.ivCheck.setSelected(false);
@@ -163,5 +166,9 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
         return true;
     }
 
+
+    public void notifyDataSetChanged(){
+        bind.recycle.getAdapter().notifyDataSetChanged();
+    }
 
 }

@@ -89,7 +89,7 @@ public class CarsResBean extends BaseBean {
 
         public static final String STATUS_OFF_CN = "停用";
 
-        private int vehicleId;
+        private int vehicleId = -1;
         private String vehicleLicense;
         private String carLicenseNo;
         private String specifications;

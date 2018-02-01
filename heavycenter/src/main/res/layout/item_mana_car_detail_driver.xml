@@ -4,7 +4,7 @@
     <data>
         <variable
             name="item_mana_car_detail_driver"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -29,7 +29,7 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="15sp"
                 android:textColor="@color/color_grey_500"
-                android:text="张先生"
+                android:text="@{item_mana_car_detail_driver.trueName}"
                 android:id="@+id/tv_com_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -38,7 +38,7 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="15sp"
                 android:textColor="@color/color_grey_500"
-                android:text="18732543243"
+                android:text="@{item_mana_car_detail_driver.tel}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

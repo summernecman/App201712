@@ -8,6 +8,7 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignReq;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
@@ -21,7 +22,7 @@ public class TransDAOpe extends BaseDAOpe {
 
     private TransRes transRes = new TransRes();
 
-    private int pageIndex = 0;
+    private int pageIndex = NetValue.PAGE_INDEX_START;
 
 
     public TransDAOpe(Context context) {

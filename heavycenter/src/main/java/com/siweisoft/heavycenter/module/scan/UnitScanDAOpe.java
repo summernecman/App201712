@@ -11,6 +11,7 @@ import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.baidu.location.BDLocation;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
@@ -40,6 +41,7 @@ public class UnitScanDAOpe extends BaseDAOpe {
             ToastUtil.getInstance().showShort(getActivity(),"按单位搜索运输单");
             TransFrag transFrag = (TransFrag) appFrag;
             transFrag.getP().getU().setUnit(StringUtil.getStr(unit.getCompanyName()));
+            transFrag.getP().getU().autoRefresh();
             return;
         }
 
@@ -53,13 +55,18 @@ public class UnitScanDAOpe extends BaseDAOpe {
 
         if(appFrag.getClass().getName().equals(MapFrag.class.getName())&&( LocalValue.get登录返回信息().getUserType()==UserTypeReqBean.驾驶员)){
             ToastUtil.getInstance().showShort(getActivity(),"驾驶员扫码地图 地图中心改为单位所在位置");
+            BDLocation bdLocation = new BDLocation();
+            bdLocation.setLatitude(unit.getCompanyLat());
+            bdLocation.setLongitude(unit.getCompanyLng());
             MapFrag mapFrag = (MapFrag) appFrag;
+            mapFrag.local(bdLocation);
             return;
         }
 
         if(appFrag.getClass().getName().equals(ListFrag.class.getName())){
             ToastUtil.getInstance().showShort(getActivity(),"从单位列表中 选择一个单位");
             ListFrag listFrag = (ListFrag) appFrag;
+            listFrag.selUnit(unit);
             return;
         }
 

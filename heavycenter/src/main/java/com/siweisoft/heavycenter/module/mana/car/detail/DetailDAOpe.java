@@ -9,12 +9,16 @@ import com.android.lib.util.NullUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.mana.car.bind.BindCarReq;
+import com.siweisoft.heavycenter.data.netd.mana.car.bind.BindCarRes;
 import com.siweisoft.heavycenter.data.netd.mana.car.info.CarInfoReq;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarReq;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
+import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes;
+import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriversReq;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 
@@ -35,6 +39,8 @@ public class DetailDAOpe extends AppDAOpe {
     CarNewReqBean carNewReqBean = new CarNewReqBean();
 
     private String type = DetailFrag.TYPE_DETAIL;
+
+    private ArrayList<DriverRes> driverRes = new ArrayList<>();
 
     public DetailDAOpe(Context context) {
         super(context);
@@ -93,6 +99,26 @@ public class DetailDAOpe extends AppDAOpe {
         NetDataOpe.Mana.Car.infoCar(getActivity(),carInfoReq,adapter);
     }
 
+
+    public void infoCar(int currentdriverid, NetI<CarsResBean.CarInfoRes> adapter){
+//        BindCarReq bindCarReq = new BindCarReq();
+//        bindCarReq.setEditer(LocalValue.get登录返回信息().getUserId());
+//        bindCarReq.setCurrentDriver(currentdriverid);
+//        bindCarReq.setId();
+//        NetDataOpe.Mana.Car.bindCar(getActivity(),carInfoReq,adapter);
+    }
+
+    public void drvers(String type,CarsResBean.CarInfoRes info,NetI<ArrayList<DriverRes>> adapter){
+        DriversReq driversReq = new DriversReq();
+        driversReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        if(type.endsWith(DetailFrag.TYPE_NEW)){
+            driversReq.setVehicleId(0);
+        }else{
+            driversReq.setVehicleId(info.getVehicleId());
+        }
+        NetDataOpe.Unit.drvers(getActivity(),driversReq,adapter);
+    }
+
     public String getType() {
         return type;
     }
@@ -109,5 +135,18 @@ public class DetailDAOpe extends AppDAOpe {
         carInfoReq.setCarLicenseNo(carinfo.getCarLicenseNo());
         carInfoReq.setIsApp(1);
         return carInfoReq;
+    }
+
+    public void bindCar(int carid,int currentdriverid,NetI<BindCarRes> adapter){
+        BindCarReq bindCarReq = new BindCarReq();
+        bindCarReq.setEditer(LocalValue.get登录返回信息().getUserId());
+        bindCarReq.setId(carid);
+        bindCarReq.setCurrentDriver(currentdriverid);
+        NetDataOpe.Mana.Car.bindCar(getActivity(),bindCarReq,adapter);
+    }
+
+
+    public ArrayList<DriverRes> getDriverRes() {
+        return driverRes;
     }
 }

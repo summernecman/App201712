@@ -21,12 +21,14 @@ public class NetValue {
 
     protected static String 测试域名1 = "172.26.1.15:8080";
 
-    protected static String 域名 = 测试域名;
+    protected static String 域名 = 测试域名1;
 
 
     protected static String 文件路径 = "/files";
 
     protected static boolean isOffice = true;
+
+    public static final int PAGE_INDEX_START = 1;
 
     public static String 获取地址(String module){
         return  HTTP前缀+域名+项目名+module;

@@ -16,6 +16,8 @@ public class SaveWeightReq extends BaseReqBean {
 
     private float weighing;
 
+    private int driverId;
+
     private float deductWeight;
 
     public static final int 毛重 = 1;
@@ -69,5 +71,13 @@ public class SaveWeightReq extends BaseReqBean {
 
     public void setDeductWeight(float deductWeight) {
         this.deductWeight = deductWeight;
+    }
+
+    public int getDriverId() {
+        return driverId;
+    }
+
+    public void setDriverId(int driverId) {
+        this.driverId = driverId;
     }
 }

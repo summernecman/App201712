@@ -178,4 +178,10 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
     public void onFinish(Object o) {
         getP().getU().LoadListData(getP().getD().getSelUnits(o.toString()),ListFrag.this);
     }
+
+
+    public void selUnit(UnitInfo unitInfo){
+        getArguments().putSerializable(ValueConstant.DATA_DATA2,unitInfo);
+        getBaseUIActivity().onBackPressed();
+    }
 }

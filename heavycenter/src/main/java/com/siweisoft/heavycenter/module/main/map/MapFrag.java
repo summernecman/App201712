@@ -46,6 +46,10 @@ public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
         }
     }
 
+    public void local(BDLocation bdLocation){
+        getP().getD().getMapUtil().animateMapStatus2(getP().getU().bind.map.getMap(),bdLocation);
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

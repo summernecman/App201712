@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.NullUtil;
 import com.android.lib.util.ToastUtil;
 
 import org.greenrobot.eventbus.EventBus;
@@ -23,6 +24,9 @@ public class PushGetter extends BroadcastReceiver {
             Bundle bundle = intent.getExtras();
             LogUtil.E(bundle.getString(JPushInterface.EXTRA_TITLE)+":"+bundle.getString(JPushInterface.EXTRA_MESSAGE)+":"+bundle.getString(JPushInterface.EXTRA_EXTRA));
             ToastUtil.getInstance().showShort(context,bundle.getString(JPushInterface.EXTRA_TITLE)+":"+bundle.getString(JPushInterface.EXTRA_MESSAGE)+":"+bundle.getString(JPushInterface.EXTRA_EXTRA));
+            if(NullUtil.isStrEmpty(bundle.getString(JPushInterface.EXTRA_EXTRA))){
+                return;
+            }
             EventBus.getDefault().post(bundle.getString(JPushInterface.EXTRA_EXTRA));
         }
 

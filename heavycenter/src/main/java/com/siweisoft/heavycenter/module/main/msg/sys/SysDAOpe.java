@@ -8,6 +8,7 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
+import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealResBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
@@ -19,7 +20,7 @@ public class SysDAOpe extends BaseDAOpe {
 
     private String moudle = "";
 
-    private int pageindex = 0;
+    private int pageindex = NetValue.PAGE_INDEX_START;
 
     private MsgsResBean msgsResBean = new MsgsResBean();
 

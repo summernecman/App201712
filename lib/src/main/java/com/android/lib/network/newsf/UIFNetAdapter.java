@@ -8,7 +8,7 @@ import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.NetAdapter;
 import com.android.lib.util.LoadUtil;
 
-public abstract class UIFNetAdapter<A extends BaseBean> extends NetFAdapter<A> {
+public abstract class UIFNetAdapter<A> extends NetFAdapter<A> {
 
 
     public UIFNetAdapter(BaseUIFrag frag) {

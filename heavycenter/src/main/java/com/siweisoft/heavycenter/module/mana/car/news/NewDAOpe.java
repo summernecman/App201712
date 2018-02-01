@@ -10,6 +10,8 @@ import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
+import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes;
+import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriversReq;
 
 public class NewDAOpe extends AppDAOpe {
 
@@ -28,4 +30,7 @@ public class NewDAOpe extends AppDAOpe {
     public void newCar(CarNewReqBean carNewReqBean, NetI<CarNewResBean> adapter){
         NetDataOpe.Mana.Car.newCar(getActivity(),carNewReqBean,adapter);
     }
+
+
+
 }

@@ -10,12 +10,18 @@ import com.android.lib.network.newsf.UIFNetAdapter;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
+import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes;
 
 import butterknife.OnClick;
 
 public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
 
 
+    @Override
+    public void doThing() {
+        super.doThing();
+
+    }
 
     @OnClick({R.id.ftv_right2})
     public void onClick(View v) {

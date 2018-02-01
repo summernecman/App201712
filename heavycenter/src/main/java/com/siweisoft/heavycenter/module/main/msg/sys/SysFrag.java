@@ -15,6 +15,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealResBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
@@ -51,7 +52,7 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().setPageindex(0);
+        getP().getD().setPageindex(NetValue.PAGE_INDEX_START);
         getP().getD().getMsgsResBean().setResults(new ArrayList<MsgsResBean.ResultsBean>());
         getP().getD().getMsgSys(new UIFNetAdapter<MsgsResBean>(this) {
             @Override
@@ -85,7 +86,7 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
                         auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED;
                         break;
                 }
-                if(v.getId()!=R.id.bt_agree||v.getId()!=R.id.bt_reject||v.getId()!=R.id.bt_mana){
+                if(v.getId()!=R.id.bt_agree&&v.getId()!=R.id.bt_reject&&v.getId()!=R.id.bt_mana){
                     return;
                 }
                 final int finalAuditstate = auditstate;

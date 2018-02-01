@@ -307,17 +307,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
+
+
+                    <com.siweisoft.heavycenter.module.view.text.BgTextView
                         android:id="@+id/tv_save"
+
                         android:layout_centerInParent="true"
                         android:paddingLeft="70dp"
                         android:paddingRight="70dp"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:gravity="center"
-                        android:background="@drawable/bg_cricle_yel"
+
+                        android:singleLine="true"
                         android:textSize="18sp"
-                        android:textColor="@color/white"
+                        android:visibility="visible"
+                        style_common:color_one="@color/color_hv_yelll"
+                        style_common:stroke="0dp"
+                        style_common:color_stroke="@color/red"
+                        style_common:corner="5dp"
+                        style_common:color_txt="@color/white"
+
+                        style_common:color_two="@color/color_red_500"
+                        style_common:stroke_two="2dp"
+                        style_common:color_stroke_two="@color/color_red_500"
+                        style_common:corner_two="5dp"
+                        style_common:color_txt_two="@color/white"
+                        style_common:boo_one="true"
                         android:text="保存"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />

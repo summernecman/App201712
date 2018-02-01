@@ -71,6 +71,8 @@ import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignReq;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
+import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes;
+import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriversReq;
 import com.siweisoft.heavycenter.data.netd.unit.info.UnitInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
@@ -202,6 +204,11 @@ public class NetDataOpe {
 
         public static void createUnit(Context context, NewReqBean reqBean, NetI<NewResBean> adapter) {
             NetGet.postData(context,NetValue.获取地址("/company/insert"),reqBean,adapter);
+        }
+
+
+        public static void drvers(Context context, DriversReq reqBean, NetI<ArrayList<DriverRes>> adapter) {
+            NetGet.getData(context,NetValue.获取地址("/user/getDriver"),reqBean,adapter);
         }
 
     }

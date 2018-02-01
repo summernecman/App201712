@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Environment;
 import android.view.View;
 
+import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
@@ -16,17 +17,20 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.bind.BindCarRes;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
+import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import butterknife.OnClick;
 
-public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
+public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements ViewListener{
 
 
     public static final String TYPE_NEW = "TYPE_NEW";
@@ -50,13 +54,24 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
                         if(success){
                             getP().getD().setCarinfo(o);
                             getP().getU().initData(getP().getD().getCarinfo());
-                            getP().getU().initRecycle();
-                            getP().getU().LoadListData(getP().getD().getData());
+                            getP().getD().drvers(getP().getD().getType(), getP().getD().getCarinfo(), new UINetAdapter<ArrayList<DriverRes>>(getActivity()) {
+                                @Override
+                                public void onSuccess(ArrayList<DriverRes> o) {
+                                    super.onSuccess(o);
+                                    getP().getD().getDriverRes().clear();
+                                    if(o!=null){
+                                        getP().getD().getDriverRes().addAll(o);
+                                        getP().getU().LoadListData(getP().getD().getDriverRes(),DetailFrag.this);
+                                    }
+                                }
+                            });
                         }
                     }
                 });
                 break;
         }
+
+
     }
 
     @OnClick({R.id.ll_vehicleLicensePhoto,R.id.ll_vehiclePhoto,R.id.ftv_right2})
@@ -146,5 +161,42 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
         });
 
 
+    }
+
+    @Override
+    public void onInterupt(int type, View v) {
+        switch (type){
+            case ViewListener.TYPE_ONCLICK:
+                int pos = (int) v.getTag(R.id.position);
+                DriverRes driverRes = (DriverRes) v.getTag(R.id.data);
+                for(int i=0;getP().getD().getDriverRes()!=null&&i<getP().getD().getDriverRes().size();i++){
+                   if(pos==i){
+                       getP().getD().getDriverRes().get(i).setIsCurrentDriver(DriverRes.是当前驾驶员);
+                       getP().getD().bindCar(getP().getD().getCarinfo().getVehicleId(), driverRes.getUserId(), new UINetAdapter<BindCarRes>(getActivity()) {
+                           @Override
+                           public void onSuccess(BindCarRes o) {
+                               super.onSuccess(o);
+                           }
+                       });
+                   }else{
+                       getP().getD().getDriverRes().get(i).setIsCurrentDriver(DriverRes.不当前驾驶员);
+                   }
+                }
+                getP().getU().notifyDataSetChanged();
+                break;
+        }
+    }
+
+
+    public void bindCar(int userid){
+        if(getP().getD().getCarinfo().getVehicleId()==-1){
+            return;
+        }
+        getP().getD().bindCar(getP().getD().getCarinfo().getVehicleId(), userid, new UINetAdapter<BindCarRes>(getActivity()) {
+            @Override
+            public void onSuccess(BindCarRes o) {
+                super.onSuccess(o);
+            }
+        });
     }
 }

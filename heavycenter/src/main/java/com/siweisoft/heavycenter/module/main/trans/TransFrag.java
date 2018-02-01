@@ -17,6 +17,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -28,7 +29,6 @@ import butterknife.OnClick;
 
 public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener {
 
-    public static final String TAG = TransFrag.class.getSimpleName();
 
     @Override
     public void lazyInit() {
@@ -62,7 +62,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
         }
     }
 
-    @OnClick({R.id.ftv_right2,R.id.search})
+    @OnClick({R.id.ftv_right2,R.id.search,R.id.view})
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
@@ -85,6 +85,12 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                     }
                 });
                 break;
+            case R.id.view:
+                if(getP().getU().bind.search.getRoot().getVisibility()==View.VISIBLE){
+                    getP().getU().bind.title.getRightIV2().setSelected(false);
+                    getP().getU().bind.search.getRoot().setVisibility(View.GONE);
+                }
+                break;
             case R.id.search:
 
                 getP().getU().refreshSearch();
@@ -101,7 +107,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
 
     @Override
     public void onRefresh(final RefreshLayout refreshlayout) {
-        getP().getD().setPageIndex(0);
+        getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
         getP().getD().getTransRes().getResults().clear();
         getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(activity) {
             @Override

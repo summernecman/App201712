@@ -125,7 +125,7 @@
                     android:singleLine="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/hv_dimen_text"
-                    android:text="@{item_main_trans.trueName}"
+                    android:text="@{item_main_trans.develiverCompanyName}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
