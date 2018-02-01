@@ -14,6 +14,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserResBean;
@@ -58,6 +59,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
             @Override
             public void onResult(boolean success, String msg, UnitUserResBean o) {
                 super.onResult(success, msg, o);
+                o= new Test().getUnitUserResBean();
                 getP().getU().LoadListData(o,UserFrag.this);
                 getP().getU().finishRefresh();
             }

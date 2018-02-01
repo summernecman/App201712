@@ -9,11 +9,16 @@ import com.android.lib.util.GsonUtil;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
+import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
+import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
+import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
+import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 
 import java.io.File;
@@ -165,6 +170,99 @@ public class Test {
             ordersRes.getResults().add(resultsBean);
         }
         return ordersRes;
+    }
+
+    public TransRes getTransRes(){
+        TransRes transRes = new TransRes();
+        for(int i=0;i<10;i++){
+            TransRes.ResultsBean resultsBean = new TransRes.ResultsBean();
+            resultsBean.setCarLicenseNo("车牌号");
+            resultsBean.setCarNumber("NO123");
+            resultsBean.setDeveliverCompanyName("运输公司");
+            resultsBean.setDeveliverNum("123");
+            resultsBean.setFhTime("发货时间");
+            resultsBean.setOrdersId(1);
+            resultsBean.setOrderType("订单类型");
+            resultsBean.setPlanNumber(123);
+            resultsBean.setProductName("产品");
+            resultsBean.setReceiveCompanyName("收货单位");
+            resultsBean.setReceiveNum("34");
+            resultsBean.setShTime(System.currentTimeMillis());
+            resultsBean.setSignStatus(1);
+            resultsBean.setSpecifications("规格");
+            resultsBean.setTel("18721547854");
+            resultsBean.setTotalSuttle(20);
+            resultsBean.setTransportrecordId(1);
+            resultsBean.setTrueName("唐杰");
+            resultsBean.setUserId(1);
+            transRes.getResults().add(resultsBean);
+        }
+        return transRes;
+    }
+
+    public ListResBean getListResBean(){
+        ListResBean listResBean = new ListResBean();
+        for(int i=0;i<10;i++){
+            UnitInfo unitInfo = new UnitInfo();
+            unitInfo.setAbbreviationName("单位简称");
+            unitInfo.setBelongArea("000000");
+            unitInfo.setBelongAreaDes("山海");
+            unitInfo.setBusinessLicense("驾驶员号");
+            unitInfo.setCompanyAddress("公司地址");
+            unitInfo.setCompanyFax("");
+            unitInfo.setCompanyIsNull(0);
+            unitInfo.setCompanyLat(0d);
+            unitInfo.setCompanyLng(0d);
+            unitInfo.setCompanyName("公司名称");
+            unitInfo.setCompanyType(1);
+            unitInfo.setContactPhone("18754251245");
+            unitInfo.setContactName("唐杰");
+            unitInfo.setCpNum(1);
+            unitInfo.setCreater(1);
+            unitInfo.setId(1);
+            unitInfo.setYhNum(10);
+            listResBean.getResults().add(unitInfo);
+        }
+        return listResBean;
+    }
+
+
+    public GoodListRes getGoodListRes(){
+        GoodListRes goodListRes = new GoodListRes();
+        for(int i=0;i<10;i++){
+            GoodListRes.ResultsBean resultsBean = new GoodListRes.ResultsBean();
+            resultsBean.setBelongArea("00000");
+            resultsBean.setMaxStock(100);
+            resultsBean.setMinStock(10);
+            resultsBean.setProductId(1);
+            resultsBean.setProductInfoId(1);
+            resultsBean.setProductName("产品名称");
+            resultsBean.setSpecifications("规格");
+            resultsBean.setStatus(1);
+            resultsBean.setWarehouseId(1);
+            resultsBean.setWarehouseName("仓库");
+            goodListRes.getResults().add(resultsBean);
+        }
+        return goodListRes;
+    }
+
+
+    public UnitUserResBean getUnitUserResBean(){
+        UnitUserResBean unitUserResBean = new UnitUserResBean();
+        for(int i=0;i<10;i++){
+            UnitUserResBean.ResultsBean resultsBean = new UnitUserResBean.ResultsBean();
+            resultsBean.setAuditerName("auditernaem");
+            resultsBean.setBindCompanyState(2);
+            resultsBean.setBindCompanyTime(System.currentTimeMillis());
+            resultsBean.setStatus(1);
+            resultsBean.setTel("1875465822");
+            resultsBean.setTrueName("唐杰");
+            resultsBean.setUserId(1);
+            resultsBean.setUserPhoto("fdf");
+            resultsBean.setUserRole("general");
+            unitUserResBean.getResults().add(resultsBean);
+        }
+        return  unitUserResBean;
     }
 
     public static HashMap<String, String> getTestdata() {

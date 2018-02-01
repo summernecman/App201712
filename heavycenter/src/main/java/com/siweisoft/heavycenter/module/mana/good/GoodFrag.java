@@ -12,6 +12,7 @@ import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.module.mana.good.news.NewFrag;
@@ -59,6 +60,7 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
         getP().getD().listGood(new UINetAdapter<GoodListRes>(activity) {
             @Override
             public void onResult(boolean success, String msg, GoodListRes o) {
+                o= new Test().getGoodListRes();
                 super.onResult(success, msg, o);
                 getP().getU().LoadListData(o,GoodFrag.this);
                 getP().getU().finishRefresh();

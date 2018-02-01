@@ -88,7 +88,7 @@ public class TransRes extends BaseBean {
          */
 
         private String orderType;
-        private int ShTime;
+        private long ShTime;
         private String receiveCompanyName;
         private int signStatus;
         private int totalSuttle;
@@ -115,12 +115,12 @@ public class TransRes extends BaseBean {
             this.orderType = orderType;
         }
 
-        public int getShTime() {
+        public long getShTime() {
             return ShTime;
         }
 
-        public void setShTime(int ShTime) {
-            this.ShTime = ShTime;
+        public void setShTime(long shTime) {
+            ShTime = shTime;
         }
 
         public String getReceiveCompanyName() {

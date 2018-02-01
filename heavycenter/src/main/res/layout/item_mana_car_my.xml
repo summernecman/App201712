@@ -9,7 +9,7 @@
     <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="100dp">
 
     <TextView
         android:textSize="22sp"
@@ -42,8 +42,8 @@
 
             <ImageView
                 android:src="@drawable/icon_hv_mana_car"
-                android:layout_width="55dp"
-                android:layout_height="55dp" />
+                android:layout_width="65dp"
+                android:layout_height="65dp" />
 
             <LinearLayout
                 android:layout_marginLeft="10dp"
@@ -59,8 +59,8 @@
                     <TextView
 
                         android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/hv_color_text_title"
+                        android:textSize="@dimen/hv_dimen_text_title_aaaa"
                         android:text="@{item_mana_car_my.carLicenseNo}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -68,8 +68,8 @@
                     <TextView
                         android:singleLine="true"
                         android:layout_marginLeft="14dp"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textColor="@color/hv_color_text_title"
+                        android:textSize="@dimen/hv_dimen_text_title_aaaa"
                         android:text='@{item_mana_car_my.emptyWeight+""}'
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -95,16 +95,16 @@
 
                     <TextView
                         android:singleLine="true"
-                        android:textColor="@color/color_hv_txt_dark"
-                        android:textSize="15sp"
+                        android:textColor="@color/color_grey_500"
+                        android:textSize="@dimen/hv_dimen_text_title_aaaa"
                         android:text="@{item_mana_car_my.trueName}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
-                        android:textColor="@color/color_hv_txt_dark"
-                        android:textSize="15sp"
+                        android:textColor="@color/color_grey_500"
+                        android:textSize="@dimen/hv_dimen_text_title_aaaa"
                         android:text="@{item_mana_car_my.tel}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />

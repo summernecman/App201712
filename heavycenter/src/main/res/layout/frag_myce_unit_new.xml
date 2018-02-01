@@ -39,7 +39,7 @@
             style_common:txt_mid = "请输入公司名称"
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
-            android:layout_height="45dp"/>
+            android:layout_height="wrap_content"/>
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_nunitshortname"
             style_common:txt_maxlenth="4"

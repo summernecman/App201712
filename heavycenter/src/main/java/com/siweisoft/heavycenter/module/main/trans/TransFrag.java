@@ -16,6 +16,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignRes;
@@ -79,6 +80,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                                 @Override
                                 public void onResult(boolean success, String msg, TransRes o) {
                                     super.onResult(success, msg, o);
+
                                 }
                             });
                         }
@@ -113,6 +115,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, TransRes o) {
                 super.onResult(success, msg, o);
+                o = new Test().getTransRes();
                getP().getU().finishRefresh();
                if(o!=null&& o.getResults()!=null){
                    getP().getD().getTransRes().getResults().addAll(o.getResults());
@@ -131,6 +134,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, TransRes o) {
                 super.onResult(success, msg, o);
+                o = new Test().getTransRes();
                 getP().getU().finishLoadmore();
                 if(o.getResults()!=null){
                     getP().getD().getTransRes().getResults().addAll(o.getResults());

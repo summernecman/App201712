@@ -15,7 +15,7 @@
         android:orientation="vertical">
 <include
     android:layout_width="match_parent"
-    android:layout_height="190dp"
+    android:layout_height="270dp"
     android:id="@+id/ll_head"
     layout="@layout/item_myce_head"/>
 
@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <com.android.lib.view.item.ItemView
+                android:layout_marginTop="10dp"
             style_common:color_txt_right="@color/color_base_txt_heavycenter_y"
             android:id="@+id/item_unit"
             android:layout_width="match_parent"

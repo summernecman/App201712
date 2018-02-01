@@ -55,7 +55,7 @@
             <View
                 android:background="@color/color_hv_base"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"/>
+                android:layout_height="50dp"/>
 
             <LinearLayout
                 android:elevation="2dp"
@@ -70,11 +70,11 @@
                 <LinearLayout
                     android:gravity="center_vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                    android:layout_height="50dp">
                     <TextView
                         android:id="@+id/tv_content"
-                        android:layout_marginLeft="10dp"
-                        android:textSize="14sp"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="@dimen/hv_dimen_text"
                         android:textColor="@color/color_grey_500"
                         android:text="系统自动识别当前驾驶员去送货"
                         android:layout_width="wrap_content"
@@ -90,9 +90,9 @@
                         android:gravity="center"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
-                        android:background="@drawable/bg_cricle_yel"
+                        android:background="@drawable/bg_hv_sharp2_yell_solid"
                         android:layout_marginRight="10dp"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/hv_dimen_text_title"
                         android:textColor="@color/white"
                         android:text="重新选择"
                         android:layout_width="wrap_content"
@@ -101,38 +101,41 @@
 
 
                 <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <RelativeLayout
+                            android:layout_gravity="center_vertical"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content">
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"/>
+
+                        <com.siweisoft.heavycenter.module.view.circle.CircleBar
+                                android:id="@+id/circlebar"
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
                     </RelativeLayout>
 
                     <LinearLayout
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="20dp"
                         android:orientation="vertical"
                         android:layout_weight="1"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:gravity="center_vertical"
-                            android:layout_weight="1"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp">
+                            android:layout_height="wrap_content">
                             <TextView
                                 android:id="@+id/tv_goodname"
                                 android:textColor="@color/black"
-                                android:textSize="22sp"
+                                android:textSize="@dimen/hv_dimen_text_title_aaaa"
                                 android:text="2333"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
@@ -141,20 +144,20 @@
                                 android:id="@+id/tv_spes"
                                 android:layout_marginLeft="20dp"
                                 android:textColor="@color/black"
-                                android:textSize="22sp"
+                                android:textSize="@dimen/hv_dimen_text_title_aaaa"
                                 android:text="2333"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                         <LinearLayout
+                                android:layout_marginTop="10dp"
                             android:gravity="center_vertical"
-                            android:layout_weight="1"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp">
+                            android:layout_height="wrap_content">
                             <TextView
                                 android:background="@drawable/bg_hv_sharp2_yell_solid"
                                 android:textColor="@color/white"
-                                android:textSize="12sp"
+                                android:textSize="15sp"
                                 android:text="发往"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
@@ -163,7 +166,7 @@
                                 android:id="@+id/tv_shdw"
                                 android:layout_marginLeft="20dp"
                                 android:textColor="@color/black"
-                                android:textSize="14sp"
+                                android:textSize="@dimen/hv_dimen_text_aaa"
                                 android:text="上海绿地"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
@@ -180,9 +183,9 @@
 
 
                 <LinearLayout
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -195,7 +198,7 @@
                         <TextView
                             android:singleLine="true"
                             android:textColor="@color/color_grey_400"
-                            android:textSize="13sp"
+                            android:textSize="@dimen/hv_dimen_text_a"
                             android:text="预估发货净重"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -203,7 +206,7 @@
                         <TextView
                             android:singleLine="true"
                             android:textColor="@color/color_grey_400"
-                            android:textSize="13sp"
+                            android:textSize="@dimen/hv_dimen_text_a"
                             android:text="收货净重"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -217,7 +220,7 @@
                         <TextView
                             android:singleLine="true"
                             android:textColor="@color/color_grey_400"
-                            android:textSize="13sp"
+                            android:textSize="@dimen/hv_dimen_text_a"
                             android:text="10t"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -225,7 +228,7 @@
                         <TextView
                             android:singleLine="true"
                             android:textColor="@color/color_grey_400"
-                            android:textSize="12sp"
+                            android:textSize="@dimen/hv_dimen_text_a"
                             android:text="13t"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -242,7 +245,7 @@
                         <TextView
                             android:singleLine="true"
                             android:textColor="@color/color_grey_400"
-                            android:textSize="13sp"
+                            android:textSize="@dimen/hv_dimen_text_a"
                             android:text="预估发货净重"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -250,7 +253,7 @@
                         <TextView
                             android:singleLine="true"
                             android:textColor="@color/color_grey_400"
-                            android:textSize="13sp"
+                            android:textSize="@dimen/hv_dimen_text_a"
                             android:text="收货净重"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -263,7 +266,7 @@
                         <TextView
                             android:singleLine="true"
                             android:textColor="@color/color_grey_400"
-                            android:textSize="13sp"
+                            android:textSize="@dimen/hv_dimen_text_a"
                             android:text="10t"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -271,7 +274,7 @@
                         <TextView
                             android:singleLine="true"
                             android:textColor="@color/color_grey_400"
-                            android:textSize="13sp"
+                            android:textSize="@dimen/hv_dimen_text_a"
                             android:text="10t"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -286,7 +289,7 @@
                         <TextView
                             android:singleLine="true"
                             android:textColor="@color/color_grey_400"
-                            android:textSize="13sp"
+                            android:textSize="@dimen/hv_dimen_text_a"
                             android:text="01/15 10:10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -294,7 +297,7 @@
                         <TextView
                             android:singleLine="true"
                             android:textColor="@color/color_grey_400"
-                            android:textSize="13sp"
+                            android:textSize="@dimen/hv_dimen_text_a"
                             android:text="01/15 10:10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -302,7 +305,6 @@
                 </LinearLayout>
 
                 <RelativeLayout
-                    android:layout_marginTop="20dp"
                     android:gravity="center_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -311,7 +313,6 @@
 
                     <com.siweisoft.heavycenter.module.view.text.BgTextView
                         android:id="@+id/tv_save"
-
                         android:layout_centerInParent="true"
                         android:paddingLeft="70dp"
                         android:paddingRight="70dp"
@@ -320,7 +321,7 @@
                         android:gravity="center"
 
                         android:singleLine="true"
-                        android:textSize="18sp"
+                        android:textSize="21sp"
                         android:visibility="visible"
                         style_common:color_one="@color/color_hv_yelll"
                         style_common:stroke="0dp"

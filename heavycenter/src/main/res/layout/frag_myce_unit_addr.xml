@@ -61,7 +61,7 @@
         <TextView
             android:background="@color/color_grey_200"
             android:paddingLeft="10dp"
-            android:textSize="14sp"
+            android:textSize="17sp"
             android:textColor="@color/color_hv_yelll"
             android:gravity="center_vertical"
             android:text="当前地址"
@@ -112,7 +112,7 @@
         <TextView
             android:background="@color/color_grey_200"
             android:paddingLeft="10dp"
-            android:textSize="14sp"
+            android:textSize="17sp"
             android:textColor="@color/color_hv_yelll"
             android:gravity="center_vertical"
             android:text="附近地址"

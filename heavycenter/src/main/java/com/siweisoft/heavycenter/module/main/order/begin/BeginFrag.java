@@ -52,6 +52,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);
+                o = new Test().getOrdersRes();
                 getP().getD().getOrdersRes().getResults().addAll(o.getResults());
                 getP().getU().LoadListData(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getOrdersRes(),BeginFrag.this);
                 getP().getU().finishLoadmore();
@@ -67,6 +68,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);
+                o = new Test().getOrdersRes();
                 if(o==null){
                     return;
                 }

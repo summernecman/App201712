@@ -9,7 +9,8 @@
     </data>
     <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe"
-        android:layout_width="match_parent" android:layout_height="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:background="@color/white"
 >
 
@@ -60,8 +61,8 @@
                         <TextView
 
                             android:singleLine="true"
-                            android:textColor="@color/black"
-                            android:textSize="16.5sp"
+                            android:textColor="@color/hv_color_text_title"
+                            android:textSize="@dimen/hv_dimen_text_title_aaaa"
                             android:text="@{StringUtil.getStr(item_mana_user.trueName)}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -70,8 +71,8 @@
                             android:layout_weight="1"
                             android:singleLine="true"
                             android:layout_marginLeft="20dp"
-                            android:textColor="@color/color_hv_txt_dark"
-                            android:textSize="16.5sp"
+                            android:textColor="@color/color_grey_500"
+                            android:textSize="@dimen/hv_dimen_text_title_aaaa"
                             android:text="@{StringUtil.getStr(item_mana_user.tel)}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -80,7 +81,7 @@
                             android:background="@drawable/bg_hv_sharp8_yell_stroke"
                             android:singleLine="true"
                             android:layout_marginLeft="10dp"
-                            android:textColor="@color/black"
+                            android:textColor="@color/color_hv_red"
                             android:textSize="12sp"
                             android:text="在线"
                             android:paddingLeft="13dp"
@@ -93,11 +94,12 @@
 
 
                     <TextView
+                            android:text="fjdoifdoipghoisdahjdspoaihgdo"
                         android:id="@+id/tv_des"
                         android:layout_marginTop="5dp"
                         android:singleLine="true"
-                        android:textColor="@color/color_hv_txt_dark"
-                        android:textSize="16.5sp"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/hv_dimen_text_title_aa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>

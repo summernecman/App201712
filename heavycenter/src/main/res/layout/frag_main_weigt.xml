@@ -16,18 +16,18 @@
         >
 
         <LinearLayout
-            android:layout_weight="55"
+
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="match_parent">
 
             <RelativeLayout
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
                 <com.siweisoft.heavycenter.module.view.weight.WeightView
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_centerInParent="true"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
@@ -37,7 +37,7 @@
                     android:layout_centerInParent="true"
                     android:textColor="@color/color_hv_yelll"
                     android:text="906.5"
-                    android:textSize="50sp"
+                    android:textSize="60sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -69,7 +69,7 @@
                         android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:textColor="@color/white"
-                        android:textSize="22sp"
+                        android:textSize="@dimen/hv_dimen_text_big"
                         android:text="2333"
                         android:layout_height="wrap_content"/>
 
@@ -79,7 +79,7 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:textColor="@color/color_hv_txt_dark"
-            android:textSize="13sp"
+            android:textSize="@dimen/hv_dimen_text_a"
             android:text="毛重"
             android:layout_height="wrap_content" />
 </LinearLayout>
@@ -95,7 +95,7 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="22sp"
+                android:textSize="@dimen/hv_dimen_text_big"
                 android:text="2333"
                 android:layout_height="wrap_content" />
 
@@ -104,7 +104,7 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:textColor="@color/color_hv_txt_dark"
-                android:textSize="13sp"
+                android:textSize="@dimen/hv_dimen_text_a"
                 android:text="皮重"
                 android:layout_height="wrap_content" />
     </LinearLayout>
@@ -120,7 +120,7 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="22sp"
+                android:textSize="@dimen/hv_dimen_text_big"
                 android:text="2333"
                 android:layout_height="wrap_content" />
 
@@ -129,7 +129,7 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:textColor="@color/color_hv_txt_dark"
-                android:textSize="13sp"
+                android:textSize="@dimen/hv_dimen_text_a"
                 android:text="扣除"
                 android:layout_height="wrap_content" />
     </LinearLayout>
@@ -145,7 +145,7 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
-                android:textSize="22sp"
+                android:textSize="@dimen/hv_dimen_text_big"
                 android:text="2333"
                 android:layout_height="wrap_content" />
 
@@ -154,13 +154,14 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:textColor="@color/color_hv_txt_dark"
-                android:textSize="13sp"
+                android:textSize="@dimen/hv_dimen_text_a"
                 android:text="净重"
                 android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>
 
             <LinearLayout
+                    android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -170,7 +171,7 @@
                     android:gravity="right|center_vertical"
                     android:layout_weight="1"
                     android:textColor="@color/color_hv_yelll"
-                    android:textSize="17sp"
+                    android:textSize="@dimen/hv_dimen_text_title_aa"
                     android:text="2333"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
@@ -180,7 +181,7 @@
                     android:gravity="center"
                     android:layout_weight="1"
                     android:textColor="@color/color_hv_yelll"
-                    android:textSize="17sp"
+                        android:textSize="@dimen/hv_dimen_text_title_aa"
                     android:text="2333"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />
@@ -190,7 +191,7 @@
                     android:gravity="center_vertical|left"
                     android:layout_weight="1"
                     android:textColor="@color/color_hv_yelll"
-                    android:textSize="17sp"
+                        android:textSize="@dimen/hv_dimen_text_title_aa"
                     android:text="2333"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content" />

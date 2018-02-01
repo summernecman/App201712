@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="dimen_item_content_h">45dp</dimen>
+    <dimen name="dimen_item_content_h">60dp</dimen>
     <dimen name="dimen_item_content_txt_size">17sp</dimen>
     <dimen name="dimen_item_content_left_icon_size">17dp</dimen>
     <dimen name="dimen_item_content_right_icon_size">17dp</dimen>
@@ -49,6 +49,9 @@
         <attr name="inputType" format="integer"/>
 
     </declare-styleable>
+
+
+    <dimen name="hv_dimen_text_big">27sp</dimen>
 
 
     <dimen name="hv_dimen_text_title_aaaaa">22sp</dimen>
