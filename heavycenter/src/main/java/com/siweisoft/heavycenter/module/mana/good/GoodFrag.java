@@ -60,7 +60,7 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
         getP().getD().listGood(new UINetAdapter<GoodListRes>(activity) {
             @Override
             public void onResult(boolean success, String msg, GoodListRes o) {
-                o= new Test().getGoodListRes();
+                //o= new Test().getGoodListRes();
                 super.onResult(success, msg, o);
                 getP().getU().LoadListData(o,GoodFrag.this);
                 getP().getU().finishRefresh();

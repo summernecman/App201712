@@ -8,10 +8,10 @@ public class WeightMsg extends BaseBean {
 
 
     /**
-     * message : {"content":"来拉货","state":"s0","order":{"orderId":50,"ysdId":"","fhdwName":"老干爹","driverId":87,"specification":"C50","shdwName":"王尼玛","receiveCompanyId":37,"ysdNo":"","develiverCompanyId":39,"orderNo":"201802013","productName":"混凝土"},"messageType":"bridge"}
+     * message : {"messageType":"bridge","content":"去送货","state":"s1","time":"2018-02-02 16:17:23","weigh":222,"order":{"orderId":66,"ysdId":107,"fhdwName":"老干爹","driverId":87,"specification":"C50","shdwName":"王尼玛","receiveCompanyId":37,"ysdNo":"15301","develiverCompanyId":39,"orderNo":"201802029","productName":"混凝土"},"fhTare":10}
      */
 
-    private MessageBean message;
+    private MessageBean message = new MessageBean();
 
     public MessageBean getMessage() {
         return message;
@@ -21,18 +21,34 @@ public class WeightMsg extends BaseBean {
         this.message = message;
     }
 
-    public static class MessageBean {
+    public static class MessageBean extends BaseBean{
         /**
-         * content : 来拉货
-         * state : s0
-         * order : {"orderId":50,"ysdId":"","fhdwName":"老干爹","driverId":87,"specification":"C50","shdwName":"王尼玛","receiveCompanyId":37,"ysdNo":"","develiverCompanyId":39,"orderNo":"201802013","productName":"混凝土"}
          * messageType : bridge
+         * content : 去送货
+         * state : s1
+         * time : 2018-02-02 16:17:23
+         * weigh : 222
+         * order : {"orderId":66,"ysdId":107,"fhdwName":"老干爹","driverId":87,"specification":"C50","shdwName":"王尼玛","receiveCompanyId":37,"ysdNo":"15301","develiverCompanyId":39,"orderNo":"201802029","productName":"混凝土"}
+         * fhTare : 10
          */
 
+        private String weighResult;
+        private String messageType;
         private String content;
         private String state;
-        private OrderBean order;
-        private String messageType;
+        private String time;
+        private int weigh;
+        private OrderBean order = new OrderBean();
+        private int fhTare;
+
+
+        public String getMessageType() {
+            return messageType;
+        }
+
+        public void setMessageType(String messageType) {
+            this.messageType = messageType;
+        }
 
         public String getContent() {
             return content;
@@ -50,6 +66,22 @@ public class WeightMsg extends BaseBean {
             this.state = state;
         }
 
+        public String getTime() {
+            return time;
+        }
+
+        public void setTime(String time) {
+            this.time = time;
+        }
+
+        public int getWeigh() {
+            return weigh;
+        }
+
+        public void setWeigh(int weigh) {
+            this.weigh = weigh;
+        }
+
         public OrderBean getOrder() {
             return order;
         }
@@ -58,26 +90,26 @@ public class WeightMsg extends BaseBean {
             this.order = order;
         }
 
-        public String getMessageType() {
-            return messageType;
+        public int getFhTare() {
+            return fhTare;
         }
 
-        public void setMessageType(String messageType) {
-            this.messageType = messageType;
+        public void setFhTare(int fhTare) {
+            this.fhTare = fhTare;
         }
 
         public static class OrderBean extends BaseBean{
             /**
-             * orderId : 50
-             * ysdId :
+             * orderId : 66
+             * ysdId : 107
              * fhdwName : 老干爹
              * driverId : 87
              * specification : C50
              * shdwName : 王尼玛
              * receiveCompanyId : 37
-             * ysdNo :
+             * ysdNo : 15301
              * develiverCompanyId : 39
-             * orderNo : 201802013
+             * orderNo : 201802029
              * productName : 混凝土
              */
 

@@ -53,6 +53,7 @@
                         android:layout_width="0dp"
                         android:layout_height="1dp"/>
                     <TextView
+                        android:id="@+id/tv_planmun"
                         android:background="@drawable/bg_hv_sel_yel_blue_stroke"
                         android:singleLine="true"
                         android:layout_marginLeft="7dp"
@@ -82,6 +83,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_duimian"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:singleLine="true"

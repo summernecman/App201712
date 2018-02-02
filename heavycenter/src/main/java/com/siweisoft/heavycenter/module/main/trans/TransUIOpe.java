@@ -28,6 +28,9 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
+import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
+import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.databinding.FragMainTransBinding;
@@ -49,7 +52,7 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<TransRes.ResultsBean> s, final ViewListener listener) {
+    public void LoadListData(final List<TransDetailRes> s, final ViewListener listener) {
 //        if(o==null || o.getResults()==null || o.getResults().size()==0){
 //            getFrag().showTips("暂无数据");
 //            return;
@@ -85,10 +88,12 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
             }
         });
+
+        final String comname = LocalValue.get登录返回信息().getAbbreviationName();
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_trans, BR.item_main_trans, s,listener){
             @Override
-            public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {
-                super.onBindViewHolder(holder, position, payloads);
+            public void onBindViewHolder(AppViewHolder holder, int position) {
+                super.onBindViewHolder(holder, position);
                 ItemMainTransBinding itemMainTransBinding = (ItemMainTransBinding) holder.viewDataBinding;
                 if(position%2==0){
                     holder.viewDataBinding.getRoot().setBackgroundColor(Color.RED);
@@ -98,6 +103,36 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                 itemMainTransBinding.btSure.setOnClickListener(this);
                 itemMainTransBinding.btSure.setTag(R.id.position,position);
                 itemMainTransBinding.btSure.setTag(R.id.data,list.get(position));
+                switch (s.get(position).getSignStatus()){
+                    case TransDetailRes.SING_STATUS_已确认:
+                        itemMainTransBinding.tvNum.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                        break;
+                    case TransDetailRes.SING_STATUS_等待确认:
+                        itemMainTransBinding.tvNum.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                        break;
+                }
+               // itemMainTransBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).get()));
+                if(comname.equals(s.get(position).getDeveliverCompanyName())){
+                    itemMainTransBinding.type.setText("发往");
+                    itemMainTransBinding.tvNownum.setText(StringUtil.getStr(s.get(position).getDeveliverNum())+"t");
+                    itemMainTransBinding.tvComp.setText(StringUtil.getStr(s.get(position).getDeveliverCompanyName()));
+                }else{
+                    itemMainTransBinding.type.setText("来自");
+                    itemMainTransBinding.tvNownum.setText(StringUtil.getStr(s.get(position).getReceiveNum())+"t");
+                    itemMainTransBinding.tvComp.setText(StringUtil.getStr(s.get(position).getReceiveCompanyName()));
+                }
+
+                itemMainTransBinding.tvDirvername.setText(StringUtil.getStr(s.get(position).getTrueName()));
+                itemMainTransBinding.tvPlannum.setText(StringUtil.getStr(s.get(position).getPlanNumber())+"t");
+
+                if(s.get(position).getFhTime()!=null){
+                    itemMainTransBinding.tvStartime.setText(StringUtil.getStr(s.get(position).getFhTime()));
+                }
+
+                if(s.get(position).getShTime()!=null){
+                    itemMainTransBinding.tvEndtime.setText(StringUtil.getStr(s.get(position).getShTime()));
+                }
+                itemMainTransBinding.tvCarlicenseno.setText(StringUtil.getStr(s.get(position).getCarLicenseNo()));
             }
         });
 

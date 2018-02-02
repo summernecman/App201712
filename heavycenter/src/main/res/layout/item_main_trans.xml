@@ -4,157 +4,135 @@
     <data>
         <variable
             name="item_main_trans"
-            type="com.siweisoft.heavycenter.data.netd.trans.trans.TransRes.ResultsBean" />
+            type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes" />
     </data>
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:id="@+id/ll_trans"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        android:id="@+id/ll_trans"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-    >
+        >
         <RelativeLayout
-                android:background="@drawable/bg_hv_press_light_dark"
-                android:src="@drawable/icon_hv_myce_car"
-                android:layout_width="120dp"
-                android:layout_height="match_parent" >
+            android:background="@drawable/bg_hv_press_light_dark"
+            android:src="@drawable/icon_hv_myce_car"
+            android:layout_width="120dp"
+            android:layout_height="match_parent" >
 
             <com.siweisoft.heavycenter.module.view.circle.CircleBar
-                    android:layout_margin="12dp"
-                    android:id="@+id/circlebar"
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                android:layout_margin="12dp"
+                android:id="@+id/circlebar"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <LinearLayout
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_num"
+                    android:text="3t"
+                    android:textSize="25sp"
+                    android:textColor="@color/color_yell_blue"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
+                    android:layout_height="wrap_content" />
                 <TextView
-                        android:text="3t"
-                        android:textSize="25sp"
-                        android:textColor="@color/color_yell_blue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                <TextView
-                        android:text="10车"
-                        android:textSize="15sp"
-                        android:textColor="@color/color_yell_blue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-            </LinearLayout>
-            <com.siweisoft.heavycenter.module.view.text.BgTextView
-                    android:id="@+id/bt_sure"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:paddingLeft="25dp"
-                    android:paddingRight="25dp"
-
-
-                    android:singleLine="true"
+                    android:id="@+id/tv_carnum"
+                    android:text="10车"
                     android:textSize="15sp"
-                    android:visibility="visible"
-                    style_common:color_one="@color/color_hv_yelll"
-                    style_common:stroke="0dp"
-                    style_common:color_stroke="@color/red"
-                    style_common:corner="5dp"
-                    style_common:color_txt="@color/black"
-
-                    style_common:color_two="@color/color_red_800"
-                    style_common:stroke_two="5dp"
-                    style_common:color_stroke_two="@color/color_hv_yelll"
-                    style_common:corner_two="5dp"
-                    style_common:color_txt_two="@color/white"
-                    style_common:boo_one="false"
-                    android:text="确认"
+                    android:textColor="@color/color_yell_blue"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:layout_alignBottom="@+id/circlebar"
-                    android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-                    android:layout_marginLeft="201dp" android:layout_marginStart="201dp"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
 
         </RelativeLayout>
 
         <LinearLayout
-                android:background="@drawable/bg_hv_press_dark_light"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
+            android:background="@drawable/bg_hv_press_dark_light"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
                 android:gravity="center_vertical"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <LinearLayout
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
                 <TextView
-                        android:singleLine="true"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/hv_dimen_text_title_aaaaa"
-                        android:text="@{item_main_trans.productName}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/hv_dimen_text_title_aaaaa"
+                    android:text="@{item_main_trans.productName}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
                 <TextView
-                        android:layout_weight="1"
-                        android:singleLine="true"
-                        android:layout_marginLeft="14dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/hv_dimen_text_aaa"
-                        android:text="@{item_main_trans.specifications}"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                    android:layout_weight="1"
+                    android:singleLine="true"
+                    android:layout_marginLeft="14dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/hv_dimen_text_aaa"
+                    android:text="@{item_main_trans.specifications}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <LinearLayout
-                        android:gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                     <ImageView
-                            android:src="@drawable/icon_hv_local"
-                            android:layout_width="15dp"
-                            android:layout_height="15dp" />
+                        android:src="@drawable/icon_hv_local"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp" />
                     <TextView
-
-                            android:background="@drawable/bg_hv_sharp1_yell_stroke"
-                            android:singleLine="true"
-                            android:layout_marginLeft="5dp"
-                            android:textColor="@color/color_base_txt_heavycenter_y"
-                            android:textSize="12sp"
-                            android:text="@{item_main_trans.carLicenseNo}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                        android:id="@+id/tv_carlicenseno"
+                        android:background="@drawable/bg_hv_sharp1_yell_stroke"
+                        android:singleLine="true"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/color_base_txt_heavycenter_y"
+                        android:textSize="12sp"
+                        android:text="@{item_main_trans.carLicenseNo}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
             </LinearLayout>
 
-
             <LinearLayout
+                android:id="@+id/ll_send"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                <TextView
+                    <TextView
+                        android:id="@+id/tv_dirvername"
                         android:singleLine="true"
                         android:textColor="@color/white"
                         android:textSize="17sp"
-                        android:text="@{item_main_trans.develiverCompanyName}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
 
-                <com.siweisoft.heavycenter.module.view.text.BgTextView
+                    <com.siweisoft.heavycenter.module.view.text.BgTextView
+                        android:id="@+id/type"
                         android:layout_marginLeft="5dp"
                         android:padding="1dp"
                         android:singleLine="true"
@@ -177,21 +155,22 @@
                         android:layout_height="wrap_content" />
 
 
-                <TextView
+                    <TextView
+                        android:id="@+id/tv_plannum"
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/white"
                         android:textSize="17sp"
-                        android:text="@{item_main_trans.receiveCompanyName}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
 
-                <View
+                    <View
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="1dp"/>
-                <TextView
+                    <TextView
+                        android:id="@+id/tv_startime"
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/color_hv_txt_dark"
@@ -199,9 +178,9 @@
                         android:text="12/09 10:10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-            </LinearLayout>
+                </LinearLayout>
 
-            <LinearLayout
+                <LinearLayout
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -209,14 +188,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                <TextView
+                    <TextView
+                        android:id="@+id/tv_comp"
                         android:singleLine="true"
                         android:textColor="@color/white"
                         android:textSize="@dimen/hv_dimen_text_aa"
                         android:text="@{item_main_trans.develiverCompanyName}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                <TextView
+                    <TextView
+                        android:id="@+id/tv_nownum"
                         android:singleLine="true"
                         android:layout_marginLeft="15dp"
                         android:textColor="@color/color_hv_yelll"
@@ -225,13 +206,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                <View
+                    <View
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="1dp"/>
 
-                <com.siweisoft.heavycenter.module.view.text.BgTextView
-                        android:id="@+id/bt_agree"
+                    <TextView
+                        android:id="@+id/tv_endtime"
+                        android:singleLine="true"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/color_hv_txt_dark"
+                        android:textSize="@dimen/hv_dimen_text_date_aaa"
+                        android:text="12/09 10:10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <com.siweisoft.heavycenter.module.view.text.BgTextView
+                        android:id="@+id/bt_sure"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:paddingLeft="15dp"
@@ -239,7 +230,7 @@
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textSize="15sp"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         style_common:color_one="@color/color_hv_yelll"
                         style_common:stroke="0dp"
                         style_common:color_stroke="@color/red"
@@ -255,7 +246,9 @@
                         android:text="接受"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
+                </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 </layout>

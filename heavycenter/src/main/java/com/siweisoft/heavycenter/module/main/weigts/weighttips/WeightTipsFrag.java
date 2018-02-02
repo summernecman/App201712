@@ -21,6 +21,7 @@ public class WeightTipsFrag  extends BaseUIFrag<WeightTipsUIOpe,WeightTipsDAOpe>
         super.onClick(v);
         if(onClickListener!=null ){
             onClickListener.onClick(v);
+            v.setTag(R.id.data,Double.parseDouble(getP().getU().bind.tvNewvalue.getText().toString()));
         }
 
     }

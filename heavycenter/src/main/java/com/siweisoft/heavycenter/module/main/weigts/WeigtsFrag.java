@@ -11,11 +11,14 @@ import com.android.lib.util.GsonUtil;
 import com.android.lib.util.system.HandleUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.jpush.SimpleWeightMsg;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
+import com.siweisoft.heavycenter.data.netd.jpush.WeightRes;
 import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
 import com.siweisoft.heavycenter.data.netd.weight.save.SaveWeightRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.weigts.weight.WeigtFrag;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -90,6 +93,18 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
         getP().getD().setWeightMsg(weightMsg);
         getP().getU().initUI(getP().getD().getWeightMsg());
 
+    }
+
+    public void initPage(WeightMsg weightMsg){
+        for(int i=0;i<getP().getD().getPages().size();i++){
+            WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages().get(i);
+            WeightRes weightRes = new WeightRes();
+            weightRes.setWeight(weightMsg.getMessage().getWeigh());
+
+            LoginResBean loginResBean = new LoginResBean();
+            //loginResBean.setTrueName(weightMsg.getMessage().getOrder());
+           // weigtFrag.getP().getU().init();
+        }
     }
 
 }

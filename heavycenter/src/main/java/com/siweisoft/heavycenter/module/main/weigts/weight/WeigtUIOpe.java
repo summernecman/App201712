@@ -8,9 +8,13 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+
+import com.android.lib.util.StringUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.jpush.WeightRes;
 import com.siweisoft.heavycenter.databinding.FragMainWeigtBinding;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -39,5 +43,13 @@ public class WeigtUIOpe extends AppUIOpe<FragMainWeigtBinding> {
 
     public FragManager2 getFragManager2() {
         return fragManager2;
+    }
+
+    public void init(WeightRes weightRes, LoginResBean loginResBean){
+        bind.tvWeight.setText(StringUtil.getStr(weightRes.getWeight()));
+        bind.tvMz.setText(StringUtil.getStr(weightRes.getMz()));
+        bind.tvPz.setText(StringUtil.getStr(weightRes.getPz()));
+        bind.tvKc.setText(StringUtil.getStr(weightRes.getKc()));
+        bind.tvJz.setText(StringUtil.getStr(weightRes.getJz()));
     }
 }

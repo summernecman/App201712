@@ -21,7 +21,7 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
 
 
     @OnClick({R.id.tv_weight,R.id.ll_mz,R.id.ll_pz,R.id.ll_kc})
-    public void onClick(View v) {
+    public void onClick(final View v) {
         String title = "";
         switch (v.getId()){
             case R.id.tv_weight:
@@ -43,7 +43,15 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
             public void onClick(View vv) {
                 switch (vv.getId()){
                     case R.id.tv_sure:
-
+                        double d  = (double) vv.getTag(R.id.data);
+                        switch (v.getId()){
+                            case R.id.tv_weight:
+                                getP().getD().getWeightRes().setWeight(d);
+                                break;
+                            case R.id.ll_kc:
+                                getP().getD().getWeightRes().setDeduct(d);
+                                break;
+                        }
                         break;
                     case R.id.tv_close:
 

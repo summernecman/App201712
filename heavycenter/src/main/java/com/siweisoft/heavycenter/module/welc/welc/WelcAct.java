@@ -40,6 +40,8 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
         }
     }
 
+
+
     private void AutoLogin(){
         if(LocalValue.is自动登录()&& LocalValue.get登录参数()!=null){
             getP().getD().go登录(new UINetAdapter<LoginResBean>(WelcAct.this) {

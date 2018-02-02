@@ -52,20 +52,26 @@ public class WeigtsDAOpe extends AppDAOpe {
         SaveWeightReq weightReq = new SaveWeightReq();
         weightReq.setOrderId(weightMsg.getMessage().getOrder().getOrderId());
         weightReq.setTransportRecordId(weightMsg.getMessage().getOrder().getYsdId());
-
         weightReq.setState(weightMsg.getMessage().getState());
         switch (weightMsg.getMessage().getState()){
             case "s0":
+            case "s3":
+            case "s7":
+            case "sD":
+            case "s5":
+            case "rF":
+            case "r5":
             case "r7":
+            case "rD":
                 weightReq.setWeighLocation(SaveWeightReq.皮重);
-                weightReq.setWeighing(10);
                 break;
             case "s1":
+            case "r1":
             case "r3":
                 weightReq.setWeighLocation(SaveWeightReq.毛重);
-                weightReq.setWeighing(20);
                 break;
         }
+        weightReq.setWeighing(weightMsg.getMessage().getWeigh());
         weightReq.setOrderId(weightMsg.getMessage().getOrder().getOrderId());
         weightReq.setDeductWeight(0);
         weightReq.setDriverId(weightMsg.getMessage().getOrder().getDriverId());

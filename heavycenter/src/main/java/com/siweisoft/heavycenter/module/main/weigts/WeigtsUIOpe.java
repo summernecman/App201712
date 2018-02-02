@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.databinding.FragMainWeigtsBinding;
 
@@ -33,8 +34,14 @@ public class WeigtsUIOpe extends AppUIOpe<FragMainWeigtsBinding> {
         bind.tvContent.setText(StringUtil.getStr(weightMsg.getMessage().getContent()));
         bind.tvGoodname.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getProductName()));
         bind.tvSpes.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getSpecification()));
-        bind.tvShdw.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getShdwName()));
-
+        bind.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getShdwName()));
+        if(LocalValue.get登录返回信息().getAbbreviationName().equals(weightMsg.getMessage().getOrder().getFhdwName())){
+            bind.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getShdwName()));
+            bind.tvType.setText("发往");
+        }else{
+            bind.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getFhdwName()));
+            bind.tvType.setText("来自");
+        }
 
 
 

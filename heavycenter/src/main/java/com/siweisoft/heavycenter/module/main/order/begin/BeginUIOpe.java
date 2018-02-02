@@ -19,6 +19,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
@@ -52,6 +53,8 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
             return;
         }
         getFrag().removeTips();
+
+        final String comname = LocalValue.get登录返回信息().getAbbreviationName();
         switch (type){
             case OrdersReq.STATUS_NEW:
                 bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s.getResults(),listener){
@@ -64,15 +67,26 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                         super.onBindViewHolder(holder, position);
                         ItemMainOrderBeginBinding beginBinding = (ItemMainOrderBeginBinding) holder.viewDataBinding;
                         beginBinding.getRoot().setSelected(position%2==0?true:false);
-                        if(NewsOrderReqBean.发货.equals(s.getResults().get(position).getOrderType())){
-                            beginBinding.tvType.setText("发往");
-                            beginBinding.tvType.setSelected(false);
-                        }else{
-                            beginBinding.tvType.setText("来自");
-                            beginBinding.tvType.setSelected(true);
-                        }
-                        beginBinding.tvPlantime.setText("计划开始时间:"+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
+
+
+                        beginBinding.tvPlantime.setText("计划开始时间:"+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
                         beginBinding.getRoot().setTag(R.id.type,type);
+
+                        if(comname.equals(s.getResults().get(position).getFhdwName())){
+                            beginBinding.tvDuimian.setText(s.getResults().get(position).getShdwName());
+                            beginBinding.tvType.setText("发往");
+                            beginBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_solid);
+                            beginBinding.tvPlanmun.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_stroke);
+                            beginBinding.tvPlanmun.setTextColor(context.getResources().getColor(R.color.color_hv_yelll));
+
+                        }else{
+                            beginBinding.tvDuimian.setText(s.getResults().get(position).getFhdwName());
+                            beginBinding.tvType.setText("来自");
+                            beginBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_blue_solid);
+                            beginBinding.tvPlanmun.setBackgroundResource(R.drawable.bg_hv_sharp2_blue_stroke);
+                            beginBinding.tvPlanmun.setTextColor(context.getResources().getColor(R.color.color_hv_blue));
+                        }
+
                     }
                 });
                 break;
@@ -170,6 +184,10 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 
     public void finishLoadmore(){
         bind.refreshLayout.finishLoadmore();
+    }
+
+    public void notifyDataSetChanged(){
+        bind.recycle.getAdapter().notifyDataSetChanged();
     }
 
 

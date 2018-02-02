@@ -5,26 +5,24 @@ package com.siweisoft.heavycenter.module.main.weigts.detail;
 import android.content.Context;
 
 import com.siweisoft.heavycenter.base.AppDAOpe;
+import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 
 import java.util.ArrayList;
 
 public class DetailDAOpe extends AppDAOpe {
 
-    private ArrayList<String> strings = new ArrayList<>();
+    private ArrayList<String> weightMsgs = new ArrayList<>();
 
     public DetailDAOpe(Context context) {
         super(context);
-        for(int i=0;i<2;i++){
-            strings.add(i+"gjrkoie[gj[opqgjeopw[qjfgeopw[qkjfgoew");
-        }
     }
 
 
-    public ArrayList<String> getStrings() {
-        return strings;
+    public ArrayList<String> getWeightMsgs() {
+        return weightMsgs;
     }
 
-    public void setStrings(ArrayList<String> strings) {
-        this.strings = strings;
+    public void setWeightMsgs(ArrayList<String> weightMsgs) {
+        this.weightMsgs = weightMsgs;
     }
 }

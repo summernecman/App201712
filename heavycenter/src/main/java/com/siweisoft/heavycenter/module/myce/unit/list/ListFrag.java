@@ -148,7 +148,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
             @Override
             public void onResult(boolean success, String msg, ListResBean o) {
                 super.onResult(success, msg, o);
-                o = new Test().getListResBean();
+                //o = new Test().getListResBean();
                 getP().getD().setNetUnits(o);
                 getP().getU().LoadListData(getP().getD().getSelUnits(""),ListFrag.this);
                 getP().getU().finishRefresh();

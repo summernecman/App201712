@@ -10,11 +10,15 @@ import android.view.View;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.databinding.FragMainWeigtsDetailBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainWeightDetailBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
@@ -27,7 +31,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(List<String> s) {
+    public void LoadListData(final ArrayList<String> s) {
 //        if(o==null || o.getResults()==null || o.getResults().size()==0){
 //            getFrag().showTips("暂无数据");
 //            return;
@@ -37,6 +41,10 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
+                ItemMainWeightDetailBinding binding = (ItemMainWeightDetailBinding) holder.viewDataBinding;
+//                binding.tvTime.setText(StringUtil.getStr(s.get(position).getMessage().getTime()));
+//                binding.tvTxt.setText(StringUtil.getStr(s.get(position).getMessage().getContent()));
+                binding.tvTxt.setText(StringUtil.getStr(s));
             }
         });
     }

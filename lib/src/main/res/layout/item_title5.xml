@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_base_title_clip"
         android:background="@color/color_base_statusbar"
-        android:elevation="1dp"
         android:paddingTop="20dp"
         android:gravity="center_vertical"
         android:orientation="vertical">

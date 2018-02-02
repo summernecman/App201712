@@ -70,6 +70,7 @@ dependencies {
     compile 'com.android.support:support-compat:27.0.2'
     compile 'com.android.support:support-core-ui:27.0.2'
     compile 'com.android.support:support-fragment:27.0.2'
+    compile 'com.android.support:cardview-v7:27.0.2'
     //android 基本支持库
     compile 'com.android.support:appcompat-v7:27.0.2'
     compile 'com.android.support:recyclerview-v7:27.0.2'

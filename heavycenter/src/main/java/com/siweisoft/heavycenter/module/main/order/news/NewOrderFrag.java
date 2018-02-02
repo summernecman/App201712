@@ -72,12 +72,12 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 builder.setCallBack(new OnDateSetListener() {
                     @Override
                     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                        String s = DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD,new Date(millseconds));
+                        String s = DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(millseconds));
                         getP().getD().getNewsOrderReqBean().setPlanTime(s);
                         getP().getU().init(getP().getD().getNewsOrderReqBean());
                     }
                 });
-                TimePickerDialog timePickerDialog = builder.setType(Type.YEAR_MONTH_DAY).build();
+                TimePickerDialog timePickerDialog = builder.setType(Type.MONTH_DAY_HOUR_MIN).build();
                 timePickerDialog.show(getFragmentManager(),"timepick");
 
                 break;

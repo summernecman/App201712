@@ -29,7 +29,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     @Override
     public void lazyInit() {
         getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getStrings());
+        getP().getU().LoadListData(getP().getD().getWeightMsgs());
     }
 
     @Override
@@ -51,7 +51,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void XXX(String str) {
         WeightMsg weightMsg = GsonUtil.getInstance().fromJson(str,WeightMsg.class);
-      getP().getD().getStrings().add(str);
+      getP().getD().getWeightMsgs().add(str);
       getP().getU().notifyDataSetChanged();
 
     }

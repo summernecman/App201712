@@ -15,6 +15,7 @@ import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
+import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
@@ -175,23 +176,23 @@ public class Test {
     public TransRes getTransRes(){
         TransRes transRes = new TransRes();
         for(int i=0;i<10;i++){
-            TransRes.ResultsBean resultsBean = new TransRes.ResultsBean();
+            TransDetailRes resultsBean = new TransDetailRes();
             resultsBean.setCarLicenseNo("车牌号");
             resultsBean.setCarNumber("NO123");
             resultsBean.setDeveliverCompanyName("运输公司");
-            resultsBean.setDeveliverNum("123");
-            resultsBean.setFhTime("发货时间");
+            resultsBean.setDeveliverNum(123);
+           // resultsBean.setFhTime("发货时间");
             resultsBean.setOrdersId(1);
             resultsBean.setOrderType("订单类型");
-            resultsBean.setPlanNumber(123);
+           // resultsBean.setPlanNumber(123);
             resultsBean.setProductName("产品");
             resultsBean.setReceiveCompanyName("收货单位");
-            resultsBean.setReceiveNum("34");
-            resultsBean.setShTime(System.currentTimeMillis());
+            resultsBean.setReceiveNum(34);
+           // resultsBean.setShTime(System.currentTimeMillis());
             resultsBean.setSignStatus(1);
             resultsBean.setSpecifications("规格");
             resultsBean.setTel("18721547854");
-            resultsBean.setTotalSuttle(20);
+           // resultsBean.setTotalSuttle(20);
             resultsBean.setTransportrecordId(1);
             resultsBean.setTrueName("唐杰");
             resultsBean.setUserId(1);

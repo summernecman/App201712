@@ -67,6 +67,8 @@ import com.siweisoft.heavycenter.data.netd.other.city.CityReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 import com.siweisoft.heavycenter.data.netd.scan.weight.WeightReq;
 import com.siweisoft.heavycenter.data.netd.scan.weight.WeightRes;
+import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailReq;
+import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignReq;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
@@ -180,7 +182,12 @@ public class NetDataOpe {
 
 
         public static void signTrans(Context context, TransSignReq reqBean, NetI<TransSignRes> adapter) {
-            NetGet.postData(context,NetValue.获取地址("ysRecord/signTranSportRecord"),reqBean,adapter);
+            NetGet.postData(context,NetValue.获取地址("/ysRecord/signTranSportRecord"),reqBean,adapter);
+        }
+
+
+        public static void detailTrans(Context context, TransDetailReq reqBean, NetI<TransDetailRes> adapter) {
+            NetGet.getData(context,NetValue.获取地址("/ysRecord/getDetail"),reqBean,adapter);
         }
 
 
