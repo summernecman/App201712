@@ -6,9 +6,7 @@ import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
-import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.network.newsf.UIFNetAdapter;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -21,31 +19,24 @@ import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealResBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 
-import java.util.ArrayList;
-
 public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshListener,OnLoadmoreListener ,ViewListener{
 
+
     @Override
-    public void initData() {
-        super.initData();
-        getP().getD().setMoudle(getArguments().getString(ValueConstant.DATA_POSITION));
+    protected void onFristVisibleInit() {
         getP().getU().initRefresh(this,this);
-        onRefresh(null);
-
+        getP().getU().autoRefresh();
     }
-
 
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         getP().getD().setPageindex(getP().getD().getPageindex()+1);
-        getP().getD().getMsgSys(new UIFNetAdapter<MsgsResBean>(this) {
+        getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_INDEX),new UINetAdapter<MsgsResBean>(this) {
             @Override
-            public void onResult(boolean success, String msg, MsgsResBean o) {
-                super.onResult(success, msg, o);
-                getP().getU().finishLoadmore();
+            public void onSuccess(MsgsResBean o) {
+                o= new Test().getMsgsResBean();
                 getP().getD().addData(o);
                 getP().getU().notifyDataSetChanged();
-
             }
         });
     }
@@ -53,13 +44,12 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getD().setPageindex(NetValue.PAGE_INDEX_START);
-        getP().getD().getMsgsResBean().setResults(new ArrayList<MsgsResBean.ResultsBean>());
-        getP().getD().getMsgSys(new UIFNetAdapter<MsgsResBean>(this) {
+        getP().getD().getMsgsResBean().getResults().clear();
+        getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_INDEX),new UINetAdapter<MsgsResBean>(this) {
             @Override
-            public void onResult(boolean success, String msg, MsgsResBean o) {
-                super.onResult(success, msg, o);
+            public void onSuccess(MsgsResBean o) {
+                o= new Test().getMsgsResBean();
                 getP().getD().addData(o);
-                getP().getU().finishRefresh();
                 getP().getU().LoadListData(getP().getD().getMsgsResBean(),SysFrag.this);
             }
         });
@@ -92,14 +82,11 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
                 final int finalAuditstate = auditstate;
                 getP().getD().dealMss(data.getMessageId(), status[0], new UINetAdapter<MsgDealResBean>(getContext()) {
                     @Override
-                    public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
-                        stopLoading();
-                        if("200".equals(baseResBean.getCode())){
-                            data.setAuditState(finalAuditstate);
-                            getP().getU().notifyDataSetChanged();
-                            if((status[0] == MsgDealReqBean.AUDII_STATUS_YES)){
-                                ((MainAct)getBaseUIActivity()).netRestart();
-                            }
+                    public void onSuccess(MsgDealResBean o) {
+                        data.setAuditState(finalAuditstate);
+                        getP().getU().notifyDataSetChanged();
+                        if((status[0] == MsgDealReqBean.AUDII_STATUS_YES)){
+                            ((MainAct)getBaseUIActivity()).netRestart();
                         }
                     }
                 });

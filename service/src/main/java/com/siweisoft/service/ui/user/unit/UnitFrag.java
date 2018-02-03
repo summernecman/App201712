@@ -17,8 +17,8 @@ import butterknife.OnClick;
 public class UnitFrag extends BaseServerFrag<UnitUIOpe, UnitDAOpe> {
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         setTitleBean(new TitleBean("返回", "更改单位", ""));
         getP().getU().initUnit(Value.getUserInfo().getUnit());
     }

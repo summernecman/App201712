@@ -12,15 +12,12 @@ import android.widget.TextView;
 
 import com.android.lib.R;
 import com.android.lib.base.activity.BaseUIActivity;
-import com.android.lib.base.interf.BackUII;
 import com.android.lib.base.interf.FragI;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseOpes;
 import com.android.lib.base.ope.BaseUIOpe;
-import com.android.lib.bean.databean.Value;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.LogUtil;
-import com.android.lib.util.fragment.two.FragKey;
 import com.android.lib.util.system.HandleUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
 
@@ -28,7 +25,6 @@ import com.wang.avi.AVLoadingIndicatorView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.w3c.dom.Text;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -60,6 +56,8 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     private boolean isInit = false;
 
+    private boolean isFiistVisibleinit = false;
+
     private ViewGroup parent;
 
     public BaseUIFrag() {
@@ -82,7 +80,6 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             index = getArguments().getInt(ValueConstant.FRAG_POSITION);
         }
         View group = inflater.inflate(getLayoutID(), null);
-
         return group;
     }
 
@@ -102,33 +99,54 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             fragIs.get(i).onCreateView(null,null,savedInstanceState);
         }
         getP().getU().initUI(this);
+        initNow();
         HandleUtil.getInstance().postDelayed(new Runnable() {
             @Override
             public void run() {
                 if(isAttach()){
-                    doThing();
-                    initData();
+                    initdelay();
                 }
             }
-        }, 1500);
+        }, 700);
         for(int i=0;i<fragIs.size();i++){
             fragIs.get(i).onViewCreated(view,savedInstanceState);
         }
     }
 
-    public void doThing() {
+    public void initdelay() {
         if(getView()==null){
             return;
         }
     }
 
-    public void initData() {
+    public void initNow() {
         if(getView()==null){
             return;
         }
     }
 
-    public void lazyInit(){
+    public void onFristVisible(){
+        if(!isFiistVisibleinit){
+        onFristVisibleInit();
+        isFiistVisibleinit = true;
+        }
+    }
+
+    private int 显示次数 = 0;
+
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if(isVisibleToUser&&isAttach()){
+//            显示次数=显示次数+1;
+//        }
+//        LogUtil.E(getClass().getSimpleName()+"setUserVisibleHint"+isVisibleToUser+(getActivity()==null)+显示次数);
+//        if(显示次数==1){
+//
+//        }
+//    }
+
+    protected void onFristVisibleInit(){
 
     }
 

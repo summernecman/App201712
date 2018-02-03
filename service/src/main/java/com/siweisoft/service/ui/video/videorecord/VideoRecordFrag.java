@@ -11,8 +11,6 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.view.recyclerview.MyRecyclerView;
-import com.android.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.android.lib.view.refreshlayout.MaterialRefreshListener;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -34,8 +32,8 @@ import java.util.ArrayList;
 public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecordDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener {
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getU().initRefresh(this,this);
         setTitleBean(new TitleBean("返回", "录像", "", "搜索"));
         getP().getD().setHistoryBean((HistoryBean) getArguments().getSerializable(Value.DATA_DATA));
@@ -67,7 +65,7 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
 
 
     public void initData2() {
-        super.initData();
+        super.initNow();
         ContactBean contactBean = new ContactBean();
         contactBean.setFromid(Value.getUserInfo().getId());
         contactBean.setPagesize(5);
@@ -108,7 +106,7 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
                     public void onFinish(Object o) {
                         FragmentUtil2.getInstance().removeTop(activity, Value.ROOTID_ONE);
                         getP().getD().setSeachBean((SeachBean) o);
-                        initData();
+                        initNow();
                     }
                 });
                 break;
@@ -144,6 +142,6 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        initData();
+        initNow();
     }
 }

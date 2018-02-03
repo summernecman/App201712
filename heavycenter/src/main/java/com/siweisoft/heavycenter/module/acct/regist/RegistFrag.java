@@ -2,14 +2,11 @@ package com.siweisoft.heavycenter.module.acct.regist;
 
 //by summer on 2017-12-14.
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.interf.OnLoadingInterf;
-import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -24,8 +21,8 @@ import butterknife.Optional;
 public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
     }
 
     @Optional

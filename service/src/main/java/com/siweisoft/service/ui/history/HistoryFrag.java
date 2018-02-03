@@ -9,8 +9,6 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.FragmentUtil2;
-import com.android.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.android.lib.view.refreshlayout.MaterialRefreshListener;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.service.R;
@@ -27,13 +25,13 @@ import java.util.ArrayList;
 public class HistoryFrag extends BaseServerFrag<HistoryUIOpe, HistoryDAOpe> implements ViewListener ,OnRefreshListener{
 
     @Override
-    public void doThing() {
+    public void initdelay() {
         getP().getU().initRefresh(this);
     }
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         setTitleBean(new TitleBean("", "呼叫历史", ""));
         getP().getD().getVideos(new OnFinishListener() {
             @Override
@@ -76,6 +74,6 @@ public class HistoryFrag extends BaseServerFrag<HistoryUIOpe, HistoryDAOpe> impl
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        initData();
+        initNow();
     }
 }

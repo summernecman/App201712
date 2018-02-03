@@ -3,7 +3,6 @@ package com.siweisoft.heavycenter.module.mana.car.detail;
 //by summer on 2017-12-19.
 
 import android.content.Intent;
-import android.os.Environment;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
@@ -11,12 +10,9 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.UriUtils;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.data.locd.LocalValue;
-import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.bind.BindCarRes;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
@@ -25,7 +21,6 @@ import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.OnClick;
@@ -38,8 +33,8 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
     public static final String TYPE_DETAIL = "TYPE_DETAIL";
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getD().setType(getArguments().getString(ValueConstant.DATA_DATA2));
         getP().getU().init(getP().getD().getType());
         switch (getP().getD().getType()){

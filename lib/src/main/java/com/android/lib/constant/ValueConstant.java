@@ -34,10 +34,12 @@ public class ValueConstant {
     public static final String DATA_INTENT2 = "DATA_INTENT2";
     public static final String DATA_INTENT3 = "DATA_INTENT3";
     public static final String DATA_POSITION = "DATA_POSITION";
+    public static final String DATA_INDEX = "DATA_INDEX";
     public static final String DATA_POSITION2 = "DATA_POSITION2";
     public static final String DATA_TYPE = "DATA_TYPE";
     public static final String FARG_TYPE = "FARG_TYPE";
     public static final String FARG_TYPE_CMD = "FARG_TYPE_CMD";
+    public static final String DATA_MOUDLE = "DATA_MOUDLE";
     /**
      * wraming do not use this value in anywhere for it's system value
      */

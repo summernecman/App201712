@@ -26,7 +26,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
 
 
     @Override
-    public void lazyInit() {
+    public void onFristVisibleInit() {
         getP().getU().initPages(fragment,getP().getD().initPages());
 
     }

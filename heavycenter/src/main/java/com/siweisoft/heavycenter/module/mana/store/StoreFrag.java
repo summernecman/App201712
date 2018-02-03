@@ -9,21 +9,16 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.network.newsf.UIFNetAdapter;
-import com.android.lib.util.LogUtil;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
-import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.store.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.mana.store.info.StoreInfoFrag;
 import com.siweisoft.heavycenter.module.mana.store.news.NewFrag;
 
@@ -34,8 +29,8 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     public static final int 选择一个仓库=1;
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getU().setSwipe(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库?false:true);
         getP().getU().initRefresh(this,this);
         getP().getU().initRecycle();

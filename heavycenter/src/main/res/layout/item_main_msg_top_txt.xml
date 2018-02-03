@@ -7,8 +7,8 @@
     </data>
 
             <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:textSize="15sp"
-                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_viewpage_title_txtsize"
+                android:textColor="@color/color_viewpage_title_txtcolor"
                 android:id="@+id/a"
                 android:gravity="center"
                 android:text="全部"

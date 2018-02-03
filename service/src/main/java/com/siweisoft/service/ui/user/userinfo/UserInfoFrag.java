@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
-import com.android.lib.constant.UrlConstant;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.NetWork;
 import com.android.lib.util.FragmentUtil2;
@@ -18,8 +17,6 @@ import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.view.image.ImageFrag;
 import com.android.lib.view.recyclerview.MyRecyclerView;
-import com.android.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.android.lib.view.refreshlayout.MaterialRefreshListener;
 import com.hyphenate.EMValueCallBack;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMCursorResult;
@@ -50,13 +47,13 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
 
 
     @Override
-    public void doThing() {
+    public void initdelay() {
         getP().getU().initRefresh(this,this);
     }
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         if (((UserBean) getArguments().getSerializable(ValueConstant.DATA_DATA)) != null) {
             init();
         } else {

@@ -13,7 +13,6 @@ import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
@@ -31,8 +30,8 @@ import butterknife.OnClick;
 public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListener,OnRefreshListener,OnFinishListener {
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getU().initRefresh(this);
         getP().getU().initRecycle();
         onRefresh(null);

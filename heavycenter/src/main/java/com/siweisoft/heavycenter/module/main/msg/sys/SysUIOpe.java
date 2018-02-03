@@ -27,13 +27,10 @@ public class SysUIOpe extends BaseUIOpe<FragMainMsgSysBinding>{
 
     public SysUIOpe(Context context) {
         super(context);
-        initRecycle();
-    }
-
-
-    private void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
+
+
 
     public void LoadListData(final MsgsResBean o, ViewListener listener){
         if(o==null || o.getResults()==null || o.getResults().size()==0){
@@ -93,20 +90,20 @@ public class SysUIOpe extends BaseUIOpe<FragMainMsgSysBinding>{
 
 
     public void initRefresh(OnRefreshListener onRefreshListener,OnLoadmoreListener onLoadmoreListener){
-        bind.refreshLayout.setOnRefreshListener(onRefreshListener);
-        bind.refreshLayout.setOnLoadmoreListener(onLoadmoreListener);
+        bind.refresh.setOnRefreshListener(onRefreshListener);
+        bind.refresh.setOnLoadmoreListener(onLoadmoreListener);
     }
 
     public void finishRefresh(){
-        bind.refreshLayout.finishRefresh();
+        bind.refresh.finishRefresh();
     }
 
     public void finishLoadmore(){
-        bind.refreshLayout.finishLoadmore();
+        bind.refresh.finishLoadmore();
     }
 
     public void autoRefresh(){
-        bind.refreshLayout.autoRefresh();
+        bind.refresh.autoRefresh();
     }
 
     public void notifyDataSetChanged(){

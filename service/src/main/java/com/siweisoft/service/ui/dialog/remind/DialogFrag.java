@@ -17,8 +17,8 @@ public class DialogFrag extends BaseServerFrag<DialogUIOpe, DialogDAOpe> {
     OnFinishListener onFinishListener;
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         if (SystemUtil.isBackground(activity)) {
             IntentUtil.getInstance().IntentTo(activity, activity.getPackageName());
         }

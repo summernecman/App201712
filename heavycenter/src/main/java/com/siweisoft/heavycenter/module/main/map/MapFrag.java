@@ -17,8 +17,7 @@ public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
 
 
     @Override
-    public void lazyInit() {
-        super.lazyInit();
+    public void onFristVisibleInit() {
         getP().getD().getMapUtil().init(getActivity());
         getP().getD().getMapUtil().registerLocationListener(getActivity(), new BDAbstractLocationListener() {
             @Override

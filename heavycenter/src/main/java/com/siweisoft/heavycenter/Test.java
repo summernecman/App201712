@@ -138,7 +138,7 @@ public class Test {
         storeDetail.setMaxStock(1235.6f);
         storeDetail.setMinStock(35f);
         storeDetail.setProductId(1);
-        storeDetail.setProductMaxStock(132f);
+        storeDetail.setProductMaxStock(1302f);
         storeDetail.setProductMinStock(34f);
         storeDetail.setSpecifications("300f");
         storeDetail.setStatus(1);

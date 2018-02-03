@@ -35,8 +35,8 @@ public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
     PowerManager.WakeLock mWakeLock;
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         getP().getD().setVideoBean((VideoBean) getArguments().getSerializable(Value.DATA_DATA));
         getP().getU().initCallINfo(getP().getD().getVideoBean().getFromUser());
         getP().getU().shark();

@@ -36,8 +36,8 @@ public class UserHeadNameFrag extends BaseServerFrag<UserHeadNameUIOpe, UserHead
 
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         setTitleBean(new TitleBean("返回", "头像和姓名", ""));
         getP().getU().initInfo();
     }

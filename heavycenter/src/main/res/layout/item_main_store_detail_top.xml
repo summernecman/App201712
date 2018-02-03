@@ -16,7 +16,7 @@
             android:id="@+id/progress"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="38dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -25,14 +25,14 @@
             android:gravity="center_vertical"
             android:id="@+id/ll_min"
             android:background="@drawable/icon_hv_main_store_lt"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="50dp"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
                     android:singleLine="true"
                 android:id="@+id/tv_minwuliao"
-                android:textSize="@dimen/hv_dimen_text"
+                android:textSize="17sp"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -40,8 +40,8 @@
             <TextView
                     android:singleLine="true"
                 android:id="@+id/tv_minstore"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text_date"
+                android:textColor="@color/color_grey_500"
+                android:textSize="13sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -52,7 +52,7 @@
             android:id="@+id/ll_max"
             android:gravity="center_vertical"
             android:background="@drawable/icon_hv_main_store_rt"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="50dp"
             android:layout_alignParentRight="true"
             android:orientation="vertical"
             android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
             <TextView
                     android:singleLine="true"
                 android:id="@+id/tv_maxwuliao"
-                android:textSize="@dimen/hv_dimen_text"
+                android:textSize="17sp"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -69,8 +69,8 @@
                     android:singleLine="true"
                 android:gravity="center_vertical"
                 android:id="@+id/tv_maxstore"
-                android:textSize="@dimen/hv_dimen_text"
-                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textColor="@color/color_grey_500"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

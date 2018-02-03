@@ -7,7 +7,6 @@ import android.view.View;
 import com.android.lib.base.interf.OnLoadingInterf;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.util.ToastUtil;
-import com.android.lib.util.fragment.FragManager;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.acct.forget.ForGetResBean;
@@ -17,8 +16,8 @@ import butterknife.OnClick;
 public class RepwdFrag extends AppFrag<RepwdUIOpe,RepwdDAOpe> {
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getU().initBg(getP().getD().getImageUrl());
 
     }

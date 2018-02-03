@@ -8,13 +8,11 @@ import android.view.View;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserResBean;
@@ -27,8 +25,8 @@ import butterknife.OnClick;
 public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshListener,OnLoadmoreListener,ViewListener{
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getU().initRecycle();
         getP().getU().initRefresh(this,this);
         onRefresh(null);

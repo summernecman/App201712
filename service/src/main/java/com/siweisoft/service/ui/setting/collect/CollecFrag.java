@@ -11,8 +11,6 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.view.recyclerview.MyRecyclerView;
-import com.android.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.android.lib.view.refreshlayout.MaterialRefreshListener;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -30,15 +28,15 @@ import java.util.ArrayList;
 public class CollecFrag extends BaseServerFrag<CollectUIOpe, CollectDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener {
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         getP().getU().initRefresh(this,this);
 
     }
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         setTitleBean(new TitleBean("返回", "收藏", ""));
         getP().getD().setPagestart(0);
         getP().getD().setPagesize(5);
@@ -113,6 +111,6 @@ public class CollecFrag extends BaseServerFrag<CollectUIOpe, CollectDAOpe> imple
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        initData();
+        initNow();
     }
 }

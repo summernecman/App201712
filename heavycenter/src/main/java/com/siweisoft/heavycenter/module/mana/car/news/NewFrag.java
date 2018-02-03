@@ -5,12 +5,10 @@ package com.siweisoft.heavycenter.module.mana.car.news;
 import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
-import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.network.newsf.UIFNetAdapter;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
-import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes;
 
 import butterknife.OnClick;
 
@@ -18,8 +16,8 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
 
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
 
     }
 

@@ -5,18 +5,16 @@ package com.siweisoft.heavycenter.module.main.weigts.weight;
 import android.view.View;
 
 import butterknife.OnClick;
-import com.android.lib.constant.ValueConstant;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 import com.siweisoft.heavycenter.module.main.MainAct;
 
 
 public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
     }
 
 

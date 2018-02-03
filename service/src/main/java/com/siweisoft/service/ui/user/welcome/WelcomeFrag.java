@@ -7,7 +7,7 @@ import com.siweisoft.service.base.BaseServerFrag;
 public class WelcomeFrag extends BaseServerFrag<WelcomeUIOpe, WelcomeDAOpe> {
 
     @Override
-    public void doThing() {
+    public void initdelay() {
 
     }
 }

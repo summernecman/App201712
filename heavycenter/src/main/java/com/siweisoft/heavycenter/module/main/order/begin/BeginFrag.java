@@ -16,20 +16,16 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.NetValue;
-import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.order.detail.DetailFrag;
 
-import java.io.Serializable;
-
 public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
 
     @Override
-    public void initData() {
-        super.initData();
+    protected void onFristVisibleInit() {
         getP().getU().initRefresh(this,this);
-        onRefresh(null);
+        getP().getU().autoRefresh();
     }
 
     @Override
@@ -48,11 +44,11 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
-        getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(activity) {
+        getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
             @Override
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);
-                //o = new Test().getOrdersRes();
+                o = new Test().getOrdersRes();
                 getP().getU().finishLoadmore();
                 if(o==null||o.getResults()==null){
                     return;
@@ -67,11 +63,11 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
         getP().getD().getOrdersRes().getResults().clear();
-        getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(activity) {
+        getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
             @Override
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);
-                //o = new Test().getOrdersRes();
+                o = new Test().getOrdersRes();
                 if(o==null){
                     return;
                 }

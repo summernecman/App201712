@@ -17,7 +17,7 @@ import butterknife.OnClick;
 public class RenameFrag extends BaseServerFrag<RenameUIOpe, RenameDAOpe> {
 
     @Override
-    public void doThing() {
+    public void initdelay() {
         setTitleBean(new TitleBean("返回", "重命名", ""));
         getP().getU().initInfo(getP().getD().getUserBean());
     }

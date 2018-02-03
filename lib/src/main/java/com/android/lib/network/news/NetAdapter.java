@@ -2,6 +2,7 @@ package com.android.lib.network.news;
 
 import android.content.Context;
 
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.bean.BaseBean;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.util.*;
@@ -25,8 +26,22 @@ public  class NetAdapter<A> implements NetI<A> {
 
     protected boolean showTips = true;
 
+    protected BaseUIFrag baseUIFrag;
+
     public NetAdapter(Context context) {
         this.context = context;
+    }
+
+
+    public NetAdapter(BaseUIFrag baseUIFrag) {
+        this.baseUIFrag = baseUIFrag;
+        this.context = baseUIFrag.getActivity();
+    }
+
+    public NetAdapter(BaseUIFrag baseUIFrag,boolean isshow) {
+        this.baseUIFrag = baseUIFrag;
+        this.context = baseUIFrag.getActivity();
+        showTips = isshow;
     }
 
     public NetAdapter(Context context,boolean isshow) {
@@ -51,7 +66,11 @@ public  class NetAdapter<A> implements NetI<A> {
     @Override
     public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
         if (!haveData) {
-            onResult(false,baseResBean.getMessage(), null);
+            if(cache){
+                onResult(true,baseResBean.getMessage(), null);
+            }else{
+                onResult(false,baseResBean.getMessage(), null);
+            }
         } else {
             if(cache){
                 if(showTips){
@@ -140,6 +159,7 @@ public  class NetAdapter<A> implements NetI<A> {
     public void onFail(boolean haveData, String msg) {
 
     }
+
 
 
 }

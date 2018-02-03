@@ -4,6 +4,8 @@ package com.siweisoft.heavycenter.data.netd.msg.list;
 
 import com.android.lib.network.bean.req.BaseReqBean;
 
+import java.util.ArrayList;
+
 public class MsgsReqBean extends BaseReqBean {
 
 
@@ -27,6 +29,17 @@ public class MsgsReqBean extends BaseReqBean {
     private int pageIndex;
 
     private int pageSize;
+
+    public static final ArrayList<String> 消息类型 = new ArrayList<>();
+
+    static{
+        消息类型.add(MESSAGE_CATE_ALL);
+        消息类型.add(MESSAGE_CATE_TRANS);
+        消息类型.add(MESSAGE_CATE_CAR);
+        消息类型.add(MESSAGE_CATE_PUB);
+        消息类型.add(MESSAGE_CATE_SYS);
+    }
+
 
     public MsgsReqBean() {
     }

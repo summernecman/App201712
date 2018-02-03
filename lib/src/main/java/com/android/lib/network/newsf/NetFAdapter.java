@@ -49,7 +49,11 @@ public  class NetFAdapter<A> implements NetI<A> {
     @Override
     public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
         if (!haveData) {
-            onResult(false,baseResBean.getMessage(), null);
+            if(cache){
+                onResult(true,baseResBean.getMessage(), null);
+            }else{
+                onResult(false,baseResBean.getMessage(), null);
+            }
         } else {
             if(cache){
                 ToastUtil.getInstance().showShort(context,"当前为无网络测试环境");

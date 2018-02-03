@@ -24,8 +24,8 @@ import butterknife.OnClick;
 public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
 
     }
 

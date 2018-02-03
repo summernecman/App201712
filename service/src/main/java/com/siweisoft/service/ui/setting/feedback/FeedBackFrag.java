@@ -25,8 +25,8 @@ import com.siweisoft.service.ui.Image.ImageFrag;
 public class FeedBackFrag extends BaseServerFrag<FeedBAckUIOpe, FeedBackDAOpe> implements ViewListener {
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         setTitleBean(new TitleBean("返回", "意见反馈", "", "确定"));
         getP().getU().initPics(getP().getD().getPics(), this);
         getP().getU().initRating(new RatingBar.OnRatingChangeListener() {

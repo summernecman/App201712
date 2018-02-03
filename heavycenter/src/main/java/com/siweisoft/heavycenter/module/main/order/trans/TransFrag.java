@@ -7,8 +7,8 @@ import com.siweisoft.heavycenter.base.AppFrag;
 public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> {
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getU().initRefresh();
         getP().getU().LoadListData(getP().getD().getData());
     }

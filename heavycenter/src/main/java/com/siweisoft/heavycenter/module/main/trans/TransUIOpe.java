@@ -58,36 +58,36 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 //            return;
 //        }
 //        getFrag().removeTips();
-        final Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
-        paint.setAntiAlias(true);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setStrokeWidth(ScreenUtil.最小DIMEN);
-        bind.recycle.addItemDecoration(new RecyclerView.ItemDecoration() {
-
-
-            @Override
-            public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
-                super.onDrawOver(c, parent, state);
-                int left = parent.getPaddingLeft();
-                int right = parent.getWidth()-parent.getPaddingRight();
-                paint.setColor(context.getResources().getColor(R.color.color_grey_700));
-                for(int i=0;i<parent.getChildCount();i++){
-                    View view = parent.getChildAt(i);
-                    for(int j=0;j<(right-left)/3;j++){
-                        c.drawRect(left+j*(6),view.getBottom(),left+j*(6)+3,view.getBottom()+ScreenUtil.最小DIMEN,paint);
-                    }
-
-                    for(int j=0;j<view.getHeight()/3;j++){
-                        c.drawRect(ScreenUtil.最小DIMEN*120,view.getTop()+j*3, (float) (ScreenUtil.最小DIMEN*120.25),view.getTop()+j*6+3,paint);
-                    }
-                    paint.setColor(Color.WHITE);
-                    c.drawCircle((float) (left+120.5*ScreenUtil.最小DIMEN),(float) (view.getBottom()+0.5*ScreenUtil.最小DIMEN),5*ScreenUtil.最小DIMEN,paint);
-                }
-
-
-            }
-        });
+//        final Paint paint = new Paint();
+//        paint.setColor(Color.WHITE);
+//        paint.setAntiAlias(true);
+//        paint.setStyle(Paint.Style.FILL);
+//        paint.setStrokeWidth(ScreenUtil.最小DIMEN);
+//        bind.recycle.addItemDecoration(new RecyclerView.ItemDecoration() {
+//
+//
+//            @Override
+//            public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
+//                super.onDrawOver(c, parent, state);
+//                int left = parent.getPaddingLeft();
+//                int right = parent.getWidth()-parent.getPaddingRight();
+//                paint.setColor(context.getResources().getColor(R.color.color_grey_700));
+//                for(int i=0;i<parent.getChildCount();i++){
+//                    View view = parent.getChildAt(i);
+//                    for(int j=0;j<(right-left)/3;j++){
+//                        c.drawRect(left+j*(6),view.getBottom(),left+j*(6)+3,view.getBottom()+ScreenUtil.最小DIMEN,paint);
+//                    }
+//
+//                    for(int j=0;j<view.getHeight()/3;j++){
+//                        c.drawRect(ScreenUtil.最小DIMEN*120,view.getTop()+j*3, (float) (ScreenUtil.最小DIMEN*120.25),view.getTop()+j*6+3,paint);
+//                    }
+//                    paint.setColor(Color.WHITE);
+//                    c.drawCircle((float) (left+120.5*ScreenUtil.最小DIMEN),(float) (view.getBottom()+0.5*ScreenUtil.最小DIMEN),5*ScreenUtil.最小DIMEN,paint);
+//                }
+//
+//
+//            }
+//        });
 
         final String comname = LocalValue.get登录返回信息().getAbbreviationName();
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_trans, BR.item_main_trans, s,listener){
@@ -95,11 +95,7 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
                 ItemMainTransBinding itemMainTransBinding = (ItemMainTransBinding) holder.viewDataBinding;
-                if(position%2==0){
-                    holder.viewDataBinding.getRoot().setBackgroundColor(Color.RED);
-                }else{
-                    holder.viewDataBinding.getRoot().setBackgroundColor(Color.BLACK);
-                }
+                itemMainTransBinding.getRoot().setSelected(position%2==0?true:false);
                 itemMainTransBinding.btSure.setOnClickListener(this);
                 itemMainTransBinding.btSure.setTag(R.id.position,position);
                 itemMainTransBinding.btSure.setTag(R.id.data,list.get(position));

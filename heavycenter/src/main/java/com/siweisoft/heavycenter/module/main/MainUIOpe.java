@@ -9,8 +9,10 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.android.lib.base.adapter.HomePageAdapter;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
+import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -64,6 +66,21 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
                 }
             }
         }));
+
+        final BaseOnPagerChangeListener baseOnPagerChangeListener = new BaseOnPagerChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                pages.get(position).getFragment().onFristVisible();
+                }
+        };
+        bind.content.addOnPageChangeListener(baseOnPagerChangeListener);
+        bind.content.post(new Runnable() {
+            @Override
+            public void run() {
+                baseOnPagerChangeListener.onPageSelected(0);
+            }
+        });
     }
 
     public void nobind(){

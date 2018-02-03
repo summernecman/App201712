@@ -23,8 +23,8 @@ import com.siweisoft.service.ui.video.videoplay.VideoPlayFrag;
 public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, VideoContainerDAOpe> {
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         setTitleBean(new TitleBean("返回", "视频播放", ""));
         getP().getD().setType(getArguments().getInt(ValueConstant.DATA_TYPE, 0));
         getP().getD().setVideoBean((VideoBean) getArguments().getSerializable(ValueConstant.DATA_DATA));

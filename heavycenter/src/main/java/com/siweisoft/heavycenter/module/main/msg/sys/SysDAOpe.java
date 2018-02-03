@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class SysDAOpe extends BaseDAOpe {
 
-    private String moudle = "";
 
     private int pageindex = NetValue.PAGE_INDEX_START;
 
@@ -29,12 +28,12 @@ public class SysDAOpe extends BaseDAOpe {
     }
 
 
-    public void getMsgSys(NetI<MsgsResBean> adapter){
+    public void getMsgSys(String type,NetI<MsgsResBean> adapter){
         MsgsReqBean msgsReqBean = new MsgsReqBean();
         msgsReqBean.setUserId(LocalValue.get登录返回信息().getUserId());
         msgsReqBean.setPageIndex(getPageindex());
         msgsReqBean.setPageSize(20);
-        msgsReqBean.setMessageCate(getMoudle());
+        msgsReqBean.setMessageCate(type);
         NetDataOpe.Msg.list(getActivity(),msgsReqBean,adapter);
     }
 
@@ -54,14 +53,6 @@ public class SysDAOpe extends BaseDAOpe {
         }
     }
 
-
-    public String getMoudle() {
-        return moudle;
-    }
-
-    public void setMoudle(String moudle) {
-        this.moudle = moudle;
-    }
 
     public int getPageindex() {
         return pageindex;

@@ -18,8 +18,8 @@ public class NameFrag extends AppFrag<NameUIOpe,NameDAOpe> {
 
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
 
     }
 

@@ -3,69 +3,88 @@
 
     <data>
         <variable
-            name="item_main_store"
-            type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail" />
+                name="item_main_store"
+                type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swipe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:background="@drawable/bg_hv_sel_dark_light"
-        android:paddingTop="25dp"
-        android:paddingBottom="25dp">
-        <LinearLayout
-            android:orientation="horizontal"
+
+    <RelativeLayout
+            android:background="@drawable/bg_hv_sel_dark_light"
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+    >
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/swipe"
+            android:layout_margin="@dimen/dimen_recylce_item_margin"
+            android:padding="@dimen/dimen_recylce_item_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+
+    >
+        <LinearLayout
+                android:gravity="bottom"
+                android:layout_marginTop="@dimen/dimen_recylce_item_inner_margin"
+                android:layout_marginBottom="@dimen/dimen_recylce_item_inner_margin"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <TextView
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text_title_aaaaa"
-                android:text="@{item_main_store.warehouseName}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    android:includeFontPadding="false"
+                    android:gravity="bottom"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+                    android:text="@{item_main_store.warehouseName}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
             <TextView
-                android:singleLine="true"
-                android:layout_marginLeft="14dp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text_aaa"
-                android:text="@{item_main_store.productName}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    android:includeFontPadding="false"
+                    android:gravity="bottom"
+                    android:singleLine="true"
+                    android:layout_marginLeft="14dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen_recylce_item_content_txtsize"
+                    android:text="@{item_main_store.productName}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
             <TextView
-                android:singleLine="true"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text_aa"
-                android:text="@{item_main_store.specifications}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    android:includeFontPadding="false"
+                    android:gravity="bottom"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen_recylce_item_content_txtsize"
+                    android:text="@{item_main_store.specifications}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             <View
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="1dp"/>
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"/>
 
 
             <TextView
-                android:id="@+id/tv_current"
-                android:singleLine="true"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/hv_color_text_date"
-                android:textSize="@dimen/hv_dimen_text_title_a"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    android:includeFontPadding="false"
+                    android:gravity="bottom"
+                    android:id="@+id/tv_current"
+                    android:singleLine="true"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/color_recylce_item_content_txtcolor"
+                    android:textSize="@dimen/dimen_recylce_item_content_txtsize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
         </LinearLayout>
         <com.siweisoft.heavycenter.module.view.progress.ProgressView
-            android:id="@+id/pv_progress"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+                android:id="@+id/pv_progress"
+                android:layout_marginBottom="@dimen/dimen_recylce_item_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
     </LinearLayout>
+    </RelativeLayout>
 </layout>

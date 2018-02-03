@@ -12,8 +12,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:background="@color/color_block_back"
+        android:background="@color/color_frag_root_bgcolor"
         android:orientation="vertical">
 
         <com.android.lib.view.title.TitleView
@@ -53,10 +52,10 @@
 
             <com.siweisoft.heavycenter.module.view.menu.ScrollMenu
                 android:id="@+id/scrollmenu"
-                android:layout_marginTop="-3dp"
+                android:layout_marginTop="-2dp"
                 android:layout_below="@id/topview"
                 android:layout_width="match_parent"
-                android:layout_height="6dp"/>
+                android:layout_height="4dp"/>
         </RelativeLayout>
     </LinearLayout>
 </layout>

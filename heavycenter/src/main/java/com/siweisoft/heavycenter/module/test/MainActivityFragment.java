@@ -1,14 +1,8 @@
 package com.siweisoft.heavycenter.module.test;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import butterknife.OnClick;
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.util.IntentUtil;
 import com.android.lib.util.LogUtil;
 import com.siweisoft.heavycenter.R;
@@ -21,8 +15,8 @@ public class MainActivityFragment extends AppFrag<TestUIOpe,TestDAOpe> implement
 
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
     }
 
     @OnClick({R.id.tv_txt})

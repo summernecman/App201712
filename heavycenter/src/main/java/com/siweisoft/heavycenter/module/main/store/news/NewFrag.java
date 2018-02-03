@@ -4,7 +4,6 @@ package com.siweisoft.heavycenter.module.main.store.news;
 
 import android.view.View;
 
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -16,8 +15,8 @@ import butterknife.OnClick;
 public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getU().initRefresh();
         getP().getU().initRecycle();
         getP().getU().LoadListData(getP().getD().getData());

@@ -16,8 +16,8 @@ public class DialogListFrag extends BaseServerFrag<DialogListUIOpe, DialogListDA
     OnFinishListener onFinishListener;
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         setTitleBean(new TitleBean("返回", "搜索", "", ""));
         getP().getD().setList(getArguments().getStringArrayList(ValueConstant.DATA_DATA));
         getP().getU().initList(getP().getD().getList(), this);

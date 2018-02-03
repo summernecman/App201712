@@ -41,7 +41,7 @@ public class NetGet {
 
     public static void postDataGetCookie(final Context context, final String url, final BaseBean reqBean, final NetI netI) {
         if(test){
-            netI.onNetFinish(true, url, null);
+            netI.onNetFinish(false, url, new BaseResBean());
             return;
         }
         LogUtil.E("input-->" + url);
@@ -134,7 +134,7 @@ public class NetGet {
 
     public static void postData(final Context context, final String url, final BaseBean reqBean, final NetI netI) {
         if(test){
-            netI.onNetFinish(true, url, new BaseResBean());
+            netI.onNetFinish(false, url, new BaseResBean());
             return;
         }
         LogUtil.E("input-->" + url);
@@ -207,7 +207,7 @@ public class NetGet {
 
     public static void getData(final Context context, final String url, final BaseBean reqBean, final NetI netI) {
         if(test){
-            netI.onNetFinish(true, url, null);
+            netI.onNetFinish(false, url, new BaseResBean());
             return;
         }
         LogUtil.E("input-->" + url);
@@ -282,7 +282,7 @@ public class NetGet {
 
     public static void file(Context context, final String url,List<KeyValue> list, final NetI netI) {
         if(test){
-            netI.onNetFinish(true, url, null);
+            netI.onNetFinish(false, url, new BaseResBean());
             return;
         }
         LogUtil.E(url);

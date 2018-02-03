@@ -15,6 +15,6 @@
             android:background="@drawable/bg_cricle_yel"
             android:layout_alignParentBottom="true"
             android:layout_width="100dp"
-            android:layout_height="6dp"/>
+            android:layout_height="match_parent"/>
     </RelativeLayout>
 </layout>

@@ -8,11 +8,9 @@ import android.view.View;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.GsonUtil;
-import com.android.lib.util.system.HandleUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
-import com.siweisoft.heavycenter.data.netd.jpush.SimpleWeightMsg;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightRes;
 import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
@@ -27,15 +25,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import butterknife.OnClick;
-import cn.jpush.android.api.JPushInterface;
 
 public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
 
     @Override
-    public void initData() {
-        super.initData();
-        lazyInit();
-        setInited();
+    public void onFristVisibleInit() {
+        getP().getU().initPages(this,getP().getD().getPages());
         getP().getD().listWeight(new UINetAdapter<WeightListRes>(getActivity()) {
             @Override
             public void onSuccess(WeightListRes o) {
@@ -43,11 +38,6 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
 
             }
         });
-    }
-
-    @Override
-    public void lazyInit() {
-        getP().getU().initPages(this,getP().getD().getPages());
     }
 
     @OnClick({R.id.tv_save})

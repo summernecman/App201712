@@ -3,13 +3,10 @@ package com.siweisoft.service.ui.setting.setting;
 //by summer on 17-08-28.
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.interf.OnFinishListener;
-import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.FragmentUtil2;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.SPUtil;
 import com.android.lib.util.ToastUtil;
 import com.hyphenate.EMCallBack;
@@ -18,10 +15,7 @@ import com.siweisoft.service.R;
 import com.siweisoft.service.ServieApp;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TitleBean;
-import com.siweisoft.service.netdb.video.VideoBean;
 import com.siweisoft.service.ui.Constant.Value;
-import com.siweisoft.service.ui.chat.videochat.VideoChatFrag;
-import com.siweisoft.service.ui.dialog.select.SelectFrag;
 import com.siweisoft.service.ui.setting.setting.tip.TipFrag;
 
 import butterknife.OnClick;
@@ -29,8 +23,8 @@ import butterknife.OnClick;
 public class SettingFrag extends BaseServerFrag<SettingUIOpe, SettingDAOpe> {
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         setTitleBean(new TitleBean("返回", "设置", ""));
         getP().getU().setVersion(getP().getD().getVersion());
     }

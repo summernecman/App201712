@@ -6,18 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
-import com.android.lib.bean.databean.Value;
 import com.android.lib.constant.ValueConstant;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 import com.siweisoft.heavycenter.module.myce.unit.area.city.CityFrag;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import butterknife.OnClick;
 
@@ -28,8 +24,8 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
     public static final String 选择多个城市 = "选择多个城市";
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getD().setState(getArguments().getString(ValueConstant.DATA_DATA));
         getP().getU().initRecycle();
         getP().getU().LoadListData(getP().getD().getPro(),this);

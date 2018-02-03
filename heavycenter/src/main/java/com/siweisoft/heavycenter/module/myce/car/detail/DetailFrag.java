@@ -8,7 +8,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
     }
 }

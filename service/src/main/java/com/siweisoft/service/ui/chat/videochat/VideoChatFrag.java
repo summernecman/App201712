@@ -38,8 +38,8 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
 
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         AudioUtil.setAudio50(activity);
         getP().getD().setVideoBean((VideoBean) getArguments().getSerializable(Value.DATA_DATA));
         getP().getU().isVideo(getP().getD().getVideoBean().isVideo());

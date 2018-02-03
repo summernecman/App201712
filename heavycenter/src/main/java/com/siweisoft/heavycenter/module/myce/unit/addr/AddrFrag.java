@@ -15,7 +15,6 @@ import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
-import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
 import com.baidu.mapapi.search.poi.PoiDetailResult;
@@ -23,7 +22,6 @@ import com.baidu.mapapi.search.poi.PoiIndoorResult;
 import com.baidu.mapapi.search.poi.PoiResult;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.myce.unit.area.prov.ProvFrag;
 
@@ -34,8 +32,8 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
 
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getD().getMapUtil().init(activity,true);
         getP().getD().getMapUtil().registerLocationListener(activity, new BDAbstractLocationListener() {
             @Override

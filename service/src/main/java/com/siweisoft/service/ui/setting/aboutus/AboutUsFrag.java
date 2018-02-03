@@ -15,8 +15,8 @@ import butterknife.OnClick;
 public class AboutUsFrag extends BaseServerFrag<AboutUsUIOpe, AboutUsDAOpe> {
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         setTitleBean(new TitleBean("返回", "关于我们", ""));
         getP().getU().initVersion(PackageUtil.getAppVersionName(activity));
     }

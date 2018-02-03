@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.GsonUtil;
-import com.android.lib.util.SPUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
@@ -20,14 +19,14 @@ import org.greenrobot.eventbus.ThreadMode;
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
     @Override
-    public void initData() {
-        super.initData();
-        lazyInit();
+    public void initNow() {
+        super.initNow();
+        onFristVisibleInit();
         setInited();
     }
 
     @Override
-    public void lazyInit() {
+    public void onFristVisibleInit() {
         getP().getU().initRecycle();
         getP().getU().LoadListData(getP().getD().getWeightMsgs());
     }

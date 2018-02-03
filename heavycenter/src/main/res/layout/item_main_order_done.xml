@@ -11,12 +11,9 @@
         android:id="@+id/swipe"
         android:background="@drawable/bg_hv_sel_dark_light"
         android:orientation="vertical"
+                  android:padding="@dimen/dimen_recylce_item_margin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="15dp"
-        android:paddingRight="10dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -36,7 +33,7 @@
                         android:id="@+id/tv_goodname"
                         android:singleLine="true"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/hv_dimen_text_title_aaaaa"
+                        android:textSize="@dimen/dimen_recylce_item_title_txtsize"
                         android:text="混凝土"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -46,7 +43,7 @@
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/hv_dimen_text_aaa"
+                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
                         android:text="D150"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -70,7 +67,7 @@
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
                         android:text="上海绿地"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -105,7 +102,7 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

@@ -26,8 +26,8 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
 
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         if(getArguments().getInt(ValueConstant.FARG_REQ,-1)==TYPE_SEL){
             getP().getU().bind.cartitle.setVisibility(View.VISIBLE);
         }else{

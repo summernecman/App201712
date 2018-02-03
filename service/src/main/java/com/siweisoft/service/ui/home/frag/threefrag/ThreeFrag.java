@@ -9,7 +9,7 @@ import com.siweisoft.service.ui.user.usercenter.UserCenterFrag;
 
 public class ThreeFrag extends BaseServerFrag<ThreeUIOpe, ThreeDAOpe> {
     @Override
-    public void doThing() {
+    public void initdelay() {
         FragmentUtil2.getInstance().addNoAnim(activity, Value.ROOTID_THREE, new UserCenterFrag());
     }
 }

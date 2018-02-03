@@ -346,11 +346,11 @@
 
 
     <com.siweisoft.heavycenter.module.view.menu.ScrollMenu
-        android:layout_marginTop="-3dp"
+        android:layout_marginTop="-4dp"
         android:id="@+id/scrollmenu"
         android:layout_below="@id/topview"
         android:layout_width="match_parent"
-        android:layout_height="6dp"/>
+        android:layout_height="4dp"/>
 </RelativeLayout>
     </LinearLayout>
 </layout>

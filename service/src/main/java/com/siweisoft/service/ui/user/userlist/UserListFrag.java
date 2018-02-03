@@ -22,20 +22,20 @@ public class UserListFrag extends BaseServerFrag<UserListUIOpe, UserListDAOpe> i
     OnFinishListener onFinishListener;
 
     @Override
-    public void doThing() {
+    public void initdelay() {
         // getP().getD().setUserBean((UserBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
         getP().getU().initRefresh(new MaterialRefreshListener() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-                initData();
+                initNow();
                 materialRefreshLayout.finishRefresh();
             }
         });
     }
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         setTitleBean(new TitleBean("返回", "联系人", ""));
         getP().getD().getUserListWithOutMe(Value.getUserInfo(), new OnFinishListener() {
             @Override

@@ -2,19 +2,13 @@ package com.siweisoft.heavycenter.module.myce.unit.area.city;
 
 //by summer on 2017-12-19.
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
-import com.android.lib.util.fragment.FragManager;
-import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 
 import butterknife.OnClick;
 
@@ -27,8 +21,8 @@ public class CityFrag extends AppFrag<CityUIOpe,CityDAOpe> implements ViewListen
 
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getD().setState(getArguments().getString(ValueConstant.DATA_DATA2));
         getP().getD().setCitys((CityResBean.ProvinceListBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
         getP().getD().setProindex(getArguments().getInt(ValueConstant.DATA_POSITION2));

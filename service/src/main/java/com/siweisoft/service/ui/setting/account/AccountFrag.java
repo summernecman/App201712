@@ -8,8 +8,8 @@ import com.siweisoft.service.bean.TitleBean;
 public class AccountFrag extends BaseServerFrag<AccountUIOpe, AccountDAOpe> {
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         setTitleBean(new TitleBean("返回", "账户安全", ""));
     }
 }

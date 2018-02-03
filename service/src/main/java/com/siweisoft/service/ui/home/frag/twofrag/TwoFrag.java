@@ -9,7 +9,7 @@ import com.siweisoft.service.ui.user.onlinelist.OnLineListFrag;
 
 public class TwoFrag extends BaseServerFrag<TwoUIOpe, TwoDAOpe> {
     @Override
-    public void doThing() {
+    public void initdelay() {
         FragmentUtil2.getInstance().addNoAnim(activity, Value.ROOTID_TWO, new OnLineListFrag());
     }
 }

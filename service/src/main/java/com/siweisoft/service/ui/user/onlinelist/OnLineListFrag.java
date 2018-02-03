@@ -39,7 +39,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
     public static final String 获取好友列表 ="获取好友列表";
 
     @Override
-    public void doThing() {
+    public void initdelay() {
         activity.findViewById(R.id.ftv_right2).setOnClickListener(this);
         getP().getU().initRefresh(this);
         getP().getU().initList(new ArrayList<UserBean>(), null);

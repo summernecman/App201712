@@ -10,7 +10,6 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.StringUtil;
-import com.android.lib.util.ToastUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.android.lib.util.system.SystemUtil;
 import com.siweisoft.service.R;
@@ -37,7 +36,7 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
 
 
     @Override
-    public void doThing() {
+    public void initdelay() {
         getP().getU().setFront(activity);
         getP().getD().setVideoBean((VideoBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
         setTitleBean(new TitleBean("返回", "评论", "", "确定"));
@@ -91,8 +90,8 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
     }
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getD().getTips(new OnFinishListener() {
             @Override
             public void onFinish(Object o) {

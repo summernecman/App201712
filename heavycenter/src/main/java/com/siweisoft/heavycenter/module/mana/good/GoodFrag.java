@@ -12,7 +12,6 @@ import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.module.mana.good.news.NewFrag;
@@ -21,8 +20,8 @@ import butterknife.OnClick;
 
 public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListener,OnRefreshListener{
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getU().initRefresh(this);
         getP().getU().initRecycle();
         onRefresh(null);

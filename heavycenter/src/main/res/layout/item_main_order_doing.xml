@@ -12,18 +12,14 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipToPadding="false"
         android:background="@drawable/bg_hv_sel_dark_light"
+                    android:padding="@dimen/dimen_recylce_item_margin"
         >
         <LinearLayout
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true">
+                android:layout_height="wrap_content">
             <RelativeLayout
                     android:layout_width="120dp"
                     android:layout_height="wrap_content">
@@ -40,10 +36,9 @@
 
                         <com.siweisoft.heavycenter.module.view.circle.CircleBar
                                 android:id="@+id/circlebar"
-
                                 android:layout_centerInParent="true"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
 
                         <LinearLayout
                                 android:orientation="horizontal"
@@ -98,15 +93,11 @@
                     android:layout_height="wrap_content">
                 <LinearLayout
                       android:layout_marginLeft="20dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     <LinearLayout
-                            android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
@@ -116,7 +107,7 @@
                                 android:id="@+id/tv_goodname"
                                 android:singleLine="true"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hv_dimen_text_title_aaaaa"
+                                android:textSize="@dimen/dimen_recylce_item_title_txtsize"
                                 android:text="混凝土"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -126,7 +117,7 @@
                                 android:singleLine="true"
                                 android:layout_marginLeft="14dp"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/hv_dimen_text_aaa"
+                                android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
                                 android:text="C30"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -171,7 +162,7 @@
                                 android:singleLine="true"
                                 android:layout_marginLeft="10dp"
                                 android:textColor="@color/white"
-                                android:textSize="15sp"
+                                android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
                                 android:text="上海绿地"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -184,7 +175,7 @@
                             android:layout_marginTop="7dp"
                             android:gravity="center_vertical"
                             android:textColor="@color/color_hv_txt_dark"
-                            android:textSize="@dimen/hv_dimen_text_date_aaa"
+                            android:textSize="@dimen/dimen_recylce_item_date_txtsize"
                             android:text="开始时间：2017/12/09 10:00"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>

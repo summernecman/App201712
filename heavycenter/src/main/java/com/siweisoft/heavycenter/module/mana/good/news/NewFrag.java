@@ -16,7 +16,6 @@ import com.siweisoft.heavycenter.data.netd.mana.good.news.NewsGoodRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.upd.UpdGoodRes;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
-import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.mana.good.lists.NamesFrag;
 import com.siweisoft.heavycenter.module.mana.good.specs.SpecsFrag;
@@ -29,8 +28,8 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
 
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         if(getArguments().getInt(ValueConstant.DATA_DATA,-1)!=-1){
             getP().getD().detailGood(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<GoodListRes.ResultsBean>(getActivity()) {
                 @Override

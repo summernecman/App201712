@@ -12,7 +12,6 @@ import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
@@ -20,7 +19,6 @@ import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSelectListener {
@@ -107,10 +105,6 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         FragManager2.getInstance().clear((BaseUIActivity) activity,MainAct.主界面);
         getP().getU().setCurrentItem(position);
         setMoudle(getP().getD().getMenudata().get(position).getName());
-        if(!getP().getD().getMenudata().get(position).getFragment().isInit()){
-            getP().getD().getMenudata().get(position).getFragment().lazyInit();
-            getP().getD().getMenudata().get(position).getFragment().setInited();
-        }
 
         if(position==getP().getD().getMenudata().size()-1){
             if(!getP().getD().isBindUnit()){

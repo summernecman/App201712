@@ -12,11 +12,10 @@
         android:orientation="vertical"
         >
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/refreshLayout"
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <android.support.v7.widget.RecyclerView
-                android:background="@color/color_grey_200"
+            <com.android.lib.view.LinearRecycleView
                 android:id="@+id/recycle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

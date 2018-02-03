@@ -4,16 +4,14 @@ package com.siweisoft.heavycenter.module.main.trans.detail;
 
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
-import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
-import com.siweisoft.heavycenter.module.main.MainAct;
 
 public class TransDetailFrag extends AppFrag<TransDetailUIOpe,TransDetailDAOpe> {
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         getP().getD().setTransid(getArguments().getInt(ValueConstant.DATA_DATA,-1));
         getP().getD().detailTrans(getP().getD().getTransid(), new UINetAdapter<TransDetailRes>(getActivity()) {
             @Override

@@ -37,8 +37,8 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
 
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getD().getNewsOrderReqBean().setOrderType(NewsOrderReqBean.发货);
     }
 

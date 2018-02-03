@@ -5,8 +5,6 @@ package com.siweisoft.service.ui.dialog.select;
 import android.view.View;
 
 import com.android.lib.base.interf.OnFinishListener;
-import com.android.lib.util.IntentUtil;
-import com.android.lib.util.system.SystemUtil;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 
@@ -17,8 +15,8 @@ public class SelectFrag extends BaseServerFrag<SelectUIOpe, SelectDAOpe> {
     OnFinishListener onFinishListener;
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
     }
 
     @OnClick({R.id.tv_video, R.id.ll_root,R.id.tv_voice})

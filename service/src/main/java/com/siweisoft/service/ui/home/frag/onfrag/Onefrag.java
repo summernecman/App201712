@@ -10,7 +10,7 @@ import com.siweisoft.service.ui.history.HistoryFrag;
 public class Onefrag extends BaseServerFrag<OneUIOpe, OneDAOpe> {
 
     @Override
-    public void doThing() {
+    public void initdelay() {
         FragmentUtil2.getInstance().addNoAnim(activity, Value.ROOTID_ONE, new HistoryFrag());
     }
 }

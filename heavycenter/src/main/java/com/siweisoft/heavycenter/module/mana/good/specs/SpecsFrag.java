@@ -9,14 +9,13 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.data.netd.mana.good.names.NamesRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
 
 public class SpecsFrag extends BaseUIFrag<SpecsUIOpe,SpecsDAOpe> implements ViewListener{
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getD().SpecsGood(getArguments().getInt(ValueConstant.DATA_POSITION2), new UINetAdapter<SpecsRes>(getContext()) {
             @Override
             public void onResult(boolean success, String msg, SpecsRes o) {

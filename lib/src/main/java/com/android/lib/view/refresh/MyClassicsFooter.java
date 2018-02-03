@@ -154,6 +154,8 @@ public class MyClassicsFooter extends RelativeLayout implements RefreshFooter {
 
         if (ta.hasValue(R.styleable.ClassicsFooter_srlPrimaryColor)) {
             setPrimaryColor(ta.getColor(R.styleable.ClassicsFooter_srlPrimaryColor, 0));
+        }else{
+            setPrimaryColor(getContext().getResources().getColor(android.R.color.transparent));
         }
         if (ta.hasValue(R.styleable.ClassicsFooter_srlAccentColor)) {
             setAccentColor(ta.getColor(R.styleable.ClassicsFooter_srlAccentColor, 0));

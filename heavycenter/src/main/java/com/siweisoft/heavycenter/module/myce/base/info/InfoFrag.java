@@ -2,8 +2,6 @@ package com.siweisoft.heavycenter.module.myce.base.info;
 
 //by summer on 2017-12-19.
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.heavycenter.R;
@@ -17,8 +15,8 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
     View.OnClickListener onClickListener;
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getU().initScan();
 
     }

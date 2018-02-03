@@ -12,15 +12,14 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.mana.car.my.MyFrag;
-import com.siweisoft.heavycenter.module.mana.car.news.NewFrag;
 
 import butterknife.OnClick;
 
 public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getD().initPages();
         getP().getU().initPages(fragment,getP().getD().getPages());
 

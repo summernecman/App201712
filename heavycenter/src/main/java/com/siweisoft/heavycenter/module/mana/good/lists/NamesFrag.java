@@ -4,20 +4,18 @@ package com.siweisoft.heavycenter.module.mana.good.lists;
 
 import android.view.View;
 
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.data.netd.mana.good.names.NamesReq;
 import com.siweisoft.heavycenter.data.netd.mana.good.names.NamesRes;
 
 public class NamesFrag extends AppFrag<NamesUIOpe,NamesDAOpe> implements ViewListener{
 
     @Override
-    public void initData() {
-        super.initData();
+    public void initNow() {
+        super.initNow();
         getP().getD().NamesGood(new UINetAdapter<NamesRes>(activity) {
             @Override
             public void onResult(boolean success, String msg, NamesRes o) {

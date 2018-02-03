@@ -15,8 +15,8 @@ public class SeachFrag extends BaseServerFrag<SeachUIOpe, SeachDAOpe> {
     OnFinishListener onFinishListener;
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         setTitleBean(new TitleBean("返回", "搜索", "", "确定"));
         getP().getD().setSeachBean((SeachBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
         getP().getD().getSeachBean().setCan(false);

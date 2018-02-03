@@ -12,8 +12,8 @@ public class StoreInfoFrag extends AppFrag<StoreInfoUIOpe,StoreInfoDAOpe>{
 
 
     @Override
-    public void doThing() {
-        super.doThing();
+    public void initdelay() {
+        super.initdelay();
         getP().getD().setStoreDetail((StoreDetail) getArguments().getSerializable(ValueConstant.DATA_DATA));
         getP().getU().initUI(getP().getD().getStoreDetail());
     }

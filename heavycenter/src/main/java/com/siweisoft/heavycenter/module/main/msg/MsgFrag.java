@@ -15,13 +15,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> {
 
 
     @Override
-    public void initData() {
-        super.initData();
-
-    }
-
-    @Override
-    public void lazyInit() {
+    public void onFristVisibleInit() {
         getP().getU().initPages(fragment,getP().getD().getPages());
     }
 

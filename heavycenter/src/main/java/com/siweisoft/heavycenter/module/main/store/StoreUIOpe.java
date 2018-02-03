@@ -72,9 +72,6 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
         getFrag().removeTips();
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_store, BR.item_main_store, o.getResults(),listener){
 
-            int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
-            int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);
-
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
