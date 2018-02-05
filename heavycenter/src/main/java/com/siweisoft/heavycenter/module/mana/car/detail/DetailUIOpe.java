@@ -63,10 +63,23 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                         bind.itemCarlicenseno.setMidEtTxt("");
                     }
                 });
-                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
-                    bind.title.getRightIV2().setVisibility(View.GONE);
-                }
+//                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
+//                    bind.title.getRightIV2().setVisibility(View.GONE);
+//                }
                 break;
+                default:
+                    bind.llInput.setVisibility(View.VISIBLE);
+                    bind.reinput.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            getActivity().onBackPressed();
+                        }
+                    });
+//                    if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
+//                        bind.title.getRightIV2().setVisibility(View.GONE);
+//                    }
+                    break;
+
         }
     }
 

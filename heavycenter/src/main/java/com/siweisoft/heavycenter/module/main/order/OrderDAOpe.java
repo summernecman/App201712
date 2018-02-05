@@ -8,7 +8,12 @@ import android.support.v4.app.Fragment;
 
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.constant.ValueConstant;
+import com.android.lib.network.news.NetI;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
+import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumReq;
+import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumRes;
 import com.siweisoft.heavycenter.module.main.order.begin.BeginFrag;
 
 import java.util.ArrayList;
@@ -17,6 +22,10 @@ public class OrderDAOpe extends BaseDAOpe {
 
     ArrayList<Fragment> pages = new ArrayList<>();
 
+    private  ArrayList<Integer> totalcounts = new ArrayList<>();
+
+    private String[] statuss = new String[]{OrdersReq.STATUS_NEW,OrdersReq.STATUS_ING,OrdersReq.STATUS_DONE};
+
     public OrderDAOpe(Context context) {
         super(context);
     }
@@ -24,13 +33,24 @@ public class OrderDAOpe extends BaseDAOpe {
 
     public ArrayList<Fragment> initPages(){
         pages.clear();
-        BeginFrag beginFrag = new BeginFrag(); beginFrag.setArguments(new Bundle());beginFrag.getArguments().putString(ValueConstant.DATA_DATA, OrdersReq.STATUS_NEW);pages.add(beginFrag);
-        BeginFrag doingFrag = new BeginFrag(); doingFrag.setArguments(new Bundle());doingFrag.getArguments().putString(ValueConstant.DATA_DATA, OrdersReq.STATUS_ING);pages.add(doingFrag);
-        BeginFrag doneFrag = new BeginFrag(); doneFrag.setArguments(new Bundle());doneFrag.getArguments().putString(ValueConstant.DATA_DATA, OrdersReq.STATUS_DONE);pages.add(doneFrag);
+        for(int i=0;i<statuss.length;i++){
+            BeginFrag beginFrag = new BeginFrag(); beginFrag.setArguments(new Bundle());beginFrag.getArguments().putString(ValueConstant.DATA_DATA, statuss[i]);pages.add(beginFrag);
+        }
         return pages;
     }
 
+    public void getOrderCount(NetI<OrderNumRes> adapter){
+        OrderNumReq orderNumReq = new OrderNumReq();
+        orderNumReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        NetDataOpe.Order.getOrderCount(getActivity(),orderNumReq,adapter);
+    }
+
+
     public ArrayList<Fragment> getPages() {
         return pages;
+    }
+
+    public ArrayList<Integer> getTotalcounts() {
+        return totalcounts;
     }
 }

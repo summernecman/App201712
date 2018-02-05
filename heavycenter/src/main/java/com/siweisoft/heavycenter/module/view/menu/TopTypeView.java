@@ -65,7 +65,7 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
     }
     public void setViewPager(ViewPager viewPager) {
         this.viewPager = viewPager;
-        this.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        final ViewPager.OnPageChangeListener  listener = new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 //                textViews.get(position).setTextSize(TypedValue.COMPLEX_UNIT_SP,15+5*(1-positionOffset));
@@ -91,9 +91,15 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
             public void onPageScrollStateChanged(int state) {
 
             }
-        });
+        };
+        this.viewPager.addOnPageChangeListener(listener);
         if(viewPager.getAdapter()!=null&&viewPager.getAdapter().getCount()>0){
-            viewPager.setCurrentItem(0);
+            viewPager.post(new Runnable() {
+                @Override
+                public void run() {
+                    listener.onPageSelected(0);
+                }
+            });
         }
     }
 

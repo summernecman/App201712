@@ -10,9 +10,7 @@ import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.GsonUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
-import com.siweisoft.heavycenter.data.netd.jpush.WeightRes;
 import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
 import com.siweisoft.heavycenter.data.netd.weight.save.SaveWeightRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -30,7 +28,7 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
 
     @Override
     public void onFristVisibleInit() {
-        getP().getU().initPages(this,getP().getD().getPages());
+        getP().getU().initPages(this,getP().getD().initPages());
         getP().getD().listWeight(new UINetAdapter<WeightListRes>(getActivity()) {
             @Override
             public void onSuccess(WeightListRes o) {
@@ -54,6 +52,10 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
                 }
                 break;
             case R.id.tv_save:
+                WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages().get(0);
+                if(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh()!=0){
+                    getP().getD().getWeightMsg().getMessage().setWeigh(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh());
+                }
                 getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(getActivity()) {
                     @Override
                     public void onSuccess(SaveWeightRes o) {
@@ -82,19 +84,12 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
         }
         getP().getD().setWeightMsg(weightMsg);
         getP().getU().initUI(getP().getD().getWeightMsg());
-
+        initPage(weightMsg);
     }
 
     public void initPage(WeightMsg weightMsg){
-        for(int i=0;i<getP().getD().getPages().size();i++){
-            WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages().get(i);
-            WeightRes weightRes = new WeightRes();
-            weightRes.setWeight(weightMsg.getMessage().getWeigh());
-
-            LoginResBean loginResBean = new LoginResBean();
-            //loginResBean.setTrueName(weightMsg.getMessage().getOrder());
-           // weigtFrag.getP().getU().init();
-        }
+            WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages().get(0);
+            weigtFrag.getP().getU().init(weightMsg);
     }
 
 }

@@ -57,7 +57,7 @@
                         <TextView
                             android:singleLine="true"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/hv_dimen_text_title_aaaa"
+                            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
                             android:text="@{item_mana_store.warehouseName}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -81,7 +81,7 @@
                             android:layout_weight="1"
                             android:singleLine="true"
                             android:textColor="@color/gray"
-                            android:textSize="@dimen/hv_dimen_text_title_aa"
+                            android:textSize="@dimen/dimen_recylce_item_content_txtsize"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content" />
 
@@ -91,7 +91,7 @@
                             android:layout_marginLeft="10dp"
                             android:singleLine="true"
                             android:textColor="@color/gray"
-                            android:textSize="@dimen/hv_dimen_text_title_aa"
+                            android:textSize="@dimen/dimen_recylce_item_content_txtsize"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content" />
                     </LinearLayout>

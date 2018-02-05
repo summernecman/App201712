@@ -14,6 +14,7 @@ import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightRes;
 import com.siweisoft.heavycenter.databinding.FragMainWeigtBinding;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
@@ -45,11 +46,15 @@ public class WeigtUIOpe extends AppUIOpe<FragMainWeigtBinding> {
         return fragManager2;
     }
 
-    public void init(WeightRes weightRes, LoginResBean loginResBean){
-        bind.tvWeight.setText(StringUtil.getStr(weightRes.getWeight()));
-        bind.tvMz.setText(StringUtil.getStr(weightRes.getMz()));
-        bind.tvPz.setText(StringUtil.getStr(weightRes.getPz()));
-        bind.tvKc.setText(StringUtil.getStr(weightRes.getKc()));
-        bind.tvJz.setText(StringUtil.getStr(weightRes.getJz()));
+    public void init(WeightMsg weightMsg){
+        if(weightMsg==null|| weightMsg.getMessage()==null){
+            return;
+        }
+        WeightMsg.MessageBean m = weightMsg.getMessage();
+        bind.tvWeight.setText(StringUtil.getStr(m.getWeigh()));
+        bind.tvMz.setText(StringUtil.getStr(m.getWeigh()));
+        bind.tvPz.setText(StringUtil.getStr(m.getPz()));
+        bind.tvKc.setText(StringUtil.getStr(m.getKc()));
+        bind.tvJz.setText(StringUtil.getStr(m.getJz()));
     }
 }

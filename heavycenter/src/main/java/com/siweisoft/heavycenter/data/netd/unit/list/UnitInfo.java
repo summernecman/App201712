@@ -72,12 +72,21 @@ public class UnitInfo extends BaseBean {
         protected int parentCompanyId;
         protected String parentCompanyName;
         protected int companyIsNull;
+        private int companyId;
 
         public static final int COMPANY_NULL = 0;
 
         public static final int COMPANY_EXSIT = 1;
 
-        public String getBusinessLicense() {
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
+
+    public String getBusinessLicense() {
             return businessLicense;
         }
 

@@ -44,7 +44,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     public void onInterupt(int type, View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                TransDetailRes resultsBean = (TransDetailRes) v.getTag(R.id.data);
+                final TransDetailRes resultsBean = (TransDetailRes) v.getTag(R.id.data);
                 switch (v.getId()){
                     case R.id.bt_sure:
                         getP().getD().signTrans(resultsBean.getTransportrecordId(), new UINetAdapter<TransSignRes>(getContext()) {
@@ -52,6 +52,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                             public void onResult(boolean success, String msg, TransSignRes o) {
                                 super.onResult(success, msg, o);
                                 if(success){
+                                    resultsBean.setSignStatus(TransDetailRes.SING_STATUS_已确认);
                                     getP().getU().notifyDataSetChanged();
                                 }
                             }
@@ -119,7 +120,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, TransRes o) {
                 super.onResult(success, msg, o);
-                o = new Test().getTransRes();
+                //o = new Test().getTransRes();
                getP().getU().finishRefresh();
                if(o!=null&& o.getResults()!=null){
                    getP().getD().getTransRes().getResults().addAll(o.getResults());
@@ -138,7 +139,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, TransRes o) {
                 super.onResult(success, msg, o);
-                o = new Test().getTransRes();
+                //o = new Test().getTransRes();
                 getP().getU().finishLoadmore();
                 if(o.getResults()!=null){
                     getP().getD().getTransRes().getResults().addAll(o.getResults());

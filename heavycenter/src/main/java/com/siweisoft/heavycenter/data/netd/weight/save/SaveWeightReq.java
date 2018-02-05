@@ -14,7 +14,7 @@ public class SaveWeightReq extends BaseReqBean {
 
     private String state;
 
-    private float weighing;
+    private double weighing;
 
     private int driverId;
 
@@ -57,11 +57,11 @@ public class SaveWeightReq extends BaseReqBean {
         this.state = state;
     }
 
-    public float getWeighing() {
+    public double getWeighing() {
         return weighing;
     }
 
-    public void setWeighing(float weighing) {
+    public void setWeighing(double weighing) {
         this.weighing = weighing;
     }
 

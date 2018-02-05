@@ -49,6 +49,16 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
         });
     }
 
+    public void initTopUI(WeightMsg.MessageBean data){
+        if(data==null||data.getOrder()==null){
+            return;
+        }
+        bind.tvOrderandtransno.setText("订单"+StringUtil.getStr(data.getOrder().getOrderNo())+"     运输单:"+StringUtil.getStr(data.getOrder().getYsdNo()));
+        bind.tvGoodnameanspes.setText(StringUtil.getStr(data.getOrder().getProductName())+"        "+StringUtil.getStr(data.getOrder().getSpecification()));
+        bind.tvFrom.setText(StringUtil.getStr(data.getOrder().getFhdwName()));
+        bind.tvTo.setText(StringUtil.getStr(data.getOrder().getShdwName()));
+    }
+
     public void  notifyDataSetChanged(){
         if(bind.recycle.getAdapter()!=null){
             bind.recycle.getAdapter().notifyDataSetChanged();

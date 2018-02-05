@@ -45,7 +45,7 @@
 
                         android:singleLine="true"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/dimen_recylce_item_title_txtsize"
                         android:text="沪A12345"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -54,7 +54,7 @@
                         android:singleLine="true"
                         android:layout_marginLeft="14dp"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
                         android:text="20T"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -81,7 +81,7 @@
                     <TextView
                         android:singleLine="true"
                         android:textColor="@color/color_hv_txt_dark"
-                        android:textSize="15sp"
+                        android:textSize="@dimen/dimen_recylce_item_content_txtsize"
                         android:text="驾驶员：王先生"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />

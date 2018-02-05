@@ -38,27 +38,6 @@
 
             </LinearLayout>
 
-            <RelativeLayout
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dimens_base_title_clip">
-                <ImageView
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="6dp"
-                    android:background="@color/red"
-                    android:id="@+id/menu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dimens_base_title_clip"
-                    android:src="@drawable/icon_arraw"
-                    android:gravity="center_vertical"
-                    android:paddingBottom="2.5dp"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-                    android:paddingTop="2.5dp"
-                    android:textColor="@color/color_title_select"
-                    android:textSize="17sp"
-                    android:visibility="visible" />
-            </RelativeLayout>
         </FrameLayout>
         <include
             android:id="@+id/incloud"

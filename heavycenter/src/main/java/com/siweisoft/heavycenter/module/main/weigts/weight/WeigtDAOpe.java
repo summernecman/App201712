@@ -12,7 +12,7 @@ import com.siweisoft.heavycenter.data.netd.jpush.WeightRes;
 public class WeigtDAOpe extends AppDAOpe {
 
 
-    WeightRes weightRes = new WeightRes();
+    WeightMsg weightMsg = new WeightMsg();
 
     LoginResBean loginResBean = new LoginResBean();
 
@@ -20,12 +20,12 @@ public class WeigtDAOpe extends AppDAOpe {
         super(context);
     }
 
-    public WeightRes getWeightRes() {
-        return weightRes;
+    public WeightMsg getWeightMsg() {
+        return weightMsg;
     }
 
-    public void setWeightRes(WeightRes weightRes) {
-        this.weightRes = weightRes;
+    public void setWeightMsg(WeightMsg weightMsg) {
+        this.weightMsg = weightMsg;
     }
 
     public LoginResBean getLoginResBean() {

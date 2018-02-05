@@ -89,13 +89,7 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
                 A aa = ac.newInstance(activity);
                 B bb = bc.newInstance(activity);
                 opes = new BaseOpes<>(aa, bb);
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (java.lang.InstantiationException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {

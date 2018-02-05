@@ -32,14 +32,19 @@ public class WeightMsg extends BaseBean {
          * fhTare : 10
          */
 
+        private  double kc;
+        private  double jz;
+        private  double pz;
+
         private String weighResult;
         private String messageType;
         private String content;
         private String state;
         private String time;
-        private int weigh;
+        private double weigh;
         private OrderBean order = new OrderBean();
         private int fhTare;
+        private double suttle;
 
 
         public String getMessageType() {
@@ -74,11 +79,11 @@ public class WeightMsg extends BaseBean {
             this.time = time;
         }
 
-        public int getWeigh() {
+        public double getWeigh() {
             return weigh;
         }
 
-        public void setWeigh(int weigh) {
+        public void setWeigh(double weigh) {
             this.weigh = weigh;
         }
 
@@ -96,6 +101,46 @@ public class WeightMsg extends BaseBean {
 
         public void setFhTare(int fhTare) {
             this.fhTare = fhTare;
+        }
+
+        public String getWeighResult() {
+            return weighResult;
+        }
+
+        public void setWeighResult(String weighResult) {
+            this.weighResult = weighResult;
+        }
+
+        public double getSuttle() {
+            return suttle;
+        }
+
+        public void setSuttle(double suttle) {
+            this.suttle = suttle;
+        }
+
+        public double getKc() {
+            return kc;
+        }
+
+        public void setKc(double kc) {
+            this.kc = kc;
+        }
+
+        public double getJz() {
+            return jz;
+        }
+
+        public void setJz(double jz) {
+            this.jz = jz;
+        }
+
+        public double getPz() {
+            return pz;
+        }
+
+        public void setPz(double pz) {
+            this.pz = pz;
         }
 
         public static class OrderBean extends BaseBean{
@@ -124,6 +169,34 @@ public class WeightMsg extends BaseBean {
             private int develiverCompanyId;
             private String orderNo;
             private String productName;
+            private String carLicenseNo;
+            private String trueName;
+            private String tel;
+
+
+            public String getCarLicenseNo() {
+                return carLicenseNo;
+            }
+
+            public void setCarLicenseNo(String carLicenseNo) {
+                this.carLicenseNo = carLicenseNo;
+            }
+
+            public String getTrueName() {
+                return trueName;
+            }
+
+            public void setTrueName(String trueName) {
+                this.trueName = trueName;
+            }
+
+            public String getTel() {
+                return tel;
+            }
+
+            public void setTel(String tel) {
+                this.tel = tel;
+            }
 
             public int getOrderId() {
                 return orderId;

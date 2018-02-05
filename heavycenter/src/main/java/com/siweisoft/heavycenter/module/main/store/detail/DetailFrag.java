@@ -27,7 +27,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
         getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<StoreDetail>(this) {
             @Override
             public void onSuccess(StoreDetail o) {
-                o = new Test().getStoreDetail();
+                //o = new Test().getStoreDetail();
                 getP().getU().initUI(o);
             }
         });

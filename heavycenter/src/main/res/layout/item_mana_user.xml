@@ -62,7 +62,7 @@
 
                             android:singleLine="true"
                             android:textColor="@color/hv_color_text_title"
-                            android:textSize="@dimen/hv_dimen_text_title_aaaa"
+                            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
                             android:text="@{StringUtil.getStr(item_mana_user.trueName)}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -72,7 +72,7 @@
                             android:singleLine="true"
                             android:layout_marginLeft="20dp"
                             android:textColor="@color/color_grey_500"
-                            android:textSize="@dimen/hv_dimen_text_title_aaaa"
+                            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
                             android:text="@{StringUtil.getStr(item_mana_user.tel)}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -99,7 +99,7 @@
                         android:layout_marginTop="5dp"
                         android:singleLine="true"
                             android:textColor="@color/gray"
-                            android:textSize="@dimen/hv_dimen_text_title_aa"
+                            android:textSize="@dimen/dimen_recylce_item_content_txtsize"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>

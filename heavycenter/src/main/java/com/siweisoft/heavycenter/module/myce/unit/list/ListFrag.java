@@ -9,6 +9,7 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -181,8 +182,74 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
     }
 
 
-    public void selUnit(UnitInfo unitInfo){
+    public void selUnit(final UnitInfo unitInfo){
         getArguments().putSerializable(ValueConstant.DATA_DATA2,unitInfo);
-        getBaseUIActivity().onBackPressed();
+        if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.UP_UNIT
+                ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.SEL_UNIT){
+            getBaseUIActivity().onBackPressed();
+        }else{
+            getP().getD().getUnitInfo(unitInfo.getCompanyId(), new UINetAdapter<UnitInfo>(activity) {
+                @Override
+                public void onResult(boolean success, String msg, UnitInfo o) {
+                    super.onResult(success, msg, o);
+                    if(o.getCompanyIsNull()==UnitInfo.COMPANY_NULL){
+                        getP().getU().showTip(new View.OnClickListener(){
+                            @Override
+                            public void onClick(View vv) {
+                                switch (vv.getId()){
+                                    case R.id.tv_n:
+                                        break;
+                                    case R.id.tv_y:
+                                        getP().getD().bindUnit(unitInfo.getId(), true,new UINetAdapter<BindResBean>(activity) {
+                                            @Override
+                                            public void onResult(boolean success, String msg, BindResBean o) {
+                                                super.onResult(success, msg, o);
+                                                if(success){
+                                                    ToastUtil.getInstance().showLong(getContext(),"绑定成功");
+                                                    getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                                        @Override
+                                                        public void onResult(boolean success, String msg, LoginResBean o) {
+                                                            super.onResult(success, msg, o);
+                                                            if(success){
+                                                                LocalValue.save登录返回信息(o);
+                                                                getBaseUIActivity().onBackPressed();
+                                                                ((MainAct)activity).reStart();
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        });
+                                        break;
+                                }
+                                getBaseUIActivity().onBackPressed();
+                            }
+                        });
+                    }else{
+                        getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(activity) {
+                            @Override
+                            public void onResult(boolean success, String msg, BindResBean o) {
+                                super.onResult(success, msg, o);
+                                if(success){
+                                    ToastUtil.getInstance().showLong(getContext(),"绑定成功");
+                                    getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                        @Override
+                                        public void onResult(boolean success, String msg, LoginResBean o) {
+                                            super.onResult(success, msg, o);
+                                            if(success){
+                                                LocalValue.save登录返回信息(o);
+                                                getBaseUIActivity().onBackPressed();
+                                                ((MainAct)activity).reStart();
+                                            }
+                                        }
+                                    });
+                                }
+
+                            }
+                        });
+                    }
+                }
+            });
+        }
     }
 }

@@ -63,6 +63,10 @@ import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewOrderRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
+import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumReq;
+import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumRes;
+import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderReq;
+import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderRes;
 import com.siweisoft.heavycenter.data.netd.other.city.CityReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 import com.siweisoft.heavycenter.data.netd.scan.weight.WeightReq;
@@ -170,6 +174,16 @@ public class NetDataOpe {
 
         public static void detail(Context context, OrderDetailReq reqBean, NetI<OrdersRes.ResultsBean> adapter) {
             NetGet.getData(context,NetValue.获取地址("/orders/getDetail"),reqBean,adapter);
+        }
+
+
+        public static void receipt(Context context, ReceiptOrderReq reqBean, NetI<ReceiptOrderRes> adapter) {
+            NetGet.postData(context,NetValue.获取地址("/orders/auditOrder"),reqBean,adapter);
+        }
+
+
+        public static void getOrderCount(Context context, OrderNumReq reqBean, NetI<OrderNumRes> adapter) {
+            NetGet.getData(context,NetValue.获取地址("/orders/getOrderCount"),reqBean,adapter);
         }
     }
 

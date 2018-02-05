@@ -13,6 +13,8 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.NullUtil;
+import com.android.lib.util.ToastUtil;
 import com.daimajia.swipe.SwipeLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -111,6 +113,22 @@ public class BindUIOpe extends AppUIOpe<FragMyceCarBindBinding>{
 
     public void initRefresh(OnRefreshListener refreshListener){
         bind.refreshLayout.setOnRefreshListener(refreshListener);
+    }
+
+    public boolean canSearchGo(){
+        if(NullUtil.isStrEmpty(bind.search.getEditText().getText().toString())){
+            ToastUtil.getInstance().showShort(getActivity(),"车牌号为输入");
+            return false;
+        }
+        if(bind.search.getEditText().getText().toString().length()!=7){
+            ToastUtil.getInstance().showShort(getActivity(),"车牌号输入有误");
+            return false;
+        }
+        return true;
+    }
+
+    public String getInputText(){
+        return bind.search.getEditText().getText().toString();
     }
 
     public void finishRefresh(){

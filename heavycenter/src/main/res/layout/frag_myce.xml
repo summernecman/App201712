@@ -35,7 +35,7 @@
             android:id="@+id/item_unit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style_common:txt_left="上海路灯"
+            style_common:txt_left="绑定单位"
             style_common:txt_right="绑定单位"
             style_common:iv_left="@drawable/icon_hv_myce_unit"
             style_common:iv_right="@drawable/icon_hv_into"

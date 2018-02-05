@@ -47,7 +47,6 @@
                                 android:layout_height="wrap_content">
 
                             <TextView
-                                    android:text="3"
                                     android:textSize="25sp"
                                     android:textColor="@color/color_yell_blue"
                                     android:layout_width="wrap_content"
@@ -71,15 +70,18 @@
                             android:layout_height="wrap_content">
                         <TextView
                                 android:id="@+id/tv_current"
-                                android:text="10"
                                 android:textSize="15sp"
                                 android:textColor="@color/color_yell_blue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
-
+                        <TextView
+                            android:text="/"
+                            android:textSize="15sp"
+                            android:textColor="@color/color_hv_yelll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
                         <TextView
                                 android:id="@+id/tv_plan"
-                                android:text="/198t"
                                 android:textSize="15sp"
                                 android:textColor="@color/color_hv_yelll"
                                 android:layout_width="wrap_content"
@@ -158,7 +160,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
                         <TextView
-                                android:id="@+id/tv_companyname"
+                                android:id="@+id/tv_duimian"
                                 android:singleLine="true"
                                 android:layout_marginLeft="10dp"
                                 android:textColor="@color/white"

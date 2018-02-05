@@ -3,12 +3,15 @@ package com.siweisoft.heavycenter.module.main.order.begin;
 //by summer on 2017-12-19.
 
 import android.content.Context;
+import android.databinding.ViewDataBinding;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.daimajia.swipe.SimpleSwipeListener;
@@ -64,10 +67,16 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 
                     @Override
                     public void onBindViewHolder(AppViewHolder holder, int position) {
-                        super.onBindViewHolder(holder, position);
+
+
                         ItemMainOrderBeginBinding beginBinding = (ItemMainOrderBeginBinding) holder.viewDataBinding;
                         beginBinding.getRoot().setSelected(position%2==0?true:false);
 
+                        beginBinding.llNeworder.setTag(com.android.lib.R.id.data, list.get(position));
+                        beginBinding.llNeworder.setTag(com.android.lib.R.id.position, position);
+                        beginBinding.llNeworder.setOnClickListener(this);
+                        beginBinding.setVariable(vari, list.get(position));
+                        beginBinding.executePendingBindings();//加一行，问题解决
 
                         beginBinding.tvPlantime.setText("计划开始时间:"+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
                         beginBinding.getRoot().setTag(R.id.type,type);
@@ -78,8 +87,8 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                             beginBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_solid);
                             beginBinding.tvPlanmun.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_stroke);
                             beginBinding.tvPlanmun.setTextColor(context.getResources().getColor(R.color.color_hv_yelll));
-
                         }else{
+                            LogUtil.E(position+""+s.getResults().get(position).getFhdwName());
                             beginBinding.tvDuimian.setText(s.getResults().get(position).getFhdwName());
                             beginBinding.tvType.setText("来自");
                             beginBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_blue_solid);
@@ -87,6 +96,15 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                             beginBinding.tvPlanmun.setTextColor(context.getResources().getColor(R.color.color_hv_blue));
                         }
 
+                        if((s.getResults().get(position).getAuditState()==OrdersRes.ResultsBean.AUDITSTATE_未审核)&&
+                                NewsOrderReqBean.发货.equals(s.getResults().get(position).getOrderType())){
+                                beginBinding.llMenu.setVisibility(View.VISIBLE);
+                        }else{
+                            beginBinding.llMenu.setVisibility(View.GONE);
+                        }
+                        beginBinding.btSure.setOnClickListener(this);
+                        beginBinding.btSure.setTag(R.id.data,s.getResults().get(position));
+                        beginBinding.btSure.setTag(R.id.position,position);
                     }
                 });
                 break;
@@ -107,16 +125,20 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 
                         doingBinding.tvGoodname.setText(StringUtil.getStr(s.getResults().get(position).getProductName()));
                         doingBinding.tvSpes.setText(StringUtil.getStr(s.getResults().get(position).getSpecification()));
-                        if("S".equals(s.getResults().get(position).getOrderType())){
+                        if(comname.equals(s.getResults().get(position).getFhdwName())){
+                            doingBinding.tvDuimian.setText(s.getResults().get(position).getShdwName());
                             doingBinding.tvType.setText("发往");
-                            doingBinding.tvCompanyname.setText(StringUtil.getStr(s.getResults().get(position).getShdwQName()));
+                            doingBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_solid);
                         }else{
+                            LogUtil.E(position+""+s.getResults().get(position).getFhdwName());
+                            doingBinding.tvDuimian.setText(s.getResults().get(position).getFhdwName());
                             doingBinding.tvType.setText("来自");
-                            doingBinding.tvCompanyname.setText(StringUtil.getStr(s.getResults().get(position).getFhdwQName()));
+                            doingBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_blue_solid);
                         }
+                        doingBinding.tvPlan.setText(StringUtil.getStr(s.getResults().get(position).getPlanNumber())+"t");
                         doingBinding.tvStarttime.setText("开始时间："+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
                         doingBinding.tvEndtime.setText("结束时间：");
-
+                        doingBinding.tvCarno.setText(StringUtil.getStr(s.getResults().get(position).getCarLicenseNo()));
 
 
 

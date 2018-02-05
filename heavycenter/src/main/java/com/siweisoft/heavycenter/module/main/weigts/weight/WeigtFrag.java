@@ -5,6 +5,8 @@ package com.siweisoft.heavycenter.module.main.weigts.weight;
 import android.view.View;
 
 import butterknife.OnClick;
+
+import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -15,6 +17,7 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
     @Override
     public void initNow() {
         super.initNow();
+        getP().getU().init(getP().getD().getWeightMsg());
     }
 
 
@@ -44,10 +47,11 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
                         double d  = (double) vv.getTag(R.id.data);
                         switch (v.getId()){
                             case R.id.tv_weight:
-                                getP().getD().getWeightRes().setWeight(d);
+                                getP().getU().bind.tvWeight.setText(StringUtil.getStr(d));
+                                getP().getD().getWeightMsg().getMessage().setWeigh(d);
                                 break;
                             case R.id.ll_kc:
-                                getP().getD().getWeightRes().setDeduct(d);
+                                getP().getD().getWeightMsg().getMessage().setKc(d);
                                 break;
                         }
                         break;

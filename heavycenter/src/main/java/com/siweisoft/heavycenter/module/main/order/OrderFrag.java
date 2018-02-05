@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
+import com.android.lib.network.news.NetAdapter;
 import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.android.lib.view.dialog.list.DialogListFrag;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.order.begin.BeginFrag;
 import com.siweisoft.heavycenter.module.main.order.news.NewOrderFrag;
@@ -28,6 +30,13 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
     @Override
     public void onFristVisibleInit() {
         getP().getU().initPages(fragment,getP().getD().initPages());
+        getP().getD().getOrderCount(new NetAdapter<OrderNumRes>(this){
+            @Override
+            public void onSuccess(OrderNumRes o) {
+                super.onSuccess(o);
+                getP().getU().refreshTopMenu(o);
+            }
+        });
 
     }
 

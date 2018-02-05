@@ -11,6 +11,8 @@ import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
+import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderReq;
+import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderRes;
 
 import java.util.ArrayList;
 
@@ -33,6 +35,14 @@ public class BeginDAOpe extends AppDAOpe {
         ordersReq.setPageSize(10);
         ordersReq.setOrderStatus(type);
         NetDataOpe.Order.orders(getActivity(),ordersReq,adapter);
+    }
+
+    public void receipt(int id, int state, NetI<ReceiptOrderRes> adapter){
+        ReceiptOrderReq receiptOrderReq = new ReceiptOrderReq();
+        receiptOrderReq.setAuditor(LocalValue.get登录返回信息().getUserId());
+        receiptOrderReq.setAuditState(state);
+        receiptOrderReq.setId(id);
+        NetDataOpe.Order.receipt(getActivity(),receiptOrderReq,adapter);
     }
 
     public int getPageIndex() {

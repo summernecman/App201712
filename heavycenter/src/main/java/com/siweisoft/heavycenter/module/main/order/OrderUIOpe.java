@@ -11,9 +11,11 @@ import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.StringUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumRes;
 import com.siweisoft.heavycenter.databinding.FragMainOrderBinding;
 
 import java.util.ArrayList;
@@ -52,6 +54,15 @@ public class OrderUIOpe extends BaseUIOpe<FragMainOrderBinding>{
                 baseOnPagerChangeListener.onPageSelected(0);
             }
         });
+    }
+
+    public void refreshTopMenu(OrderNumRes orderNumRes){
+        if(orderNumRes==null){
+            return;
+        }
+        bind.topview.setTxt(0, "新订单("+StringUtil.getStr(orderNumRes.getNewFhCount()+orderNumRes.getNewShCount())+")");
+        bind.topview.setTxt(1, "进行中("+StringUtil.getStr(orderNumRes.getIngFhCount()+orderNumRes.getIngShCount())+")");
+        bind.topview.setTxt(2, "已完成("+StringUtil.getStr(orderNumRes.getDoneFhCount()+orderNumRes.getDoneShCount())+")");
     }
 
 

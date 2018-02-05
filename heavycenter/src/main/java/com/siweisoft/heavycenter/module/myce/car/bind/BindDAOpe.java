@@ -11,6 +11,7 @@ import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.mana.car.bind.BindCarReq;
 import com.siweisoft.heavycenter.data.netd.mana.car.bind.BindCarRes;
+import com.siweisoft.heavycenter.data.netd.mana.car.info.CarInfoReq;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 
@@ -57,6 +58,15 @@ public class BindDAOpe extends AppDAOpe {
         getBindCarReq().setEditer(LocalValue.get登录返回信息().getUserId());
         NetDataOpe.Mana.Car.bindCar(getActivity(),getBindCarReq(),adapter);
     }
+
+
+    public void infoCar(String calicenseno,NetI<CarsResBean.CarInfoRes> adapter){
+        CarInfoReq carInfoReq = new CarInfoReq();
+        carInfoReq.setCarLicenseNo(calicenseno);
+        carInfoReq.setIsApp(1);
+        NetDataOpe.Mana.Car.infoCar(getActivity(),carInfoReq,adapter);
+    }
+
 
     public CarsResBean getNetCars() {
         return netCars;

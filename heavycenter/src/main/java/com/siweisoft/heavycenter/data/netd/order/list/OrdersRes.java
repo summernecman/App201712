@@ -91,7 +91,7 @@ public class OrdersRes extends BaseBean {
         private String orderType;
         private String productName;
         private String specification;
-        private int planNumber;
+        private double planNumber;
         private String shdwName;
         private String fhdwName;
         private long planTime;
@@ -100,6 +100,34 @@ public class OrdersRes extends BaseBean {
         private String fhdwQName;
         private String signRule;
         private String orderStatus;
+        private String carLicenseNo;
+        private String trueName;
+        private String tel;
+        private Object startTime;
+        private Object finishTime;
+        private int totalRecord;
+        private double actualFh;
+        private double actualSh;
+        private  int auditState;
+
+
+        public final static int AUDITSTATE_未审核 = 0;
+
+        public final static int AUDITSTATE_接收 = 1;
+
+        public final static int AUDITSTATE_拒绝 = 2;
+
+
+
+
+        public int getAuditState() {
+            return auditState;
+        }
+
+        public void setAuditState(int auditState) {
+            this.auditState = auditState;
+        }
+
         private List<CarsResBean.CarInfoRes> vehicleList = new ArrayList<>();
 
         public int getOrderId() {
@@ -142,11 +170,11 @@ public class OrdersRes extends BaseBean {
             this.specification = specification;
         }
 
-        public int getPlanNumber() {
+        public double getPlanNumber() {
             return planNumber;
         }
 
-        public void setPlanNumber(int planNumber) {
+        public void setPlanNumber(double planNumber) {
             this.planNumber = planNumber;
         }
 
@@ -220,6 +248,70 @@ public class OrdersRes extends BaseBean {
 
         public void setVehicleList(List<CarsResBean.CarInfoRes> vehicleList) {
             this.vehicleList = vehicleList;
+        }
+
+        public String getCarLicenseNo() {
+            return carLicenseNo;
+        }
+
+        public void setCarLicenseNo(String carLicenseNo) {
+            this.carLicenseNo = carLicenseNo;
+        }
+
+        public String getTrueName() {
+            return trueName;
+        }
+
+        public void setTrueName(String trueName) {
+            this.trueName = trueName;
+        }
+
+        public String getTel() {
+            return tel;
+        }
+
+        public void setTel(String tel) {
+            this.tel = tel;
+        }
+
+        public Object getStartTime() {
+            return startTime;
+        }
+
+        public void setStartTime(Object startTime) {
+            this.startTime = startTime;
+        }
+
+        public Object getFinishTime() {
+            return finishTime;
+        }
+
+        public void setFinishTime(Object finishTime) {
+            this.finishTime = finishTime;
+        }
+
+        public int getTotalRecord() {
+            return totalRecord;
+        }
+
+        public void setTotalRecord(int totalRecord) {
+            this.totalRecord = totalRecord;
+        }
+
+        public double getActualFh() {
+            return actualFh;
+        }
+
+        public void setActualFh(double actualFh) {
+            this.actualFh = actualFh;
+        }
+
+        public double getActualSh() {
+            return actualSh;
+        }
+
+        public void setActualSh(double actualSh) {
+            this.actualSh = actualSh;
         }
     }
 }

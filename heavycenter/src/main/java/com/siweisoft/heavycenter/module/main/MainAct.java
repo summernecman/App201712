@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.module.welc.welc.WelcAct;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSelectListener {
@@ -70,7 +72,12 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     }
 
 
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+//        this.finish();
+//        startActivity(new Intent(this, WelcAct.class));
+    }
 
     public void dothing(){
         getP().getU().setBottomMenuViewData(getP().getD().getMenudata());

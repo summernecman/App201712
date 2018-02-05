@@ -81,7 +81,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, StoresResBean o) {
                 super.onResult(success, msg, o);
-                o = new Test().getStoresResBean();
+                //o = new Test().getStoresResBean();
                 getP().getD().addData(o);
                 getP().getU().notifyDataSetChanged();
                 getP().getU().finishLoadmore();
@@ -97,7 +97,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, StoresResBean o) {
                 super.onResult(success, msg, o);
-                o = new Test().getStoresResBean();
+                //o = new Test().getStoresResBean();
                 getP().getD().addData(o);
                 getP().getU().LoadListData(getP().getD().getStoresResBean(),StoreFrag.this);
                 getP().getU().finishRefresh();

@@ -55,6 +55,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                     bind.itemDriver.setVisibility(View.VISIBLE);
                     break;
                 default:
+                    bind.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
                     bind.itemDriver.setVisibility(View.GONE);
                     break;
             }
@@ -109,15 +110,19 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
 
         switch (LocalValue.get登录返回信息().getBindCompanyState()){
             case LoginResBean.BIND_UNIT_STATE_UNBIND:
+                bind.itemUnit.getLeftTV().setText("绑定单位");
                 bind.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_UNBIND_CN);
                 break;
             case LoginResBean.BIND_UNIT_STATE_CHECK:
+                bind.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
                 bind.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_CHECK_CN);
                 break;
             case LoginResBean.BIND_UNIT_STATE_BINDED:
+                bind.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
                 bind.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_BINDED_CN);
                 break;
             case LoginResBean.BIND_UNIT_STATE_REJECT:
+                bind.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
                 bind.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_REJECT_CN);
                 break;
         }

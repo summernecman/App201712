@@ -49,9 +49,17 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void XXX(String str) {
-        WeightMsg weightMsg = GsonUtil.getInstance().fromJson(str,WeightMsg.class);
-      getP().getD().getWeightMsgs().add(str);
+        WeightMsg.MessageBean m = GsonUtil.getInstance().fromJson(str,WeightMsg.class).getMessage();
+        if(m==null){
+            return ;
+        }
+        getP().getU().initTopUI(m);
+        StringBuffer sb = new StringBuffer();
+        sb.append(""+getP().getD().getWeightMsgs().size()).append("状态:").append(m.getState()).append(m.getContent()).append("\n").append("订单ID:").append(m.getOrder().getOrderId()).append("\n").append("重量:").append(m.getWeighResult());
+      getP().getD().getWeightMsgs().add(sb.toString());
       getP().getU().notifyDataSetChanged();
+
+
 
     }
 

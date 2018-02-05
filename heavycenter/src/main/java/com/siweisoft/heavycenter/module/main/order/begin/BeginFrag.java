@@ -17,6 +17,8 @@ import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
+import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderReq;
+import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.order.detail.DetailFrag;
 
@@ -32,11 +34,35 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
     public void onInterupt(int type, View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                Bundle bundle = new Bundle();
-                bundle.putString(ValueConstant.TYPE,(String)v.getTag(R.id.type));
-                OrdersRes.ResultsBean resultsBean = (OrdersRes.ResultsBean) v.getTag(R.id.data);
-                bundle.putInt(ValueConstant.DATA_DATA, resultsBean.getOrderId());
-                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.订单,MainAct.订单ID,new DetailFrag(),bundle);
+                switch (v.getId()){
+                    case R.id.ll_neworder:
+                        Bundle bundle = new Bundle();
+                        bundle.putString(ValueConstant.TYPE,(String)v.getTag(R.id.type));
+                        OrdersRes.ResultsBean resultsBean = (OrdersRes.ResultsBean) v.getTag(R.id.data);
+                        bundle.putInt(ValueConstant.DATA_DATA, resultsBean.getOrderId());
+                        FragManager2.getInstance().start(getBaseUIActivity(), MainAct.订单,MainAct.订单ID,new DetailFrag(),bundle);
+                        break;
+                    case R.id.bt_sure:
+                        final OrdersRes.ResultsBean data = (OrdersRes.ResultsBean) v.getTag(R.id.data);
+                        getP().getD().receipt(data.getOrderId(), ReceiptOrderReq.AUDIO_STATE_接收, new UINetAdapter<ReceiptOrderRes>(this) {
+                            @Override
+                            public void onSuccess(ReceiptOrderRes o) {
+                                data.setAuditState(OrdersRes.ResultsBean.AUDITSTATE_接收);
+                                getP().getU().notifyDataSetChanged();
+                            }
+                        });
+                        break;
+                    case R.id.bt_reject:
+                        final OrdersRes.ResultsBean data1 = (OrdersRes.ResultsBean) v.getTag(R.id.data);
+                        getP().getD().receipt(data1.getOrderId(), ReceiptOrderReq.AUDIO_STATE_拒绝, new UINetAdapter<ReceiptOrderRes>(this) {
+                            @Override
+                            public void onSuccess(ReceiptOrderRes o) {
+                                data1.setAuditState(OrdersRes.ResultsBean.AUDITSTATE_拒绝);
+                                getP().getU().notifyDataSetChanged();
+                            }
+                        });
+                        break;
+                }
                 break;
         }
     }
@@ -48,7 +74,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);
-                o = new Test().getOrdersRes();
+                //o = new Test().getOrdersRes();
                 getP().getU().finishLoadmore();
                 if(o==null||o.getResults()==null){
                     return;
@@ -67,7 +93,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);
-                o = new Test().getOrdersRes();
+                //o = new Test().getOrdersRes();
                 if(o==null){
                     return;
                 }

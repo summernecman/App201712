@@ -27,6 +27,9 @@ public class PushGetter extends BroadcastReceiver {
             if(NullUtil.isStrEmpty(bundle.getString(JPushInterface.EXTRA_EXTRA))){
                 return;
             }
+            if(!NullUtil.isStrEmpty(bundle.getString(JPushInterface.EXTRA_ALERT))){
+                return;
+            }
             EventBus.getDefault().post(bundle.getString(JPushInterface.EXTRA_EXTRA));
         }
 

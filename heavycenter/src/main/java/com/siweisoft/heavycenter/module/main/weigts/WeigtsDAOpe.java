@@ -6,6 +6,8 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import com.android.lib.network.news.NetI;
+import com.android.lib.util.NullUtil;
+import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
@@ -24,18 +26,25 @@ public class WeigtsDAOpe extends AppDAOpe {
 
     private  WeightMsg weightMsg;
 
+    ArrayList<Fragment> pages = new ArrayList<>();
+
     public WeigtsDAOpe(Context context) {
         super(context);
     }
 
-    public ArrayList<Fragment> getPages(){
-        ArrayList<Fragment> pages = new ArrayList<>();
+
+
+    public ArrayList<Fragment> initPages(){
+        pages.clear();
         for(int i=0;i<5;i++){
             pages.add(new WeigtFrag());
         }
         return pages;
     }
 
+    public ArrayList<Fragment> getPages() {
+        return pages;
+    }
 
     public void listWeight(NetI<WeightListRes> adapter){
         WeightListReq weightListReq = new WeightListReq();
@@ -53,6 +62,10 @@ public class WeigtsDAOpe extends AppDAOpe {
         weightReq.setOrderId(weightMsg.getMessage().getOrder().getOrderId());
         weightReq.setTransportRecordId(weightMsg.getMessage().getOrder().getYsdId());
         weightReq.setState(weightMsg.getMessage().getState());
+        if(NullUtil.isStrEmpty(weightMsg.getMessage().getState())){
+            ToastUtil.getInstance().showShort(getActivity(),"没有返回状态码");
+            return;
+        }
         switch (weightMsg.getMessage().getState()){
             case "s0":
             case "s3":
