@@ -3,11 +3,14 @@ package com.siweisoft.heavycenter.module.myce;
 //by summer on 2017-12-14.
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.UriUtils;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
@@ -35,6 +38,12 @@ import butterknife.OnClick;
 import id.zelory.compressor.Compressor;
 
 public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        LogUtil.E("onViewCreatedonViewCreatedonViewCreated");
+    }
 
     @Override
     public void initNow() {

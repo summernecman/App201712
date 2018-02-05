@@ -1,5 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.lib">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+          package="com.android.lib">
     -------------------------------------------------------------------------------------------------
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.LOCATION_HARDWARE" />
@@ -45,8 +45,9 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     ---------------------------------------------------------------------------------------------------------
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:supportsRtl="true"
+        tools:replace="android:allowBackup"
         android:theme="@style/AppTheme">
         <activity
             android:name="com.lzy.imagepicker.ui.ImagePreviewDelActivity"

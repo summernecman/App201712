@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.main;
 
 //by summer on 17-08-23.
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -65,6 +66,10 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(savedInstanceState!=null){
+            startActivity(new Intent(this,WelcAct.class));
+            this.finish();
+        }
         if(!getP().getD().getPermissionUtil().isAllGranted(activity,getP().getD().getPermissions())){
             return;
         }
@@ -72,12 +77,13 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     }
 
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
+//    @SuppressLint("MissingSuperCall")
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
 //        this.finish();
 //        startActivity(new Intent(this, WelcAct.class));
-    }
+//    }
 
     public void dothing(){
         getP().getU().setBottomMenuViewData(getP().getD().getMenudata());

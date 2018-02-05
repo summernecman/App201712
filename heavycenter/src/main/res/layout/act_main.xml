@@ -16,15 +16,11 @@
             android:id="@+id/act_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
                 <RelativeLayout
                     android:id="@+id/content_content"
+                    android:layout_marginBottom="@dimen/dimens_base_bottom"
                     android:layout_width="match_parent"
-                    android:layout_weight="1"
-                    android:layout_height="0dp">
+                    android:layout_height="match_parent">
                     <com.android.lib.view.viewpager.ScrollbleViewPager
                         android:background="@color/color_block_back"
                         android:id="@+id/content"
@@ -32,12 +28,11 @@
                         android:layout_height="match_parent"/>
                 </RelativeLayout>
                 <com.android.lib.view.bottommenu.BottomMenuView
+                        android:layout_gravity="bottom"
+                        android:elevation="20dp"
                     android:id="@+id/bottommenu"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimens_base_bottom"/>
-
-            </LinearLayout>
-
         </FrameLayout>
         <include
             android:id="@+id/incloud"

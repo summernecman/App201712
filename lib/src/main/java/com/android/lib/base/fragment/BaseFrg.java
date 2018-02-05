@@ -17,10 +17,6 @@ public class BaseFrg extends Fragment {
      */
     protected FragmentActivity activity;
     /**
-     * 布局加载器
-     */
-    protected LayoutInflater layoutInflater;
-    /**
      * fragment自身的引用
      */
     protected Fragment fragment;
@@ -34,7 +30,6 @@ public class BaseFrg extends Fragment {
         super.onCreate(savedInstanceState);
         uniqueid = System.currentTimeMillis();
         fragment = this;
-        layoutInflater = LayoutInflater.from(getActivity());
     }
 
 

@@ -10,12 +10,13 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.android.lib.util.ColorUtil;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.ScreenUtil;
 import com.siweisoft.heavycenter.R;
 
 import java.util.ArrayList;
 
-public class WeightView extends View{
+public class WeightView extends View implements View.OnClickListener{
 
     private int w;
 
@@ -26,6 +27,7 @@ public class WeightView extends View{
     private double lengh = ScreenUtil.最小DIMEN *15;
 
     private ArrayList<WeightBean[]> p = new ArrayList<>();
+    private ArrayList<WeightBean[]> pp = new ArrayList<>();
     private double num = 120;
     private double e = 360/(num);
 
@@ -33,11 +35,14 @@ public class WeightView extends View{
 
     private boolean done = false;
 
-
+    private int size = 0;
 
     public WeightView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        setOnClickListener(this);
     }
+
+
 
 
     @Override
@@ -65,6 +70,7 @@ public class WeightView extends View{
                    beans[1].x = -(r-lengh)*Math.sin(Math.toRadians(e*i))+w/2;
                    beans[1].y = (r-lengh)*Math.cos(Math.toRadians(e*i))+h/2;
                    p.add(beans);
+                   pp.add(beans);
                    try {
                        Thread.sleep(10);
                    } catch (InterruptedException e1) {
@@ -82,10 +88,44 @@ public class WeightView extends View{
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        for(int i=0;i<p.size();i++){
-            paint.setColor(p.get(i)[0].color);
+        for(int i=0;i<pp.size();i++){
+            paint.setColor(pp.get(i)[0].color);
             //paint.setShadowLayer(3,0,0,p.get(i)[0].color);
-            canvas.drawLine((float) p.get(i)[0].x,(float)p.get(i)[0].y,(float)p.get(i)[1].x,(float)p.get(i)[1].y,paint);
+            canvas.drawLine((float) pp.get(i)[0].x,(float)pp.get(i)[0].y,(float)pp.get(i)[1].x,(float)pp.get(i)[1].y,paint);
         }
+    }
+
+    private boolean anim = true;
+
+    public void anim(){
+        if(!anim){
+            return;
+        }
+        pp.clear();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for(int i=0;i<p.size();i++){
+                    pp.add(p.get(i));
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                    postInvalidate();
+                    if(i==0){
+                        anim = false;
+                    }
+                    if(i==p.size()-1){
+                        anim = true;
+                    }
+                }
+            }
+        }).start();
+    }
+
+    @Override
+    public void onClick(View v) {
+        anim();
     }
 }

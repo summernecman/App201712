@@ -153,7 +153,7 @@ public class FragManager2  {
 
     public int getAnim2() {
         if(anim2==0){
-            anim2 =R.anim.anim_push_left_out;
+            anim2 =R.anim.anim_push_left_out_litte;
         }
         return anim2;
     }
@@ -174,7 +174,7 @@ public class FragManager2  {
 
     public int getAnim5() {
         if(anim5==0){
-            anim5 =R.anim.anim_push_left_in;
+            anim5 =R.anim.anim_push_left_in_litter;
         }
         return anim5;
     }

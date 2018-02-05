@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main.msg.sys;
+package com.siweisoft.heavycenter.module.main.msg.msg;
 
 //by summer on 2017-12-11.
 
@@ -7,6 +7,7 @@ import android.view.View;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.StringUtil;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -16,16 +17,21 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealResBean;
+import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 
-public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshListener,OnLoadmoreListener ,ViewListener{
+public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshListener,OnLoadmoreListener ,ViewListener{
 
 
     @Override
     protected void onFristVisibleInit() {
         getP().getU().initRefresh(this,this);
-        getP().getU().autoRefresh();
+        if(StringUtil.equals(MsgsReqBean.MESSAGE_CATE_ALL,getArguments().getString(ValueConstant.DATA_INDEX))){
+            getP().getU().autoRefresh();
+        }else{
+            onRefresh(getP().getU().bind.refresh);
+        }
     }
 
     @Override
@@ -34,7 +40,7 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
         getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_INDEX),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
-                //o= new Test().getMsgsResBean();
+                o= new Test().getMsgsResBean();
                 getP().getD().addData(o);
                 getP().getU().notifyDataSetChanged();
             }
@@ -48,9 +54,9 @@ public class SysFrag extends AppFrag<SysUIOpe,SysDAOpe> implements OnRefreshList
         getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_INDEX),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
-                //o= new Test().getMsgsResBean();
+                o= new Test().getMsgsResBean();
                 getP().getD().addData(o);
-                getP().getU().LoadListData(getP().getD().getMsgsResBean(),SysFrag.this);
+                getP().getU().LoadListData(getP().getD().getMsgsResBean(),MsgFrag.this);
             }
         });
     }

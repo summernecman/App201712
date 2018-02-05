@@ -6,7 +6,6 @@
     <application
         android:largeHeap="true"
         android:name=".ServieApp"
-        android:allowBackup="true"
         android:icon="@drawable/icon_icon"
         android:label="心服务"
         android:roundIcon="@drawable/icon_icon"

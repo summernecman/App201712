@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main.msg.sys;
+package com.siweisoft.heavycenter.module.main.msg.msg;
 
 //by summer on 2017-12-11.
 
@@ -14,16 +14,14 @@ import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealResBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
 
-import java.util.ArrayList;
-
-public class SysDAOpe extends BaseDAOpe {
+public class MsgDAOpe extends BaseDAOpe {
 
 
     private int pageindex = NetValue.PAGE_INDEX_START;
 
     private MsgsResBean msgsResBean = new MsgsResBean();
 
-    public SysDAOpe(Context context) {
+    public MsgDAOpe(Context context) {
         super(context);
     }
 

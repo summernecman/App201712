@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main.msg.sys;
+package com.siweisoft.heavycenter.module.main.msg.msg;
 
 //by summer on 2017-12-11.
 
@@ -11,21 +11,19 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.data.DateFormatUtil;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
-import com.siweisoft.heavycenter.databinding.FragMainMsgSysBinding;
+import com.siweisoft.heavycenter.databinding.FragMainMsgsMsgBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainMsgAllBinding;
 
 import java.util.Date;
-import java.util.List;
 
-public class SysUIOpe extends BaseUIOpe<FragMainMsgSysBinding>{
+public class MsgUIOpe extends BaseUIOpe<FragMainMsgsMsgBinding>{
 
-    public SysUIOpe(Context context) {
+    public MsgUIOpe(Context context) {
         super(context);
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }

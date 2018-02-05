@@ -17,7 +17,7 @@ import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.module.main.map.MapFrag;
-import com.siweisoft.heavycenter.module.main.msg.MsgFrag;
+import com.siweisoft.heavycenter.module.main.msg.MsgsFrag;
 import com.siweisoft.heavycenter.module.main.order.OrderFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
@@ -27,7 +27,6 @@ import com.siweisoft.heavycenter.module.myce.MyceFrag;
 import com.siweisoft.heavycenter.module.scan.ScanDAOpe;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainDAOpe extends AppDAOpe {
 
@@ -73,7 +72,7 @@ public class MainDAOpe extends AppDAOpe {
         }
 
         RelativeLayout v4 = new RelativeLayout(context);v4.setId(MainAct.消息ID);
-        menudata.add(new BottomMenuBean(MainAct.消息, R.drawable.drawable_main_bottom_msg,new MsgFrag(),v4,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        menudata.add(new BottomMenuBean(MainAct.消息, R.drawable.drawable_main_bottom_msg,new MsgsFrag(),v4,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         return menudata;
     }
 

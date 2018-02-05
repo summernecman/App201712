@@ -43,7 +43,7 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
         super.onViewCreated(view, savedInstanceState);
         container =view.findViewById(R.id.rl_center);
         if(customerView!=null){
-        container.addView(customerView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+        container.addView(customerView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
         }
         if(viewlayout!=0){
             LayoutInflater.from(getContext()).inflate(viewlayout, (ViewGroup) view,true);

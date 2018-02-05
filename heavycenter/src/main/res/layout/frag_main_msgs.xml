@@ -5,7 +5,7 @@
   >
     <data>
         <variable
-            name="frag_main_msg"
+            name="frag_main_msgs"
             type="String" />
     </data>
 

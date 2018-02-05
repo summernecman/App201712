@@ -52,8 +52,6 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     private ArrayList<FragI> fragIs = new ArrayList<>();
 
-    BaseUIActivity baseUIActivity;
-
     private boolean isInit = false;
 
     private boolean isFiistVisibleinit = false;

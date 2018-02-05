@@ -8,6 +8,7 @@ import android.view.View;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.StringUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -16,6 +17,7 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.NetValue;
+import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderReq;
 import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderRes;
@@ -27,7 +29,11 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
     @Override
     protected void onFristVisibleInit() {
         getP().getU().initRefresh(this,this);
-        getP().getU().autoRefresh();
+        if(StringUtil.equals(OrdersReq.STATUS_NEW,getArguments().getString(ValueConstant.DATA_DATA))){
+            getP().getU().autoRefresh();
+        }else{
+            onRefresh(getP().getU().bind.refreshLayout);
+        }
     }
 
     @Override
@@ -93,13 +99,13 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);
+                getP().getU().finishRefresh();
                 //o = new Test().getOrdersRes();
                 if(o==null){
                     return;
                 }
                 getP().getD().getOrdersRes().getResults().addAll(o.getResults());
                 getP().getU().LoadListData(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getOrdersRes(),BeginFrag.this);
-                getP().getU().finishRefresh();
             }
         });
 

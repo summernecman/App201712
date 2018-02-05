@@ -1,60 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/color_item_content"
-    android:paddingLeft="@dimen/dimen_item_content_left_padding">
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/color_item_content"
+              android:foreground="?android:attr/selectableItemBackground"
+              android:paddingLeft="@dimen/dimen_item_content_left_padding">
     <LinearLayout
-        android:gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_item_content_h">
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_item_content_h">
 
         <TextView
-            android:id="@+id/tv_left"
-            android:layout_marginLeft="8dp"
-            android:text="文字内容"
-            android:textSize="17dp"
-            android:textColor="@color/hv_color_text_title"
-            android:gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+                android:id="@+id/tv_left"
+                android:layout_marginLeft="8dp"
+                android:text="文字内容"
+                android:textSize="17dp"
+                android:textColor="@color/hv_color_text_title"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
         <EditText
-            android:singleLine="true"
-            android:textSize="17dp"
-            android:layout_marginLeft="15dp"
-            android:id="@+id/et_mid"
-            android:background="@null"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
+                android:singleLine="true"
+                android:textSize="17dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/et_mid"
+                android:background="@null"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
 
         <TextView
-            android:singleLine="true"
-            android:gravity="center_vertical"
-            android:textColor="@color/color_grey_500"
-            android:id="@+id/tv_mid"
-            android:textSize="17dp"
-            android:layout_marginLeft="15dp"
-            android:background="@null"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"/>
+                android:singleLine="true"
+                android:gravity="center_vertical"
+                android:textColor="@color/color_grey_500"
+                android:id="@+id/tv_mid"
+                android:textSize="17dp"
+                android:layout_marginLeft="15dp"
+                android:background="@null"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
 
 
         <ImageView
-            android:id="@+id/iv_right"
-            android:layout_marginRight="@dimen/dimen_item_content_right_txt_right_padding"
-            android:layout_width="@dimen/dimen_item_content_right_icon_size"
-            android:layout_height="@dimen/dimen_item_content_right_icon_size" />
+                android:id="@+id/iv_right"
+                android:layout_marginRight="@dimen/dimen_item_content_right_txt_right_padding"
+                android:layout_width="@dimen/dimen_item_content_right_icon_size"
+                android:layout_height="@dimen/dimen_item_content_right_icon_size" />
 
 
     </LinearLayout>
 
     <View
-        android:layout_marginLeft="8dp"
-        android:id="@+id/divide"
-        android:background="@color/color_item_content_gap"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_item_content_gap_size"/>
+            android:layout_marginLeft="8dp"
+            android:id="@+id/divide"
+            android:background="@color/color_item_content_gap"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_item_content_gap_size"/>
 </LinearLayout>

@@ -11,7 +11,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
-public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> {
+public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
 
 
     @Override

@@ -26,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
                 <com.siweisoft.heavycenter.module.view.weight.WeightView
+                        android:id="@+id/weight"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:layout_centerInParent="true"

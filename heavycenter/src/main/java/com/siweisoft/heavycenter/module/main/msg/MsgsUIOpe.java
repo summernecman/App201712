@@ -10,13 +10,13 @@ import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.util.LogUtil;
-import com.siweisoft.heavycenter.databinding.FragMainMsgBinding;
+import com.siweisoft.heavycenter.databinding.FragMainMsgsBinding;
 
 import java.util.ArrayList;
 
-public class MsgUIOpe extends BaseUIOpe<FragMainMsgBinding>{
+public class MsgsUIOpe extends BaseUIOpe<FragMainMsgsBinding>{
 
-    public MsgUIOpe(Context context) {
+    public MsgsUIOpe(Context context) {
         super(context);
     }
 
