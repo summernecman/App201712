@@ -19,7 +19,7 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
     public void initdelay() {
         super.initdelay();
         getP().getU().initRecycle();
-        getP().getD().storesInfo(new UINetAdapter<StoresResBean>(activity) {
+        getP().getD().storesInfo(new UINetAdapter<StoresResBean>(getBaseUIAct()) {
             @Override
             public void onResult(boolean success, String msg, StoresResBean o) {
                 super.onResult(success, msg, o);
@@ -38,13 +38,13 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
         switch (v.getId()){
             case R.id.ftv_right2:
                 if(getP().getD().canGo()){
-                    getP().getD().checkStore(getP().getD().getCheckStoreReqBean(getP().getD().getStoresResBean()), new UINetAdapter<CheckStoreResBean>(activity) {
+                    getP().getD().checkStore(getP().getD().getCheckStoreReqBean(getP().getD().getStoresResBean()), new UINetAdapter<CheckStoreResBean>(getBaseUIAct()) {
                         @Override
                         public void onResult(boolean success, String msg, CheckStoreResBean o) {
                             super.onResult(success, msg, o);
                             if(success){
                                 getArguments().putBoolean(ValueConstant.FRAG_KEY,true);
-                                getBaseUIActivity().onBackPressed();
+                                getBaseUIAct().onBackPressed();
                             }
                         }
                     });

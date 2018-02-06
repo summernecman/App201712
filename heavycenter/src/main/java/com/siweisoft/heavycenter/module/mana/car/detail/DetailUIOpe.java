@@ -39,8 +39,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
     }
 
     @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
-        super.initUI(baseUIFrag);
+    public void initUI() {
         initRecycle();
     }
 

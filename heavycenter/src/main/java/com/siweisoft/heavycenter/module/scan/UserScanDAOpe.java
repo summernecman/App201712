@@ -136,7 +136,7 @@ public class UserScanDAOpe extends BaseDAOpe {
                 public void onResult(boolean success, String msg, BindResBean o) {
                     super.onResult(success, msg, o);
                     if(success){
-                        ((MainAct)getActivity()).reStart();
+                        ((MainAct)getActivity()).go判断是否绑定单位处理();
                     }
                 }
             });
@@ -155,7 +155,7 @@ public class UserScanDAOpe extends BaseDAOpe {
                 public void onResult(boolean success, String msg, BindResBean o) {
                     super.onResult(success, msg, o);
                     if(success){
-                        ((MainAct)getActivity()).reStart();
+                        ((MainAct)getActivity()).go判断是否绑定单位处理();
                     }
                 }
             });

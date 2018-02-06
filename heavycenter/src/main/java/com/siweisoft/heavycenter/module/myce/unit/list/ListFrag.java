@@ -22,6 +22,7 @@ import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
 
 import java.io.Serializable;
@@ -54,10 +55,10 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                 if(LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED){
                     bundle.putInt(ValueConstant.FARG_REQ,2);
                 }
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),MainAct.主界面ID,new NewFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(), MainValue.主界面ID,new NewFrag(),bundle);
                 break;
             case R.id.iv_search:
-                getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(activity){
+                getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(getBaseUIAct()){
                     @Override
                     public void onResult(boolean success, String msg, SearchResBean o) {
                         super.onResult(success, msg, o);
@@ -75,12 +76,12 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                 if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.UP_UNIT
                         ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.SEL_UNIT){
                     getArguments().putSerializable(ValueConstant.DATA_DATA2, (Serializable) v.getTag(R.id.data));
-                    getBaseUIActivity().onBackPressed();
+                    getBaseUIAct().onBackPressed();
                     return;
                 }
                 final UnitInfo unitInfo = (UnitInfo) v.getTag(R.id.data);
 
-                getP().getD().getUnitInfo(unitInfo.getId(), new UINetAdapter<UnitInfo>(activity) {
+                getP().getD().getUnitInfo(unitInfo.getId(), new UINetAdapter<UnitInfo>(getBaseUIAct()) {
                     @Override
                     public void onResult(boolean success, String msg, UnitInfo o) {
                         super.onResult(success, msg, o);
@@ -92,7 +93,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                         case R.id.tv_n:
                                             break;
                                         case R.id.tv_y:
-                                            getP().getD().bindUnit(unitInfo.getId(), true,new UINetAdapter<BindResBean>(activity) {
+                                            getP().getD().bindUnit(unitInfo.getId(), true,new UINetAdapter<BindResBean>(getBaseUIAct()) {
                                                 @Override
                                                 public void onResult(boolean success, String msg, BindResBean o) {
                                                     super.onResult(success, msg, o);
@@ -102,8 +103,8 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                                             super.onResult(success, msg, o);
                                                             if(success){
                                                                 LocalValue.save登录返回信息(o);
-                                                                getBaseUIActivity().onBackPressed();
-                                                                ((MainAct)activity).reStart();
+                                                                getBaseUIAct().onBackPressed();
+                                                                ((MainAct)getBaseUIAct()).go判断是否绑定单位处理();
                                                             }
                                                         }
                                                     });
@@ -111,11 +112,11 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                             });
                                             break;
                                     }
-                                    getBaseUIActivity().onBackPressed();
+                                    getBaseUIAct().onBackPressed();
                                 }
                             });
                         }else{
-                            getP().getD().bindUnit(unitInfo.getId(), false,new UINetAdapter<BindResBean>(activity) {
+                            getP().getD().bindUnit(unitInfo.getId(), false,new UINetAdapter<BindResBean>(getBaseUIAct()) {
                                 @Override
                                 public void onResult(boolean success, String msg, BindResBean o) {
                                     super.onResult(success, msg, o);
@@ -125,8 +126,8 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                             super.onResult(success, msg, o);
                                             if(success){
                                                 LocalValue.save登录返回信息(o);
-                                                getBaseUIActivity().onBackPressed();
-                                                ((MainAct)activity).reStart();
+                                                getBaseUIAct().onBackPressed();
+                                                ((MainAct)getBaseUIAct()).go判断是否绑定单位处理();
                                             }
                                         }
                                     });
@@ -145,7 +146,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getU().clearKey();
-        getP().getD().getData(new UINetAdapter<ListResBean>(activity) {
+        getP().getD().getData(new UINetAdapter<ListResBean>(getBaseUIAct()) {
             @Override
             public void onResult(boolean success, String msg, ListResBean o) {
                 super.onResult(success, msg, o);
@@ -158,8 +159,8 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
     }
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
-        super.onRestart(res, bundle);
+    public void onResult(int res, Bundle bundle) {
+        super.onResult(res, bundle);
         switch (res){
             case 1:
                 if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_RES,false)){
@@ -171,8 +172,8 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                 if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_RES,false)){
                     return;
                 }
-                getBaseUIActivity().onBackPressed();
-                ((MainAct)getActivity()).netRestart();
+                getBaseUIAct().onBackPressed();
+                ((MainAct)getActivity()).go网络获取用户信息重新加载();
                 break;
         }
     }
@@ -187,9 +188,9 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
         getArguments().putSerializable(ValueConstant.DATA_DATA2,unitInfo);
         if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.UP_UNIT
                 ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.SEL_UNIT){
-            getBaseUIActivity().onBackPressed();
+            getBaseUIAct().onBackPressed();
         }else{
-            getP().getD().getUnitInfo(unitInfo.getCompanyId(), new UINetAdapter<UnitInfo>(activity) {
+            getP().getD().getUnitInfo(unitInfo.getCompanyId(), new UINetAdapter<UnitInfo>(getBaseUIAct()) {
                 @Override
                 public void onResult(boolean success, String msg, UnitInfo o) {
                     super.onResult(success, msg, o);
@@ -201,7 +202,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                     case R.id.tv_n:
                                         break;
                                     case R.id.tv_y:
-                                        getP().getD().bindUnit(unitInfo.getId(), true,new UINetAdapter<BindResBean>(activity) {
+                                        getP().getD().bindUnit(unitInfo.getId(), true,new UINetAdapter<BindResBean>(getBaseUIAct()) {
                                             @Override
                                             public void onResult(boolean success, String msg, BindResBean o) {
                                                 super.onResult(success, msg, o);
@@ -213,8 +214,8 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                                             super.onResult(success, msg, o);
                                                             if(success){
                                                                 LocalValue.save登录返回信息(o);
-                                                                getBaseUIActivity().onBackPressed();
-                                                                ((MainAct)activity).reStart();
+                                                                getBaseUIAct().onBackPressed();
+                                                                ((MainAct)getBaseUIAct()).go判断是否绑定单位处理();
                                                             }
                                                         }
                                                     });
@@ -223,11 +224,11 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                         });
                                         break;
                                 }
-                                getBaseUIActivity().onBackPressed();
+                                getBaseUIAct().onBackPressed();
                             }
                         });
                     }else{
-                        getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(activity) {
+                        getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(getBaseUIAct()) {
                             @Override
                             public void onResult(boolean success, String msg, BindResBean o) {
                                 super.onResult(success, msg, o);
@@ -239,8 +240,8 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                             super.onResult(success, msg, o);
                                             if(success){
                                                 LocalValue.save登录返回信息(o);
-                                                getBaseUIActivity().onBackPressed();
-                                                ((MainAct)activity).reStart();
+                                                getBaseUIAct().onBackPressed();
+                                                ((MainAct)getBaseUIAct()).go判断是否绑定单位处理();
                                             }
                                         }
                                     });

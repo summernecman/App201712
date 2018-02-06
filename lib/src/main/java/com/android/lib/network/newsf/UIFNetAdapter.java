@@ -44,7 +44,7 @@ public abstract class UIFNetAdapter<A> extends NetFAdapter<A> {
     }
 
     public void stopRefreshORLoadMore(){
-        if(frag!=null){
+        if(frag!=null&&frag.getView()!=null){
             View v = frag.getView().findViewById(R.id.refresh);
             if(v!=null&&v instanceof SmartRefreshLayout){
                 SmartRefreshLayout refreshLayout = (SmartRefreshLayout) v;

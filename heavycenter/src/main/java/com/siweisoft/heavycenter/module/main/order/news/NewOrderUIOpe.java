@@ -21,9 +21,8 @@ public class NewOrderUIOpe extends BaseUIOpe<FragMainOrderNewBinding>{
     ArrayList<View> views = new ArrayList<>();
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
-        super.initUI(baseUIFrag);
+
+    public void initUI() {
         views.add(bind.tvSend);
         views.add(bind.tvReceipt);
         bind.tvSend.setSelected(true);

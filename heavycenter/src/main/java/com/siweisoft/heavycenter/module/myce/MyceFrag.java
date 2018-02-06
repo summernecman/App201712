@@ -25,6 +25,7 @@ import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.car.CarFrag;
 import com.siweisoft.heavycenter.module.mana.good.GoodFrag;
 import com.siweisoft.heavycenter.module.mana.store.StoreFrag;
@@ -66,12 +67,11 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     }
 
     public void init(){
-        getP().getU().initUI(this);
-        getP().getU().hideOrShowManageFunction(((MainAct)(activity)).getP().getD().isBindUnit());
+        getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().is绑定了单位());
     }
 
     public void initUINET(){
-        getP().getD().getInfo(new UINetAdapter<LoginResBean>(activity) {
+        getP().getD().getInfo(new UINetAdapter<LoginResBean>(getBaseUIAct()) {
             @Override
             public void onResult(boolean success, String msg, LoginResBean o) {
                 super.onResult(success, msg, o);
@@ -87,7 +87,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     public void onClick(View v){
 
         //((MainAct)activity).getP().getU().unSelectBottomMenu();
-        FragManager2.getInstance().clear(getBaseUIActivity(),MainAct.主界面);
+        FragManager2.getInstance().clear(getBaseUIAct(), MainValue.主界面);
         switch (v.getId()){
             case R.id.login:
                 break;
@@ -95,17 +95,17 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
 
                 break;
             case R.id.item_car:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new CarFrag());
+                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new CarFrag());
 
                 break;
             case R.id.item_good:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new GoodFrag());
+                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new GoodFrag());
                 break;
             case R.id.item_store:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new StoreFrag());
+                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new StoreFrag());
                 break;
             case R.id.item_user:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new UserFrag());
+                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new UserFrag());
                 break;
             case R.id.item_unit:
                 switch (LocalValue.get登录返回信息().getBindCompanyState()){
@@ -116,34 +116,34 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                         }else{
                             bundle.putString(ValueConstant.DATA_TYPE,NewFrag.展示单位信息);
                         }
-                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID, new NewFrag(),bundle);
+                        FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID, new NewFrag(),bundle);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
-                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new ListFrag());
+                        FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new ListFrag());
                         break;
                 }
                 break;
             case R.id.iv_nameedit:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new NameFrag());
+                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new NameFrag());
                 break;
             case R.id.ftv_right:
                 InfoFrag infoFrag = new InfoFrag();
                 infoFrag.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                        FragManager2.getInstance().setFinishAnim(R.anim.scale_in,R.anim.scale_out).finish(getBaseUIActivity(),MainAct.主界面,false);
+                        FragManager2.getInstance().setFinishAnim(R.anim.scale_in,R.anim.scale_out).finish(getBaseUIAct(),MainValue.主界面,false);
                     }
                 });
-                FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,infoFrag);
+                FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,infoFrag);
                 break;
             case R.id.iv_head:
                // IntentUtil.getInstance().takeGetPhoto(activity);
                 IntentUtil.getInstance().photoShowFromphone(this,01);
                 break;
             case R.id.item_setting:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new SetFrag());
+                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new SetFrag());
                 break;
             case R.id.iv_car:
                 IntentUtil.getInstance().photoShowFromphone(this,02);
@@ -152,11 +152,11 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 IntentUtil.getInstance().photoShowFromphone(this,03);
                 break;
             case R.id.item_driver:
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new BindFrag());
+                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new BindFrag());
                 break;
         }
-        getBaseUIActivity().setMoudle(MainAct.主界面);
-        ((MainAct)activity).getP().getU().switchDrawer();
+        getBaseUIAct().setMoudle(MainValue.主界面);
+        ((MainAct)getActivity()).getP().getU().switchDrawer();
     }
 
     @Override
@@ -167,10 +167,10 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
         }
         File file;
         try {
-            file = new Compressor(getActivity()).compressToFile(new File(UriUtils.getPath(activity, data.getData())));
+            file = new Compressor(getActivity()).compressToFile(new File(UriUtils.getPath(getBaseUIAct(), data.getData())));
         } catch (IOException e) {
             e.printStackTrace();
-            file = new File(UriUtils.getPath(activity, data.getData()));
+            file = new File(UriUtils.getPath(getBaseUIAct(), data.getData()));
         }
         String type = "";
         switch (requestCode){
@@ -185,7 +185,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
         }
         final String finalType = type;
-        getP().getD().uploadPhoto(file,type, new UINetAdapter<UpdateHeadResBean>(activity) {
+        getP().getD().uploadPhoto(file,type, new UINetAdapter<UpdateHeadResBean>(getBaseUIAct()) {
             @Override
             public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                 stopLoading();
@@ -205,19 +205,19 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                                         super.onResult(success, msg, o);
                                         loginResBean.setUserPhoto(finalS);
                                         LocalValue.save登录返回信息(loginResBean);
-                                        getP().getU().initUI(MyceFrag.this);
+                                        getP().getU().initUI();
                                     }
                                 });
                                 break;
                             case UpdateHeadReqBean.车辆照片:
                                 loginResBean.setVehicleLicense(s);
                                 LocalValue.save登录返回信息(loginResBean);
-                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(activity) {
+                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(getBaseUIAct()) {
                                     @Override
                                     public void onResult(boolean success, String msg, UpdateCarRes o) {
                                         super.onResult(success, msg, o);
                                         if(success){
-                                            getP().getU().initUI(MyceFrag.this);
+                                            getP().getU().initUI();
                                         }
                                     }
                                 });
@@ -225,12 +225,12 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                             case UpdateHeadReqBean.行驶证照片:
                                 loginResBean.setVehicleLicensePhoto(s);
                                 LocalValue.save登录返回信息(loginResBean);
-                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(activity) {
+                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(getBaseUIAct()) {
                                     @Override
                                     public void onResult(boolean success, String msg, UpdateCarRes o) {
                                         super.onResult(success, msg, o);
                                         if(success){
-                                            getP().getU().initUI(MyceFrag.this);
+                                            getP().getU().initUI();
                                         }
                                     }
                                 });

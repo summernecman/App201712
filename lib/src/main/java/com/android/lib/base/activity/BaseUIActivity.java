@@ -1,15 +1,10 @@
 package com.android.lib.base.activity;
 
-import android.content.Context;
 import android.databinding.ViewDataBinding;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.android.lib.R;
-import com.android.lib.base.interf.BackUII;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseOpes;
 import com.android.lib.base.ope.BaseUIOpe;
@@ -21,9 +16,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
-import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 
@@ -32,43 +25,29 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseActivity {
 
-    /**
-     * 添加内容界面的容器
-     */
-    protected ViewGroup ACT_ROOT_VIEW;
+    protected ViewGroup baseUIRoot;
 
-    /**
-     * 操作类
-     */
     protected BaseOpes<A, B> opes;
 
-    private String moudle ;
+    private String moudle;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        isFullScreen(isFullScreen());
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutID());
-//        StatusBarUtil.getInstance().setStatusBarColor(activity, ColorConstant.COLOR_STATUS);
-//        StatusBarUtil.getInstance().hideNavigationBar(activity);
-        ACT_ROOT_VIEW = (ViewGroup) findViewById(R.id.act_base_root);
-        ACT_ROOT_VIEW.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        getP().getU().initActUI();
-        getP().getD().initActDA();
-        ButterKnife.bind(activity);
+        setContentView(getBaseUILayout());
+        baseUIRoot = findViewById(R.id.act_base_root);
+        baseUIRoot.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        getP().getU().initUI();
+        getP().getD().initDA();
+        ButterKnife.bind(getActivity());
     }
 
-    /**
-     * 重新此方法获取布局文件
-     */
-    public int getLayoutID() {
-        return R.layout.layout_baseui_withouttitle;
+    protected int getBaseUILayout() {
+        return R.layout.act_baseui;
     }
 
-    /**
-     * 获取操作类
-     */
+
     public BaseOpes<A, B> getP() {
         if (opes == null) {
             getaabb(getClass());
@@ -79,8 +58,8 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
     private BaseOpes<A, B> getaabb(Class<?> c) {
         if (c == null) {
             opes = (BaseOpes<A, B>) new BaseOpes<>(new BaseUIOpe<ViewDataBinding>(), new BaseDAOpe());
-            opes.getD().setContext(activity);
-            opes.getU().setContext(activity);
+            opes.getD().setContext(getActivity());
+            opes.getU().setContext(getActivity());
         }
         if (c.getGenericSuperclass() instanceof ParameterizedType) {
             Class<A> a = (Class<A>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[0];
@@ -89,9 +68,9 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
                 Constructor<A> ac = a.getConstructor();
                 Constructor<B> bc = b.getConstructor();
                 A aa = ac.newInstance();
-                aa.setContext(activity);
+                aa.setContext(getActivity());
                 B bb = bc.newInstance();
-                bb.setContext(activity);
+                bb.setContext(getActivity());
                 opes = new BaseOpes<>(aa, bb);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -103,34 +82,6 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
         return opes;
     }
 
-    /**
-     * 重写此方法设置是否全屏
-     */
-    public boolean isFullScreen() {
-        return false;
-    }
-
-    private void isFullScreen(boolean is) {
-        if (is) {
-            // 隐藏标题栏
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
-            // 隐藏状态栏
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                Window window = getWindow();
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            }
-        }
-    }
-
-    /**
-     * 获取activity容器根布局
-     */
-    public ViewGroup getACT_ROOT_VIEW() {
-        return ACT_ROOT_VIEW;
-    }
-
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void dealMesage(MessageEvent event) {
@@ -140,15 +91,26 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
     @Override
     public void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+        if(registerEventBus()){
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
+        if(registerEventBus()){
+            EventBus.getDefault().unregister(this);
+        }
     }
 
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    protected boolean registerEventBus(){
+        return false;
+    }
 
     public String getMoudle() {
         return moudle;
@@ -156,5 +118,13 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
 
     public void setMoudle(String moudle) {
         this.moudle = moudle;
+    }
+
+    public BaseUIActivity getActivity() {
+        return this;
+    }
+
+    public ViewGroup getBaseUIRoot() {
+        return baseUIRoot;
     }
 }

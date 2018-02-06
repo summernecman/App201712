@@ -26,6 +26,7 @@ import com.siweisoft.heavycenter.data.netd.unit.search.SearchReqBean;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitListBinding;
 import com.siweisoft.heavycenter.databinding.ItemMyceUnitBindBinding;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
 import java.util.List;
@@ -82,7 +83,7 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
         DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
         diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_nullunit,null));
         diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_y,R.id.tv_n,R.id.iv_close);
-        FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(),MainAct.主界面,diaLogCenterFrag);
+        FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(), MainValue.主界面,diaLogCenterFrag);
     }
 
 

@@ -33,7 +33,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                             super.onResult(success, msg, o);
                             if(success){
                                 getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
-                                getBaseUIActivity().onBackPressed();
+                                getBaseUIAct().onBackPressed();
                             }
                         }
                     });

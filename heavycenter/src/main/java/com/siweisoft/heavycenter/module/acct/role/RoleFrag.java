@@ -4,9 +4,7 @@ package com.siweisoft.heavycenter.module.acct.role;
 
 import android.view.View;
 
-import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.GsonUtil;
 import com.android.lib.util.IntentUtil;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -14,7 +12,6 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
-import com.siweisoft.heavycenter.data.netd.crash.CrashNetOpe;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeResBean;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
@@ -52,11 +49,11 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                                             LogUtil.E("4");
                                             LocalValue.save登录返回信息(resBean);
                                             LogUtil.E("5");
-                                            IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+                                            IntentUtil.startActivityWithFinish(getBaseUIAct(), MainAct.class,null);
                                             LogUtil.E("6");
                                         }else{
                                             LogUtil.E("7");
-                                            getBaseUIActivity().onBackPressed();
+                                            getBaseUIAct().onBackPressed();
                                             LogUtil.E("8");
                                         }
                                     }
@@ -65,7 +62,7 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                         });
                         break;
                 }
-                FragManager2.getInstance().setFinishAnim(R.anim.fade_in,R.anim.fade_out).finish(getBaseUIActivity(), AcctAct.账号,true);
+                FragManager2.getInstance().setFinishAnim(R.anim.fade_in,R.anim.fade_out).finish(getBaseUIAct(), AcctAct.账号,true);
             }
         });
     }

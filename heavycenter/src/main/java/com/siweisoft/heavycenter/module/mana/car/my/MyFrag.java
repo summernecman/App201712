@@ -18,6 +18,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 
 public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
@@ -68,9 +69,9 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
                             bundle.putInt(ValueConstant.FARG_REQ,1);
                             if(getArguments().getInt(ValueConstant.FARG_REQ,-1)==MyFrag.TYPE_SEL){
                                 getArguments().putAll(bundle);
-                                getBaseUIActivity().onBackPressed();
+                                getBaseUIAct().onBackPressed();
                             }else{
-                                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,MainAct.主界面ID,new DetailFrag(),bundle);
+                                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,MainValue.主界面ID,new DetailFrag(),bundle);
                             }
                             break;
                 }
@@ -96,8 +97,8 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
     }
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
-        super.onRestart(res, bundle);
+    public void onResult(int res, Bundle bundle) {
+        super.onResult(res, bundle);
         switch (res){
             case 1:
                 if(bundle==null|| !bundle.getBoolean(ValueConstant.FARG_TYPE,false)){

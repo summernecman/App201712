@@ -130,7 +130,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                                     super.onResult(success, msg, o);
                                     if(success){
                                         getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
-                                        getBaseUIActivity().onBackPressed();
+                                        getBaseUIAct().onBackPressed();
                                     }
                                 }
                             });
@@ -144,7 +144,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                                     super.onResult(success, msg, o);
                                     if(success){
                                         getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
-                                        getBaseUIActivity().onBackPressed();
+                                        getBaseUIAct().onBackPressed();
                                     }
                                 }
                             });
@@ -162,8 +162,8 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                                             public void onResult(boolean success, String msg, BindCarRes o) {
                                                 super.onResult(success, msg, o);
                                                 if(success){
-                                                    ((MainAct)getBaseUIActivity()).getP().getD().getMyceFrag().initUINET();
-                                                    getBaseUIActivity().onBackPressed();
+                                                    ((MainAct) getBaseUIAct()).getP().getD().getMyceFrag().initUINET();
+                                                    getBaseUIAct().onBackPressed();
                                                 }
                                             }
                                         });
@@ -188,8 +188,8 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                                                 public void onResult(boolean success, String msg, BindCarRes o) {
                                                     super.onResult(success, msg, o);
                                                     if(success){
-                                                        ((MainAct)getBaseUIActivity()).getP().getD().getMyceFrag().initUINET();
-                                                        getBaseUIActivity().onBackPressed();
+                                                        ((MainAct) getBaseUIAct()).getP().getD().getMyceFrag().initUINET();
+                                                        getBaseUIAct().onBackPressed();
                                                     }
                                                 }
                                             });

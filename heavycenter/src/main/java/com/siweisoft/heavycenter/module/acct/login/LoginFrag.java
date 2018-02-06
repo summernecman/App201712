@@ -34,28 +34,28 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
         switch (v.getId()){
             case R.id.login:
                 if(getP().getU().is输入完全()){
-                    getP().getD().go登录(getP().getU().getLoginReqBean(), new UINetAdapter<LoginResBean>(activity) {
+                    getP().getD().go登录(getP().getU().getLoginReqBean(), new UINetAdapter<LoginResBean>(getBaseUIAct()) {
                         @Override
                         public void onSuccess(LoginResBean loginResBean) {
                             LocalValue.save登录参数(getP().getU().getLoginReqBean());
                             LocalValue.save登录返回信息(loginResBean);
                             if(loginResBean.is选择了角色()){
                                 LocalValue.set自动登录(true);
-                                IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+                                IntentUtil.startActivityWithFinish(getBaseUIAct(), MainAct.class,null);
                             }else{
                                 Bundle bundle = new Bundle();
                                 bundle.putBoolean(RoleFrag.直接登录,true);
-                                FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号界面根布局,new RoleFrag(),bundle);
+                                FragManager2.getInstance().start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,new RoleFrag(),bundle);
                             }
                         }
                     });
                 }
                 break;
             case R.id.regist:
-                FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号界面根布局,new RegistFrag());
+                FragManager2.getInstance().start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,new RegistFrag());
                 break;
             case R.id.repwd:
-                FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号界面根布局,new RepwdFrag());
+                FragManager2.getInstance().start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,new RepwdFrag());
                 break;
         }
     }

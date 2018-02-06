@@ -11,6 +11,7 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.constant.ValueConstant;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.msg.msg.MsgFrag;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class MsgsDAOpe extends BaseDAOpe {
             BaseUIFrag frag = new MsgFrag();
             frag.setArguments(new Bundle());
             frag.getArguments().putString(ValueConstant.DATA_INDEX,MsgsReqBean.消息类型.get(i));
-            frag.getArguments().putString(ValueConstant.DATA_MOUDLE, MainAct.消息);
+            frag.getArguments().putString(ValueConstant.DATA_MOUDLE, MainValue.消息);
             pages.add(frag);
         }
         return pages;

@@ -16,20 +16,20 @@ public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
 
     @Override
     public void onFristVisibleInit() {
-        getP().getU().initPages(fragment,getP().getD().getPages());
+        getP().getU().initPages(getFrag(),getP().getD().getPages());
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)activity).getP().getU().switchDrawer();
+                ((MainAct)getActivity()).getP().getU().switchDrawer();
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
                     Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    activity.startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    getBaseUIAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
         }

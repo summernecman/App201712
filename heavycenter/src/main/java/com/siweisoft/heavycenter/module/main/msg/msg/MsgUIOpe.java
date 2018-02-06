@@ -25,8 +25,8 @@ import java.util.Date;
 public class MsgUIOpe extends BaseUIOpe<FragMainMsgsMsgBinding>{
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
+
+    public void initUI() {
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 

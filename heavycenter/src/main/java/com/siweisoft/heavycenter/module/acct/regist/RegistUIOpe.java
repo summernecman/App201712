@@ -26,10 +26,9 @@ public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
     LoginReqBean loginReqBean = new LoginReqBean();
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
-        super.initUI(baseUIFrag);
-        bind.code.getCodeText().setOnClickListener(baseUIFrag);
+
+    public void initUI() {
+        bind.code.getCodeText().setOnClickListener(getFrag());
         bind.tvRead.getCheckIV().setSelected(true);
     }
 

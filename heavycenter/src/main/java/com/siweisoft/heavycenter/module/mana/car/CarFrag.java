@@ -10,6 +10,7 @@ import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.mana.car.my.MyFrag;
 
@@ -21,7 +22,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
     public void initdelay() {
         super.initdelay();
         getP().getD().initPages();
-        getP().getU().initPages(fragment,getP().getD().getPages());
+        getP().getU().initPages(getFrag(),getP().getD().getPages());
 
     }
 
@@ -33,15 +34,15 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
                 bundle.putString(ValueConstant.DATA_DATA2,DetailFrag.TYPE_NEW);
-                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,MainAct.主界面ID,new DetailFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,MainValue.主界面ID,new DetailFrag(),bundle);
                 break;
         }
 
     }
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
-        super.onRestart(res, bundle);
+    public void onResult(int res, Bundle bundle) {
+        super.onResult(res, bundle);
         switch (res){
             case 1:
                 if(bundle==null || !bundle.getBoolean(ValueConstant.FARG_TYPE,false)){

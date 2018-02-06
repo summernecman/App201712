@@ -21,9 +21,8 @@ public class NamesUIOpe extends BaseUIOpe<FragManaGoodNamesBinding> {
 
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
-        super.initUI(baseUIFrag);
+
+    public void initUI() {
         initRecycle();
     }
 

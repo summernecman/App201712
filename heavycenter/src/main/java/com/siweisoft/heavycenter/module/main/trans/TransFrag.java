@@ -10,8 +10,6 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.LogUtil;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -24,8 +22,8 @@ import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.trans.detail.TransDetailFrag;
-import com.siweisoft.heavycenter.module.main.trans.search.SearchFrag;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import butterknife.OnClick;
@@ -61,7 +59,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                         default:
                             Bundle bundle = new Bundle();
                             bundle.putInt(ValueConstant.DATA_DATA,resultsBean.getTransportrecordId());
-                            FragManager2.getInstance().start(getBaseUIActivity(),MainAct.运输单,MainAct.运输单ID,new TransDetailFrag(),bundle);
+                            FragManager2.getInstance().start(getBaseUIAct(), MainValue.运输单,MainValue.运输单ID,new TransDetailFrag(),bundle);
                             break;
                 }
                 break;
@@ -72,7 +70,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)activity).getP().getU().switchDrawer();
+                ((MainAct)getBaseUIAct()).getP().getU().switchDrawer();
                 break;
             case R.id.ftv_right2:
                 getP().getU().search(new OnFinishListener() {
@@ -81,7 +79,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                         boolean b = (boolean) o;
                         if(b){
                             getP().getD().setPageIndex(0);
-                            getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(activity) {
+                            getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(getBaseUIAct()) {
                                 @Override
                                 public void onResult(boolean success, String msg, TransRes o) {
                                     super.onResult(success, msg, o);
@@ -106,7 +104,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
                     Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    activity.startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    getBaseUIAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
         }
@@ -116,7 +114,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     public void onRefresh(final RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
         getP().getD().getTransRes().getResults().clear();
-        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(activity) {
+        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(getBaseUIAct()) {
             @Override
             public void onResult(boolean success, String msg, TransRes o) {
                 super.onResult(success, msg, o);
@@ -135,11 +133,11 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
-        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(activity) {
+        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(getBaseUIAct()) {
             @Override
             public void onResult(boolean success, String msg, TransRes o) {
                 super.onResult(success, msg, o);
-                //o = new Test().getTransRes();
+                o = new Test().getTransRes();
                 getP().getU().finishLoadmore();
                 if(o.getResults()!=null){
                     getP().getD().getTransRes().getResults().addAll(o.getResults());

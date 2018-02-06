@@ -95,7 +95,7 @@ public class FragManager {
                         if (fragment2.getArguments() != null && fragment2.getArguments().getInt(ValueConstant.FARG_REQ) != 0) {
                             fragment2.onResult(fragment2.getArguments().getInt(ValueConstant.FARG_REQ), b);
                         }
-                        fragment2.onRestart(fragment2.getArguments().getInt(ValueConstant.FARG_REQ),b);
+                        fragment2.onResult(fragment2.getArguments().getInt(ValueConstant.FARG_REQ),b);
                     }
                 }
                 transaction.commitAllowingStateLoss();
@@ -121,7 +121,7 @@ public class FragManager {
                         if (fragment2.getArguments() != null) {
                             fragment2.getArguments().putAll(bundle);
                         }
-                        fragment2.onRestart(fragment2.getArguments().getInt(ValueConstant.FARG_REQ),b);
+                        fragment2.onResult(fragment2.getArguments().getInt(ValueConstant.FARG_REQ),b);
                     }
 
                 }
@@ -159,7 +159,6 @@ public class FragManager {
     }
 
     public void startFragment(FragmentManager manager, BaseUIFrag fragment) {
-        this.index = fragment.getIndex();
         if (fragMaps.get(index) == null) {
             fragMaps.put(index, new ArrayList<Fragment>());
         }

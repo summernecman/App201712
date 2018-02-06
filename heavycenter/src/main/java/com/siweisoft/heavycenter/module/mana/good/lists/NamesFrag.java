@@ -16,7 +16,7 @@ public class NamesFrag extends AppFrag<NamesUIOpe,NamesDAOpe> implements ViewLis
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getD().NamesGood(new UINetAdapter<NamesRes>(activity) {
+        getP().getD().NamesGood(new UINetAdapter<NamesRes>(getBaseUIAct()) {
             @Override
             public void onResult(boolean success, String msg, NamesRes o) {
                 super.onResult(success, msg, o);
@@ -31,7 +31,7 @@ public class NamesFrag extends AppFrag<NamesUIOpe,NamesDAOpe> implements ViewLis
             case ViewListener.type:
                 NamesRes.ResultsBean data = (NamesRes.ResultsBean) v.getTag(R.id.data);
                 getArguments().putSerializable(ValueConstant.DATA_DATA2,data);
-                getBaseUIActivity().onBackPressed();
+                getBaseUIAct().onBackPressed();
                 break;
         }
     }

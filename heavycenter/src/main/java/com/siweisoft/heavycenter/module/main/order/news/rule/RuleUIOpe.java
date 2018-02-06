@@ -22,8 +22,7 @@ import java.util.List;
 public class RuleUIOpe extends BaseUIOpe<FragMainOrderNewRuleBinding> {
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
+    public void initUI() {
         initRecycle();
 
     }

@@ -1,14 +1,11 @@
 package com.android.lib.base.fragment;
 
-import android.content.Context;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.android.lib.R;
 import com.android.lib.base.activity.BaseUIActivity;
@@ -17,19 +14,18 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseOpes;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.constant.ValueConstant;
+import com.android.lib.util.LoadUtil;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.system.HandleUtil;
+import com.android.lib.util.video.TipUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
 
-import com.wang.avi.AVLoadingIndicatorView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
-import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -39,54 +35,47 @@ import butterknife.Unbinder;
  */
 public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, View.OnLongClickListener {
 
-    /**
-     * fragment所属的层次
-     */
-    protected int index;
 
-    Unbinder unbinder;
-    /**
-     * fragment的操作类
-     */
-    BaseOpes<A, B> opes;
+    private Unbinder unbinder;
 
-    private ArrayList<FragI> fragIs = new ArrayList<>();
+    private BaseOpes<A, B> opes;
 
-    private boolean isInit = false;
+    private FragIs fragIs = new FragIs();
 
     private boolean isFiistVisibleinit = false;
 
-    private ViewGroup parent;
+    private ViewGroup baseUIRoot;
+
+
+    private LoadUtil loadUtil = new LoadUtil();
+
+    private TipUtil tipUtil = new TipUtil();
+
 
     public BaseUIFrag() {
         opes = new BaseOpes<>(null, null);
         initbb(getClass());
+        getP().getD().initDA();
     }
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        EventBus.getDefault().register(this);
-        for(int i=0;i<fragIs.size();i++){
-            fragIs.get(i).onCreate(savedInstanceState);
+        if(registerEventBus()){
+            EventBus.getDefault().register(this);
         }
+        fragIs.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (getArguments() != null) {
-            index = getArguments().getInt(ValueConstant.FRAG_POSITION);
-        }
-        View group = inflater.inflate(getLayoutID(), null);
-        parent = group.findViewById(R.id.container);
+        View group = inflater.inflate(getBaseUILayout(), null);
+        baseUIRoot = group.findViewById(R.id.container);
         initaa(getClass());
-        ViewGroup viewGroup = (ViewGroup) getP().getU().getBind().getRoot().getParent();
-        if (viewGroup != null) {
-            viewGroup.removeAllViews();
-        }
-        parent.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        baseUIRoot.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        fragIs.onCreateView(inflater,container,savedInstanceState);
+        getP().getU().initUI();
         return group;
     }
 
@@ -94,22 +83,14 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
-        for(int i=0;i<fragIs.size();i++){
-            fragIs.get(i).onCreateView(null,null,savedInstanceState);
-        }
-        getP().getU().initUI(this);
         initNow();
         HandleUtil.getInstance().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(isAttach()){
-                    initdelay();
-                }
+                initdelay();
             }
         }, 500);
-        for(int i=0;i<fragIs.size();i++){
-            fragIs.get(i).onViewCreated(view,savedInstanceState);
-        }
+        fragIs.onViewCreated(view,savedInstanceState);
     }
 
     public void initdelay() {
@@ -126,8 +107,8 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     public void onFristVisible(){
         if(!isFiistVisibleinit){
-        onFristVisibleInit();
-        isFiistVisibleinit = true;
+            onFristVisibleInit();
+            isFiistVisibleinit = true;
         }
     }
 
@@ -142,15 +123,13 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     public void onDestroyView() {
         unbinder.unbind();
         super.onDestroyView();
-        for(int i=0;i<fragIs.size();i++){
-            fragIs.get(i).onDestroyView();
-        }
+        fragIs.onDestroyView();
     }
 
     /**
      * 重新此方法获取布局文件
      */
-    public int getLayoutID() {
+    public int getBaseUILayout() {
         return R.layout.layout_baseui;
     }
 
@@ -171,14 +150,8 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                 Constructor<B> bc = b.getConstructor();
                 B bb = bc.newInstance();
                 bb.setFrag(this);
-                opes .setDa(bb);
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (java.lang.InstantiationException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
+                opes.setDa(bb);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
@@ -198,51 +171,12 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                 A aa = ac.newInstance();
                 aa.setFrag(this);
                 opes.setUi(aa);
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (java.lang.InstantiationException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             initaa(c.getSuperclass());
         }
-    }
-
-
-
-    private BaseOpes<A, B> getaabb(Class<?> c) {
-        if (c == null) {
-            opes = (BaseOpes<A, B>) new BaseOpes<>(new BaseUIOpe<ViewDataBinding>(activity), new BaseDAOpe(activity));
-        }
-        if (c.getGenericSuperclass() instanceof ParameterizedType) {
-            Class<A> a = (Class<A>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[0];
-            Class<B> b = (Class<B>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[1];
-            try {
-                Constructor<A> ac = a.getConstructor(Context.class);
-                Constructor<B> bc = b.getConstructor(Context.class);
-                A aa = ac.newInstance(activity);
-                B bb = bc.newInstance(activity);
-                aa.setFrag(this);
-                bb.setFrag(this);
-                opes = new BaseOpes<>(aa, bb);
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (java.lang.InstantiationException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        } else {
-            getaabb(c.getSuperclass());
-        }
-
-        return opes;
     }
 
 
@@ -262,10 +196,10 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     @Override
     public void onDestroy() {
+        if(registerEventBus()){
         EventBus.getDefault().unregister(this);
-        for(int i=0;i<fragIs.size();i++){
-            fragIs.get(i).onDestroy();
         }
+        fragIs.onDestroy();
         super.onDestroy();
     }
 
@@ -281,68 +215,51 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         }
     }
 
-    public void onRestart(int res,Bundle bundle){
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    }
-
-    public int getIndex() {
-        return index;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
 
     public void addFragListener(FragI fragI){
-        fragIs.add(fragI);
+        fragIs.getFragIs().add(fragI);
     }
 
-
-    public String getContainerName() {
-        return getArguments().getString(ValueConstant.CONTAINER_NAME);
-    }
-
-    public BaseUIActivity getBaseUIActivity() {
-        return (BaseUIActivity) activity;
-    }
-
-    public void setInited() {
-        isInit = true;
-    }
-
-    public boolean isInit() {
-        return isInit;
-    }
-    View  v;
-
-    View tips;
     public void startLoading(){
-          v = LayoutInflater.from(activity).inflate(R.layout.dialog_loading,null);
-        AVLoadingIndicatorView avLoadingIndicatorView = (AVLoadingIndicatorView) v.findViewById(R.id.av);
-        parent.addView(v,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        avLoadingIndicatorView.show();
-
-
+        loadUtil.startLoading(getActivity(), baseUIRoot);
     }
 
     public void stopLoading(){
-        if(v!=null && v.getParent()==parent){
-            parent.removeView(v);
-        }
+        loadUtil.stopLoading(baseUIRoot);
     }
 
     public void showTips(String txt){
-        tips = LayoutInflater.from(activity).inflate(R.layout.item_tips,null);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.CENTER_IN_PARENT);
-        parent.addView(tips,params);
-        TextView textView = tips.findViewById(R.id.tv_txt);
-        textView.setText(txt);
+//        if(getBaseUIAct()==null){
+//            return;
+//        }
+        tipUtil.showTips(getBaseUIAct(), baseUIRoot,txt);
     }
 
     public void removeTips(){
-        if(tips!=null && tips.getParent()==parent){
-            parent.removeView(tips);
-        }
+        tipUtil.removeTips(baseUIRoot);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    protected boolean registerEventBus(){
+        return false;
+    }
+
+    public ViewGroup getBaseUIRoot() {
+        return baseUIRoot;
+    }
+
+    public String get容器() {
+        return getArguments().getString(ValueConstant.容器);
+    }
+
+    public void set容器(String 容器){
+        getArguments().putString(ValueConstant.容器,容器);
+    }
+
+    public BaseUIActivity getBaseUIAct() {
+        return (BaseUIActivity) getBaseAct();
     }
 }

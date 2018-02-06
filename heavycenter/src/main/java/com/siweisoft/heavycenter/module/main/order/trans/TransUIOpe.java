@@ -25,8 +25,8 @@ public class TransUIOpe extends AppUIOpe<FragMainOrderTransBinding>{
 
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
+
+    public void initUI() {
         initRecycle();
     }
 

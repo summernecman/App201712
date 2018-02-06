@@ -19,6 +19,7 @@ import com.siweisoft.heavycenter.data.netd.jpush.WeightRes;
 import com.siweisoft.heavycenter.databinding.FragMainWeigtBinding;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.weigts.weighttips.WeightTipsFrag;
 import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
@@ -36,7 +37,7 @@ public class WeigtUIOpe extends AppUIOpe<FragMainWeigtBinding> {
         weightTipsFrag.setOnClickListener(onClickListener);
         weightTipsFrag.getP().getD().setWeightMsg(weightMsg);
         fragManager2 = FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).setHideLast(false);
-        fragManager2.start(getActivity(), MainAct.地磅,MainAct.地磅ID,weightTipsFrag);
+        fragManager2.start(getActivity(), MainValue.地磅,MainValue.地磅ID,weightTipsFrag);
 
     }
 

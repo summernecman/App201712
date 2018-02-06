@@ -9,23 +9,19 @@ import android.view.View;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.NetAdapter;
-import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.LogUtil;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.store.check.CheckFrag;
 import com.siweisoft.heavycenter.module.main.store.detail.DetailFrag;
-import com.siweisoft.heavycenter.module.main.trans.detail.TransDetailFrag;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import butterknife.OnClick;
@@ -49,13 +45,13 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.仓库,MainAct.仓库ID,new CheckFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), MainValue.仓库,MainValue.仓库ID,new CheckFrag(),bundle);
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
                     Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    activity.startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    getBaseUIAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
         }
@@ -69,7 +65,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.DATA_DATA,storeDetail.getWarehouseId());
                 bundle.putInt(ValueConstant.FARG_REQ,2);
-                FragManager2.getInstance().start(getBaseUIActivity(),MainAct.仓库,MainAct.仓库ID,new DetailFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(),MainValue.仓库,MainValue.仓库ID,new DetailFrag(),bundle);
                 break;
         }
     }
@@ -106,8 +102,8 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     }
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
-        super.onRestart(res, bundle);
+    public void onResult(int res, Bundle bundle) {
+        super.onResult(res, bundle);
         switch (res){
             case 1:
                 if(bundle!=null&&bundle.getBoolean(ValueConstant.FRAG_KEY,false)){

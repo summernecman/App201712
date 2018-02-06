@@ -24,7 +24,7 @@ public class BaseDAOpe implements BaseOpe {
 
     }
 
-    public void initActDA(){
+    public void initDA(){
 
     }
 
@@ -36,7 +36,7 @@ public class BaseDAOpe implements BaseOpe {
 
     public BaseUIActivity getActivity(){
         if(frag!=null){
-            return frag.getBaseUIActivity();
+            return frag.getBaseUIAct();
         }else{
             return (BaseUIActivity) context;
         }

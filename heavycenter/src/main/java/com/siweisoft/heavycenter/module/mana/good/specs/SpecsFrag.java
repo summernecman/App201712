@@ -31,7 +31,7 @@ public class SpecsFrag extends BaseUIFrag<SpecsUIOpe,SpecsDAOpe> implements View
             case ViewListener.type:
                 SpecsRes.ResultsBean data = (SpecsRes.ResultsBean) v.getTag(R.id.data);
                 getArguments().putSerializable(ValueConstant.DATA_DATA2,data);
-                getBaseUIActivity().onBackPressed();
+                getBaseUIAct().onBackPressed();
                 break;
         }
     }

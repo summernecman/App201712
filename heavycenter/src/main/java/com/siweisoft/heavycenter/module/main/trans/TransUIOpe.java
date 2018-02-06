@@ -46,8 +46,8 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
+
+    public void initUI() {
         initRecycle();
     }
 
@@ -143,11 +143,6 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
             }
         });
 
-        if(s.size()==0){
-            bind.ivNodata.setVisibility(View.VISIBLE);
-        }else{
-            bind.ivNodata.setVisibility(View.GONE);
-        }
     }
 
     public void search(OnFinishListener onFinishListener){

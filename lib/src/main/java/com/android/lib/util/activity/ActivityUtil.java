@@ -2,7 +2,10 @@ package com.android.lib.util.activity;
 
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import com.android.lib.base.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,5 +60,12 @@ public class ActivityUtil {
         }
         actList.clear();
         actMap.clear();
+    }
+
+    public static void 被后台清理了就重启(Activity nowact, Bundle savedInstanceState, Class<? extends BaseActivity> toact){
+        if(savedInstanceState!=null){
+            nowact.startActivity(new Intent(nowact,toact));
+            nowact.finish();
+        }
     }
 }

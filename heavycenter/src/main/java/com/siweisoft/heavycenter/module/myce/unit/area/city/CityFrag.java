@@ -64,7 +64,7 @@ public class CityFrag extends AppFrag<CityUIOpe,CityDAOpe> implements ViewListen
             case R.id.ftv_right2:
                 getArguments().putSerializable(ValueConstant.DATA_DATA, getP().getD().getCitys());
                 getArguments().putInt(ValueConstant.DATA_POSITION2,getP().getD().getProindex());
-                getBaseUIActivity().onBackPressed();
+                getBaseUIAct().onBackPressed();
                 break;
         }
     }

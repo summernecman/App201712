@@ -16,9 +16,6 @@ import java.util.List;
 
 public class DialogListUIOpe extends BaseUIOpe<FragDialogListBinding> {
 
-    public DialogListUIOpe(Context context) {
-        super(context);
-    }
 
     public void init(List<String> strs, ViewListener listener){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));

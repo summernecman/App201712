@@ -24,7 +24,7 @@ public class RuleFrag extends AppFrag<RuleUIOpe,RuleDAOpe> implements ViewListen
             case ViewListener.type:
                 Rule rule  = (Rule) v.getTag(R.id.data);
                 getArguments().putSerializable(ValueConstant.DATA_DATA2,rule);
-                getBaseUIActivity().onBackPressed();
+                getBaseUIAct().onBackPressed();
                 break;
         }
     }

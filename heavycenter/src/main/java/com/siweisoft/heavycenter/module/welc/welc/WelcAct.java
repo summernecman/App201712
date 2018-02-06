@@ -30,7 +30,7 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
         if(LocalValue.get省市排序列表()!=null&&LocalValue.get省市排序列表().size()>0){
             AutoLogin();
         }else{
-            NetDataOpe.get省市列表接口数据(activity,new CityReqBean(),new NetAdapter<ArrayList<CityResBean>>(activity){
+            NetDataOpe.get省市列表接口数据(getActivity(),new CityReqBean(),new NetAdapter<ArrayList<CityResBean>>(getActivity()){
                 @Override
                 public void onSuccess(ArrayList<CityResBean> o) {
                     LocalValue.save省市列表接口数据(o);
@@ -50,7 +50,7 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
                     super.onResult(success, msg, o);
                     if(success){
                         LocalValue.save登录返回信息(o);
-                        IntentUtil.startActivityWithFinish(activity, MainAct.class,null);
+                        IntentUtil.startActivityWithFinish(getActivity(), MainAct.class,null);
                     }else{
                         IntentUtil.startActivityWithFinish(WelcAct.this, AcctAct.class,null);
                     }

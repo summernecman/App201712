@@ -19,6 +19,9 @@ public class DialogListFrag extends BaseUIFrag<DialogListUIOpe,DialogListDAOpe> 
     private List<String> strs;
 
     private OnAppItemClickListener onAppItemsClickListener;
+
+
+
     public void init(List<String> strs){
         this.strs =strs;
     }
@@ -33,7 +36,7 @@ public class DialogListFrag extends BaseUIFrag<DialogListUIOpe,DialogListDAOpe> 
 
     @Override
     public void onClick(View v) {
-        activity.getSupportFragmentManager().beginTransaction().remove(this).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
     }
 
     @Override
@@ -41,7 +44,7 @@ public class DialogListFrag extends BaseUIFrag<DialogListUIOpe,DialogListDAOpe> 
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 int pos = (int) v.getTag(R.id.position);
-                activity.getSupportFragmentManager().beginTransaction().remove(this).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
                 if(onAppItemsClickListener!=null){
                     onAppItemsClickListener.onAppItemClick(v,pos);
                 }

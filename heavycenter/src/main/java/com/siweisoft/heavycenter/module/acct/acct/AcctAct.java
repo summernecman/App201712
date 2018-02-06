@@ -22,12 +22,12 @@ public class AcctAct extends AppAct<AcctUIOpe,AcctDAOpe> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FragManager2.getInstance().clear();
-        FragManager2.getInstance().setAnim(false).start((BaseUIActivity) activity,账号, 账号界面根布局,new LoginFrag());
+        FragManager2.getInstance().setAnim(false).start(getActivity(),账号, 账号界面根布局,new LoginFrag());
     }
 
     @Override
     public void onBackPressed() {
-        if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle(),true)){
+        if(!FragManager2.getInstance().finish(getActivity(),getMoudle(),true)){
             super.onBackPressed();
         }
     }

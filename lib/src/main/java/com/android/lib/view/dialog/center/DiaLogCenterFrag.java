@@ -40,7 +40,7 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
     }
 
     public void close(){
-        activity.getSupportFragmentManager().beginTransaction().remove(this).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
     }
 
     @Override

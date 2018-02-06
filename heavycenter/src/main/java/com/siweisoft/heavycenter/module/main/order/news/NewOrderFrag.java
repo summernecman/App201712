@@ -22,6 +22,7 @@ import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
 import com.siweisoft.heavycenter.data.netd.order.rule.Rule;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.order.news.rule.RuleFrag;
 import com.siweisoft.heavycenter.module.mana.good.lists.NamesFrag;
 import com.siweisoft.heavycenter.module.mana.good.specs.SpecsFrag;
@@ -48,23 +49,23 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
         Bundle bundle = new Bundle();
         switch (v.getId()){
             case R.id.item_addr:
-                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.订单,new AddrFrag());
+                FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new AddrFrag());
                 break;
             case R.id.item_wuliname:
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.订单,new NamesFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new NamesFrag(),bundle);
                 break;
             case R.id.item_wuliguige:
                 if(getP().getU().canGugeGo(getP().getD().getNewsOrderReqBean())){
                     bundle.putInt(ValueConstant.FARG_REQ,2);
                     bundle.putInt(ValueConstant.DATA_POSITION2,getP().getD().getNewsOrderReqBean().getProductId());
-                    FragManager2.getInstance().start(getBaseUIActivity(), MainAct.订单,new SpecsFrag(),bundle);
+                    FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new SpecsFrag(),bundle);
                 }
                 break;
             case R.id.item_unit:
                 bundle.putInt(ValueConstant.DATA_DATA, ListDAOpe.SEL_UNIT);
                 bundle.putInt(ValueConstant.FARG_REQ,3);
-                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.订单,new ListFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new ListFrag(),bundle);
                 break;
             case R.id.item_starttime:
                 TimePickerDialog.Builder builder = new TimePickerDialog.Builder();
@@ -83,7 +84,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 break;
             case R.id.item_rule:
                 bundle.putInt(ValueConstant.FARG_REQ,4);
-                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.订单,new RuleFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new RuleFrag(),bundle);
                 break;
             case R.id.tv_receipt:
                 getP().getU().onClick(v);
@@ -95,7 +96,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 break;
             case R.id.ftv_right2:
                 if(getP().getU().canGo()){
-                    getP().getD().newOrder(getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(activity) {
+                    getP().getD().newOrder(getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(getBaseUIAct()) {
                         @Override
                         public void onSuccess(NewOrderRes o) {
                             super.onSuccess(o);
@@ -109,8 +110,8 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
     }
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
-        super.onRestart(res, bundle);
+    public void onResult(int res, Bundle bundle) {
+        super.onResult(res, bundle);
         switch (res){
             case 1:
                 if(bundle==null||bundle.getSerializable(ValueConstant.DATA_DATA2)==null){

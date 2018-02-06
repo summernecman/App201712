@@ -7,11 +7,8 @@ import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.network.newsf.UIFNetAdapter;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.module.main.store.check.CheckFrag;
@@ -41,13 +38,13 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new CheckFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new CheckFrag(),bundle);
         }
     }
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
-        super.onRestart(res, bundle);
+    public void onResult(int res, Bundle bundle) {
+        super.onResult(res, bundle);
         switch (res){
             case 1:
                 if(bundle!=null&&bundle.getBoolean(ValueConstant.FRAG_KEY,false)){

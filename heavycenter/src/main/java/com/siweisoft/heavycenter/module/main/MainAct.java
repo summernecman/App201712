@@ -2,10 +2,8 @@ package com.siweisoft.heavycenter.module.main;
 
 //by summer on 17-08-23.
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +13,8 @@ import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.ToastUtil;
+import com.android.lib.util.activity.ActivityUtil;
 import com.android.lib.util.fragment.two.FragManager2;
-import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -26,74 +24,26 @@ import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSelectListener {
 
-    public static final String 地磅 = "地磅";
-
-    public static final String 运输单 = "运输单";
-
-    public static final String 订单 = "订单";
-
-    public static final String 地图 = "地图";
-
-    public static final String 仓库 = "仓库";
-
-    public static final String 消息 = "消息";
-
-    public static final String 个人中心 = "个人中心";
-
-    public static final String 主界面 = "主界面";
-
-    public static final String 对话框 = "对话框";
-
-
-    public static final int 地磅ID = 11111;
-
-    public static final int 运输单ID = 11112;
-
-    public static final int 订单ID = 11113;
-
-    public static final int 仓库ID = 11114;
-
-    public static final int 消息ID = 11115;
-
-    public static final int 地图ID = 11116;
-
-    public static final int 主界面ID = R.id.content_content;
-
-    public static final int 对话框ID = R.id.act_main;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(savedInstanceState!=null){
-            startActivity(new Intent(this,WelcAct.class));
-            this.finish();
-        }
-        if(!getP().getD().getPermissionUtil().isAllGranted(activity,getP().getD().getPermissions())){
+        ActivityUtil.被后台清理了就重启(getActivity(),savedInstanceState,WelcAct.class);
+        if(!getP().getD().getPermissionUtil().is所有的权限都允许(getActivity(),getP().getD().getPermissions())){
             return;
         }
-        dothing();
+        初始化界面();
     }
 
 
-//    @SuppressLint("MissingSuperCall")
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        this.finish();
-//        startActivity(new Intent(this, WelcAct.class));
-//    }
-
-    public void dothing(){
+    public void 初始化界面(){
         getP().getU().setBottomMenuViewData(getP().getD().getMenudata());
         getP().getU().initDrawerMenu(getP().getD().getMyceFrag());
         getP().getU().initPages(getP().getD().getMenudata(),this);
-        reStart();
+        go判断是否绑定单位处理();
     }
 
-    public void reStart(){
-        if(!getP().getD().isBindUnit()){
+    public void go判断是否绑定单位处理(){
+        if(!getP().getD().is绑定了单位()){
             getP().getU().nobind();
         }else{
             getP().getU().hideshowunbind(false);
@@ -103,13 +53,13 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         }
     }
 
-    public void netRestart(){
+    public void go网络获取用户信息重新加载(){
         getP().getD().get用户信息(new UINetAdapter<LoginResBean>(this) {
             @Override
             public void onSuccess(LoginResBean o) {
                 super.onSuccess(o);
                 LocalValue.save登录返回信息(o);
-                reStart();
+                go判断是否绑定单位处理();
             }
         });
     }
@@ -117,16 +67,16 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     @Override
     public void onAppItemSelect(ViewGroup viewGroup, View view, int position) {
-        FragManager2.getInstance().clear((BaseUIActivity) activity,MainAct.主界面);
+        FragManager2.getInstance().clear((BaseUIActivity) getActivity(),MainValue.主界面);
         getP().getU().setCurrentItem(position);
         setMoudle(getP().getD().getMenudata().get(position).getName());
 
         if(position==getP().getD().getMenudata().size()-1){
-            if(!getP().getD().isBindUnit()){
+            if(!getP().getD().is绑定了单位()){
                 getP().getU().hideshowunbind(false);
             }
         }else{
-            if(!getP().getD().isBindUnit()){
+            if(!getP().getD().is绑定了单位()){
                 getP().getU().hideshowunbind(true);
             }
         }
@@ -136,17 +86,17 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(!getP().getD().getPermissionUtil().onRequestPermissionsResult(activity,requestCode,grantResults)){
+        if(!getP().getD().getPermissionUtil().onRequestPermissionsResult(getActivity(),requestCode,grantResults)){
             return;
         }
-        dothing();
+        初始化界面();
     }
 
 
 
     @Override
     public void onBackPressed() {
-        if(!FragManager2.getInstance().finish((BaseUIActivity) activity,getMoudle(),!getMoudle().equals(MainAct.主界面))){
+        if(!FragManager2.getInstance().finish(getActivity(),getMoudle(),!getMoudle().equals(MainValue.主界面))){
             super.onBackPressed();
         }
     }
@@ -158,7 +108,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
             if (null != data && data.getExtras()!=null) {
                 Bundle bundle = data.getExtras();
                 if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
-                    ToastUtil.getInstance().showShort(activity,FragManager2.getInstance().getCurrentFrag(getMoudle()).getClass().getSimpleName());
+                    ToastUtil.getInstance().showShort(getActivity(),FragManager2.getInstance().getCurrentFrag(getMoudle()).getClass().getSimpleName());
                     getP().getD().getScanDAOpe().logic((AppFrag) FragManager2.getInstance().getCurrentFrag(getMoudle()),bundle.getString(CodeUtils.RESULT_STRING));
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
                     ToastUtil.getInstance().showShort(this,"解析二维码失败");

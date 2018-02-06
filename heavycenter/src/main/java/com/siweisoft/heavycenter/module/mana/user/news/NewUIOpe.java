@@ -21,9 +21,8 @@ public class NewUIOpe extends AppUIOpe<FragManaUserNewBinding> implements View.O
     ArrayList<View> views = new ArrayList<>();
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
-        super.initUI(baseUIFrag);
+    public void initUI() {
+        super.initUI();
         bind.itemName.setVisibility(View.GONE);
         bind.one.setOnClickListener(this);views.add(bind.one);bind.one.setTag(R.id.data, LoginResBean.USER_ROLE_GENERAL);
         bind.two.setOnClickListener(this);views.add(bind.two);bind.two.setTag(R.id.data, LoginResBean.USER_ROLE_DRIVER);

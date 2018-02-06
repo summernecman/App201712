@@ -20,9 +20,7 @@ public class LoginUIOpe extends AppUIOpe<FragAcctLoginBinding> {
     LoginReqBean loginReqBean = new LoginReqBean();
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
-        super.initUI(baseUIFrag);
+    public void initUI() {
         bind.phone.getEditText().setText(LocalValue.get登录参数()==null?"":LocalValue.get登录参数().getTel());
         bind.pwd.getEditText().setText(LocalValue.get登录参数()==null?"":LocalValue.get登录参数().getInputPwd());
     }

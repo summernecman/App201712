@@ -84,7 +84,7 @@ public class UnitScanDAOpe extends BaseDAOpe {
                 public void onResult(boolean success, String msg, BindResBean o) {
                     super.onResult(success, msg, o);
                     if(success){
-                        ((MainAct)getActivity()).netRestart();
+                        ((MainAct)getActivity()).go网络获取用户信息重新加载();
                     }
                 }
             });

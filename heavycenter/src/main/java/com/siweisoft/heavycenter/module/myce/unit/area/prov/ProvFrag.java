@@ -39,14 +39,14 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
                 bundle.putSerializable(ValueConstant.DATA_POSITION2, (int) v.getTag(R.id.position));
                 bundle.putSerializable(ValueConstant.DATA_DATA, (Serializable) v.getTag(R.id.data));
                 bundle.putString(ValueConstant.DATA_DATA2,getP().getD().getState());
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new CityFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new CityFrag(),bundle);
                 break;
         }
     }
 
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
+    public void onResult(int res, Bundle bundle) {
         int proindex = bundle.getInt(ValueConstant.DATA_POSITION2,-1);
         if(proindex==-1){
             return;
@@ -104,7 +104,7 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
             case R.id.ftv_right2:
                 getArguments().putString(ValueConstant.DATA_RES, getArguments().getString(ValueConstant.DATA_RES));
                 getArguments().putString(ValueConstant.DATA_RES2, getArguments().getString(ValueConstant.DATA_RES2));
-                getBaseUIActivity().onBackPressed();
+                getBaseUIAct().onBackPressed();
                 break;
         }
     }

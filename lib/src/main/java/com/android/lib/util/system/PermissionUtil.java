@@ -25,7 +25,7 @@ public class PermissionUtil {
 
 
 
-    public boolean isAllGranted(Activity context, String[] permissions){
+    public boolean is所有的权限都允许(Activity context, String[] permissions){
         if (checkPermissionAllGranted(context,permissions)) {
             return true;
         }

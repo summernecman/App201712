@@ -41,8 +41,8 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
+
+    public void initUI() {
         initRecycle();
     }
 

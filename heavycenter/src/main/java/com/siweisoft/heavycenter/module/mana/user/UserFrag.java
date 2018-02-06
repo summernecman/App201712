@@ -41,7 +41,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new NewFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NewFrag(),bundle);
                 break;
         }
     }
@@ -53,7 +53,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().unitUsers(new UINetAdapter<UnitUserResBean>(activity) {
+        getP().getD().unitUsers(new UINetAdapter<UnitUserResBean>(getBaseUIAct()) {
             @Override
             public void onResult(boolean success, String msg, UnitUserResBean o) {
                 super.onResult(success, msg, o);
@@ -74,7 +74,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                         switch (resultsBean.getBindCompanyState()){
                             case LoginResBean.BIND_UNIT_STATE_BINDED:
                                 if(getP().getD().canUnBind(resultsBean.getUserId())){
-                                    getP().getD().unBindUser(resultsBean.getUserId(), new UINetAdapter<UnBindResBean>(activity) {
+                                    getP().getD().unBindUser(resultsBean.getUserId(), new UINetAdapter<UnBindResBean>(getBaseUIAct()) {
                                         @Override
                                         public void onResult(boolean success, String msg, UnBindResBean o) {
                                             super.onResult(success, msg, o);
@@ -84,7 +84,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                 }
                                 break;
                             default:
-                                getP().getD().addUser(resultsBean.getTel(), new UINetAdapter<AddUserResBean>(activity) {
+                                getP().getD().addUser(resultsBean.getTel(), new UINetAdapter<AddUserResBean>(getBaseUIAct()) {
                                     @Override
                                     public void onResult(boolean success, String msg, AddUserResBean o) {
                                         super.onResult(success, msg, o);
@@ -100,8 +100,8 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
     }
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
-        super.onRestart(res, bundle);
+    public void onResult(int res, Bundle bundle) {
+        super.onResult(res, bundle);
         switch (res){
             case 1:
                 if(bundle==null || bundle.getBoolean(ValueConstant.FARG_TYPE,false)){

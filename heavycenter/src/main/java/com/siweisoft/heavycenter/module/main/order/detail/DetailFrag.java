@@ -11,12 +11,14 @@ import com.android.lib.network.news.NetAdapter;
 import com.android.lib.network.newsf.UIFNetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarReq;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarRes;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.car.my.MyFrag;
 
 import butterknife.OnClick;
@@ -32,6 +34,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
             @Override
             public void onResult(boolean success, String msg, OrdersRes.ResultsBean o) {
                 super.onResult(success, msg, o);
+                o = new Test().getOrdersRes().getResults().get(0);
                 if(success){
                     getP().getD().setData(o);
                     getP().getU().initUI(getArguments().getString(ValueConstant.TYPE),getP().getD().getData());
@@ -48,14 +51,14 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
             case R.id.iv_local:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,MyFrag.TYPE_SEL);
-                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.订单,new MyFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new MyFrag(),bundle);
                 break;
         }
     }
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
-        super.onRestart(res, bundle);
+    public void onResult(int res, Bundle bundle) {
+        super.onResult(res, bundle);
         switch (res){
             case MyFrag.TYPE_SEL:
                 if(bundle==null|| bundle.getSerializable(ValueConstant.DATA_DATA)==null){

@@ -3,16 +3,13 @@ package com.android.lib.util.fragment.two;
 //by summer on 2018-01-12.
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
 import com.android.lib.R;
 import com.android.lib.base.activity.BaseUIActivity;
-import com.android.lib.base.fragment.BaseFrg;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.constant.ValueConstant;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FragManager2  {
@@ -44,7 +41,7 @@ public class FragManager2  {
         checkMap(moudle,viewid);
         checkArguments(fragment);
         activity.setMoudle(moudle);
-        fragment.getArguments().putString(ValueConstant.CONTAINER_NAME,moudle);
+        fragment.getArguments().putString(ValueConstant.容器,moudle);
         fragment.getArguments().putInt(ValueConstant.VIEW_ID,viewid);
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
         if(isAnim()){
@@ -105,7 +102,7 @@ public class FragManager2  {
         map.get(moudle).removeLast();
         transaction.commitNowAllowingStateLoss();
         if(map.get(moudle).haveLast()){
-            map.get(moudle).getLast().onRestart(res,bundle);
+            map.get(moudle).getLast().onResult(res,bundle);
         }
         return true;
     }

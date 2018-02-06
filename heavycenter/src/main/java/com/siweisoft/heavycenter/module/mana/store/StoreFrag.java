@@ -19,6 +19,7 @@ import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.store.info.StoreInfoFrag;
 import com.siweisoft.heavycenter.module.mana.store.news.NewFrag;
 
@@ -46,7 +47,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new NewFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NewFrag(),bundle);
                 break;
         }
     }
@@ -74,14 +75,14 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                            if(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库){
                                StoreDetail d = (StoreDetail) v.getTag(R.id.data);
                                getArguments().putSerializable(ValueConstant.DATA_DATA2,d);
-                               getBaseUIActivity().onBackPressed();
+                               getBaseUIAct().onBackPressed();
                                return;
                            }
                            StoreDetail storeDetail = (StoreDetail) v.getTag(R.id.data);
                            Bundle bundle = new Bundle();
                            bundle.putSerializable(ValueConstant.DATA_DATA,storeDetail);
                            bundle.putInt(ValueConstant.FARG_REQ,2);
-                           FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,new StoreInfoFrag(),bundle);
+                           FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new StoreInfoFrag(),bundle);
                            break;
                }
                 break;
@@ -107,8 +108,8 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     }
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
-        super.onRestart(res, bundle);
+    public void onResult(int res, Bundle bundle) {
+        super.onResult(res, bundle);
         switch (res){
             case 1:
                 if(bundle==null|| !bundle.getBoolean(ValueConstant.FARG_TYPE,false)){

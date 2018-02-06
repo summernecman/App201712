@@ -35,7 +35,7 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new NewFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NewFrag(),bundle);
                 break;
         }
     }
@@ -49,14 +49,14 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
                 bundle.putInt(ValueConstant.DATA_DATA,resultsBean.getProductInfoId());
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new NewFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NewFrag(),bundle);
                 break;
         }
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().listGood(new UINetAdapter<GoodListRes>(activity) {
+        getP().getD().listGood(new UINetAdapter<GoodListRes>(getBaseUIAct()) {
             @Override
             public void onResult(boolean success, String msg, GoodListRes o) {
                 //o= new Test().getGoodListRes();
@@ -68,8 +68,8 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
     }
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
-        super.onRestart(res, bundle);
+    public void onResult(int res, Bundle bundle) {
+        super.onResult(res, bundle);
         switch (res){
             case 1:
                 if(bundle==null || !bundle.getBoolean(ValueConstant.FARG_TYPE,false)){

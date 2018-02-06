@@ -9,7 +9,4 @@ import com.android.lib.base.ope.BaseDAOpe;
 public class DialogListDAOpe extends BaseDAOpe {
 
 
-    public DialogListDAOpe(Context context) {
-        super(context);
-    }
 }

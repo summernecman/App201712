@@ -29,7 +29,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 ((MainAct)getActivity()).getP().getU().switchDrawer();
                 break;
             case R.id.ftv_right2:
-                FragManager2.getInstance().start(getBaseUIActivity(),getContainerName(),new CheckFrag());
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new CheckFrag());
         }
     }
 }

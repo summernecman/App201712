@@ -42,13 +42,13 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)activity).getP().getU().switchDrawer();
+                ((MainAct)getBaseUIAct()).getP().getU().switchDrawer();
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
                     Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    activity.startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    getBaseUIAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
             case R.id.tv_save:
@@ -94,4 +94,8 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
            }
     }
 
+    @Override
+    protected boolean registerEventBus() {
+        return true;
+    }
 }

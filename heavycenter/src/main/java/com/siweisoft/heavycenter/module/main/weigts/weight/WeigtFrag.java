@@ -10,6 +10,7 @@ import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 
 
 public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
@@ -59,7 +60,7 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
 
                         break;
                 }
-                getP().getU().getFragManager2().finish(getBaseUIActivity(), MainAct.地磅, true);
+                getP().getU().getFragManager2().finish(getBaseUIAct(), MainValue.地磅, true);
             }
         });
     }

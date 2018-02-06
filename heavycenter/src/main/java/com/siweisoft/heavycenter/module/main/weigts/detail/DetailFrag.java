@@ -28,7 +28,6 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     public void initNow() {
         super.initNow();
         onFristVisibleInit();
-        setInited();
     }
 
     @Override
@@ -40,13 +39,13 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
-                ((MainAct)activity).getP().getU().switchDrawer();
+                ((MainAct)getBaseUIAct()).getP().getU().switchDrawer();
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
                     MainAct mainAct = (MainAct) getActivity();
                     Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    activity.startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    getBaseAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
                 }
                 break;
         }
@@ -66,4 +65,8 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
     }
 
+    @Override
+    protected boolean registerEventBus() {
+        return  true;
+    }
 }

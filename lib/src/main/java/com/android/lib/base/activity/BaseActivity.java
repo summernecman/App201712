@@ -16,18 +16,19 @@ import com.android.lib.util.activity.ActivityUtil;
  */
 public class BaseActivity extends AppCompatActivity {
 
-    //方便引用的自身对象
-    protected FragmentActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity = this;
         if (getApplication() instanceof LibAplication) {
-            ActivityUtil.getInstance().getActMap().put(getClass().getSimpleName(), activity);
-            ActivityUtil.getInstance().getActList().add(activity);
+            ActivityUtil.getInstance().getActMap().put(getClass().getSimpleName(), getActivity());
+            ActivityUtil.getInstance().getActList().add(getActivity());
         } else {
             LogUtil.E("你的application最好继承LibAplication以便享有方便的方法");
         }
+    }
+
+    public FragmentActivity getActivity() {
+        return this;
     }
 }

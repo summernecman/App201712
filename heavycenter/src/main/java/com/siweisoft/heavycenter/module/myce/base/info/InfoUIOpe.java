@@ -19,9 +19,8 @@ public class InfoUIOpe extends AppUIOpe<FragScanInfoBinding>{
 
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
-        super.initUI(baseUIFrag);
+    public void initUI() {
+        super.initUI();
         bind.setVariable(BR.frag_scan_info, LocalValue.get登录返回信息());
     }
 

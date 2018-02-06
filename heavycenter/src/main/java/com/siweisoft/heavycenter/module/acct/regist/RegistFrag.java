@@ -37,8 +37,8 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
                         @Override
                         public void onSuccess(RegistResBean o) {
                             LocalValue.save登录参数(getP().getU().getLoginReqBean());
-                            getBaseUIActivity().onBackPressed();
-                            FragManager2.getInstance().start((BaseUIActivity) activity, AcctAct.账号,AcctAct.账号界面根布局,new RoleFrag());
+                            getBaseUIAct().onBackPressed();
+                            FragManager2.getInstance().start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,new RoleFrag());
                         }
                     });
                 }

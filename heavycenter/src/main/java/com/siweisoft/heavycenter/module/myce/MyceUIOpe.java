@@ -20,9 +20,9 @@ import com.siweisoft.heavycenter.databinding.FragMyceBinding;
 public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
-        super.initUI(baseUIFrag);
+
+    public void initUI() {
+        super.initUI();
         GlideApp.with(context).asBitmap().load(NetValue.获取地址(LocalValue.get登录返回信息().getUserPhoto())).placeholder(R.drawable.icon_hv_myce_head).centerCrop().into(bind.llHead.ivHead);
         bind.llHead.tvName.setText(StringUtil.getStr(LocalValue.get登录返回信息().getTrueName()));
         bind.llHead.tvPhone.setText(StringUtil.getStr(LocalValue.get登录返回信息().getTel()));

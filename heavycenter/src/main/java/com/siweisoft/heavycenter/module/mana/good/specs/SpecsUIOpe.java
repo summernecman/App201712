@@ -23,8 +23,7 @@ public class SpecsUIOpe extends BaseUIOpe<FragManaGoodSpecsBinding> {
 
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
+    public void initUI() {
         initRecycle();
     }
 

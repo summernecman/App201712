@@ -44,7 +44,7 @@ public class ImageFrag extends BaseFrg implements View.OnLongClickListener, View
         }
         url = getArguments().getString(ValueConstant.DATA_DATA);
         if (!NullUtil.isStrEmpty(url)) {
-            ImagePicker.getInstance().getImageLoader().displayImage(activity, url, photoView, 0, 0);
+            ImagePicker.getInstance().getImageLoader().displayImage(getActivity(), url, photoView, 0, 0);
         }
         photoView.setOnLongClickListener(this);
         photoView.setOnClickListener(this);

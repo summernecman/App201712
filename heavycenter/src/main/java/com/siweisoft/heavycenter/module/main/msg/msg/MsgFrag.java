@@ -12,7 +12,6 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
@@ -92,7 +91,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
                         data.setAuditState(finalAuditstate);
                         getP().getU().notifyDataSetChanged();
                         if((status[0] == MsgDealReqBean.AUDII_STATUS_YES)){
-                            ((MainAct)getBaseUIActivity()).netRestart();
+                            ((MainAct) getBaseUIAct()).go网络获取用户信息重新加载();
                         }
                     }
                 });

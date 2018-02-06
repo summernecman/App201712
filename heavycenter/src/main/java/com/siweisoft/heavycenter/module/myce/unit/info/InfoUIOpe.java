@@ -16,6 +16,7 @@ import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitInfoBinding;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
 public class InfoUIOpe extends AppUIOpe<FragMyceUnitInfoBinding>{
@@ -53,7 +54,7 @@ public class InfoUIOpe extends AppUIOpe<FragMyceUnitInfoBinding>{
         diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_leave,null));
         diaLogCenterFrag.setOnClickListener(onClickListener,R.id.close,R.id.sure);
         fragManager2 = FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).setHideLast(false);
-        fragManager2.start(getActivity(),MainAct.主界面,diaLogCenterFrag);
+        fragManager2.start(getActivity(), MainValue.主界面,diaLogCenterFrag);
     }
 
     public FragManager2 getFragManager2() {

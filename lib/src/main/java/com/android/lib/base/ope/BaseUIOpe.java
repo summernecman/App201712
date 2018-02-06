@@ -7,13 +7,12 @@ import android.view.LayoutInflater;
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.bean.AppViewHolder;
-import com.android.lib.databinding.LayoutBaseuiWithouttitleBinding;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 
-import butterknife.OnClick;
+import com.android.lib.databinding.ActBaseuiBinding;
 
 /**
  * ui处理操作者 处理对象 uibean fragment view
@@ -40,18 +39,14 @@ public class BaseUIOpe<A extends ViewDataBinding> {
 
     public BaseUIActivity getActivity(){
         if(frag!=null ){
-            return frag.getBaseUIActivity();
+            return frag.getBaseUIAct();
         }else{
             return (BaseUIActivity) context;
         }
     }
 
 
-    public void initUI(BaseUIFrag baseUIFrag){
-
-    }
-
-    public void initActUI(){
+    public void initUI(){
 
     }
 
@@ -75,7 +70,7 @@ public class BaseUIOpe<A extends ViewDataBinding> {
                     e.printStackTrace();
                 }
             } else {
-                viewDataBinding = (A) LayoutBaseuiWithouttitleBinding.inflate(LayoutInflater.from(context));
+                viewDataBinding = (A) ActBaseuiBinding.inflate(LayoutInflater.from(context));
             }
         }
         return viewDataBinding;

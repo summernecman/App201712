@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class MainUIOpe extends AppUIOpe<ActMainBinding> {
 
     @Override
-    public void initActUI() {
+    public void initUI() {
         bind.incloud.leftDrawer.getLayoutParams().width = (int) (ScreenUtil.w *80/ 100);
         bind.incloud.leftDrawer.requestLayout();
     }
@@ -39,7 +39,7 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
 
 
     public void initDrawerMenu(MyceFrag myceFrag ){
-        FragManager2.getInstance().setAnim(false).start(getActivity(),MainAct.个人中心,bind.incloud.leftDrawer.getId(),myceFrag);
+        FragManager2.getInstance().setAnim(false).start(getActivity(),MainValue.个人中心,bind.incloud.leftDrawer.getId(),myceFrag);
     }
 
     public void initPages(final ArrayList<BottomMenuBean> pages,OnAppItemSelectListener listener){
@@ -91,7 +91,7 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
             transaction.commitNow();
         }else{
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.add(MainAct.主界面ID,new NoBindFrag(),NoBindFrag.class.getName());
+            transaction.add(MainValue.主界面ID,new NoBindFrag(),NoBindFrag.class.getName());
             transaction.commitNow();
         }
     }

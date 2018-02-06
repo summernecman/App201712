@@ -23,6 +23,6 @@ public class ImagePagerFrag extends BaseUIFrag<ImagePagerUIOpe, ImagePagerDAOpe>
         } else {
             getP().getD().setUrls(new ArrayList<String>());
         }
-        getP().getU().initPager(activity.getSupportFragmentManager(), getP().getD().getUrls(), getP().getD().getPostion());
+        getP().getU().initPager(getActivity().getSupportFragmentManager(), getP().getD().getUrls(), getP().getD().getPostion());
     }
 }

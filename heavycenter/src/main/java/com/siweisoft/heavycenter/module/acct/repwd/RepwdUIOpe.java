@@ -27,10 +27,8 @@ public class RepwdUIOpe extends AppUIOpe<FragAcctRepwdBinding> {
        // GlideApp.with(context).asBitmap().load(url).centerCrop().into(bind.image);
     }
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
-        super.initUI(baseUIFrag);
-        bind.code.getCodeText().setOnClickListener(baseUIFrag);
+    public void initUI() {
+        bind.code.getCodeText().setOnClickListener(getFrag());
     }
 
 

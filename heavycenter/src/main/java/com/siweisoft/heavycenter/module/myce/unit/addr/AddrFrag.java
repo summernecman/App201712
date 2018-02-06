@@ -23,6 +23,7 @@ import com.baidu.mapapi.search.poi.PoiResult;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.myce.unit.area.prov.ProvFrag;
 
 import butterknife.OnClick;
@@ -34,8 +35,8 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
     @Override
     public void initNow() {
         super.initNow();
-        getP().getD().getMapUtil().init(activity,true);
-        getP().getD().getMapUtil().registerLocationListener(activity, new BDAbstractLocationListener() {
+        getP().getD().getMapUtil().init(getBaseUIAct(),true);
+        getP().getD().getMapUtil().registerLocationListener(getBaseUIAct(), new BDAbstractLocationListener() {
             @Override
             public void onReceiveLocation(BDLocation bdLocation) {
                 getP().getU().bind.tvAddr.setText(StringUtil.getStr(bdLocation.getAddrStr()));
@@ -82,7 +83,7 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
                 getP().getD().getUnitInfo().setCompanyLat(poiInfo.location.latitude);
                 getP().getD().getUnitInfo().setCompanyLng(poiInfo.location.longitude);
                 getArguments().putSerializable(ValueConstant.DATA_DATA,getP().getD().getUnitInfo());
-                getBaseUIActivity().onBackPressed();
+                getBaseUIAct().onBackPressed();
                 break;
         }
     }
@@ -103,11 +104,11 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
                     return;
                 }
                 getArguments().putSerializable(ValueConstant.DATA_DATA,getP().getD().getUnitInfo());
-                getBaseUIActivity().onBackPressed();
+                getBaseUIAct().onBackPressed();
                 break;
             case R.id.ll_local:
-                getP().getD().getMapUtil().init(activity,true);
-                getP().getD().getMapUtil().registerLocationListener(activity, new BDAbstractLocationListener() {
+                getP().getD().getMapUtil().init(getBaseUIAct(),true);
+                getP().getD().getMapUtil().registerLocationListener(getBaseUIAct(), new BDAbstractLocationListener() {
                     @Override
                     public void onReceiveLocation(BDLocation bdLocation) {
                         getP().getU().bind.tvAddr.setText(StringUtil.getStr(bdLocation.getAddrStr()));
@@ -119,14 +120,14 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
                 bundle.putString(ValueConstant.DATA_DATA,ProvFrag.选择一个城市);
-                FragManager2.getInstance().start(getBaseUIActivity(), MainAct.主界面,new ProvFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new ProvFrag(),bundle);
                 break;
         }
     }
 
     @Override
-    public void onRestart(int res, Bundle bundle) {
-        super.onRestart(res, bundle);
+    public void onResult(int res, Bundle bundle) {
+        super.onResult(res, bundle);
         switch (res){
             case 1:
                 if(bundle==null|| bundle.getString(ValueConstant.DATA_RES)==null){

@@ -22,6 +22,7 @@ import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderReq;
 import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.order.detail.DetailFrag;
 
 public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
@@ -46,7 +47,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
                         bundle.putString(ValueConstant.TYPE,(String)v.getTag(R.id.type));
                         OrdersRes.ResultsBean resultsBean = (OrdersRes.ResultsBean) v.getTag(R.id.data);
                         bundle.putInt(ValueConstant.DATA_DATA, resultsBean.getOrderId());
-                        FragManager2.getInstance().start(getBaseUIActivity(), MainAct.订单,MainAct.订单ID,new DetailFrag(),bundle);
+                        FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,MainValue.订单ID,new DetailFrag(),bundle);
                         break;
                     case R.id.bt_sure:
                         final OrdersRes.ResultsBean data = (OrdersRes.ResultsBean) v.getTag(R.id.data);
@@ -100,7 +101,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);
                 getP().getU().finishRefresh();
-                //o = new Test().getOrdersRes();
+                o = new Test().getOrdersRes();
                 if(o==null){
                     return;
                 }

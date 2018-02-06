@@ -5,6 +5,9 @@ package com.android.lib.util;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.android.lib.R;
@@ -110,4 +113,25 @@ public class LoadUtil {
             this.tag = tag;
         }
     }
+
+    View loadingView;
+
+
+    public void startLoading(Context context,ViewGroup viewGroup){
+        loadingView = LayoutInflater.from(context).inflate(R.layout.dialog_loading,null);
+        AVLoadingIndicatorView avLoadingIndicatorView = (AVLoadingIndicatorView) loadingView.findViewById(R.id.av);
+        viewGroup.addView(loadingView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        avLoadingIndicatorView.show();
+
+
+    }
+
+    public void stopLoading(ViewGroup viewGroup){
+        if(loadingView !=null && loadingView.getParent()==viewGroup){
+            viewGroup.removeView(loadingView);
+        }
+    }
+
+
+
 }

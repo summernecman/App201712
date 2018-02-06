@@ -11,6 +11,7 @@ import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.LogUtil;
 import com.daimajia.swipe.SwipeLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -27,9 +28,7 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
 
     CarsResBean cars;
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
-        super.initUI(baseUIFrag);
+    public void initUI() {
         initRecycle();
     }
 

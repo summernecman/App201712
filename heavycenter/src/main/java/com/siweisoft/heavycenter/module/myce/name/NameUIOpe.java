@@ -18,9 +18,8 @@ public class NameUIOpe extends AppUIOpe<FragMyceNameBinding>{
     ReNameReqBean reNameReqBean  = new ReNameReqBean();
 
 
-    @Override
-    public void initUI(BaseUIFrag baseUIFrag) {
-        super.initUI(baseUIFrag);
+
+    public void initUI() {
         bind.itemName.setMidEtTxt(StringUtil.getStr(LocalValue.get登录返回信息().getTrueName()));
     }
 

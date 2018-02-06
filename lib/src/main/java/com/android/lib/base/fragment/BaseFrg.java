@@ -2,9 +2,11 @@ package com.android.lib.base.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
+import com.android.lib.base.activity.BaseActivity;
 import com.android.lib.util.LogUtil;
 
 /**
@@ -12,41 +14,40 @@ import com.android.lib.util.LogUtil;
  */
 public class BaseFrg extends Fragment {
 
-    /**
-     * fragment对应的activity的引用
-     */
-    protected FragmentActivity activity;
-    /**
-     * fragment自身的引用
-     */
-    protected Fragment fragment;
+    private BaseActivity activity;
+
+    private  BaseFrg frag;
 
     private long uniqueid;
-
-    private boolean isAttach = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         uniqueid = System.currentTimeMillis();
-        fragment = this;
+        frag = this;
     }
 
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof FragmentActivity) {
-            activity = (FragmentActivity) context;
+        if (context instanceof BaseActivity) {
+            activity = (BaseActivity) context;
         }
-        isAttach = true;
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public long getUniqueid() {
         return uniqueid;
     }
 
-    public boolean isAttach() {
-        return isAttach;
+
+    public BaseActivity getBaseAct(){
+        return activity;
+    }
+
+    public BaseFrg getFrag() {
+        return frag;
     }
 }
