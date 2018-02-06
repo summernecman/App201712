@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.StringUtil;
@@ -27,12 +28,12 @@ import java.util.List;
 public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
 
 
-    public DetailUIOpe(Context context) {
-        super(context);
+
+    @Override
+    public void initUI(BaseUIFrag baseUIFrag) {
         initRecycle();
+
     }
-
-
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
@@ -89,6 +90,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
                 binding.menu.setOnClickListener(this);
                 binding.menu.setTag(R.id.data,list.get(position));
                 binding.menu.setTag(R.id.position,position);
+                binding.swipe.setRightSwipeEnabled(true);
             }
         });
     }

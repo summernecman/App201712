@@ -11,18 +11,14 @@ import java.util.ArrayList;
 
 public class DetailDAOpe extends AppDAOpe {
 
-    private ArrayList<String> weightMsgs = new ArrayList<>();
-
-    public DetailDAOpe(Context context) {
-        super(context);
-    }
+    private ArrayList<WeightMsg.MessageBean> weightMsgs = new ArrayList<>();
 
 
-    public ArrayList<String> getWeightMsgs() {
+    public ArrayList<WeightMsg.MessageBean> getWeightMsgs() {
         return weightMsgs;
     }
 
-    public void setWeightMsgs(ArrayList<String> weightMsgs) {
+    public void setWeightMsgs(ArrayList<WeightMsg.MessageBean> weightMsgs) {
         this.weightMsgs = weightMsgs;
     }
 }

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.daimajia.swipe.SwipeLayout;
@@ -26,12 +27,11 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
 
     CarsResBean cars;
 
-    public MyUIOpe(Context context) {
-        super(context);
+    @Override
+    public void initUI(BaseUIFrag baseUIFrag) {
+        super.initUI(baseUIFrag);
         initRecycle();
     }
-
-
 
     private void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));

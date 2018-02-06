@@ -18,10 +18,12 @@ public class RuleDAOpe extends BaseDAOpe {
 
     RuleRes ruleRes = new RuleRes();
 
-    public RuleDAOpe(Context context) {
-        super(context);
+
+    public RuleDAOpe() {
         initRule();
     }
+
+
 
     public void initRule(){
         if(ruleRes.getData()==null){

@@ -24,10 +24,6 @@ public class OrderUIOpe extends BaseUIOpe<FragMainOrderBinding>{
 
 
 
-    public OrderUIOpe(Context context) {
-        super(context);
-
-    }
 
 
 

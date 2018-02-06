@@ -20,7 +20,11 @@
         <activity android:name=".module.welc.welc.WelcAct"
                   android:windowSoftInputMode="adjustPan|stateHidden"
                   android:screenOrientation="portrait">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity android:name=".module.acct.acct.AcctAct"
                   android:windowSoftInputMode="adjustPan|stateHidden"
@@ -32,11 +36,7 @@
                   android:windowSoftInputMode="adjustPan|stateHidden"
                   android:screenOrientation="portrait">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+
         </activity>
 
 

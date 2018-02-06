@@ -16,9 +16,6 @@ import java.util.ArrayList;
 
 public class MsgsUIOpe extends BaseUIOpe<FragMainMsgsBinding>{
 
-    public MsgsUIOpe(Context context) {
-        super(context);
-    }
 
     public void initPages(Fragment fragment, final ArrayList<Fragment> pages){
         bind.llCntent.setOffscreenPageLimit(pages.size());

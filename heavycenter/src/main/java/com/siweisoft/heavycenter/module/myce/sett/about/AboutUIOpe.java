@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragMyceSetAboutBinding;
 public class AboutUIOpe extends AppUIOpe<FragMyceSetAboutBinding>{
 
 
-    public AboutUIOpe(Context context) {
-        super(context);
-    }
 }

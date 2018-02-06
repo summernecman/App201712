@@ -28,9 +28,6 @@ public class CheckDAOpe extends AppDAOpe {
     private boolean initdata = false;
 
 
-    public CheckDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();

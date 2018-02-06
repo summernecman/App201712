@@ -87,6 +87,8 @@ import com.siweisoft.heavycenter.data.netd.unit.news.NewReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.news.NewResBean;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
+import com.siweisoft.heavycenter.data.netd.unit.update.UpdateUnitReq;
+import com.siweisoft.heavycenter.data.netd.unit.update.UpdateUnitRes;
 import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
 import com.siweisoft.heavycenter.data.netd.unit.user.UnitUsersReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
@@ -230,6 +232,10 @@ public class NetDataOpe {
 
         public static void drvers(Context context, DriversReq reqBean, NetI<ArrayList<DriverRes>> adapter) {
             NetGet.getData(context,NetValue.获取地址("/user/getDriver"),reqBean,adapter);
+        }
+
+        public static void updateUnit(Context context, UpdateUnitReq reqBean, NetI<UpdateUnitRes> adapter) {
+            NetGet.postData(context,NetValue.获取地址("/company/update"),reqBean,adapter);
         }
 
     }

@@ -25,9 +25,6 @@ public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
 
     LoginReqBean loginReqBean = new LoginReqBean();
 
-    public RegistUIOpe(Context context) {
-        super(context);
-    }
 
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {

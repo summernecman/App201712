@@ -12,9 +12,6 @@ public class StoreInfoDAOpe extends BaseDAOpe {
 
     private StoreDetail storeDetail ;
 
-    public StoreInfoDAOpe(Context context) {
-        super(context);
-    }
 
     public StoreDetail getStoreDetail() {
         return storeDetail;

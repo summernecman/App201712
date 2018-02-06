@@ -21,8 +21,8 @@ import butterknife.OnClick;
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
         getP().getU().initRecycle();
         getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<StoreDetail>(this) {
             @Override

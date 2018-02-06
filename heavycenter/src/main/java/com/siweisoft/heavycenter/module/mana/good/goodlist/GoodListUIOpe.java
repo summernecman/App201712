@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragManaGoodListBinding;
 public class GoodListUIOpe extends AppUIOpe<FragManaGoodListBinding>{
 
 
-    public GoodListUIOpe(Context context) {
-        super(context);
-    }
 }

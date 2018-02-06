@@ -7,7 +7,4 @@ import android.content.Context;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 
 public class NoBindDAOpe extends AppDAOpe {
-    public NoBindDAOpe(Context context) {
-        super(context);
-    }
 }

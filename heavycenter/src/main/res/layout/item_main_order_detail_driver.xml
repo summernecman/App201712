@@ -10,7 +10,7 @@
     <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="50dp">
 
         <TextView
             android:textSize="22sp"
@@ -18,13 +18,14 @@
             android:textColor="@color/white"
             android:text="移除"
             android:orientation="horizontal"
-            android:background="#66ddff00"
+            android:background="@color/color_hv_red"
             android:id="@+id/menu"
             android:layout_width="55dp"
             android:weightSum="1"
             android:layout_height="match_parent"/>
 
         <RelativeLayout
+            android:paddingLeft="@dimen/dimen_item_content_left_padding"
             android:id="@+id/ll_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

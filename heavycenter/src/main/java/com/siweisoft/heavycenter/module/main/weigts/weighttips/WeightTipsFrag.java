@@ -16,6 +16,12 @@ public class WeightTipsFrag  extends BaseUIFrag<WeightTipsUIOpe,WeightTipsDAOpe>
 
     private View.OnClickListener onClickListener;
 
+    @Override
+    public void initNow() {
+        super.initNow();
+        getP().getU().init(getP().getD().getWeightMsg());
+    }
+
     @Optional
     @OnClick({R.id.tv_close,R.id.tv_sure})
     public void onClick(View v) {

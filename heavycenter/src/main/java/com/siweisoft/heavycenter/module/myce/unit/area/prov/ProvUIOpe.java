@@ -22,9 +22,6 @@ import java.util.List;
 public class ProvUIOpe extends AppUIOpe<FragMyceUnitNewProvBinding>{
 
 
-    public ProvUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initRecycle(){

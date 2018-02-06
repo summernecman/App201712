@@ -14,9 +14,6 @@ import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 
 public class WelcDAOpe extends AppDAOpe {
 
-    public WelcDAOpe(Context context) {
-        super(context);
-    }
 
 
     public void get用户信息(NetI<LoginResBean> adapter){

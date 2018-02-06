@@ -14,9 +14,6 @@ import com.siweisoft.heavycenter.databinding.FragManaStoreNewBinding;
 
 public class NewUIOpe extends AppUIOpe<FragManaStoreNewBinding> {
 
-    public NewUIOpe(Context context) {
-        super(context);
-    }
 
 
     public NewStoreReqBean getNewStoreReqBean(NewStoreReqBean newStoreReqBean) {

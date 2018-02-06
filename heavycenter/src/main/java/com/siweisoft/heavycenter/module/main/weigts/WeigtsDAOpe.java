@@ -28,9 +28,6 @@ public class WeigtsDAOpe extends AppDAOpe {
 
     ArrayList<Fragment> pages = new ArrayList<>();
 
-    public WeigtsDAOpe(Context context) {
-        super(context);
-    }
 
 
 

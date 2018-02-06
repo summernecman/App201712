@@ -19,9 +19,6 @@ import java.util.ArrayList;
 
 public class WeigtsUIOpe extends AppUIOpe<FragMainWeigtsBinding> {
 
-    public WeigtsUIOpe(Context context) {
-        super(context);
-    }
 
     public void initRefresh(){
     }

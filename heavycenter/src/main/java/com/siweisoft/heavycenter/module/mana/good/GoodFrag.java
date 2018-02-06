@@ -20,8 +20,8 @@ import butterknife.OnClick;
 
 public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListener,OnRefreshListener{
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
         getP().getU().initRefresh(this);
         getP().getU().initRecycle();
         onRefresh(null);

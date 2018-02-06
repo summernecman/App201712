@@ -29,7 +29,8 @@ import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
 
 public class UnitScanDAOpe extends BaseDAOpe {
 
-
+    public UnitScanDAOpe() {
+    }
 
     public UnitScanDAOpe(Context context) {
         super(context);

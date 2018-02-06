@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragMainTransSearchBinding;
 public class SearchUIOpe extends AppUIOpe<FragMainTransSearchBinding> {
 
 
-    public SearchUIOpe(Context context) {
-        super(context);
-    }
 }

@@ -31,8 +31,8 @@ import butterknife.OnClick;
 public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListener,OnRefreshListener,OnFinishListener {
 
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
         getP().getU().initRefresh(this);
         getP().getU().initRecycle();
         onRefresh(null);
@@ -50,6 +50,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
+                bundle.putString(ValueConstant.DATA_TYPE,NewFrag.新建单位);
                 if(LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED){
                     bundle.putInt(ValueConstant.FARG_REQ,2);
                 }

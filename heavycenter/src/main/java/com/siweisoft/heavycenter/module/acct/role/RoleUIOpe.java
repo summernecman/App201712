@@ -20,9 +20,6 @@ public class RoleUIOpe extends AppUIOpe<FragAcctRoleBinding> {
     UserTypeReqBean userTypeReqBean = new UserTypeReqBean();
 
 
-    public RoleUIOpe(Context context) {
-        super(context);
-    }
 
     public void showTip(boolean dirver,View.OnClickListener onClickListener){
         DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();

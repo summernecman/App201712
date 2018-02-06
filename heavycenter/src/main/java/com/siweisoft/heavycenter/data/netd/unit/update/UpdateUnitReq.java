@@ -1,14 +1,16 @@
-package com.siweisoft.heavycenter.data.netd.unit.news;
+package com.siweisoft.heavycenter.data.netd.unit.update;
 
-//by summer on 2018-01-10.
+//by summer on 2018-02-06.
 
 import com.android.lib.network.bean.req.BaseReqBean;
 
-public class NewReqBean extends BaseReqBean {
+public class UpdateUnitReq extends BaseReqBean {
 
     private String abbreviationName;
 
     private String companyName;
+
+    private int id;
 
     private String companyAddress;
 
@@ -20,9 +22,9 @@ public class NewReqBean extends BaseReqBean {
 
     private String contactPhone;
 
-    private int highCompany = -1;
+    private int highCompany;
 
-    private Integer creater;
+    private int editer;
 
     private String belongArea;
 
@@ -40,6 +42,14 @@ public class NewReqBean extends BaseReqBean {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCompanyAddress() {
@@ -90,6 +100,13 @@ public class NewReqBean extends BaseReqBean {
         this.highCompany = highCompany;
     }
 
+    public int getEditer() {
+        return editer;
+    }
+
+    public void setEditer(int editer) {
+        this.editer = editer;
+    }
 
     public String getBelongArea() {
         return belongArea;
@@ -97,13 +114,5 @@ public class NewReqBean extends BaseReqBean {
 
     public void setBelongArea(String belongArea) {
         this.belongArea = belongArea;
-    }
-
-    public Integer getCreater() {
-        return creater;
-    }
-
-    public void setCreater(Integer creater) {
-        this.creater = creater;
     }
 }

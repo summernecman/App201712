@@ -83,7 +83,7 @@ public class UnitUserResBean extends BaseBean {
         private String tel;
         private String userRole;
         private int userId;
-        private long bindCompanyTime;
+        private Long bindCompanyTime;
         private int bindCompanyState;
         private int status;
 
@@ -143,11 +143,11 @@ public class UnitUserResBean extends BaseBean {
             this.userId = userId;
         }
 
-        public long getBindCompanyTime() {
+        public Long getBindCompanyTime() {
             return bindCompanyTime;
         }
 
-        public void setBindCompanyTime(long bindCompanyTime) {
+        public void setBindCompanyTime(Long bindCompanyTime) {
             this.bindCompanyTime = bindCompanyTime;
         }
 

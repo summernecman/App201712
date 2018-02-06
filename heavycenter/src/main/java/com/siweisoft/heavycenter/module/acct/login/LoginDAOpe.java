@@ -17,9 +17,6 @@ import java.util.ArrayList;
 public class LoginDAOpe extends AppDAOpe {
 
 
-    public LoginDAOpe(Context context) {
-        super(context);
-    }
 
     public void go登录(LoginReqBean reqBean, NetI<LoginResBean> adapter){
         NetDataOpe.onLogin(getActivity(),reqBean,adapter);

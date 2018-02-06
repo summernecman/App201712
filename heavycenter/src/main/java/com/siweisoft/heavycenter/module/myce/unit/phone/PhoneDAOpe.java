@@ -7,7 +7,4 @@ import android.content.Context;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 
 public class PhoneDAOpe extends AppDAOpe {
-    public PhoneDAOpe(Context context) {
-        super(context);
-    }
 }

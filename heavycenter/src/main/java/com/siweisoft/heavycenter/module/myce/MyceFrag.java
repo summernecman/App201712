@@ -5,12 +5,16 @@ package com.siweisoft.heavycenter.module.myce;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.StringUtil;
 import com.android.lib.util.UriUtils;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
@@ -30,6 +34,7 @@ import com.siweisoft.heavycenter.module.myce.name.NameFrag;
 import com.siweisoft.heavycenter.module.myce.sett.SetFrag;
 import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
 import com.siweisoft.heavycenter.module.myce.base.info.InfoFrag;
+import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +43,15 @@ import butterknife.OnClick;
 import id.zelory.compressor.Compressor;
 
 public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
+
+    public MyceFrag() {
+        LogUtil.E(1);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -96,7 +110,13 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
             case R.id.item_unit:
                 switch (LocalValue.get登录返回信息().getBindCompanyState()){
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
-                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID,new com.siweisoft.heavycenter.module.myce.unit.info.InfoFrag());
+                        Bundle bundle = new Bundle();
+                        if(StringUtil.equals(LocalValue.get登录返回信息().getUserRole(),LoginResBean.USER_ROLE_SUPER_ADMIN)){
+                            bundle.putString(ValueConstant.DATA_TYPE,NewFrag.修改单位信息);
+                        }else{
+                            bundle.putString(ValueConstant.DATA_TYPE,NewFrag.展示单位信息);
+                        }
+                        FragManager2.getInstance().start(getBaseUIActivity(),MainAct.主界面,MainAct.主界面ID, new NewFrag(),bundle);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                     case LoginResBean.BIND_UNIT_STATE_REJECT:

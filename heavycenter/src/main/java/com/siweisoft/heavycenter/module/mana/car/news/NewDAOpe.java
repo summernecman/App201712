@@ -17,9 +17,6 @@ public class NewDAOpe extends AppDAOpe {
 
     CarNewReqBean carNewReqBean = new CarNewReqBean();
 
-    public NewDAOpe(Context context) {
-        super(context);
-    }
 
     public CarNewReqBean getCarNewReqBean() {
         carNewReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());

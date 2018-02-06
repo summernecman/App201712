@@ -21,6 +21,8 @@ import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 public class WeightScanDAOpe extends BaseDAOpe {
 
 
+    public WeightScanDAOpe() {
+    }
 
     public WeightScanDAOpe(Context context) {
         super(context);

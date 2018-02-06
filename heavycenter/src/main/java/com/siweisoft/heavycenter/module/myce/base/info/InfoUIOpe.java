@@ -18,9 +18,6 @@ import com.uuzuche.lib_zxing.activity.CodeUtils;
 public class InfoUIOpe extends AppUIOpe<FragScanInfoBinding>{
 
 
-    public InfoUIOpe(Context context) {
-        super(context);
-    }
 
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {

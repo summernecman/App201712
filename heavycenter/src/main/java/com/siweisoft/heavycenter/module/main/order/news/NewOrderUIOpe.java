@@ -20,9 +20,6 @@ public class NewOrderUIOpe extends BaseUIOpe<FragMainOrderNewBinding>{
 
     ArrayList<View> views = new ArrayList<>();
 
-    public NewOrderUIOpe(Context context) {
-        super(context);
-    }
 
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {

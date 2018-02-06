@@ -34,9 +34,6 @@ public class ListDAOpe extends AppDAOpe {
 
     ListResBean selUnits = new ListResBean();
 
-    public ListDAOpe(Context context) {
-        super(context);
-    }
 
     public void getData( NetI<ListResBean> adapter){
         ListReqBean listReqBean = new ListReqBean();

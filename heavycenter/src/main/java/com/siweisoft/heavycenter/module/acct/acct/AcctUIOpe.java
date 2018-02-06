@@ -9,8 +9,6 @@ import com.siweisoft.heavycenter.databinding.ActAcctBinding;
 
 public class AcctUIOpe extends AppUIOpe<ActAcctBinding> {
 
-    public AcctUIOpe(Context context) {
-        super(context);
-    }
+
 
 }

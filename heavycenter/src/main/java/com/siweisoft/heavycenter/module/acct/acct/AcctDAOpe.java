@@ -8,7 +8,5 @@ import com.siweisoft.heavycenter.base.AppDAOpe;
 
 public class AcctDAOpe extends AppDAOpe {
 
-    public AcctDAOpe(Context context) {
-        super(context);
-    }
+
 }

@@ -16,8 +16,8 @@ import butterknife.OnClick;
 public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
 
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
         getP().getU().initRecycle();
         getP().getD().storesInfo(new UINetAdapter<StoresResBean>(activity) {
             @Override

@@ -9,8 +9,4 @@ import com.siweisoft.heavycenter.databinding.ActWelcBinding;
 
 public class WelcUIOpe extends AppUIOpe<ActWelcBinding> {
 
-
-    public WelcUIOpe(Context context) {
-        super(context);
-    }
 }

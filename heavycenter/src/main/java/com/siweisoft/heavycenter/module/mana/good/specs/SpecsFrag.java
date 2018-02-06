@@ -14,8 +14,8 @@ import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
 public class SpecsFrag extends BaseUIFrag<SpecsUIOpe,SpecsDAOpe> implements ViewListener{
 
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
         getP().getD().SpecsGood(getArguments().getInt(ValueConstant.DATA_POSITION2), new UINetAdapter<SpecsRes>(getContext()) {
             @Override
             public void onResult(boolean success, String msg, SpecsRes o) {

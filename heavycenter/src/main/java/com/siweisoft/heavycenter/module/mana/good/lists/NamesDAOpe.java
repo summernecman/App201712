@@ -13,9 +13,6 @@ import com.siweisoft.heavycenter.data.netd.mana.good.names.NamesRes;
 public class NamesDAOpe extends BaseDAOpe {
 
 
-    public NamesDAOpe(Context context) {
-        super(context);
-    }
 
     public void NamesGood(NetI<NamesRes> adapter){
         NamesReq namesReq = new NamesReq();

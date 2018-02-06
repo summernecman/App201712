@@ -20,9 +20,6 @@ import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
 import java.util.ArrayList;
 
 public class UserDAOpe extends AppDAOpe {
-    public UserDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();

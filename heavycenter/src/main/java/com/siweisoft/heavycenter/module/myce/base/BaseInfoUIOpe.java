@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragMyceBaseinfoBinding;
 public class BaseInfoUIOpe extends AppUIOpe<FragMyceBaseinfoBinding>{
 
 
-    public BaseInfoUIOpe(Context context) {
-        super(context);
-    }
 }

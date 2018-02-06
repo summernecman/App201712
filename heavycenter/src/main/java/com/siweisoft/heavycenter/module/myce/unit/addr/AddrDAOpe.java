@@ -19,9 +19,6 @@ public class AddrDAOpe extends AppDAOpe {
 
     private List<PoiInfo> addrs = new ArrayList<>();
 
-    public AddrDAOpe(Context context) {
-        super(context);
-    }
 
 
 

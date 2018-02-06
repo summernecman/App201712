@@ -18,9 +18,6 @@ public class DetailDAOpe extends AppDAOpe {
     private OrdersRes.ResultsBean data;
 
 
-    public DetailDAOpe(Context context) {
-        super(context);
-    }
 
 
     public OrdersRes.ResultsBean getData() {

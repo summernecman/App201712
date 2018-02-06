@@ -18,9 +18,6 @@ import java.util.List;
 
 public class NewUIOpe extends BaseUIOpe<FragMainStoreDetailBinding>{
 
-    public NewUIOpe(Context context) {
-        super(context);
-    }
 
     public void initRefresh(){
         bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {

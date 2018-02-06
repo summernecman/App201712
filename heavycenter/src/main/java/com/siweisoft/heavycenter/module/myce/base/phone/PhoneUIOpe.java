@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragMyceBaseinfoPhoneBinding;
 public class PhoneUIOpe extends AppUIOpe<FragMyceBaseinfoPhoneBinding>{
 
 
-    public PhoneUIOpe(Context context) {
-        super(context);
-    }
 }

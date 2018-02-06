@@ -19,9 +19,6 @@ public class LoginUIOpe extends AppUIOpe<FragAcctLoginBinding> {
 
     LoginReqBean loginReqBean = new LoginReqBean();
 
-    public LoginUIOpe(Context context) {
-        super(context);
-    }
 
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {
@@ -36,7 +33,7 @@ public class LoginUIOpe extends AppUIOpe<FragAcctLoginBinding> {
             return false;
         }
 
-        if(NullUtil.isStrEmpty(bind.phone.getText().toLowerCase())){
+        if(NullUtil.isStrEmpty(bind.pwd.getText().toLowerCase())){
             ToastUtil.getInstance().showShort(getActivity(),"密码不能为空");
             return false;
         }

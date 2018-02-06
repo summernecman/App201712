@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragManaUserInfoBinding;
 public class InfoUIOpe extends AppUIOpe<FragManaUserInfoBinding>{
 
 
-    public InfoUIOpe(Context context) {
-        super(context);
-    }
 }

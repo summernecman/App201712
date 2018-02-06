@@ -14,9 +14,6 @@ public class TransDetailDAOpe extends AppDAOpe {
 
     private int transid = -1;
 
-    public TransDetailDAOpe(Context context) {
-        super(context);
-    }
 
 
     public void detailTrans(int id, NetI<TransDetailRes> adapter){

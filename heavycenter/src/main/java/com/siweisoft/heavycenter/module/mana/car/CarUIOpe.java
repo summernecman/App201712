@@ -14,9 +14,6 @@ import java.util.ArrayList;
 
 public class CarUIOpe extends AppUIOpe<FragManaCarBinding> {
 
-    public CarUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initPages(Fragment fragment, ArrayList<Fragment> pages){

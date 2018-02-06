@@ -8,6 +8,10 @@ import com.android.lib.base.ope.BaseDAOpe;
 
 public class AppDAOpe extends BaseDAOpe {
 
+    public AppDAOpe(){
+
+    }
+
     public AppDAOpe(Context context) {
         super(context);
     }

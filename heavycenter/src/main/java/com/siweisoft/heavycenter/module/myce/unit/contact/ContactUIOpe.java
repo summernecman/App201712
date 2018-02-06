@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragMyceUnitContactBinding;
 public class ContactUIOpe extends AppUIOpe<FragMyceUnitContactBinding>{
 
 
-    public ContactUIOpe(Context context) {
-        super(context);
-    }
 }

@@ -24,9 +24,6 @@ import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
 public class WeigtUIOpe extends AppUIOpe<FragMainWeigtBinding> {
 
-    public WeigtUIOpe(Context context) {
-        super(context);
-    }
 
     FragManager2 fragManager2;
 
@@ -34,9 +31,10 @@ public class WeigtUIOpe extends AppUIOpe<FragMainWeigtBinding> {
     }
 
 
-    public void showTip(String title,View.OnClickListener onClickListener){
+    public void showTip(String title,WeightMsg weightMsg,View.OnClickListener onClickListener){
         WeightTipsFrag weightTipsFrag = new WeightTipsFrag();
         weightTipsFrag.setOnClickListener(onClickListener);
+        weightTipsFrag.getP().getD().setWeightMsg(weightMsg);
         fragManager2 = FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).setHideLast(false);
         fragManager2.start(getActivity(), MainAct.地磅,MainAct.地磅ID,weightTipsFrag);
 

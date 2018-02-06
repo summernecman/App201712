@@ -18,8 +18,8 @@ import butterknife.OnClick;
 public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
 
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
         getP().getD().initPages();
         getP().getU().initPages(fragment,getP().getD().getPages());
 

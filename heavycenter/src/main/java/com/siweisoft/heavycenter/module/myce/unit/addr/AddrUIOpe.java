@@ -29,9 +29,6 @@ import java.util.List;
 public class AddrUIOpe extends AppUIOpe<FragMyceUnitAddrBinding>{
 
 
-    public AddrUIOpe(Context context) {
-        super(context);
-    }
 
     public void LoadListData(final List<PoiInfo> addrs, final ViewListener listener) {
 

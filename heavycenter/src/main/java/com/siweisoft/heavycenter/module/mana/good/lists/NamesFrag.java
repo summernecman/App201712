@@ -14,8 +14,8 @@ import com.siweisoft.heavycenter.data.netd.mana.good.names.NamesRes;
 public class NamesFrag extends AppFrag<NamesUIOpe,NamesDAOpe> implements ViewListener{
 
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
         getP().getD().NamesGood(new UINetAdapter<NamesRes>(activity) {
             @Override
             public void onResult(boolean success, String msg, NamesRes o) {

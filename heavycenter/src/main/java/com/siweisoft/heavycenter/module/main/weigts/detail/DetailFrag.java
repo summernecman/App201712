@@ -7,6 +7,8 @@ import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.GsonUtil;
+import com.android.lib.util.LogUtil;
+import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
@@ -18,6 +20,10 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
+    public DetailFrag() {
+        LogUtil.E(343);
+    }
+
     @Override
     public void initNow() {
         super.initNow();
@@ -28,7 +34,6 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     @Override
     public void onFristVisibleInit() {
         getP().getU().initRecycle();
-        getP().getU().LoadListData(getP().getD().getWeightMsgs());
     }
 
     @Override
@@ -54,9 +59,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
             return ;
         }
         getP().getU().initTopUI(m);
-        StringBuffer sb = new StringBuffer();
-        sb.append(""+getP().getD().getWeightMsgs().size()).append("状态:").append(m.getState()).append(m.getContent()).append("\n").append("订单ID:").append(m.getOrder().getOrderId()).append("\n").append("重量:").append(m.getWeighResult());
-      getP().getD().getWeightMsgs().add(sb.toString());
+        getP().getD().getWeightMsgs().add(m);
       getP().getU().notifyDataSetChanged();
 
 

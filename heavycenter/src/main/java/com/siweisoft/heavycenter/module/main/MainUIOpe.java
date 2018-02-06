@@ -26,13 +26,11 @@ import java.util.ArrayList;
 
 public class MainUIOpe extends AppUIOpe<ActMainBinding> {
 
-    public MainUIOpe(Context context) {
-        super(context);
+    @Override
+    public void initActUI() {
         bind.incloud.leftDrawer.getLayoutParams().width = (int) (ScreenUtil.w *80/ 100);
         bind.incloud.leftDrawer.requestLayout();
     }
-
-
 
     public void setBottomMenuViewData(ArrayList<BottomMenuBean> data){
         bind.bottommenu.initItems(data);
@@ -53,6 +51,15 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
         for(int i=0;i<pages.size();i++){
             views.add(pages.get(i).getContainerView());
         }
+
+        final BaseOnPagerChangeListener baseOnPagerChangeListener = new BaseOnPagerChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                pages.get(position).getFragment().onFristVisible();
+            }
+        };
+
         bind.content.setAdapter(new HomePageAdapter(context, views, new OnFinishListener() {
             boolean load = false;
             @Override
@@ -63,24 +70,17 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
                       getActivity().setMoudle(pages.get(i).getName());
                   }
                     load = true;
+                    bind.content.addOnPageChangeListener(baseOnPagerChangeListener);
+                    bind.content.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            baseOnPagerChangeListener.onPageSelected(0);
+                        }
+                    });
                 }
             }
         }));
 
-        final BaseOnPagerChangeListener baseOnPagerChangeListener = new BaseOnPagerChangeListener(){
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                pages.get(position).getFragment().onFristVisible();
-                }
-        };
-        bind.content.addOnPageChangeListener(baseOnPagerChangeListener);
-        bind.content.post(new Runnable() {
-            @Override
-            public void run() {
-                baseOnPagerChangeListener.onPageSelected(0);
-            }
-        });
     }
 
     public void nobind(){

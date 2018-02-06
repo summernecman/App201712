@@ -11,6 +11,8 @@ import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.info.UnitInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
+import com.siweisoft.heavycenter.data.netd.unit.update.UpdateUnitReq;
+import com.siweisoft.heavycenter.data.netd.unit.update.UpdateUnitRes;
 import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
@@ -19,9 +21,6 @@ public class InfoDAOpe extends AppDAOpe {
 
 
 
-    public InfoDAOpe(Context context) {
-        super(context);
-    }
 
     public void getInfo(int id,NetI<UnitInfo> adapter){
         UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
@@ -42,4 +41,7 @@ public class InfoDAOpe extends AppDAOpe {
         userInfoReqBean.setId(LocalValue.get登录返回信息().getUserId());
         NetDataOpe.User.get用户信息(getActivity(), userInfoReqBean,adapter);
     }
+
+
+
 }

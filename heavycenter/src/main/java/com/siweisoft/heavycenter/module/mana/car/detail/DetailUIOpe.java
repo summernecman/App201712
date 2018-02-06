@@ -33,9 +33,6 @@ import java.util.List;
 public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 
 
-    public DetailUIOpe(Context context) {
-        super(context);
-    }
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
@@ -54,6 +51,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                 if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
                     bind.title.getRightIV2().setVisibility(View.GONE);
                 }
+                bind.title.getMidTV().setText("车辆详情");
                 break;
             case DetailFrag.TYPE_NEW:
                 bind.llInput.setVisibility(View.VISIBLE);
@@ -66,6 +64,27 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 //                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
 //                    bind.title.getRightIV2().setVisibility(View.GONE);
 //                }
+                bind.title.getMidTV().setText("新建车辆");
+                break;
+            case DetailFrag.TYPE_BIND:
+                bind.title.getMidTV().setText("绑定车辆");
+                bind.llInput.setVisibility(View.VISIBLE);
+                bind.reinput.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        getActivity().onBackPressed();
+                    }
+                });
+                break;
+            case DetailFrag.TYPE_NEW_BIND:
+                bind.title.getMidTV().setText("新建车辆");
+                bind.llInput.setVisibility(View.VISIBLE);
+                bind.reinput.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        getActivity().onBackPressed();
+                    }
+                });
                 break;
                 default:
                     bind.llInput.setVisibility(View.VISIBLE);

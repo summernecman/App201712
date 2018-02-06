@@ -21,9 +21,6 @@ public class MsgDAOpe extends BaseDAOpe {
 
     private MsgsResBean msgsResBean = new MsgsResBean();
 
-    public MsgDAOpe(Context context) {
-        super(context);
-    }
 
 
     public void getMsgSys(String type,NetI<MsgsResBean> adapter){

@@ -26,9 +26,6 @@ public class OrderDAOpe extends BaseDAOpe {
 
     private String[] statuss = new String[]{OrdersReq.STATUS_NEW,OrdersReq.STATUS_ING,OrdersReq.STATUS_DONE};
 
-    public OrderDAOpe(Context context) {
-        super(context);
-    }
 
 
     public ArrayList<Fragment> initPages(){

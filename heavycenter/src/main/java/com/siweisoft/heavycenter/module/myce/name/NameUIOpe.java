@@ -17,10 +17,6 @@ public class NameUIOpe extends AppUIOpe<FragMyceNameBinding>{
 
     ReNameReqBean reNameReqBean  = new ReNameReqBean();
 
-    public NameUIOpe(Context context) {
-        super(context);
-
-    }
 
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {

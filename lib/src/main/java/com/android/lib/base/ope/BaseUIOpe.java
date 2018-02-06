@@ -13,6 +13,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 
+import butterknife.OnClick;
+
 /**
  * ui处理操作者 处理对象 uibean fragment view
  */
@@ -24,6 +26,10 @@ public class BaseUIOpe<A extends ViewDataBinding> {
     protected Context context;
     protected  BaseUIFrag frag;
 
+    public BaseUIOpe(){
+
+    }
+
 
     public BaseUIOpe(Context context) {
         this.context = context;
@@ -33,15 +39,19 @@ public class BaseUIOpe<A extends ViewDataBinding> {
     }
 
     public BaseUIActivity getActivity(){
-        if(context!=null && context instanceof BaseUIActivity){
-            BaseUIActivity activity = (BaseUIActivity) context;
-            return activity;
+        if(frag!=null ){
+            return frag.getBaseUIActivity();
+        }else{
+            return (BaseUIActivity) context;
         }
-        return null;
     }
 
 
     public void initUI(BaseUIFrag baseUIFrag){
+
+    }
+
+    public void initActUI(){
 
     }
 
@@ -89,5 +99,20 @@ public class BaseUIOpe<A extends ViewDataBinding> {
 
     public void setFrag(BaseUIFrag frag) {
         this.frag = frag;
+        this.context = frag.getActivity();
+        if(bind==null){
+            bind = initViewDataBinding();
+            viewHolder = new AppViewHolder(bind);
+            bind.executePendingBindings();
+        }
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+        if(bind==null){
+            bind = initViewDataBinding();
+            viewHolder = new AppViewHolder(bind);
+            bind.executePendingBindings();
+        }
     }
 }

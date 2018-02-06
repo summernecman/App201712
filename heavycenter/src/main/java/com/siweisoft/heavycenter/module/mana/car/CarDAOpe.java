@@ -19,9 +19,6 @@ public class CarDAOpe extends AppDAOpe {
 
     private  ArrayList<Fragment> pages = new ArrayList<>();
 
-    public CarDAOpe(Context context) {
-        super(context);
-    }
 
 
     public void initPages(){

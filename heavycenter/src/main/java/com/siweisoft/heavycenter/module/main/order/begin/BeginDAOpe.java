@@ -22,9 +22,6 @@ public class BeginDAOpe extends AppDAOpe {
 
     private OrdersRes ordersRes = new OrdersRes();
 
-    public BeginDAOpe(Context context) {
-        super(context);
-    }
 
 
     public void orders(String type,int pageIndex,NetI<OrdersRes> adapter){

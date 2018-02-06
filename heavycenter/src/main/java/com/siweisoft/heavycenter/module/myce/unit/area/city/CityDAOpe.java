@@ -19,9 +19,6 @@ public class CityDAOpe extends AppDAOpe {
 
     private String state = CityFrag.选择多个城市;
 
-    public CityDAOpe(Context context) {
-        super(context);
-    }
 
 
     public CityResBean.ProvinceListBean getCitys() {

@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
@@ -44,9 +45,10 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
 
 
-    public TransUIOpe(Context context) {
-        super(context);
-        //initRecycle();
+
+    @Override
+    public void initUI(BaseUIFrag baseUIFrag) {
+        initRecycle();
     }
 
     public void initRecycle(){

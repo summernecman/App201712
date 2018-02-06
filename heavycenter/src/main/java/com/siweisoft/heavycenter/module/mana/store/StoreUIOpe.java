@@ -35,9 +35,6 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
 
     private boolean swipe = true;
 
-    public StoreUIOpe(Context context) {
-        super(context);
-    }
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));

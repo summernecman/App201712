@@ -20,9 +20,6 @@ public class StoreDAOpe extends AppDAOpe {
     private StatusStoresReqBean statusStoresReqBean = new StatusStoresReqBean();
 
 
-    public StoreDAOpe(Context context) {
-        super(context);
-    }
 
 
     public ArrayList<String> getData(){

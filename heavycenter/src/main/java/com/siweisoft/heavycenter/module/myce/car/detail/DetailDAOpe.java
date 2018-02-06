@@ -10,8 +10,5 @@ import java.util.ArrayList;
 
 public class DetailDAOpe extends AppDAOpe {
 
-    public DetailDAOpe(Context context) {
-        super(context);
-    }
 
 }

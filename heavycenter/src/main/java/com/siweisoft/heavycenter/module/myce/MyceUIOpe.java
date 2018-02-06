@@ -19,9 +19,6 @@ import com.siweisoft.heavycenter.databinding.FragMyceBinding;
 
 public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
 
-    public MyceUIOpe(Context context) {
-        super(context);
-    }
 
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {

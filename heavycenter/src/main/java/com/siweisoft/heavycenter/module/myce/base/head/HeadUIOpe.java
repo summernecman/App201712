@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragMyceBaseinfoHeadBinding;
 public class HeadUIOpe extends AppUIOpe<FragMyceBaseinfoHeadBinding>{
 
 
-    public HeadUIOpe(Context context) {
-        super(context);
-    }
 }

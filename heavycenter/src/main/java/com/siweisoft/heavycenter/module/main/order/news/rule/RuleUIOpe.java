@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
@@ -21,9 +22,10 @@ import java.util.List;
 public class RuleUIOpe extends BaseUIOpe<FragMainOrderNewRuleBinding> {
 
 
-    public RuleUIOpe(Context context) {
-        super(context);
+    @Override
+    public void initUI(BaseUIFrag baseUIFrag) {
         initRecycle();
+
     }
 
     public void initRecycle(){

@@ -94,7 +94,6 @@
 
 
                     <TextView
-                            android:text="fjdoifdoipghoisdahjdspoaihgdo"
                         android:id="@+id/tv_des"
                         android:layout_marginTop="5dp"
                         android:singleLine="true"

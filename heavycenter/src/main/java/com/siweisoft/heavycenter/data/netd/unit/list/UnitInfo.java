@@ -40,6 +40,7 @@ public class UnitInfo extends BaseBean {
         protected String businessLicense;
         protected String belongArea;
         protected String belongAreaDes;
+        protected String belongAreaNo;
         protected String companyName;
         protected String remark;
         protected String editTime;
@@ -69,7 +70,7 @@ public class UnitInfo extends BaseBean {
         protected int cpNum;
         protected int isMarket;
         protected int status;
-        protected int parentCompanyId;
+        protected int parentCompanyId =-1;
         protected String parentCompanyName;
         protected int companyIsNull;
         private int companyId;
@@ -77,6 +78,14 @@ public class UnitInfo extends BaseBean {
         public static final int COMPANY_NULL = 0;
 
         public static final int COMPANY_EXSIT = 1;
+
+    public String getBelongAreaNo() {
+        return belongAreaNo;
+    }
+
+    public void setBelongAreaNo(String belongAreaNo) {
+        this.belongAreaNo = belongAreaNo;
+    }
 
     public int getCompanyId() {
         return companyId;

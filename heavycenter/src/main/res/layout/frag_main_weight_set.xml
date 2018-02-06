@@ -127,7 +127,6 @@
                 android:id="@+id/tv_newvalue"
                 android:textColor="@color/color_hv_yelll"
                 android:textSize="30sp"
-                android:text="125.9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

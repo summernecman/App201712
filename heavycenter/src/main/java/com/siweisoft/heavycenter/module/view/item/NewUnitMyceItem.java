@@ -110,6 +110,10 @@ public class NewUnitMyceItem extends RelativeLayout {
         return leftTV;
     }
 
+    public ImageView getRightIV() {
+        return rightIV;
+    }
+
     public void setMidTVTxt(String Str){
         midET.setVisibility(View.GONE);
         midTV.setVisibility(View.VISIBLE);

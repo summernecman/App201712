@@ -22,9 +22,6 @@ public class RepwdUIOpe extends AppUIOpe<FragAcctRepwdBinding> {
 
     CodeReqBean codeReqBean = new CodeReqBean();
 
-    public RepwdUIOpe(Context context) {
-        super(context);
-    }
 
     public void initBg(String url){
        // GlideApp.with(context).asBitmap().load(url).centerCrop().into(bind.image);

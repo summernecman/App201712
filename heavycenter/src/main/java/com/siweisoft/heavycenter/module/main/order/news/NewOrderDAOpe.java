@@ -17,9 +17,6 @@ public class NewOrderDAOpe extends BaseDAOpe {
 
     private NewsOrderReqBean newsOrderReqBean = new NewsOrderReqBean();
 
-    public NewOrderDAOpe(Context context) {
-        super(context);
-    }
 
 
     public NewsOrderReqBean getNewsOrderReqBean() {

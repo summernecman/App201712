@@ -14,9 +14,6 @@ import com.siweisoft.heavycenter.data.netd.acct.logout.LogOutResBean;
 public class SetDAOpe extends AppDAOpe {
 
 
-    public SetDAOpe(Context context) {
-        super(context);
-    }
 
     public void logOut( NetI<LogOutResBean> adapter){
         LogOutReqBean logOutReqBean = new LogOutReqBean();

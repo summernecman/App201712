@@ -16,9 +16,6 @@ public class DetailDAOpe extends BaseDAOpe {
 
     private StoreDetail storeDetail;
 
-    public DetailDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();

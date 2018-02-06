@@ -18,8 +18,5 @@ import java.util.List;
 public class DetailUIOpe extends AppUIOpe<FragMyceCarBindDetailBinding>{
 
 
-    public DetailUIOpe(Context context) {
-        super(context);
-    }
 
 }

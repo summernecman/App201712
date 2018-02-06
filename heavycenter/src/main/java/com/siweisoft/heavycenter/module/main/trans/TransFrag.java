@@ -139,7 +139,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
             @Override
             public void onResult(boolean success, String msg, TransRes o) {
                 super.onResult(success, msg, o);
-                o = new Test().getTransRes();
+                //o = new Test().getTransRes();
                 getP().getU().finishLoadmore();
                 if(o.getResults()!=null){
                     getP().getD().getTransRes().getResults().addAll(o.getResults());

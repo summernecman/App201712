@@ -11,9 +11,6 @@ import java.util.ArrayList;
 
 public class MapDAOpe extends BaseDAOpe {
 
-    public MapDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();

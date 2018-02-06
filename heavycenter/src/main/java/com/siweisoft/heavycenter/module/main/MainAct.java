@@ -98,7 +98,9 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         }else{
             getP().getU().hideshowunbind(false);
         }
-        getP().getD().getMyceFrag().init();
+        if(getP().getD().getMyceFrag().getP().getU()!=null){
+            getP().getD().getMyceFrag().init();
+        }
     }
 
     public void netRestart(){

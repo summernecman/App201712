@@ -17,9 +17,6 @@ public class ProvDAOpe extends AppDAOpe {
 
     private String state = ProvFrag.选择多个城市;
 
-    public ProvDAOpe(Context context) {
-        super(context);
-    }
 
 
 

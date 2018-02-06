@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragMyceUnitTypeBinding;
 public class TypeUIOpe extends AppUIOpe<FragMyceUnitTypeBinding>{
 
 
-    public TypeUIOpe(Context context) {
-        super(context);
-    }
 }

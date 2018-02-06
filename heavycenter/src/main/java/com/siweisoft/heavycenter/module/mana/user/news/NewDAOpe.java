@@ -16,9 +16,6 @@ public class NewDAOpe extends AppDAOpe {
     AddUserReqBean reqBean = new AddUserReqBean();
 
 
-    public NewDAOpe(Context context) {
-        super(context);
-    }
 
     public void addUser(AddUserReqBean reqBean, NetI<AddUserResBean> adapter){
         NetDataOpe.Mana.User.addUser(getActivity(),reqBean,adapter);

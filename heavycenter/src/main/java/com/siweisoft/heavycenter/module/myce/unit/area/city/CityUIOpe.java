@@ -22,9 +22,6 @@ import java.util.List;
 public class CityUIOpe extends AppUIOpe<FragMyceUnitNewCityBinding>{
 
 
-    public CityUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initRecycle(){

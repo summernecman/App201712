@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragMyceSetFdbkBinding;
 public class FdBkUIOpe extends AppUIOpe<FragMyceSetFdbkBinding>{
 
 
-    public FdBkUIOpe(Context context) {
-        super(context);
-    }
 }

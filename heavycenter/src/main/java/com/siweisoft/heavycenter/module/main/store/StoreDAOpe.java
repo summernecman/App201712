@@ -20,9 +20,6 @@ public class StoreDAOpe extends BaseDAOpe {
 
     private StoresResBean storesResBean = new StoresResBean();
 
-    public StoreDAOpe(Context context) {
-        super(context);
-    }
 
 
     public void storesInfo(NetI<StoresResBean> adapter){

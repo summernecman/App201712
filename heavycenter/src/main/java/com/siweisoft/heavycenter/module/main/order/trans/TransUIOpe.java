@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.bean.AppViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -22,12 +23,12 @@ import java.util.List;
 public class TransUIOpe extends AppUIOpe<FragMainOrderTransBinding>{
 
 
-    public TransUIOpe(Context context) {
-        super(context);
+
+
+    @Override
+    public void initUI(BaseUIFrag baseUIFrag) {
         initRecycle();
     }
-
-
 
     private void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));

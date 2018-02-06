@@ -25,12 +25,6 @@ public class TransDAOpe extends BaseDAOpe {
     private int pageIndex = NetValue.PAGE_INDEX_START;
 
 
-    public TransDAOpe(Context context) {
-        super(context);
-    }
-
-
-
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();
         for(int i=0;i<1;i++){

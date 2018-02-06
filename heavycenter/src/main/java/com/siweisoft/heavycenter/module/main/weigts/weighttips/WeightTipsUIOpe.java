@@ -3,6 +3,8 @@ package com.siweisoft.heavycenter.module.main.weigts.weighttips;
 import android.content.Context;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.ope.BaseUIOpe;
+import com.android.lib.util.StringUtil;
+import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.databinding.FragMainWeightSetBinding;
 
 /**
@@ -12,7 +14,12 @@ import com.siweisoft.heavycenter.databinding.FragMainWeightSetBinding;
 public class WeightTipsUIOpe extends BaseUIOpe<FragMainWeightSetBinding> {
 
 
-    public WeightTipsUIOpe(Context context) {
-        super(context);
+
+    public void init(WeightMsg weightMsg){
+        if(weightMsg==null||weightMsg.getMessage()==null){
+            return;
+        }
+        bind.tvNewvalue.setText(StringUtil.getStr(weightMsg.getMessage().getWeigh()));
     }
+
 }

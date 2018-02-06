@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragMyceBaseinfoNameBinding;
 public class NameUIOpe extends AppUIOpe<FragMyceBaseinfoNameBinding>{
 
 
-    public NameUIOpe(Context context) {
-        super(context);
-    }
 }

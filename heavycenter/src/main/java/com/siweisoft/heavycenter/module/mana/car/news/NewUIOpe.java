@@ -26,10 +26,12 @@ import java.util.List;
 public class NewUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 
 
-    public NewUIOpe(Context context) {
-        super(context);
+    @Override
+    public void initActUI() {
+        super.initActUI();
         bind.title.getMidTV().setText("新建车辆");
     }
+
 
 
     public CarNewReqBean getCarNewReqBean(CarNewReqBean carNewReqBean) {

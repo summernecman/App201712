@@ -22,9 +22,6 @@ import java.util.List;
 
 public class GoodUIOpe extends AppUIOpe<FragManaGoodBinding> {
 
-    public GoodUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initRecycle(){

@@ -19,9 +19,6 @@ public class MyDAOpe extends AppDAOpe {
 
 
 
-    public MyDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();

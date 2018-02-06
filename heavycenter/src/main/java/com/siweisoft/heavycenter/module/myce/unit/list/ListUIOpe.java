@@ -34,9 +34,6 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
 
     private SearchReqBean searchReqBean = new SearchReqBean();
 
-    public ListUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initRecycle(){

@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
@@ -23,12 +24,11 @@ import java.util.Date;
 
 public class MsgUIOpe extends BaseUIOpe<FragMainMsgsMsgBinding>{
 
-    public MsgUIOpe(Context context) {
-        super(context);
+
+    @Override
+    public void initUI(BaseUIFrag baseUIFrag) {
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
-
-
 
     public void LoadListData(final MsgsResBean o, ViewListener listener){
         if(o==null || o.getResults()==null || o.getResults().size()==0){

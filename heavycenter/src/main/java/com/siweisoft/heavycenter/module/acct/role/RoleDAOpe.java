@@ -18,9 +18,6 @@ import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeResBean;
 public class RoleDAOpe extends AppDAOpe {
 
 
-    public RoleDAOpe(Context context) {
-        super(context);
-    }
 
     public void setUserType(UserTypeReqBean reqBean, NetI<UserTypeResBean> adapter){
         NetDataOpe.setUserType(getActivity(), NetValue.获取地址("/user/setUserType"),reqBean,adapter);

@@ -20,9 +20,6 @@ public class NewUIOpe extends AppUIOpe<FragManaUserNewBinding> implements View.O
 
     ArrayList<View> views = new ArrayList<>();
 
-    public NewUIOpe(Context context) {
-        super(context);
-    }
 
     @Override
     public void initUI(BaseUIFrag baseUIFrag) {

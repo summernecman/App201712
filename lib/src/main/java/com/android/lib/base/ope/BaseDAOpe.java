@@ -20,7 +20,11 @@ public class BaseDAOpe implements BaseOpe {
 
     protected BaseUIFrag frag;
 
-    private BaseDAOpe() {
+    public BaseDAOpe() {
+
+    }
+
+    public void initActDA(){
 
     }
 
@@ -31,11 +35,11 @@ public class BaseDAOpe implements BaseOpe {
     }
 
     public BaseUIActivity getActivity(){
-        if(context!=null && context instanceof BaseUIActivity){
-            BaseUIActivity activity = (BaseUIActivity) context;
-            return activity;
+        if(frag!=null){
+            return frag.getBaseUIActivity();
+        }else{
+            return (BaseUIActivity) context;
         }
-        return null;
     }
 
 
@@ -61,5 +65,9 @@ public class BaseDAOpe implements BaseOpe {
 
     public void setFrag(BaseUIFrag frag) {
         this.frag = frag;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 }

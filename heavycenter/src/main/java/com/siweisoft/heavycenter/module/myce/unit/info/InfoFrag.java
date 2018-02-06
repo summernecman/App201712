@@ -19,8 +19,8 @@ import butterknife.OnClick;
 public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
 
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
 
         getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(activity) {
             @Override

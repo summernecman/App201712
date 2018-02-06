@@ -13,9 +13,6 @@ import com.siweisoft.heavycenter.databinding.FragManaStoreInfoBinding;
 public class StoreInfoUIOpe  extends BaseUIOpe<FragManaStoreInfoBinding>{
 
 
-    public StoreInfoUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initUI(StoreDetail storeDetail){

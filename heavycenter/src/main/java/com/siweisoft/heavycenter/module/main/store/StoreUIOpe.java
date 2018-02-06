@@ -25,9 +25,6 @@ import java.util.List;
 
 public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
 
-    public StoreUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener){

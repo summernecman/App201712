@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragMyceSetMsgBinding;
 public class MsgUIOpe extends AppUIOpe<FragMyceSetMsgBinding>{
 
 
-    public MsgUIOpe(Context context) {
-        super(context);
-    }
 }

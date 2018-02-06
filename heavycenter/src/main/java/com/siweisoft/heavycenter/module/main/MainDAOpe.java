@@ -36,13 +36,14 @@ public class MainDAOpe extends AppDAOpe {
 
     private int index=0;
 
-    MyceFrag myceFrag = new MyceFrag();
+    MyceFrag myceFrag ;
 
     ScanDAOpe scanDAOpe;
 
 
-    public MainDAOpe(Context context) {
-        super(context);
+    @Override
+    public void initActDA() {
+        super.initActDA();
         initBottomMenuViewData();
         permissionUtil= new PermissionUtil();
     }
@@ -78,6 +79,9 @@ public class MainDAOpe extends AppDAOpe {
 
 
     public MyceFrag getMyceFrag() {
+        if(myceFrag==null){
+            myceFrag= new MyceFrag();
+        }
         return myceFrag;
     }
 

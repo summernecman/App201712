@@ -9,6 +9,10 @@ import com.android.lib.base.ope.BaseUIOpe;
 
 public class AppUIOpe<A extends ViewDataBinding>  extends BaseUIOpe<A> {
 
+    public AppUIOpe(){
+
+    }
+
     public AppUIOpe(Context context) {
         super(context);
     }

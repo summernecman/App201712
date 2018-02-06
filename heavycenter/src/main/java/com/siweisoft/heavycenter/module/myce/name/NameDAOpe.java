@@ -11,9 +11,6 @@ import com.siweisoft.heavycenter.data.netd.acct.rename.ReNameReqBean;
 import com.siweisoft.heavycenter.data.netd.acct.rename.ReNameResBean;
 
 public class NameDAOpe extends AppDAOpe {
-    public NameDAOpe(Context context) {
-        super(context);
-    }
 
     public void reName(ReNameReqBean reNameReqBean, NetI<ReNameResBean> adapter){
         NetDataOpe.reName(getActivity(),reNameReqBean,adapter);

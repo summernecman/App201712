@@ -53,9 +53,9 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
 //        StatusBarUtil.getInstance().setStatusBarColor(activity, ColorConstant.COLOR_STATUS);
 //        StatusBarUtil.getInstance().hideNavigationBar(activity);
         ACT_ROOT_VIEW = (ViewGroup) findViewById(R.id.act_base_root);
-        if (getP().getU() != null && getP().getU().getBind().getRoot() != null) {
-            ACT_ROOT_VIEW.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        }
+        ACT_ROOT_VIEW.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        getP().getU().initActUI();
+        getP().getD().initActDA();
         ButterKnife.bind(activity);
     }
 
@@ -78,16 +78,20 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
 
     private BaseOpes<A, B> getaabb(Class<?> c) {
         if (c == null) {
-            opes = (BaseOpes<A, B>) new BaseOpes<>(new BaseUIOpe<ViewDataBinding>(activity), new BaseDAOpe(activity));
+            opes = (BaseOpes<A, B>) new BaseOpes<>(new BaseUIOpe<ViewDataBinding>(), new BaseDAOpe());
+            opes.getD().setContext(activity);
+            opes.getU().setContext(activity);
         }
         if (c.getGenericSuperclass() instanceof ParameterizedType) {
             Class<A> a = (Class<A>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[0];
             Class<B> b = (Class<B>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[1];
             try {
-                Constructor<A> ac = a.getConstructor(Context.class);
-                Constructor<B> bc = b.getConstructor(Context.class);
-                A aa = ac.newInstance(activity);
-                B bb = bc.newInstance(activity);
+                Constructor<A> ac = a.getConstructor();
+                Constructor<B> bc = b.getConstructor();
+                A aa = ac.newInstance();
+                aa.setContext(activity);
+                B bb = bc.newInstance();
+                bb.setContext(activity);
                 opes = new BaseOpes<>(aa, bb);
             } catch (Exception e) {
                 e.printStackTrace();

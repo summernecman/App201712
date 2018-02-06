@@ -10,7 +10,4 @@ import com.siweisoft.heavycenter.databinding.FragMyceUnitNobindBinding;
 public class NoBindUIOpe extends AppUIOpe<FragMyceUnitNobindBinding>{
 
 
-    public NoBindUIOpe(Context context) {
-        super(context);
-    }
 }

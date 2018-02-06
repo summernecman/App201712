@@ -45,6 +45,11 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
         super.initNow();
         getP().getD().setType(getArguments().getString(ValueConstant.DATA_DATA2));
         getP().getU().init(getP().getD().getType());
+    }
+
+    @Override
+    public void initdelay() {
+        super.initdelay();
         switch (getP().getD().getType()){
             case TYPE_NEW:
 

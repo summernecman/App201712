@@ -17,8 +17,8 @@ import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.module.main.store.detail.DetailFrag;
 
 public class StoreScanDAOpe extends BaseDAOpe {
-
-
+    public StoreScanDAOpe() {
+    }
 
     public StoreScanDAOpe(Context context) {
         super(context);

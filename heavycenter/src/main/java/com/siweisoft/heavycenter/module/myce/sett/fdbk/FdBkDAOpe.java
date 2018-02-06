@@ -7,7 +7,4 @@ import android.content.Context;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 
 public class FdBkDAOpe extends AppDAOpe {
-    public FdBkDAOpe(Context context) {
-        super(context);
-    }
 }

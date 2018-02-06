@@ -6,10 +6,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.android.lib.util.StringUtil;
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitInfoBinding;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -20,9 +23,6 @@ public class InfoUIOpe extends AppUIOpe<FragMyceUnitInfoBinding>{
 
     FragManager2 fragManager2;
 
-    public InfoUIOpe(Context context) {
-        super(context);
-    }
 
     public void initinfo(UnitInfo unitInfo){
         if(unitInfo==null){
@@ -35,6 +35,16 @@ public class InfoUIOpe extends AppUIOpe<FragMyceUnitInfoBinding>{
         bind.itemArea.setMidTVTxt(unitInfo.getBelongArea());
         bind.itemContact.setMidTVTxt(unitInfo.getContactName());
         bind.itemPhone.setMidTVTxt(unitInfo.getContactPhone());
+
+        if(StringUtil.equals(LocalValue.get登录返回信息().getUserRole(), LoginResBean.USER_ROLE_SUPER_ADMIN)){
+            bind.itemName.setEdit(true);
+            bind.itemShort.setEdit(true);
+            bind.itemUnunit.getRightIV().setBackgroundResource(R.drawable.icon_hv_into);
+            bind.itemAddr.getRightIV().setBackgroundResource(R.drawable.icon_hv_into);
+           bind.itemArea.getRightIV().setBackgroundResource(R.drawable.icon_hv_into);
+            bind.itemContact.setEdit(true);
+            bind.itemPhone.setEdit(true);
+        }
 
     }
 

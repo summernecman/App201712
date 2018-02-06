@@ -10,9 +10,6 @@ import java.util.ArrayList;
 
 public class NewDAOpe extends BaseDAOpe {
 
-    public NewDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();

@@ -26,9 +26,6 @@ public class BindDAOpe extends AppDAOpe {
 
     CarsResBean selCars = new CarsResBean();
 
-    public BindDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();

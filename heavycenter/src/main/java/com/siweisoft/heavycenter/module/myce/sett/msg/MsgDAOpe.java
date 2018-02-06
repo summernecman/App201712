@@ -7,7 +7,4 @@ import android.content.Context;
 import com.siweisoft.heavycenter.base.AppDAOpe;
 
 public class MsgDAOpe extends AppDAOpe {
-    public MsgDAOpe(Context context) {
-        super(context);
-    }
 }

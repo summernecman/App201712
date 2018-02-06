@@ -9,9 +9,6 @@ import com.siweisoft.heavycenter.base.AppDAOpe;
 import java.util.ArrayList;
 
 public class TransDAOpe extends AppDAOpe {
-    public TransDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();

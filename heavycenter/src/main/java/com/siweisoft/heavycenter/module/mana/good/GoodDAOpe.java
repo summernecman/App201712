@@ -14,9 +14,6 @@ import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import java.util.ArrayList;
 
 public class GoodDAOpe extends AppDAOpe {
-    public GoodDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();

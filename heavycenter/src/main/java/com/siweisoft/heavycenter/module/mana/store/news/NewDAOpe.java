@@ -16,9 +16,6 @@ public class NewDAOpe extends AppDAOpe {
     private NewStoreReqBean newStoreReqBean = new NewStoreReqBean();
 
 
-    public NewDAOpe(Context context) {
-        super(context);
-    }
 
     public void newStore(NewStoreReqBean newStoreReqBean, NetI<NewStoreResBean> adapter){
         NetDataOpe.Mana.Store.newStore(getActivity(),newStoreReqBean,adapter);

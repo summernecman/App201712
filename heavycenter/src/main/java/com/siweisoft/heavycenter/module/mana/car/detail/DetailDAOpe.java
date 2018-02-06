@@ -42,9 +42,6 @@ public class DetailDAOpe extends AppDAOpe {
 
     private ArrayList<DriverRes> driverRes = new ArrayList<>();
 
-    public DetailDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();

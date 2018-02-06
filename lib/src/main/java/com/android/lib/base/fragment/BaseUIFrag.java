@@ -59,13 +59,15 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     private ViewGroup parent;
 
     public BaseUIFrag() {
-
+        opes = new BaseOpes<>(null, null);
+        initbb(getClass());
     }
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         EventBus.getDefault().register(this);
         for(int i=0;i<fragIs.size();i++){
             fragIs.get(i).onCreate(savedInstanceState);
@@ -78,20 +80,19 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             index = getArguments().getInt(ValueConstant.FRAG_POSITION);
         }
         View group = inflater.inflate(getLayoutID(), null);
+        parent = group.findViewById(R.id.container);
+        initaa(getClass());
+        ViewGroup viewGroup = (ViewGroup) getP().getU().getBind().getRoot().getParent();
+        if (viewGroup != null) {
+            viewGroup.removeAllViews();
+        }
+        parent.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return group;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        parent = (ViewGroup) view.findViewById(R.id.container);
-        if (getP()!=null && getP().getU() != null && getP().getU().getBind().getRoot() != null) {
-            ViewGroup viewGroup = (ViewGroup) getP().getU().getBind().getRoot().getParent();
-            if (viewGroup != null) {
-                viewGroup.removeAllViews();
-            }
-            parent.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        }
         unbinder = ButterKnife.bind(this, view);
         for(int i=0;i<fragIs.size();i++){
             fragIs.get(i).onCreateView(null,null,savedInstanceState);
@@ -105,7 +106,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                     initdelay();
                 }
             }
-        }, 700);
+        }, 500);
         for(int i=0;i<fragIs.size();i++){
             fragIs.get(i).onViewCreated(view,savedInstanceState);
         }
@@ -130,19 +131,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         }
     }
 
-    private int 显示次数 = 0;
 
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-//        if(isVisibleToUser&&isAttach()){
-//            显示次数=显示次数+1;
-//        }
-//        LogUtil.E(getClass().getSimpleName()+"setUserVisibleHint"+isVisibleToUser+(getActivity()==null)+显示次数);
-//        if(显示次数==1){
-//
-//        }
-//    }
 
     protected void onFristVisibleInit(){
 
@@ -169,11 +158,61 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
      * 获取操作类
      */
     public BaseOpes<A, B> getP() {
-        if (opes == null) {
-            getaabb(getClass());
-        }
         return opes;
     }
+
+    private void initbb(Class<?> c) {
+        if (c == null) {
+            opes.setDa((B)(new BaseDAOpe()));
+        }
+        if (c.getGenericSuperclass() instanceof ParameterizedType) {
+            Class<B> b = (Class<B>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[1];
+            try {
+                Constructor<B> bc = b.getConstructor();
+                B bb = bc.newInstance();
+                bb.setFrag(this);
+                opes .setDa(bb);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (java.lang.InstantiationException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        } else {
+            initbb(c.getSuperclass());
+        }
+    }
+
+
+    private void initaa(Class<?> c) {
+        if (c == null) {
+            opes.setUi((A)(new BaseUIOpe<ViewDataBinding>()));
+        }
+        if (c.getGenericSuperclass() instanceof ParameterizedType) {
+            Class<A> a = (Class<A>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[0];
+            try {
+                Constructor<A> ac = a.getConstructor();
+                A aa = ac.newInstance();
+                aa.setFrag(this);
+                opes.setUi(aa);
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (java.lang.InstantiationException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        } else {
+            initaa(c.getSuperclass());
+        }
+    }
+
+
 
     private BaseOpes<A, B> getaabb(Class<?> c) {
         if (c == null) {

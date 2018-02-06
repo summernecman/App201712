@@ -22,8 +22,8 @@ import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 public class ScanDAOpe extends BaseDAOpe {
 
 
-
-
+    public ScanDAOpe() {
+    }
 
     public ScanDAOpe(Context context ){
         super(context);

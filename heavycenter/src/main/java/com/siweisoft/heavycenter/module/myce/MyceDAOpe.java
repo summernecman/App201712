@@ -26,9 +26,6 @@ import java.util.List;
 public class MyceDAOpe extends AppDAOpe {
 
 
-    public MyceDAOpe(Context context) {
-        super(context);
-    }
 
     public void uploadPhoto(File f, String type, NetI<UpdateHeadResBean> adapter){
         List<KeyValue> keyValues = new ArrayList<>();

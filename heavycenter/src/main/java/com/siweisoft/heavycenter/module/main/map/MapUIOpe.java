@@ -19,9 +19,6 @@ import java.util.List;
 
 public class MapUIOpe extends BaseUIOpe<FragMainMapBinding>{
 
-    public MapUIOpe(Context context) {
-        super(context);
-    }
 
     public void initMap(){
 

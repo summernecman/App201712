@@ -10,6 +10,8 @@ import android.view.View;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.StringUtil;
+import com.android.lib.util.data.DateFormatUtil;
 import com.daimajia.swipe.SwipeLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -21,6 +23,7 @@ import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
 import com.siweisoft.heavycenter.databinding.FragManaUserBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaUserBinding;
 
+import java.util.Date;
 import java.util.List;
 
 public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
@@ -29,9 +32,6 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
 
     public final static String 重新邀请 = "重新邀请";
 
-    public UserUIOpe(Context context) {
-        super(context);
-    }
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
@@ -92,7 +92,9 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
                 binding.munu.setTag(R.id.position,position);
                 binding.munu.setTag(R.id.data,data.get(position));
                 binding.munu.setTag(R.id.data1,binding.swipe);
-
+                if(data.get(position).getBindCompanyTime()!=null){
+                    binding.tvDes.setText("由管理员审核于"+ StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(data.get(position).getBindCompanyTime()))));
+                }
 
 
                 binding.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {

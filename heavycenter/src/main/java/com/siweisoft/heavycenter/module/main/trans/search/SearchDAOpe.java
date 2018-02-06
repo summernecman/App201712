@@ -8,7 +8,4 @@ import com.siweisoft.heavycenter.base.AppDAOpe;
 
 public class SearchDAOpe extends AppDAOpe {
 
-    public SearchDAOpe(Context context) {
-        super(context);
-    }
 }

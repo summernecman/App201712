@@ -31,9 +31,6 @@ import java.util.List;
 public class BindUIOpe extends AppUIOpe<FragMyceCarBindBinding>{
     CarsResBean cars;
 
-    public BindUIOpe(Context context) {
-        super(context);
-    }
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));

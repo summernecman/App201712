@@ -39,7 +39,7 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
                 break;
         }
 
-        getP().getU().showTip(title, new View.OnClickListener() {
+        getP().getU().showTip(title,getP().getD().getWeightMsg(), new View.OnClickListener() {
             @Override
             public void onClick(View vv) {
                 switch (vv.getId()){

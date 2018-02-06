@@ -16,9 +16,6 @@ import com.siweisoft.heavycenter.databinding.FragManaGoodNewBinding;
 public class NewUIOpe extends AppUIOpe<FragManaGoodNewBinding>{
 
 
-    public NewUIOpe(Context context) {
-        super(context);
-    }
 
     public void edit(GoodListRes.ResultsBean o){
         bind.title.getMidTV().setText("物料详情");

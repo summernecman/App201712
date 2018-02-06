@@ -24,7 +24,6 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
 
     public static final int TYPE_SEL  = 1;
 
-
     @Override
     public void initNow() {
         super.initNow();
@@ -34,6 +33,11 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
             getP().getU().bind.cartitle.setVisibility(View.GONE);
         }
         getP().getU().initRefresh(this,this);
+    }
+
+    @Override
+    public void initdelay() {
+        super.initdelay();
         onRefresh(null);
     }
 

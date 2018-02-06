@@ -26,9 +26,6 @@ public class NewDAOpe extends AppDAOpe {
 
     private UpdGoodReq updGoodReq = new UpdGoodReq();
 
-    public NewDAOpe(Context context) {
-        super(context);
-    }
 
     public NewsGoodReq getNewsGoodReq() {
         newsGoodReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());

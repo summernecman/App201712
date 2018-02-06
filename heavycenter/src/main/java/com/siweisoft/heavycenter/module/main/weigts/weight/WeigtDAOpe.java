@@ -16,9 +16,6 @@ public class WeigtDAOpe extends AppDAOpe {
 
     LoginResBean loginResBean = new LoginResBean();
 
-    public WeigtDAOpe(Context context) {
-        super(context);
-    }
 
     public WeightMsg getWeightMsg() {
         return weightMsg;

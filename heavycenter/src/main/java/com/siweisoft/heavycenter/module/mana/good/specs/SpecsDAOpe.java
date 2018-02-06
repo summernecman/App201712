@@ -15,9 +15,6 @@ import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
 public class SpecsDAOpe extends BaseDAOpe {
 
 
-    public SpecsDAOpe(Context context) {
-        super(context);
-    }
 
     public void SpecsGood(int productid,NetI<SpecsRes> adapter){
         SpecsReq specsReq = new SpecsReq();

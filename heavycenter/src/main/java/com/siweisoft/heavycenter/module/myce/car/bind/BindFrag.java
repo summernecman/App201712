@@ -24,8 +24,8 @@ import butterknife.OnClick;
 public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListener,OnRefreshListener,OnFinishListener {
 
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
         getP().getU().initRecycle();
         getP().getU().initRefresh(this);
         onRefresh(null);

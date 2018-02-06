@@ -27,9 +27,6 @@ import java.util.List;
 public class CheckUIOpe extends AppUIOpe<FragMainStoreCheckBinding>{
 
 
-    public CheckUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initRecycle(){

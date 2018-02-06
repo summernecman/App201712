@@ -13,9 +13,6 @@ import com.siweisoft.heavycenter.databinding.FragMainTransDetailBinding;
 public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
 
 
-    public TransDetailUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initUI(TransDetailRes data){

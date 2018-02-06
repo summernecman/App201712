@@ -25,8 +25,8 @@ import butterknife.OnClick;
 public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshListener,OnLoadmoreListener,ViewListener{
 
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
         getP().getU().initRecycle();
         getP().getU().initRefresh(this,this);
         onRefresh(null);

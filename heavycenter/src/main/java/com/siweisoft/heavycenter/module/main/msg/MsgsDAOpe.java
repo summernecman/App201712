@@ -19,9 +19,6 @@ public class MsgsDAOpe extends BaseDAOpe {
 
 
 
-    public MsgsDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<Fragment> getPages(){
         ArrayList<Fragment> pages = new ArrayList<>();
