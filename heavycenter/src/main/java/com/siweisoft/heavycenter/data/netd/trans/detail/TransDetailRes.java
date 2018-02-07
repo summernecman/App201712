@@ -48,11 +48,11 @@ public  class TransDetailRes extends BaseBean {
     private String receiveAbbreviationName;
     private double receiveCompanyLat;
     private String signRule;
-    private int develiverNum;
+    private double develiverNum;
     private String tel;
     private double receiveCompanyLng;
     private int transportrecordId;
-    private int receiveNum;
+    private double receiveNum;
     private String orderNo;
     private int userId;
     private String develiverCompanyName;
@@ -179,13 +179,7 @@ public  class TransDetailRes extends BaseBean {
         this.signRule = signRule;
     }
 
-    public int getDeveliverNum() {
-        return develiverNum;
-    }
 
-    public void setDeveliverNum(int develiverNum) {
-        this.develiverNum = develiverNum;
-    }
 
     public String getTel() {
         return tel;
@@ -211,11 +205,19 @@ public  class TransDetailRes extends BaseBean {
         this.transportrecordId = transportrecordId;
     }
 
-    public int getReceiveNum() {
+    public double getDeveliverNum() {
+        return develiverNum;
+    }
+
+    public void setDeveliverNum(double develiverNum) {
+        this.develiverNum = develiverNum;
+    }
+
+    public double getReceiveNum() {
         return receiveNum;
     }
 
-    public void setReceiveNum(int receiveNum) {
+    public void setReceiveNum(double receiveNum) {
         this.receiveNum = receiveNum;
     }
 

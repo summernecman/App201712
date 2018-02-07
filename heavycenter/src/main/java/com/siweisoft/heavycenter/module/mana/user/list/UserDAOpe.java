@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.mana.user;
+package com.siweisoft.heavycenter.module.mana.user.list;
 
 //by summer on 2017-12-14.
 
@@ -16,6 +16,9 @@ import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
 import com.siweisoft.heavycenter.data.netd.unit.user.UnitUsersReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
+import com.siweisoft.heavycenter.data.netd.user.userrole.UserRoleReq;
+import com.siweisoft.heavycenter.data.netd.user.userrole.UserRoleRes;
+import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 
 import java.util.ArrayList;
 
@@ -53,8 +56,16 @@ public class UserDAOpe extends AppDAOpe {
         NetDataOpe.User.unBinUnit(getActivity(),reqBean,adapter);
     }
 
-    public boolean canUnBind(int userid){
-        if(LocalValue.get登录返回信息().getUserId()==userid){
+    public void setUserRole(int id, NetI<UserRoleRes> adapter){
+        UserRoleReq userRoleReq = new UserRoleReq();
+        userRoleReq.setId(id);
+        userRoleReq.setUserRole(LoginResBean.USER_ROLE_SUPER_ADMIN);
+        userRoleReq.setUserId(LocalValue.get登录返回信息().getUserId());
+        NetDataOpe.User.setUserRole(getActivity(),userRoleReq,adapter);
+    }
+
+    public boolean canUnBind(UnitUserResBean.ResultsBean resultsBean){
+        if(LocalValue.get登录返回信息().getUserId()==resultsBean.getUserId()){
             ToastUtil.getInstance().showShort(getActivity(),"不能解绑自己");
             return false;
         }

@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.mana.user;
+package com.siweisoft.heavycenter.module.mana.user.list;
 
 //by summer on 2017-12-14.
 
@@ -10,6 +10,7 @@ import android.view.View;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.OjectUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.daimajia.swipe.SwipeLayout;
@@ -18,6 +19,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
 import com.siweisoft.heavycenter.databinding.FragManaUserBinding;
@@ -32,6 +34,10 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
 
     public final static String 重新邀请 = "重新邀请";
 
+    public final static String 指定新的超管 = "指定新的\n超管";
+
+    private boolean swipe = true;
+
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
@@ -44,7 +50,7 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
         }
         getFrag().removeTips();
         final List<UnitUserResBean.ResultsBean> data = o.getResults();
-
+        final LoginResBean loginResBean = LocalValue.get登录返回信息();
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_user, BR.item_mana_user, data,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
@@ -77,62 +83,80 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
                 }
 
 
-                switch (data.get(position).getBindCompanyState()){
-                    case LoginResBean.BIND_UNIT_STATE_BINDED:
-                        binding.munu.setText(解除绑定);
-                        binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
-                        break;
-                        default:
-                            binding.munu.setText(重新邀请);
-                            binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
-                            break;
-                }
+                binding.rlUser.setOnClickListener(this);
+                binding.rlUser.setTag(R.id.position,position);
+                binding.rlUser.setTag(R.id.data,data.get(position));
+
 
                 binding.munu.setOnClickListener(this);
                 binding.munu.setTag(R.id.position,position);
                 binding.munu.setTag(R.id.data,data.get(position));
                 binding.munu.setTag(R.id.data1,binding.swipe);
+                binding.munu.setTag(R.id.type,0);
                 if(data.get(position).getBindCompanyTime()!=null){
                     binding.tvDes.setText("由管理员审核于"+ StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(data.get(position).getBindCompanyTime()))));
                 }
 
+                switch (data.get(position).getBindCompanyState()){
+                    case LoginResBean.BIND_UNIT_STATE_BINDED:
+                        binding.munu.setText(解除绑定);
+                        binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
+                        break;
+                    default:
+                        binding.munu.setText(重新邀请);
+                        binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
+                        break;
+                }
 
-                binding.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {
-                    @Override
-                    public void onStartOpen(SwipeLayout layout) {
-                        for(int i=0;i<bind.recycle.getChildCount();i++){
-                            SwipeLayout swipeLayout= bind.recycle.getChildAt(i).findViewById(R.id.swipe);
-                            if(swipeLayout!=binding.swipe){
-                                swipeLayout.close(true);
+                if(OjectUtil.equals(loginResBean.getUserRole(),LoginResBean.USER_ROLE_SUPER_ADMIN)&&
+                        OjectUtil.equals(data.get(position).getUserId(),loginResBean.getUserId())){
+                    binding.munu.setText(指定新的超管);
+                    binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
+                    binding.munu.setTag(R.id.type,1);
+                }
+
+                if(isSwipe()){
+                    binding.swipe.setRightSwipeEnabled(true);
+                    binding.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {
+                        @Override
+                        public void onStartOpen(SwipeLayout layout) {
+                            for(int i=0;i<bind.recycle.getChildCount();i++){
+                                SwipeLayout swipeLayout= bind.recycle.getChildAt(i).findViewById(R.id.swipe);
+                                if(swipeLayout!=binding.swipe){
+                                    swipeLayout.close(true);
+                                }
                             }
                         }
-                    }
 
-                    @Override
-                    public void onOpen(SwipeLayout layout) {
+                        @Override
+                        public void onOpen(SwipeLayout layout) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onStartClose(SwipeLayout layout) {
+                        @Override
+                        public void onStartClose(SwipeLayout layout) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onClose(SwipeLayout layout) {
+                        @Override
+                        public void onClose(SwipeLayout layout) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
+                        @Override
+                        public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
+                        @Override
+                        public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
 
-                    }
-                });
+                        }
+                    });
+                }else{
+                    binding.swipe.setRightSwipeEnabled(false);
+                }
+
 
             }
 
@@ -187,4 +211,11 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
         bind.refreshLayout.autoRefresh();
     }
 
+    public boolean isSwipe() {
+        return swipe;
+    }
+
+    public void setSwipe(boolean swipe) {
+        this.swipe = swipe;
+    }
 }

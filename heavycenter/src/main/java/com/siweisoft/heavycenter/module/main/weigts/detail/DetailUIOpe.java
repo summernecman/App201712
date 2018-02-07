@@ -24,9 +24,12 @@ import java.util.List;
 public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
 
 
-    public void initRecycle(){
+    @Override
+    public void initUI() {
+        super.initUI();
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
+
 
     public void LoadListData(final ArrayList<WeightMsg.MessageBean> s) {
 //        if(o==null || o.getResults()==null || o.getResults().size()==0){
@@ -41,19 +44,25 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
                 ItemMainWeightDetailBinding binding = (ItemMainWeightDetailBinding) holder.viewDataBinding;
 //                binding.tvTime.setText(StringUtil.getStr(s.get(position).getMessage().getTime()));
 //                binding.tvTxt.setText(StringUtil.getStr(s.get(position).getMessage().getContent()));
-                binding.tvTxt.setText(StringUtil.getStr(s.get(position).getTime()));
+                binding.tvTime.setText(StringUtil.getStr(s.get(position).getTime()));
 
                 StringBuffer sb = new StringBuffer();
+                switch (s.get(position).getMessageType()){
+                    case "bridge":
+                        sb.append(s.get(position).getContent()).append("\n").append("正在称重中...");
+                        break;
+                    case "weight":
+                        sb.append(StringUtil.getStr(s.get(position).getContent()))
+                                .append("\n")
+                                .append(StringUtil.getStr(s.get(position).getWeighResult()))
+                                .append("\n")
+                                .append(StringUtil.getStr(s.get(position).getSuttle()));
+                        break;
+                }
+
                 switch (s.get(position).getState()){
                     case "s0":
-                        switch (s.get(position).getMessageType()){
-                            case "bridge":
-                                sb.append(s.get(position).getContent()).append("\n").append("正在称重中...");
-                                break;
-                            case "weight":
-                                sb.append(s.get(position).getContent()).append("\n").append(s.get(position).getWeighResult()).append(StringUtil.getStr(s.get(position).getSuttle()));
-                                break;
-                        }
+
                         break;
                 }
 
@@ -75,6 +84,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
     public void  notifyDataSetChanged(){
         if(bind.recycle.getAdapter()!=null){
             bind.recycle.getAdapter().notifyDataSetChanged();
+            bind.recycle.scrollToPosition(bind.recycle.getAdapter().getItemCount());
         }
     }
 

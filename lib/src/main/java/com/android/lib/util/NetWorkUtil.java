@@ -19,6 +19,9 @@ public class NetWorkUtil {
     }
 
     public boolean getNetStatus(Context context) {
+        if(context==null){
+            return false;
+        }
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager == null) {
             return false;
@@ -37,6 +40,9 @@ public class NetWorkUtil {
 
 
     public boolean getNetisAvailable(Context context) {
+        if(context==null){
+            return false;
+        }
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager == null) {
             return false;

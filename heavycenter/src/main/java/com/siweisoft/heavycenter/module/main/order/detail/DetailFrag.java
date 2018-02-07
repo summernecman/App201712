@@ -34,7 +34,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
             @Override
             public void onResult(boolean success, String msg, OrdersRes.ResultsBean o) {
                 super.onResult(success, msg, o);
-                o = new Test().getOrdersRes().getResults().get(0);
+                //o = new Test().getOrdersRes().getResults().get(0);
                 if(success){
                     getP().getD().setData(o);
                     getP().getU().initUI(getArguments().getString(ValueConstant.TYPE),getP().getD().getData());

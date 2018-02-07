@@ -81,6 +81,13 @@ public class ListDAOpe extends AppDAOpe {
 
     public void setNetUnits(ListResBean netUnits) {
         this.netUnits = netUnits;
+        if(netUnits!=null&&netUnits.getResults()!=null){
+            for(int i=0;i<netUnits.getResults().size();i++){
+                if(netUnits.getResults().get(i).getCompanyId()==0){
+                    netUnits.getResults().get(i).setCompanyId(netUnits.getResults().get(i).getId());
+                }
+            }
+        }
     }
 
     public ListResBean getSelUnits(String key) {

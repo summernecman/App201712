@@ -90,17 +90,17 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                         if(success){
                             getP().getD().setCarinfo(o);
                             getP().getU().initData(getP().getD().getCarinfo());
-                            getP().getD().drvers(getP().getD().getType(), getP().getD().getCarinfo(), new UINetAdapter<ArrayList<DriverRes>>(getActivity()) {
-                                @Override
-                                public void onSuccess(ArrayList<DriverRes> o) {
-                                    super.onSuccess(o);
-                                    getP().getD().getDriverRes().clear();
-                                    if(o!=null){
-                                        getP().getD().getDriverRes().addAll(o);
-                                        getP().getU().LoadListData(getP().getD().getDriverRes(),DetailFrag.this);
-                                    }
-                                }
-                            });
+//                            getP().getD().drvers(getP().getD().getType(), getP().getD().getCarinfo(), new UINetAdapter<ArrayList<DriverRes>>(getActivity()) {
+//                                @Override
+//                                public void onSuccess(ArrayList<DriverRes> o) {
+//                                    super.onSuccess(o);
+//                                    getP().getD().getDriverRes().clear();
+//                                    if(o!=null){
+//                                        getP().getD().getDriverRes().addAll(o);
+//                                        getP().getU().LoadListData(getP().getD().getDriverRes(),DetailFrag.this);
+//                                    }
+//                                }
+//                            });
                         }
                     }
                 });

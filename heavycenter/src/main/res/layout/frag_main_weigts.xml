@@ -101,7 +101,6 @@
 
 
                 <LinearLayout
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:orientation="horizontal"
@@ -150,7 +149,7 @@
                                 android:layout_height="wrap_content" />
                         </LinearLayout>
                         <LinearLayout
-                                android:layout_marginTop="10dp"
+                                android:layout_marginTop="5dp"
                             android:gravity="center_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
@@ -186,7 +185,7 @@
                 <LinearLayout
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -311,34 +310,33 @@
                     android:layout_height="match_parent">
 
 
-
                     <com.siweisoft.heavycenter.module.view.text.BgTextView
-                        android:id="@+id/tv_save"
                         android:layout_centerInParent="true"
-                        android:paddingLeft="70dp"
-                        android:paddingRight="70dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
+                        android:id="@+id/tv_save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center"
 
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="70dp"
+                        android:paddingRight="70dp"
+                        android:paddingTop="5dp"
                         android:singleLine="true"
+                        android:text="保存"
                         android:textSize="21sp"
                         android:visibility="visible"
-                        style_common:color_one="@color/color_hv_yelll"
-                        style_common:stroke="0dp"
-                        style_common:color_stroke="@color/red"
-                        style_common:corner="5dp"
-                        style_common:color_txt="@color/white"
 
-                        style_common:color_two="@color/color_red_500"
-                        style_common:stroke_two="2dp"
-                        style_common:color_stroke_two="@color/color_red_500"
-                        style_common:corner_two="5dp"
-                        style_common:color_txt_two="@color/white"
                         style_common:boo_one="true"
-                        android:text="保存"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        style_common:color_one="@color/color_hv_yelll"
+                        style_common:color_stroke="@color/red"
+                        style_common:color_stroke_two="@color/color_red_500"
+                        style_common:color_two="@color/color_red_500"
+                        style_common:color_txt="@color/white"
+                        style_common:color_txt_two="@color/white"
+                        style_common:corner="5dp"
+                        style_common:corner_two="5dp"
+                        style_common:stroke="0dp"
+                        style_common:stroke_two="2dp" />
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>

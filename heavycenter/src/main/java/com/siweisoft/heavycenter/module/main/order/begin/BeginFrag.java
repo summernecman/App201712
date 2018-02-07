@@ -101,7 +101,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
             public void onResult(boolean success, String msg, OrdersRes o) {
                 super.onResult(success, msg, o);
                 getP().getU().finishRefresh();
-                o = new Test().getOrdersRes();
+                //o = new Test().getOrdersRes();
                 if(o==null){
                     return;
                 }

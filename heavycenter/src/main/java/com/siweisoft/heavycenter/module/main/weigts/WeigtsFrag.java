@@ -91,6 +91,7 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
            for(int i=0;i<getP().getD().getPages().size();i++){
                WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages().get(i);
                weigtFrag.getP().getD().setWeightMsg(weightMsg);
+                weigtFrag.refresh();
            }
     }
 

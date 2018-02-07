@@ -34,6 +34,7 @@ import com.siweisoft.heavycenter.databinding.ItemMainOrderDoingBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainOrderDoneBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaGoodBinding;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -105,6 +106,10 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                         beginBinding.btSure.setOnClickListener(this);
                         beginBinding.btSure.setTag(R.id.data,s.getResults().get(position));
                         beginBinding.btSure.setTag(R.id.position,position);
+
+                        beginBinding.btReject.setOnClickListener(this);
+                        beginBinding.btReject.setTag(R.id.data,s.getResults().get(position));
+                        beginBinding.btReject.setTag(R.id.position,position);
                     }
                 });
                 break;
@@ -116,11 +121,15 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 
                     @Override
                     public void onBindViewHolder(AppViewHolder holder, int position) {
-                        super.onBindViewHolder(holder, position);
                         ItemMainOrderDoingBinding doingBinding = (ItemMainOrderDoingBinding) holder.viewDataBinding;
                         doingBinding.getRoot().setSelected(position % 2 == 0 ? true : false);
                         doingBinding.getRoot().setTag(R.id.type,type);
 
+                        doingBinding.llIngorder.setTag(com.android.lib.R.id.data, list.get(position));
+                        doingBinding.llIngorder.setTag(com.android.lib.R.id.position, position);
+                        doingBinding.llIngorder.setOnClickListener(this);
+                        doingBinding.setVariable(vari, list.get(position));
+                        doingBinding.executePendingBindings();//加一行，问题解决
 
 
                         doingBinding.tvGoodname.setText(StringUtil.getStr(s.getResults().get(position).getProductName()));
@@ -141,7 +150,12 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                         doingBinding.tvCarno.setText(StringUtil.getStr(s.getResults().get(position).getCarLicenseNo()));
 
 
+                        doingBinding.tvCarnum.setText(StringUtil.getStr(s.getResults().get(position).getTotalRecord()));
 
+
+
+                        DecimalFormat df = new DecimalFormat("#.##");
+                        doingBinding.tvCurrent.setText(StringUtil.getStr(Double.parseDouble(df.format(s.getResults().get(position).getActualSh())))+"t");
 
 
 
@@ -156,9 +170,15 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 
                     @Override
                     public void onBindViewHolder(AppViewHolder holder, int position) {
-                        super.onBindViewHolder(holder, position);
                         ItemMainOrderDoneBinding doneBinding = (ItemMainOrderDoneBinding) holder.viewDataBinding;
                         doneBinding.getRoot().setSelected(position%2==0?true:false);
+
+                        doneBinding.llDoneorder.setTag(com.android.lib.R.id.data, list.get(position));
+                        doneBinding.llDoneorder.setTag(com.android.lib.R.id.position, position);
+                        doneBinding.llDoneorder.setOnClickListener(this);
+                        doneBinding.setVariable(vari, list.get(position));
+                        doneBinding.executePendingBindings();//加一行，问题解决
+
                         doneBinding.tvGoodname.setText(StringUtil.getStr(s.getResults().get(position).getProductName()));
                         doneBinding.tvSpes.setText(StringUtil.getStr(s.getResults().get(position).getSpecification()));
                         if("S".equals(s.getResults().get(position).getOrderType())){

@@ -6,6 +6,8 @@ import android.content.Context;
 
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.network.news.NetI;
+import com.android.lib.util.ObjectUtil;
+import com.android.lib.util.OjectUtil;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.NetValue;
@@ -13,6 +15,7 @@ import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignReq;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
+import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 
 import java.util.ArrayList;
 
@@ -36,7 +39,11 @@ public class TransDAOpe extends BaseDAOpe {
 
     public TransReq getTransReq(int pageIndex) {
         transReq.setIsApp(1);
-        transReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        if(OjectUtil.equals(LocalValue.get登录返回信息().getUserType(), UserTypeReqBean.驾驶员)){
+            transReq.setUserId(LocalValue.get登录返回信息().getUserId());
+        }else{
+            transReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        }
         transReq.setPageIndex(pageIndex);
         transReq.setPageSize(10);
         return transReq;

@@ -73,7 +73,6 @@
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_des"
-                style_common:inputType="3"
                 style_common:txt_maxlenth="11"
                 style_common:txt_left = "位置描述"
                 style_common:txt_two ="请选择"

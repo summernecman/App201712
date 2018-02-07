@@ -8,7 +8,7 @@
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swipe"
+        android:id="@+id/ll_doneorder"
         android:background="@drawable/bg_hv_sel_dark_light"
         android:orientation="vertical"
                   android:padding="@dimen/dimen_recylce_item_margin"

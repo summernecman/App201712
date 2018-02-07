@@ -8,7 +8,7 @@
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/ll_trans"
+        android:id="@+id/ll_ingorder"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,12 +47,13 @@
                                 android:layout_height="wrap_content">
 
                             <TextView
+                                android:id="@+id/tv_carnum"
                                     android:textSize="25sp"
                                     android:textColor="@color/color_yell_blue"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"/>
                             <TextView
-                                    android:id="@+id/tv_carnum"
+
                                     android:text="车"
                                     android:textSize="15sp"
                                     android:textColor="@color/color_yell_blue"
@@ -69,6 +70,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
                         <TextView
+                            android:singleLine="true"
+                            android:maxEms="7"
                                 android:id="@+id/tv_current"
                                 android:textSize="15sp"
                                 android:textColor="@color/color_yell_blue"
@@ -81,6 +84,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                         <TextView
+                            android:singleLine="true"
+                            android:maxEms="7"
                                 android:id="@+id/tv_plan"
                                 android:textSize="15sp"
                                 android:textColor="@color/color_hv_yelll"
@@ -137,7 +142,7 @@
                                 android:textColor="@color/color_yell_blue"
                                 android:textSize="12sp"
                                 android:text="沪A2345"
-                                android:layout_width="wrap_content"
+                                android:layout_width="60dp"
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
 

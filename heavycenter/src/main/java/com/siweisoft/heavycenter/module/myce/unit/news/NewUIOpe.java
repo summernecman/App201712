@@ -3,10 +3,13 @@ package com.siweisoft.heavycenter.module.myce.unit.news;
 //by summer on 2017-12-19.
 
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -16,6 +19,8 @@ import com.siweisoft.heavycenter.data.netd.unit.news.NewReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.update.UpdateUnitReq;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitNewBinding;
+import com.siweisoft.heavycenter.module.main.MainValue;
+import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
 public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
 
@@ -91,6 +96,7 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
                 break;
             case NewFrag.展示单位信息:
                 bind.title.getMidTV().setText("单位信息");
+                bind.title.getRightIV2().setImageResource(R.drawable.icon_hv_quit);
                 break;
             case NewFrag.新建单位:
                 bind.title.getMidTV().setText("新建单位");
@@ -115,6 +121,30 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
         bind.unitphone.setMidEtTxt(unitInfo.getContactPhone());
     }
 
+    public void initUPUnitinfo(UnitInfo unitInfo){
+        if(unitInfo==null){
+            return;
+        }
+        bind.upunit.setMidTVTxt(StringUtil.getStr(unitInfo.getParentCompanyName()));
+    }
+
+
+    public void initAreaInfo(UnitInfo unitInfo){
+        if(unitInfo==null){
+            return;
+        }
+        bind.area.setMidTVTxt(unitInfo.getBelongAreaDes());
+    }
+
+
+    public void initAddrinfo(UnitInfo unitInfo){
+        if(unitInfo==null){
+            return;
+        }
+        bind.unitaddr.setMidTVTxt(unitInfo.getCompanyAddress());
+    }
+
+
     public void updateInfo(){
         if(StringUtil.equals(LocalValue.get登录返回信息().getUserRole(), LoginResBean.USER_ROLE_SUPER_ADMIN)){
             bind.itemUnitname.setEdit(true);
@@ -127,4 +157,17 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
         }
     }
 
+    FragManager2 fragManager2;
+
+    public void showTip(View.OnClickListener onClickListener){
+        DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
+        diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_leave,null));
+        diaLogCenterFrag.setOnClickListener(onClickListener,R.id.close,R.id.sure);
+        fragManager2 = FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).setHideLast(false);
+        fragManager2.start(getActivity(), MainValue.主界面,diaLogCenterFrag);
+    }
+
+    public FragManager2 getFragManager2() {
+        return fragManager2;
+    }
 }

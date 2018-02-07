@@ -11,6 +11,7 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
+import com.siweisoft.heavycenter.module.mana.car.detail.CarDetailValue;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.mana.car.my.MyFrag;
 
@@ -33,7 +34,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                bundle.putString(ValueConstant.DATA_DATA2,DetailFrag.TYPE_NEW);
+                bundle.putString(ValueConstant.DATA_DATA2, CarDetailValue.新建车辆);
                 FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,MainValue.主界面ID,new DetailFrag(),bundle);
                 break;
         }

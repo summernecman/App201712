@@ -21,6 +21,12 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
         getP().getU().init(getP().getD().getWeightMsg());
     }
 
+    public void refresh(){
+        if(getP()!=null&&getP().getU()!=null){
+            getP().getU().init(getP().getD().getWeightMsg());
+        }
+    }
+
 
     @OnClick({R.id.tv_weight,R.id.ll_mz,R.id.ll_pz,R.id.ll_kc})
     public void onClick(final View v) {

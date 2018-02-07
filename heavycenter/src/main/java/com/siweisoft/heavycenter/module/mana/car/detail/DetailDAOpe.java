@@ -108,7 +108,7 @@ public class DetailDAOpe extends AppDAOpe {
     public void drvers(String type,CarsResBean.CarInfoRes info,NetI<ArrayList<DriverRes>> adapter){
         DriversReq driversReq = new DriversReq();
         driversReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
-        if(type.endsWith(DetailFrag.TYPE_NEW)){
+        if(type.endsWith(CarDetailValue.新建车辆)){
             driversReq.setVehicleId(0);
         }else{
             driversReq.setVehicleId(info.getVehicleId());

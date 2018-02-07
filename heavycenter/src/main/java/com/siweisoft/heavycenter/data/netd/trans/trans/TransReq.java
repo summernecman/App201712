@@ -8,9 +8,10 @@ public class TransReq extends BaseReqBean {
 
     private int isApp;
 
-    private int companyId;
+    private Integer companyId;
 
-    private int  userId;
+
+    private Integer  userId;
 
     private int pageIndex;
 
@@ -35,19 +36,19 @@ public class TransReq extends BaseReqBean {
         this.isApp = isApp;
     }
 
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

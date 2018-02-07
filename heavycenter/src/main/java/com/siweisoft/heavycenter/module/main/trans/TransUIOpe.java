@@ -39,6 +39,7 @@ import com.siweisoft.heavycenter.databinding.FragMainTransBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainTransBinding;
 import com.siweisoft.heavycenter.databinding.ItemTransBinding;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
@@ -120,11 +121,16 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                // itemMainTransBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).get()));
                 if(comname.equals(s.get(position).getDeveliverCompanyName())){
                     itemMainTransBinding.type.setText("发往");
-                    itemMainTransBinding.tvNownum.setText(StringUtil.getStr(s.get(position).getDeveliverNum())+"t");
+
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    itemMainTransBinding.tvNownum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getDeveliverNum())))+"t");
+
+
                     itemMainTransBinding.tvComp.setText(StringUtil.getStr(s.get(position).getDeveliverCompanyName()));
                 }else{
                     itemMainTransBinding.type.setText("发来");
-                    itemMainTransBinding.tvNownum.setText(StringUtil.getStr(s.get(position).getDeveliverNum())+"t");
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    itemMainTransBinding.tvNownum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getReceiveNum())))+"t");
                     itemMainTransBinding.tvComp.setText(StringUtil.getStr(s.get(position).getReceiveCompanyName()));
                 }
 
@@ -139,7 +145,9 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                     itemMainTransBinding.tvEndtime.setText(StringUtil.getStr(s.get(position).getShTime()));
                 }
                 itemMainTransBinding.tvCarlicenseno.setText(StringUtil.getStr(s.get(position).getCarLicenseNo()));
-                itemMainTransBinding.tvNum.setText(StringUtil.getStr(s.get(position).getReceiveNum())+"t");
+
+                DecimalFormat df = new DecimalFormat("#.##");
+                itemMainTransBinding.tvNum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getReceiveNum())))+"t");
             }
         });
 

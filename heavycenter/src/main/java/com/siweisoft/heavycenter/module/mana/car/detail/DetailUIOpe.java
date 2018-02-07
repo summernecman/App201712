@@ -52,7 +52,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                 }
                 bind.title.getMidTV().setText("车辆详情");
                 break;
-            case DetailFrag.TYPE_NEW:
+            case CarDetailValue.新建车辆:
                 bind.llInput.setVisibility(View.VISIBLE);
                 bind.reinput.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -67,7 +67,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                 break;
             case DetailFrag.TYPE_BIND:
                 bind.title.getMidTV().setText("绑定车辆");
-                bind.llInput.setVisibility(View.VISIBLE);
+                bind.llInput.setVisibility(View.GONE);
                 bind.reinput.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -75,7 +75,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                     }
                 });
                 break;
-            case DetailFrag.TYPE_NEW_BIND:
+            case CarDetailValue.新建车辆并绑定:
                 bind.title.getMidTV().setText("新建车辆");
                 bind.llInput.setVisibility(View.VISIBLE);
                 bind.reinput.setOnClickListener(new View.OnClickListener() {

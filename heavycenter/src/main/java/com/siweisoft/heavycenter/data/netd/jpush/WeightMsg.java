@@ -43,8 +43,8 @@ public class WeightMsg extends BaseBean {
         private String time;
         private double weigh;
         private OrderBean order = new OrderBean();
-        private int fhTare;
-        private double suttle;
+        private double fhTare;
+        private String suttle;
 
 
         public String getMessageType() {
@@ -95,11 +95,11 @@ public class WeightMsg extends BaseBean {
             this.order = order;
         }
 
-        public int getFhTare() {
+        public double getFhTare() {
             return fhTare;
         }
 
-        public void setFhTare(int fhTare) {
+        public void setFhTare(double fhTare) {
             this.fhTare = fhTare;
         }
 
@@ -111,11 +111,11 @@ public class WeightMsg extends BaseBean {
             this.weighResult = weighResult;
         }
 
-        public double getSuttle() {
+        public String getSuttle() {
             return suttle;
         }
 
-        public void setSuttle(double suttle) {
+        public void setSuttle(String suttle) {
             this.suttle = suttle;
         }
 

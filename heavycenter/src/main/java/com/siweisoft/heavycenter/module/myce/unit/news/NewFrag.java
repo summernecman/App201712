@@ -35,6 +35,12 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
     public static final String 修改单位信息 = "修改单位信息";
 
     @Override
+    public void initNow() {
+        super.initNow();
+        getP().getU().initUI(getArguments().getString(ValueConstant.DATA_TYPE));
+    }
+
+    @Override
     public void initdelay() {
         super.initdelay();
         switch (getArguments().getString(ValueConstant.DATA_TYPE)){
@@ -87,16 +93,36 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
             case R.id.ftv_right2:
                 switch (getArguments().getString(ValueConstant.DATA_TYPE)){
                     case 展示单位信息:
-                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(getBaseUIAct()) {
+                        getP().getU().showTip(new View.OnClickListener() {
                             @Override
-                            public void onSuccess(UnBindResBean o) {
-                                getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
-                                    @Override
-                                    public void onSuccess(LoginResBean o) {
-                                        LocalValue.save登录返回信息(o);
-                                        ((MainAct) getBaseUIAct()).go判断是否绑定单位处理();
-                                    }
-                                });
+                            public void onClick(View vv) {
+                                switch (vv.getId()){
+                                    case R.id.close:
+                                        break;
+                                    case R.id.sure:
+                                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(getBaseUIAct()) {
+                                            @Override
+                                            public void onResult(boolean success, String msg, UnBindResBean o) {
+                                                super.onResult(success, msg, o);
+                                                if(success){
+                                                    getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                                        @Override
+                                                        public void onResult(boolean success, String msg, LoginResBean o) {
+                                                            super.onResult(success, msg, o);
+                                                            if(success){
+                                                                LocalValue.save登录返回信息(o);
+                                                                ((MainAct) getBaseUIAct()).go判断是否绑定单位处理();
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        });
+                                        break;
+                                }
+                                if(getP().getU().getFragManager2()!=null){
+                                    getP().getU().getFragManager2().finish(getBaseUIAct(), getBaseUIAct().getMoudle(),false);
+                                }
                             }
                         });
                         break;
@@ -146,14 +172,14 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 getP().getD().getUnit().setCompanyLng(unitInfo.getCompanyLng());
                 getP().getD().getUnit().setCompanyLat(unitInfo.getCompanyLat());
                 getP().getD().getUnit().setCompanyAddress(unitInfo.getCompanyAddress());
-                getP().getU().initinfo(getP().getD().getUnit());
+                getP().getU().initAddrinfo(getP().getD().getUnit());
                 break;
             case 3:
                 if(bundle!=null && bundle.getSerializable(ValueConstant.DATA_DATA2)!=null){
                     UnitInfo unit = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
                     getP().getD().getUnit().setParentCompanyName(unit.getCompanyName());
                     getP().getD().getUnit().setParentCompanyId(unit.getId());
-                    getP().getU().initinfo(getP().getD().getUnit());
+                    getP().getU().initUPUnitinfo(getP().getD().getUnit());
                 }
                 break;
             case 4:
@@ -162,7 +188,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 }
                 getP().getD().getUnit().setBelongArea(StringUtil.getStr(bundle.getString(ValueConstant.DATA_RES2)));
                 getP().getD().getUnit().setBelongAreaDes(StringUtil.getStr(bundle.getString(ValueConstant.DATA_RES)));
-                getP().getU().initinfo(getP().getD().getUnit());
+                getP().getU().initAreaInfo(getP().getD().getUnit());
                 break;
         }
     }

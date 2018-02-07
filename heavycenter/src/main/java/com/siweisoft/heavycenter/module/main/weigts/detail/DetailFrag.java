@@ -8,7 +8,9 @@ import android.view.View;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
+import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
@@ -17,6 +19,8 @@ import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.Date;
 
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
@@ -32,7 +36,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
     @Override
     public void onFristVisibleInit() {
-        getP().getU().initRecycle();
+        getP().getU().LoadListData(getP().getD().getWeightMsgs());
     }
 
     @Override
@@ -58,6 +62,12 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
             return ;
         }
         getP().getU().initTopUI(m);
+        if(NullUtil.isStrEmpty(m.getTime())){
+            m.setTime(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY__MM__DD__HH__MM__SS,new Date()));
+        }
+        if(NullUtil.isStrEmpty(m.getMessageType())||NullUtil.isStrEmpty(m.getState())){
+            return;
+        }
         getP().getD().getWeightMsgs().add(m);
       getP().getU().notifyDataSetChanged();
 

@@ -64,7 +64,7 @@ public class UnitUserResBean extends BaseBean {
         this.results = results;
     }
 
-    public static class ResultsBean {
+    public static class ResultsBean extends BaseBean{
         /**
          * trueName : 唐杰
          * userPhoto :

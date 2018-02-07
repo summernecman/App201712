@@ -11,7 +11,4 @@ import com.siweisoft.heavycenter.databinding.FragAcctRoleTipBinding;
 public class DialogCenterUIOpe extends BaseUIOpe<DialogCenterBinding> {
 
 
-    public DialogCenterUIOpe(Context context) {
-        super(context);
-    }
 }

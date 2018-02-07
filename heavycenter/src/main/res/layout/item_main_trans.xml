@@ -36,6 +36,8 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:maxWidth="100dp"
+                    android:singleLine="true"
                     android:id="@+id/tv_num"
                     android:text="3t"
                     android:textSize="25sp"
@@ -43,6 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:singleLine="true"
                     android:id="@+id/tv_carnum"
                     android:text="10车"
                     android:textSize="15sp"
@@ -121,37 +124,36 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:maxEms="4"
                         android:id="@+id/tv_dirvername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize" />
 
 
                     <com.siweisoft.heavycenter.module.view.text.BgTextView
                         android:id="@+id/type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="23dp"
                         android:layout_marginLeft="5dp"
                         android:padding="1dp"
                         android:singleLine="true"
+                        android:text="发往"
                         android:textSize="13sp"
                         android:visibility="visible"
-                        style_common:color_one="@color/color_hv_yelll"
-                        style_common:stroke="0dp"
-                        style_common:color_stroke="@color/red"
-                        style_common:corner="2dp"
-                        style_common:color_txt="@color/white"
-
-                        style_common:color_two="@color/color_red_800"
-                        style_common:stroke_two="2dp"
-                        style_common:color_stroke_two="@color/color_hv_yelll"
-                        style_common:corner_two="5dp"
-                        style_common:color_txt_two="@color/white"
                         style_common:boo_one="false"
-                        android:text="发往"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        style_common:color_one="@color/color_hv_yelll"
+
+                        style_common:color_stroke="@color/red"
+                        style_common:color_stroke_two="@color/color_hv_yelll"
+                        style_common:color_two="@color/color_red_800"
+                        style_common:color_txt="@color/white"
+                        style_common:color_txt_two="@color/white"
+                        style_common:corner="2dp"
+                        style_common:corner_two="5dp"
+                        style_common:stroke="0dp"
+                        style_common:stroke_two="2dp" />
 
 
                     <TextView

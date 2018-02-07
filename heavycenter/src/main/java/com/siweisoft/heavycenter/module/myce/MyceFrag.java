@@ -29,7 +29,7 @@ import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.car.CarFrag;
 import com.siweisoft.heavycenter.module.mana.good.GoodFrag;
 import com.siweisoft.heavycenter.module.mana.store.StoreFrag;
-import com.siweisoft.heavycenter.module.mana.user.UserFrag;
+import com.siweisoft.heavycenter.module.mana.user.list.UserFrag;
 import com.siweisoft.heavycenter.module.myce.car.bind.BindFrag;
 import com.siweisoft.heavycenter.module.myce.name.NameFrag;
 import com.siweisoft.heavycenter.module.myce.sett.SetFrag;
@@ -67,6 +67,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     }
 
     public void init(){
+        getP().getU().initUI();
         getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().is绑定了单位());
     }
 

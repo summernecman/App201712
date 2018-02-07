@@ -98,6 +98,8 @@ import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
+import com.siweisoft.heavycenter.data.netd.user.userrole.UserRoleReq;
+import com.siweisoft.heavycenter.data.netd.user.userrole.UserRoleRes;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeResBean;
 import com.siweisoft.heavycenter.data.netd.weight.list.WeightListReq;
@@ -282,7 +284,9 @@ public class NetDataOpe {
             NetGet.postData(context,NetValue.获取地址("/user/updateDriverInfo"),reqBean,adapter);
         }
 
-
+        public static void setUserRole(Context context, UserRoleReq reqBean, NetI<UserRoleRes> adapter) {
+            NetGet.postData(context,NetValue.获取地址("/user/setUserRole"),reqBean,adapter);
+        }
 
 
     }
