@@ -12,6 +12,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
@@ -53,7 +54,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
         getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_INDEX),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
-                //o= new Test().getMsgsResBean();
+                o= new Test().getMsgsResBean();
                 getP().getD().addData(o);
                 getP().getU().LoadListData(getP().getD().getMsgsResBean(),MsgFrag.this);
             }
@@ -61,8 +62,9 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
     }
 
     @Override
-    public void onInterupt(int type, View v) {
+    public void onInterupt(int type, final View v) {
         final MsgsResBean.ResultsBean data = (MsgsResBean.ResultsBean) v.getTag(R.id.data);
+        final int pos = (int) v.getTag(R.id.position);
         final String[] status = {MsgDealReqBean.AUDII_STATUS_YES};
         int auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED;
         switch (type){
@@ -89,7 +91,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
                     @Override
                     public void onSuccess(MsgDealResBean o) {
                         data.setAuditState(finalAuditstate);
-                        getP().getU().notifyDataSetChanged();
+                        getP().getU().notifyDataSetChanged(pos);
                         if((status[0] == MsgDealReqBean.AUDII_STATUS_YES)){
                             ((MainAct) getBaseUIAct()).go网络获取用户信息重新加载();
                         }

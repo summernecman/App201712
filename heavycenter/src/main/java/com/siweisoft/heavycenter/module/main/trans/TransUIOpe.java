@@ -2,6 +2,8 @@ package com.siweisoft.heavycenter.module.main.trans;
 
 //by summer on 2017-12-11.
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,10 +11,13 @@ import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import android.view.ViewAnimationUtils;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.interf.OnFinishListener;
@@ -153,15 +158,26 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void search(OnFinishListener onFinishListener){
         if(bind.title.getRightIV2().isSelected()){
             bind.title.getRightIV2().setSelected(false);
-            bind.search.getRoot().setVisibility(View.GONE);
+            Animator anim = ViewAnimationUtils.createCircularReveal(bind.search.getRoot(), bind.search.getRoot().getWidth()/2, 0, bind.search.getRoot().getWidth()/2, 0);
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    bind.search.getRoot().setVisibility(View.GONE);
+                }
+            });
+            anim.start();
             onFinishListener.onFinish(true);
         }else{
             bind.title.getRightIV2().setSelected(true);
-            ViewAnimator.animate(bind.search.getRoot()).alpha(0,1).translationY(-bind.search.getRoot().getHeight(),0).accelerate().duration(300).start();
+            //ViewAnimator.animate(bind.search.getRoot()).alpha(0,1).translationY(-bind.search.getRoot().getHeight(),0).accelerate().duration(300).start();
+            Animator anim = ViewAnimationUtils.createCircularReveal(bind.search.getRoot(),bind.search.getRoot().getWidth()/2,0,0,bind.search.getRoot().getWidth()/2);
             bind.search.getRoot().setVisibility(View.VISIBLE);
+            anim.start();
             onFinishListener.onFinish(false);
         }
 
