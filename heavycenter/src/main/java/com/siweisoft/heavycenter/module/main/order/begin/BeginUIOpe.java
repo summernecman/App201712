@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.main.order.begin;
 
 import android.content.Context;
 import android.databinding.ViewDataBinding;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -130,7 +131,7 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                         doingBinding.llIngorder.setOnClickListener(this);
                         doingBinding.setVariable(vari, list.get(position));
                         doingBinding.executePendingBindings();//加一行，问题解决
-
+                        ViewCompat.setTransitionName(doingBinding.circlebar,position+"headimage");
 
                         doingBinding.tvGoodname.setText(StringUtil.getStr(s.getResults().get(position).getProductName()));
                         doingBinding.tvSpes.setText(StringUtil.getStr(s.getResults().get(position).getSpecification()));

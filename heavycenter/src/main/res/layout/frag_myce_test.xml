@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="frag_myce_test"
+            type="String" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <com.siweisoft.heavycenter.module.view.circle.CircleBar
+                android:transitionName="headimage"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/iv_head"
+                android:src="@drawable/icon_hv_myce_head"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+</layout>

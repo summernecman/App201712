@@ -12,6 +12,7 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -32,6 +33,9 @@ import butterknife.OnClick;
 
 public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener {
 
+    public TransFrag(){
+        LogUtil.E("fdf");
+    }
 
     @Override
     public void onFristVisibleInit() {

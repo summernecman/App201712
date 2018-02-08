@@ -8,6 +8,7 @@ import android.view.View;
 import com.android.lib.network.news.NetAdapter;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
+import com.siweisoft.heavycenter.HCApp;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -27,6 +28,10 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(HCApp.test){
+            IntentUtil.startActivityWithFinish(getActivity(), MainAct.class,null);
+            return;
+        }
         if(LocalValue.get省市排序列表()!=null&&LocalValue.get省市排序列表().size()>0){
             AutoLogin();
         }else{

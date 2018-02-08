@@ -52,7 +52,7 @@ public class FragManager2  {
         if(getShareElement()!=null && getShareName()!=null){
             transaction.addSharedElement(getShareElement(),getShareName());
             transaction.add(viewid,fragment,fragment.getUniqueid()+"");
-            transaction.commitNowAllowingStateLoss();
+            transaction.commit();
             map.get(moudle).addFrag(fragment);
             return;
         }
