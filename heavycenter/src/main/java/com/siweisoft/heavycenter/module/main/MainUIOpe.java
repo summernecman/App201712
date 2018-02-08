@@ -126,4 +126,12 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
             bind.drawerLayout.openDrawer(Gravity.LEFT);
         }
     }
+
+    public void switchDrawer(boolean show){
+        if(!show){
+            bind.drawerLayout.closeDrawer(Gravity.LEFT);
+        }else{
+            bind.drawerLayout.openDrawer(Gravity.LEFT);
+        }
+    }
 }

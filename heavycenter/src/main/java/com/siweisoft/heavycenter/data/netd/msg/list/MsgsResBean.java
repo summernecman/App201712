@@ -3,8 +3,10 @@ package com.siweisoft.heavycenter.data.netd.msg.list;
 //by summer on 2018-01-11.
 
 import com.android.lib.bean.BaseBean;
+import com.android.lib.util.data.DateFormatUtil;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MsgsResBean extends BaseBean {
@@ -116,6 +118,7 @@ public class MsgsResBean extends BaseBean {
         private String auditorName;
         private String messageContent;
         private long sendTime;
+        private String sendTimeDes;
 
         public String getSenderName() {
             return senderName;
@@ -203,6 +206,17 @@ public class MsgsResBean extends BaseBean {
 
         public void setSendTime(long sendTime) {
             this.sendTime = sendTime;
+            if(sendTime!=0){
+                setSendTimeDes(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getSendTime())));
+            }
+        }
+
+        public String getSendTimeDes() {
+            return sendTimeDes;
+        }
+
+        public void setSendTimeDes(String sendTimeDes) {
+            this.sendTimeDes = sendTimeDes;
         }
     }
 }

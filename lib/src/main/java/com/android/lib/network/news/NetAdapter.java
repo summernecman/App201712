@@ -6,8 +6,11 @@ import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.bean.BaseBean;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.util.*;
+import com.android.lib.view.bottommenu.MessageEvent;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -69,7 +72,7 @@ public  class NetAdapter<A> implements NetI<A> {
             if(cache){
                 onResult(true,baseResBean.getMessage(), null);
             }else{
-                onResult(false,baseResBean.getMessage(), null);
+                onResult(false,baseResBean.getErrorMessage(), null);
             }
         } else {
             if(cache){
@@ -140,6 +143,12 @@ public  class NetAdapter<A> implements NetI<A> {
 
     @Override
     public void onResult(boolean success, String msg, A o) {
+        if(msg!=null&&msg.toLowerCase().contains("Unauthorized".toLowerCase())){
+            MessageEvent messageEvent = new MessageEvent();
+            messageEvent.sender = "net";
+            messageEvent.dealer = "main";
+            EventBus.getDefault().post(messageEvent);
+        }
         if(success){
             onSuccess(o);
         }

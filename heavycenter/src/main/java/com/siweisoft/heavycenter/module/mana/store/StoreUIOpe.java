@@ -28,6 +28,7 @@ import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean
 import com.siweisoft.heavycenter.databinding.FragManaStoreBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaGoodBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaStoreBinding;
+import com.siweisoft.heavycenter.module.view.MySwipeListener;
 
 import java.util.List;
 
@@ -73,11 +74,9 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
                 binding.rlRoot.setOnClickListener(this);
                 binding.rlRoot.setTag(R.id.position,position);
                 binding.rlRoot.setTag(R.id.data,o.getResults().get(position));
-
                 binding.swipe.setRightSwipeEnabled(isSwipe());
 
-
-                binding.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {
+                binding.swipe.addSwipeListener(new MySwipeListener() {
                     @Override
                     public void onStartOpen(SwipeLayout layout) {
                         for(int i=0;i<bind.recycle.getChildCount();i++){
@@ -86,31 +85,6 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
                                 swipeLayout.close(true);
                             }
                         }
-                    }
-
-                    @Override
-                    public void onOpen(SwipeLayout layout) {
-
-                    }
-
-                    @Override
-                    public void onStartClose(SwipeLayout layout) {
-
-                    }
-
-                    @Override
-                    public void onClose(SwipeLayout layout) {
-
-                    }
-
-                    @Override
-                    public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
-
-                    }
-
-                    @Override
-                    public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
-
                     }
                 });
             }

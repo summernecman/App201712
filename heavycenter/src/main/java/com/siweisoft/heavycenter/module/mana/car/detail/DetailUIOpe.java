@@ -45,7 +45,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 
     public void init(String type){
         switch (type){
-            case DetailFrag.TYPE_DETAIL:
+            case CarDetailValue.查看车辆:
                 bind.llInput.setVisibility(View.GONE);
                 if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
                     bind.title.getRightIV2().setVisibility(View.GONE);
@@ -53,6 +53,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                 bind.title.getMidTV().setText("车辆详情");
                 break;
             case CarDetailValue.新建车辆:
+                bind.bindcartip.setVisibility(View.GONE);
                 bind.llInput.setVisibility(View.VISIBLE);
                 bind.reinput.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -65,7 +66,8 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 //                }
                 bind.title.getMidTV().setText("新建车辆");
                 break;
-            case DetailFrag.TYPE_BIND:
+            case CarDetailValue.绑定车辆:
+                bind.bindcartip.setVisibility(View.GONE);
                 bind.title.getMidTV().setText("绑定车辆");
                 bind.llInput.setVisibility(View.GONE);
                 bind.reinput.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +78,9 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                 });
                 break;
             case CarDetailValue.新建车辆并绑定:
+                bind.bindcartip.setVisibility(View.GONE);
                 bind.title.getMidTV().setText("新建车辆");
-                bind.llInput.setVisibility(View.VISIBLE);
+                bind.llInput.setVisibility(View.GONE);
                 bind.reinput.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

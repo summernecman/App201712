@@ -3,7 +3,7 @@
     xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="item_main_trans"
+            name="item_main_trans2"
             type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes" />
     </data>
 
@@ -75,7 +75,7 @@
                     android:singleLine="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-                    android:text="@{item_main_trans.productName}"
+                    android:text="@{item_main_trans2.productName}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -85,7 +85,7 @@
                     android:layout_marginLeft="14dp"
                     android:textColor="@color/white"
                     android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-                    android:text="@{item_main_trans.specifications}"
+                    android:text="@{item_main_trans2.specifications}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -104,27 +104,36 @@
                         android:layout_marginLeft="5dp"
                         android:textColor="@color/color_base_txt_heavycenter_y"
                         android:textSize="12sp"
-                        android:text="@{item_main_trans.carLicenseNo}"
+                        android:text="@{item_main_trans2.carLicenseNo}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>
             </LinearLayout>
-
             <LinearLayout
-                android:id="@+id/ll_send"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_dirvername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize" />
+
+
                 <LinearLayout
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/ll_send"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/tv_dirvername"
+                        android:id="@+id/tv_send_comname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
@@ -133,13 +142,13 @@
 
 
                     <com.siweisoft.heavycenter.module.view.text.BgTextView
-                        android:id="@+id/type"
+                        android:id="@+id/send_type"
                         android:layout_width="wrap_content"
                         android:layout_height="23dp"
                         android:layout_marginLeft="10dp"
                         android:padding="1dp"
                         android:singleLine="true"
-                        android:text="发往"
+                        android:text="发货"
                         android:textSize="13sp"
                         android:visibility="visible"
                         style_common:boo_one="false"
@@ -157,7 +166,7 @@
 
 
                     <TextView
-                        android:id="@+id/tv_nownum"
+                        android:id="@+id/tv_sendnum"
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/white"
@@ -168,7 +177,7 @@
 
                     <TextView
                         android:gravity="right|center_vertical"
-                        android:id="@+id/tv_startime"
+                        android:id="@+id/tv_send_time"
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/color_hv_txt_dark"
@@ -178,46 +187,74 @@
                 </LinearLayout>
 
                 <LinearLayout
+
+                    android:id="@+id/ll_receipt"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/tv_comp"
+                        android:id="@+id/tv_receipt_comname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-                        android:text="@{item_main_trans.develiverCompanyName}"
+                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize" />
+
+
+                    <com.siweisoft.heavycenter.module.view.text.BgTextView
+                        android:id="@+id/receipt_type"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="23dp"
+                        android:layout_marginLeft="10dp"
+                        android:padding="1dp"
+                        android:singleLine="true"
+                        android:text="收货"
+                        android:textSize="13sp"
+                        android:visibility="visible"
+                        style_common:boo_one="false"
+                        style_common:color_one="@color/color_hv_yelll"
+
+                        style_common:color_stroke="@color/red"
+                        style_common:color_stroke_two="@color/color_hv_yelll"
+                        style_common:color_two="@color/color_red_800"
+                        style_common:color_txt="@color/white"
+                        style_common:color_txt_two="@color/white"
+                        style_common:corner="2dp"
+                        style_common:corner_two="5dp"
+                        style_common:stroke="0dp"
+                        style_common:stroke_two="2dp" />
+
+
                     <TextView
                         android:id="@+id/tv_receiptnum"
                         android:singleLine="true"
-                        android:layout_marginLeft="15dp"
-                        android:textColor="@color/color_hv_yelll"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-                        android:text="0t"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                    <View
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"/>
+
 
                     <TextView
                         android:gravity="right|center_vertical"
-                        android:id="@+id/tv_endtime"
+                        android:id="@+id/tv_receipt_time"
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/color_hv_txt_dark"
                         android:textSize="@dimen/dimen_recylce_item_date_txtsize"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
+                </LinearLayout>
 
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                     <com.siweisoft.heavycenter.module.view.text.BgTextView
+                        android:layout_alignParentRight="true"
                         android:id="@+id/bt_sure"
                         android:paddingTop="2dp"
                         android:paddingBottom="2dp"
@@ -226,7 +263,7 @@
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textSize="15sp"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         style_common:color_one="@color/color_hv_yelll"
                         style_common:stroke="0dp"
                         style_common:color_stroke="@color/red"
@@ -242,7 +279,7 @@
                         android:text="完成"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-                    </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
 
         </LinearLayout>

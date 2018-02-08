@@ -5,9 +5,11 @@ package com.siweisoft.heavycenter.module.myce;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationSet;
 
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.bean.res.BaseResBean;
@@ -135,9 +137,11 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                         @Override
                         public void onClick(View v) {
                         FragManager2.getInstance().setFinishAnim(R.anim.scale_in,R.anim.scale_out).finish(getBaseUIAct(),MainValue.主界面,false);
+                            ((MainAct)getBaseUIAct()).getP().getU().switchDrawer(true);
                     }
                 });
-                FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,infoFrag);
+
+                FragManager2.getInstance().setShareName(ViewCompat.getTransitionName(v)).setShareElement(v).setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,infoFrag);
                 break;
             case R.id.iv_head:
                // IntentUtil.getInstance().takeGetPhoto(activity);
@@ -147,10 +151,10 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new SetFrag());
                 break;
             case R.id.iv_car:
-                IntentUtil.getInstance().photoShowFromphone(this,02);
+                //IntentUtil.getInstance().photoShowFromphone(this,02);
                 break;
             case R.id.iv_dirver:
-                IntentUtil.getInstance().photoShowFromphone(this,03);
+                //IntentUtil.getInstance().photoShowFromphone(this,03);
                 break;
             case R.id.item_driver:
                 FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new BindFrag());

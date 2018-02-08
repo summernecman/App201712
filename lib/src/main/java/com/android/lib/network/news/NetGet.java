@@ -299,6 +299,14 @@ public class NetGet {
 
         LogUtil.E(url + "---" + ValueConstant.cookieFromResponse);
         RequestParams requestParams = new RequestParams(url);
+        requestParams.setUseCookie(false);
+
+        ArrayList<String> strings = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse),new TypeToken<ArrayList<String>>(){}.getType());
+        for(int i=0;strings!=null&& i<strings.size();i++){
+            requestParams.addHeader("Cookie",strings.get(i));
+            LogUtil.E(strings.get(i));
+        }
+
 
         MultipartBody body = new MultipartBody(list, "UTF-8");
         requestParams.setRequestBody(body);

@@ -3,7 +3,9 @@ package com.siweisoft.heavycenter.module.main.trans;
 //by summer on 2017-12-11.
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 
 import com.android.lib.base.interf.OnFinishListener;
@@ -66,6 +68,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @OnClick({R.id.ftv_right2,R.id.search,R.id.view})
     public void onClick(View v) {
         switch (v.getId()){

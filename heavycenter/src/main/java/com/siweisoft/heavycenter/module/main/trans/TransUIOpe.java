@@ -26,6 +26,7 @@ import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.StringUtil;
+import com.android.lib.util.data.DateFormatUtil;
 import com.baidu.mapapi.map.BaiduMap;
 import com.github.florent37.viewanimator.ViewAnimator;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -41,10 +42,12 @@ import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainTransBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainTrans2Binding;
 import com.siweisoft.heavycenter.databinding.ItemMainTransBinding;
 import com.siweisoft.heavycenter.databinding.ItemTransBinding;
 
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.List;
 
 public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
@@ -100,11 +103,11 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
         final String comname = LocalValue.get登录返回信息().getAbbreviationName();
         final int usertype = LocalValue.get登录返回信息().getUserType();
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_trans, BR.item_main_trans, s,listener){
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_trans2, BR.item_main_trans2, s,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
-                ItemMainTransBinding itemMainTransBinding = (ItemMainTransBinding) holder.viewDataBinding;
+                ItemMainTrans2Binding itemMainTransBinding = (ItemMainTrans2Binding) holder.viewDataBinding;
                 itemMainTransBinding.getRoot().setSelected(position%2==0?true:false);
                 itemMainTransBinding.btSure.setOnClickListener(this);
                 itemMainTransBinding.btSure.setTag(R.id.position,position);
@@ -113,46 +116,32 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                     case TransDetailRes.SING_STATUS_已确认:
                         itemMainTransBinding.tvNum.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
                         itemMainTransBinding.btSure.setVisibility(View.GONE);
-                        itemMainTransBinding.tvEndtime.setVisibility(View.VISIBLE);
                         break;
                     case TransDetailRes.SING_STATUS_等待确认:
                         itemMainTransBinding.tvNum.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
                         if(usertype == UserTypeReqBean.非驾驶员){
                             itemMainTransBinding.btSure.setVisibility(View.VISIBLE);
-                            itemMainTransBinding.tvEndtime.setVisibility(View.GONE);
                         }
                         break;
                 }
-               // itemMainTransBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).get()));
-                if(comname.equals(s.get(position).getDeveliverCompanyName())){
-                    itemMainTransBinding.type.setText("发往");
-
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    itemMainTransBinding.tvNownum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getDeveliverNum())))+"t");
-
-
-                    itemMainTransBinding.tvComp.setText(StringUtil.getStr(s.get(position).getDeveliverCompanyName()));
-                }else{
-                    itemMainTransBinding.type.setText("发来");
-                    DecimalFormat df = new DecimalFormat("#.##");
-                    itemMainTransBinding.tvNownum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getReceiveNum())))+"t");
-                    itemMainTransBinding.tvComp.setText(StringUtil.getStr(s.get(position).getReceiveCompanyName()));
-                }
-
-                itemMainTransBinding.tvDirvername.setText(StringUtil.getStr(s.get(position).getTrueName()));
-                itemMainTransBinding.tvPlannum.setText(StringUtil.getStr(s.get(position).getPlanNumber())+"t");
-
-                if(s.get(position).getFhTime()!=null){
-                    itemMainTransBinding.tvStartime.setText(StringUtil.getStr(s.get(position).getFhTime()));
-                }
-
-                if(s.get(position).getShTime()!=null){
-                    itemMainTransBinding.tvEndtime.setText(StringUtil.getStr(s.get(position).getShTime()));
-                }
-                itemMainTransBinding.tvCarlicenseno.setText(StringUtil.getStr(s.get(position).getCarLicenseNo()));
-
                 DecimalFormat df = new DecimalFormat("#.##");
-                itemMainTransBinding.tvNum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getReceiveNum())))+"t");
+                itemMainTransBinding.tvSendComname.setText(StringUtil.getStr(s.get(position).getDeveliverCompanyName()));
+                itemMainTransBinding.tvSendnum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getDeveliverNum())))+"t");
+                if(s.get(position).getFhTime()!=null){
+                    itemMainTransBinding.tvSendTime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getFhTime())));
+                }
+
+                itemMainTransBinding.tvReceiptComname.setText(StringUtil.getStr(s.get(position).getReceiveCompanyName()));
+                itemMainTransBinding.tvReceiptnum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getReceiveNum())))+"t");
+                if(s.get(position).getShTime()!=null){
+                    itemMainTransBinding.tvReceiptTime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getShTime())));
+                }
+                itemMainTransBinding.tvDirvername.setText(StringUtil.getStr(s.get(position).getTrueName()));
+                itemMainTransBinding.tvCarlicenseno.setText(StringUtil.getStr(s.get(position).getCarLicenseNo()));
+                itemMainTransBinding.tvNum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getTotalSuttle())))+"t");
+                if(s.get(position).getCarNumber()!=null){
+                    itemMainTransBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).getCarNumber())+"车");
+                }
             }
         });
 

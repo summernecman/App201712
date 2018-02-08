@@ -57,7 +57,7 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
                 super.onBindViewHolder(holder, position);
                 final ItemManaUserBinding binding = (ItemManaUserBinding) holder.viewDataBinding;
 
-                if(data.get(position).getStatus()== UnitUserResBean.ResultsBean.STATUS_ONLINE){
+                if(data.get(position).getLoginStatus()== UnitUserResBean.ResultsBean.STATUS_ONLINE){
                     binding.tvState.setText(UnitUserResBean.ResultsBean.STATUS_ONLINE_CN);
                     binding.ivHead.setSelected(true);
                 }else{
@@ -67,7 +67,7 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
 
                 switch (data.get(position).getBindCompanyState()){
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
-                        binding.tvState.setText(LoginResBean.BIND_UNIT_STATE_BINDED_CN);
+                        //binding.tvState.setText(LoginResBean.BIND_UNIT_STATE_BINDED_CN);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                         binding.tvState.setText(LoginResBean.BIND_UNIT_STATE_CHECK_CN);
@@ -77,6 +77,9 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
                         break;
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
                         binding.tvState.setText(LoginResBean.BIND_UNIT_STATE_UNBIND_CN);
+                        break;
+                    case LoginResBean.已解绑:
+                        binding.tvState.setText(LoginResBean.BIND_UNIT_STATE_已解绑_CN);
                         break;
                         default:
                             break;

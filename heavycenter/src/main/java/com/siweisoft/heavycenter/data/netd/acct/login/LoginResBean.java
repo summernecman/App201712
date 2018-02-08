@@ -62,6 +62,8 @@ public class LoginResBean extends BaseBean {
 
     public static final int BIND_UNIT_STATE_REJECT = 3;
 
+    public static final int 已解绑 = 4;
+
     public static final String BIND_UNIT_STATE_UNBIND_CN = "未绑定";
 
     public static final String BIND_UNIT_STATE_CHECK_CN = "审核中";
@@ -71,6 +73,7 @@ public class LoginResBean extends BaseBean {
     public static final String BIND_UNIT_STATE_REJECT_CN = "绑定失败";
 
 
+    public static final String BIND_UNIT_STATE_已解绑_CN = "已解绑";
 
     private int userId;
     private String passWord;

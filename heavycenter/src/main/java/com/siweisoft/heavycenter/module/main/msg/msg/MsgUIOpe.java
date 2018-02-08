@@ -19,8 +19,11 @@ import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.AnimUtil;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.ScreenUtil;
+import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.android.lib.util.system.HandleUtil;
+import com.github.florent37.viewanimator.AnimationListener;
 import com.github.florent37.viewanimator.ViewAnimator;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -55,7 +58,7 @@ public class MsgUIOpe extends BaseUIOpe<FragMainMsgsMsgBinding>{
                 }
                 ItemMainMsgAllBinding binding = (ItemMainMsgAllBinding) holder.viewDataBinding;
                 binding.tvDes.setVisibility(View.GONE);
-                binding.tvDate.setText(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(o.getResults().get(position).getSendTime())));
+                binding.tvDate.setText(StringUtil.getStr(o.getResults().get(position).getSendTimeDes()));
                 switch (o.getResults().get(position).getAuditState()){
                     case MsgsResBean.ResultsBean.AUDITOR_STATE_CHECKING:
                         binding.llFuction.setVisibility(View.VISIBLE);
@@ -63,46 +66,55 @@ public class MsgUIOpe extends BaseUIOpe<FragMainMsgsMsgBinding>{
                             case MsgsResBean.ResultsBean.MSG_TYPE_INVITE_M:
                                 binding.btMana.setOnClickListener(this);
                                 binding.btReject.setOnClickListener(this);
-                                binding.btReject.setOnClickListener(this);
-                                binding.btReject.setTag(R.id.data1,binding.llFuction);
+                                binding.btAgree.setOnClickListener(this);
+
                                 binding.btMana.setTag(R.id.data,o.getResults().get(position));
-                                binding.btMana.setTag(R.id.data1,binding.llFuction);
                                 binding.btReject.setTag(R.id.data,o.getResults().get(position));
+                                binding.btAgree.setTag(R.id.data,o.getResults().get(position));
+
+                                binding.btMana.setTag(R.id.data1,binding.llFuction);
                                 binding.btReject.setTag(R.id.data1,binding.llFuction);
+                                binding.btAgree.setTag(R.id.data1,binding.llFuction);
+
                                 binding.btMana.setTag(R.id.position,position);
                                 binding.btReject.setTag(R.id.position,position);
-                                binding.btReject.setTag(R.id.position,position);
+                                binding.btAgree.setTag(R.id.position,position);
                                 break;
                             default:
+                                binding.btMana.setOnClickListener(this);
+                                binding.btReject.setOnClickListener(this);
                                 binding.btAgree.setOnClickListener(this);
-                                binding.btReject.setOnClickListener(this);
-                                binding.btAgree.setTag(R.id.data1,binding.llFuction);
-                                binding.btAgree.setTag(R.id.data,o.getResults().get(position));
-                                binding.btReject.setOnClickListener(this);
-                                binding.btReject.setTag(R.id.data1,binding.llFuction);
-                                binding.btReject.setTag(R.id.data,o.getResults().get(position));
+
                                 binding.btMana.setTag(R.id.data,o.getResults().get(position));
+                                binding.btReject.setTag(R.id.data,o.getResults().get(position));
+                                binding.btAgree.setTag(R.id.data,o.getResults().get(position));
+
                                 binding.btMana.setTag(R.id.data1,binding.llFuction);
+                                binding.btReject.setTag(R.id.data1,binding.llFuction);
+                                binding.btAgree.setTag(R.id.data1,binding.llFuction);
+
                                 binding.btMana.setTag(R.id.position,position);
                                 binding.btReject.setTag(R.id.position,position);
-                                binding.btReject.setTag(R.id.position,position);
+                                binding.btAgree.setTag(R.id.position,position);
                                 break;
-
                         }
                         break;
                     case MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED:
-                        binding.llFuction.setVisibility(View.VISIBLE);
+                        binding.llFuction.setVisibility(View.GONE);
                         binding.tvDes.setVisibility(View.VISIBLE);
                         binding.tvDes.setText(MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED_CN);
                         break;
                     case MsgsResBean.ResultsBean.AUDITOR_STATE_REJECT:
-                        binding.llFuction.setVisibility(View.VISIBLE);
+                        binding.llFuction.setVisibility(View.GONE);
                         binding.tvDes.setVisibility(View.VISIBLE);
                         binding.tvDes.setText(MsgsResBean.ResultsBean.AUDITOR_STATE_REJECT_CN);
                         break;
                     case MsgsResBean.ResultsBean.AUDITOR_STATE_NONEED:
-                        ViewAnimator.animate(binding.llFuction).height(binding.llFuction.getHeight(),0).accelerate().duration(400).start();
+                        binding.llFuction.setVisibility(View.GONE);
                         break;
+                        default:
+                            binding.llFuction.setVisibility(View.GONE);
+                            break;
 
                 }
 
@@ -140,14 +152,13 @@ public class MsgUIOpe extends BaseUIOpe<FragMainMsgsMsgBinding>{
         }
     }
 
-    public void setBtnGone(final View view){
-        ViewAnimator.animate(view).height(view.getHeight(),0).accelerate().duration(400).start();
-        HandleUtil.getInstance().postDelayed(new Runnable() {
+    public void setBtnGone(final View view, final int pos){
+        ViewAnimator.animate(view).fadeOut().onStop(new AnimationListener.Stop() {
             @Override
-            public void run() {
-                notifyDataSetChanged();
+            public void onStop() {
+                notifyDataSetChanged(pos);
             }
-        }, 400);
+        }).height(view.getHeight(),0).accelerate().duration(400).start();
     }
 
 }

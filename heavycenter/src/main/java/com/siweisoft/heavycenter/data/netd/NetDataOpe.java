@@ -50,6 +50,8 @@ import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.update.UpdateStoreReq;
+import com.siweisoft.heavycenter.data.netd.mana.store.update.UpdateStoreRes;
 import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserResBean;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
@@ -313,6 +315,11 @@ public class NetDataOpe {
 
             public static void detail(Context context, StoreDetailReq reqBean, NetI<StoreDetail> adapter) {
                 NetGet.getData(context,NetValue.获取地址("/wareHouse/getDetail"),reqBean,adapter);
+            }
+
+
+            public static void update(Context context, UpdateStoreReq reqBean, NetI<UpdateStoreRes> adapter) {
+                NetGet.postData(context,NetValue.获取地址("/wareHouse/update"),reqBean,adapter);
             }
 
         }

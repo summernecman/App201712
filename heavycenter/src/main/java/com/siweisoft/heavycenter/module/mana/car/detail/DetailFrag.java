@@ -32,13 +32,6 @@ import butterknife.OnClick;
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements ViewListener{
 
 
-    public static final String TYPE_NEW = "TYPE_NEW";
-
-    public static final String TYPE_NEW_BIND = "TYPE_NEW_BIND";
-
-    public static final String TYPE_DETAIL = "TYPE_DETAIL";
-
-    public static final String TYPE_BIND = "TYPE_BIND";
 
     @Override
     public void initNow() {
@@ -51,13 +44,14 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
     public void initdelay() {
         super.initdelay();
         switch (getP().getD().getType()){
-            case TYPE_NEW:
+            case CarDetailValue.新建车辆:
 
                 break;
-            case TYPE_NEW_BIND:
-                getP().getU().bind.itemCarlicenseno.setMidEtTxt(StringUtil.getStr(getArguments().getString(ValueConstant.DATA_DATA,"")));
+            case CarDetailValue.新建车辆并绑定:
+                getP().getU().bind.title.getMidTV().setText(StringUtil.getStr(getArguments().getString(ValueConstant.DATA_DATA,"")));
+                //getP().getU().bind.itemCarlicenseno.setMidEtTxt(StringUtil.getStr(getArguments().getString(ValueConstant.DATA_DATA,"")));
                 break;
-            case TYPE_DETAIL:
+            case CarDetailValue.查看车辆:
                 getP().getD().setCarinfo((CarsResBean.CarInfoRes) getArguments().getSerializable(ValueConstant.DATA_DATA));
                 getP().getD().infoCar(getP().getD().getCarInfoReq(getP().getD().getCarinfo()), new UINetAdapter<CarsResBean.CarInfoRes>(getActivity()) {
                     @Override
@@ -81,7 +75,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                     }
                 });
                 break;
-            case TYPE_BIND:
+            case CarDetailValue.绑定车辆:
                 getP().getD().setCarinfo((CarsResBean.CarInfoRes) getArguments().getSerializable(ValueConstant.DATA_DATA));
                 getP().getD().infoCar(getP().getD().getCarInfoReq(getP().getD().getCarinfo()), new UINetAdapter<CarsResBean.CarInfoRes>(getActivity()) {
                     @Override
@@ -122,7 +116,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                 break;
             case R.id.ftv_right2:
                 switch (getP().getD().getType()){
-                    case TYPE_NEW:
+                    case CarDetailValue.新建车辆:
                         if(getP().getU().canNewGo()){
                             getP().getD().newCar(getP().getU().getCarNewReqBean(getP().getD().getCarNewReqBean(getP().getD().getCarinfo())), new UINetAdapter<CarNewResBean>(getActivity()) {
                                 @Override
@@ -136,7 +130,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                             });
                         }
                         break;
-                    case TYPE_DETAIL:
+                    case CarDetailValue.查看车辆:
                         if(getP().getU().canGo()){
                             getP().getD().updateCar(getP().getU().getUpdateCarReq(getP().getD().getUpdateCarReq(getP().getD().getCarinfo())), new UINetAdapter<UpdateCarRes>(getContext()) {
                                 @Override
@@ -150,7 +144,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                             });
                         }
                         break;
-                    case TYPE_BIND:
+                    case CarDetailValue.绑定车辆:
                         if(getP().getU().canGo()){
                             getP().getD().updateCar(getP().getU().getUpdateCarReq(getP().getD().getUpdateCarReq(getP().getD().getCarinfo())), new UINetAdapter<UpdateCarRes>(getContext()) {
                                 @Override
@@ -172,7 +166,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                             });
                         }
                         break;
-                    case TYPE_NEW_BIND:
+                    case CarDetailValue.新建车辆并绑定:
                         if(getP().getU().canNewGo()){
                             getP().getD().newCar(getP().getU().getCarNewReqBean(getP().getD().getCarNewReqBean(getP().getD().getCarinfo())), new UINetAdapter<CarNewResBean>(getActivity()) {
                                 @Override

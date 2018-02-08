@@ -9,9 +9,10 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
 
-public class SpecsFrag extends BaseUIFrag<SpecsUIOpe,SpecsDAOpe> implements ViewListener{
+public class SpecsFrag extends AppFrag<SpecsUIOpe,SpecsDAOpe> implements ViewListener{
 
     @Override
     public void initdelay() {

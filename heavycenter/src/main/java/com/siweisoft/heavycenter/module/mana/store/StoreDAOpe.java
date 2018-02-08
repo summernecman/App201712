@@ -12,14 +12,14 @@ import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.update.UpdateStoreReq;
+import com.siweisoft.heavycenter.data.netd.mana.store.update.UpdateStoreRes;
 
 import java.util.ArrayList;
 
 public class StoreDAOpe extends AppDAOpe {
 
     private StatusStoresReqBean statusStoresReqBean = new StatusStoresReqBean();
-
-
 
 
     public ArrayList<String> getData(){
@@ -50,7 +50,11 @@ public class StoreDAOpe extends AppDAOpe {
         NetDataOpe.Mana.Store.statusStore(getActivity(),statusStoresReqBean,adapter);
     }
 
+
+
+
     public StatusStoresReqBean getStatusStoresReqBean() {
         return statusStoresReqBean;
     }
+
 }

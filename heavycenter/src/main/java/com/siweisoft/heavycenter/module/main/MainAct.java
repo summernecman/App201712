@@ -15,12 +15,16 @@ import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.activity.ActivityUtil;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.android.lib.view.bottommenu.MessageEvent;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.module.welc.welc.WelcAct;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSelectListener {
 
@@ -115,5 +119,20 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
                 }
             }
         }
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void XXX(MessageEvent m) {
+        if("net".equals(m.sender)){
+            LocalValue.set自动登录(false);
+            startActivity(new Intent(this,WelcAct.class));
+            this.finish();
+        }
+    }
+
+    @Override
+    protected boolean registerEventBus() {
+        return true;
     }
 }

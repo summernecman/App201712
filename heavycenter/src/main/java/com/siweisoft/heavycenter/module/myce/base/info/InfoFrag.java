@@ -15,9 +15,15 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
     View.OnClickListener onClickListener;
 
     @Override
+    public void initNow() {
+        super.initNow();
+        getP().getU().initScan();
+    }
+
+    @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().initScan();
+       // getP().getU().initScan();
 
     }
 

@@ -38,7 +38,7 @@ public class DetailDAOpe extends AppDAOpe {
 
     CarNewReqBean carNewReqBean = new CarNewReqBean();
 
-    private String type = DetailFrag.TYPE_DETAIL;
+    private String type = CarDetailValue.查看车辆;
 
     private ArrayList<DriverRes> driverRes = new ArrayList<>();
 

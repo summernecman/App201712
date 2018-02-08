@@ -56,12 +56,12 @@ public  class TransDetailRes extends BaseBean {
     private String orderNo;
     private int userId;
     private String develiverCompanyName;
-    private Object carNumber;
+    private Integer carNumber;
     private int ordersId;
     private double totalSuttle;
     private double planNumber;
-    private Object FhTime;
-    private Object ShTime;
+    private Long FhTime;
+    private Long ShTime;
     private List<DeliverRecordListBean> deliverRecordList;
     private List<ReceiveRecordListBean> receiveRecordList;
 
@@ -245,11 +245,11 @@ public  class TransDetailRes extends BaseBean {
         this.develiverCompanyName = develiverCompanyName;
     }
 
-    public Object getCarNumber() {
+    public Integer getCarNumber() {
         return carNumber;
     }
 
-    public void setCarNumber(Object carNumber) {
+    public void setCarNumber(Integer carNumber) {
         this.carNumber = carNumber;
     }
 
@@ -275,6 +275,22 @@ public  class TransDetailRes extends BaseBean {
 
     public void setReceiveRecordList(List<ReceiveRecordListBean> receiveRecordList) {
         this.receiveRecordList = receiveRecordList;
+    }
+
+    public Long getFhTime() {
+        return FhTime;
+    }
+
+    public void setFhTime(Long fhTime) {
+        FhTime = fhTime;
+    }
+
+    public Long getShTime() {
+        return ShTime;
+    }
+
+    public void setShTime(Long shTime) {
+        ShTime = shTime;
     }
 
     public static class DeliverRecordListBean {
@@ -474,21 +490,7 @@ public  class TransDetailRes extends BaseBean {
     }
 
 
-    public Object getFhTime() {
-        return FhTime;
-    }
 
-    public void setFhTime(Object fhTime) {
-        FhTime = fhTime;
-    }
-
-    public Object getShTime() {
-        return ShTime;
-    }
-
-    public void setShTime(Object shTime) {
-        ShTime = shTime;
-    }
 
     public static class ReceiveRecordListBean {
         /**

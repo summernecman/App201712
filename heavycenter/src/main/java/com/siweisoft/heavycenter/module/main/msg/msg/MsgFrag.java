@@ -54,7 +54,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
         getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_INDEX),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
-                o= new Test().getMsgsResBean();
+                //o= new Test().getMsgsResBean();
                 getP().getD().addData(o);
                 getP().getU().LoadListData(getP().getD().getMsgsResBean(),MsgFrag.this);
             }
@@ -91,7 +91,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
                     @Override
                     public void onSuccess(MsgDealResBean o) {
                         data.setAuditState(finalAuditstate);
-                        getP().getU().notifyDataSetChanged(pos);
+                        getP().getU().setBtnGone((View) v.getTag(R.id.data1),pos);
                         if((status[0] == MsgDealReqBean.AUDII_STATUS_YES)){
                             ((MainAct) getBaseUIAct()).go网络获取用户信息重新加载();
                         }

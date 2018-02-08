@@ -149,6 +149,8 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                                             getP().getD().getUnit().setBelongAreaDes(getP().getD().getUnit().getBelongArea());
                                             getP().getD().getUnit().setBelongArea(getP().getD().getUnit().getBelongAreaNo());
                                             getP().getU().initinfo(getP().getD().getUnit());
+                                            ((MainAct)getBaseUIAct()).getP().getD().getMyceFrag().initUINET();
+
                                         }
                                     });
                                 }

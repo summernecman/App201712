@@ -21,6 +21,7 @@ import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.store.info.StoreInfoFrag;
+import com.siweisoft.heavycenter.module.mana.store.info.StoreInfoValue;
 import com.siweisoft.heavycenter.module.mana.store.news.NewFrag;
 
 import butterknife.OnClick;
@@ -47,7 +48,8 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NewFrag(),bundle);
+                bundle.putString(StoreInfoValue.仓库类型,StoreInfoValue.新建仓库);
+                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new StoreInfoFrag(),bundle);
                 break;
         }
     }
@@ -82,6 +84,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                            Bundle bundle = new Bundle();
                            bundle.putSerializable(ValueConstant.DATA_DATA,storeDetail);
                            bundle.putInt(ValueConstant.FARG_REQ,2);
+                           bundle.putString(StoreInfoValue.仓库类型,StoreInfoValue.修改仓库);
                            FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new StoreInfoFrag(),bundle);
                            break;
                }
@@ -118,6 +121,12 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
                     getP().getU().autoRefresh(600);
                 }
+                break;
+            case 2:
+                if(bundle==null|| !bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
+                    return;
+                }
+                getP().getU().autoRefresh(600);
                 break;
         }
     }

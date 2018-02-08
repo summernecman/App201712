@@ -4,6 +4,7 @@ package com.android.lib.util.fragment.two;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 
 import com.android.lib.R;
 import com.android.lib.base.activity.BaseUIActivity;
@@ -21,6 +22,10 @@ public class FragManager2  {
     private boolean hideLast = true;
 
     private boolean anim = true;
+
+    private View shareElement;
+
+    private String shareName;
 
 
     public static FragManager2 getInstance(){
@@ -44,6 +49,13 @@ public class FragManager2  {
         fragment.getArguments().putString(ValueConstant.容器,moudle);
         fragment.getArguments().putInt(ValueConstant.VIEW_ID,viewid);
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+        if(getShareElement()!=null && getShareName()!=null){
+            transaction.addSharedElement(getShareElement(),getShareName());
+            transaction.add(viewid,fragment,fragment.getUniqueid()+"");
+            transaction.commitNowAllowingStateLoss();
+            map.get(moudle).addFrag(fragment);
+            return;
+        }
         if(isAnim()){
             transaction.setCustomAnimations(getAnim1(),getAnim2());
         }
@@ -213,6 +225,24 @@ public class FragManager2  {
 
     public FragManager2 setAnim(boolean anim) {
         this.anim = anim;
+        return this;
+    }
+
+    public View getShareElement() {
+        return shareElement;
+    }
+
+    public FragManager2 setShareElement(View shareElement) {
+        this.shareElement = shareElement;
+        return this;
+    }
+
+    public String getShareName() {
+        return shareName;
+    }
+
+    public FragManager2 setShareName(String shareName) {
+        this.shareName = shareName;
         return this;
     }
 }

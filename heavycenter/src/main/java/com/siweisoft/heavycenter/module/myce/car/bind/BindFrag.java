@@ -53,7 +53,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
                             super.onResult(success, msg, o);
                             if(o!=null){
                                 Bundle bundle = new Bundle();
-                                bundle.putString(ValueConstant.DATA_DATA2,DetailFrag.TYPE_BIND);
+                                bundle.putString(ValueConstant.DATA_DATA2,CarDetailValue.绑定车辆);
                                 bundle.putSerializable(ValueConstant.DATA_DATA,o);
                                 FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,MainValue.主界面ID,new DetailFrag(),bundle);
                             }else{
@@ -75,10 +75,9 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
         switch (type){
             case ViewListener.TYPE_ONCLICK:
 
-
                 CarsResBean.CarInfoRes data = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
                 Bundle bundle = new Bundle();
-                bundle.putString(ValueConstant.DATA_DATA2,DetailFrag.TYPE_BIND);
+                bundle.putString(ValueConstant.DATA_DATA2,CarDetailValue.绑定车辆);
                 bundle.putSerializable(ValueConstant.DATA_DATA,data);
                 FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new DetailFrag(),bundle);
 

@@ -218,6 +218,7 @@
             android:layout_height="45dp"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:id="@+id/bindcartip"
             android:layout_marginTop="10dp"
             android:background="@color/white"
             style_common:txt_left = "选择当前驾驶员"

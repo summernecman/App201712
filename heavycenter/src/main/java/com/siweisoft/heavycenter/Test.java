@@ -178,7 +178,7 @@ public class Test {
         for(int i=0;i<10;i++){
             TransDetailRes resultsBean = new TransDetailRes();
             resultsBean.setCarLicenseNo("车牌号");
-            resultsBean.setCarNumber("NO123");
+            resultsBean.setCarNumber(11);
             resultsBean.setDeveliverCompanyName("运输公司");
             resultsBean.setDeveliverNum(123);
            // resultsBean.setFhTime("发货时间");

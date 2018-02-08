@@ -44,7 +44,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
     }
 
     @OnClick({R.id.item_addr,R.id.item_wuliname,R.id.item_wuliguige,R.id.item_unit,R.id.item_starttime,R.id.item_rule,R.id.tv_send,R.id.tv_receipt,R.id.ftv_right2})
-    public void onClick(View v) {
+    public void onClick(final View v) {
         super.onClick(v);
         Bundle bundle = new Bundle();
         switch (v.getId()){
@@ -96,12 +96,15 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 break;
             case R.id.ftv_right2:
                 if(getP().getU().canGo()){
-                    getP().getD().newOrder(getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(getBaseUIAct()) {
+                    getP().getD().newOrder(getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(this,UINetAdapter.加载) {
+
                         @Override
-                        public void onSuccess(NewOrderRes o) {
-                            super.onSuccess(o);
-                            getArguments().putBoolean(ValueConstant.DATA_DATA,true);
-                            getActivity().onBackPressed();
+                        public void onResult(boolean success, String msg, NewOrderRes o) {
+                            super.onResult(success, msg, o);
+                            if(success){
+                                getArguments().putBoolean(ValueConstant.DATA_DATA,true);
+                                getActivity().onBackPressed();
+                            }
                         }
                     });
                 }

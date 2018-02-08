@@ -13,6 +13,7 @@
         android:layout_height="@dimen/dimens_base_title_clip"
         android:background="@color/color_base_statusbar"
         android:paddingTop="20dp"
+        android:clickable="true"
         android:gravity="center_vertical"
         android:orientation="vertical">
 
@@ -48,6 +49,7 @@
 
 
     <ImageView
+        android:transitionName="right"
         android:id="@+id/ftv_right"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -65,6 +67,7 @@
 
 
     <ImageView
+        android:transitionName="right2"
         android:layout_toLeftOf="@id/ftv_right"
         android:id="@+id/ftv_right2"
         android:layout_width="30dp"

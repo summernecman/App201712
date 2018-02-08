@@ -86,6 +86,7 @@ public class UnitUserResBean extends BaseBean {
         private Long bindCompanyTime;
         private int bindCompanyState;
         private int status;
+        private int loginStatus;
 
         public final static int STATUS_ONLINE = 1;
 
@@ -94,6 +95,14 @@ public class UnitUserResBean extends BaseBean {
         public final static String STATUS_ONLINE_CN = "在线";
 
         public final static String STATUS_OFFLINE_CN = "离线";
+
+        public int getLoginStatus() {
+            return loginStatus;
+        }
+
+        public void setLoginStatus(int loginStatus) {
+            this.loginStatus = loginStatus;
+        }
 
         public String getTrueName() {
             return trueName;
