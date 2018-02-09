@@ -2,8 +2,8 @@ package com.siweisoft.heavycenter.module.main.order.begin;
 
 //by summer on 2017-12-19.
 
+import android.os.Build;
 import android.os.Bundle;
-import android.support.transition.Fade;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
@@ -25,7 +25,6 @@ import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.order.detail.DetailFrag;
-import com.siweisoft.heavycenter.module.myce.test.DetailTransition;
 import com.siweisoft.heavycenter.module.myce.test.HeadTestFrag;
 
 public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
@@ -46,10 +45,13 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
             case ViewListener.TYPE_ONCLICK:
                 switch (v.getId()){
                     case R.id.ll_ingorder:
-                        HeadTestFrag headTestFrag = new HeadTestFrag();
-                        //headTestFrag.setSharedElementEnterTransition(new DetailTransition());
-                        //headTestFrag.setSharedElementReturnTransition(new DetailTransition());
-                        FragManager2.getInstance().setShareElement(v.findViewById(R.id.circlebar)).setShareName("headimage").start(getBaseUIAct(),MainValue.订单,MainValue.订单ID,headTestFrag);
+
+
+
+
+
+
+                       // FragManager2.getInstance().setShareElement(v.findViewById(R.id.circlebar)).setShareName("headimage").start(getBaseUIAct(),MainValue.订单,MainValue.订单ID,headTestFrag);
                         break;
                     case R.id.ll_neworder:
                         Bundle bundle = new Bundle();

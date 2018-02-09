@@ -86,7 +86,7 @@ public class BaseServerFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends Ba
                         return;
                     }
                 }
-                FragmentUtil2.getInstance().removeTopRightNow(activity, Value.getNowRoot());
+                FragmentUtil2.getInstance().removeTopRightNow(getBaseUIAct(), Value.getNowRoot());
                 break;
             case R.id.ftv_right2:
                 break;

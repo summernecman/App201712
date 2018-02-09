@@ -3,6 +3,7 @@ package com.siweisoft.heavycenter.module.welc.welc;
 //by summer on 2017-12-14.
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 import com.android.lib.network.news.NetAdapter;
@@ -18,6 +19,7 @@ import com.siweisoft.heavycenter.data.netd.other.city.CityReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
 
 import java.util.ArrayList;
 
@@ -28,6 +30,7 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if(HCApp.test){
             IntentUtil.startActivityWithFinish(getActivity(), MainAct.class,null);
             return;

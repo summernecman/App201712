@@ -3,9 +3,13 @@ package com.siweisoft.heavycenter.module.myce;
 //by summer on 2017-12-14.
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
+import android.transition.ChangeBounds;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +39,7 @@ import com.siweisoft.heavycenter.module.mana.user.list.UserFrag;
 import com.siweisoft.heavycenter.module.myce.car.bind.BindFrag;
 import com.siweisoft.heavycenter.module.myce.name.NameFrag;
 import com.siweisoft.heavycenter.module.myce.sett.SetFrag;
+import com.siweisoft.heavycenter.module.myce.test.HeadTestFrag;
 import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
 import com.siweisoft.heavycenter.module.myce.base.info.InfoFrag;
 import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
@@ -161,7 +166,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
         }
         getBaseUIAct().setMoudle(MainValue.主界面);
-        ((MainAct)getActivity()).getP().getU().switchDrawer();
+       // ((MainAct)getActivity()).getP().getU().switchDrawer();
     }
 
     @Override

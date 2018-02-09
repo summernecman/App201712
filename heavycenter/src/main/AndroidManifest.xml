@@ -37,8 +37,6 @@
                   android:screenOrientation="portrait">
         </activity>
 
-
-
         <meta-data
                 android:name="com.baidu.lbsapi.API_KEY"
                 android:value="zRI2ehMENx33kDG1qTr1GhXofbesLYWj" />

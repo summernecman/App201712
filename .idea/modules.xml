@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/heavycenter/heavycenter.iml" filepath="$PROJECT_DIR$/heavycenter/heavycenter.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
     </modules>
   </component>
 </project>

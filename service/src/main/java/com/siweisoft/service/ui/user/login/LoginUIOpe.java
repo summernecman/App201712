@@ -12,7 +12,6 @@ import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.constant.UrlConstant;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.SPUtil;
-import com.jaeger.library.StatusBarUtil;
 import com.siweisoft.service.GlideApp;
 import com.siweisoft.service.databinding.FragLoginBinding;
 import com.siweisoft.service.netdb.NetValue;
