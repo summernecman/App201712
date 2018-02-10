@@ -2,8 +2,13 @@ package com.siweisoft.heavycenter.module.main.order.begin;
 
 //by summer on 2017-12-19.
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
+import android.transition.ChangeBounds;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
@@ -25,7 +30,10 @@ import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.order.detail.DetailFrag;
+import com.siweisoft.heavycenter.module.myce.test.DetailTransition;
 import com.siweisoft.heavycenter.module.myce.test.HeadTestFrag;
+import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
+import com.siweisoft.heavycenter.module.test.SharedElementFragment2;
 
 public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
 
@@ -39,6 +47,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
         }
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onInterupt(int type, View v) {
         switch (type){
@@ -48,10 +57,100 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
 
 
 
+//                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+//
+//                            SharedElementFragment1 detailFrag = new SharedElementFragment1();
+//                            detailFrag.iid = 14346;
+//                            getFragmentManager().beginTransaction()
+//                                    .add(detailFrag.iid,detailFrag)
+//                                    .addToBackStack(null)
+//                                    .commit();
+//                            return;
+//                        }
 
 
 
-                       // FragManager2.getInstance().setShareElement(v.findViewById(R.id.circlebar)).setShareName("headimage").start(getBaseUIAct(),MainValue.订单,MainValue.订单ID,headTestFrag);
+//                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+//                            DetailFrag sharedElementFragment2 = new DetailFrag();
+//
+//                            Slide slideTransition = new Slide(Gravity.RIGHT);
+//                            slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+//
+//                            ChangeBounds changeBoundsTransition = new ChangeBounds();
+//                            changeBoundsTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+//
+//                            sharedElementFragment2.setEnterTransition(slideTransition);
+//                            sharedElementFragment2.setAllowEnterTransitionOverlap(false);
+//                            sharedElementFragment2.setAllowReturnTransitionOverlap(false);
+//                            sharedElementFragment2.setSharedElementEnterTransition(changeBoundsTransition);
+//
+//                            getFragmentManager().beginTransaction()
+//                                    .add(14346, sharedElementFragment2)
+//                                    .hide(this)
+//                                    .setReorderingAllowed(true)
+//                                    .addToBackStack(null)
+//                                    .addSharedElement(v, "doingorder")
+//                                    .commit();
+//                            return;
+//                        }
+
+
+
+//                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+//
+//                            SharedElementFragment1 detailFrag = new SharedElementFragment1();
+//
+//                            Slide slideTransition = new Slide(Gravity.RIGHT);
+//                            slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+//
+//                            ChangeBounds changeBoundsTransition = new ChangeBounds();
+//                            changeBoundsTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+//
+//                            detailFrag.setEnterTransition(slideTransition);
+//                            detailFrag.setAllowEnterTransitionOverlap(false);
+//                            detailFrag.setAllowReturnTransitionOverlap(false);
+//                            detailFrag.setSharedElementEnterTransition(changeBoundsTransition);
+//
+//                            getActivity().getSupportFragmentManager().beginTransaction()
+//                                    .add(MainValue.订单ID, detailFrag)
+//                                    .setReorderingAllowed(true)
+//                                    .hide(this)
+//                                    .addToBackStack(null)
+//                                    .addSharedElement(v, getString(R.string.square_blue_name))
+//                                    .commit();
+//                        }
+
+
+
+//                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+//                            DetailFrag sharedElementFragment2 = new DetailFrag();
+//
+//                            Slide slideTransition = new Slide(Gravity.RIGHT);
+//                            slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+//
+//                            ChangeBounds changeBoundsTransition = new ChangeBounds();
+//                            changeBoundsTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+//
+//                            sharedElementFragment2.setEnterTransition(slideTransition);
+//                            sharedElementFragment2.setAllowEnterTransitionOverlap(true);
+//                            sharedElementFragment2.setAllowReturnTransitionOverlap(true);
+//                            sharedElementFragment2.setSharedElementEnterTransition(changeBoundsTransition);
+//
+//                            getActivity().getSupportFragmentManager().beginTransaction()
+//                                    .replace(MainValue.订单ID, sharedElementFragment2)
+//                                    .addSharedElement(v, getString(R.string.square_blue_name))
+//                                    .commit();
+//                        }
+
+
+
+
+
+                        Bundle bundle1 = new Bundle();
+                        bundle1.putString(ValueConstant.TYPE,(String)v.getTag(R.id.type));
+                        OrdersRes.ResultsBean resultsBean1 = (OrdersRes.ResultsBean) v.getTag(R.id.data);
+                        bundle1.putInt(ValueConstant.DATA_DATA, resultsBean1.getOrderId());
+                        FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,MainValue.订单ID,new DetailFrag(),bundle1);
                         break;
                     case R.id.ll_neworder:
                         Bundle bundle = new Bundle();

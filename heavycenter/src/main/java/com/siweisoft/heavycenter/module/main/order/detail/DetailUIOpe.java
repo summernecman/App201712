@@ -66,6 +66,9 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
                 bind.llDrivers.setVisibility(View.GONE);
                 break;
         }
+        if(res==null){
+            return;
+        }
         bind.title.getMidTV().setText(StringUtil.getStr(res.getOrderNo()));
         bind.setVariable(BR.frag_main_order_detail,res);
         bind.itemPlantime.setMidTVTxt(StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH,new Date(res.getPlanTime()))));

@@ -4,6 +4,9 @@ package com.siweisoft.heavycenter.module.welc.welc;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.transition.ChangeBounds;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.View;
 
 import com.android.lib.network.news.NetAdapter;
@@ -19,6 +22,7 @@ import com.siweisoft.heavycenter.data.netd.other.city.CityReqBean;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
 
 import java.util.ArrayList;
@@ -30,6 +34,11 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+
+
 
         if(HCApp.test){
             IntentUtil.startActivityWithFinish(getActivity(), MainAct.class,null);

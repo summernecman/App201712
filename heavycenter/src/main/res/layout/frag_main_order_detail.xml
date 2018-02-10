@@ -34,8 +34,8 @@
 
 
     <LinearLayout
+            android:transitionName="doingorder"
         android:id="@+id/ll_top"
-        android:transitionName="trans_item_main_order_begin"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                     android:singleLine="true"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:text="@{frag_main_order_detail.productName}"
+                    android:text="122233232"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -103,7 +103,7 @@
                     android:layout_marginLeft="14dp"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:text="@{frag_main_order_detail.specification}"
+                    android:text="ffdfdfdfdfd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <View

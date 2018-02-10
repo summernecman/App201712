@@ -43,7 +43,7 @@
 
 
                         <de.hdodenhof.circleimageview.CircleImageView
-                            android:transitionName="headimage"
+                                android:transitionName="cirlceimageview"
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentRight="true"
                                 android:id="@+id/iv_head"

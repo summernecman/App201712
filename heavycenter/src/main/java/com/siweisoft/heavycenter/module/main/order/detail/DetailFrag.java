@@ -28,13 +28,16 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
     @Override
     public void initdelay() {
         super.initdelay();
+        if(getArguments()==null||getArguments().getString(ValueConstant.TYPE)==null){
+            return;
+        }
         getP().getU().initUI(getArguments().getString(ValueConstant.TYPE));
         getP().getU().initRecycle();
         getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UIFNetAdapter<OrdersRes.ResultsBean>(this) {
             @Override
             public void onResult(boolean success, String msg, OrdersRes.ResultsBean o) {
                 super.onResult(success, msg, o);
-                //o = new Test().getOrdersRes().getResults().get(0);
+                o = new Test().getOrdersRes().getResults().get(0);
                 if(success){
                     getP().getD().setData(o);
                     getP().getU().initUI(getArguments().getString(ValueConstant.TYPE),getP().getD().getData());

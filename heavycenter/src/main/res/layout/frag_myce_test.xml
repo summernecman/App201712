@@ -15,14 +15,13 @@
 
 
 
-        <com.siweisoft.heavycenter.module.view.circle.CircleBar
-                android:transitionName="headimage"
-                android:layout_centerHorizontal="true"
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:transitionName="cirlceimageview"
+                android:layout_alignParentBottom="true"
                 android:id="@+id/iv_head"
                 android:src="@drawable/icon_hv_myce_head"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignParentBottom="true"/>
+                android:layout_width="120dp"
+                android:layout_height="120dp"/>
 
     </RelativeLayout>
 </layout>

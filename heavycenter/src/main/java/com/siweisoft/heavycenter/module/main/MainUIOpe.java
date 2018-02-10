@@ -17,10 +17,12 @@ import com.android.lib.util.LogUtil;
 import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.android.lib.view.bottommenu.BottomMenuBean;
+import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.ActMainBinding;
 import com.siweisoft.heavycenter.module.myce.MyceFrag;
 import com.siweisoft.heavycenter.module.myce.unit.nobind.NoBindFrag;
+import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
 
 import java.util.ArrayList;
 
@@ -28,8 +30,8 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
 
     @Override
     public void initUI() {
-        bind.incloud.leftDrawer.getLayoutParams().width = (int) (ScreenUtil.w *80/ 100);
-        bind.incloud.leftDrawer.requestLayout();
+        bind.incloud.hvLeftDrawer.getLayoutParams().width = (int) (ScreenUtil.w *80/ 100);
+        bind.incloud.hvLeftDrawer.requestLayout();
     }
 
     public void setBottomMenuViewData(ArrayList<BottomMenuBean> data){
@@ -39,7 +41,7 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
 
 
     public void initDrawerMenu(MyceFrag myceFrag ){
-        FragManager2.getInstance().setAnim(false).start(getActivity(),MainValue.个人中心,bind.incloud.leftDrawer.getId(),myceFrag);
+        FragManager2.getInstance().setAnim(false).start(getActivity(),MainValue.个人中心,bind.incloud.hvLeftDrawer.getId(),myceFrag);
     }
 
     public void initPages(final ArrayList<BottomMenuBean> pages,OnAppItemSelectListener listener){

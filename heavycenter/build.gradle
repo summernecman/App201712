@@ -9,13 +9,13 @@ android {
             storePassword 'summer'
         }
     }
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion '27.0.2'
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.siweisoft.heavycenter"
-        minSdkVersion 19
-        targetSdkVersion 26
+        minSdkVersion 21
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
 

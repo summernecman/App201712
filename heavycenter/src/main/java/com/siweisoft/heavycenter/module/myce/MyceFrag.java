@@ -48,28 +48,19 @@ import java.io.File;
 import java.io.IOException;
 
 import butterknife.OnClick;
+import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
 import id.zelory.compressor.Compressor;
 
 public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
 
-    public MyceFrag() {
-        LogUtil.E(1);
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        LogUtil.E("onViewCreatedonViewCreatedonViewCreated");
-    }
 
     @Override
     public void initNow() {
         super.initNow();
+
+
+
         init();
     }
 
@@ -99,7 +90,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
         switch (v.getId()){
             case R.id.login:
                 break;
-                case R.id.ftv_back:
+            case R.id.ftv_back:
 
                 break;
             case R.id.item_car:
@@ -139,17 +130,45 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
             case R.id.ftv_right:
                 InfoFrag infoFrag = new InfoFrag();
                 infoFrag.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+                    @Override
+                    public void onClick(View v) {
                         FragManager2.getInstance().setFinishAnim(R.anim.scale_in,R.anim.scale_out).finish(getBaseUIAct(),MainValue.主界面,false);
-                            ((MainAct)getBaseUIAct()).getP().getU().switchDrawer(true);
+                        ((MainAct)getBaseUIAct()).getP().getU().switchDrawer(true);
                     }
                 });
 
                 FragManager2.getInstance().setShareName(ViewCompat.getTransitionName(v)).setShareElement(v).setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,infoFrag);
                 break;
             case R.id.iv_head:
-               // IntentUtil.getInstance().takeGetPhoto(activity);
+
+
+//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+//                    HeadTestFrag sharedElementFragment2 = new HeadTestFrag();
+//
+//                    Slide slideTransition = new Slide(Gravity.RIGHT);
+//                    slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+//
+//                    ChangeBounds changeBoundsTransition = new ChangeBounds();
+//                    changeBoundsTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
+//
+//                    sharedElementFragment2.setEnterTransition(slideTransition);
+//                    sharedElementFragment2.setAllowEnterTransitionOverlap(false);
+//                    sharedElementFragment2.setAllowReturnTransitionOverlap(false);
+//                    sharedElementFragment2.setSharedElementEnterTransition(changeBoundsTransition);
+//
+//                    MainAct mainAct = (MainAct) getBaseUIAct();
+//                    getFragmentManager().beginTransaction()
+//                            .add(mainAct.getP().getU().bind.incloud.hvLeftDrawer.getId(), sharedElementFragment2)
+//                            .hide(this)
+//                            .setReorderingAllowed(true)
+//                            .addToBackStack(null)
+//                            .addSharedElement(v, "cirlceimageview")
+//                            .commit();
+//                    return;
+//                }
+
+
+                // IntentUtil.getInstance().takeGetPhoto(activity);
                 IntentUtil.getInstance().photoShowFromphone(this,01);
                 break;
             case R.id.item_setting:
@@ -166,7 +185,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
         }
         getBaseUIAct().setMoudle(MainValue.主界面);
-       // ((MainAct)getActivity()).getP().getU().switchDrawer();
+         ((MainAct)getActivity()).getP().getU().switchDrawer();
     }
 
     @Override

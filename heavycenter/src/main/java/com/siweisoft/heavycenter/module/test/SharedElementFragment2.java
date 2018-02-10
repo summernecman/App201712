@@ -1,11 +1,13 @@
 package com.siweisoft.heavycenter.module.test;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
 import com.siweisoft.heavycenter.R;
@@ -21,11 +23,25 @@ public class SharedElementFragment2 extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        startPostponedEnterTransition();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_sharedelement_fragment2, container, false);
 
-        ImageView squareBlue = (ImageView) view.findViewById(R.id.square_blue);
-
+        final ImageView squareBlue = (ImageView) view.findViewById(R.id.square_blue);
+        squareBlue.getViewTreeObserver().addOnPreDrawListener(
+                new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        squareBlue.getViewTreeObserver().removeOnPreDrawListener(this);
+                        startPostponedEnterTransition();
+                        return true;
+                    }
+                });
         return view;
     }
 

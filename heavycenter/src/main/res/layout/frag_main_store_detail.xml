@@ -39,6 +39,7 @@
 
 
         <LinearLayout
+                android:transitionName="storedetail"
                 android:layout_marginLeft="@dimen/dimen_frag_content_margin"
                 android:layout_marginRight="@dimen/dimen_frag_content_margin"
                 android:layout_marginTop="@dimen/dimen_frag_content_margin"

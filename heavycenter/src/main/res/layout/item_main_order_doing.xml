@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_hv_sel_dark_light"
+                    android:transitionName="doingorder"
                     android:padding="@dimen/dimen_recylce_item_margin"
+
         >
         <LinearLayout
                 android:gravity="center_vertical"
@@ -35,7 +37,6 @@
                             android:layout_height="match_parent">
 
                         <com.siweisoft.heavycenter.module.view.circle.CircleBar
-                                android:transitionName="headimage"
                                 android:id="@+id/circlebar"
                                 android:layout_centerInParent="true"
                                 android:layout_width="70dp"

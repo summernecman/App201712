@@ -1,18 +1,17 @@
 package com.siweisoft.heavycenter.module.test;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.transition.ChangeBounds;
 import android.transition.Slide;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.ImageView;
 
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 
 /**
  * Created by lgvalle on 05/09/15.
@@ -21,6 +20,8 @@ public class SharedElementFragment1 extends Fragment {
 
     private static final String EXTRA_SAMPLE = "sample";
 
+    public int iid ;
+
     public static SharedElementFragment1 newInstance() {
 
         Bundle args = new Bundle();
@@ -28,6 +29,13 @@ public class SharedElementFragment1 extends Fragment {
         SharedElementFragment1 fragment = new SharedElementFragment1();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        postponeEnterTransition();
+
     }
 
     @Override
@@ -50,6 +58,17 @@ public class SharedElementFragment1 extends Fragment {
             }
         });
 
+
+        squareBlue.getViewTreeObserver().addOnPreDrawListener(
+                new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        squareBlue.getViewTreeObserver().removeOnPreDrawListener(this);
+                        startPostponedEnterTransition();
+                        return true;
+                    }
+                });
+
         return view;
     }
 
@@ -70,9 +89,10 @@ public class SharedElementFragment1 extends Fragment {
             sharedElementFragment2.setSharedElementEnterTransition(changeBoundsTransition);
 
             getFragmentManager().beginTransaction()
-                    .add(R.id.lll, sharedElementFragment2)
-                    .addToBackStack(null)
+                    .add(iid, sharedElementFragment2)
                     .hide(this)
+                    .setReorderingAllowed(true)
+                    .addToBackStack(null)
                     .addSharedElement(squareBlue, getString(R.string.square_blue_name))
                     .commit();
         }
