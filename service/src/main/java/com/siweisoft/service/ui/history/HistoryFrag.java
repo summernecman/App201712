@@ -67,7 +67,7 @@ public class HistoryFrag extends BaseServerFrag<HistoryUIOpe, HistoryDAOpe> impl
                 VideoRecordFrag videoRecordFrag = new VideoRecordFrag();
                 videoRecordFrag.setArguments(new Bundle());
                 videoRecordFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, (Serializable) v.getTag(R.id.data));
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_ONE, videoRecordFrag);
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_ONE, videoRecordFrag);
                 break;
         }
     }

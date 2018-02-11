@@ -36,14 +36,14 @@ public class ReSetPwdFrag extends BaseServerFrag<ReSetPwdUIOpe, ReSetPwdDAOpe> {
         switch (v.getId()) {
             case R.id.onRegist:
                 if (!getP().getU().vevify()) {
-                    ToastUtil.getInstance().showShort(activity, "信息未填写完整");
+                    ToastUtil.getInstance().showShort(getActivity(), "信息未填写完整");
                     return;
                 }
-                LoadUtil.getInstance().onStartLoading(activity, "@#$");
+                LoadUtil.getInstance().onStartLoading(getActivity(), "@#$");
                 getP().getD().checkCode(getP().getU().bind.etAccount.getText().toString(), getP().getU().bind.etCode.getText().toString(), new OnFinishListener() {
                     @Override
                     public void onFinish(final Object o) {
-                        activity.runOnUiThread(new Runnable() {
+                        getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 if ((Boolean) o) {
@@ -51,18 +51,18 @@ public class ReSetPwdFrag extends BaseServerFrag<ReSetPwdUIOpe, ReSetPwdDAOpe> {
                                         @Override
                                         public void onFinish(final Object o) {
                                             if (o instanceof Boolean) {
-                                                ToastUtil.getInstance().showShort(activity, "重置成功");
+                                                ToastUtil.getInstance().showShort(getActivity(), "重置成功");
                                                 UserBean userBean = new UserBean();
                                                 userBean.setPhone(getP().getU().bind.etAccount.getText().toString());
                                                 userBean.setPwd(getP().getU().bind.etPwd.getText().toString());
                                                 MessageEvent m = new MessageEvent(ReSetPwdFrag.class.getName(), LoginFrag.class.getName(), userBean);
                                                 EventBus.getDefault().post(m);
-                                                FragmentUtil2.getInstance().removeTop(activity, R.id.act_base_root);
+                                                FragmentUtil2.getInstance().removeTop(getActivity(), R.id.act_base_root);
                                             } else {
-                                                activity.runOnUiThread(new Runnable() {
+                                                getActivity().runOnUiThread(new Runnable() {
                                                     @Override
                                                     public void run() {
-                                                        ToastUtil.getInstance().showShort(activity, StringUtil.getStr(o));
+                                                        ToastUtil.getInstance().showShort(getActivity(), StringUtil.getStr(o));
                                                     }
                                                 });
                                             }
@@ -70,10 +70,10 @@ public class ReSetPwdFrag extends BaseServerFrag<ReSetPwdUIOpe, ReSetPwdDAOpe> {
                                         }
                                     });
                                 } else {
-                                    activity.runOnUiThread(new Runnable() {
+                                    getActivity().runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            ToastUtil.getInstance().showShort(activity, "短信验证码失败");
+                                            ToastUtil.getInstance().showShort(getActivity(), "短信验证码失败");
                                             LoadUtil.getInstance().onStopLoading("@#$");
                                         }
                                     });
@@ -84,7 +84,7 @@ public class ReSetPwdFrag extends BaseServerFrag<ReSetPwdUIOpe, ReSetPwdDAOpe> {
                 });
                 break;
             case R.id.ftv_back:
-                FragmentUtil2.getInstance().removeTop(activity, R.id.act_base_root);
+                FragmentUtil2.getInstance().removeTop(getActivity(), R.id.act_base_root);
                 break;
             case R.id.tv_getcode:
                 if (!getP().getU().vevifyPhone()) {

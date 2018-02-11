@@ -16,6 +16,7 @@ import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
+import com.android.lib.view.ItemDecoration.MyItemDecoration2;
 import com.daimajia.swipe.SimpleSwipeListener;
 import com.daimajia.swipe.SwipeLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -58,7 +59,6 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
             return;
         }
         getFrag().removeTips();
-
         final String comname = LocalValue.get登录返回信息().getAbbreviationName();
         switch (type){
             case OrdersReq.STATUS_NEW:
@@ -216,16 +216,16 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 
 
     public void initRefresh(OnRefreshListener refreshListener,OnLoadmoreListener loadmoreListener){
-        bind.refreshLayout.setOnRefreshListener(refreshListener);
-        bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
+        bind.refresh.setOnRefreshListener(refreshListener);
+        bind.refresh.setOnLoadmoreListener(loadmoreListener);
     }
 
     public void finishRefresh(){
-        bind.refreshLayout.finishRefresh();
+        bind.refresh.finishRefresh();
     }
 
     public void finishLoadmore(){
-        bind.refreshLayout.finishLoadmore();
+        bind.refresh.finishLoadmore();
     }
 
     public void notifyDataSetChanged(){
@@ -234,6 +234,6 @@ public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 
 
     public void autoRefresh(){
-        bind.refreshLayout.autoRefresh();
+        bind.refresh.autoRefresh();
     }
 }

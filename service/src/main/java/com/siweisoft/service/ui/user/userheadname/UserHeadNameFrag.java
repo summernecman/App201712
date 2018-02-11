@@ -46,10 +46,10 @@ public class UserHeadNameFrag extends BaseServerFrag<UserHeadNameUIOpe, UserHead
     public void onClickEvent(View v) {
         switch (v.getId()) {
             case R.id.ll_head:
-                IntentUtil.getInstance().photoShowFromphone(fragment, ValueConstant.CODE_REQUSET3);
+                IntentUtil.getInstance().photoShowFromphone(getActivity(), ValueConstant.CODE_REQUSET3);
                 break;
             case R.id.ll_name:
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, new RenameFrag());
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, new RenameFrag());
                 break;
         }
     }
@@ -68,10 +68,10 @@ public class UserHeadNameFrag extends BaseServerFrag<UserHeadNameUIOpe, UserHead
         }
         FilesBean filesBean = new FilesBean();
         ArrayList<FileBean> fileBeen = new ArrayList<>();
-        fileBeen.add(new FileBean(new File(UriUtils.getPath(activity, data.getData()))));
+        fileBeen.add(new FileBean(new File(UriUtils.getPath(getActivity(), data.getData()))));
         filesBean.setData(fileBeen);
-        LoadUtil.getInstance().onStartLoading(activity, "headuri");
-        NetWork.doHttpRequsetWithFile(activity, NetValue.获取地址("/user/addheadurl"), filesBean, new OnNetWorkReqAdapter(activity) {
+        LoadUtil.getInstance().onStartLoading(getActivity(), "headuri");
+        NetWork.doHttpRequsetWithFile(getActivity(), NetValue.获取地址("/user/addheadurl"), filesBean, new OnNetWorkReqAdapter(getActivity()) {
             @Override
             public void onNetWorkResult(boolean success, BaseResBean o) {
                 LogUtil.E(o);

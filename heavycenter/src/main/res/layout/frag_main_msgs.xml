@@ -12,7 +12,6 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_frag_root_bgcolor"
         android:orientation="vertical">
 
         <com.android.lib.view.title.TitleView
@@ -56,6 +55,12 @@
                 android:layout_below="@id/topview"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"/>
+
+            <ImageView
+                android:layout_below="@id/topview"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/actionbar_shadow_up" />
         </RelativeLayout>
     </LinearLayout>
 </layout>

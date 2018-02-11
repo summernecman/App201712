@@ -20,14 +20,11 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         switch (v.getId()){
             case R.id.ftv_right2:
                 if(getP().getU().canGo()){
-                    getP().getD().newStore(getP().getU().getNewStoreReqBean(getP().getD().getNewStoreReqBean()), new UINetAdapter<NewStoreResBean>(getActivity()) {
+                    getP().getD().newStore(getP().getU().getNewStoreReqBean(getP().getD().getNewStoreReqBean()), new UINetAdapter<NewStoreResBean>(this) {
                         @Override
-                        public void onResult(boolean success, String msg, NewStoreResBean o) {
-                            super.onResult(success, msg, o);
-                            if(success){
-                                getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
-                                getBaseUIAct().onBackPressed();
-                            }
+                        public void onSuccess(NewStoreResBean o) {
+                            getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
+                            getBaseUIAct().onBackPressed();
                         }
                     });
                 }

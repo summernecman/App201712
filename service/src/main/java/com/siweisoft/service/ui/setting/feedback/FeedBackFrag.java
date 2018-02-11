@@ -50,7 +50,7 @@ public class FeedBackFrag extends BaseServerFrag<FeedBAckUIOpe, FeedBackDAOpe> i
                 getP().getD().sendFeedBack(feedBackBean, new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
-                        FragmentUtil2.getInstance().removeTopRightNow(activity, Value.getNowRoot());
+                        FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.getNowRoot());
                     }
                 });
         }
@@ -61,12 +61,12 @@ public class FeedBackFrag extends BaseServerFrag<FeedBAckUIOpe, FeedBackDAOpe> i
         switch (type) {
             case ViewListener.TYPE_ONCLICK:
                 if (v.getTag(R.id.data) instanceof Integer) {
-                    IntentUtil.getInstance().photoShowFromphone(fragment, ValueConstant.CODE_REQUSET3);
+                    IntentUtil.getInstance().photoShowFromphone(this, ValueConstant.CODE_REQUSET3);
                 } else {
                     ImageFrag imageFrag = new ImageFrag();
                     imageFrag.setArguments(new Bundle());
                     imageFrag.getArguments().putString(ValueConstant.DATA_DATA, (String) v.getTag(R.id.data));
-                    FragmentUtil2.getInstance().add(activity, Value.getNowRoot(), imageFrag);
+                    FragmentUtil2.getInstance().add(getActivity(), Value.getNowRoot(), imageFrag);
                 }
                 break;
         }
@@ -78,9 +78,9 @@ public class FeedBackFrag extends BaseServerFrag<FeedBAckUIOpe, FeedBackDAOpe> i
         if (data == null) {
             return;
         }
-        getP().getD().addPic(UriUtils.getPath(activity, data.getData()));
+        getP().getD().addPic(UriUtils.getPath(getActivity(), data.getData()));
         if (getP().getD().getPics().size() > 9) {
-            ToastUtil.getInstance().showShort(activity, "图片有点太多了");
+            ToastUtil.getInstance().showShort(getActivity(), "图片有点太多了");
         }
         getP().getU().initPics(getP().getD().getPics(), this);
     }

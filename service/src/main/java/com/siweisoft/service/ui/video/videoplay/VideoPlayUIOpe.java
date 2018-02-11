@@ -210,12 +210,12 @@ public class VideoPlayUIOpe extends BaseUIOpe<FragVideoplayBinding> {
 //    }
 
     private static void clearPreviousSetting(Activity activity) {
-        ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
-        View fakeStatusBarView = decorView.findViewById(com.jaeger.library.R.id.statusbarutil_fake_status_bar_view);
-        if (fakeStatusBarView != null) {
-            decorView.removeView(fakeStatusBarView);
-            ViewGroup rootView = (ViewGroup) ((ViewGroup) activity.findViewById(android.R.id.content)).getChildAt(0);
-            rootView.setPadding(0, 0, 0, 0);
-        }
+//        ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
+//        View fakeStatusBarView = decorView.findViewById(com.jaeger.library.R.id.statusbarutil_fake_status_bar_view);
+//        if (fakeStatusBarView != null) {
+//            decorView.removeView(fakeStatusBarView);
+//            ViewGroup rootView = (ViewGroup) ((ViewGroup) activity.findViewById(android.R.id.content)).getChildAt(0);
+//            rootView.setPadding(0, 0, 0, 0);
+//        }
     }
 }

@@ -7,12 +7,15 @@
             type="com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean.ResultsBean" />
         <import type="com.android.lib.util.StringUtil"/>
     </data>
-    <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swipe"
+
+    <com.tubb.smrv.SwipeHorizontalMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:sml="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sml"
         android:layout_width="match_parent"
+        sml:sml_auto_open_percent="0.2"
         android:layout_height="80dp"
-        android:background="@color/white"
->
+        sml:sml_scroller_duration="250">
+
 
         <TextView
             android:textSize="22sp"
@@ -21,12 +24,13 @@
             android:text="解除\n绑定"
             android:orientation="horizontal"
             android:background="@color/red"
-            android:id="@+id/munu"
-            android:layout_width="55dp"
-            android:weightSum="1"
+            android:id="@id/smMenuViewRight"
+            android:layout_width="80dp"
             android:layout_height="match_parent"/>
         <RelativeLayout
-            android:id="@+id/rl_user"
+
+            android:background="@color/white"
+            android:id="@id/smContentView"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -109,5 +113,5 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"/>
         </RelativeLayout>
-    </com.daimajia.swipe.SwipeLayout>
+    </com.tubb.smrv.SwipeHorizontalMenuLayout>
 </layout>

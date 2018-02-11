@@ -71,7 +71,7 @@ public abstract class UINetAdapter<A> extends NetAdapter<A> {
     }
 
     public void stopRefreshORLoadMore(){
-        if(baseUIFrag!=null){
+        if(baseUIFrag!=null&&baseUIFrag.getView()!=null){
             View v = baseUIFrag.getView().findViewById(R.id.refresh);
             if(v!=null&&v instanceof SmartRefreshLayout){
                 SmartRefreshLayout refreshLayout = (SmartRefreshLayout) v;

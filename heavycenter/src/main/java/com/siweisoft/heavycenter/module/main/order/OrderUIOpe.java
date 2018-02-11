@@ -36,45 +36,7 @@ public class OrderUIOpe extends BaseUIOpe<FragMainOrderBinding>{
     public void initPages(Fragment fragment, final ArrayList<Fragment> pages){
         bind.llCntent.setOffscreenPageLimit(pages.size());
 
-        final ArrayList<RelativeLayout> relativeLayouts = new ArrayList<>();
-        for(int i=0;i<pages.size();i++){
-            RelativeLayout relativeLayout = new RelativeLayout(getActivity());
-            relativeLayout.setId(14345+i);
-            relativeLayouts.add(relativeLayout);
-//            SharedElementFragment1 sharedElementFragment1 = (SharedElementFragment1) pages.get(i);
-//            sharedElementFragment1.iid = relativeLayout.getId();
-        }
-
-        bind.llCntent.setAdapter(new PagerAdapter() {
-            @Override
-            public int getCount() {
-                return pages.size();
-            }
-
-            @Override
-            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-                return view==object;
-            }
-
-            @NonNull
-            @Override
-            public Object instantiateItem(@NonNull ViewGroup container, int position) {
-                container.addView(relativeLayouts.get(position));
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.add(relativeLayouts.get(position).getId(),pages.get(position));
-                transaction.commit();
-                LogUtil.E("instantiateItem"+position);
-                return relativeLayouts.get(position);
-            }
-
-            @Override
-            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-                LogUtil.E("destroyItem"+position);
-                container.removeView(relativeLayouts.get(position));
-            }
-        });
-
-        //bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
+        bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
         bind.topview.setViewPager(bind.llCntent);
         bind.scrollmenu.setViewPager(bind.llCntent);
         final BaseOnPagerChangeListener baseOnPagerChangeListener = new BaseOnPagerChangeListener(){
@@ -101,9 +63,9 @@ public class OrderUIOpe extends BaseUIOpe<FragMainOrderBinding>{
         if(orderNumRes==null){
             return;
         }
-        bind.topview.setTxt(0, "新订单("+StringUtil.getStr(orderNumRes.getNewFhCount()+orderNumRes.getNewShCount())+")");
-        bind.topview.setTxt(1, "进行中("+StringUtil.getStr(orderNumRes.getIngFhCount()+orderNumRes.getIngShCount())+")");
-        bind.topview.setTxt(2, "已完成("+StringUtil.getStr(orderNumRes.getDoneFhCount()+orderNumRes.getDoneShCount())+")");
+        bind.topview.setTxt(0, "新订单("+StringUtil.getStr(orderNumRes.getNewCount())+")");
+        bind.topview.setTxt(1, "进行中("+StringUtil.getStr(orderNumRes.getIngCount())+")");
+        bind.topview.setTxt(2, "已完成("+StringUtil.getStr(orderNumRes.getDoneCount())+")");
     }
 
 

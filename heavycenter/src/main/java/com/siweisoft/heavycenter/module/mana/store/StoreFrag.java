@@ -8,7 +8,6 @@ import android.view.View;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.network.newsf.UIFNetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -60,16 +59,13 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                switch (v.getId()){
-                   case R.id.munu:
+                   case R.id.smMenuViewRight:
                        final StoreDetail data  = (StoreDetail) v.getTag(R.id.data);
-                       getP().getD().statusStore(getP().getU().getStatusStoresReqBean(getP().getD().getStatusStoresReqBean(),data.getWarehouseId(),data.getStatus()), new UINetAdapter<StatusStoresResBean>(getActivity()) {
+                       getP().getD().statusStore(getP().getU().getStatusStoresReqBean(getP().getD().getStatusStoresReqBean(),data.getWarehouseId(),data.getStatus()), new UINetAdapter<StatusStoresResBean>(this) {
                            @Override
-                           public void onResult(boolean success, String msg, StatusStoresResBean o) {
-                               super.onResult(success, msg, o);
-                               if(success){
-                                   data.setStatus(1-data.getStatus());
-                                   getP().getU().notifyDataSetChanged();
-                               }
+                           public void onSuccess(StatusStoresResBean o) {
+                               data.setStatus(1-data.getStatus());
+                               getP().getU().notifyDataSetChanged();
                            }
                        });
                        break;
@@ -99,13 +95,12 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().storesInfo(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库,new UIFNetAdapter<StoresResBean>(this) {
+        getP().getD().storesInfo(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库,new UINetAdapter<StoresResBean>(this) {
             @Override
-            public void onResult(boolean success, String msg, StoresResBean o) {
-                super.onResult(success, msg, o);
+            public void onSuccess(StoresResBean o) {
                 //o = new Test().getStoresResBean();
-               getP().getU().finishRefresh();
-               getP().getU().LoadListData(o,StoreFrag.this);
+                getP().getU().finishRefresh();
+                getP().getU().LoadListData(o,StoreFrag.this);
             }
         });
     }

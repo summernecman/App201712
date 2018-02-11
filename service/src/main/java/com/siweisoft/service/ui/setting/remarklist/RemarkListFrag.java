@@ -64,7 +64,7 @@ public class RemarkListFrag extends BaseServerFrag<RemarkListUIOpe, RemarkListDA
             public void onFinish(Object o) {
                 ArrayList<CommentBean> list = (ArrayList<CommentBean>) o;
                 if (list == null || list.size() == 0) {
-                    ToastUtil.getInstance().showShort(activity, "已经加载完了");
+                    ToastUtil.getInstance().showShort(getActivity(), "已经加载完了");
                     getP().getU().finishLoadmore();
                     return;
                 }
@@ -88,7 +88,7 @@ public class RemarkListFrag extends BaseServerFrag<RemarkListUIOpe, RemarkListDA
                         UserInfoFrag userInfoFrag = new UserInfoFrag();
                         userInfoFrag.setArguments(new Bundle());
                         userInfoFrag.getArguments().putInt(ValueConstant.DATA_POSITION, commentBean1.getFromid());
-                        FragmentUtil2.getInstance().add(activity, Value.getNowRoot(), userInfoFrag);
+                        FragmentUtil2.getInstance().add(getActivity(), Value.getNowRoot(), userInfoFrag);
                         break;
                 }
                 break;

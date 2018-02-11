@@ -20,13 +20,13 @@ public class NewUIOpe extends BaseUIOpe<FragMainStoreDetailBinding>{
 
 
     public void initRefresh(){
-        bind.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+        bind.refresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 refreshlayout.finishRefresh(2000);
             }
         });
-        bind.refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
+        bind.refresh.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
                 refreshlayout.finishLoadmore(2000);

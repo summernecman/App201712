@@ -7,10 +7,15 @@
             type="com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean.CarInfoRes" />
     </data>
 
-    <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swipe"
+
+
+    <com.tubb.smrv.SwipeHorizontalMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:sml="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sml"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        sml:sml_auto_open_percent="0.2"
+        android:layout_height="50dp"
+        sml:sml_scroller_duration="250">
 
         <TextView
             android:textSize="22sp"
@@ -19,14 +24,14 @@
             android:text="移除"
             android:orientation="horizontal"
             android:background="@color/color_hv_red"
-            android:id="@+id/menu"
+            android:id="@id/smMenuViewRight"
             android:layout_width="55dp"
             android:weightSum="1"
             android:layout_height="match_parent"/>
 
         <RelativeLayout
             android:paddingLeft="@dimen/dimen_item_content_left_padding"
-            android:id="@+id/ll_container"
+            android:id="@id/smContentView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white">
@@ -72,5 +77,5 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"/>
         </RelativeLayout>
-    </com.daimajia.swipe.SwipeLayout>
+    </com.tubb.smrv.SwipeHorizontalMenuLayout>
 </layout>

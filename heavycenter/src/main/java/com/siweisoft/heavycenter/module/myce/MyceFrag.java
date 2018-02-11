@@ -70,14 +70,11 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     }
 
     public void initUINET(){
-        getP().getD().getInfo(new UINetAdapter<LoginResBean>(getBaseUIAct()) {
+        getP().getD().getInfo(new UINetAdapter<LoginResBean>(this) {
             @Override
-            public void onResult(boolean success, String msg, LoginResBean o) {
-                super.onResult(success, msg, o);
-                if(success){
-                    LocalValue.save登录返回信息(o);
-                    init();
-                }
+            public void onSuccess(LoginResBean o) {
+                LocalValue.save登录返回信息(o);
+                init();
             }
         });
     }
@@ -241,26 +238,20 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                             case UpdateHeadReqBean.车辆照片:
                                 loginResBean.setVehicleLicense(s);
                                 LocalValue.save登录返回信息(loginResBean);
-                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(getBaseUIAct()) {
+                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(MyceFrag.this) {
                                     @Override
-                                    public void onResult(boolean success, String msg, UpdateCarRes o) {
-                                        super.onResult(success, msg, o);
-                                        if(success){
-                                            getP().getU().initUI();
-                                        }
+                                    public void onSuccess(UpdateCarRes o) {
+                                        getP().getU().initUI();
                                     }
                                 });
                                 break;
                             case UpdateHeadReqBean.行驶证照片:
                                 loginResBean.setVehicleLicensePhoto(s);
                                 LocalValue.save登录返回信息(loginResBean);
-                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(getBaseUIAct()) {
+                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(MyceFrag.this) {
                                     @Override
-                                    public void onResult(boolean success, String msg, UpdateCarRes o) {
-                                        super.onResult(success, msg, o);
-                                        if(success){
-                                            getP().getU().initUI();
-                                        }
+                                    public void onSuccess(UpdateCarRes o) {
+                                        getP().getU().initUI();
                                     }
                                 });
                                 break;

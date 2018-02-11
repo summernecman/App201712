@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
@@ -24,6 +25,9 @@ import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
 import com.siweisoft.heavycenter.databinding.FragManaUserBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaUserBinding;
+import com.siweisoft.heavycenter.module.view.MySwipeListener;
+import com.tubb.smrv.SwipeHorizontalMenuLayout;
+import com.tubb.smrv.SwipeMenuLayout;
 
 import java.util.Date;
 import java.util.List;
@@ -85,81 +89,58 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
                             break;
                 }
 
+                View content = binding.sml.getChildAt(1);
+                TextView menu = (TextView) binding.sml.getChildAt(0);
 
-                binding.rlUser.setOnClickListener(this);
-                binding.rlUser.setTag(R.id.position,position);
-                binding.rlUser.setTag(R.id.data,data.get(position));
+                content.setOnClickListener(this);
+                content.setTag(R.id.position,position);
+                content.setTag(R.id.data,data.get(position));
 
 
-                binding.munu.setOnClickListener(this);
-                binding.munu.setTag(R.id.position,position);
-                binding.munu.setTag(R.id.data,data.get(position));
-                binding.munu.setTag(R.id.data1,binding.swipe);
-                binding.munu.setTag(R.id.type,0);
+                menu.setOnClickListener(this);
+                menu.setTag(R.id.position,position);
+                menu.setTag(R.id.data,data.get(position));
+                menu.setTag(R.id.data1,binding.sml);
+                menu.setTag(R.id.type,0);
                 if(data.get(position).getBindCompanyTime()!=null){
                     binding.tvDes.setText("由管理员审核于"+ StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(data.get(position).getBindCompanyTime()))));
                 }
 
                 switch (data.get(position).getBindCompanyState()){
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
-                        binding.munu.setText(解除绑定);
-                        binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
+                        menu.setText(解除绑定);
+                        menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
                         break;
                     default:
-                        binding.munu.setText(重新邀请);
-                        binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
+                        menu.setText(重新邀请);
+                        menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
                         break;
                 }
 
                 if(OjectUtil.equals(loginResBean.getUserRole(),LoginResBean.USER_ROLE_SUPER_ADMIN)&&
                         OjectUtil.equals(data.get(position).getUserId(),loginResBean.getUserId())){
-                    binding.munu.setText(指定新的超管);
-                    binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
-                    binding.munu.setTag(R.id.type,1);
+                    menu.setText(指定新的超管);
+                    menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
+                    menu.setTag(R.id.type,1);
                 }
 
                 if(isSwipe()){
-                    binding.swipe.setRightSwipeEnabled(true);
-                    binding.swipe.addSwipeListener(new SwipeLayout.SwipeListener() {
-                        @Override
-                        public void onStartOpen(SwipeLayout layout) {
-                            for(int i=0;i<bind.recycle.getChildCount();i++){
-                                SwipeLayout swipeLayout= bind.recycle.getChildAt(i).findViewById(R.id.swipe);
-                                if(swipeLayout!=binding.swipe){
-                                    swipeLayout.close(true);
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onOpen(SwipeLayout layout) {
-
-                        }
-
-                        @Override
-                        public void onStartClose(SwipeLayout layout) {
-
-                        }
-
-                        @Override
-                        public void onClose(SwipeLayout layout) {
-
-                        }
-
-                        @Override
-                        public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
-
-                        }
-
-                        @Override
-                        public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
-
-                        }
-                    });
+                    binding.sml.setSwipeEnable(true);
                 }else{
-                    binding.swipe.setRightSwipeEnabled(false);
+                    binding.sml.setSwipeEnable(false);
                 }
 
+                binding.sml.setSwipeListener(new com.siweisoft.heavycenter.module.view.swipe.MySwipeListener(){
+                    @Override
+                    public void endMenuOpened(SwipeMenuLayout swipeMenuLayout) {
+                        for(int i=0;i<bind.recycle.getChildCount();i++){
+                            SwipeHorizontalMenuLayout swipeLayout= (SwipeHorizontalMenuLayout) bind.recycle.getChildAt(i);
+                            if(swipeLayout!=binding.sml){
+                                swipeLayout.smoothCloseMenu(400);
+                            }
+                        }
+                    }
+                });
 
             }
 
@@ -167,9 +148,9 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
             public void onClick(View v) {
                 super.onClick(v);
                 switch (v.getId()){
-                    case R.id.munu:
-                        SwipeLayout swipeLayout = (SwipeLayout) v.getTag(R.id.data1);
-                        swipeLayout.close(true);
+                    case R.id.smMenuViewRight:
+                        SwipeHorizontalMenuLayout swipeLayout= (SwipeHorizontalMenuLayout) v.getTag(R.id.data1);
+                        swipeLayout.smoothCloseMenu(400);
                         break;
                 }
             }
@@ -183,8 +164,8 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
                 switch (newState){
                     case RecyclerView.SCROLL_STATE_DRAGGING:
                         for(int i=0;i<recyclerView.getChildCount();i++){
-                            SwipeLayout swipeLayout= recyclerView.getChildAt(i).findViewById(R.id.swipe);
-                            swipeLayout.close(true);
+                            SwipeHorizontalMenuLayout swipeLayout= (SwipeHorizontalMenuLayout) recyclerView.getChildAt(i);
+                            swipeLayout.smoothCloseMenu(400);
                         }
                         break;
                 }
@@ -198,20 +179,20 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
     }
 
     public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener){
-        bind.refreshLayout.setOnRefreshListener(refreshListener);
-        bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
+        bind.refresh.setOnRefreshListener(refreshListener);
+        bind.refresh.setOnLoadmoreListener(loadmoreListener);
     }
 
     public void finishRefresh(){
-        bind.refreshLayout.finishRefresh();
+        bind.refresh.finishRefresh();
     }
 
     public void finishLoadmore(){
-        bind.refreshLayout.finishLoadmore();
+        bind.refresh.finishLoadmore();
     }
 
     public void autoRefresh(){
-        bind.refreshLayout.autoRefresh();
+        bind.refresh.autoRefresh();
     }
 
     public boolean isSwipe() {

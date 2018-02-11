@@ -21,14 +21,11 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         switch (v.getId()){
             case R.id.enter:
                 if(getP().getU().canGo()){
-                    getP().getD().addUser(getP().getU().getUser(getP().getD().getReqBean()), new UINetAdapter<AddUserResBean>(getActivity()) {
+                    getP().getD().addUser(getP().getU().getUser(getP().getD().getReqBean()), new UINetAdapter<AddUserResBean>(this) {
                         @Override
-                        public void onResult(boolean success, String msg, AddUserResBean o) {
-                            super.onResult(success, msg, o);
-                            if(success){
-                                getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
-                                getBaseUIAct().onBackPressed();
-                            }
+                        public void onSuccess(AddUserResBean o) {
+                            getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
+                            getBaseUIAct().onBackPressed();
                         }
                     });
                 }

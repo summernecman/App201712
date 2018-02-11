@@ -132,7 +132,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
                 getP().getU().finishLoadmore();
                 ArrayList<CommentBean> a = (ArrayList<CommentBean>) o;
                 if (a == null || a.size() == 0) {
-                    ToastUtil.getInstance().showShort(activity, "已经加载完了");
+                    ToastUtil.getInstance().showShort(getActivity(), "已经加载完了");
                 }
                 if (a != null) {
                     getP().getD().getCommentBeen().addAll(a);
@@ -152,7 +152,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
         switch (v.getId()) {
             case R.id.call:
                 if (Value.getRoom() == null) {
-                    ToastUtil.getInstance().showShort(activity, "对方不在线");
+                    ToastUtil.getInstance().showShort(getActivity(), "对方不在线");
                     return;
                 }
                 v.setEnabled(false);
@@ -172,10 +172,10 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
                                     VideoChatFrag videoChatFrag = new VideoChatFrag();
                                     videoChatFrag.setArguments(new Bundle());
                                     videoChatFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, videoBean);
-                                    FragmentUtil2.getInstance().add(fragment.getActivity(), Value.FULLSCREEN, videoChatFrag);
+                                    FragmentUtil2.getInstance().add(getActivity(), Value.FULLSCREEN, videoChatFrag);
                                 } else {
                                     if (Value.getRoom() == null) {
-                                        ToastUtil.getInstance().showShort(activity, "对方不在线");
+                                        ToastUtil.getInstance().showShort(getActivity(), "对方不在线");
                                     }
                                 }
                                 v.setEnabled(true);
@@ -202,7 +202,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
                     public void onClick(final View v) {
                         switch (v.getId()) {
                             case R.id.tv_back:
-                                FragmentUtil2.getInstance().removeTop(activity, Value.FULLSCREEN);
+                                FragmentUtil2.getInstance().removeTop(getActivity(), Value.FULLSCREEN);
                                 break;
                             case R.id.iv_download:
                                 if (v.isSelected()) {
@@ -220,10 +220,10 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
                                         super.onSuccess(result);
                                         v.setEnabled(true);
                                         v.setSelected(true);
-                                        activity.runOnUiThread(new Runnable() {
+                                        getActivity().runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                ToastUtil.getInstance().showShort(activity, result.getPath());
+                                                ToastUtil.getInstance().showShort(getActivity(), result.getPath());
                                             }
                                         });
                                     }
@@ -232,14 +232,14 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
                                     public void onError(Throwable ex, boolean isOnCallback) {
                                         super.onError(ex, isOnCallback);
                                         v.setEnabled(true);
-                                        ToastUtil.getInstance().showShort(activity, "error");
+                                        ToastUtil.getInstance().showShort(getActivity(), "error");
                                     }
                                 });
                                 break;
                         }
                     }
                 });
-                FragmentUtil2.getInstance().add(activity, Value.FULLSCREEN, imageFrag);
+                FragmentUtil2.getInstance().add(getActivity(), Value.FULLSCREEN, imageFrag);
                 break;
         }
     }
@@ -254,7 +254,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
                         UserInfoFrag userInfoFrag = new UserInfoFrag();
                         userInfoFrag.setArguments(new Bundle());
                         userInfoFrag.getArguments().putInt(ValueConstant.DATA_POSITION, commentBean1.getFromid());
-                        FragmentUtil2.getInstance().add(activity, Value.getNowRoot(), userInfoFrag);
+                        FragmentUtil2.getInstance().add(getActivity(), Value.getNowRoot(), userInfoFrag);
                         break;
                     case R.id.iv_agree:
                         final CommentBean commentBean = (CommentBean) v.getTag(R.id.data);

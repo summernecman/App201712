@@ -70,7 +70,7 @@ public class CollecFrag extends BaseServerFrag<CollectUIOpe, CollectDAOpe> imple
             public void onFinish(Object o) {
                 ArrayList<VideoBean> a = (ArrayList<VideoBean>) o;
                 if (a == null || a.size() == 0) {
-                    ToastUtil.getInstance().showShort(activity, "加载完毕");
+                    ToastUtil.getInstance().showShort(getActivity(), "加载完毕");
                 }
                 if (a != null) {
                     getP().getD().getVideos().addAll(a);
@@ -91,13 +91,13 @@ public class CollecFrag extends BaseServerFrag<CollectUIOpe, CollectDAOpe> imple
                         VideoContainerFrag playFrag = new VideoContainerFrag();
                         playFrag.setArguments(new Bundle());
                         playFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, (Serializable) v.getTag(R.id.data));
-                        FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, playFrag);
+                        FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, playFrag);
                         break;
                     case R.id.iv_head:
                         UserInfoFrag userInfoFrag = new UserInfoFrag();
                         userInfoFrag.setArguments(new Bundle());
                         userInfoFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, getP().getD().getVideos().get((Integer) v.getTag(R.id.position)).getOtherUser());
-                        FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, userInfoFrag);
+                        FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, userInfoFrag);
                         break;
                 }
                 break;

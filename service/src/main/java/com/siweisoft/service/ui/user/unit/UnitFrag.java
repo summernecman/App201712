@@ -32,7 +32,7 @@ public class UnitFrag extends BaseServerFrag<UnitUIOpe, UnitDAOpe> {
                     @Override
                     public void onFinish(Object o) {
                         Value.saveUserInfo((UserBean) o);
-                        FragmentUtil2.getInstance().removeTop(activity, Value.ROOTID_THREE);
+                        FragmentUtil2.getInstance().removeTop(getActivity(), Value.ROOTID_THREE);
                     }
                 });
                 break;

@@ -92,7 +92,7 @@ public class ShareListFrag extends BaseServerFrag<ShareListUIOpe, ShareListDAOpe
                         VideoContainerFrag playFrag = new VideoContainerFrag();
                         playFrag.setArguments(new Bundle());
                         playFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, (Serializable) v.getTag(R.id.data));
-                        FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, playFrag);
+                        FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, playFrag);
                         break;
                     default:
                         UserInfoFrag userInfoFrag = new UserInfoFrag();
@@ -100,7 +100,7 @@ public class ShareListFrag extends BaseServerFrag<ShareListUIOpe, ShareListDAOpe
                         UserBean userBean = new UserBean();
                         userBean.setPhone(getP().getD().getVideos().get((Integer) v.getTag(R.id.position)).getOthername());
                         userInfoFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, userBean);
-                        FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, userInfoFrag);
+                        FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, userInfoFrag);
                         break;
                 }
                 break;

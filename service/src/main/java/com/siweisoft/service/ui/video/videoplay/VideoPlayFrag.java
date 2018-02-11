@@ -80,7 +80,7 @@ public class VideoPlayFrag extends BaseServerFrag<VideoPlayUIOpe, VideoPlayDAOpe
     @Override
     public void onStart() {
         super.onStart();
-        activity.findViewById(R.id.ftv_right2).setOnClickListener(this);
+        getActivity().findViewById(R.id.ftv_right2).setOnClickListener(this);
     }
 
 
@@ -125,10 +125,10 @@ public class VideoPlayFrag extends BaseServerFrag<VideoPlayUIOpe, VideoPlayDAOpe
                             v.setEnabled(true);
                             v.setSelected(true);
                             getP().getU().bind.tvProgress.setText("");
-                            activity.runOnUiThread(new Runnable() {
+                            getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    ToastUtil.getInstance().showShort(activity, result.getPath());
+                                    ToastUtil.getInstance().showShort(getActivity(), result.getPath());
                                 }
                             });
                         }
@@ -150,10 +150,10 @@ public class VideoPlayFrag extends BaseServerFrag<VideoPlayUIOpe, VideoPlayDAOpe
                         if (o instanceof BaseResBean) {
                             BaseResBean baseResBean = (BaseResBean) o;
                             if (baseResBean.isException()) {
-                                ToastUtil.getInstance().showShort(activity, "" + baseResBean.getErrorMessage());
+                                ToastUtil.getInstance().showShort(getActivity(), "" + baseResBean.getErrorMessage());
                             } else {
                                 v.setVisibility(View.GONE);
-                                ToastUtil.getInstance().showShort(activity, "上传成功");
+                                ToastUtil.getInstance().showShort(getActivity(), "上传成功");
                                 v.setEnabled(false);
                                 getP().getD().getVideoDetailBean().setUploaded(1);
                             }

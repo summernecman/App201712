@@ -23,7 +23,7 @@
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         app:srlEnablePureScrollMode="true"
         app:srlDragRate="0.2"
-        android:id="@+id/refreshLayout"
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <LinearLayout

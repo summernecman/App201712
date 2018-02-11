@@ -55,7 +55,7 @@ public class LoginAct extends BaseUIActivity<BaseUIOpe, BaseDAOpe> {
     }
 
     private void dothing() {
-        FragmentUtil2.getInstance().addNoAnim(activity, R.id.act_base_root, new LoginFrag());
+        FragmentUtil2.getInstance().addNoAnim(getActivity(), R.id.act_base_root, new LoginFrag());
 //        FragmentUtil2.getInstance().add(activity, R.id.act_base_root,new WelcomeFrag());
     }
 
@@ -106,7 +106,7 @@ public class LoginAct extends BaseUIActivity<BaseUIOpe, BaseDAOpe> {
             FragmentUtil2.getInstance().clear();
             this.finish();
         } else {
-            FragmentUtil2.getInstance().removeTopRightNow(activity, R.id.act_base_root);
+            FragmentUtil2.getInstance().removeTopRightNow(getActivity(), R.id.act_base_root);
         }
     }
 

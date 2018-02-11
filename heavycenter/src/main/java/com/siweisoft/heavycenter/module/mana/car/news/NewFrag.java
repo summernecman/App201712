@@ -5,7 +5,7 @@ package com.siweisoft.heavycenter.module.mana.car.news;
 import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
-import com.android.lib.network.newsf.UIFNetAdapter;
+import com.android.lib.network.news.UINetAdapter;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.car.news.CarNewResBean;
@@ -27,14 +27,11 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         switch (v.getId()){
             case R.id.ftv_right2:
                 if(getP().getU().canGo()){
-                    getP().getD().newCar(getP().getU().getCarNewReqBean(getP().getD().getCarNewReqBean()), new UIFNetAdapter<CarNewResBean>(this) {
+                    getP().getD().newCar(getP().getU().getCarNewReqBean(getP().getD().getCarNewReqBean()), new UINetAdapter<CarNewResBean>(this) {
                         @Override
-                        public void onResult(boolean success, String msg, CarNewResBean o) {
-                            super.onResult(success, msg, o);
-                            if(success){
-                                getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
-                                getBaseUIAct().onBackPressed();
-                            }
+                        public void onSuccess(CarNewResBean o) {
+                            getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
+                            getBaseUIAct().onBackPressed();
                         }
                     });
                 }

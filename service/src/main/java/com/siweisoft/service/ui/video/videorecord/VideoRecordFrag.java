@@ -76,7 +76,7 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
             public void onFinish(Object o) {
                 ArrayList<VideoBean> a = (ArrayList<VideoBean>) o;
                 if (a == null || a.size() == 0) {
-                    ToastUtil.getInstance().showShort(activity, "加载完毕");
+                    ToastUtil.getInstance().showShort(getActivity(), "加载完毕");
                 }
                 if (o != null) {
                     getP().getD().getVideos().addAll((ArrayList<VideoBean>) o);
@@ -100,11 +100,11 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
                 final SeachFrag seachFrag = new SeachFrag();
                 seachFrag.setArguments(new Bundle());
                 seachFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, getP().getD().getSeachBean());
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_ONE, seachFrag);
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_ONE, seachFrag);
                 seachFrag.setOnFinishListener(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
-                        FragmentUtil2.getInstance().removeTop(activity, Value.ROOTID_ONE);
+                        FragmentUtil2.getInstance().removeTop(getActivity(), Value.ROOTID_ONE);
                         getP().getD().setSeachBean((SeachBean) o);
                         initNow();
                     }
@@ -122,13 +122,13 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
                         VideoContainerFrag playFrag = new VideoContainerFrag();
                         playFrag.setArguments(new Bundle());
                         playFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, (Serializable) v.getTag(R.id.data));
-                        FragmentUtil2.getInstance().add(activity, Value.ROOTID_ONE, playFrag);
+                        FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_ONE, playFrag);
                         break;
                     case R.id.iv_head:
                         UserInfoFrag userInfoFrag = new UserInfoFrag();
                         userInfoFrag.setArguments(new Bundle());
                         userInfoFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, getP().getD().getVideos().get((Integer) v.getTag(R.id.position)).getOtherUser());
-                        FragmentUtil2.getInstance().add(activity, Value.ROOTID_ONE, userInfoFrag);
+                        FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_ONE, userInfoFrag);
                         break;
                 }
                 break;

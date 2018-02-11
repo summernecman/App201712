@@ -7,6 +7,7 @@ package com.android.lib.view.refresh;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
@@ -85,7 +86,7 @@ public class MyClassicsFooter extends RelativeLayout implements RefreshFooter {
 
         mTitleText = new TextView(context);
         mTitleText.setId(android.R.id.widget_frame);
-        mTitleText.setTextColor(0xff666666);
+        mTitleText.setTextColor(Color.WHITE);
         mTitleText.setText(REFRESH_FOOTER_PULLUP);
 
         LayoutParams lpBottomText = new LayoutParams(WRAP_CONTENT, WRAP_CONTENT);

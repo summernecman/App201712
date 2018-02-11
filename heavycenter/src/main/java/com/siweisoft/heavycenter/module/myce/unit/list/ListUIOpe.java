@@ -92,19 +92,19 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
         return searchReqBean;
     }
     public void initRefresh(OnRefreshListener onRefreshListener){
-        bind.refreshLayout.setOnRefreshListener(onRefreshListener);
+        bind.refresh.setOnRefreshListener(onRefreshListener);
     }
 
     public void finishRefresh(){
-        bind.refreshLayout.finishRefresh();
+        bind.refresh.finishRefresh();
     }
 
     public void finishLoadmore(){
-        bind.refreshLayout.finishLoadmore();
+        bind.refresh.finishLoadmore();
     }
 
     public void autoRefresh(){
-        bind.refreshLayout.autoRefresh();
+        bind.refresh.autoRefresh();
     }
 
     public void notifyDataSetChanged(){

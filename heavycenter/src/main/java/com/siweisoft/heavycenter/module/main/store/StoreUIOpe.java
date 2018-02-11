@@ -28,25 +28,25 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
 
 
     public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener){
-        bind.refreshLayout.setOnRefreshListener(refreshListener);
-        bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
+        bind.refresh.setOnRefreshListener(refreshListener);
+        bind.refresh.setOnLoadmoreListener(loadmoreListener);
     }
 
     public void finishRefresh(){
-        bind.refreshLayout.finishRefresh();
+        bind.refresh.finishRefresh();
     }
 
     public void finishLoadmore(){
-        bind.refreshLayout.finishLoadmore();
+        bind.refresh.finishLoadmore();
     }
 
     public void autoRefresh(){
-        bind.refreshLayout.autoRefresh();
+        bind.refresh.autoRefresh();
     }
 
 
     public void autoRefresh(int delay){
-        bind.refreshLayout.autoRefresh(delay);
+        bind.refresh.autoRefresh(delay);
     }
 
 

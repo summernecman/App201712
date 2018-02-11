@@ -19,8 +19,8 @@ public class DialogFrag extends BaseServerFrag<DialogUIOpe, DialogDAOpe> {
     @Override
     public void initdelay() {
         super.initdelay();
-        if (SystemUtil.isBackground(activity)) {
-            IntentUtil.getInstance().IntentTo(activity, activity.getPackageName());
+        if (SystemUtil.isBackground(getActivity())) {
+            IntentUtil.getInstance().IntentTo(getActivity(), getActivity().getPackageName());
         }
         getP().getU().bind.tvRefuse.setSelected(true);
         getP().getU().bind.tvRefuse.setSelected(false);

@@ -32,7 +32,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
     public void initdelay() {
         super.initdelay();
         if(getArguments().getInt(ValueConstant.DATA_DATA,-1)!=-1){
-            getP().getD().detailGood(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<GoodListRes.ResultsBean>(getActivity()) {
+            getP().getD().detailGood(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<GoodListRes.ResultsBean>(this) {
                 @Override
                 public void onSuccess(GoodListRes.ResultsBean o) {
                     super.onSuccess(o);
@@ -85,7 +85,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
             case R.id.ftv_right2:
                 if(getArguments().getInt(ValueConstant.DATA_DATA,-1)!=-1){
                     if(getP().getU().canGo(getP().getD().getNewsGoodReq())){
-                        getP().getD().updGood(getP().getU().getUpdGoodReq(getP().getD().getUpdGoodReq(getP().getD().getNewsGoodReq())), new UINetAdapter<UpdGoodRes>(getActivity()) {
+                        getP().getD().updGood(getP().getU().getUpdGoodReq(getP().getD().getUpdGoodReq(getP().getD().getNewsGoodReq())), new UINetAdapter<UpdGoodRes>(this) {
                             @Override
                             public void onSuccess(UpdGoodRes o) {
                                 getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
@@ -95,14 +95,11 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                     }
                 }else{
                     if(getP().getU().canGo(getP().getD().getNewsGoodReq())){
-                        getP().getD().NewsGood(getP().getU().getNewsGoodReq(getP().getD().getNewsGoodReq()), new UINetAdapter<NewsGoodRes>(getActivity()) {
+                        getP().getD().NewsGood(getP().getU().getNewsGoodReq(getP().getD().getNewsGoodReq()), new UINetAdapter<NewsGoodRes>(this) {
                             @Override
-                            public void onResult(boolean success, String msg, NewsGoodRes o) {
-                                super.onResult(success, msg, o);
-                                if(success){
-                                    getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
-                                    getBaseUIAct().onBackPressed();
-                                }
+                            public void onSuccess(NewsGoodRes o) {
+                                getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
+                                getBaseUIAct().onBackPressed();
                             }
                         });
                     }

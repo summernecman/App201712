@@ -66,10 +66,9 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().unitUsers(new UINetAdapter<UnitUserResBean>(getBaseUIAct()) {
+        getP().getD().unitUsers(new UINetAdapter<UnitUserResBean>(this) {
             @Override
-            public void onResult(boolean success, String msg, UnitUserResBean o) {
-                super.onResult(success, msg, o);
+            public void onSuccess(UnitUserResBean o) {
                 //o= new Test().getUnitUserResBean();
                 getP().getU().LoadListData(o,UserFrag.this);
                 getP().getU().finishRefresh();
@@ -82,7 +81,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 switch (v.getId()){
-                    case R.id.munu:
+                    case R.id.smMenuViewRight:
                         UnitUserResBean.ResultsBean resultsBean  = (UnitUserResBean.ResultsBean) v.getTag(R.id.data);
                         int t = (int) v.getTag(R.id.type);
                         switch (t){
@@ -106,10 +105,9 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                         }
                                         break;
                                     default:
-                                        getP().getD().addUser(resultsBean.getTel(), new UINetAdapter<AddUserResBean>(getBaseUIAct()) {
+                                        getP().getD().addUser(resultsBean.getUserId(), new UINetAdapter<AddUserResBean>(this) {
                                             @Override
-                                            public void onResult(boolean success, String msg, AddUserResBean o) {
-                                                super.onResult(success, msg, o);
+                                            public void onSuccess(AddUserResBean o) {
                                                 onRefresh(null);
                                             }
                                         });
@@ -118,7 +116,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                 break;
                         }
                         break;
-                    case R.id.rl_user:
+                    case R.id.smContentView:
                         UnitUserResBean.ResultsBean data  = (UnitUserResBean.ResultsBean) v.getTag(R.id.data);
                         if(OjectUtil.equals(getArguments().getString(UserValue.选取超级管理员KEY),UserValue.选取超级管理员)){
                             getArguments().putSerializable(ValueConstant.DATA_DATA,data);
@@ -147,7 +145,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                     return;
                 }
                 UnitUserResBean.ResultsBean data = (UnitUserResBean.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA);
-                getP().getD().setUserRole(data.getUserId(), new UINetAdapter<UserRoleRes>(getBaseUIAct()) {
+                getP().getD().setUserRole(data.getUserId(), new UINetAdapter<UserRoleRes>(this) {
                     @Override
                     public void onSuccess(UserRoleRes o) {
                         super.onSuccess(o);

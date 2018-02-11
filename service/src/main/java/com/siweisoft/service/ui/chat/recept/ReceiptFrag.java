@@ -40,13 +40,13 @@ public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
         getP().getD().setVideoBean((VideoBean) getArguments().getSerializable(Value.DATA_DATA));
         getP().getU().initCallINfo(getP().getD().getVideoBean().getFromUser());
         getP().getU().shark();
-        if (SystemUtil.isBackground(activity)) {
-            IntentUtil.getInstance().IntentTo(activity, activity.getPackageName());
+        if (SystemUtil.isBackground(getActivity())) {
+            IntentUtil.getInstance().IntentTo(getActivity(), getActivity().getPackageName());
         }
-        mVibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
+        mVibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         mVibrator.vibrate(new long[]{1000, 2000, 1000, 2000}, 0);
 
-        PowerManager pm = (PowerManager) activity.getSystemService(Context.POWER_SERVICE);
+        PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
         mWakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE, "SimpleTimer");
         mWakeLock.acquire();//这里唤醒锁，用这种方式要记得在适当的地方关闭锁，
         mWakeLock.release();
@@ -62,8 +62,8 @@ public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
                 videoChatFrag.setArguments(new Bundle());
                 videoChatFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, getArguments().getSerializable(Value.DATA_DATA));
                 videoChatFrag.getArguments().putBoolean(Value.DATA_INTENT, true);
-                FragmentUtil2.getInstance().removeTopRightNow(activity, Value.FULLSCREEN);
-                FragmentUtil2.getInstance().add(activity, Value.FULLSCREEN, videoChatFrag);
+                FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.FULLSCREEN);
+                FragmentUtil2.getInstance().add(getActivity(), Value.FULLSCREEN, videoChatFrag);
                 break;
             case R.id.tv_refuse:
                 getP().getD().updateCallState(getP().getD().getVideoBean(), VideoBean.CALL_STATE_REJECT);
@@ -72,7 +72,7 @@ public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
                 } catch (EMNoActiveCallException e) {
                     e.printStackTrace();
                 }
-                FragmentUtil2.getInstance().removeTopRightNow(activity, Value.FULLSCREEN);
+                FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.FULLSCREEN);
                 break;
         }
 
@@ -95,7 +95,7 @@ public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
                 v1.data = 1;
                 EventBus.getDefault().post(v1);
 
-                FragmentUtil2.getInstance().removeTopRightNow(activity, Value.FULLSCREEN);
+                FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.FULLSCREEN);
                 break;
         }
     }

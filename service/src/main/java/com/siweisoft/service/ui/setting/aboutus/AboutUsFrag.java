@@ -18,14 +18,14 @@ public class AboutUsFrag extends BaseServerFrag<AboutUsUIOpe, AboutUsDAOpe> {
     public void initdelay() {
         super.initdelay();
         setTitleBean(new TitleBean("返回", "关于我们", ""));
-        getP().getU().initVersion(PackageUtil.getAppVersionName(activity));
+        getP().getU().initVersion(PackageUtil.getAppVersionName(getActivity()));
     }
 
     @OnClick({R.id.ll_remarkme, R.id.ll_question, R.id.ll_function})
     public void onClickEvent(View v) {
         switch (v.getId()) {
             default:
-                ToastUtil.getInstance().showShort(activity, "功能还在完善中");
+                ToastUtil.getInstance().showShort(getActivity(), "功能还在完善中");
                 break;
         }
     }

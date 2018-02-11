@@ -31,7 +31,7 @@ public class RenameFrag extends BaseServerFrag<RenameUIOpe, RenameDAOpe> {
                     public void onFinish(Object o) {
                         UserBean bean = (UserBean) o;
                         Value.getUserInfo().setName(bean.getName());
-                        FragmentUtil2.getInstance().removeTopRightNow(activity, Value.getNowRoot());
+                        FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.getNowRoot());
                     }
                 });
                 break;

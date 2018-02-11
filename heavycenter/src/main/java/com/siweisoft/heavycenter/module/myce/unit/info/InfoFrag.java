@@ -22,10 +22,9 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
     public void initdelay() {
         super.initdelay();
 
-        getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(getBaseUIAct()) {
+        getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
             @Override
-            public void onResult(boolean success, String msg, UnitInfo o) {
-                super.onResult(success, msg, o);
+            public void onSuccess(UnitInfo o) {
                 getP().getU().initinfo(o);
             }
         });
@@ -43,22 +42,19 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                         case R.id.close:
                             break;
                         case R.id.sure:
-                            getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(getBaseUIAct()) {
+                            getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(InfoFrag.this) {
                                 @Override
-                                public void onResult(boolean success, String msg, UnBindResBean o) {
-                                    super.onResult(success, msg, o);
-                                    if(success){
-                                        getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
-                                            @Override
-                                            public void onResult(boolean success, String msg, LoginResBean o) {
-                                                super.onResult(success, msg, o);
-                                                if(success){
-                                                    LocalValue.save登录返回信息(o);
-                                                    ((MainAct) getBaseUIAct()).go判断是否绑定单位处理();
-                                                }
+                                public void onSuccess(UnBindResBean o) {
+                                    getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                        @Override
+                                        public void onResult(boolean success, String msg, LoginResBean o) {
+                                            super.onResult(success, msg, o);
+                                            if(success){
+                                                LocalValue.save登录返回信息(o);
+                                                ((MainAct) getBaseUIAct()).go判断是否绑定单位处理();
                                             }
-                                        });
-                                    }
+                                        }
+                                    });
                                 }
                             });
                             break;

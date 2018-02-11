@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
@@ -29,6 +30,8 @@ import com.siweisoft.heavycenter.databinding.FragManaStoreBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaGoodBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaStoreBinding;
 import com.siweisoft.heavycenter.module.view.MySwipeListener;
+import com.tubb.smrv.SwipeHorizontalMenuLayout;
+import com.tubb.smrv.SwipeMenuLayout;
 
 import java.util.List;
 
@@ -55,48 +58,63 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
                 binding.tvMaxstock.setText("最大库存:"+ StringUtil.getStr(o.getResults().get(position).getMaxStock())+"t");
                 binding.tvMinstock.setText("安全库存:"+ StringUtil.getStr(o.getResults().get(position).getMinStock())+"t");
 
+                //TextView textView = binding.
+
+
+                View content = binding.sml.getChildAt(1);
+                TextView menu = (TextView) binding.sml.getChildAt(0);
+
+                content.setOnClickListener(this);
+                content.setTag(R.id.position,position);
+                content.setTag(R.id.data,list.get(position));
+
+
+                menu.setOnClickListener(this);
+                menu.setTag(R.id.position,position);
+                menu.setTag(R.id.data,list.get(position));
+                menu.setTag(R.id.data1,binding.sml);
+                menu.setTag(R.id.type,0);
+
+
+
                 switch (o.getResults().get(position).getStatus()){
                     case StoreDetail.STATUS_OFF:
-                        binding.munu.setText(StoreDetail.STATUS_ON_CN);
-                        binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
+                        menu.setText(StoreDetail.STATUS_ON_CN);
+                        menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
                         break;
                     default:
-                        binding.munu.setText(StoreDetail.STATUS_OFF_CN);
-                        binding.munu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
+                        menu.setText(StoreDetail.STATUS_OFF_CN);
+                        menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
                         break;
                 }
 
-                binding.munu.setOnClickListener(this);
-                binding.munu.setTag(R.id.position,position);
-                binding.munu.setTag(R.id.data,o.getResults().get(position));
-                binding.munu.setTag(R.id.data1,binding.swipe);
 
-                binding.rlRoot.setOnClickListener(this);
-                binding.rlRoot.setTag(R.id.position,position);
-                binding.rlRoot.setTag(R.id.data,o.getResults().get(position));
-                binding.swipe.setRightSwipeEnabled(isSwipe());
 
-                binding.swipe.addSwipeListener(new MySwipeListener() {
+
+
+                binding.sml.setSwipeListener(new com.siweisoft.heavycenter.module.view.swipe.MySwipeListener(){
                     @Override
-                    public void onStartOpen(SwipeLayout layout) {
+                    public void endMenuOpened(SwipeMenuLayout swipeMenuLayout) {
                         for(int i=0;i<bind.recycle.getChildCount();i++){
-                            SwipeLayout swipeLayout= bind.recycle.getChildAt(i).findViewById(R.id.swipe);
-                            if(swipeLayout!=binding.swipe){
-                                swipeLayout.close(true);
+                            SwipeHorizontalMenuLayout swipeLayout= (SwipeHorizontalMenuLayout) bind.recycle.getChildAt(i);
+                            if(swipeLayout!=binding.sml){
+                                swipeLayout.smoothCloseMenu(400);
                             }
                         }
                     }
                 });
+
             }
 
 
             @Override
             public void onClick(View v) {
                 super.onClick(v);
+
                 switch (v.getId()){
-                    case R.id.munu:
-                        SwipeLayout swipeLayout = (SwipeLayout) v.getTag(R.id.data1);
-                        swipeLayout.close(true);
+                    case R.id.smMenuViewRight:
+                        SwipeHorizontalMenuLayout swipeLayout= (SwipeHorizontalMenuLayout) v.getTag(R.id.data1);
+                        swipeLayout.smoothCloseMenu(400);
                         break;
                 }
             }
@@ -110,8 +128,8 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
                 switch (newState){
                     case RecyclerView.SCROLL_STATE_DRAGGING:
                         for(int i=0;i<recyclerView.getChildCount();i++){
-                            SwipeLayout swipeLayout= recyclerView.getChildAt(i).findViewById(R.id.swipe);
-                            swipeLayout.close(true);
+                            SwipeHorizontalMenuLayout swipeLayout= (SwipeHorizontalMenuLayout) recyclerView.getChildAt(i);
+                            swipeLayout.smoothCloseMenu(400);
                         }
                         break;
                 }
@@ -125,24 +143,24 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
     }
 
     public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener){
-        bind.refreshLayout.setOnRefreshListener(refreshListener);
-        bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);
+        bind.refresh.setOnRefreshListener(refreshListener);
+        bind.refresh.setOnLoadmoreListener(loadmoreListener);
     }
 
     public void finishRefresh(){
-        bind.refreshLayout.finishRefresh();
+        bind.refresh.finishRefresh();
     }
 
     public void finishLoadmore(){
-        bind.refreshLayout.finishLoadmore();
+        bind.refresh.finishLoadmore();
     }
 
     public void autoRefresh(){
-        bind.refreshLayout.autoRefresh();
+        bind.refresh.autoRefresh();
     }
 
     public void autoRefresh(int delay){
-        bind.refreshLayout.autoRefresh(delay);
+        bind.refresh.autoRefresh(delay);
     }
 
 

@@ -36,13 +36,13 @@ public class SettingFrag extends BaseServerFrag<SettingUIOpe, SettingDAOpe> {
                     @Override
                     public void onSuccess() {
                         SPUtil.getInstance().saveBoolean(Value.autologin,false);
-                        ((ServieApp) activity.getApplication()).exit();
+                        ((ServieApp) getActivity().getApplication()).exit();
                     }
 
                     @Override
                     public void onError(int code, String error) {
                         SPUtil.getInstance().saveBoolean(Value.autologin,false);
-                        ((ServieApp) activity.getApplication()).exit();
+                        ((ServieApp) getActivity().getApplication()).exit();
                     }
 
                     @Override
@@ -57,29 +57,29 @@ public class SettingFrag extends BaseServerFrag<SettingUIOpe, SettingDAOpe> {
                     public void onFinish(Object o) {
                         boolean up = (boolean) o;
                         if(up){
-                            ToastUtil.getInstance().showLong(activity,"检测到新版本,开始下载");
-                            Intent intent = new Intent(activity,DownloadService.class);
+                            ToastUtil.getInstance().showLong(getActivity(),"检测到新版本,开始下载");
+                            Intent intent = new Intent(getActivity(),DownloadService.class);
                             intent.putExtra("downUrl",getP().getD().appBean.getUrl());
-                            activity.startService(intent);
+                            getActivity().startService(intent);
                         }else{
-                            ToastUtil.getInstance().showLong(activity,"已经是最新版本");
+                            ToastUtil.getInstance().showLong(getActivity(),"已经是最新版本");
                         }
                     }
                 });
                 break;
             case R.id.ll_clear:
                 TipFrag tipFrag = new TipFrag();
-                FragmentUtil2.getInstance().add(activity, Value.FULLSCREEN, tipFrag);
+                FragmentUtil2.getInstance().add(getActivity(), Value.FULLSCREEN, tipFrag);
                 tipFrag.setOnFinishListener(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
-                        FragmentUtil2.getInstance().removeTopRightNow(activity, Value.FULLSCREEN);
+                        FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.FULLSCREEN);
                         switch (((View) o).getId()) {
                             case R.id.tv_yes:
-                                getP().getD().clear(activity);
+                                getP().getD().clear(getActivity());
                                 break;
                             case R.id.tv_no:
-                                ToastUtil.getInstance().showLong(activity,"你可以到手机存储根目录  videorecord  文件夹下手动清理");
+                                ToastUtil.getInstance().showLong(getActivity(),"你可以到手机存储根目录  videorecord  文件夹下手动清理");
                                 break;
                         }
                     }

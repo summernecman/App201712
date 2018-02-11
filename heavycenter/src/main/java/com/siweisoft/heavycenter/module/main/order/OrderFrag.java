@@ -30,12 +30,11 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
 
 
     @Override
-    public void onFristVisibleInit() {
+    public void onFristVisibleDelayInit() {
         getP().getU().initPages(getFrag(),getP().getD().initPages());
         getP().getD().getOrderCount(new NetAdapter<OrderNumRes>(this){
             @Override
             public void onSuccess(OrderNumRes o) {
-                super.onSuccess(o);
                 getP().getU().refreshTopMenu(o);
             }
         });

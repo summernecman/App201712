@@ -31,13 +31,13 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
     @Override
     public void onStart() {
         super.onStart();
-        activity.findViewById(R.id.ftv_right).setOnClickListener(this);
+        getActivity().findViewById(R.id.ftv_right).setOnClickListener(this);
     }
 
 
     @Override
     public void initdelay() {
-        getP().getU().setFront(activity);
+        getP().getU().setFront(getActivity());
         getP().getD().setVideoBean((VideoBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
         setTitleBean(new TitleBean("返回", "评论", "", "确定"));
         getP().getU().ifNoRecordVideo(getP().getD().isRecord());
@@ -63,12 +63,12 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
             @Override
             public void onFinish(Object o) {
                 final VideoDetailBean videoBean = (VideoDetailBean) o;
-                activity.findViewById(R.id.ftv_right).setVisibility(View.VISIBLE);
-                if (SystemUtil.isWiFi(activity)) {
+                getActivity().findViewById(R.id.ftv_right).setVisibility(View.VISIBLE);
+                if (SystemUtil.isWiFi(getActivity())) {
                     getP().getD().uploadVideo(getP().getD().getVideoBean(), videoBean);
                 } else {
                     DialogFrag dialogFrag = new DialogFrag();
-                    FragmentUtil2.getInstance().add(activity, Value.FULLSCREEN, dialogFrag);
+                    FragmentUtil2.getInstance().add(getActivity(), Value.FULLSCREEN, dialogFrag);
                     dialogFrag.setOnFinishListener(new OnFinishListener() {
                         @Override
                         public void onFinish(Object o) {
@@ -80,7 +80,7 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
 
                                     break;
                             }
-                            FragmentUtil2.getInstance().removeTopRightNow(activity, Value.FULLSCREEN);
+                            FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.FULLSCREEN);
                         }
                     });
                 }
@@ -129,11 +129,11 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
                             getP().getD().addVideoComment(vv, new OnFinishListener() {
                                 @Override
                                 public void onFinish(Object o) {
-                                    FragmentUtil2.getInstance().removeTopRightNow(activity, Value.getNowRoot());
+                                    FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.getNowRoot());
                                 }
                             });
                         } else {
-                            FragmentUtil2.getInstance().removeTopRightNow(activity, Value.getNowRoot());
+                            FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.getNowRoot());
                         }
                     }
                 });
@@ -144,14 +144,14 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
                 DialogListFrag dialogListFrag = new DialogListFrag();
                 dialogListFrag.setArguments(new Bundle());
                 dialogListFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, Value.getVideotipsList());
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_TWO, dialogListFrag);
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_TWO, dialogListFrag);
                 dialogListFrag.setOnFinishListener(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         VideoTipBean v = (VideoTipBean) o;
                         getP().getD().setVideoTipBean(v);
                         getP().getU().bind.tvVideotips.setText(StringUtil.getStr(v.getTxt()));
-                        FragmentUtil2.getInstance().removeTopRightNow(activity, Value.ROOTID_TWO);
+                        FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.ROOTID_TWO);
                     }
                 });
                 break;

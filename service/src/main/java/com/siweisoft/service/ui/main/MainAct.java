@@ -91,13 +91,13 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
         if (FragmentUtil2.getInstance().getFragMap().get(Value.FULLSCREEN) != null
                 && FragmentUtil2.getInstance().getFragMap().get(Value.FULLSCREEN).size() >= 1
                 && FragmentUtil2.getInstance().getFragMap().get(Value.FULLSCREEN).get(FragmentUtil2.getInstance().getFragMap().get(Value.FULLSCREEN).size() - 1).getClass().getName().equals(ReceiptFrag.class.getName())) {
-            FragmentUtil2.getInstance().removeTopRightNow(activity, Value.FULLSCREEN);
+            FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.FULLSCREEN);
             try {
                 EMClient.getInstance().callManager().rejectCall();
             } catch (EMNoActiveCallException e) {
                 e.printStackTrace();
             }
-            FragmentUtil2.getInstance().removeTopRightNow(activity, Value.FULLSCREEN);
+            FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.FULLSCREEN);
 
             return;
         }
@@ -116,7 +116,7 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
 
 
         if (FragmentUtil2.getInstance().getFragMap().get(Value.FULLSCREEN) != null && FragmentUtil2.getInstance().getFragMap().get(Value.FULLSCREEN).size() == 1) {
-            FragmentUtil2.getInstance().removeTopRightNow(activity, Value.FULLSCREEN);
+            FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.FULLSCREEN);
             return;
         }
 
@@ -125,7 +125,7 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
             //ToastUtil.getInstance().showShort(activity, "请从设置里退出");
             this.finish();
         } else {
-            FragmentUtil2.getInstance().removeTopRightNow(activity, Value.getNowRoot());
+            FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.getNowRoot());
         }
     }
 
@@ -159,7 +159,7 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
             case R.id.ftv_title:
                 break;
             case R.id.ftv_back:
-                FragmentUtil2.getInstance().removeTopRightNow(activity, Value.getNowRoot());
+                FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.getNowRoot());
                 break;
             case R.id.ftv_right2:
                 break;
@@ -183,7 +183,7 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
         crashI.sendCrash(crashBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
-                ((ServieApp) activity.getApplication()).exit();
+                ((ServieApp) getActivity().getApplication()).exit();
             }
         });
     }
@@ -200,8 +200,8 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
                 @Override
                 public void onFinish(Object o) {
                     UserBean userBean = (UserBean) o;
-                    if (!UUUIDUtil.getInstance().getUUUId(activity).equals(userBean.getUuuid())) {
-                        activity.finish();
+                    if (!UUUIDUtil.getInstance().getUUUId(getActivity()).equals(userBean.getUuuid())) {
+                        getActivity().finish();
                     }
 
                 }
@@ -330,10 +330,10 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode){
             case KeyEvent.KEYCODE_VOLUME_UP:
-                AudioUtil.setAudioJia(activity);
+                AudioUtil.setAudioJia(getActivity());
                 return true;
             case KeyEvent.KEYCODE_VOLUME_DOWN:
-                AudioUtil.setAudioJian(activity);
+                AudioUtil.setAudioJian(getActivity());
                 return true;
                 default:
                     break;

@@ -6,84 +6,58 @@ import com.android.lib.bean.BaseBean;
 
 public class OrderNumRes extends BaseBean {
 
-    private int newShCount;
 
-    private int newFhCount;
+    /**
+     * percent : 0.3
+     * newCount : 12
+     * ingCount : 16
+     * doneCount : 1
+     * defaultType : R
+     */
 
-    private int ingShCount;
+    private double percent;
+    private int newCount;
+    private int ingCount;
+    private int doneCount;
+    private String defaultType;
 
-    private int ingFhCount;
-
-    private int doneShCount;
-
-    private int doneFhCount;
-
-    private int totalPlan;
-
-    private int totalSh;
-
-
-    public int getNewShCount() {
-        return newShCount;
+    public double getPercent() {
+        return percent;
     }
 
-    public void setNewShCount(int newShCount) {
-        this.newShCount = newShCount;
+    public void setPercent(double percent) {
+        this.percent = percent;
     }
 
-    public int getNewFhCount() {
-        return newFhCount;
+    public int getNewCount() {
+        return newCount;
     }
 
-    public void setNewFhCount(int newFhCount) {
-        this.newFhCount = newFhCount;
+    public void setNewCount(int newCount) {
+        this.newCount = newCount;
     }
 
-    public int getIngShCount() {
-        return ingShCount;
+    public int getIngCount() {
+        return ingCount;
     }
 
-    public void setIngShCount(int ingShCount) {
-        this.ingShCount = ingShCount;
+    public void setIngCount(int ingCount) {
+        this.ingCount = ingCount;
     }
 
-    public int getIngFhCount() {
-        return ingFhCount;
+    public int getDoneCount() {
+        return doneCount;
     }
 
-    public void setIngFhCount(int ingFhCount) {
-        this.ingFhCount = ingFhCount;
+    public void setDoneCount(int doneCount) {
+        this.doneCount = doneCount;
     }
 
-    public int getDoneShCount() {
-        return doneShCount;
+    public String getDefaultType() {
+        return defaultType;
     }
 
-    public void setDoneShCount(int doneShCount) {
-        this.doneShCount = doneShCount;
-    }
-
-    public int getDoneFhCount() {
-        return doneFhCount;
-    }
-
-    public void setDoneFhCount(int doneFhCount) {
-        this.doneFhCount = doneFhCount;
-    }
-
-    public int getTotalPlan() {
-        return totalPlan;
-    }
-
-    public void setTotalPlan(int totalPlan) {
-        this.totalPlan = totalPlan;
-    }
-
-    public int getTotalSh() {
-        return totalSh;
-    }
-
-    public void setTotalSh(int totalSh) {
-        this.totalSh = totalSh;
+    public void setDefaultType(String defaultType) {
+        this.defaultType = defaultType;
     }
 }

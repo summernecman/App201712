@@ -42,10 +42,10 @@ public class RegistFrag extends BaseServerFrag<RegistUIOpe, RegistDAOpe> {
         switch (v.getId()) {
             case R.id.onRegist:
                 if (!getP().getU().vevify()) {
-                    ToastUtil.getInstance().showShort(activity, "信息未填写完整");
+                    ToastUtil.getInstance().showShort(getActivity(), "信息未填写完整");
                     return;
                 }
-                LoadUtil.getInstance().onStartLoading(activity, "regist");
+                LoadUtil.getInstance().onStartLoading(getActivity(), "regist");
                 getP().getD().checkCode(getP().getU().bind.etAccount.getText().toString(), getP().getU().bind.etCode.getText().toString(), new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
@@ -55,28 +55,28 @@ public class RegistFrag extends BaseServerFrag<RegistUIOpe, RegistDAOpe> {
                                 public void onFinish(final Object o) {
                                     LoadUtil.getInstance().onStopLoading("regist");
                                     if (o instanceof Boolean) {
-                                        ToastUtil.getInstance().showShort(activity, "注册成功");
+                                        ToastUtil.getInstance().showShort(getActivity(), "注册成功");
                                         UserBean userBean = new UserBean();
                                         userBean.setPhone(getP().getU().bind.etAccount.getText().toString());
                                         userBean.setPwd(getP().getU().bind.etPwd.getText().toString());
                                         MessageEvent m = new MessageEvent(RegistFrag.class.getName(), LoginFrag.class.getName(), userBean);
                                         EventBus.getDefault().post(m);
-                                        FragmentUtil2.getInstance().removeTop(activity, R.id.act_base_root);
+                                        FragmentUtil2.getInstance().removeTop(getActivity(), R.id.act_base_root);
                                     } else {
-                                        activity.runOnUiThread(new Runnable() {
+                                        getActivity().runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                ToastUtil.getInstance().showShort(activity, StringUtil.getStr(o));
+                                                ToastUtil.getInstance().showShort(getActivity(), StringUtil.getStr(o));
                                             }
                                         });
                                     }
                                 }
                             });
                         } else {
-                            activity.runOnUiThread(new Runnable() {
+                            getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    ToastUtil.getInstance().showShort(activity, "短信验证码失败");
+                                    ToastUtil.getInstance().showShort(getActivity(), "短信验证码失败");
                                     LoadUtil.getInstance().onStopLoading("regist");
                                 }
                             });
@@ -85,7 +85,7 @@ public class RegistFrag extends BaseServerFrag<RegistUIOpe, RegistDAOpe> {
                 });
                 break;
             case R.id.ftv_back:
-                FragmentUtil2.getInstance().removeTop(activity, R.id.act_base_root);
+                FragmentUtil2.getInstance().removeTop(getActivity(), R.id.act_base_root);
                 break;
             case R.id.tv_getcode:
                 if (!getP().getU().vevifyPhone()) {

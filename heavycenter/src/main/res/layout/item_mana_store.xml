@@ -6,15 +6,15 @@
             name="item_mana_store"
             type="com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail" />
     </data>
-    <com.daimajia.swipe.SwipeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swipe"
+    <com.tubb.smrv.SwipeHorizontalMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:sml="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sml"
         android:layout_width="match_parent"
+        sml:sml_auto_open_percent="0.2"
         android:layout_height="80dp"
-        android:background="@color/white"
-        >
+        sml:sml_scroller_duration="250">
 
-        <TextView
+    <TextView
             android:layout_gravity="right"
             android:textSize="22sp"
             android:gravity="center"
@@ -22,12 +22,12 @@
             android:text="停用"
             android:orientation="horizontal"
             android:background="@color/red"
-            android:id="@+id/munu"
+        android:id="@id/smMenuViewRight"
             android:layout_width="70dp"
             android:weightSum="1"
             android:layout_height="match_parent"/>
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/rl_root"
+            android:id="@id/smContentView"
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -105,5 +105,5 @@
                 android:layout_height="1px"/>
         </RelativeLayout>
 
-    </com.daimajia.swipe.SwipeLayout>
+    </com.tubb.smrv.SwipeHorizontalMenuLayout>
 </layout>

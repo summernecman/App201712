@@ -11,6 +11,6 @@ public class Onefrag extends BaseServerFrag<OneUIOpe, OneDAOpe> {
 
     @Override
     public void initdelay() {
-        FragmentUtil2.getInstance().addNoAnim(activity, Value.ROOTID_ONE, new HistoryFrag());
+        FragmentUtil2.getInstance().addNoAnim(getActivity(), Value.ROOTID_ONE, new HistoryFrag());
     }
 }

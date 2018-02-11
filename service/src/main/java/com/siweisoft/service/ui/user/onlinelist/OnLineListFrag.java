@@ -40,7 +40,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
 
     @Override
     public void initdelay() {
-        activity.findViewById(R.id.ftv_right2).setOnClickListener(this);
+        getActivity().findViewById(R.id.ftv_right2).setOnClickListener(this);
         getP().getU().initRefresh(this);
         getP().getU().initList(new ArrayList<UserBean>(), null);
         initData2();
@@ -69,16 +69,16 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
                 UserInfoFrag userInfoFrag = new UserInfoFrag();
                 userInfoFrag.setArguments(new Bundle());
                 userInfoFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, userBean);
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_TWO, userInfoFrag);
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_TWO, userInfoFrag);
                 break;
             case R.id.iv_call:
 
                 SelectFrag select = new SelectFrag();
-                FragmentUtil2.getInstance().add(activity, Value.FULLSCREEN, select);
+                FragmentUtil2.getInstance().add(getActivity(), Value.FULLSCREEN, select);
                 select.setOnFinishListener(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
-                        FragmentUtil2.getInstance().removeTopRightNow(activity, Value.FULLSCREEN);
+                        FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.FULLSCREEN);
                         switch (((View) o).getId()) {
                             case R.id.tv_video:
                             case R.id.tv_voice:
@@ -104,7 +104,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
                                 VideoChatFrag videoChatFrag = new VideoChatFrag();
                                 videoChatFrag.setArguments(new Bundle());
                                 videoChatFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, videoBean);
-                                FragmentUtil2.getInstance().add(activity, Value.FULLSCREEN, videoChatFrag);
+                                FragmentUtil2.getInstance().add(getActivity(), Value.FULLSCREEN, videoChatFrag);
                                 break;
                         }
                     }

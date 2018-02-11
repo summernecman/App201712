@@ -26,10 +26,11 @@ import butterknife.OnClick;
 
 public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
 
+
     @Override
-    public void onFristVisibleInit() {
+    protected void onFristVisibleDelayInit() {
         getP().getU().initPages(this,getP().getD().initPages());
-        getP().getD().listWeight(new UINetAdapter<WeightListRes>(getActivity()) {
+        getP().getD().listWeight(new UINetAdapter<WeightListRes>(this) {
             @Override
             public void onSuccess(WeightListRes o) {
                 super.onSuccess(o);
@@ -37,6 +38,7 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
             }
         });
     }
+
 
     @OnClick({R.id.tv_save})
     public void onClick(View v) {
@@ -56,7 +58,7 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
                 if(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh()!=0){
                     getP().getD().getWeightMsg().getMessage().setWeigh(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh());
                 }
-                getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(getActivity()) {
+                getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(this) {
                     @Override
                     public void onSuccess(SaveWeightRes o) {
                         super.onSuccess(o);

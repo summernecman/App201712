@@ -16,10 +16,9 @@ public class NamesFrag extends AppFrag<NamesUIOpe,NamesDAOpe> implements ViewLis
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getD().NamesGood(new UINetAdapter<NamesRes>(getBaseUIAct()) {
+        getP().getD().NamesGood(new UINetAdapter<NamesRes>(this) {
             @Override
-            public void onResult(boolean success, String msg, NamesRes o) {
-                super.onResult(success, msg, o);
+            public void onSuccess(NamesRes o) {
                 getP().getU().LoadListData(o, NamesFrag.this);
             }
         });

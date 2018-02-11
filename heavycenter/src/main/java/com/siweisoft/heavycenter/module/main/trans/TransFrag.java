@@ -33,12 +33,9 @@ import butterknife.OnClick;
 
 public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener {
 
-    public TransFrag(){
-        LogUtil.E("fdf");
-    }
 
     @Override
-    public void onFristVisibleInit() {
+    public void onFristVisibleDelayInit() {
         getP().getU().initRefresh(this,this);
         getP().getU().initRecycle();
         onRefresh(null);
@@ -121,17 +118,12 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     public void onRefresh(final RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
         getP().getD().getTransRes().getResults().clear();
-        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(getBaseUIAct()) {
+        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
             @Override
-            public void onResult(boolean success, String msg, TransRes o) {
-                super.onResult(success, msg, o);
+            public void onSuccess(TransRes o) {
                 //o = new Test().getTransRes();
-               getP().getU().finishRefresh();
-               if(o!=null&& o.getResults()!=null){
-                   getP().getD().getTransRes().getResults().addAll(o.getResults());
-                   getP().getU().LoadListData(getP().getD().getTransRes().getResults(),TransFrag.this);
-               }
-
+                getP().getD().getTransRes().getResults().addAll(o.getResults());
+                getP().getU().LoadListData(getP().getD().getTransRes().getResults(),TransFrag.this);
             }
         });
 
@@ -140,16 +132,12 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
-        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(getBaseUIAct()) {
+        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
             @Override
-            public void onResult(boolean success, String msg, TransRes o) {
-                super.onResult(success, msg, o);
+            public void onSuccess(TransRes o) {
                 //o = new Test().getTransRes();
-                getP().getU().finishLoadmore();
-                if(o.getResults()!=null){
-                    getP().getD().getTransRes().getResults().addAll(o.getResults());
-                    getP().getU().notifyDataSetChanged();
-                }
+                getP().getD().getTransRes().getResults().addAll(o.getResults());
+                getP().getU().notifyDataSetChanged();
             }
         });
     }

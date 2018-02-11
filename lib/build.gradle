@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 27
@@ -107,4 +109,5 @@ dependencies {
     compile 'id.zelory:compressor:2.1.0'//图片压缩
     compile 'com.android.support:multidex:1.0.2'//并将 Dalvik 可执行文件分包库添加为依赖项
     implementation 'me.drakeet.support:toastcompat:1.0.2'
+    compile 'com.tubb.smrv:swipemenu-recyclerview:5.4.4'
 }

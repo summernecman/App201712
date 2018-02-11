@@ -15,7 +15,7 @@ public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
 
 
     @Override
-    public void onFristVisibleInit() {
+    public void onFristVisibleDelayInit() {
         getP().getU().initPages(getFrag(),getP().getD().getPages());
     }
 

@@ -21,13 +21,10 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
         getP().getU().initRecycle();
         getP().getD().storesInfo(new UINetAdapter<StoresResBean>(getBaseUIAct()) {
             @Override
-            public void onResult(boolean success, String msg, StoresResBean o) {
-                super.onResult(success, msg, o);
-                if(success){
-                    getP().getD().setStoresResBean(o);
-                    getP().getU().LoadListData(getP().getD().getStoresResBean());
-                    getP().getD().setInitdata(true);
-                }
+            public void onSuccess(StoresResBean o) {
+                getP().getD().setStoresResBean(o);
+                getP().getU().LoadListData(getP().getD().getStoresResBean());
+                getP().getD().setInitdata(true);
             }
         });
     }

@@ -8,6 +8,6 @@ public class HomeFrag extends BaseServerFrag<HomeUIOpe, HomeDAOpe> {
 
     @Override
     public void initdelay() {
-        getP().getU().initViewPager(activity.getSupportFragmentManager(), getP().getD().getFragment());
+        getP().getU().initViewPager(getActivity().getSupportFragmentManager(), getP().getD().getFragment());
     }
 }

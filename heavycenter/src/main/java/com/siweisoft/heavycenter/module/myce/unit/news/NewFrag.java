@@ -45,7 +45,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         super.initdelay();
         switch (getArguments().getString(ValueConstant.DATA_TYPE)){
             case 展示单位信息:
-                getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(getBaseUIAct()) {
+                getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
                     @Override
                     public void onSuccess(UnitInfo o) {
                         getP().getD().setUnit(o);
@@ -57,7 +57,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 break;
             case 修改单位信息:
                 getP().getU().updateInfo();
-                getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(getBaseUIAct()) {
+                getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
                     @Override
                     public void onSuccess(UnitInfo o) {
                         getP().getD().setUnit(o);
@@ -100,22 +100,19 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                                     case R.id.close:
                                         break;
                                     case R.id.sure:
-                                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(getBaseUIAct()) {
+                                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(NewFrag.this) {
                                             @Override
-                                            public void onResult(boolean success, String msg, UnBindResBean o) {
-                                                super.onResult(success, msg, o);
-                                                if(success){
-                                                    getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
-                                                        @Override
-                                                        public void onResult(boolean success, String msg, LoginResBean o) {
-                                                            super.onResult(success, msg, o);
-                                                            if(success){
-                                                                LocalValue.save登录返回信息(o);
-                                                                ((MainAct) getBaseUIAct()).go判断是否绑定单位处理();
-                                                            }
+                                            public void onSuccess(UnBindResBean o) {
+                                                getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                                    @Override
+                                                    public void onResult(boolean success, String msg, LoginResBean o) {
+                                                        super.onResult(success, msg, o);
+                                                        if(success){
+                                                            LocalValue.save登录返回信息(o);
+                                                            ((MainAct) getBaseUIAct()).go判断是否绑定单位处理();
                                                         }
-                                                    });
-                                                }
+                                                    }
+                                                });
                                             }
                                         });
                                         break;
@@ -128,7 +125,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                         break;
                     case 新建单位:
                         if(getP().getU().canGo()){
-                            getP().getD().createUnit(getP().getU().getNewReqBean(getP().getD().getUnit()), new UINetAdapter<NewResBean>(getContext()) {
+                            getP().getD().createUnit(getP().getU().getNewReqBean(getP().getD().getUnit()), new UINetAdapter<NewResBean>(this) {
                                 @Override
                                 public void onSuccess(NewResBean o) {
                                     getArguments().putBoolean(ValueConstant.DATA_RES,true);
@@ -139,7 +136,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                         break;
                     case 修改单位信息:
                         if(getP().getU().canGo()){
-                            getP().getD().updateUnit(getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(getActivity()) {
+                            getP().getD().updateUnit(getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(this) {
                                 @Override
                                 public void onSuccess(UpdateUnitRes o) {
                                     getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(getBaseUIAct()) {

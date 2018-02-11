@@ -24,7 +24,7 @@
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
             app:srlEnablePureScrollMode="true"
             app:srlDragRate="0.2"
-            android:id="@+id/refreshLayout"
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
     <LinearLayout
@@ -34,7 +34,7 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_id"
                 style_common:txt_maxlenth="11"
-                style_common:txt_left = "仓库编号"
+                style_common:txt_left = "仓库名称"
                 style_common:txt_two ="请选择"
                 style_common:txt_mid = "请输入"
                 style_common:iv_right = "@color/transparent"

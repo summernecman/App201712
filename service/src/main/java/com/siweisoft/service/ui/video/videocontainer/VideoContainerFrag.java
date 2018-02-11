@@ -79,7 +79,7 @@ public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, Vide
                         @Override
                         public void onFinish(Object o) {
                             if ((Boolean) o) {
-                                ToastUtil.getInstance().showShort(activity, "取消收藏");
+                                ToastUtil.getInstance().showShort(getActivity(), "取消收藏");
                                 getP().getU().setCollect(false);
                             }
                         }
@@ -89,7 +89,7 @@ public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, Vide
                         @Override
                         public void onFinish(Object o) {
                             if (o instanceof CollectionBean) {
-                                ToastUtil.getInstance().showShort(activity, "收藏成功");
+                                ToastUtil.getInstance().showShort(getActivity(), "收藏成功");
                                 getP().getU().setCollect(true);
                                 getP().getD().getCollectionBean().setId(((CollectionBean) o).getId());
                             }
@@ -102,7 +102,7 @@ public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, Vide
                 UserListFrag userListFrag = new UserListFrag();
                 userListFrag.setArguments(new Bundle());
                 //userListFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, getP().getD().getUserBean());
-                FragmentUtil2.getInstance().add(activity, Value.getNowRoot(), userListFrag);
+                FragmentUtil2.getInstance().add(getActivity(), Value.getNowRoot(), userListFrag);
                 userListFrag.setOnFinishListener(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
@@ -117,7 +117,7 @@ public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, Vide
                         getP().getD().share(shareBean, new OnFinishListener() {
                             @Override
                             public void onFinish(Object o) {
-                                ToastUtil.getInstance().showShort(activity, "分享成功");
+                                ToastUtil.getInstance().showShort(getActivity(), "分享成功");
                             }
                         });
                     }

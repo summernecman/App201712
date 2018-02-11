@@ -33,7 +33,7 @@ import cn.jpush.android.api.JPushInterface;
 public class HCApp extends LibAplication implements OnFinishListener{
 
 
-    public static boolean test  = true;
+    public static boolean test  = false;
 
     //static 代码段可以防止内存泄露
     static {
@@ -50,8 +50,10 @@ public class HCApp extends LibAplication implements OnFinishListener{
             @Override
             public RefreshFooter createRefreshFooter(Context context, RefreshLayout layout) {
                 layout.setPrimaryColorsId(R.color.color_base, android.R.color.white);//全局设置主题颜色
+                MyClassicsFooter myClassicsFooter = new MyClassicsFooter(context);
+                myClassicsFooter.setPrimaryColorId(R.color.color_base);
                 //指定为经典Footer，默认是 BallPulseFooter
-                return new MyClassicsFooter(context);
+                return myClassicsFooter;
             }
         });
     }

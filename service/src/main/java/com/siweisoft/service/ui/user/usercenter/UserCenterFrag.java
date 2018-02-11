@@ -91,31 +91,31 @@ public class UserCenterFrag extends BaseServerFrag<UserCenterUIOpe, UserCenterDA
     public void onClickEvent(View view) {
         switch (view.getId()) {
             case R.id.ll_head:
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, new UserHeadNameFrag());
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, new UserHeadNameFrag());
                 break;
             case R.id.ll_remark:
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, new RemarkListFrag());
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, new RemarkListFrag());
                 break;
             case R.id.ll_collect:
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, new CollecFrag());
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, new CollecFrag());
                 break;
             case R.id.ll_account:
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, new AccountFrag());
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, new AccountFrag());
                 break;
             case R.id.ll_feedback:
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, new FeedBackFrag());
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, new FeedBackFrag());
                 break;
             case R.id.aboutus:
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, new AboutUsFrag());
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, new AboutUsFrag());
                 break;
             case R.id.set:
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, new SettingFrag());
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, new SettingFrag());
                 break;
             case R.id.ll_share:
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, new ShareListFrag());
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, new ShareListFrag());
                 break;
             case R.id.ll_unit:
-                FragmentUtil2.getInstance().add(activity, Value.ROOTID_THREE, new UnitFrag());
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, new UnitFrag());
                 break;
         }
     }

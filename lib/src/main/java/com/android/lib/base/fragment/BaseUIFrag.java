@@ -108,11 +108,19 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     public void onFristVisible(){
         if(!isFiistVisibleinit){
             onFristVisibleInit();
+            HandleUtil.getInstance().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    onFristVisibleDelayInit();
+                }
+            }, 200);
             isFiistVisibleinit = true;
         }
     }
 
+    protected void onFristVisibleDelayInit(){
 
+    }
 
     protected void onFristVisibleInit(){
 
@@ -197,7 +205,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     @Override
     public void onDestroy() {
         if(registerEventBus()){
-        EventBus.getDefault().unregister(this);
+            EventBus.getDefault().unregister(this);
         }
         fragIs.onDestroy();
         super.onDestroy();

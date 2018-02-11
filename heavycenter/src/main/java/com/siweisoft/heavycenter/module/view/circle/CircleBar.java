@@ -129,7 +129,7 @@ public class CircleBar extends View {
         circleStrokeWidth = getWidth()*mCircleRatio;// 圆弧的宽度
         mColorWheelRectangle.set(circleStrokeWidth , circleStrokeWidth , getWidth() - circleStrokeWidth , getWidth() - circleStrokeWidth);// 设置矩形
         mColorWheelPaint.setStrokeWidth(circleStrokeWidth);
-        mDefaultWheelPaint.setStrokeWidth(circleStrokeWidth);
+        mDefaultWheelPaint.setStrokeWidth(circleStrokeWidth*2);
         mColorWheelPaint.setShadowLayer(circleStrokeWidth, 0, 0,getContext().getResources().getColor(R.color.color_hv_yelll));// 设置阴影
     }
 

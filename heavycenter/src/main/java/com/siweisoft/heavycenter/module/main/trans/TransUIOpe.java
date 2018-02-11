@@ -27,6 +27,7 @@ import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
+import com.android.lib.view.ItemDecoration.MyItemDecoration2;
 import com.baidu.mapapi.map.BaiduMap;
 import com.github.florent37.viewanimator.ViewAnimator;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -43,6 +44,7 @@ import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainTransBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainTrans2Binding;
+import com.siweisoft.heavycenter.databinding.ItemMainTrans3Binding;
 import com.siweisoft.heavycenter.databinding.ItemMainTransBinding;
 import com.siweisoft.heavycenter.databinding.ItemTransBinding;
 
@@ -173,20 +175,20 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
     }
 
     public void initRefresh(OnRefreshListener onRefreshListener,OnLoadmoreListener onLoadmoreListener){
-        bind.refreshLayout.setOnRefreshListener(onRefreshListener);
-        bind.refreshLayout.setOnLoadmoreListener(onLoadmoreListener);
+        bind.refresh.setOnRefreshListener(onRefreshListener);
+        bind.refresh.setOnLoadmoreListener(onLoadmoreListener);
     }
 
     public void finishRefresh(){
-        bind.refreshLayout.finishRefresh();
+        bind.refresh.finishRefresh();
     }
 
     public void finishLoadmore(){
-        bind.refreshLayout.finishLoadmore();
+        bind.refresh.finishLoadmore();
     }
 
     public void autoRefresh(){
-        bind.refreshLayout.autoRefresh();
+        bind.refresh.autoRefresh();
     }
 
     public void notifyDataSetChanged(){

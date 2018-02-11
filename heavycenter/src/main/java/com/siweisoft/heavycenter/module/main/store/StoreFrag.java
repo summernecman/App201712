@@ -31,7 +31,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
 
 
     @Override
-    public void onFristVisibleInit() {
+    public void onFristVisibleDelayInit() {
         getP().getU().initRefresh(this,this);
         getP().getU().initRecycle();
         onRefresh(null);
@@ -74,11 +74,10 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
-        getP().getD().storesInfo(new NetAdapter<StoresResBean>(getActivity()) {
+        getP().getD().storesInfo(new NetAdapter<StoresResBean>(this) {
             @Override
-            public void onResult(boolean success, String msg, StoresResBean o) {
-                super.onResult(success, msg, o);
-                o = new Test().getStoresResBean();
+            public void onSuccess(StoresResBean o) {
+                //o = new Test().getStoresResBean();
                 getP().getD().addData(o);
                 getP().getU().notifyDataSetChanged();
                 getP().getU().finishLoadmore();
@@ -90,10 +89,9 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
         getP().getD().getStoresResBean().getResults().clear();
-        getP().getD().storesInfo(new NetAdapter<StoresResBean>(getActivity()) {
+        getP().getD().storesInfo(new NetAdapter<StoresResBean>(this) {
             @Override
-            public void onResult(boolean success, String msg, StoresResBean o) {
-                super.onResult(success, msg, o);
+            public void onSuccess(StoresResBean o) {
                 //o = new Test().getStoresResBean();
                 getP().getD().addData(o);
                 getP().getU().LoadListData(getP().getD().getStoresResBean(),StoreFrag.this);

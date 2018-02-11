@@ -38,16 +38,16 @@ public class LoginFrag extends BaseServerFrag<LoginUIOpe, LoginDAOpe> {
         super.onViewCreated(view, savedInstanceState);
         getP().getU().bind.setLogin(getP().getD().getUserBean());
         getP().getU().initImage(getP().getD().getImageUril());
-        getP().getU().bind.etServer.setText(NetValue.获取域名从文件(activity));
+        getP().getU().bind.etServer.setText(NetValue.获取域名从文件(getActivity()));
         if (EMClient.getInstance().isLoggedInBefore() && SPUtil.getInstance().getBoolean(Value.autologin)) {
             EMClient.getInstance().chatManager().loadAllConversations();
             EMClient.getInstance().groupManager().loadAllGroups();
             if (Value.getUserInfo() == null || NullUtil.isStrEmpty(Value.getUserInfo().getPhone())) {
                 return;
             }
-            Intent intent = new Intent(activity, MainAct.class);
-            activity.startActivity(intent);
-            activity.finish();
+            Intent intent = new Intent(getActivity(), MainAct.class);
+            getActivity().startActivity(intent);
+            getActivity().finish();
         }
         getP().getU().initIp();
     }
@@ -68,15 +68,15 @@ public class LoginFrag extends BaseServerFrag<LoginUIOpe, LoginDAOpe> {
                             EMClient.getInstance().groupManager().loadAllGroups();
                             Value.saveUserInfo((UserBean) res.getData());
                             Value.saveVideoTips(StringUtil.getStr(res.getOther()));
-                            SPUtil.getInstance().init(activity).saveStr(Value.DATA_INTENT2, NetValue.获取地址(""));
-                            Intent intent = new Intent(activity, MainAct.class);
-                            activity.startActivity(intent);
-                            activity.finish();
+                            SPUtil.getInstance().init(getActivity()).saveStr(Value.DATA_INTENT2, NetValue.获取地址(""));
+                            Intent intent = new Intent(getActivity(), MainAct.class);
+                            getActivity().startActivity(intent);
+                            getActivity().finish();
                         } else {
-                            activity.runOnUiThread(new Runnable() {
+                            getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    ToastUtil.getInstance().showShort(activity, res.getErrorMessage());
+                                    ToastUtil.getInstance().showShort(getActivity(), res.getErrorMessage());
                                 }
                             });
                         }
@@ -84,10 +84,10 @@ public class LoginFrag extends BaseServerFrag<LoginUIOpe, LoginDAOpe> {
                 });
                 break;
             case R.id.tv_regist:
-                FragmentUtil2.getInstance().add(activity, R.id.act_base_root, new RegistFrag());
+                FragmentUtil2.getInstance().add(getActivity(), R.id.act_base_root, new RegistFrag());
                 break;
             case R.id.tv_reset:
-                FragmentUtil2.getInstance().add(activity, R.id.act_base_root, new ReSetPwdFrag());
+                FragmentUtil2.getInstance().add(getActivity(), R.id.act_base_root, new ReSetPwdFrag());
                 break;
         }
     }

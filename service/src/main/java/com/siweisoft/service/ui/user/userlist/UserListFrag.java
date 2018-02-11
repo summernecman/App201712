@@ -48,7 +48,7 @@ public class UserListFrag extends BaseServerFrag<UserListUIOpe, UserListDAOpe> i
     @Override
     public void onInterupt(int type, View v) {
         getP().getD().setUserBean((UserBean) v.getTag(R.id.data));
-        FragmentUtil2.getInstance().removeTop(activity, Value.getNowRoot());
+        FragmentUtil2.getInstance().removeTop(getActivity(), Value.getNowRoot());
     }
 
     @Override

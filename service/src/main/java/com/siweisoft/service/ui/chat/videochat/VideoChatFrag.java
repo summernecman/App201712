@@ -40,7 +40,7 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
     @Override
     public void initdelay() {
         super.initdelay();
-        AudioUtil.setAudio50(activity);
+        AudioUtil.setAudio50(getActivity());
         getP().getD().setVideoBean((VideoBean) getArguments().getSerializable(Value.DATA_DATA));
         getP().getU().isVideo(getP().getD().getVideoBean().isVideo());
         //发起者
@@ -83,12 +83,12 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
         getP().getD().getVideoBean().setCreated(DateFormatUtil.getNowStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS));
         getP().getD().getVideoBean().setTimenum(getP().getD().getMinute());
         FragmentUtil2.getInstance().getFragMap().isEmpty();
-        ToastUtil.getInstance().showShort(activity, getP().getD().getPath());
+        ToastUtil.getInstance().showShort(getActivity(), getP().getD().getPath());
         if (getP().getD().isAccept()) {
             RemarkFrag remarkFrag = new RemarkFrag();
             remarkFrag.setArguments(new Bundle());
             remarkFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, getP().getD().getVideoBean());
-            FragmentUtil2.getInstance().add(activity, Value.ROOTID_TWO, remarkFrag);
+            FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_TWO, remarkFrag);
         }
     }
 
@@ -122,14 +122,14 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
                         getP().getD().setPath(s);
                     }
                     getP().getD().setEnd(System.currentTimeMillis());
-                    ToastUtil.getInstance().showShort(activity, "通话已结束");
+                    ToastUtil.getInstance().showShort(getActivity(), "通话已结束");
                     try {
                         EMClient.getInstance().callManager().endCall();
                     } catch (EMNoActiveCallException e) {
                         e.printStackTrace();
                     }
                     finish();
-                    FragmentUtil2.getInstance().removeTop(activity, Value.FULLSCREEN);
+                    FragmentUtil2.getInstance().removeTop(getActivity(), Value.FULLSCREEN);
                     break;
                 case ACCEPTED:
                     if(!getP().getD().getVideoBean().isVideo()){
@@ -158,12 +158,12 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
                     getP().getD().setStart(System.currentTimeMillis());
                     if (getP().getD().isRecordVideo()) {
                         //ToastUtil.getInstance().showLong(activity, "开始录制");
-                        activity.runOnUiThread(new Runnable() {
+                        getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 EMClient.getInstance().callManager().getVideoCallHelper().stopVideoRecord();
                                 EMClient.getInstance().callManager().getVideoCallHelper().startVideoRecord(Value.getCacheFile().getPath());
-                                ToastUtil.getInstance().showLong(activity, "开始录制");
+                                ToastUtil.getInstance().showLong(getActivity(), "开始录制");
                             }
                         });
                     }
@@ -176,7 +176,7 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
                                 //非发送视频信息方将录制视频
                                 if (!getP().getD().isLocalSendVideo(Value.getUserInfo(), getP().getD().getVideoBean().getToUser())) {
                                     if(getP().getD().getVideoBean().isRecord()){
-                                        ToastUtil.getInstance().showShort(activity, "已经视频超过5分钟,为了保证网络不好的情况下视频文件的传输,建议结束当前视频，重新发起视频");
+                                        ToastUtil.getInstance().showShort(getActivity(), "已经视频超过5分钟,为了保证网络不好的情况下视频文件的传输,建议结束当前视频，重新发起视频");
                                     }
                                 }
                             }
@@ -195,7 +195,7 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
                 case VOICE_PAUSE:
                 case VIDEO_RESUME:
                 case VOICE_RESUME:
-                    ToastUtil.getInstance().showShort(activity, getP().getD().getVideostr() + "  " + getP().getD().getVoicestr());
+                    ToastUtil.getInstance().showShort(getActivity(), getP().getD().getVideostr() + "  " + getP().getD().getVoicestr());
                     break;
             }
         }

@@ -8,7 +8,7 @@ import android.view.View;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.NetAdapter;
-import com.android.lib.network.newsf.UIFNetAdapter;
+import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.Test;
@@ -33,16 +33,12 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
         }
         getP().getU().initUI(getArguments().getString(ValueConstant.TYPE));
         getP().getU().initRecycle();
-        getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UIFNetAdapter<OrdersRes.ResultsBean>(this) {
+        getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<OrdersRes.ResultsBean>(this) {
             @Override
-            public void onResult(boolean success, String msg, OrdersRes.ResultsBean o) {
-                super.onResult(success, msg, o);
-                o = new Test().getOrdersRes().getResults().get(0);
-                if(success){
-                    getP().getD().setData(o);
-                    getP().getU().initUI(getArguments().getString(ValueConstant.TYPE),getP().getD().getData());
-                    getP().getU().initdata(getP().getD().getData().getVehicleList(),DetailFrag.this);
-                }
+            public void onSuccess(OrdersRes.ResultsBean o) {
+                getP().getD().setData(o);
+                getP().getU().initUI(getArguments().getString(ValueConstant.TYPE),getP().getD().getData());
+                getP().getU().initdata(getP().getD().getData().getVehicleList(),DetailFrag.this);
             }
         });
     }
@@ -87,7 +83,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 switch (v.getId()){
-                    case R.id.menu:
+                    case R.id.smMenuViewRight:
                         final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
                         getP().getD().addCar(bean.getVehicleId(), AddCarReq.移除,new NetAdapter<AddCarRes>(getContext()){
                             @Override

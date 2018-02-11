@@ -58,10 +58,9 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(), MainValue.主界面ID,new NewFrag(),bundle);
                 break;
             case R.id.iv_search:
-                getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(getBaseUIAct()){
+                getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(this){
                     @Override
-                    public void onResult(boolean success, String msg, SearchResBean o) {
-                        super.onResult(success, msg, o);
+                    public void onSuccess(SearchResBean o) {
                         getP().getU().LoadListData(o,ListFrag.this);
                     }
                 });
@@ -80,7 +79,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                     return;
                 }
                 final UnitInfo unitInfo = (UnitInfo) v.getTag(R.id.data);
-                getP().getD().getUnitInfo(unitInfo.getCompanyId(), new UINetAdapter<UnitInfo>(getBaseUIAct()) {
+                getP().getD().getUnitInfo(unitInfo.getCompanyId(), new UINetAdapter<UnitInfo>(this) {
                     @Override
                     public void onSuccess(UnitInfo o) {
                         if(o.getCompanyIsNull()==UnitInfo.COMPANY_NULL){

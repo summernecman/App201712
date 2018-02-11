@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
     <data>
-
         <variable
             name="act_main"
             type="String" />
@@ -29,10 +27,16 @@
                 </RelativeLayout>
                 <com.android.lib.view.bottommenu.BottomMenuView
                         android:layout_gravity="bottom"
-                        android:elevation="20dp"
                     android:id="@+id/bottommenu"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimens_base_bottom"/>
+
+            <ImageView
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/dimens_base_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/actionbar_shadow_up" />
         </FrameLayout>
         <include
             android:id="@+id/incloud"

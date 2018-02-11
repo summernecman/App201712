@@ -44,7 +44,6 @@ public class StoreInfoFrag extends AppFrag<StoreInfoUIOpe,StoreInfoDAOpe>{
                             getP().getD().update(getP().getU().getUpdateStoreReq(getP().getD().getUpdateStoreReq(getP().getD().getStoreDetail())), new UINetAdapter<UpdateStoreRes>(this) {
                                 @Override
                                 public void onSuccess(UpdateStoreRes o) {
-                                    super.onSuccess(o);
                                     getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
                                     getBaseAct().onBackPressed();
                                 }
@@ -53,14 +52,11 @@ public class StoreInfoFrag extends AppFrag<StoreInfoUIOpe,StoreInfoDAOpe>{
                         break;
                     case StoreInfoValue.新建仓库:
                         if(getP().getU().canGo()){
-                            getP().getD().newStore(getP().getU().getNewStoreReqBean(getP().getD().getNewStoreReqBean()), new UINetAdapter<NewStoreResBean>(getActivity()) {
+                            getP().getD().newStore(getP().getU().getNewStoreReqBean(getP().getD().getNewStoreReqBean()), new UINetAdapter<NewStoreResBean>(this) {
                                 @Override
-                                public void onResult(boolean success, String msg, NewStoreResBean o) {
-                                    super.onResult(success, msg, o);
-                                    if(success){
-                                        getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
-                                        getBaseUIAct().onBackPressed();
-                                    }
+                                public void onSuccess(NewStoreResBean o) {
+                                    getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
+                                    getBaseUIAct().onBackPressed();
                                 }
                             });
                         }

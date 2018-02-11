@@ -6,7 +6,6 @@
             name="item_main_order_done"
             type="com.siweisoft.heavycenter.data.netd.order.list.OrdersRes.ResultsBean" />
     </data>
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/ll_doneorder"
         android:background="@drawable/bg_hv_sel_dark_light"

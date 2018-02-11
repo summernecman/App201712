@@ -25,7 +25,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
 
 
     @Override
-    protected void onFristVisibleInit() {
+    protected void onFristVisibleDelayInit() {
         getP().getU().initRefresh(this,this);
         if(StringUtil.equals(MsgsReqBean.MESSAGE_CATE_ALL,getArguments().getString(ValueConstant.DATA_INDEX))){
             getP().getU().autoRefresh();
@@ -54,7 +54,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
         getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_INDEX),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
-                o= new Test().getMsgsResBean();
+                //o= new Test().getMsgsResBean();
                 getP().getD().addData(o);
                 getP().getU().LoadListData(getP().getD().getMsgsResBean(),MsgFrag.this);
             }

@@ -38,13 +38,18 @@ import com.siweisoft.heavycenter.module.test.SharedElementFragment2;
 public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
 
     @Override
-    protected void onFristVisibleInit() {
+    protected void onFristVisibleDelayInit() {
         getP().getU().initRefresh(this,this);
         if(StringUtil.equals(OrdersReq.STATUS_NEW,getArguments().getString(ValueConstant.DATA_DATA))){
             getP().getU().autoRefresh();
         }else{
-            onRefresh(getP().getU().bind.refreshLayout);
+            onRefresh(getP().getU().bind.refresh);
         }
+    }
+
+    @Override
+    protected void onFristVisibleInit() {
+
     }
 
     @SuppressLint("ResourceType")
@@ -189,13 +194,8 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
         getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
         getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
             @Override
-            public void onResult(boolean success, String msg, OrdersRes o) {
-                super.onResult(success, msg, o);
+            public void onSuccess(OrdersRes o) {
                 //o = new Test().getOrdersRes();
-                getP().getU().finishLoadmore();
-                if(o==null||o.getResults()==null){
-                    return;
-                }
                 getP().getD().getOrdersRes().getResults().addAll(o.getResults());
                 getP().getU().notifyDataSetChanged();
             }
@@ -208,13 +208,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
         getP().getD().getOrdersRes().getResults().clear();
         getP().getD().orders(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
             @Override
-            public void onResult(boolean success, String msg, OrdersRes o) {
-                super.onResult(success, msg, o);
-                getP().getU().finishRefresh();
-                o = new Test().getOrdersRes();
-                if(o==null){
-                    return;
-                }
+            public void onSuccess(OrdersRes o) {
                 getP().getD().getOrdersRes().getResults().addAll(o.getResults());
                 getP().getU().LoadListData(getArguments().getString(ValueConstant.DATA_DATA),getP().getD().getOrdersRes(),BeginFrag.this);
             }
