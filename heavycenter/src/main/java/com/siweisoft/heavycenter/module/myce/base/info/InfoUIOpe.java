@@ -13,7 +13,7 @@ import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
 import com.siweisoft.heavycenter.databinding.FragScanInfoBinding;
-import com.uuzuche.lib_zxing.activity.CodeUtils;
+import com.siweisoft.heavycenter.tools.CodeUtils;
 
 public class InfoUIOpe extends AppUIOpe<FragScanInfoBinding>{
 

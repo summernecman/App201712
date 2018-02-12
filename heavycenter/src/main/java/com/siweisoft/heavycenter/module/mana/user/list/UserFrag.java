@@ -89,7 +89,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                 Bundle bundle = new Bundle();
                                 bundle.putString(UserValue.选取超级管理员KEY,UserValue.选取超级管理员);
                                 bundle.putInt(ValueConstant.FARG_REQ,2);
-                                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new UserFrag(),bundle);
+                                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new UserFrag(),bundle);
                                 break;
                             case 0:
                                 switch (resultsBean.getBindCompanyState()){

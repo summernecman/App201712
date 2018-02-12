@@ -31,7 +31,10 @@ public class OrderDAOpe extends BaseDAOpe {
     public ArrayList<Fragment> initPages(){
         pages.clear();
         for(int i=0;i<statuss.length;i++){
-            BeginFrag beginFrag = new BeginFrag(); beginFrag.setArguments(new Bundle());beginFrag.getArguments().putString(ValueConstant.DATA_DATA, statuss[i]);pages.add(beginFrag);
+            BeginFrag beginFrag = new BeginFrag();
+            beginFrag.setArguments(new Bundle());
+            beginFrag.getArguments().putString(ValueConstant.容器,getFrag().get容器());
+            beginFrag.getArguments().putString(ValueConstant.DATA_DATA, statuss[i]);pages.add(beginFrag);
         }
         return pages;
     }

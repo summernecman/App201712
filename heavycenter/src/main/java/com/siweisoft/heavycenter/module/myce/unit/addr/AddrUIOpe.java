@@ -15,7 +15,9 @@ import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
+import com.android.lib.util.ToastUtil;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.baidu.mapapi.search.poi.PoiAddrInfo;
 import com.siweisoft.heavycenter.BR;
@@ -56,6 +58,14 @@ public class AddrUIOpe extends AppUIOpe<FragMyceUnitAddrBinding>{
             }
         });
 
+    }
+
+    public boolean canLocal(){
+        if(NullUtil.isStrEmpty(bind.tvCity.getText().toString())){
+            ToastUtil.getInstance().showShort(getActivity(),"城市信息正在定位中");
+            return false;
+        }
+        return true;
     }
 
     public void notifyDataSetChanged(){

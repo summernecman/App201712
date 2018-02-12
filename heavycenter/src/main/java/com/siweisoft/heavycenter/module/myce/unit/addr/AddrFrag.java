@@ -35,6 +35,7 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
     @Override
     public void initNow() {
         super.initNow();
+
         getP().getD().getMapUtil().init(getBaseUIAct(),true);
         getP().getD().getMapUtil().registerLocationListener(getBaseUIAct(), new BDAbstractLocationListener() {
             @Override
@@ -51,25 +52,27 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
         getP().getU().initInput(new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
-                getP().getD().getMapUtil().searchNeayBy("上海市",o.toString() ,new OnGetPoiSearchResultListener() {
-                    @Override
-                    public void onGetPoiResult(PoiResult poiResult) {
-                        if(poiResult!=null&&poiResult.getAllPoi()!=null){
-                            getP().getD().setAddrs(poiResult.getAllPoi());
-                            getP().getU().notifyDataSetChanged();
+                if(getP().getU().canLocal()){
+                    getP().getD().getMapUtil().searchNeayBy(getP().getU().bind.tvCity.getText().toString(),o.toString() ,new OnGetPoiSearchResultListener() {
+                        @Override
+                        public void onGetPoiResult(PoiResult poiResult) {
+                            if(poiResult!=null&&poiResult.getAllPoi()!=null){
+                                getP().getD().setAddrs(poiResult.getAllPoi());
+                                getP().getU().notifyDataSetChanged();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onGetPoiDetailResult(PoiDetailResult poiDetailResult) {
-                        LogUtil.E("");
-                    }
+                        @Override
+                        public void onGetPoiDetailResult(PoiDetailResult poiDetailResult) {
+                            LogUtil.E("");
+                        }
 
-                    @Override
-                    public void onGetPoiIndoorResult(PoiIndoorResult poiIndoorResult) {
-                        LogUtil.E("");
-                    }
-                });
+                        @Override
+                        public void onGetPoiIndoorResult(PoiIndoorResult poiIndoorResult) {
+                            LogUtil.E("");
+                        }
+                    });
+                }
             }
         });
     }
@@ -120,7 +123,7 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
                 bundle.putString(ValueConstant.DATA_DATA,ProvFrag.选择一个城市);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new ProvFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new ProvFrag(),bundle);
                 break;
         }
     }

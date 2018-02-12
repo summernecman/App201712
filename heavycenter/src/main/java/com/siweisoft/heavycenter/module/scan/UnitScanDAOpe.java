@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.constant.ValueConstant;
+import com.android.lib.network.NetWork;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
@@ -26,6 +27,7 @@ import com.siweisoft.heavycenter.module.main.order.news.NewOrderFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
 import com.siweisoft.heavycenter.module.myce.unit.info.InfoFrag;
 import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
+import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
 
 public class UnitScanDAOpe extends BaseDAOpe {
 
@@ -97,7 +99,10 @@ public class UnitScanDAOpe extends BaseDAOpe {
 
             Bundle bundle = new Bundle();
             bundle.putInt(ValueConstant.DATA_DATA,unit.getId());
-            FragManager2.getInstance().start(getActivity(),getActivity().getMoudle(),new InfoFrag(),bundle);
+            NewFrag newFrag = new NewFrag();
+            newFrag.setArguments(new Bundle());
+            newFrag.getArguments().putString(ValueConstant.DATA_TYPE,NewFrag.其他人查看单位信息);
+            FragManager2.getInstance().start(getActivity(),getActivity().getMoudle(),newFrag,bundle);
             return;
         }
     }

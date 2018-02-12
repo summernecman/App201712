@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.myce.unit.news;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.StringUtil;
@@ -15,6 +16,7 @@ import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.unit.news.NewResBean;
+import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
 import com.siweisoft.heavycenter.data.netd.unit.update.UpdateUnitRes;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
@@ -26,9 +28,11 @@ import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
 
 import butterknife.OnClick;
 
-public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
+public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> implements OnFinishListener{
 
     public static final String 展示单位信息 = "展示单位信息";
+
+    public static final String 其他人查看单位信息 = "其他人查看单位信息";
 
     public static final String 新建单位 = "新建单位";
 
@@ -38,34 +42,41 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
     public void initNow() {
         super.initNow();
         getP().getU().initUI(getArguments().getString(ValueConstant.DATA_TYPE));
+        if("新建单位".equals(getArguments().getString(ValueConstant.DATA_TYPE))){
+            getP().getU().unitCheck(this);
+        }
     }
+
+    private void getInfoAndInit(final OnFinishListener listener){
+        getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
+            @Override
+            public void onSuccess(UnitInfo o) {
+                getP().getD().setUnit(o);
+                getP().getD().getUnit().setBelongAreaDes(getP().getD().getUnit().getBelongArea());
+                getP().getD().getUnit().setBelongArea(getP().getD().getUnit().getBelongAreaNo());
+                getP().getU().initinfo(getP().getD().getUnit());
+                if(listener!=null){
+                    listener.onFinish(null);
+                }
+            }
+        });
+    }
+
+
 
     @Override
     public void initdelay() {
         super.initdelay();
         switch (getArguments().getString(ValueConstant.DATA_TYPE)){
+            case 其他人查看单位信息:
             case 展示单位信息:
-                getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
-                    @Override
-                    public void onSuccess(UnitInfo o) {
-                        getP().getD().setUnit(o);
-                        getP().getU().initinfo(getP().getD().getUnit());
-                    }
-                });
+                getInfoAndInit(null);
                 break;
             case 新建单位:
                 break;
             case 修改单位信息:
                 getP().getU().updateInfo();
-                getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
-                    @Override
-                    public void onSuccess(UnitInfo o) {
-                        getP().getD().setUnit(o);
-                        getP().getD().getUnit().setBelongAreaDes(getP().getD().getUnit().getBelongArea());
-                        getP().getD().getUnit().setBelongArea(getP().getD().getUnit().getBelongAreaNo());
-                        getP().getU().initinfo(getP().getD().getUnit());
-                    }
-                });
+                getInfoAndInit(null);
                 break;
         }
 
@@ -79,16 +90,16 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         switch (v.getId()){
             case R.id.unitaddr:
                 bundle.putInt(ValueConstant.FARG_REQ,2);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new AddrFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new AddrFrag(),bundle);
                 break;
             case R.id.upunit:
                 bundle.putInt(ValueConstant.DATA_DATA, ListDAOpe.UP_UNIT);
                 bundle.putInt(ValueConstant.FARG_REQ,3);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new ListFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new ListFrag(),bundle);
                 break;
             case R.id.area:
                 bundle.putInt(ValueConstant.FARG_REQ,4);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new ProvFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new ProvFrag(),bundle);
                 break;
             case R.id.ftv_right2:
                 switch (getArguments().getString(ValueConstant.DATA_TYPE)){
@@ -139,15 +150,10 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                             getP().getD().updateUnit(getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(this) {
                                 @Override
                                 public void onSuccess(UpdateUnitRes o) {
-                                    getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(getBaseUIAct()) {
+                                    getInfoAndInit(new OnFinishListener() {
                                         @Override
-                                        public void onSuccess(UnitInfo o) {
-                                            getP().getD().setUnit(o);
-                                            getP().getD().getUnit().setBelongAreaDes(getP().getD().getUnit().getBelongArea());
-                                            getP().getD().getUnit().setBelongArea(getP().getD().getUnit().getBelongAreaNo());
-                                            getP().getU().initinfo(getP().getD().getUnit());
+                                        public void onFinish(Object o) {
                                             ((MainAct)getBaseUIAct()).getP().getD().getMyceFrag().initUINET();
-
                                         }
                                     });
                                 }
@@ -190,5 +196,37 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 getP().getU().initAreaInfo(getP().getD().getUnit());
                 break;
         }
+    }
+
+    @Override
+    public void onFinish(Object o) {
+        String s = o.toString();
+        getP().getD().searchUnitInfo(s, new UINetAdapter<SearchResBean>(this) {
+            @Override
+            public void onSuccess(final SearchResBean o) {
+                super.onSuccess(o);
+                if(o.getResults()!=null&& o.getResults().get(0)!=null){
+                    getP().getU().showUnitExistTip(get容器(), o.getResults().get(0).getCompanyName(), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if(getP().getU().getUnitexistfragm()!=null){
+                                getP().getU().getUnitexistfragm().finish(getBaseUIAct(), getBaseUIAct().getMoudle(),false);
+                            }
+                            switch (v.getId()){
+                                case R.id.sure:
+                                    getArguments().putSerializable(ValueConstant.DATA_DATA2,o.getResults().get(0));
+                                    getActivity().onBackPressed();
+                                    break;
+                                case R.id.close:
+
+                                    break;
+                            }
+                        }
+                    });
+                }
+
+            }
+        });
+
     }
 }

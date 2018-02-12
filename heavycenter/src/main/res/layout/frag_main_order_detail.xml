@@ -94,7 +94,7 @@
                     android:singleLine="true"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:text="122233232"
+                    android:text="@{frag_main_order_detail.productName}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -103,7 +103,7 @@
                     android:layout_marginLeft="14dp"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:text="ffdfdfdfdfd"
+                    android:text="@{frag_main_order_detail.specification}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <View
@@ -271,6 +271,9 @@
         <android.support.v7.widget.RecyclerView
             android:background="@color/white"
             android:id="@+id/recycle"
+            android:scrollbars="vertical"
+            android:scrollbarSize="10dp"
+            android:fadeScrollbars="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 </LinearLayout>

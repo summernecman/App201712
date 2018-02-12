@@ -96,9 +96,8 @@ public class ListDAOpe extends AppDAOpe {
         }
         selUnits.getResults().clear();
         for(int i=0;getNetUnits().getResults()!=null && i<getNetUnits().getResults().size();i++){
-            if((getNetUnits().getResults().get(i).getAbbreviationName()+getNetUnits().getResults().get(i).getCompanyAddress()+""+
-                    getNetUnits().getResults().get(i).getCompanyName()+""+getNetUnits().getResults().get(i).getContactName()
-                    +getNetUnits().getResults().get(i).getContactPhone()).contains(key)){
+            if((getNetUnits().getResults().get(i).getAbbreviationName()+
+                    getNetUnits().getResults().get(i).getCompanyName()).contains(key)){
                 selUnits.getResults().add(getNetUnits().getResults().get(i));
             }
         }

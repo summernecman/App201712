@@ -154,6 +154,9 @@
         <android.support.v7.widget.RecyclerView
             android:layout_marginTop="1dp"
             android:id="@+id/recycle"
+            android:scrollbars="vertical"
+            android:scrollbarSize="10dp"
+            android:fadeScrollbars="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

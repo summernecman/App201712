@@ -67,7 +67,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
                                 getArguments().putAll(bundle);
                                 getBaseUIAct().onBackPressed();
                             }else{
-                                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,MainValue.主界面ID,new DetailFrag(),bundle);
+                                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new DetailFrag(),bundle);
                             }
                             break;
                 }

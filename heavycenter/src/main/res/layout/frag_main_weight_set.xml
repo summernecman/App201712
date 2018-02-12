@@ -87,6 +87,7 @@
                     android:layout_height="25dp"/>
 
             <EditText
+                android:inputType="numberDecimal"
                     android:maxWidth="200dp"
                     android:minWidth="50dp"
                     android:singleLine="true"

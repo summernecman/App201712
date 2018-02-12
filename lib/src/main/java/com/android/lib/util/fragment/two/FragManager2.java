@@ -10,6 +10,7 @@ import com.android.lib.R;
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.constant.ValueConstant;
+import com.android.lib.util.LogUtil;
 
 import java.util.HashMap;
 
@@ -26,6 +27,8 @@ public class FragManager2  {
     private View shareElement;
 
     private String shareName;
+
+
 
 
     public static FragManager2 getInstance(){
@@ -137,6 +140,7 @@ public class FragManager2  {
        if(map.get(moudle)==null){
            return null;
        }
+        LogUtil.E(moudle+""+map.size()+""+map.get(moudle).getUiUnit().size());
        return map.get(moudle).getLast();
     }
 
@@ -245,5 +249,12 @@ public class FragManager2  {
     public FragManager2 setShareName(String shareName) {
         this.shareName = shareName;
         return this;
+    }
+
+    public int getMoudleFragSize(String moudle){
+        if(moudle==null||map.get(moudle)==null){
+            return 0 ;
+        }
+        return map.get(moudle).getUiUnit().size();
     }
 }

@@ -6,6 +6,7 @@ import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.ToastUtil;
+import com.google.gson.JsonSyntaxException;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
@@ -31,7 +32,14 @@ public class ScanDAOpe extends BaseDAOpe {
 
     public void logic(final AppFrag appFrag,String data){
 
-        final UserInfo userInfo = GsonUtil.getInstance().fromJson(data,UserInfo.class);
+         UserInfo userInfo = null;
+        try {
+            userInfo = GsonUtil.getInstance().fromJson(data,UserInfo.class);
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+        } finally {
+
+        }
         if(userInfo==null|| NullUtil.isStrEmpty(userInfo.getType())){
             ToastUtil.getInstance().showShort(context,"扫码信息有误");
             return;
@@ -47,13 +55,14 @@ public class ScanDAOpe extends BaseDAOpe {
             case UserInfo.TYPE_UNIT:
                 UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
                 unitInfoReqBean.setId(userInfo.getID());
+                final UserInfo finalUserInfo = userInfo;
                 NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean, new UINetAdapter<UnitInfo>(getActivity()) {
                     @Override
                     public void onResult(boolean success, String msg, UnitInfo o) {
                         super.onResult(success, msg, o);
                         if(success){
                             UnitScanDAOpe unitScanDAOpe = new UnitScanDAOpe(context);
-                            o.setId(userInfo.getID());
+                            o.setId(finalUserInfo.getID());
                             unitScanDAOpe.logic(appFrag, o);
                         }
 

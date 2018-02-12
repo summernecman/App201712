@@ -14,6 +14,8 @@ import com.siweisoft.heavycenter.data.netd.unit.info.UnitInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.unit.news.NewReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.news.NewResBean;
+import com.siweisoft.heavycenter.data.netd.unit.search.SearchReqBean;
+import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
 import com.siweisoft.heavycenter.data.netd.unit.update.UpdateUnitReq;
 import com.siweisoft.heavycenter.data.netd.unit.update.UpdateUnitRes;
 import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
@@ -43,6 +45,14 @@ public class NewDAOpe extends AppDAOpe {
         UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
         unitInfoReqBean.setId(id==-1? LocalValue.get登录返回信息().getCompanyId():id);
         NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean,adapter);
+    }
+
+    public void searchUnitInfo(String name, NetI<SearchResBean> adapter){
+        SearchReqBean searchReqBean = new SearchReqBean();
+        searchReqBean.setPageIndex(1);
+        searchReqBean.setPageSize(1);
+        searchReqBean.setKeyword(name);
+        NetDataOpe.Unit.search(getActivity(),searchReqBean,adapter);
     }
 
     public void unBinUnit(NetI<UnBindResBean> adapter){

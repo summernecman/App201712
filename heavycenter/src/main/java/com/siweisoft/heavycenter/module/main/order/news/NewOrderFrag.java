@@ -36,6 +36,8 @@ import butterknife.OnClick;
 
 public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
 
+    
+    
 
     @Override
     public void initNow() {
@@ -49,23 +51,23 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
         Bundle bundle = new Bundle();
         switch (v.getId()){
             case R.id.item_addr:
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new AddrFrag());
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new AddrFrag());
                 break;
             case R.id.item_wuliname:
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new NamesFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NamesFrag(),bundle);
                 break;
             case R.id.item_wuliguige:
                 if(getP().getU().canGugeGo(getP().getD().getNewsOrderReqBean())){
                     bundle.putInt(ValueConstant.FARG_REQ,2);
                     bundle.putInt(ValueConstant.DATA_POSITION2,getP().getD().getNewsOrderReqBean().getProductId());
-                    FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new SpecsFrag(),bundle);
+                    FragManager2.getInstance().start(getBaseUIAct(), get容器(),new SpecsFrag(),bundle);
                 }
                 break;
             case R.id.item_unit:
                 bundle.putInt(ValueConstant.DATA_DATA, ListDAOpe.SEL_UNIT);
                 bundle.putInt(ValueConstant.FARG_REQ,3);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new ListFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new ListFrag(),bundle);
                 break;
             case R.id.item_starttime:
                 TimePickerDialog.Builder builder = new TimePickerDialog.Builder();
@@ -84,7 +86,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 break;
             case R.id.item_rule:
                 bundle.putInt(ValueConstant.FARG_REQ,4);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new RuleFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new RuleFrag(),bundle);
                 break;
             case R.id.tv_receipt:
                 getP().getU().onClick(v);

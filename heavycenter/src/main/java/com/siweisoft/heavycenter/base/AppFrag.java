@@ -14,10 +14,10 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseUIFrag<A,B> {
 
@@ -37,16 +37,12 @@ public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends 
             case R.id.ftv_back:
                String str = getArguments().getString(ValueConstant.容器);
                if(str!=null){
-                   if(!FragManager2.getInstance().finish(getBaseUIAct(),str,!str.equals(MainValue.主界面))){
-                       getBaseUIAct().onBackPressed();
-                   }
+                   getBaseUIAct().onBackPressed();
                }
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    MainAct mainAct = (MainAct) getActivity();
-                    Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    getBaseUIAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    new IntentIntegrator(getBaseUIAct()).initiateScan();
                 }
                 break;
 

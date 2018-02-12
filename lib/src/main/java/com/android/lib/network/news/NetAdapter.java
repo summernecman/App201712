@@ -27,7 +27,7 @@ public  class NetAdapter<A> implements NetI<A> {
     protected Context context;
     protected String url;
 
-    protected boolean showTips = true;
+    protected boolean showTips = false;
 
     protected BaseUIFrag baseUIFrag;
 

@@ -35,7 +35,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
                 bundle.putString(ValueConstant.DATA_DATA2, CarDetailValue.新建车辆);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,MainValue.主界面ID,new DetailFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new DetailFrag(),bundle);
                 break;
         }
 

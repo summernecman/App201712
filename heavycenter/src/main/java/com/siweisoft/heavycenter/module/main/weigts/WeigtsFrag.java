@@ -8,6 +8,7 @@ import android.view.View;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.GsonUtil;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
@@ -15,7 +16,6 @@ import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
 import com.siweisoft.heavycenter.data.netd.weight.save.SaveWeightRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.weigts.weight.WeigtFrag;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -48,22 +48,22 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    MainAct mainAct = (MainAct) getActivity();
-                    Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    getBaseUIAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    new IntentIntegrator(getBaseAct()).initiateScan();
                 }
                 break;
             case R.id.tv_save:
                 WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages().get(0);
-                if(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh()!=0){
+                if(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh()!=0&&getP().getD().getWeightMsg()!=null&&getP().getD().getWeightMsg().getMessage()!=null){
                     getP().getD().getWeightMsg().getMessage().setWeigh(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh());
                 }
-                getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(this) {
-                    @Override
-                    public void onSuccess(SaveWeightRes o) {
-                        super.onSuccess(o);
-                    }
-                });
+                if(weigtFrag.getP().getD().getWeightMsg()!=null&&weigtFrag.getP().getD().getWeightMsg().getMessage()!=null){
+                    getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(this) {
+                        @Override
+                        public void onSuccess(SaveWeightRes o) {
+                            super.onSuccess(o);
+                        }
+                    });
+                }
                 break;
         }
     }

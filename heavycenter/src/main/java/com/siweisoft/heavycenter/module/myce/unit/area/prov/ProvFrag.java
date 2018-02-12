@@ -23,6 +23,8 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
 
     public static final String 选择多个城市 = "选择多个城市";
 
+    public static final String 选择省 = "选择省";
+
     @Override
     public void initNow() {
         super.initNow();

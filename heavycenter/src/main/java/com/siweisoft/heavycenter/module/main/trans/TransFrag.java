@@ -14,6 +14,7 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -27,7 +28,6 @@ import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.trans.detail.TransDetailFrag;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import butterknife.OnClick;
 
@@ -62,7 +62,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                         default:
                             Bundle bundle = new Bundle();
                             bundle.putInt(ValueConstant.DATA_DATA,resultsBean.getTransportrecordId());
-                            FragManager2.getInstance().start(getBaseUIAct(), MainValue.运输单,MainValue.运输单ID,new TransDetailFrag(),bundle);
+                            FragManager2.getInstance().start(getBaseUIAct(), get容器(),new TransDetailFrag(),bundle);
                             break;
                 }
                 break;
@@ -106,9 +106,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    MainAct mainAct = (MainAct) getActivity();
-                    Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    getBaseUIAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    new IntentIntegrator(getBaseAct()).initiateScan();
                 }
                 break;
         }

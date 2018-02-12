@@ -8,12 +8,14 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.StringUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -79,11 +81,11 @@ public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
     }
 
 
-    public void showTip(View.OnClickListener onClickListener){
+    public void showTip(String moudle,View.OnClickListener onClickListener){
         DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
         diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_nullunit,null));
         diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_y,R.id.tv_n,R.id.iv_close);
-        FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(), MainValue.主界面,diaLogCenterFrag);
+        FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(), moudle,diaLogCenterFrag);
     }
 
 

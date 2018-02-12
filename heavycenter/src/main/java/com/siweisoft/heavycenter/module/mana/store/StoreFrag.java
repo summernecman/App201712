@@ -48,7 +48,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
                 bundle.putString(StoreInfoValue.仓库类型,StoreInfoValue.新建仓库);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new StoreInfoFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new StoreInfoFrag(),bundle);
                 break;
         }
     }
@@ -81,7 +81,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                            bundle.putSerializable(ValueConstant.DATA_DATA,storeDetail);
                            bundle.putInt(ValueConstant.FARG_REQ,2);
                            bundle.putString(StoreInfoValue.仓库类型,StoreInfoValue.修改仓库);
-                           FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new StoreInfoFrag(),bundle);
+                           FragManager2.getInstance().start(getBaseUIAct(), get容器(),new StoreInfoFrag(),bundle);
                            break;
                }
                 break;

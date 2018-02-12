@@ -13,7 +13,6 @@ import com.android.lib.util.activity.ActivityUtil;
 import com.android.lib.view.image.ImagePickerLoader;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.view.CropImageView;
-import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import org.xutils.x;
 
@@ -39,7 +38,7 @@ public class LibAplication extends MultiDexApplication {
         initSysConfig();
         initImagePicker();
         initXutils();
-        ZXingLibrary.initDisplayOpinion(this);
+        //ZXingLibrary.initDisplayOpinion(this);
     }
 
 

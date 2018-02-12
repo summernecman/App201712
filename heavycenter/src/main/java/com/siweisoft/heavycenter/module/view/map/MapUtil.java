@@ -43,6 +43,8 @@ public class MapUtil {
 
     private boolean isAdd  = false;
 
+    private int scantime = 3000;
+
     private MapUtil(){
 
     }
@@ -193,5 +195,13 @@ public class MapUtil {
 
     public boolean isFirst() {
         return isFirst;
+    }
+
+    public int getScantime() {
+        return scantime;
+    }
+
+    public void setScantime(int scantime) {
+        this.scantime = scantime;
     }
 }

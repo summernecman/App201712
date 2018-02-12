@@ -50,7 +50,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
             case R.id.iv_local:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,MyFrag.TYPE_SEL);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,new MyFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new MyFrag(),bundle);
                 break;
         }
     }

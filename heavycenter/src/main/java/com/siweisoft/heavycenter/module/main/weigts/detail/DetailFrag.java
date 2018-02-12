@@ -11,11 +11,11 @@ import com.android.lib.util.LogUtil;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.module.main.MainAct;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -47,9 +47,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    MainAct mainAct = (MainAct) getActivity();
-                    Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    getBaseAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    new IntentIntegrator(getBaseAct()).initiateScan();
                 }
                 break;
         }

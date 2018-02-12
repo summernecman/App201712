@@ -3,8 +3,10 @@ package com.siweisoft.heavycenter.module.main.weigts;
 //by summer on 2017-12-11.
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.NetI;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.ToastUtil;
@@ -34,7 +36,10 @@ public class WeigtsDAOpe extends AppDAOpe {
     public ArrayList<Fragment> initPages(){
         pages.clear();
         for(int i=0;i<5;i++){
-            pages.add(new WeigtFrag());
+            WeigtFrag weigtFrag = new WeigtFrag();
+            weigtFrag.setArguments(new Bundle());
+            weigtFrag.getArguments().putString(ValueConstant.容器,getFrag().get容器());
+            pages.add(weigtFrag);
         }
         return pages;
     }

@@ -90,6 +90,7 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
             for (int i = 0; i < tabViews.size(); i++) {
                 if (v.getTag(R.id.position) == tabViews.get(i).getTag(R.id.position)) {
                     tabViews.get(i).setSelected(true);
+                    index = i;
                     if(onAppItemClickListener!=null){
                         onAppItemClickListener.onAppItemSelect(this, v, i);
                     }
@@ -104,10 +105,11 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
         this.onAppItemClickListener = onAppItemClickListener;
     }
 
-    public void setViewPager(ViewPager viewPager) {
+    public BaseOnPagerChangeListener setViewPager(ViewPager viewPager) {
         this.viewPager = viewPager;
+        BaseOnPagerChangeListener onPageChangeListener = null;
         if (viewPager != null) {
-            viewPager.addOnPageChangeListener(new BaseOnPagerChangeListener() {
+             onPageChangeListener = new BaseOnPagerChangeListener() {
                 @Override
                 public void onPageSelected(int position) {
                     if (viewGroup == null) {
@@ -125,8 +127,10 @@ public class BottomMenuView extends LinearLayout implements View.OnClickListener
                         }
                     }
                 }
-            });
+            };
+            viewPager.addOnPageChangeListener(onPageChangeListener);
         }
+        return onPageChangeListener;
     }
 
     public ViewGroup getViewGroup() {

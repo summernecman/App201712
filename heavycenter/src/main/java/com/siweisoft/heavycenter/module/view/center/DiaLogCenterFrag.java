@@ -66,6 +66,14 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
 
     }
 
+    public View getCustomerView() {
+        return customerView;
+    }
+
+    public void setCustomerView(View customerView) {
+        this.customerView = customerView;
+    }
+
     public void onClick(View v) {
         if(onClickListener!=null){
             onClickListener.onClick(v);

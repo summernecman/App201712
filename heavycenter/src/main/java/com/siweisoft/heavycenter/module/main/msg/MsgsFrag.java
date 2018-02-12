@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
 
@@ -27,9 +27,7 @@ public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    MainAct mainAct = (MainAct) getActivity();
-                    Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    getBaseUIAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    new IntentIntegrator(getBaseAct()).initiateScan();
                 }
                 break;
         }

@@ -22,4 +22,7 @@
 
     <color name="color_block_back">@color/color_grey_200</color>
 
+
+    <color name="color_dialog_bg">#e0000000</color>
+
 </resources>

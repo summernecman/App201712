@@ -117,7 +117,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
 //                            detailFrag.setSharedElementEnterTransition(changeBoundsTransition);
 //
 //                            getActivity().getSupportFragmentManager().beginTransaction()
-//                                    .add(MainValue.订单ID, detailFrag)
+//                                    .add(get容器(), detailFrag)
 //                                    .setReorderingAllowed(true)
 //                                    .hide(this)
 //                                    .addToBackStack(null)
@@ -142,7 +142,7 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
 //                            sharedElementFragment2.setSharedElementEnterTransition(changeBoundsTransition);
 //
 //                            getActivity().getSupportFragmentManager().beginTransaction()
-//                                    .replace(MainValue.订单ID, sharedElementFragment2)
+//                                    .replace(get容器(), sharedElementFragment2)
 //                                    .addSharedElement(v, getString(R.string.square_blue_name))
 //                                    .commit();
 //                        }
@@ -155,14 +155,14 @@ public class BeginFrag extends AppFrag<BeginUIOpe,BeginDAOpe> implements ViewLis
                         bundle1.putString(ValueConstant.TYPE,(String)v.getTag(R.id.type));
                         OrdersRes.ResultsBean resultsBean1 = (OrdersRes.ResultsBean) v.getTag(R.id.data);
                         bundle1.putInt(ValueConstant.DATA_DATA, resultsBean1.getOrderId());
-                        FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,MainValue.订单ID,new DetailFrag(),bundle1);
+                        FragManager2.getInstance().start(getBaseUIAct(), get容器(),new DetailFrag(),bundle1);
                         break;
                     case R.id.ll_neworder:
                         Bundle bundle = new Bundle();
                         bundle.putString(ValueConstant.TYPE,(String)v.getTag(R.id.type));
                         OrdersRes.ResultsBean resultsBean = (OrdersRes.ResultsBean) v.getTag(R.id.data);
                         bundle.putInt(ValueConstant.DATA_DATA, resultsBean.getOrderId());
-                        FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,MainValue.订单ID,new DetailFrag(),bundle);
+                        FragManager2.getInstance().start(getBaseUIAct(), get容器(),new DetailFrag(),bundle);
                         break;
                     case R.id.bt_sure:
                         final OrdersRes.ResultsBean data = (OrdersRes.ResultsBean) v.getTag(R.id.data);

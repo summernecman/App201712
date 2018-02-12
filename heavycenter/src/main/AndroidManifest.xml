@@ -37,6 +37,12 @@
                   android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
+
+
         <meta-data
                 android:name="com.baidu.lbsapi.API_KEY"
                 android:value="zRI2ehMENx33kDG1qTr1GhXofbesLYWj" />

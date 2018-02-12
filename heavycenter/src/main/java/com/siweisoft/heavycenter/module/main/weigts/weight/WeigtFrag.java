@@ -66,7 +66,7 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
 
                         break;
                 }
-                getP().getU().getFragManager2().finish(getBaseUIAct(), MainValue.地磅, true);
+                getP().getU().getFragManager2().finish(getBaseUIAct(), get容器(), true);
             }
         });
     }

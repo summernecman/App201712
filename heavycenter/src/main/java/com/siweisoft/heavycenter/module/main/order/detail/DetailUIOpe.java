@@ -75,7 +75,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
         }
         bind.title.getMidTV().setText(StringUtil.getStr(res.getOrderNo()));
         bind.setVariable(BR.frag_main_order_detail,res);
-        bind.itemPlantime.setMidTVTxt(StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH,new Date(res.getPlanTime()))));
+        bind.itemPlantime.setMidTVTxt(StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(res.getPlanTime()))));
         if(NewsOrderReqBean.发货.equals(res.getOrderType())){
             bind.tvOrdertype.setText("发往");
             bind.tvUnit.setText(StringUtil.getStr(res.getShdwName()));

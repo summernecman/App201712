@@ -8,10 +8,10 @@ import android.view.View;
 import com.android.lib.constant.ValueConstant;
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
 
@@ -19,9 +19,11 @@ public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
     @Override
     public void onFristVisibleInit() {
         getP().getD().getMapUtil().init(getActivity());
+        getP().getD().getMapUtil().setScantime(10000);
         getP().getD().getMapUtil().registerLocationListener(getActivity(), new BDAbstractLocationListener() {
             @Override
             public void onReceiveLocation(BDLocation bdLocation) {
+                getP().getD().getMapUtil().setFirst(true);
                 getP().getD().getMapUtil().animateMapStatus(getP().getU().bind.map.getMap(),bdLocation);
                 getP().getD().getMapUtil().setMyLocationData(getP().getU().bind.map.getMap(),bdLocation);
             }
@@ -37,9 +39,7 @@ public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    MainAct mainAct = (MainAct) getActivity();
-                    Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    getBaseUIAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    new IntentIntegrator(getBaseAct()).initiateScan();
                 }
                 break;
         }

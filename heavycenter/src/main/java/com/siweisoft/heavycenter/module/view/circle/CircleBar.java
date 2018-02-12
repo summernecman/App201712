@@ -28,7 +28,7 @@ public class CircleBar extends View {
 
     int mCircleColor;
     int mCircleBgColor;
-    private float mCircleRatio=0.03f;//圆环宽度占比
+    private float mCircleRatio=0.02f;//圆环宽度占比
     private boolean mIsDrawValue=false;
 
     public CircleBar(Context context) {
@@ -127,9 +127,9 @@ public class CircleBar extends View {
      */
     private void initCircleWidth() {
         circleStrokeWidth = getWidth()*mCircleRatio;// 圆弧的宽度
-        mColorWheelRectangle.set(circleStrokeWidth , circleStrokeWidth , getWidth() - circleStrokeWidth , getWidth() - circleStrokeWidth);// 设置矩形
-        mColorWheelPaint.setStrokeWidth(circleStrokeWidth);
-        mDefaultWheelPaint.setStrokeWidth(circleStrokeWidth*2);
+        mColorWheelRectangle.set(circleStrokeWidth*2 , circleStrokeWidth *2, getWidth() - circleStrokeWidth*2 , getWidth() - circleStrokeWidth*2);// 设置矩形
+        mColorWheelPaint.setStrokeWidth(circleStrokeWidth*2);
+        mDefaultWheelPaint.setStrokeWidth(circleStrokeWidth);
         mColorWheelPaint.setShadowLayer(circleStrokeWidth, 0, 0,getContext().getResources().getColor(R.color.color_hv_yelll));// 设置阴影
     }
 

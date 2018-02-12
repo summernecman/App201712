@@ -54,7 +54,7 @@ public class InfoUIOpe extends AppUIOpe<FragMyceUnitInfoBinding>{
         diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_leave,null));
         diaLogCenterFrag.setOnClickListener(onClickListener,R.id.close,R.id.sure);
         fragManager2 = FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).setHideLast(false);
-        fragManager2.start(getActivity(), MainValue.主界面,diaLogCenterFrag);
+        fragManager2.start(getActivity(), getFrag().get容器(),diaLogCenterFrag);
     }
 
     public FragManager2 getFragManager2() {

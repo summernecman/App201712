@@ -55,12 +55,12 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
                                 Bundle bundle = new Bundle();
                                 bundle.putString(ValueConstant.DATA_DATA2,CarDetailValue.绑定车辆);
                                 bundle.putSerializable(ValueConstant.DATA_DATA,o);
-                                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,MainValue.主界面ID,new DetailFrag(),bundle);
+                                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new DetailFrag(),bundle);
                             }else{
                                 Bundle bundle = new Bundle();
                                 bundle.putString(ValueConstant.DATA_DATA2, CarDetailValue.新建车辆并绑定);
                                 bundle.putString(ValueConstant.DATA_DATA,getP().getU().getInputText());
-                                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new DetailFrag(),bundle);
+                                FragManager2.getInstance().start(getBaseUIAct(),get容器(),new DetailFrag(),bundle);
                             }
                         }
                     });
@@ -79,7 +79,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
                 Bundle bundle = new Bundle();
                 bundle.putString(ValueConstant.DATA_DATA2,CarDetailValue.绑定车辆);
                 bundle.putSerializable(ValueConstant.DATA_DATA,data);
-                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new DetailFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(),get容器(),new DetailFrag(),bundle);
 
 //                getP().getD().bindCar(data.getVehicleId(), new UINetAdapter<BindCarRes>(getActivity()) {
 //                    @Override

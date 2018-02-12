@@ -10,6 +10,7 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.NetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -23,7 +24,6 @@ import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.store.check.CheckFrag;
 import com.siweisoft.heavycenter.module.main.store.detail.DetailFrag;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import butterknife.OnClick;
 
@@ -46,13 +46,11 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.仓库,MainValue.仓库ID,new CheckFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new CheckFrag(),bundle);
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    MainAct mainAct = (MainAct) getActivity();
-                    Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    getBaseUIAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    new IntentIntegrator(getBaseAct()).initiateScan();
                 }
                 break;
         }
@@ -66,7 +64,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.DATA_DATA,storeDetail.getWarehouseId());
                 bundle.putInt(ValueConstant.FARG_REQ,2);
-                FragManager2.getInstance().start(getBaseUIAct(),MainValue.仓库,MainValue.仓库ID,new DetailFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(),get容器(),new DetailFrag(),bundle);
                 break;
         }
     }

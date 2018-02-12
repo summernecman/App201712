@@ -16,12 +16,13 @@ import com.android.lib.util.ToastUtil;
 import com.android.lib.util.activity.ActivityUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.android.lib.view.bottommenu.MessageEvent;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.module.welc.welc.WelcAct;
-import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -74,7 +75,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
         FragManager2.getInstance().clear((BaseUIActivity) getActivity(),MainValue.主界面);
         getP().getU().setCurrentItem(position);
         setMoudle(getP().getD().getMenudata().get(position).getName());
-
+        getP().getD().getMenudata().get(position).getFragment().onFristVisible();
         if(position==getP().getD().getMenudata().size()-1){
             if(!getP().getD().is绑定了单位()){
                 getP().getU().hideshowunbind(false);
@@ -100,25 +101,28 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     @Override
     public void onBackPressed() {
+
         if(!FragManager2.getInstance().finish(getActivity(),getMoudle(),!getMoudle().equals(MainValue.主界面))){
             super.onBackPressed();
+        }
+        if(FragManager2.getInstance().getMoudleFragSize(MainValue.主界面)==0){
+            onAppItemSelect(null,null,getP().getU().bind.bottommenu.getIndex());
         }
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,resultCode,data);
-        if (requestCode == ValueConstant.CODE_REQUSET) {
-            if (null != data && data.getExtras()!=null) {
-                Bundle bundle = data.getExtras();
-                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
-                    ToastUtil.getInstance().showShort(getActivity(),FragManager2.getInstance().getCurrentFrag(getMoudle()).getClass().getSimpleName());
-                    getP().getD().getScanDAOpe().logic((AppFrag) FragManager2.getInstance().getCurrentFrag(getMoudle()),bundle.getString(CodeUtils.RESULT_STRING));
-                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
-                    ToastUtil.getInstance().showShort(this,"解析二维码失败");
-                }
+        if (null != data && data.getExtras()!=null) {
+            IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+            if(result != null&&result.getContents() != null) {
+                ToastUtil.getInstance().showShort(getActivity(),FragManager2.getInstance().getCurrentFrag(getMoudle()).getClass().getSimpleName());
+                getP().getD().getScanDAOpe().logic((AppFrag) FragManager2.getInstance().getCurrentFrag(getMoudle()),result.getContents());
+            } else {
+                ToastUtil.getInstance().showShort(this,"解析二维码失败");
             }
         }
+
     }
 
 

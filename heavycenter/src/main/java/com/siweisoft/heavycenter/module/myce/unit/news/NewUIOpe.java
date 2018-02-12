@@ -3,9 +3,14 @@ package com.siweisoft.heavycenter.module.myce.unit.news;
 //by summer on 2017-12-19.
 
 import android.content.Context;
+import android.graphics.Color;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
+import com.android.lib.base.interf.OnFinishListener;
+import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
@@ -27,8 +32,6 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
     NewReqBean newReqBean = new NewReqBean();
 
 
-
-
     public NewReqBean getNewReqBean(UnitInfo unitInfo) {
         newReqBean.setCompanyName(bind.itemUnitname.getMidET().getText().toString());
         newReqBean.setAbbreviationName(bind.itemNunitshortname.getMidET().getText().toString());
@@ -43,7 +46,7 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
             newReqBean.setCreater(LocalValue.get登录返回信息().getUserId());
         }
        ///}
-        newReqBean.setHighCompany(unitInfo.getId()==0?-1:unitInfo.getId());
+        newReqBean.setHighCompany(unitInfo.getParentCompanyId()==0?-1:unitInfo.getParentCompanyId());
         return newReqBean;
     }
 
@@ -95,9 +98,23 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
                 bind.title.getMidTV().setText("单位信息");
                 break;
             case NewFrag.展示单位信息:
+                bind.upunit.setEnabled(false);
+                bind.unitaddr.setEnabled(false);
+                bind.area.setEnabled(false);
                 bind.title.getMidTV().setText("单位信息");
                 bind.title.getRightIV2().setImageResource(R.drawable.icon_hv_quit);
                 break;
+            case NewFrag.其他人查看单位信息:
+                bind.itemUnitname.getMidET().setEnabled(false);
+                bind.itemNunitshortname.getMidET().setEnabled(false);
+                bind.unitcontact.getMidET().setEnabled(false);
+                bind.unitphone.getMidET().setEnabled(false);
+                bind.upunit.setEnabled(false);
+                bind.unitaddr.setEnabled(false);
+                bind.area.setEnabled(false);
+                bind.title.getMidTV().setText("单位信息");
+                bind.title.getRightIV2().setEnabled(false);
+                bind.title.getRightIV2().setVisibility(View.GONE);
             case NewFrag.新建单位:
                 bind.title.getMidTV().setText("新建单位");
                 break;
@@ -164,10 +181,41 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
         diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_leave,null));
         diaLogCenterFrag.setOnClickListener(onClickListener,R.id.close,R.id.sure);
         fragManager2 = FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).setHideLast(false);
-        fragManager2.start(getActivity(), MainValue.主界面,diaLogCenterFrag);
+        fragManager2.start(getActivity(), getFrag().get容器(),diaLogCenterFrag);
+    }
+
+    FragManager2 unitexistfragm = null;
+
+    public void showUnitExistTip(String moudle,String name,View.OnClickListener onClickListener){
+        DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
+        diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_exist,null));
+        TextView textView = diaLogCenterFrag.getCustomerView().findViewById(R.id.tv_tip_title);
+        textView.setText(StringUtil.getStr(name));
+        diaLogCenterFrag.setOnClickListener(onClickListener,R.id.close,R.id.sure);
+        unitexistfragm = FragManager2.getInstance().setHideLast(false).setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out);
+        unitexistfragm.start(getActivity(), moudle,diaLogCenterFrag);
+    }
+
+    public void unitCheck(final OnFinishListener onFinishListener){
+        BaseTextWather baseTextWather = new BaseTextWather(){
+            @Override
+            public void afterTextChanged(Editable s) {
+              if(onFinishListener!=null){
+                  if(!NullUtil.isStrEmpty(s.toString())){
+                      onFinishListener.onFinish(s.toString());
+                  }
+              }
+            }
+        };
+        bind.itemNunitshortname.getMidET().addTextChangedListener(baseTextWather);
+        bind.itemUnitname.getMidET().addTextChangedListener(baseTextWather);
     }
 
     public FragManager2 getFragManager2() {
         return fragManager2;
+    }
+
+    public FragManager2 getUnitexistfragm() {
+        return unitexistfragm;
     }
 }

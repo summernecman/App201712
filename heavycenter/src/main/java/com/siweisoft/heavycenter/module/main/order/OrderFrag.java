@@ -10,6 +10,7 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.NetAdapter;
 import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.android.lib.view.dialog.list.DialogListFrag;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -19,7 +20,6 @@ import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.order.begin.BeginFrag;
 import com.siweisoft.heavycenter.module.main.order.news.NewOrderFrag;
 import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +58,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
                         .setStartAnim(R.anim.top_in,R.anim.top_out,R.anim.top_in,R.anim.top_out)
                         .setFinishAnim(R.anim.top_out,R.anim.top_in)
                         .setHideLast(false)
-                        .start(getBaseUIAct(),MainValue.订单,MainValue.订单ID,frag);
+                        .start(getBaseUIAct(),get容器(),frag);
                 break;
             case R.id.ftv_right2:
 
@@ -76,13 +76,11 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
 
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,2);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.订单,MainValue.订单ID,new NewOrderFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(),get容器(),new NewOrderFrag(),bundle);
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    MainAct mainAct = (MainAct) getActivity();
-                    Intent intent = new Intent(mainAct, CaptureActivity.class);
-                    getBaseUIAct().startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+                    new IntentIntegrator(getBaseAct()).initiateScan();
                 }
                 break;
         }

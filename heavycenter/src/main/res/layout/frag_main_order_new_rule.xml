@@ -13,7 +13,7 @@
         android:orientation="vertical">
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
-            style_common:iv_left ="@drawable/icon_hv_person"
+            style_common:iv_left ="@drawable/icon_hv_back"
             style_common:txt_mid ="签收规则"
             style_common:iv_right ="@drawable/icon_hv_scan"
             android:layout_width="match_parent"
@@ -21,6 +21,9 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycle"
+                android:scrollbars="vertical"
+                android:scrollbarSize="10dp"
+                android:fadeScrollbars="false"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

@@ -64,23 +64,23 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         switch (v.getId()){
             case R.id.item_wuniaoname:
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new NamesFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(),get容器(),new NamesFrag(),bundle);
                 break;
             case R.id.item_wuliaoguige:
                 if(getP().getU().canSpecsGo(getP().getD().getNewsGoodReq())){
                     bundle.putInt(ValueConstant.DATA_POSITION2,getP().getD().getNewsGoodReq().getMaterielId());
                     bundle.putInt(ValueConstant.FARG_REQ,2);
-                    FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new SpecsFrag(),bundle);
+                    FragManager2.getInstance().start(getBaseUIAct(), get容器(),new SpecsFrag(),bundle);
                 }
                 break;
             case R.id.item_cangku:
                 bundle.putInt(ValueConstant.FARG_REQ,3);
                 bundle.putInt(ValueConstant.DATA_POSITION2,StoreFrag.选择一个仓库);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new StoreFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(),get容器(),new StoreFrag(),bundle);
                 break;
             case R.id.item_area:
                 bundle.putInt(ValueConstant.FARG_REQ,4);
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,new ProvFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new ProvFrag(),bundle);
                 break;
             case R.id.ftv_right2:
                 if(getArguments().getInt(ValueConstant.DATA_DATA,-1)!=-1){

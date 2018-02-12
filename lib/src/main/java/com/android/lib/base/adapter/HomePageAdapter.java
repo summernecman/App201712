@@ -18,6 +18,8 @@ public class HomePageAdapter extends PagerAdapter {
 
     OnFinishListener onFinishListener;
 
+    private boolean load = false;
+
     public HomePageAdapter(Context context, ArrayList<View> views, OnFinishListener onFinishListener){
         this.context =context;
         this.views = views;
@@ -43,7 +45,11 @@ public class HomePageAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         container.addView(views.get(position));
         if(position==views.size()-1 && onFinishListener!=null){
-            onFinishListener.onFinish(null);
+            if(!load){
+                onFinishListener.onFinish(null);
+                load= true;
+            }
+
         }
         return views.get(position);
     }

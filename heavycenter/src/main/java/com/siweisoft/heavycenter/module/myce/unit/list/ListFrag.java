@@ -55,7 +55,13 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                 if(LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED){
                     bundle.putInt(ValueConstant.FARG_REQ,2);
                 }
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(), MainValue.主界面ID,new NewFrag(),bundle);
+                if(LocalValue.get登录返回信息().getBindCompanyState()==LoginResBean.BIND_UNIT_STATE_BINDED){
+                    if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.UP_UNIT
+                            ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.SEL_UNIT){
+                        bundle.putInt(ValueConstant.FARG_REQ,3);
+                    }
+                }
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NewFrag(),bundle);
                 break;
             case R.id.iv_search:
                 getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(this){
@@ -83,7 +89,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                     @Override
                     public void onSuccess(UnitInfo o) {
                         if(o.getCompanyIsNull()==UnitInfo.COMPANY_NULL){
-                            getP().getU().showTip(new View.OnClickListener(){
+                            getP().getU().showTip(get容器(),new View.OnClickListener(){
                                 @Override
                                 public void onClick(View vv) {
                                     switch (vv.getId()){
@@ -143,7 +149,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getU().clearKey();
-        getP().getD().getData(new UINetAdapter<ListResBean>(getBaseUIAct()) {
+        getP().getD().getData(new UINetAdapter<ListResBean>(this,UINetAdapter.加载) {
             @Override
             public void onResult(boolean success, String msg, ListResBean o) {
                 super.onResult(success, msg, o);
@@ -172,6 +178,14 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                 getBaseUIAct().onBackPressed();
                 ((MainAct)getActivity()).go网络获取用户信息重新加载();
                 break;
+            case 3:
+                if(bundle==null|| bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
+                    return;
+                }
+                UnitInfo unitInfo = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
+                getArguments().putSerializable(ValueConstant.DATA_DATA2,unitInfo);
+                getBaseUIAct().onBackPressed();
+                break;
         }
     }
 
@@ -192,7 +206,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                 public void onResult(boolean success, String msg, UnitInfo o) {
                     super.onResult(success, msg, o);
                     if(o.getCompanyIsNull()==UnitInfo.COMPANY_NULL){
-                        getP().getU().showTip(new View.OnClickListener(){
+                        getP().getU().showTip(get容器(),new View.OnClickListener(){
                             @Override
                             public void onClick(View vv) {
                                 switch (vv.getId()){

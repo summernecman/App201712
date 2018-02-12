@@ -1,126 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:CircleImageView_civ="http://schemas.android.com/tools">
     <data>
         <variable
             name="item_myce_head"
             type="String" />
     </data>
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@color/color_base"
+        android:layout_height="190dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:background="@color/color_base"
-            android:layout_height="190dp">
-            <ImageView
-                android:scaleType="centerCrop"
-                android:src="@drawable/icon_hv_myce_bg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
-                <com.android.lib.view.title.TitleView
-                        android:id="@+id/title"
-                        style_common:color_bg="@color/transparent"
-                        style_common:iv_right="@drawable/icon_hv_myce_code"
-                        style_common:iv_right2="@color/transparent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                <LinearLayout
-                        android:layout_marginTop="-20dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/icon_hv_myce_bg"
+            style_common:layout_constraintBottom_toBottomOf="parent"
+            style_common:layout_constraintEnd_toEndOf="parent"
+            style_common:layout_constraintHorizontal_bias="0.0"
+            style_common:layout_constraintStart_toStartOf="parent"
+            style_common:layout_constraintTop_toTopOf="parent"
+            style_common:layout_constraintVertical_bias="0.0" />
+
+        <com.android.lib.view.title.TitleView
+            android:id="@+id/title"
+            style_common:color_bg="@color/transparent"
+            style_common:iv_right="@drawable/icon_hv_myce_code"
+            style_common:iv_right2="@color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/iv_head"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="61dp"
+            android:src="@drawable/icon_hv_myce_head"
+            android:transitionName="cirlceimageview"
+            app:civ_border_color="#11ffffff"
+            app:civ_border_width="5dp"
+            style_common:layout_constraintStart_toStartOf="parent"
+            style_common:layout_constraintTop_toTopOf="parent"
+            style_common:srcCompat="@drawable/bg_cricle_yel" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="72dp"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:text="18721654587"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            style_common:layout_constraintStart_toEndOf="@+id/iv_head"
+            style_common:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:singleLine="true"
+            android:text="管理员"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            style_common:layout_constraintStart_toEndOf="@+id/iv_head"
+            style_common:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:singleLine="true"
+            android:text="18741414141"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            style_common:layout_constraintStart_toEndOf="@+id/iv_head"
+            style_common:layout_constraintTop_toBottomOf="@+id/tv_role" />
+
+        <ImageView
+            android:id="@+id/iv_nameedit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/icon_hv_myce_edit"
+            style_common:layout_constraintEnd_toEndOf="parent"
+            style_common:layout_constraintTop_toTopOf="parent" />
 
 
-                    <RelativeLayout
-                            android:layout_weight="0.8"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
-
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                                android:transitionName="cirlceimageview"
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentRight="true"
-                                android:id="@+id/iv_head"
-                                android:src="@drawable/icon_hv_myce_head"
-                                android:layout_width="120dp"
-                                android:layout_height="120dp"/>
-
-                    </RelativeLayout>
-
-
-                    <LinearLayout
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="100dp">
-                        <LinearLayout
-                                android:layout_gravity="bottom"
-                                android:layout_weight="1"
-                                android:gravity="top"
-                                android:orientation="horizontal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="0dp">
-                            <TextView
-                                    android:layout_weight="1"
-                                    android:ellipsize="marquee"
-                                    android:singleLine="true"
-                                    android:id="@+id/tv_name"
-                                    android:text="18721654587"
-                                    android:textSize="25sp"
-                                    android:textColor="@color/white"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
-
-                            <ImageView
-                                    android:layout_marginLeft="2dp"
-                                    android:layout_marginRight="5dp"
-                                    android:layout_marginTop="5dp"
-                                    android:id="@+id/iv_nameedit"
-                                    android:src="@drawable/icon_hv_myce_edit"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"/>
-                        </LinearLayout>
-
-                        <LinearLayout
-                                android:visibility="visible"
-                                android:id="@+id/ll_role"
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp">
-                            <TextView
-                                    android:singleLine="true"
-                                    android:id="@+id/tv_role"
-                                    android:text="管理员"
-                                    android:textSize="14sp"
-                                    android:textColor="@color/white"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
-                        </LinearLayout>
-                        <LinearLayout
-                                android:layout_weight="1"
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp">
-                            <TextView
-                                    android:singleLine="true"
-                                    android:id="@+id/tv_phone"
-                                    android:text="18741414141"
-                                    android:textSize="18sp"
-                                    android:textColor="@color/white"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-        </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>

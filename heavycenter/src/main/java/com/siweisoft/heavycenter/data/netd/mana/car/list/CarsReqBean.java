@@ -7,6 +7,8 @@ import com.android.lib.network.bean.req.BaseReqBean;
 public class CarsReqBean extends BaseReqBean {
 
 
+
+
     public static final String WHAT_MY = "MY";
 
     public static final String WHAT_FH = "FH";

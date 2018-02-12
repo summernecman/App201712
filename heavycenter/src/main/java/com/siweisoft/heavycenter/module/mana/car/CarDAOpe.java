@@ -23,9 +23,14 @@ public class CarDAOpe extends AppDAOpe {
 
     public void initPages(){
         pages.clear();
-        BaseUIFrag sendFrag = new MyFrag(); sendFrag.setArguments(new Bundle());sendFrag.getArguments().putString(ValueConstant.DATA_POSITION,CarsReqBean.WHAT_FH);pages.add(sendFrag);
-        BaseUIFrag myFrag = new MyFrag(); myFrag.setArguments(new Bundle());myFrag.getArguments().putString(ValueConstant.DATA_POSITION,CarsReqBean.WHAT_MY);pages.add(myFrag);
-        BaseUIFrag receiptFrag = new MyFrag(); receiptFrag.setArguments(new Bundle());receiptFrag.getArguments().putString(ValueConstant.DATA_POSITION,CarsReqBean.WHAT_SH);pages.add(receiptFrag);
+        String[] str = new String[]{CarsReqBean.WHAT_FH,CarsReqBean.WHAT_MY,CarsReqBean.WHAT_SH};
+        for(int i=0;i<str.length;i++){
+            BaseUIFrag sendFrag = new MyFrag();
+            sendFrag.setArguments(new Bundle());
+            sendFrag.getArguments().putString(ValueConstant.DATA_POSITION,str[i]);
+            sendFrag.getArguments().putString(ValueConstant.容器,getFrag().get容器());
+            pages.add(sendFrag);
+        }
     }
 
     public ArrayList<Fragment> getPages() {
