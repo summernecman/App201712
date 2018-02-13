@@ -41,6 +41,11 @@ public abstract class UINetAdapter<A> extends NetAdapter<A> {
         super(context, isshow);
     }
 
+    public UINetAdapter(BaseUIFrag baseUIFrag,boolean isshow) {
+        super(baseUIFrag, isshow);
+    }
+
+
     @Override
     public boolean onNetStart(String url, String gson) {
         if(isload==1){

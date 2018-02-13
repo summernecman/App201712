@@ -85,7 +85,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
             case R.id.ftv_right2:
                 if(getArguments().getInt(ValueConstant.DATA_DATA,-1)!=-1){
                     if(getP().getU().canGo(getP().getD().getNewsGoodReq())){
-                        getP().getD().updGood(getP().getU().getUpdGoodReq(getP().getD().getUpdGoodReq(getP().getD().getNewsGoodReq())), new UINetAdapter<UpdGoodRes>(this) {
+                        getP().getD().updGood(getP().getU().getUpdGoodReq(getP().getD().getUpdGoodReq(getP().getD().getNewsGoodReq())), new UINetAdapter<UpdGoodRes>(this,true) {
                             @Override
                             public void onSuccess(UpdGoodRes o) {
                                 getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
@@ -95,7 +95,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                     }
                 }else{
                     if(getP().getU().canGo(getP().getD().getNewsGoodReq())){
-                        getP().getD().NewsGood(getP().getU().getNewsGoodReq(getP().getD().getNewsGoodReq()), new UINetAdapter<NewsGoodRes>(this) {
+                        getP().getD().NewsGood(getP().getU().getNewsGoodReq(getP().getD().getNewsGoodReq()), new UINetAdapter<NewsGoodRes>(this,true) {
                             @Override
                             public void onSuccess(NewsGoodRes o) {
                                 getArguments().putBoolean(ValueConstant.FARG_TYPE,true);

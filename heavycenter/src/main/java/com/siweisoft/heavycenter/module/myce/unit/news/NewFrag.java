@@ -111,7 +111,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> implements OnFinishListe
                                     case R.id.close:
                                         break;
                                     case R.id.sure:
-                                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(NewFrag.this) {
+                                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(NewFrag.this,true) {
                                             @Override
                                             public void onSuccess(UnBindResBean o) {
                                                 getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
@@ -136,7 +136,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> implements OnFinishListe
                         break;
                     case 新建单位:
                         if(getP().getU().canGo()){
-                            getP().getD().createUnit(getP().getU().getNewReqBean(getP().getD().getUnit()), new UINetAdapter<NewResBean>(this) {
+                            getP().getD().createUnit(getP().getU().getNewReqBean(getP().getD().getUnit()), new UINetAdapter<NewResBean>(this,true) {
                                 @Override
                                 public void onSuccess(NewResBean o) {
                                     getArguments().putBoolean(ValueConstant.DATA_RES,true);
@@ -147,7 +147,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> implements OnFinishListe
                         break;
                     case 修改单位信息:
                         if(getP().getU().canGo()){
-                            getP().getD().updateUnit(getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(this) {
+                            getP().getD().updateUnit(getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(this,true) {
                                 @Override
                                 public void onSuccess(UpdateUnitRes o) {
                                     getInfoAndInit(new OnFinishListener() {

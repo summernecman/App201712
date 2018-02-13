@@ -20,6 +20,7 @@ import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.order.begin.BeginFrag;
 import com.siweisoft.heavycenter.module.main.order.news.NewOrderFrag;
 import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
+import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +81,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    new IntentIntegrator(getBaseAct()).initiateScan();
+                    new IntentIntegrator(getBaseAct()).setCaptureActivity(ScanAct.class).initiateScan();
                 }
                 break;
         }

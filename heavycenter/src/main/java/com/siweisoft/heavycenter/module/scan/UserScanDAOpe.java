@@ -57,7 +57,7 @@ public class UserScanDAOpe extends BaseDAOpe {
             ToastUtil.getInstance().showShort(getActivity(),"驾驶员扫码地图 地图中心改为单位所在位置");
             UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
             unitInfoReqBean.setId(scaned.getCompanyId());
-            NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean, new UINetAdapter<UnitInfo>(getActivity()) {
+            NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean, new UINetAdapter<UnitInfo>(getActivity(),true) {
                 @Override
                 public void onSuccess(UnitInfo o) {
                     super.onSuccess(o);
@@ -107,7 +107,7 @@ public class UserScanDAOpe extends BaseDAOpe {
             bindReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
             bindReqBean.setIsManager(1);
             bindReqBean.setMangerId(LocalValue.get登录返回信息().getUserId());
-            NetDataOpe.User.binUnit(getActivity(), bindReqBean, new UINetAdapter<BindResBean>(getActivity()) {
+            NetDataOpe.User.binUnit(getActivity(), bindReqBean, new UINetAdapter<BindResBean>(getActivity(),true) {
                 @Override
                 public void onSuccess(BindResBean o) {
                     super.onSuccess(o);
@@ -131,7 +131,7 @@ public class UserScanDAOpe extends BaseDAOpe {
             bindReqBean.setCompanyId(scaned.getCompanyId());
             bindReqBean.setIsManager(BindReqBean.IS_MANAGER_NO);
             bindReqBean.setMangerId(0);
-            NetDataOpe.User.binUnit(getActivity(), bindReqBean, new UINetAdapter<BindResBean>(getActivity()) {
+            NetDataOpe.User.binUnit(getActivity(), bindReqBean, new UINetAdapter<BindResBean>(getActivity(),true) {
                 @Override
                 public void onResult(boolean success, String msg, BindResBean o) {
                     super.onResult(success, msg, o);
@@ -150,7 +150,7 @@ public class UserScanDAOpe extends BaseDAOpe {
             bindReqBean.setCompanyId(scaned.getCompanyId());
             bindReqBean.setIsManager(BindReqBean.IS_MANAGER_NO);
             bindReqBean.setMangerId(0);
-            NetDataOpe.User.binUnit(getActivity(), bindReqBean, new UINetAdapter<BindResBean>(getActivity()) {
+            NetDataOpe.User.binUnit(getActivity(), bindReqBean, new UINetAdapter<BindResBean>(getActivity(),true) {
                 @Override
                 public void onResult(boolean success, String msg, BindResBean o) {
                     super.onResult(success, msg, o);

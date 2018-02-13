@@ -29,6 +29,7 @@
         android:weightSum="1"
         android:layout_height="match_parent"/>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:foreground="?android:attr/selectableItemBackground"
         android:id="@id/smContentView"
         android:background="@color/white"
         android:layout_width="match_parent"

@@ -32,7 +32,7 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
         switch (v.getId()){
             case R.id.regist:
                 if(getP().getU().is都输入好了()){
-                    getP().getD().regist(getP().getU().getRegistReqBean(), new UINetAdapter<RegistResBean>(getContext()) {
+                    getP().getD().regist(getP().getU().getRegistReqBean(), new UINetAdapter<RegistResBean>(this,true) {
 
                         @Override
                         public void onSuccess(RegistResBean o) {

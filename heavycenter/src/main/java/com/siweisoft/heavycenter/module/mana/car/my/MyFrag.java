@@ -50,7 +50,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
                 switch (v.getId()){
                     case R.id.smMenuViewRight:
                         final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
-                        getP().getD().statusCar(bean.getVehicleId(), bean.getStatus(), new UINetAdapter<StopCarResBean>(this) {
+                        getP().getD().statusCar(bean.getVehicleId(), bean.getStatus(), new UINetAdapter<StopCarResBean>(this,true) {
                             @Override
                             public void onSuccess(StopCarResBean o) {
                                 bean.setStatus(bean.getStatus()== CarsResBean.CarInfoRes.STATUS_ON? CarsResBean.CarInfoRes.STATUS_OFF: CarsResBean.CarInfoRes.STATUS_ON);

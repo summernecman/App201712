@@ -24,6 +24,7 @@ import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.store.check.CheckFrag;
 import com.siweisoft.heavycenter.module.main.store.detail.DetailFrag;
+import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 import butterknife.OnClick;
 
@@ -50,7 +51,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    new IntentIntegrator(getBaseAct()).initiateScan();
+                    new IntentIntegrator(getBaseAct()).setCaptureActivity(ScanAct.class).initiateScan();
                 }
                 break;
         }

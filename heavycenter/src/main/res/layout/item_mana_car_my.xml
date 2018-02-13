@@ -29,10 +29,11 @@
         android:layout_height="match_parent"/>
 
     <RelativeLayout
+        android:foreground="?android:attr/selectableItemBackground"
         android:id="@id/smContentView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@drawable/bg_hv_sel_gray_white"
         android:paddingTop="10dp">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -46,7 +47,7 @@
 
 
             <ImageView
-                android:src="@drawable/icon_hv_mana_car"
+                android:src="@drawable/drawable_hv_sel_mana_car"
                 android:layout_width="65dp"
                 android:layout_height="65dp" />
 

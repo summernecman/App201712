@@ -31,7 +31,7 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
             public void onClick(final View v) {
                 switch (v.getId()){
                     case R.id.tv_sure:
-                        getP().getD().login(LocalValue.get登录参数(), new UINetAdapter<LoginResBean>(getContext(),false) {
+                        getP().getD().login(LocalValue.get登录参数(), new UINetAdapter<LoginResBean>(RoleFrag.this,true) {
                             @Override
                             public void onSuccess(LoginResBean o) {
                                 getP().getU().getUserTypeReqBean().setId(o.getUserId());

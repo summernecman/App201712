@@ -28,6 +28,7 @@ import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.trans.detail.TransDetailFrag;
+import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 import butterknife.OnClick;
 
@@ -106,7 +107,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    new IntentIntegrator(getBaseAct()).initiateScan();
+                    new IntentIntegrator(getBaseAct()).setCaptureActivity(ScanAct.class).initiateScan();
                 }
                 break;
         }

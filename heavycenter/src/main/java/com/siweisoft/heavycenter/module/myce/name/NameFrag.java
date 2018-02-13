@@ -29,7 +29,7 @@ public class NameFrag extends AppFrag<NameUIOpe,NameDAOpe> {
         switch (v.getId()){
             case R.id.ftv_right2:
                 if(getP().getU().canGo()){
-                    getP().getD().reName(getP().getU().getReNameReqBean(), new UINetAdapter<ReNameResBean>(this) {
+                    getP().getD().reName(getP().getU().getReNameReqBean(), new UINetAdapter<ReNameResBean>(this,true) {
                         @Override
                         public void onSuccess(ReNameResBean o) {
                             LoginResBean loginResBean = LocalValue.get登录返回信息();

@@ -16,6 +16,7 @@ import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
 import com.siweisoft.heavycenter.data.netd.weight.save.SaveWeightRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.weigts.weight.WeigtFrag;
+import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -48,7 +49,7 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    new IntentIntegrator(getBaseAct()).initiateScan();
+                    new IntentIntegrator(getBaseAct()).setCaptureActivity(ScanAct.class).initiateScan();
                 }
                 break;
             case R.id.tv_save:
@@ -57,7 +58,7 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
                     getP().getD().getWeightMsg().getMessage().setWeigh(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh());
                 }
                 if(weigtFrag.getP().getD().getWeightMsg()!=null&&weigtFrag.getP().getD().getWeightMsg().getMessage()!=null){
-                    getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(this) {
+                    getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(this,true) {
                         @Override
                         public void onSuccess(SaveWeightRes o) {
                             super.onSuccess(o);

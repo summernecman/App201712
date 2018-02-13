@@ -42,7 +42,7 @@ public class InfoFrag extends AppFrag<InfoUIOpe,InfoDAOpe> {
                         case R.id.close:
                             break;
                         case R.id.sure:
-                            getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(InfoFrag.this) {
+                            getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(InfoFrag.this,true) {
                                 @Override
                                 public void onSuccess(UnBindResBean o) {
                                     getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {

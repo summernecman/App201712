@@ -14,6 +14,7 @@
         android:id="@+id/sml"
         android:layout_width="match_parent"
         sml:sml_auto_open_percent="0.2"
+        android:foreground="?android:attr/selectableItemBackground"
         android:layout_height="50dp"
         sml:sml_scroller_duration="250">
 

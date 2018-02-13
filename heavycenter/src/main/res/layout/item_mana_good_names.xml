@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:foreground="?android:attr/selectableItemBackground"
             android:orientation="horizontal"
             android:background="@color/white"
             android:layout_width="match_parent"

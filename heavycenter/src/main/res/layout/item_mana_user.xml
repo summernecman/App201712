@@ -11,6 +11,7 @@
     <com.tubb.smrv.SwipeHorizontalMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:sml="http://schemas.android.com/apk/res-auto"
         android:id="@+id/sml"
+
         android:layout_width="match_parent"
         sml:sml_auto_open_percent="0.2"
         android:layout_height="80dp"
@@ -28,7 +29,7 @@
             android:layout_width="80dp"
             android:layout_height="match_parent"/>
         <RelativeLayout
-
+            android:foreground="?android:attr/selectableItemBackground"
             android:background="@color/white"
             android:id="@id/smContentView"
             android:orientation="vertical"

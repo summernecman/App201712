@@ -16,6 +16,7 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -47,7 +48,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    new IntentIntegrator(getBaseAct()).initiateScan();
+                    new IntentIntegrator(getBaseAct()).setCaptureActivity(ScanAct.class).initiateScan();
                 }
                 break;
         }

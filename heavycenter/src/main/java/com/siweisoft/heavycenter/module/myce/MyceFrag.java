@@ -225,7 +225,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                         switch (finalType){
                             case UpdateHeadReqBean.头像:
                                 final String finalS = s;
-                                getP().getD().updateHead(new UINetAdapter<UpdateHeadResBean>(getContext()) {
+                                getP().getD().updateHead(new UINetAdapter<UpdateHeadResBean>(MyceFrag.this,true) {
                                     @Override
                                     public void onResult(boolean success, String msg, UpdateHeadResBean o) {
                                         super.onResult(success, msg, o);
@@ -238,7 +238,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                             case UpdateHeadReqBean.车辆照片:
                                 loginResBean.setVehicleLicense(s);
                                 LocalValue.save登录返回信息(loginResBean);
-                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(MyceFrag.this) {
+                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(MyceFrag.this,true) {
                                     @Override
                                     public void onSuccess(UpdateCarRes o) {
                                         getP().getU().initUI();
@@ -248,7 +248,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                             case UpdateHeadReqBean.行驶证照片:
                                 loginResBean.setVehicleLicensePhoto(s);
                                 LocalValue.save登录返回信息(loginResBean);
-                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(MyceFrag.this) {
+                                getP().getD().updateCar(new UINetAdapter<UpdateCarRes>(MyceFrag.this,true) {
                                     @Override
                                     public void onSuccess(UpdateCarRes o) {
                                         getP().getU().initUI();

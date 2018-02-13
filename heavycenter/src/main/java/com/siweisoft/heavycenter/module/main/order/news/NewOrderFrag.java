@@ -98,7 +98,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 break;
             case R.id.ftv_right2:
                 if(getP().getU().canGo()){
-                    getP().getD().newOrder(getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(this,UINetAdapter.加载) {
+                    getP().getD().newOrder(getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(this,UINetAdapter.加载,true) {
 
                         @Override
                         public void onResult(boolean success, String msg, NewOrderRes o) {

@@ -81,7 +81,7 @@ public class UnitScanDAOpe extends BaseDAOpe {
             bindReqBean.setCompanyId(unit.getId());
             bindReqBean.setIsManager(BindReqBean.IS_MANAGER_NO);
             bindReqBean.setMangerId(0);
-            NetDataOpe.User.binUnit(getActivity(), bindReqBean, new UINetAdapter<BindResBean>(getActivity()) {
+            NetDataOpe.User.binUnit(getActivity(), bindReqBean, new UINetAdapter<BindResBean>(getActivity(),true) {
                 @Override
                 public void onResult(boolean success, String msg, BindResBean o) {
                     super.onResult(success, msg, o);

@@ -70,7 +70,7 @@ public  class NetAdapter<A> implements NetI<A> {
     public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
         if (!haveData) {
             if(cache){
-                onResult(true,baseResBean.getMessage(), null);
+                onResult(true,baseResBean.getErrorMessage(), null);
             }else{
                 onResult(false,baseResBean.getErrorMessage(), null);
             }
@@ -87,7 +87,7 @@ public  class NetAdapter<A> implements NetI<A> {
                 deal(haveData,url,resBean);
             }else{
                 if(!NullUtil.isStrEmpty(baseResBean.getMessage())&& showTips){
-                    ToastUtil.getInstance().showShort(context.getApplicationContext(),baseResBean.getMessage());
+                    ToastUtil.getInstance().showShort(context.getApplicationContext(),StringUtil.getStr(baseResBean.getMessage())+StringUtil.getStr(baseResBean.getErrorMessage()));
                 }
                 SPUtil.getInstance().saveStr(url,GsonUtil.getInstance().toJson(baseResBean));
                 deal(haveData,url,baseResBean);
@@ -132,9 +132,9 @@ public  class NetAdapter<A> implements NetI<A> {
 
             }finally {
                 if (!"200".equals(baseResBean.getCode())) {
-                    onResult(false,baseResBean.getMessage(), aa);
+                    onResult(false,StringUtil.getStr(baseResBean.getMessage())+StringUtil.getStr(baseResBean.getErrorMessage()), aa);
                 } else {
-                    onResult(true,baseResBean.getMessage(), aa);
+                    onResult(true,StringUtil.getStr(baseResBean.getMessage())+StringUtil.getStr(baseResBean.getErrorMessage()), aa);
                 }
             }
         }
@@ -151,6 +151,8 @@ public  class NetAdapter<A> implements NetI<A> {
         }
         if(success){
             onSuccess(o);
+        }else{
+            ToastUtil.getInstance().showShort(context,msg);
         }
     }
 

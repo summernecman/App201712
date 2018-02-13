@@ -9,6 +9,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
     android:background="@color/color_item_content"
     android:paddingLeft="@dimen/dimen_item_content_left_padding">
     <LinearLayout

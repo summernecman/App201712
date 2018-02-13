@@ -18,6 +18,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
+import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseUIFrag<A,B> {
 
@@ -42,7 +43,7 @@ public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends 
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    new IntentIntegrator(getBaseUIAct()).initiateScan();
+                    new IntentIntegrator(getBaseUIAct()).setCaptureActivity(ScanAct.class).initiateScan();
                 }
                 break;
 

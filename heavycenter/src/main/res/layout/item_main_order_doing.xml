@@ -14,6 +14,7 @@
         android:background="@drawable/bg_hv_sel_dark_light"
                     android:transitionName="doingorder"
                     android:padding="@dimen/dimen_recylce_item_margin"
+        android:foreground="?android:attr/selectableItemBackground"
 
         >
         <LinearLayout

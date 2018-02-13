@@ -19,6 +19,7 @@
 
 
     <LinearLayout
+        android:foreground="?android:attr/selectableItemBackground"
         android:id="@+id/ll_pros"
         android:background="@drawable/bg_hv_sharp2_gray_stroke"
         android:paddingRight="5dp"

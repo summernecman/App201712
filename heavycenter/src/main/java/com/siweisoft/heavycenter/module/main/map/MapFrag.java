@@ -12,6 +12,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
 
@@ -39,7 +40,7 @@ public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){
-                    new IntentIntegrator(getBaseAct()).initiateScan();
+                    new IntentIntegrator(getBaseAct()).setCaptureActivity(ScanAct.class).initiateScan();
                 }
                 break;
         }

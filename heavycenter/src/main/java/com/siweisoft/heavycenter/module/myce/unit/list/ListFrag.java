@@ -96,7 +96,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                         case R.id.tv_n:
                                             break;
                                         case R.id.tv_y:
-                                            getP().getD().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(getBaseUIAct()) {
+                                            getP().getD().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(ListFrag.this,true) {
                                                 @Override
                                                 public void onResult(boolean success, String msg, BindResBean o) {
                                                     super.onResult(success, msg, o);
@@ -119,7 +119,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                 }
                             });
                         }else{
-                            getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(getBaseUIAct()) {
+                            getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(ListFrag.this,true) {
                                 @Override
                                 public void onResult(boolean success, String msg, BindResBean o) {
                                     super.onResult(success, msg, o);
@@ -213,7 +213,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                     case R.id.tv_n:
                                         break;
                                     case R.id.tv_y:
-                                        getP().getD().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(getBaseUIAct()) {
+                                        getP().getD().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(ListFrag.this,true) {
                                             @Override
                                             public void onResult(boolean success, String msg, BindResBean o) {
                                                 super.onResult(success, msg, o);
@@ -239,7 +239,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                             }
                         });
                     }else{
-                        getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(getBaseUIAct()) {
+                        getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(ListFrag.this,true) {
                             @Override
                             public void onResult(boolean success, String msg, BindResBean o) {
                                 super.onResult(success, msg, o);

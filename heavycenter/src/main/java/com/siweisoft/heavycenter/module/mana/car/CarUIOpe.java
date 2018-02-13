@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
+import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.util.LogUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.FragManaCarBinding;
@@ -24,6 +25,17 @@ public class CarUIOpe extends AppUIOpe<FragManaCarBinding> {
         bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
         bind.topview.setViewPager(bind.llCntent);
         bind.scrollmenu.setViewPager(bind.llCntent);
+        bind.llCntent.addOnPageChangeListener(new BaseOnPagerChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                if(position==1){
+                    bind.llCntent.setScrollble(false);
+                }else{
+                    bind.llCntent.setScrollble(true);
+                }
+            }
+        });
     }
 
 

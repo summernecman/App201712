@@ -35,7 +35,7 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
         switch (v.getId()){
             case R.id.ftv_right2:
                 if(getP().getD().canGo()){
-                    getP().getD().checkStore(getP().getD().getCheckStoreReqBean(getP().getD().getStoresResBean()), new UINetAdapter<CheckStoreResBean>(getBaseUIAct()) {
+                    getP().getD().checkStore(getP().getD().getCheckStoreReqBean(getP().getD().getStoresResBean()), new UINetAdapter<CheckStoreResBean>(this,true) {
                         @Override
                         public void onResult(boolean success, String msg, CheckStoreResBean o) {
                             super.onResult(success, msg, o);

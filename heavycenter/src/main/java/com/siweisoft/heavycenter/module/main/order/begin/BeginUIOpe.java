@@ -42,11 +42,12 @@ import java.util.List;
 
 public class BeginUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 
-
+    NewOrderUIOpe newOrderUIOpe = new NewOrderUIOpe();
 
 
     public void initUI() {
         initRecycle();
+        newOrderUIOpe.copy(this);
     }
 
     private void initRecycle(){

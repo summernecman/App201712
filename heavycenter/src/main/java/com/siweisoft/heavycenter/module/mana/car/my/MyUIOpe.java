@@ -69,30 +69,35 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
 
 
                 binding.executePendingBindings();//加一行，问题解决
-                if(CarsReqBean.WHAT_MY.equals(moudle)){
-                    if(cars.getResults().get(position).getStatus()== CarsResBean.CarInfoRes.STATUS_OFF){
-                        menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
-                        menu.setText(CarsResBean.CarInfoRes.STATUS_ON_CN);
-                    }else{
-                        menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
-                        menu.setText(CarsResBean.CarInfoRes.STATUS_OFF_CN);
-                    }
-                }
-
-
-
-                binding.sml.setSwipeListener(new com.siweisoft.heavycenter.module.view.swipe.MySwipeListener(){
-                    @Override
-                    public void endMenuOpened(SwipeMenuLayout swipeMenuLayout) {
-                        for(int i=0;i<bind.recycle.getChildCount();i++){
-                            SwipeHorizontalMenuLayout swipeLayout= (SwipeHorizontalMenuLayout) bind.recycle.getChildAt(i);
-                            if(swipeLayout!=binding.sml){
-                                swipeLayout.smoothCloseMenu(400);
-                            }
+                switch (moudle){
+                    case CarsReqBean.WHAT_MY:
+                        if(cars.getResults().get(position).getStatus()== CarsResBean.CarInfoRes.STATUS_OFF){
+                            menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
+                            menu.setText(CarsResBean.CarInfoRes.STATUS_ON_CN);
+                            content.setSelected(true);
+                        }else{
+                            menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
+                            menu.setText(CarsResBean.CarInfoRes.STATUS_OFF_CN);
+                            content.setSelected(false);
                         }
-                    }
-                });
+                        binding.sml.setSwipeListener(new com.siweisoft.heavycenter.module.view.swipe.MySwipeListener(){
+                            @Override
+                            public void endMenuOpened(SwipeMenuLayout swipeMenuLayout) {
+                                for(int i=0;i<bind.recycle.getChildCount();i++){
+                                    SwipeHorizontalMenuLayout swipeLayout= (SwipeHorizontalMenuLayout) bind.recycle.getChildAt(i);
+                                    if(swipeLayout!=binding.sml){
+                                        swipeLayout.smoothCloseMenu(400);
+                                    }
+                                }
+                            }
+                        });
+                        break;
+                        default:
+                            content.setSelected(false);
+                            binding.sml.setSwipeEnable(false);
+                            break;
 
+                }
             }
 
             @Override

@@ -25,6 +25,9 @@ public class BaseUIOpe<A extends ViewDataBinding> {
     protected Context context;
     protected  BaseUIFrag frag;
 
+
+
+
     public BaseUIOpe(){
 
     }
@@ -43,6 +46,14 @@ public class BaseUIOpe<A extends ViewDataBinding> {
         }else{
             return (BaseUIActivity) context;
         }
+    }
+
+    public void copy(BaseUIOpe baseUIOpe){
+        this.context = baseUIOpe.context;
+        this.setFrag(baseUIOpe.getFrag());
+        this.bind = (A) baseUIOpe.bind;
+        this.viewHolder = new AppViewHolder(this.bind);
+        bind.executePendingBindings();
     }
 
 
@@ -70,11 +81,13 @@ public class BaseUIOpe<A extends ViewDataBinding> {
                     e.printStackTrace();
                 }
             } else {
-                viewDataBinding = (A) ActBaseuiBinding.inflate(LayoutInflater.from(context));
+                viewDataBinding = getBind();
             }
         }
         return viewDataBinding;
     }
+
+
 
     public A getBind() {
         return bind;

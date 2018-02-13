@@ -27,7 +27,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         switch (v.getId()){
             case R.id.ftv_right2:
                 if(getP().getU().canGo()){
-                    getP().getD().newCar(getP().getU().getCarNewReqBean(getP().getD().getCarNewReqBean()), new UINetAdapter<CarNewResBean>(this) {
+                    getP().getD().newCar(getP().getU().getCarNewReqBean(getP().getD().getCarNewReqBean()), new UINetAdapter<CarNewResBean>(this,true) {
                         @Override
                         public void onSuccess(CarNewResBean o) {
                             getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
