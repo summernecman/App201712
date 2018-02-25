@@ -18,7 +18,7 @@ import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.module.main.map.MapFrag;
 import com.siweisoft.heavycenter.module.main.msg.MsgsFrag;
-import com.siweisoft.heavycenter.module.main.order.OrderFrag;
+import com.siweisoft.heavycenter.module.main.orders.OrdersFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
 import com.siweisoft.heavycenter.module.main.weigts.WeigtsFrag;
@@ -66,7 +66,7 @@ public class MainDAOpe extends AppDAOpe {
             menudata.add(new BottomMenuBean(MainValue.地图, R.drawable.drawable_main_bottom_order,new MapFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         }else{
             RelativeLayout v2 = new RelativeLayout(context);v2.setId(MainValue.订单ID);
-            menudata.add(new BottomMenuBean(MainValue.订单, R.drawable.drawable_main_bottom_order,new OrderFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+            menudata.add(new BottomMenuBean(MainValue.订单, R.drawable.drawable_main_bottom_order,new OrdersFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
 
             RelativeLayout v3 = new RelativeLayout(context);v3.setId(MainValue.仓库ID);
             menudata.add(new BottomMenuBean(MainValue.仓库, R.drawable.drawable_main_bottom_store,new StoreFrag(),v3,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));

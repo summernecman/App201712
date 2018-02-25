@@ -1,12 +1,10 @@
-package com.siweisoft.heavycenter.module.main.order.trans;
+package com.siweisoft.heavycenter.module.main.orders.trans;
 
 //by summer on 2017-12-19.
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.bean.AppViewHolder;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -14,7 +12,6 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
-import com.siweisoft.heavycenter.databinding.FragMainOrderBeginBinding;
 import com.siweisoft.heavycenter.databinding.FragMainOrderTransBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainOrderBeginBinding;
 

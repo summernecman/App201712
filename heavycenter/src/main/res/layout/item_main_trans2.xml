@@ -34,14 +34,14 @@
                 android:layout_alignTop="@id/circlebar"
                 android:maxWidth="100dp"
                 android:singleLine="true"
-                android:id="@+id/tv_num"
+                android:id="@+id/tv_planNumber"
                 android:text="3t"
                 android:textSize="25sp"
                 android:textColor="@color/color_yell_blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:layout_below="@+id/tv_num"
+                android:layout_below="@+id/tv_planNumber"
                 android:layout_centerInParent="true"
                 android:singleLine="true"
                 android:id="@+id/tv_carnum"

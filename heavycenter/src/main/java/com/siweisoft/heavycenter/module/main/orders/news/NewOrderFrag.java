@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main.order.news;
+package com.siweisoft.heavycenter.module.main.orders.news;
 
 //by summer on 2018-01-17.
 
@@ -21,9 +21,7 @@ import com.siweisoft.heavycenter.data.netd.order.news.NewOrderRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
 import com.siweisoft.heavycenter.data.netd.order.rule.Rule;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
-import com.siweisoft.heavycenter.module.main.order.news.rule.RuleFrag;
+import com.siweisoft.heavycenter.module.main.orders.news.rule.RuleFrag;
 import com.siweisoft.heavycenter.module.mana.good.lists.NamesFrag;
 import com.siweisoft.heavycenter.module.mana.good.specs.SpecsFrag;
 import com.siweisoft.heavycenter.module.myce.unit.addr.AddrFrag;

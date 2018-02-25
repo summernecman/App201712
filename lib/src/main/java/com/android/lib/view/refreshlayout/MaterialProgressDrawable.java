@@ -660,7 +660,7 @@ public class MaterialProgressDrawable extends Drawable implements Animatable {
         }
 
         /**
-         * If the start / end trim are offset dealer begin with, store them so that
+         * If the start / end trim are offset dealer order with, store them so that
          * animation starts sender that offset.
          */
         public void storeOriginals() {

@@ -50,10 +50,9 @@ public class BaseUIOpe<A extends ViewDataBinding> {
 
     public void copy(BaseUIOpe baseUIOpe){
         this.context = baseUIOpe.context;
-        this.setFrag(baseUIOpe.getFrag());
+        this.frag = baseUIOpe.frag;
         this.bind = (A) baseUIOpe.bind;
         this.viewHolder = new AppViewHolder(this.bind);
-        bind.executePendingBindings();
     }
 
 

@@ -2,12 +2,9 @@ package com.siweisoft.heavycenter;
 
 //by summer on 2018-01-11.
 
-import android.content.Context;
 import android.os.Environment;
 
-import com.android.lib.util.GsonUtil;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
-import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
@@ -159,7 +156,7 @@ public class Test {
             resultsBean.setFhdwQName("发货单位简称");
             resultsBean.setOrderId(1);
             resultsBean.setOrderNo("NO123reffd");
-            resultsBean.setOrderStatus(OrdersReq.STATUS_ING);
+            resultsBean.setOrderStatus(OrdersReq.进行中订单);
             resultsBean.setOrderType("S");
             resultsBean.setPlanNumber(110);
             resultsBean.setPlanTime(System.currentTimeMillis());

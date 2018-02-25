@@ -1,8 +1,7 @@
-package com.siweisoft.heavycenter.module.main.order.begin;
+package com.siweisoft.heavycenter.module.main.orders.order;
 
 //by summer on 2018-02-13.
 
-import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -16,14 +15,10 @@ import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
-import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
 import com.siweisoft.heavycenter.databinding.ItemMainOrderBeginBinding;
-import com.siweisoft.heavycenter.databinding.ItemMainOrderDoingBinding;
-import com.siweisoft.heavycenter.databinding.ItemMainOrderDoneBinding;
 
-import java.text.DecimalFormat;
 import java.util.Date;
 
 public class NewOrderUIOpe extends BaseUIOpe {
@@ -33,16 +28,9 @@ public class NewOrderUIOpe extends BaseUIOpe {
 
 
     public void LoadListData(RecyclerView recyclerView,final String type, final OrdersRes s, ViewListener listener){
-        if(s==null || s.getResults()==null || s.getResults().size()==0){
-            getFrag().showTips("暂无数据");
-            return;
-        }
-        getFrag().removeTips();
         final String comname = LocalValue.get登录返回信息().getAbbreviationName();
         recyclerView.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s.getResults(),listener){
 
-            int darkcolor = context.getResources().getColor(R.color.color_item_main_trans_dark);
-            int lightcolor = context.getResources().getColor(R.color.color_item_main_trans_light);
 
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {

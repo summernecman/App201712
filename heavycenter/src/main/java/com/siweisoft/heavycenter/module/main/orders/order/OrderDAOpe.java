@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main.order.begin;
+package com.siweisoft.heavycenter.module.main.orders.order;
 
 //by summer on 2017-12-19.
 
@@ -14,32 +14,47 @@ import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderReq;
 import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderRes;
 
-import java.util.ArrayList;
-
-public class BeginDAOpe extends AppDAOpe {
+public class OrderDAOpe extends AppDAOpe {
 
     private int pageIndex = NetValue.PAGE_INDEX_START;
 
     private OrdersRes ordersRes = new OrdersRes();
 
 
+    public static final String 新订单 = OrdersReq.新订单;
 
-    public void orders(String type,int pageIndex,NetI<OrdersRes> adapter){
+    public static final String 进行中订单 = OrdersReq.进行中订单;
+
+    public static final String 已完成订单 = OrdersReq.已完成订单;
+
+    private String STATUS = "";
+
+    public String getSTATUS() {
+        return STATUS;
+    }
+
+    public void setSTATUS(String STATUS) {
+        this.STATUS = STATUS;
+    }
+
+
+
+    public static void orders(Context context,String type, int pageIndex, NetI<OrdersRes> adapter){
         OrdersReq ordersReq = new OrdersReq();
         ordersReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         ordersReq.setIsApp(1);
         ordersReq.setPageIndex(pageIndex);
         ordersReq.setPageSize(10);
         ordersReq.setOrderStatus(type);
-        NetDataOpe.Order.orders(getActivity(),ordersReq,adapter);
+        NetDataOpe.Order.orders(context,ordersReq,adapter);
     }
 
-    public void receipt(int id, int state, NetI<ReceiptOrderRes> adapter){
+    public static void receipt(Context context,int id, int state, NetI<ReceiptOrderRes> adapter){
         ReceiptOrderReq receiptOrderReq = new ReceiptOrderReq();
         receiptOrderReq.setAuditor(LocalValue.get登录返回信息().getUserId());
         receiptOrderReq.setAuditState(state);
         receiptOrderReq.setId(id);
-        NetDataOpe.Order.receipt(getActivity(),receiptOrderReq,adapter);
+        NetDataOpe.Order.receipt(context,receiptOrderReq,adapter);
     }
 
     public int getPageIndex() {

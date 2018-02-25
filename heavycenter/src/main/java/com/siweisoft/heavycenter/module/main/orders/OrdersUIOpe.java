@@ -1,32 +1,21 @@
-package com.siweisoft.heavycenter.module.main.order;
+package com.siweisoft.heavycenter.module.main.orders;
 
 //by summer on 2017-12-11.
 
-import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
 
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.StringUtil;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumRes;
 import com.siweisoft.heavycenter.databinding.FragMainOrderBinding;
-import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
 
 import java.util.ArrayList;
 
-public class OrderUIOpe extends BaseUIOpe<FragMainOrderBinding>{
+public class OrdersUIOpe extends BaseUIOpe<FragMainOrderBinding>{
 
 
 

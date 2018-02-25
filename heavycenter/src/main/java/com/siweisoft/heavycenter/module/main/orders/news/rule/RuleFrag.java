@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main.order.news.rule;
+package com.siweisoft.heavycenter.module.main.orders.news.rule;
 
 //by summer on 2018-01-17.
 

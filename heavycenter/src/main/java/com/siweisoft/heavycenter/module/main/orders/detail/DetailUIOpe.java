@@ -1,15 +1,13 @@
-package com.siweisoft.heavycenter.module.main.order.detail;
+package com.siweisoft.heavycenter.module.main.orders.detail;
 
 //by summer on 2017-12-19.
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.StringUtil;
@@ -44,14 +42,14 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
 
     public void initUI(String type){
         switch (type){
-            case OrdersReq.STATUS_NEW:
+            case OrdersReq.新订单:
                 bind.itemStarttime.setVisibility(View.GONE);
                 bind.itemEndtime.setVisibility(View.GONE);
                 break;
-            case OrdersReq.STATUS_ING:
+            case OrdersReq.进行中订单:
                 bind.itemEndtime.setVisibility(View.GONE);
                 break;
-            case OrdersReq.STATUS_DONE:
+            case OrdersReq.已完成订单:
                 bind.llDrivers.setVisibility(View.GONE);
                 break;
         }
@@ -59,14 +57,14 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
 
     public void initUI(String type, OrdersRes.ResultsBean res){
         switch (type){
-            case OrdersReq.STATUS_NEW:
+            case OrdersReq.新订单:
                 bind.itemStarttime.setVisibility(View.GONE);
                 bind.itemEndtime.setVisibility(View.GONE);
                 break;
-            case OrdersReq.STATUS_ING:
+            case OrdersReq.进行中订单:
                 bind.itemEndtime.setVisibility(View.GONE);
                 break;
-            case OrdersReq.STATUS_DONE:
+            case OrdersReq.已完成订单:
                 bind.llDrivers.setVisibility(View.GONE);
                 break;
         }

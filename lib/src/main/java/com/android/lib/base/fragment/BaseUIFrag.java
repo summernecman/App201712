@@ -52,7 +52,9 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     private TipUtil tipUtil = new TipUtil();
 
 
+
     public BaseUIFrag() {
+        setArguments(new Bundle());
         opes = new BaseOpes<>(null, null);
         initbb(getClass());
         getP().getD().initDA();

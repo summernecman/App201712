@@ -1,8 +1,6 @@
-package com.siweisoft.heavycenter.module.main.order.trans;
+package com.siweisoft.heavycenter.module.main.orders.trans;
 
 //by summer on 2017-12-19.
-
-import android.content.Context;
 
 import com.siweisoft.heavycenter.base.AppDAOpe;
 

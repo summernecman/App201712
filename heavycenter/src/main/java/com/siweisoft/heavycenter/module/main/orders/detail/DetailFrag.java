@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main.order.detail;
+package com.siweisoft.heavycenter.module.main.orders.detail;
 
 //by summer on 2017-12-19.
 
@@ -11,14 +11,12 @@ import com.android.lib.network.news.NetAdapter;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarReq;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarRes;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.car.my.MyFrag;
 
 import butterknife.OnClick;
@@ -50,6 +48,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
             case R.id.iv_local:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,MyFrag.TYPE_SEL);
+                bundle.putString(ValueConstant.DATA_POSITION, CarsReqBean.WHAT_MY);
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(),new MyFrag(),bundle);
                 break;
         }

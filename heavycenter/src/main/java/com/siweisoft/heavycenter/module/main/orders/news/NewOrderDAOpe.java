@@ -1,8 +1,6 @@
-package com.siweisoft.heavycenter.module.main.order.news;
+package com.siweisoft.heavycenter.module.main.orders.news;
 
 //by summer on 2018-01-17.
-
-import android.content.Context;
 
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.network.news.NetI;

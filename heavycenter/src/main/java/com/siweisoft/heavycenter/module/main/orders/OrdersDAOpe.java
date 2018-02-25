@@ -1,8 +1,7 @@
-package com.siweisoft.heavycenter.module.main.order;
+package com.siweisoft.heavycenter.module.main.orders;
 
 //by summer on 2017-12-11.
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -14,27 +13,24 @@ import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumReq;
 import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumRes;
-import com.siweisoft.heavycenter.module.main.order.begin.BeginFrag;
+import com.siweisoft.heavycenter.module.main.orders.order.OrderFrag;
 
 import java.util.ArrayList;
 
-public class OrderDAOpe extends BaseDAOpe {
+public class OrdersDAOpe extends BaseDAOpe {
 
     ArrayList<Fragment> pages = new ArrayList<>();
 
     private  ArrayList<Integer> totalcounts = new ArrayList<>();
 
-    private String[] statuss = new String[]{OrdersReq.STATUS_NEW,OrdersReq.STATUS_ING,OrdersReq.STATUS_DONE};
+    private String[] statuss = new String[]{OrdersReq.新订单,OrdersReq.进行中订单,OrdersReq.已完成订单};
 
 
 
     public ArrayList<Fragment> initPages(){
         pages.clear();
         for(int i=0;i<statuss.length;i++){
-            BeginFrag beginFrag = new BeginFrag();
-            beginFrag.setArguments(new Bundle());
-            beginFrag.getArguments().putString(ValueConstant.容器,getFrag().get容器());
-            beginFrag.getArguments().putString(ValueConstant.DATA_DATA, statuss[i]);pages.add(beginFrag);
+            pages.add(OrderFrag.getInstance(statuss[i],getFrag().get容器()));
         }
         return pages;
     }

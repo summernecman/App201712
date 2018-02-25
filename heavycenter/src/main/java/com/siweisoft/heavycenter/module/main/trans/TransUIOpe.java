@@ -5,6 +5,8 @@ package com.siweisoft.heavycenter.module.main.trans;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
@@ -15,15 +17,19 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import android.view.ViewAnimationUtils;
+import android.view.ViewGroup;
+
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.ObjectUtil;
 import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
@@ -43,9 +49,11 @@ import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainTransBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainTrainReceiptBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainTrans2Binding;
 import com.siweisoft.heavycenter.databinding.ItemMainTrans3Binding;
 import com.siweisoft.heavycenter.databinding.ItemMainTransBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainTransSendBinding;
 import com.siweisoft.heavycenter.databinding.ItemTransBinding;
 
 import java.text.DecimalFormat;
@@ -105,46 +113,112 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
         final String comname = LocalValue.get登录返回信息().getAbbreviationName();
         final int usertype = LocalValue.get登录返回信息().getUserType();
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_trans2, BR.item_main_trans2, s,listener){
+        final DecimalFormat df = new DecimalFormat("#.##");
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_trans, BR.item_main_trans, s,listener){
+
+            @Override
+            public AppViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                if(viewType==0){
+                    return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans_send, parent, false));
+                }
+                return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_train_receipt, parent, false));
+            }
+
+            @Override
+            public int getItemViewType(int position) {
+                //我是发货公司
+                if(StringUtil.equals(comname,s.get(position).getDeveliverAbbreviationName())){
+                    return 0;
+                }
+                //我是收货公司
+                return 1;
+            }
+
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
-                super.onBindViewHolder(holder, position);
-                ItemMainTrans2Binding itemMainTransBinding = (ItemMainTrans2Binding) holder.viewDataBinding;
-                itemMainTransBinding.getRoot().setSelected(position%2==0?true:false);
-                itemMainTransBinding.btSure.setOnClickListener(this);
-                itemMainTransBinding.btSure.setTag(R.id.position,position);
-                itemMainTransBinding.btSure.setTag(R.id.data,list.get(position));
-                switch (s.get(position).getSignStatus()){
-                    case TransDetailRes.SING_STATUS_已确认:
-                        itemMainTransBinding.tvNum.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
-                        itemMainTransBinding.btSure.setVisibility(View.GONE);
+                ViewDataBinding viewDataBinding = holder.viewDataBinding;
+                viewDataBinding.getRoot().setTag(com.android.lib.R.id.data, list.get(position));
+                viewDataBinding.getRoot().setTag(com.android.lib.R.id.position, position);
+                viewDataBinding.getRoot().setOnClickListener(this);
+                viewDataBinding.getRoot().setOnLongClickListener(this);
+//                viewDataBinding.setVariable(vari, list.get(position));
+//                viewDataBinding.executePendingBindings();//加一行，问题解决
+                holder.viewDataBinding.getRoot().setSelected(position%2==0?true:false);
+                switch (getItemViewType(position)){
+                    case 0:
+                        ItemMainTransSendBinding sendBinding = (ItemMainTransSendBinding) holder.viewDataBinding;
+                        sendBinding.btSure.setOnClickListener(this);
+                        sendBinding.btSure.setTag(R.id.position,position);
+                        sendBinding.btSure.setTag(R.id.data,list.get(position));
+                        switch (s.get(position).getSignStatus()){
+                            case TransDetailRes.SING_STATUS_已确认:
+                                sendBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                                sendBinding.btSure.setVisibility(View.GONE);
+                                break;
+                            case TransDetailRes.SING_STATUS_等待确认:
+                                sendBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                                if(usertype == UserTypeReqBean.非驾驶员){
+                                    sendBinding.btSure.setVisibility(View.VISIBLE);
+                                }
+                                break;
+                        }
+
+                        viewDataBinding.setVariable(BR.item_main_trans_send, list.get(position));
+                        viewDataBinding.executePendingBindings();//加一行，问题解决
+
+
+                        if(s.get(position).getFhTime()!=null){
+                            sendBinding.tvSendtime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getFhTime())));
+                        }
+
+                        if(s.get(position).getShTime()!=null){
+                            sendBinding.tvReceipttime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getShTime())));
+                        }
+
+//                        sendBinding.tvReceiptComname.setText(StringUtil.getStr(s.get(position).getReceiveCompanyName()));
+//                        sendBinding.tvReceiptnum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getReceiveNum())))+"t");
+//                        if(s.get(position).getShTime()!=null){
+//                            sendBinding.tvReceiptTime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getShTime())));
+//                        }
+//                        sendBinding.tvDirvername.setText(StringUtil.getStr(s.get(position).getTrueName()));
+//                        sendBinding.tvCarlicenseno.setText(StringUtil.getStr(s.get(position).getCarLicenseNo()));
+//                        sendBinding.tvNum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getTotalSuttle())))+"t");
+//                        if(s.get(position).getCarNumber()!=null){
+//                            sendBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).getCarNumber())+"车");
+//                        }
                         break;
-                    case TransDetailRes.SING_STATUS_等待确认:
-                        itemMainTransBinding.tvNum.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
-                        if(usertype == UserTypeReqBean.非驾驶员){
-                            itemMainTransBinding.btSure.setVisibility(View.VISIBLE);
+                    case 1:
+                        ItemMainTrainReceiptBinding receiptBinding = (ItemMainTrainReceiptBinding) holder.viewDataBinding;
+                        receiptBinding.btSure.setOnClickListener(this);
+                        receiptBinding.btSure.setTag(R.id.position,position);
+                        receiptBinding.btSure.setTag(R.id.data,list.get(position));
+                        switch (s.get(position).getSignStatus()){
+                            case TransDetailRes.SING_STATUS_已确认:
+                                receiptBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                                receiptBinding.btSure.setVisibility(View.GONE);
+                                break;
+                            case TransDetailRes.SING_STATUS_等待确认:
+                                receiptBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                                if(usertype == UserTypeReqBean.非驾驶员){
+                                    receiptBinding.btSure.setVisibility(View.VISIBLE);
+                                }
+                                break;
+                        }
+                        viewDataBinding.setVariable(BR.item_main_trans_receipt, list.get(position));
+                        viewDataBinding.executePendingBindings();//加一行，问题解决
+
+                        if(s.get(position).getFhTime()!=null){
+                            receiptBinding.tvSendtime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getFhTime())));
+                        }
+
+                        if(s.get(position).getShTime()!=null){
+                            receiptBinding.tvReceipttime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getShTime())));
                         }
                         break;
                 }
-                DecimalFormat df = new DecimalFormat("#.##");
-                itemMainTransBinding.tvSendComname.setText(StringUtil.getStr(s.get(position).getDeveliverCompanyName()));
-                itemMainTransBinding.tvSendnum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getDeveliverNum())))+"t");
-                if(s.get(position).getFhTime()!=null){
-                    itemMainTransBinding.tvSendTime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getFhTime())));
-                }
-
-                itemMainTransBinding.tvReceiptComname.setText(StringUtil.getStr(s.get(position).getReceiveCompanyName()));
-                itemMainTransBinding.tvReceiptnum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getReceiveNum())))+"t");
-                if(s.get(position).getShTime()!=null){
-                    itemMainTransBinding.tvReceiptTime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getShTime())));
-                }
-                itemMainTransBinding.tvDirvername.setText(StringUtil.getStr(s.get(position).getTrueName()));
-                itemMainTransBinding.tvCarlicenseno.setText(StringUtil.getStr(s.get(position).getCarLicenseNo()));
-                itemMainTransBinding.tvNum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getTotalSuttle())))+"t");
-                if(s.get(position).getCarNumber()!=null){
-                    itemMainTransBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).getCarNumber())+"车");
-                }
             }
+
+
         });
 
     }

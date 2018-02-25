@@ -1,14 +1,12 @@
-package com.siweisoft.heavycenter.module.main.order;
+package com.siweisoft.heavycenter.module.main.orders;
 
 //by summer on 2017-12-11.
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.NetAdapter;
-import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
@@ -16,10 +14,8 @@ import com.android.lib.view.dialog.list.DialogListFrag;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
-import com.siweisoft.heavycenter.module.main.order.begin.BeginFrag;
-import com.siweisoft.heavycenter.module.main.order.news.NewOrderFrag;
-import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
+import com.siweisoft.heavycenter.module.main.orders.order.OrderFrag;
+import com.siweisoft.heavycenter.module.main.orders.news.NewOrderFrag;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 import java.util.ArrayList;
@@ -27,7 +23,9 @@ import java.util.List;
 
 import butterknife.OnClick;
 
-public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
+public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
+
+
 
 
     @Override
@@ -95,8 +93,8 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> {
                 if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_DATA,false)){
                     return;
                 }
-                BeginFrag beginFrag = (BeginFrag) getP().getD().getPages().get(0);
-                beginFrag.getP().getU().autoRefresh();
+                OrderFrag orderFrag = (OrderFrag) getP().getD().getPages().get(0);
+                orderFrag.getP().getU().autoRefresh();
                 break;
         }
     }

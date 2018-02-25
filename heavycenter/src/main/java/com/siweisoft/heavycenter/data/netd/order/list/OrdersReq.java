@@ -16,11 +16,11 @@ public class OrdersReq extends BaseReqBean {
 
     private int pageSize;
 
-    public static final String STATUS_NEW = "new";
+    public static final String 新订单 = "new";
 
-    public static final String STATUS_ING = "ing";
+    public static final String 进行中订单 = "ing";
 
-    public static final String STATUS_DONE = "done";
+    public static final String 已完成订单 = "done";
 
     public OrdersReq() {
     }

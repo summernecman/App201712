@@ -1,16 +1,13 @@
-package com.siweisoft.heavycenter.module.main.order.news;
+package com.siweisoft.heavycenter.module.main.orders.news;
 
 //by summer on 2018-01-17.
 
-import android.content.Context;
 import android.view.View;
 
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
-import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainOrderNewBinding;
 

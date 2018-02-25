@@ -17,6 +17,7 @@ public class BaseOpes<A extends BaseUIOpe, B extends BaseDAOpe> implements Seria
      */
     B da;
 
+
     public BaseOpes(A ui, B da) {
         this.ui = ui;
         this.da = da;
