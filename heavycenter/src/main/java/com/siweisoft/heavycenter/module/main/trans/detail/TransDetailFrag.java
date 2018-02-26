@@ -9,6 +9,7 @@ import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 
 public class TransDetailFrag extends AppFrag<TransDetailUIOpe,TransDetailDAOpe> {
 
+
     @Override
     public void initdelay() {
         super.initdelay();

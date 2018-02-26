@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.view.circle;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -37,14 +38,15 @@ public class CircleBar extends View {
 
     public CircleBar(Context context, AttributeSet attrs) {
        this(context,attrs,0);
+        init( context,attrs);
     }
 
     public CircleBar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init( context);
+        init( context,attrs);
     }
     int baseLineY;
-    private void init(Context context) {
+    private void init(Context context, AttributeSet attrs) {
         //关闭硬件加速
         setLayerType( LAYER_TYPE_SOFTWARE , null);
 
@@ -74,6 +76,13 @@ public class CircleBar extends View {
         mTextPaint.setAntiAlias(true);
         mTextPaint.setTextSize( sp2px(context,16));//字体大小
         mTextPaint.setTextAlign(Paint.Align.CENTER);
+
+        TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.style_common);
+
+
+        mCircleColor = a.getColor(R.styleable.style_common_color_one,mCircleColor);
+        mColorWheelPaint.setColor(mCircleColor);
+        a.recycle();
 
     }
 

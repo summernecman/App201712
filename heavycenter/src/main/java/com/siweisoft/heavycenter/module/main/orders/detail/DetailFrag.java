@@ -23,13 +23,23 @@ import butterknife.OnClick;
 
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements ViewListener{
 
+
+    @Override
+    public void initNow() {
+        super.initNow();
+        if(getArguments()==null||getArguments().getString(ValueConstant.TYPE)==null){
+            return;
+        }
+        getP().getU().initUI(getArguments().getString(ValueConstant.TYPE));
+
+    }
+
     @Override
     public void initdelay() {
         super.initdelay();
         if(getArguments()==null||getArguments().getString(ValueConstant.TYPE)==null){
             return;
         }
-        getP().getU().initUI(getArguments().getString(ValueConstant.TYPE));
         getP().getU().initRecycle();
         getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<OrdersRes.ResultsBean>(this) {
             @Override

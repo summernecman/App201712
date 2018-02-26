@@ -50,12 +50,11 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getD().setPageindex(NetValue.PAGE_INDEX_START);
-        getP().getD().getMsgsResBean().getResults().clear();
         getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_INDEX),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
                 //o= new Test().getMsgsResBean();
-                getP().getD().addData(o);
+                getP().getD().setMsgsResBean(o);
                 getP().getU().LoadListData(getP().getD().getMsgsResBean(),MsgFrag.this);
             }
         });

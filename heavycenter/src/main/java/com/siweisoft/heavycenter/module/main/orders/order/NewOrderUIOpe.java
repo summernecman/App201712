@@ -31,10 +31,8 @@ public class NewOrderUIOpe extends BaseUIOpe {
         final String comname = LocalValue.get登录返回信息().getAbbreviationName();
         recyclerView.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s.getResults(),listener){
 
-
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
-
 
                 ItemMainOrderBeginBinding beginBinding = (ItemMainOrderBeginBinding) holder.viewDataBinding;
                 beginBinding.getRoot().setSelected(position%2==0?true:false);
@@ -65,9 +63,11 @@ public class NewOrderUIOpe extends BaseUIOpe {
 
                 if((s.getResults().get(position).getAuditState()==OrdersRes.ResultsBean.AUDITSTATE_未审核)&&
                         NewsOrderReqBean.发货.equals(s.getResults().get(position).getOrderType())){
-                    beginBinding.llMenu.setVisibility(View.VISIBLE);
+                    beginBinding.btSure.setVisibility(View.VISIBLE);
+                    beginBinding.btReject.setVisibility(View.VISIBLE);
                 }else{
-                    beginBinding.llMenu.setVisibility(View.GONE);
+                    beginBinding.btSure.setVisibility(View.GONE);
+                    beginBinding.btReject.setVisibility(View.GONE);
                 }
                 beginBinding.btSure.setOnClickListener(this);
                 beginBinding.btSure.setTag(R.id.data,s.getResults().get(position));

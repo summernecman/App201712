@@ -82,10 +82,10 @@
     <dimen name="dimen_recylce_item_inner_margin">5sp</dimen>
     <dimen name="dimen_recylce_item_margin">7sp</dimen>
     <dimen name="dimen_recylce_item_padding">7sp</dimen>
-    <dimen name="dimen_recylce_item_title_txtsize">19sp</dimen>
+    <dimen name="dimen_recylce_item_title_txtsize">19.5sp</dimen>
     <dimen name="dimen_recylce_item_subtitle_txtsize">17sp</dimen>
     <color name="color_recylce_item_title_txtcolor">@color/color_grey_800</color>
-    <dimen name="dimen_recylce_item_date_txtsize">16sp</dimen>
+    <dimen name="dimen_recylce_item_date_txtsize">15sp</dimen>
     <color name="color_recylce_item_date_txtcolor">@color/color_grey_500</color>
     <dimen name="dimen_recylce_item_content_txtsize">16sp</dimen>
     <color name="color_recylce_item_content_txtcolor">@color/color_grey_600</color>

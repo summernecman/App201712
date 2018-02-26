@@ -16,8 +16,8 @@
         android:foreground="?android:attr/selectableItemBackground"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         >
 
 
@@ -28,35 +28,38 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true"
+            style_common:color_one="@color/color_hv_yelll"
             android:layout_margin="5dp" />
 
-        <TextView
-            android:layout_marginLeft="30dp"
-            android:layout_marginBottom="20dp"
-            app:layout_constraintLeft_toLeftOf="@+id/circlebar"
-            app:layout_constraintTop_toTopOf="@+id/circlebar"
-            app:layout_constraintBottom_toBottomOf="@+id/circlebar"
-            android:id="@+id/tv_planNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxWidth="100dp"
-            android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_send.totalSuttle)+"t"}'
-            android:textColor="@color/color_yell_blue"
-            android:textSize="25sp" />
+        <RelativeLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp">
 
-        <TextView
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/tv_planNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="100dp"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans_send.totalSuttle)+"t"}'
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="25sp" />
 
-            app:layout_constraintLeft_toLeftOf="@+id/circlebar"
-            app:layout_constraintTop_toBottomOf="@+id/tv_planNumber"
-            android:layout_marginLeft="25dp"
-            android:id="@+id/tv_carnum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_send.carNumber)+"t"}'
-            android:textColor="@color/color_yell_blue"
-            android:textSize="15sp" />
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/tv_planNumber"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/tv_carnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans_send.carNumber)+"t"}'
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="15sp" />
+        </RelativeLayout>
 
 
         <android.support.constraint.Guideline
@@ -87,7 +90,7 @@
             android:singleLine="true"
             android:text='@{StringUtil.getStr(item_main_trans_send.specifications)}'
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
             app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
             app:layout_constraintLeft_toRightOf="@+id/tv_productName"
             app:layout_constraintTop_toTopOf="parent" />
@@ -105,6 +108,7 @@
             app:layout_constraintRight_toLeftOf="@+id/tv_carlicenseno" />
 
         <TextView
+            android:includeFontPadding="false"
             android:text='@{StringUtil.getStr(item_main_trans_send.carLicenseNo)}'
             android:id="@+id/tv_carlicenseno"
             android:layout_width="wrap_content"
@@ -121,7 +125,7 @@
             android:id="@+id/tv_my_dirvername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="7dp"
             android:singleLine="true"
             android:text='@{StringUtil.getStr(item_main_trans_send.trueName)}'
             android:textColor="@color/white"
@@ -136,7 +140,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:padding="1dp"
             android:singleLine="true"
             android:text="发往"
             android:layout_marginBottom="3dp"
@@ -165,7 +168,7 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_send.develiverNum)}'
+            android:text='@{StringUtil.getStr(item_main_trans_send.develiverNum)+"t"}'
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
             app:layout_constraintLeft_toRightOf="@+id/type"
@@ -189,7 +192,7 @@
             android:id="@+id/tv_other_comp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="7dp"
             android:singleLine="true"
             android:text='@{StringUtil.getStr(item_main_trans_send.receiveCompanyName)}'
             android:textColor="@color/white"
@@ -203,7 +206,7 @@
             android:layout_height="wrap_content"
             android:gravity="right|center_vertical"
             android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_send.receiveNum)}'
+            android:text='@{StringUtil.getStr(item_main_trans_send.receiveNum)+"t"}'
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
             app:layout_constraintBottom_toBottomOf="@+id/tv_other_comp"
@@ -234,7 +237,7 @@
             android:text="完成"
             android:textSize="15sp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_other_comp"
+            app:layout_constraintTop_toTopOf="@+id/tv_other_comp"
             app:layout_constraintRight_toRightOf="parent"
             style_common:boo_one="false"
             style_common:color_one="@color/color_hv_yelll"

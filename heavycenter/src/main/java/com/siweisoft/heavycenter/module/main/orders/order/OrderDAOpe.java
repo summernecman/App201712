@@ -68,4 +68,8 @@ public class OrderDAOpe extends AppDAOpe {
     public OrdersRes getOrdersRes() {
         return ordersRes;
     }
+
+    public void setOrdersRes(OrdersRes ordersRes) {
+        this.ordersRes = ordersRes;
+    }
 }

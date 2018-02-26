@@ -6,7 +6,9 @@ import android.content.Context;
 
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.BR;
+import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.databinding.FragMainTransDetailBinding;
@@ -18,17 +20,25 @@ public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
 
     public void initUI(TransDetailRes data){
         bind.setVariable(BR.frag_main_trans_detail,data);
+        final String comname = LocalValue.get登录返回信息().getAbbreviationName();
+        if(StringUtil.equals(comname,data.getDeveliverCompanyName())){
+            bind.type.setText("发往");
+            bind.type.setBackgroundResource(R.color.color_hv_yelll);
+        }else{
+            bind.type.setText("送来");
+            bind.type.setBackgroundResource(R.color.color_hv_blue);
+        }
         if(data.getDeliverRecordList().size()>0){
-            bind.tvFhmz.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getGross()));
-            bind.tvFhpz.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getTare()));
-            bind.tvFhck.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getFhDeduct()));
+            bind.tvDelivenum.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getGross()));
+            bind.tvReceipt.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getTare()));
+            bind.tvYk.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getFhDeduct()));
 
         }
 
         if(data.getReceiveRecordList().size()>0){
-            bind.tvShmz.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getGross()));
-            bind.tvShpz.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getTare()));
-            bind.tvShck.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getShDeduct()));
+            bind.tvDelivenum.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getGross()));
+            bind.tvReceipt.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getTare()));
+            bind.tvYk.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getShDeduct()));
 
         }
     }

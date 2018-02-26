@@ -1,264 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+<layout >
     <data>
         <variable
             name="frag_main_order_detail"
             type="com.siweisoft.heavycenter.data.netd.order.list.OrdersRes.ResultsBean" />
     </data>
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:orientation="vertical"
-        android:clickable="true">
-
-        <ImageView
-            android:background="@drawable/icon_hv_main_order_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-       android:clickable="true"
+        android:clickable="true"
         >
 
         <com.android.lib.view.title.TitleView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/title"
-            style_common:iv_left ="@drawable/icon_hv_back"
-            style_common:iv_right ="@drawable/icon_hv_scan"
+            app:iv_left ="@drawable/icon_hv_back"
+            app:iv_right ="@drawable/icon_hv_scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
 
-    <LinearLayout
-            android:transitionName="doingorder"
-        android:id="@+id/ll_top"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-
-        >
-    <LinearLayout
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        >
+        <ImageView
+            android:clickable="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            android:background="@drawable/icon_hv_main_order_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        
+        
         <RelativeLayout
-            android:visibility="gone"
-            android:layout_width="110dp"
+            android:clickable="true"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            android:id="@+id/rl_topcontainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.siweisoft.heavycenter.module.view.circle.CircleBar
-                android:layout_margin="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
-            <LinearLayout
-                android:layout_centerInParent="true"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textColor="@color/white"
-                    android:text="6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:textColor="@color/white"
-                    android:text="车"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+
         </RelativeLayout>
 
-
         <LinearLayout
-            android:layout_marginLeft="20dp"
+            android:clickable="true"
+            android:id="@+id/ll_fuction"
+            app:layout_constraintTop_toBottomOf="@+id/rl_topcontainer"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:text="@{frag_main_order_detail.productName}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:singleLine="true"
-                    android:layout_marginLeft="14dp"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:text="@{frag_main_order_detail.specification}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <View
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"/>
-                <TextView
-                    android:text='@{"计划:"+frag_main_order_detail.planNumber}'
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/bg_hv_sel_yel_blue_stroke"
-                    android:singleLine="true"
-                    android:layout_marginLeft="7dp"
-                    android:textColor="@color/color_yell_blue"
-                    android:textSize="8.5sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-
-
-            <TextView
-                android:id="@+id/tv_ordertype"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_hv_sharp2_blue_solid"
-                android:singleLine="true"
-                android:textColor="@color/black"
-                android:textSize="11sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/tv_unit"
-                android:layout_marginTop="5dp"
-                android:singleLine="true"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-        
-        <LinearLayout
-            android:visibility="gone"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            
-            <LinearLayout
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textColor="@color/white"
-                    android:textSize="10sp"
-                    android:text="10/198t"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:textColor="@color/white"
-                    android:textSize="13sp"
-                    android:text="沪12344"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
 
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:clickable="true"
+            android:id="@+id/item_starttime"
+            app:txt_left = "开始时间"
+            app:txt_two = ""
+            app:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textColor="@color/white"
-                    android:textSize="11sp"
-                    android:text="驾驶员"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:textColor="@color/white"
-                    android:textSize="11sp"
-                    android:text="联系电话"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:clickable="true"
+            android:id="@+id/item_endtime"
+            app:txt_left = "结束时间"
+            app:txt_mid = "请输入"
+            app:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:clickable="true"
+            android:id="@+id/item_addr"
+            app:txt_left = "送货地址"
+            app:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:clickable="true"
+            android:id="@+id/item_plantime"
+            app:txt_left = "计划开始时间"
+            app:txt_mid = "请输入"
+            app:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:clickable="true"
+            android:id="@+id/item_rule"
+            app:txt_left = "备用签收规则"
+            app:txt_mid = "请输入"
+            app:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
         </LinearLayout>
 
 
-    </LinearLayout>
-
-
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/item_starttime"
-            style_common:txt_left = "开始时间"
-            style_common:txt_two = ""
-            style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/item_endtime"
-            style_common:txt_left = "结束时间"
-            style_common:txt_mid = "请输入"
-            style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/item_addr"
-            style_common:txt_left = "送货地址"
-            style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/item_plantime"
-            style_common:txt_left = "计划开始时间"
-            style_common:txt_mid = "请输入"
-            style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/item_rule"
-            style_common:txt_left = "备用签收规则"
-            style_common:txt_mid = "请输入"
-            style_common:boo_edit = "false"
-            style_common:iv_right = "@drawable/icon_arraw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-<LinearLayout
-    android:orientation="vertical"
-    android:id="@+id/ll_drivers"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            style_common:txt_left = "指定承运车辆"
-            style_common:txt_mid = "请输入"
-            style_common:boo_edit = "false"
+            android:clickable="true"
+            android:id="@+id/item_tip"
+            app:layout_constraintTop_toBottomOf="@+id/ll_fuction"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:txt_left = "指定承运车辆"
+            app:txt_mid = "请输入"
+            app:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <ImageView
+          app:layout_constraintTop_toTopOf="@+id/item_tip"
+            app:layout_constraintRight_toRightOf="parent"
             android:padding="5dp"
             android:id="@+id/iv_local"
             android:layout_marginRight="10dp"
@@ -267,16 +127,20 @@
             android:src="@drawable/icon_hv_local"
             android:layout_width="40dp"
             android:layout_height="40dp" />
-    </RelativeLayout>
+
         <android.support.v7.widget.RecyclerView
-            android:background="@color/white"
+            android:clickable="true"
             android:id="@+id/recycle"
-            android:scrollbars="vertical"
-            android:scrollbarSize="10dp"
-            android:fadeScrollbars="false"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-</LinearLayout>
-    </LinearLayout>
-    </RelativeLayout>
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:fadeScrollbars="false"
+            android:scrollbarSize="10dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_tip" />
+
+    </android.support.constraint.ConstraintLayout>
 </layout>

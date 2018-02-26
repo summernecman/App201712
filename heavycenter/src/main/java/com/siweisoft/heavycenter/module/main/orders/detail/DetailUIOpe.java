@@ -2,28 +2,38 @@ package com.siweisoft.heavycenter.module.main.orders.detail;
 
 //by summer on 2017-12-19.
 
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.LogUtil;
+import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.news.NewsOrderReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainOrderDetailBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainOrderDetailBeginBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainOrderDetailDoingBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainOrderDetailDoneBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainOrderDetailDriverBinding;
 import com.tubb.smrv.SwipeHorizontalMenuLayout;
 import com.tubb.smrv.SwipeMenuLayout;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -45,27 +55,93 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
             case OrdersReq.新订单:
                 bind.itemStarttime.setVisibility(View.GONE);
                 bind.itemEndtime.setVisibility(View.GONE);
+                bind.rlTopcontainer.addView(ItemMainOrderDetailBeginBinding.inflate(LayoutInflater.from(context)).getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 break;
             case OrdersReq.进行中订单:
                 bind.itemEndtime.setVisibility(View.GONE);
+                bind.rlTopcontainer.addView(ItemMainOrderDetailDoingBinding.inflate(LayoutInflater.from(context)).getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 break;
             case OrdersReq.已完成订单:
-                bind.llDrivers.setVisibility(View.GONE);
+                bind.rlTopcontainer.addView(ItemMainOrderDetailDoneBinding.inflate(LayoutInflater.from(context)).getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 break;
         }
     }
 
     public void initUI(String type, OrdersRes.ResultsBean res){
+        final String comname = LocalValue.get登录返回信息().getAbbreviationName();
+
         switch (type){
             case OrdersReq.新订单:
-                bind.itemStarttime.setVisibility(View.GONE);
-                bind.itemEndtime.setVisibility(View.GONE);
+                ItemMainOrderDetailBeginBinding beginBinding = DataBindingUtil.bind(bind.rlTopcontainer.getChildAt(0));
+                beginBinding.setVariable(BR.item_main_order_detail_begin,res);
+                if(comname.equals(res.getFhdwName())){
+                    beginBinding.tvDuimian.setText(res.getShdwName());
+                    beginBinding.tvType.setText("发往");
+                    beginBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_solid);
+                    beginBinding.tvPlanmun.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_stroke);
+                    beginBinding.tvPlanmun.setTextColor(context.getResources().getColor(R.color.color_hv_yelll));
+                }else{
+                    beginBinding.tvDuimian.setText(res.getFhdwName());
+                    beginBinding.tvType.setText("来自");
+                    beginBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_blue_solid);
+                    beginBinding.tvPlanmun.setBackgroundResource(R.drawable.bg_hv_sharp2_blue_stroke);
+                    beginBinding.tvPlanmun.setTextColor(context.getResources().getColor(R.color.color_hv_blue));
+                }
                 break;
             case OrdersReq.进行中订单:
-                bind.itemEndtime.setVisibility(View.GONE);
+                ItemMainOrderDetailDoingBinding doingBinding = DataBindingUtil.bind(bind.rlTopcontainer.getChildAt(0));
+                doingBinding.setVariable(BR.item_main_order_detail_doing,res);
+                doingBinding.tvGoodname.setText(StringUtil.getStr(res.getProductName()));
+                doingBinding.tvSpes.setText(StringUtil.getStr(res.getSpecification()));
+                if(comname.equals(res.getFhdwName())){
+                    doingBinding.tvDuimian.setText(res.getShdwName());
+                    doingBinding.tvType.setText("发往");
+                    doingBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_solid);
+                    doingBinding.tvCarno.setSelected(true);
+                }else{
+                    doingBinding.tvDuimian.setText(res.getFhdwName());
+                    doingBinding.tvType.setText("来自");
+                    doingBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_blue_solid);
+                    doingBinding.tvCarno.setSelected(false);
+                }
+                doingBinding.tvPlan.setText(StringUtil.getStr(res.getPlanNumber())+"t");
+                doingBinding.tvStarttime.setText("开始时间："+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(res.getPlanTime()))));
+                doingBinding.tvEndtime.setText("结束时间：");
+                if(NullUtil.isStrEmpty(res.getCarLicenseNo())){
+                    doingBinding.tvCarno.setVisibility(View.GONE);
+                }else{
+                    doingBinding.tvCarno.setText(StringUtil.getStr(res.getCarLicenseNo()));
+                }
+
+                doingBinding.tvCarnum.setText(StringUtil.getStr(res.getTotalRecord()));
+
+
+                DecimalFormat df = new DecimalFormat("#.##");
+                doingBinding.tvCurrent.setText(StringUtil.getStr(Double.parseDouble(df.format(res.getActualSh())))+"t");
+                int progress = (int) (100*res.getActualSh()/res.getPlanNumber());
+                if(progress<0){
+                    progress = 0 ;
+                }
+                if(progress>=50){
+                    doingBinding.circlebar.setCircleColor(context.getResources().getColor(R.color.color_hv_blue));
+                }else{
+                    doingBinding.circlebar.setCircleColor(context.getResources().getColor(R.color.color_hv_yelll));
+                }
+                doingBinding.circlebar.update(progress,false);
+
                 break;
             case OrdersReq.已完成订单:
-                bind.llDrivers.setVisibility(View.GONE);
+                ItemMainOrderDetailDoneBinding doneBinding = DataBindingUtil.bind(bind.rlTopcontainer.getChildAt(0));
+                doneBinding.setVariable(BR.item_main_order_detail_done,res);
+                doneBinding.tvGoodname.setText(StringUtil.getStr(res.getProductName()));
+                doneBinding.tvSpes.setText(StringUtil.getStr(res.getSpecification()));
+                if("S".equals(res.getOrderType())){
+                    doneBinding.tvType.setText("发往");
+                    doneBinding.tvCompanyname.setText(StringUtil.getStr(res.getShdwName()));
+                }else{
+                    doneBinding.tvType.setText("来自");
+                    doneBinding.tvCompanyname.setText(StringUtil.getStr(res.getFhdwName()));
+                }
                 break;
         }
         if(res==null){
@@ -74,13 +150,13 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
         bind.title.getMidTV().setText(StringUtil.getStr(res.getOrderNo()));
         bind.setVariable(BR.frag_main_order_detail,res);
         bind.itemPlantime.setMidTVTxt(StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(res.getPlanTime()))));
-        if(NewsOrderReqBean.发货.equals(res.getOrderType())){
-            bind.tvOrdertype.setText("发往");
-            bind.tvUnit.setText(StringUtil.getStr(res.getShdwName()));
-        }else{
-            bind.tvOrdertype.setText("来自");
-            bind.tvUnit.setText(StringUtil.getStr(res.getFhdwName()));
-        }
+//        if(NewsOrderReqBean.发货.equals(res.getOrderType())){
+//            bind.tvOrdertype.setText("发往");
+//            bind.tvUnit.setText(StringUtil.getStr(res.getShdwName()));
+//        }else{
+//            bind.tvOrdertype.setText("来自");
+//            bind.tvUnit.setText(StringUtil.getStr(res.getFhdwName()));
+//        }
         bind.itemAddr.setMidTVTxt(StringUtil.getStr(res.getAddress()));
         bind.itemRule.setMidTVTxt(StringUtil.getStr(res.getSignRule()));
     }

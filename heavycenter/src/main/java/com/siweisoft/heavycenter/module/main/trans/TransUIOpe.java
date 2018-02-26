@@ -126,8 +126,9 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
             @Override
             public int getItemViewType(int position) {
+                //return position%2;
                 //我是发货公司
-                if(StringUtil.equals(comname,s.get(position).getDeveliverAbbreviationName())){
+                if(StringUtil.equals(comname,s.get(position).getDeveliverCompanyName())){
                     return 0;
                 }
                 //我是收货公司
@@ -147,22 +148,6 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                 switch (getItemViewType(position)){
                     case 0:
                         ItemMainTransSendBinding sendBinding = (ItemMainTransSendBinding) holder.viewDataBinding;
-                        sendBinding.btSure.setOnClickListener(this);
-                        sendBinding.btSure.setTag(R.id.position,position);
-                        sendBinding.btSure.setTag(R.id.data,list.get(position));
-                        switch (s.get(position).getSignStatus()){
-                            case TransDetailRes.SING_STATUS_已确认:
-                                sendBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
-                                sendBinding.btSure.setVisibility(View.GONE);
-                                break;
-                            case TransDetailRes.SING_STATUS_等待确认:
-                                sendBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
-                                if(usertype == UserTypeReqBean.非驾驶员){
-                                    sendBinding.btSure.setVisibility(View.VISIBLE);
-                                }
-                                break;
-                        }
-
                         viewDataBinding.setVariable(BR.item_main_trans_send, list.get(position));
                         viewDataBinding.executePendingBindings();//加一行，问题解决
 
@@ -170,40 +155,36 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                         if(s.get(position).getFhTime()!=null){
                             sendBinding.tvSendtime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getFhTime())));
                         }
-
                         if(s.get(position).getShTime()!=null){
                             sendBinding.tvReceipttime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getShTime())));
                         }
 
-//                        sendBinding.tvReceiptComname.setText(StringUtil.getStr(s.get(position).getReceiveCompanyName()));
-//                        sendBinding.tvReceiptnum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getReceiveNum())))+"t");
-//                        if(s.get(position).getShTime()!=null){
-//                            sendBinding.tvReceiptTime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getShTime())));
-//                        }
-//                        sendBinding.tvDirvername.setText(StringUtil.getStr(s.get(position).getTrueName()));
-//                        sendBinding.tvCarlicenseno.setText(StringUtil.getStr(s.get(position).getCarLicenseNo()));
-//                        sendBinding.tvNum.setText(StringUtil.getStr(Double.parseDouble(df.format(s.get(position).getTotalSuttle())))+"t");
-//                        if(s.get(position).getCarNumber()!=null){
-//                            sendBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).getCarNumber())+"车");
-//                        }
-                        break;
-                    case 1:
-                        ItemMainTrainReceiptBinding receiptBinding = (ItemMainTrainReceiptBinding) holder.viewDataBinding;
-                        receiptBinding.btSure.setOnClickListener(this);
-                        receiptBinding.btSure.setTag(R.id.position,position);
-                        receiptBinding.btSure.setTag(R.id.data,list.get(position));
+                        sendBinding.circlebar.update((int) (100*s.get(position).getTotalSuttle()/(s.get(position).getPlanNumber()+0.00001)),false);
+
+                        sendBinding.btSure.setOnClickListener(this);
+                        sendBinding.btSure.setTag(R.id.position,position);
+                        sendBinding.btSure.setTag(R.id.data,list.get(position));
                         switch (s.get(position).getSignStatus()){
                             case TransDetailRes.SING_STATUS_已确认:
-                                receiptBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
-                                receiptBinding.btSure.setVisibility(View.GONE);
+                                sendBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                                sendBinding.btSure.setVisibility(View.GONE);
+                                sendBinding.circlebar.update(0,false);
+
                                 break;
                             case TransDetailRes.SING_STATUS_等待确认:
-                                receiptBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                                sendBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
                                 if(usertype == UserTypeReqBean.非驾驶员){
-                                    receiptBinding.btSure.setVisibility(View.VISIBLE);
+                                    sendBinding.btSure.setVisibility(View.VISIBLE);
+                                    sendBinding.tvReceipttime.setVisibility(View.GONE);
+                                    sendBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getReceiveNum()-s.get(position).getDeveliverNum()));
+                                }else{
+                                    sendBinding.tvReceipttime.setVisibility(View.VISIBLE);
                                 }
                                 break;
                         }
+                        break;
+                    case 1:
+                        ItemMainTrainReceiptBinding receiptBinding = (ItemMainTrainReceiptBinding) holder.viewDataBinding;
                         viewDataBinding.setVariable(BR.item_main_trans_receipt, list.get(position));
                         viewDataBinding.executePendingBindings();//加一行，问题解决
 
@@ -213,6 +194,29 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
                         if(s.get(position).getShTime()!=null){
                             receiptBinding.tvReceipttime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getShTime())));
+                        }
+                        receiptBinding.circlebar.update((int) (100*s.get(position).getTotalSuttle()/(s.get(position).getPlanNumber()+0.00001)),false);
+
+
+                        receiptBinding.btSure.setOnClickListener(this);
+                        receiptBinding.btSure.setTag(R.id.position,position);
+                        receiptBinding.btSure.setTag(R.id.data,list.get(position));
+                        switch (s.get(position).getSignStatus()){
+                            case TransDetailRes.SING_STATUS_已确认:
+                                receiptBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                                receiptBinding.btSure.setVisibility(View.GONE);
+                                receiptBinding.circlebar.update(0,false);
+                                receiptBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getReceiveNum()-s.get(position).getDeveliverNum()));
+                                break;
+                            case TransDetailRes.SING_STATUS_等待确认:
+                                receiptBinding.tvPlanNumber.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                                if(usertype == UserTypeReqBean.非驾驶员){
+                                    receiptBinding.btSure.setVisibility(View.VISIBLE);
+                                    receiptBinding.tvSendtime.setVisibility(View.GONE);
+                                }else{
+                                    receiptBinding.tvSendtime.setVisibility(View.VISIBLE);
+                                }
+                                break;
                         }
                         break;
                 }

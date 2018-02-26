@@ -50,11 +50,13 @@ public class IngOrderUIOpe extends BaseUIOpe {
                     doingBinding.tvDuimian.setText(s.getResults().get(position).getShdwName());
                     doingBinding.tvType.setText("发往");
                     doingBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_solid);
+                    doingBinding.tvCarno.setSelected(true);
                 }else{
                     LogUtil.E(position+""+s.getResults().get(position).getFhdwName());
                     doingBinding.tvDuimian.setText(s.getResults().get(position).getFhdwName());
                     doingBinding.tvType.setText("来自");
                     doingBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_blue_solid);
+                    doingBinding.tvCarno.setSelected(false);
                 }
                 doingBinding.tvPlan.setText(StringUtil.getStr(s.getResults().get(position).getPlanNumber())+"t");
                 doingBinding.tvStarttime.setText("开始时间："+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
@@ -70,8 +72,16 @@ public class IngOrderUIOpe extends BaseUIOpe {
 
                 DecimalFormat df = new DecimalFormat("#.##");
                 doingBinding.tvCurrent.setText(StringUtil.getStr(Double.parseDouble(df.format(s.getResults().get(position).getActualSh())))+"t");
-
-
+                int progress = (int) (100*s.getResults().get(position).getActualSh()/s.getResults().get(position).getPlanNumber());
+                if(progress<0){
+                    progress = 0 ;
+                }
+                if(progress>=50){
+                    doingBinding.circlebar.setCircleColor(context.getResources().getColor(R.color.color_hv_blue));
+                }else{
+                    doingBinding.circlebar.setCircleColor(context.getResources().getColor(R.color.color_hv_yelll));
+                }
+                doingBinding.circlebar.update(progress,false);
 
             }
         });

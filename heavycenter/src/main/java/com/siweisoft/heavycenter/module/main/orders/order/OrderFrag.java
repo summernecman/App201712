@@ -28,8 +28,8 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
 
     public static OrderFrag getInstance(String status,String 容器){
         OrderFrag orderFrag = new OrderFrag();
-        orderFrag.getArguments().putString(ValueConstant.容器,容器);
         orderFrag.setArguments(new Bundle());
+        orderFrag.getArguments().putString(ValueConstant.容器,容器);
         orderFrag.getP().getD().setSTATUS(status);
         return orderFrag;
     }
@@ -51,19 +51,13 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
             case ViewListener.TYPE_ONCLICK:
                 switch (v.getId()){
                     case R.id.ll_ingorder:
-
+                    case R.id.ll_neworder:
+                    case R.id.ll_doneorder:
                         Bundle bundle1 = new Bundle();
                         bundle1.putString(ValueConstant.TYPE,(String)v.getTag(R.id.type));
                         OrdersRes.ResultsBean resultsBean1 = (OrdersRes.ResultsBean) v.getTag(R.id.data);
                         bundle1.putInt(ValueConstant.DATA_DATA, resultsBean1.getOrderId());
                         FragManager2.getInstance().start(getBaseUIAct(), get容器(),new DetailFrag(),bundle1);
-                        break;
-                    case R.id.ll_neworder:
-                        Bundle bundle = new Bundle();
-                        bundle.putString(ValueConstant.TYPE,(String)v.getTag(R.id.type));
-                        OrdersRes.ResultsBean resultsBean = (OrdersRes.ResultsBean) v.getTag(R.id.data);
-                        bundle.putInt(ValueConstant.DATA_DATA, resultsBean.getOrderId());
-                        FragManager2.getInstance().start(getBaseUIAct(), get容器(),new DetailFrag(),bundle);
                         break;
                     case R.id.bt_sure:
                         final OrdersRes.ResultsBean data = (OrdersRes.ResultsBean) v.getTag(R.id.data);
@@ -106,11 +100,10 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
-        getP().getD().getOrdersRes().getResults().clear();
         OrderDAOpe.orders(getBaseUIAct(),getP().getD().getSTATUS(),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
             @Override
             public void onSuccess(OrdersRes o) {
-                getP().getD().getOrdersRes().getResults().addAll(o.getResults());
+                getP().getD().setOrdersRes(o);
                 getP().getU().LoadListData(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);
             }
         });

@@ -316,10 +316,10 @@ public  class TransDetailRes extends BaseBean {
          * status : 1
          */
 
-        private int adjustGross;
-        private int fhDeduct;
-        private int adjustTare;
-        private int gross;
+        private double adjustGross;
+        private double fhDeduct;
+        private double adjustTare;
+        private double gross;
         private String grossPhoto;
         private Object deductTime;
         private Object tareTime;
@@ -328,7 +328,7 @@ public  class TransDetailRes extends BaseBean {
         private Object editTime;
         private int warehouseId;
         private long createTime;
-        private int tare;
+        private double tare;
         private int creater;
         private int id;
         private int editer;
@@ -336,35 +336,35 @@ public  class TransDetailRes extends BaseBean {
         private String tarePhoto;
         private int status;
 
-        public int getAdjustGross() {
+        public double getAdjustGross() {
             return adjustGross;
         }
 
-        public void setAdjustGross(int adjustGross) {
+        public void setAdjustGross(double adjustGross) {
             this.adjustGross = adjustGross;
         }
 
-        public int getFhDeduct() {
+        public double getFhDeduct() {
             return fhDeduct;
         }
 
-        public void setFhDeduct(int fhDeduct) {
+        public void setFhDeduct(double fhDeduct) {
             this.fhDeduct = fhDeduct;
         }
 
-        public int getAdjustTare() {
+        public double getAdjustTare() {
             return adjustTare;
         }
 
-        public void setAdjustTare(int adjustTare) {
+        public void setAdjustTare(double adjustTare) {
             this.adjustTare = adjustTare;
         }
 
-        public int getGross() {
+        public double getGross() {
             return gross;
         }
 
-        public void setGross(int gross) {
+        public void setGross(double gross) {
             this.gross = gross;
         }
 
@@ -432,11 +432,11 @@ public  class TransDetailRes extends BaseBean {
             this.createTime = createTime;
         }
 
-        public int getTare() {
+        public double getTare() {
             return tare;
         }
 
-        public void setTare(int tare) {
+        public void setTare(double tare) {
             this.tare = tare;
         }
 
@@ -515,19 +515,19 @@ public  class TransDetailRes extends BaseBean {
          * status : 1
          */
 
-        private int adjustGross;
-        private int adjustTare;
-        private int gross;
+        private double adjustGross;
+        private double adjustTare;
+        private double gross;
         private Object grossPhoto;
         private Object deductTime;
         private Object tareTime;
         private Object grossTime;
         private String remark;
         private Object editTime;
-        private int shDeduct;
+        private double shDeduct;
         private int warehouseId;
         private long createTime;
-        private int tare;
+        private double tare;
         private int creater;
         private int id;
         private int editer;
@@ -535,27 +535,27 @@ public  class TransDetailRes extends BaseBean {
         private String tarePhoto;
         private int status;
 
-        public int getAdjustGross() {
+        public double getAdjustGross() {
             return adjustGross;
         }
 
-        public void setAdjustGross(int adjustGross) {
+        public void setAdjustGross(double adjustGross) {
             this.adjustGross = adjustGross;
         }
 
-        public int getAdjustTare() {
+        public double getAdjustTare() {
             return adjustTare;
         }
 
-        public void setAdjustTare(int adjustTare) {
+        public void setAdjustTare(double adjustTare) {
             this.adjustTare = adjustTare;
         }
 
-        public int getGross() {
+        public double getGross() {
             return gross;
         }
 
-        public void setGross(int gross) {
+        public void setGross(double gross) {
             this.gross = gross;
         }
 
@@ -607,11 +607,11 @@ public  class TransDetailRes extends BaseBean {
             this.editTime = editTime;
         }
 
-        public int getShDeduct() {
+        public double getShDeduct() {
             return shDeduct;
         }
 
-        public void setShDeduct(int shDeduct) {
+        public void setShDeduct(double shDeduct) {
             this.shDeduct = shDeduct;
         }
 
@@ -631,11 +631,11 @@ public  class TransDetailRes extends BaseBean {
             this.createTime = createTime;
         }
 
-        public int getTare() {
+        public double getTare() {
             return tare;
         }
 
-        public void setTare(int tare) {
+        public void setTare(double tare) {
             this.tare = tare;
         }
 

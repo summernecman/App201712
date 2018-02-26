@@ -25,7 +25,7 @@ public class NameUIOpe extends AppUIOpe<FragMyceNameBinding>{
 
     public boolean canGo(){
         if(NullUtil.isStrEmpty(bind.itemName.getMidEtTxt())){
-            ToastUtil.getInstance().showShort(getActivity(),"输入内容为空");
+            ToastUtil.getInstance().showShort(getActivity(),"姓名不能为空");
             return false;
         }
         return true;

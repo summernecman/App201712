@@ -22,7 +22,7 @@
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_name"
-            style_common:txt_maxlenth="20"
+            style_common:txt_maxlenth="8"
             style_common:minwidth ="40dp"
             style_common:txt_left = "姓名"
             style_common:txt_mid = "请输入"

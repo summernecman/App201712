@@ -61,4 +61,7 @@ public class MsgDAOpe extends BaseDAOpe {
         return msgsResBean;
     }
 
+    public void setMsgsResBean(MsgsResBean msgsResBean) {
+        this.msgsResBean = msgsResBean;
+    }
 }

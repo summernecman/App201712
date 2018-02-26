@@ -31,6 +31,7 @@ public class DoneOrderUIOpe extends BaseUIOpe {
                 ItemMainOrderDoneBinding doneBinding = (ItemMainOrderDoneBinding) holder.viewDataBinding;
                 doneBinding.getRoot().setSelected(position%2==0?true:false);
 
+                doneBinding.getRoot().setTag(R.id.type,type);
                 doneBinding.llDoneorder.setTag(com.android.lib.R.id.data, list.get(position));
                 doneBinding.llDoneorder.setTag(com.android.lib.R.id.position, position);
                 doneBinding.llDoneorder.setOnClickListener(this);
@@ -41,11 +42,12 @@ public class DoneOrderUIOpe extends BaseUIOpe {
                 doneBinding.tvSpes.setText(StringUtil.getStr(s.getResults().get(position).getSpecification()));
                 if("S".equals(s.getResults().get(position).getOrderType())){
                     doneBinding.tvType.setText("发往");
-                    doneBinding.tvCompanyname.setText(StringUtil.getStr(s.getResults().get(position).getShdwQName()));
+                    doneBinding.tvCompanyname.setText(StringUtil.getStr(s.getResults().get(position).getShdwName()));
                 }else{
                     doneBinding.tvType.setText("来自");
-                    doneBinding.tvCompanyname.setText(StringUtil.getStr(s.getResults().get(position).getFhdwQName()));
+                    doneBinding.tvCompanyname.setText(StringUtil.getStr(s.getResults().get(position).getFhdwName()));
                 }
+
             }
         });
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+<layout xmlns:style_common="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <import type="com.android.lib.util.StringUtil"/>
@@ -7,645 +7,254 @@
             name="frag_main_trans_detail"
             type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes" />
     </data>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical">
+        android:background="@color/white">
 
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
-            style_common:iv_left ="@drawable/icon_hv_back"
-            style_common:iv_right ="@drawable/icon_hv_scan"
-            style_common:iv_right2 ="@drawable/icon_hv_save"
-            style_common:txt_mid ="运输单详情"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            style_common:iv_left="@drawable/icon_hv_back"
+            style_common:iv_right="@drawable/icon_hv_scan"
+            style_common:iv_right2="@drawable/icon_hv_save"
+            style_common:txt_mid="运输单详情" />
 
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            app:srlEnablePureScrollMode="true"
-            app:srlDragRate="0.2"
-            android:id="@+id/refresh"
+        <android.support.constraint.Guideline
+            android:id="@+id/line_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/line_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/line_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <RelativeLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:clickable="true">
-
-                <ImageView
-                    android:background="@drawable/icon_hv_main_order_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <LinearLayout
-                    android:layout_marginLeft="30dp"
-                    android:id="@+id/ll_top"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:singleLine="true"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/hv_dimen_text_title_aaaaa"
-                            android:text="@{frag_main_trans_detail.productName}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:layout_weight="1"
-                            android:singleLine="true"
-                            android:layout_marginLeft="14dp"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/hv_dimen_text_aaa"
-                            android:text="@{frag_main_trans_detail.specifications}"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                        <LinearLayout
-                            android:gravity="center_vertical"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                            <TextView
-
-                                android:background="@drawable/bg_hv_sharp1_yell_stroke"
-                                android:singleLine="true"
-                                android:layout_marginLeft="5dp"
-                                android:textColor="@color/color_base_txt_heavycenter_y"
-                                android:textSize="12sp"
-                                android:text="@{frag_main_trans_detail.carLicenseNo}"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-
-                        <com.siweisoft.heavycenter.module.view.text.BgTextView
-                            android:padding="1dp"
-                            android:singleLine="true"
-                            android:textSize="13sp"
-                            android:visibility="visible"
-                            style_common:color_one="@color/color_hv_yelll"
-                            style_common:stroke="0dp"
-                            style_common:color_stroke="@color/red"
-                            style_common:corner="2dp"
-                            style_common:color_txt="@color/white"
-
-                            style_common:color_two="@color/color_red_800"
-                            style_common:stroke_two="2dp"
-                            style_common:color_stroke_two="@color/color_hv_yelll"
-                            style_common:corner_two="5dp"
-                            style_common:color_txt_two="@color/white"
-                            style_common:boo_one="false"
-                            android:text="发往"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-
-                    </LinearLayout>
-
-
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:singleLine="true"
-                        android:textColor="@color/white"
-                        android:textSize="17sp"
-                        android:text="@{frag_main_trans_detail.receiveCompanyName}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-
-                    <LinearLayout
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_marginTop="5dp"
-                            android:singleLine="true"
-                            android:textColor="@color/white"
-                            android:textSize="17sp"
-                            android:text="@{frag_main_trans_detail.carLicenseNo}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-
-                        <TextView
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="5dp"
-                            android:singleLine="true"
-                            android:textColor="@color/white"
-                            android:textSize="17sp"
-                            android:text="@{frag_main_trans_detail.trueName}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="5dp"
-                            android:singleLine="true"
-                            android:textColor="@color/white"
-                            android:textSize="17sp"
-                            android:text="@{frag_main_trans_detail.tel}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:background="@color/white"
-                    android:orientation="vertical"
-                    android:layout_below="@+id/ll_top"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:textColor="@color/color_hv_blue"
-                                android:textSize="20sp"
-                                android:text="@{StringUtil.getStr(frag_main_trans_detail.develiverNum)}"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                            <TextView
-                                android:textSize="12sp"
-                                android:text="实发"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:textColor="@color/color_hv_red"
-                                android:textSize="20sp"
-                                android:text="1500t"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                            <TextView
-                                android:textSize="12sp"
-                                android:text="盈亏"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:gravity="center_horizontal"
-                            android:orientation="vertical"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content">
-                            <TextView
-                                android:textColor="@color/color_hv_yelll"
-                                android:textSize="20sp"
-                                android:text="@{StringUtil.getStr(frag_main_trans_detail.receiveNum)}"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                            <TextView
-                                android:textSize="12sp"
-                                android:text="实收"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <View
-                        android:background="@color/color_grey_400"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"/>
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="1111"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_fhmz"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-                            <TextView
-                                android:textSize="12sp"
-                                android:text="毛重"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-
-                            <LinearLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_shmz"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <ImageView
-                                android:layout_weight="1"
-                                android:layout_width="0dp"
-                                android:layout_height="100dp" />
-                            
-                            
-
-                            <ImageView
-                                android:layout_weight="1"
-                                android:layout_width="0dp"
-                                android:layout_height="100dp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_fhpz"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-                            <TextView
-                                android:textSize="12sp"
-                                android:text="皮重"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-
-                            <LinearLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_shpz"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-                            <ImageView
-                                android:layout_weight="1"
-                                android:layout_width="0dp"
-                                android:layout_height="100dp" />
-
-
-
-                            <ImageView
-                                android:layout_weight="1"
-                                android:layout_width="0dp"
-                                android:layout_height="100dp" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_fhkc"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-                            <TextView
-                                android:textSize="12sp"
-                                android:text="扣除"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-
-                            <LinearLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_shkc"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-                        
-                        
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="仓库"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_fhck"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-
-
-                            <LinearLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="仓库"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_shck"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="备注"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_fhbz"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-
-
-                            <LinearLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="备注"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_shbz"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="操作人"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_fzczr"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-
-
-                            <LinearLayout
-                                android:layout_marginLeft="10dp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="操作人"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <TextView
-                                    android:id="@+id/tv_shczr"
-                                    android:layout_marginLeft="10dp"
-                                    android:textSize="12sp"
-                                    android:text="0000"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-                        
-                        
-                    </LinearLayout>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-               
-                </LinearLayout>
-            </RelativeLayout>
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_hv_main_order_detail" />
+
+
+        <TextView
+            android:id="@+id/tv_productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="@{frag_main_trans_detail.productName}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/hv_dimen_text_title_aaaaa"
+            app:layout_constraintLeft_toLeftOf="@+id/line_left"
+            app:layout_constraintTop_toTopOf="@+id/line_top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:singleLine="true"
+            android:text="@{frag_main_trans_detail.specifications}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/hv_dimen_text_aaa"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
+            app:layout_constraintLeft_toRightOf="@+id/tv_productName"
+            app:layout_goneMarginLeft="15dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_hv_sharp2_blue_solid"
+            android:padding="1dp"
+            android:text="第104车"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintRight_toRightOf="@+id/line_right"
+            app:layout_constraintTop_toBottomOf="@+id/line_top" />
+
+        <com.siweisoft.heavycenter.module.view.text.BgTextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="1dp"
+            android:singleLine="true"
+            android:textSize="13sp"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="@+id/line_left"
+            app:layout_constraintTop_toBottomOf="@+id/tv_productName"
+            style_common:boo_one="false"
+            style_common:color_one="@color/color_hv_yelll"
+            style_common:color_stroke="@color/red"
+
+            style_common:color_stroke_two="@color/color_hv_yelll"
+            style_common:color_two="@color/color_red_800"
+            style_common:color_txt="@color/white"
+            style_common:color_txt_two="@color/white"
+            style_common:corner="2dp"
+            style_common:corner_two="5dp"
+            style_common:stroke="0dp"
+            style_common:stroke_two="2dp" />
+
+
+        <TextView
+            android:id="@+id/tv_companyname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:text="@{frag_main_trans_detail.receiveCompanyName}"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="@+id/line_left"
+            app:layout_constraintTop_toBottomOf="@+id/type" />
+
+
+        <TextView
+            android:id="@+id/tv_carlicenseno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:text="@{frag_main_trans_detail.carLicenseNo}"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toLeftOf="@+id/line_left"
+            app:layout_constraintTop_toBottomOf="@+id/tv_companyname" />
+
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:singleLine="true"
+            android:text="@{frag_main_trans_detail.trueName}"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_carlicenseno"
+            app:layout_constraintLeft_toRightOf="@+id/tv_carlicenseno" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:singleLine="true"
+            android:text="@{frag_main_trans_detail.tel}"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_carlicenseno"
+            app:layout_constraintLeft_toRightOf="@+id/tv_name" />
+
+        <View
+            android:background="@color/white"
+            android:id="@+id/block"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_carlicenseno"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+       />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_delivenum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtil.getStr(frag_main_trans_detail.develiverNum)}"
+            android:textColor="@color/color_hv_blue"
+            android:textSize="20sp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/line_left"
+            app:layout_constraintRight_toLeftOf="@+id/tv_yk"
+            app:layout_constraintTop_toBottomOf="@+id/tv_carlicenseno" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_yk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1500t"
+            android:textColor="@color/color_hv_red"
+            android:textSize="20sp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_delivenum"
+            app:layout_constraintLeft_toRightOf="@+id/tv_delivenum"
+            app:layout_constraintRight_toLeftOf="@+id/tv_receipt" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_receipt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtil.getStr(frag_main_trans_detail.receiveNum)}"
+            android:textColor="@color/color_hv_yelll"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_delivenum"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/tv_yk"
+            app:layout_constraintRight_toRightOf="@+id/line_right" />
+
+
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_lab_delive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="实发"
+            android:textSize="12sp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="@+id/line_left"
+            app:layout_constraintRight_toLeftOf="@+id/tv_lab_yk"
+            app:layout_constraintTop_toBottomOf="@+id/tv_carlicenseno" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_lab_yk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="盈亏"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_lab_delive"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/tv_lab_delive"
+            app:layout_constraintRight_toLeftOf="@+id/tv_lab_receipt" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_lab_receipt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="实收"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_lab_delive"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/tv_lab_yk"
+            app:layout_constraintRight_toLeftOf="@+id/line_right" />
+
+
+
+
+    </android.support.constraint.ConstraintLayout>
 </layout>
