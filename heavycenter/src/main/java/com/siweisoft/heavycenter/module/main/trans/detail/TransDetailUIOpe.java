@@ -4,6 +4,8 @@ package com.siweisoft.heavycenter.module.main.trans.detail;
 
 import android.content.Context;
 
+import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
@@ -19,6 +21,22 @@ public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
 
 
     public void initUI(TransDetailRes data){
+
+        bind.recycle.setAdapter(new AppsDataBindingAdapter(context,R.layout.item_main_trans_detail,BR.item_main_trans_detail,null){
+            @Override
+            public void onBindViewHolder(AppViewHolder holder, int position) {
+            }
+
+            @Override
+            public int getItemCount() {
+                return 10;
+            }
+        });
+
+
+        if(data==null){
+            return;
+        }
         bind.setVariable(BR.frag_main_trans_detail,data);
         final String comname = LocalValue.get登录返回信息().getAbbreviationName();
         if(StringUtil.equals(comname,data.getDeveliverCompanyName())){
@@ -41,5 +59,8 @@ public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
             bind.tvYk.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getShDeduct()));
 
         }
+
+
+
     }
 }
