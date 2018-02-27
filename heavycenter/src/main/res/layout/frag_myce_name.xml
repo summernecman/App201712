@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+        android:clickable="true"
         android:orientation="vertical">
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
@@ -22,7 +23,7 @@
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_name"
-            style_common:txt_maxlenth="8"
+            style_common:txt_maxlenth="11"
             style_common:minwidth ="40dp"
             style_common:txt_left = "姓名"
             style_common:txt_mid = "请输入"

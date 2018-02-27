@@ -9,15 +9,13 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.car.detail.CarDetailValue;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
-import com.siweisoft.heavycenter.module.mana.car.my.MyFrag;
+import com.siweisoft.heavycenter.module.mana.car.car.CarFrag;
 
 import butterknife.OnClick;
 
-public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
+public class CarsFrag extends AppFrag<CarsUIOpe,CarsDAOpe> {
 
     @Override
     public void initdelay() {
@@ -50,8 +48,8 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> {
                     return;
                 }
                 if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
-                    MyFrag myFrag = (MyFrag) getP().getD().getPages().get(1);
-                    myFrag. onRefresh(null);;
+                    CarFrag carFrag = (CarFrag) getP().getD().getPages().get(1);
+                    carFrag. onRefresh(null);;
                 }
                 break;
         }

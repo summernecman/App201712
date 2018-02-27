@@ -41,18 +41,13 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
 
     public void 初始化界面(){
-        getP().getU().setBottomMenuViewData(getP().getD().getMenudata());
+        getP().getU().setBottomMenuViewData(getP().getD().getBottomdata());
         getP().getU().initDrawerMenu(getP().getD().getMyceFrag());
-        getP().getU().initPages(getP().getD().getMenudata(),this);
         go判断是否绑定单位处理();
     }
 
     public void go判断是否绑定单位处理(){
-        if(!getP().getD().is绑定了单位()){
-            getP().getU().nobind();
-        }else{
-            getP().getU().hideshowunbind(false);
-        }
+        getP().getU().initPages(getP().getD().getBottomdata(),this);
         if(getP().getD().getMyceFrag().getP().getU()!=null){
             getP().getD().getMyceFrag().init();
         }
@@ -74,17 +69,17 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     public void onAppItemSelect(ViewGroup viewGroup, View view, int position) {
         FragManager2.getInstance().clear((BaseUIActivity) getActivity(),MainValue.主界面);
         getP().getU().setCurrentItem(position);
-        setMoudle(getP().getD().getMenudata().get(position).getName());
-        getP().getD().getMenudata().get(position).getFragment().onFristVisible();
-        if(position==getP().getD().getMenudata().size()-1){
-            if(!getP().getD().is绑定了单位()){
-                getP().getU().hideshowunbind(false);
-            }
-        }else{
-            if(!getP().getD().is绑定了单位()){
-                getP().getU().hideshowunbind(true);
-            }
-        }
+        setMoudle(getP().getD().getBottomdata().get(position).getName());
+        getP().getD().getBottomdata().get(position).getFragment().onFristVisible();
+//        if(position==getP().getD().getMenudata().size()-1){
+//            if(!getP().getD().is绑定了单位()){
+//                getP().getU().hideshowunbind(false);
+//            }
+//        }else{
+//            if(!getP().getD().is绑定了单位()){
+//                getP().getU().hideshowunbind(true);
+//            }
+//        }
     }
 
 

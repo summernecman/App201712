@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.mana.car.my;
+package com.siweisoft.heavycenter.module.mana.car.car;
 
 //by summer on 2017-12-19.
 
@@ -16,22 +16,16 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarResBean;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 
-public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
+public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
 
-    public static final int TYPE_SEL  = 1;
 
     @Override
     public void initNow() {
         super.initNow();
-        if(getArguments().getInt(ValueConstant.FARG_REQ,-1)==TYPE_SEL){
-            getP().getU().bind.cartitle.setVisibility(View.VISIBLE);
-        }else{
-            getP().getU().bind.cartitle.setVisibility(View.GONE);
-        }
+        getP().getD().initCarReq(getArguments().getString(ValueConstant.DATA_POSITION),getP().getD().getReqStatus(getArguments().getInt(ValueConstant.FARG_REQ,CarValue.选择车辆)));
+        getP().getU().initUI(getArguments().getInt(ValueConstant.FARG_REQ,CarValue.选择车辆));
         getP().getU().initRefresh(this,this);
     }
 
@@ -63,7 +57,7 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
                             Bundle bundle = new Bundle();
                             bundle.putSerializable(ValueConstant.DATA_DATA,bean1);
                             bundle.putInt(ValueConstant.FARG_REQ,1);
-                            if(getArguments().getInt(ValueConstant.FARG_REQ,-1)==MyFrag.TYPE_SEL){
+                            if(getArguments().getInt(ValueConstant.FARG_REQ,CarValue.选择车辆)== CarValue.选择车辆){
                                 getArguments().putAll(bundle);
                                 getBaseUIAct().onBackPressed();
                             }else{
@@ -82,10 +76,10 @@ public class MyFrag extends AppFrag<MyUIOpe,MyDAOpe> implements ViewListener,OnR
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().Cars(getArguments().getString(ValueConstant.DATA_POSITION),new UINetAdapter<CarsResBean>(this) {
+        getP().getD().Cars(getP().getD().getCarsReqBean(),new UINetAdapter<CarsResBean>(this) {
             @Override
             public void onSuccess(CarsResBean o) {
-                getP().getU().LoadListData(o,getArguments().getString(ValueConstant.DATA_POSITION),MyFrag.this);
+                getP().getU().LoadListData(o,getArguments().getString(ValueConstant.DATA_POSITION),CarFrag.this);
                 getP().getU().finishRefresh();
             }
         });

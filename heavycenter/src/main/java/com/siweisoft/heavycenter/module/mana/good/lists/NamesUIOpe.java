@@ -35,11 +35,8 @@ public class NamesUIOpe extends BaseUIOpe<FragManaGoodNamesBinding> {
             return ;
         }
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_good_names, BR.item_mana_good_names, s.getResults(),listener){
-            @Override
-            public void onBindViewHolder(AppViewHolder holder, int position, List<Object> payloads) {
-                super.onBindViewHolder(holder, position, payloads);
 
-            }
+
         });
     }
 

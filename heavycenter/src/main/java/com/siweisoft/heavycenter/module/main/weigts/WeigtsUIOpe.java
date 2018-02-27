@@ -49,16 +49,16 @@ public class WeigtsUIOpe extends AppUIOpe<FragMainWeigtsBinding> {
     }
 
     public void initUI(WeightMsg weightMsg){
-        bind.tvContent.setText(StringUtil.getStr(weightMsg.getMessage().getContent()));
-        bind.tvGoodname.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getProductName()));
-        bind.tvSpes.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getSpecification()));
-        bind.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getShdwName()));
+        bind.bottom.tvContent.setText(StringUtil.getStr(weightMsg.getMessage().getContent()));
+        bind.bottom.tvGoodname.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getProductName()));
+        bind.bottom.tvSpes.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getSpecification()));
+        bind.bottom.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getShdwName()));
         if(LocalValue.get登录返回信息().getAbbreviationName().equals(weightMsg.getMessage().getOrder().getFhdwName())){
-            bind.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getShdwName()));
-            bind.tvType.setText("发往");
+            bind.bottom.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getShdwName()));
+            bind.bottom.tvType.setText("发往");
         }else{
-            bind.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getFhdwName()));
-            bind.tvType.setText("来自");
+            bind.bottom.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getFhdwName()));
+            bind.bottom.tvType.setText("来自");
         }
 
 

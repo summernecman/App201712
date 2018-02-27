@@ -43,7 +43,7 @@ public class NewOrderUIOpe extends BaseUIOpe {
                 beginBinding.setVariable(vari, list.get(position));
                 beginBinding.executePendingBindings();//加一行，问题解决
 
-                beginBinding.tvPlantime.setText("计划开始时间:"+ StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
+                beginBinding.tvPlantime.setText("开始时间 "+ StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
                 beginBinding.getRoot().setTag(R.id.type,type);
 
                 if(comname.equals(s.getResults().get(position).getFhdwName())){

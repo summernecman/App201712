@@ -170,10 +170,10 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> implements OnFinishListe
         super.onResult(res, bundle);
         switch (res){
             case 2:
-                if(bundle==null || bundle.getSerializable(ValueConstant.DATA_DATA)==null){
+                if(bundle==null || bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
                     return;
                 }
-                UnitInfo unitInfo = (UnitInfo) bundle.getSerializable( ValueConstant.DATA_DATA);
+                UnitInfo unitInfo = (UnitInfo) bundle.getSerializable( ValueConstant.DATA_DATA2);
                 getP().getD().getUnit().setCompanyLng(unitInfo.getCompanyLng());
                 getP().getD().getUnit().setCompanyLat(unitInfo.getCompanyLat());
                 getP().getD().getUnit().setCompanyAddress(unitInfo.getCompanyAddress());

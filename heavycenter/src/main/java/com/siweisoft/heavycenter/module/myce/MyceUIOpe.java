@@ -68,16 +68,18 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
             GlideApp.with(context).asBitmap().load(NetValue.获取地址(LocalValue.get登录返回信息().getVehiclePhoto())).centerCrop().into(bind.ivCar);
 
         }else{
+
             bind.llHead.tvRole.setText(UserTypeReqBean.USER_TYPE_GENERAL_CN);
             switch (LocalValue.get登录返回信息().getUserRole()){
                 case LoginResBean.USER_ROLE_ADMIN:
                     bind.llHead.tvRole.setText(LoginResBean.USER_ROLE_ADMIN_CN);
                     break;
-                case LoginResBean.USER_ROLE_DRIVER:
-                    bind.llHead.tvRole.setText(LoginResBean.USER_ROLE_DRIVER_CN);
-                    break;
                 case LoginResBean.USER_ROLE_GENERAL:
                     bind.llHead.tvRole.setText(LoginResBean.USER_ROLE_GENERAL_CN);
+                    bind.itemStore.setVisibility(View.GONE);
+                    bind.itemGood.setVisibility(View.GONE);
+                    bind.itemUser.setVisibility(View.GONE);
+                    bind.itemCar.setVisibility(View.GONE);
                     break;
                 case LoginResBean.USER_ROLE_SUPER_ADMIN:
                     bind.llHead.tvRole.setText(LoginResBean.USER_ROLE_SUPER_ADMIN_CN);
@@ -87,10 +89,6 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                     break;
             }
 
-            bind.itemStore.setVisibility(View.VISIBLE);
-            bind.itemGood.setVisibility(View.VISIBLE);
-            bind.itemUser.setVisibility(View.VISIBLE);
-            bind.itemCar.setVisibility(View.VISIBLE);
 
 
             bind.itemStore.getRightTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getWareHouseCount()));

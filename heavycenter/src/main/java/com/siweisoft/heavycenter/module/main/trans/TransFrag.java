@@ -120,7 +120,6 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
         getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
             @Override
             public void onSuccess(TransRes o) {
-                o = new Test().getTransRes();
                 if(o==null){
                     return;
                 }

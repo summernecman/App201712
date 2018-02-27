@@ -19,14 +19,14 @@
         sml:sml_scroller_duration="250">
 
         <TextView
-            android:textSize="22sp"
+            android:textSize="17sp"
             android:gravity="center"
             android:textColor="@color/white"
             android:text="移除"
             android:orientation="horizontal"
             android:background="@color/color_hv_red"
             android:id="@id/smMenuViewRight"
-            android:layout_width="55dp"
+            android:layout_width="70dp"
             android:weightSum="1"
             android:layout_height="match_parent"/>
 
@@ -44,6 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:textColor="@color/hv_color_text"
+                    android:textSize="17sp"
                     android:text="@{item_main_order_detail_driver.carLicenseNo}"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -51,6 +53,8 @@
                     android:layout_height="match_parent" />
 
                 <TextView
+                    android:textColor="@color/hv_color_text"
+                    android:textSize="17sp"
                     android:layout_marginRight="10dp"
                     android:text='@{item_main_order_detail_driver.maxCapacity+"t"}'
                     android:gravity="center_vertical"
@@ -58,6 +62,8 @@
                     android:layout_height="match_parent" />
 
                 <TextView
+                    android:textColor="@color/hv_color_text"
+                    android:textSize="17sp"
                     android:text="@{item_main_order_detail_driver.trueName}"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -65,6 +71,8 @@
                     android:layout_height="match_parent" />
 
                 <TextView
+                    android:textColor="@color/hv_color_text"
+                    android:textSize="17sp"
                     android:text="@{item_main_order_detail_driver.tel}"
                     android:gravity="center_vertical"
                     android:layout_width="wrap_content"

@@ -32,7 +32,8 @@ public class UpdateHeadReqBean extends BaseReqBean {
 
     private int id;
 
-    private int companyId;
+
+    private String myFile;
 
     public int getId() {
         return id;
@@ -42,11 +43,11 @@ public class UpdateHeadReqBean extends BaseReqBean {
         this.id = id;
     }
 
-    public int getCompanyId() {
-        return companyId;
+    public String getMyFile() {
+        return myFile;
     }
 
-    public void setCompanyId(int companyId) {
-        this.companyId = companyId;
+    public void setMyFile(String myFile) {
+        this.myFile = myFile;
     }
 }

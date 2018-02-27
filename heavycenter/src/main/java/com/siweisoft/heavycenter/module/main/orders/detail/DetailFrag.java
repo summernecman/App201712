@@ -17,7 +17,8 @@ import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarReq;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarRes;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
-import com.siweisoft.heavycenter.module.mana.car.my.MyFrag;
+import com.siweisoft.heavycenter.module.mana.car.car.CarFrag;
+import com.siweisoft.heavycenter.module.mana.car.car.CarValue;
 
 import butterknife.OnClick;
 
@@ -57,9 +58,9 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
         switch (v.getId()){
             case R.id.iv_local:
                 Bundle bundle = new Bundle();
-                bundle.putInt(ValueConstant.FARG_REQ,MyFrag.TYPE_SEL);
+                bundle.putInt(ValueConstant.FARG_REQ, CarValue.选择车辆);
                 bundle.putString(ValueConstant.DATA_POSITION, CarsReqBean.WHAT_MY);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new MyFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new CarFrag(),bundle);
                 break;
         }
     }
@@ -68,7 +69,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
     public void onResult(int res, Bundle bundle) {
         super.onResult(res, bundle);
         switch (res){
-            case MyFrag.TYPE_SEL:
+            case CarValue.选择车辆:
                 if(bundle==null|| bundle.getSerializable(ValueConstant.DATA_DATA)==null){
                     return;
                 }

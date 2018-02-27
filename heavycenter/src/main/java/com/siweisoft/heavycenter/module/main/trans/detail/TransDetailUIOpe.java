@@ -3,7 +3,9 @@ package com.siweisoft.heavycenter.module.main.trans.detail;
 //by summer on 2017-12-18.
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 
+import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.StringUtil;
@@ -14,6 +16,10 @@ import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.databinding.FragMainTransDetailBinding;
+import com.siweisoft.heavycenter.module.main.trans.detail.detail.TransDetailRecordFrag;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
 
@@ -21,18 +27,6 @@ public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
 
 
     public void initUI(TransDetailRes data){
-
-        bind.recycle.setAdapter(new AppsDataBindingAdapter(context,R.layout.item_main_trans_detail,BR.item_main_trans_detail,null){
-            @Override
-            public void onBindViewHolder(AppViewHolder holder, int position) {
-            }
-
-            @Override
-            public int getItemCount() {
-                return 10;
-            }
-        });
-
 
         if(data==null){
             return;
@@ -49,18 +43,25 @@ public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
         if(data.getDeliverRecordList().size()>0){
             bind.tvDelivenum.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getGross()));
             bind.tvReceipt.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getTare()));
-            bind.tvYk.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getFhDeduct()));
+            bind.tvYk.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getDeduct()));
 
         }
 
         if(data.getReceiveRecordList().size()>0){
             bind.tvDelivenum.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getGross()));
             bind.tvReceipt.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getTare()));
-            bind.tvYk.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getShDeduct()));
+            bind.tvYk.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getDeduct()));
 
         }
 
+        List<Fragment> fragments = new ArrayList<>();
 
-
+        if(data.getDeliverRecordList()!=null&&data.getDeliverRecordList().size()!=0){
+            fragments.add( TransDetailRecordFrag.getInstance(data.getDeliverRecordList()));
+        }
+        if(data.getReceiveRecordList()!=null&&data.getReceiveRecordList().size()!=0){
+            fragments.add( TransDetailRecordFrag.getInstance(data.getReceiveRecordList()));
+        }
+        bind.viewpager.setAdapter(new AppBasePagerAdapter2(getFrag().getChildFragmentManager(),getActivity(),fragments));
     }
 }

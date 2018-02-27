@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.data.netd.trans.detail;
 
 import com.android.lib.bean.BaseBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public  class TransDetailRes extends BaseBean {
@@ -62,8 +63,8 @@ public  class TransDetailRes extends BaseBean {
     private double planNumber;
     private Long FhTime;
     private Long ShTime;
-    private List<DeliverRecordListBean> deliverRecordList;
-    private List<ReceiveRecordListBean> receiveRecordList;
+    private ArrayList<DeliverRecordListBean> deliverRecordList;
+    private ArrayList<DeliverRecordListBean> receiveRecordList;
 
 
     public static final int SING_STATUS_等待确认 = 0;
@@ -261,19 +262,19 @@ public  class TransDetailRes extends BaseBean {
         this.ordersId = ordersId;
     }
 
-    public List<DeliverRecordListBean> getDeliverRecordList() {
+    public ArrayList<DeliverRecordListBean> getDeliverRecordList() {
         return deliverRecordList;
     }
 
-    public void setDeliverRecordList(List<DeliverRecordListBean> deliverRecordList) {
+    public void setDeliverRecordList(ArrayList<DeliverRecordListBean> deliverRecordList) {
         this.deliverRecordList = deliverRecordList;
     }
 
-    public List<ReceiveRecordListBean> getReceiveRecordList() {
+    public ArrayList<DeliverRecordListBean> getReceiveRecordList() {
         return receiveRecordList;
     }
 
-    public void setReceiveRecordList(List<ReceiveRecordListBean> receiveRecordList) {
+    public void setReceiveRecordList(ArrayList<DeliverRecordListBean> receiveRecordList) {
         this.receiveRecordList = receiveRecordList;
     }
 
@@ -293,48 +294,61 @@ public  class TransDetailRes extends BaseBean {
         ShTime = shTime;
     }
 
-    public static class DeliverRecordListBean {
+    public static class DeliverRecordListBean extends BaseBean{
+
         /**
+         * deduct : 0
          * adjustGross : 0
-         * fhDeduct : 0
          * adjustTare : 0
-         * gross : 20
+         * gross : 0
          * grossPhoto :
-         * deductTime : null
-         * tareTime : null
+         * deductTime : 1234566666
+         * tareTime : 1234566666
          * grossTime : null
          * remark :
-         * editTime : null
+         * editTime : 1234566666
+         * netWeight : 0
          * warehouseId : 0
-         * createTime : 1517537731000
-         * tare : 10
-         * creater : 80
-         * id : 106
+         * createTime : 1517975889000
+         * tare : 0
+         * creater : 78
+         * netWeightTime : 1519696732000
+         * id : 124
          * editer : 0
-         * transportRecordId : 105
+         * transportRecordId : 118
          * tarePhoto :
          * status : 1
          */
 
+        private double deduct;
         private double adjustGross;
-        private double fhDeduct;
         private double adjustTare;
         private double gross;
         private String grossPhoto;
-        private Object deductTime;
-        private Object tareTime;
-        private Object grossTime;
+        private long deductTime;
+        private long tareTime;
+        private long grossTime;
         private String remark;
-        private Object editTime;
+        private long editTime;
+        private double netWeight;
         private int warehouseId;
         private long createTime;
         private double tare;
         private int creater;
+        private long netWeightTime;
         private int id;
         private int editer;
         private int transportRecordId;
         private String tarePhoto;
         private int status;
+
+        public double getDeduct() {
+            return deduct;
+        }
+
+        public void setDeduct(double deduct) {
+            this.deduct = deduct;
+        }
 
         public double getAdjustGross() {
             return adjustGross;
@@ -342,14 +356,6 @@ public  class TransDetailRes extends BaseBean {
 
         public void setAdjustGross(double adjustGross) {
             this.adjustGross = adjustGross;
-        }
-
-        public double getFhDeduct() {
-            return fhDeduct;
-        }
-
-        public void setFhDeduct(double fhDeduct) {
-            this.fhDeduct = fhDeduct;
         }
 
         public double getAdjustTare() {
@@ -376,27 +382,27 @@ public  class TransDetailRes extends BaseBean {
             this.grossPhoto = grossPhoto;
         }
 
-        public Object getDeductTime() {
+        public long getDeductTime() {
             return deductTime;
         }
 
-        public void setDeductTime(Object deductTime) {
+        public void setDeductTime(long deductTime) {
             this.deductTime = deductTime;
         }
 
-        public Object getTareTime() {
+        public long getTareTime() {
             return tareTime;
         }
 
-        public void setTareTime(Object tareTime) {
+        public void setTareTime(long tareTime) {
             this.tareTime = tareTime;
         }
 
-        public Object getGrossTime() {
+        public long getGrossTime() {
             return grossTime;
         }
 
-        public void setGrossTime(Object grossTime) {
+        public void setGrossTime(long grossTime) {
             this.grossTime = grossTime;
         }
 
@@ -408,12 +414,20 @@ public  class TransDetailRes extends BaseBean {
             this.remark = remark;
         }
 
-        public Object getEditTime() {
+        public long getEditTime() {
             return editTime;
         }
 
-        public void setEditTime(Object editTime) {
+        public void setEditTime(long editTime) {
             this.editTime = editTime;
+        }
+
+        public double getNetWeight() {
+            return netWeight;
+        }
+
+        public void setNetWeight(double netWeight) {
+            this.netWeight = netWeight;
         }
 
         public int getWarehouseId() {
@@ -446,6 +460,14 @@ public  class TransDetailRes extends BaseBean {
 
         public void setCreater(int creater) {
             this.creater = creater;
+        }
+
+        public long getNetWeightTime() {
+            return netWeightTime;
+        }
+
+        public void setNetWeightTime(long netWeightTime) {
+            this.netWeightTime = netWeightTime;
         }
 
         public int getId() {
@@ -492,201 +514,6 @@ public  class TransDetailRes extends BaseBean {
 
 
 
-    public static class ReceiveRecordListBean {
-        /**
-         * adjustGross : 0
-         * adjustTare : 0
-         * gross : 20
-         * grossPhoto : null
-         * deductTime : null
-         * tareTime : null
-         * grossTime : null
-         * remark :
-         * editTime : null
-         * shDeduct : 0
-         * warehouseId : 0
-         * createTime : 1517537731000
-         * tare : 10
-         * creater : 80
-         * id : 101
-         * editer : 0
-         * transportRecordId : 105
-         * tarePhoto :
-         * status : 1
-         */
-
-        private double adjustGross;
-        private double adjustTare;
-        private double gross;
-        private Object grossPhoto;
-        private Object deductTime;
-        private Object tareTime;
-        private Object grossTime;
-        private String remark;
-        private Object editTime;
-        private double shDeduct;
-        private int warehouseId;
-        private long createTime;
-        private double tare;
-        private int creater;
-        private int id;
-        private int editer;
-        private int transportRecordId;
-        private String tarePhoto;
-        private int status;
-
-        public double getAdjustGross() {
-            return adjustGross;
-        }
-
-        public void setAdjustGross(double adjustGross) {
-            this.adjustGross = adjustGross;
-        }
-
-        public double getAdjustTare() {
-            return adjustTare;
-        }
-
-        public void setAdjustTare(double adjustTare) {
-            this.adjustTare = adjustTare;
-        }
-
-        public double getGross() {
-            return gross;
-        }
-
-        public void setGross(double gross) {
-            this.gross = gross;
-        }
-
-        public Object getGrossPhoto() {
-            return grossPhoto;
-        }
-
-        public void setGrossPhoto(Object grossPhoto) {
-            this.grossPhoto = grossPhoto;
-        }
-
-        public Object getDeductTime() {
-            return deductTime;
-        }
-
-        public void setDeductTime(Object deductTime) {
-            this.deductTime = deductTime;
-        }
-
-        public Object getTareTime() {
-            return tareTime;
-        }
-
-        public void setTareTime(Object tareTime) {
-            this.tareTime = tareTime;
-        }
-
-        public Object getGrossTime() {
-            return grossTime;
-        }
-
-        public void setGrossTime(Object grossTime) {
-            this.grossTime = grossTime;
-        }
-
-        public String getRemark() {
-            return remark;
-        }
-
-        public void setRemark(String remark) {
-            this.remark = remark;
-        }
-
-        public Object getEditTime() {
-            return editTime;
-        }
-
-        public void setEditTime(Object editTime) {
-            this.editTime = editTime;
-        }
-
-        public double getShDeduct() {
-            return shDeduct;
-        }
-
-        public void setShDeduct(double shDeduct) {
-            this.shDeduct = shDeduct;
-        }
-
-        public int getWarehouseId() {
-            return warehouseId;
-        }
-
-        public void setWarehouseId(int warehouseId) {
-            this.warehouseId = warehouseId;
-        }
-
-        public long getCreateTime() {
-            return createTime;
-        }
-
-        public void setCreateTime(long createTime) {
-            this.createTime = createTime;
-        }
-
-        public double getTare() {
-            return tare;
-        }
-
-        public void setTare(double tare) {
-            this.tare = tare;
-        }
-
-        public int getCreater() {
-            return creater;
-        }
-
-        public void setCreater(int creater) {
-            this.creater = creater;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public int getEditer() {
-            return editer;
-        }
-
-        public void setEditer(int editer) {
-            this.editer = editer;
-        }
-
-        public int getTransportRecordId() {
-            return transportRecordId;
-        }
-
-        public void setTransportRecordId(int transportRecordId) {
-            this.transportRecordId = transportRecordId;
-        }
-
-        public String getTarePhoto() {
-            return tarePhoto;
-        }
-
-        public void setTarePhoto(String tarePhoto) {
-            this.tarePhoto = tarePhoto;
-        }
-
-        public int getStatus() {
-            return status;
-        }
-
-        public void setStatus(int status) {
-            this.status = status;
-        }
-    }
 
     public double getTotalSuttle() {
         return totalSuttle;

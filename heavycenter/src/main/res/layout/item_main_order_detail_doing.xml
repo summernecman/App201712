@@ -2,6 +2,7 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="com.android.lib.util.StringUtil"/>
         <variable
             name="item_main_order_detail_doing"
             type="com.siweisoft.heavycenter.data.netd.order.list.OrdersRes.ResultsBean" />
@@ -61,7 +62,7 @@
         <LinearLayout
             app:layout_constraintLeft_toLeftOf="@+id/circlebar"
             app:layout_constraintRight_toRightOf="@+id/circlebar"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_endtime"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_nametel"
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -171,19 +172,20 @@
         <TextView
            app:layout_constraintLeft_toLeftOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@+id/tv_duimian"
-            android:id="@+id/tv_starttime"
+            android:id="@+id/tv_carlisence"
             android:layout_marginTop="7dp"
             android:gravity="center_vertical"
             android:textColor="@color/color_hv_txt_dark"
             android:textSize="@dimen/dimen_recylce_item_date_txtsize"
-            android:text="开始时间：2017/12/09 10:00"
+            android:text="@{item_main_order_detail_doing.carLicenseNo}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:text='@{StringUtil.getStr(item_main_order_detail_doing.trueName)+"    "+StringUtil.getStr(item_main_order_detail_doing.tel)}'
             app:layout_constraintLeft_toLeftOf="@+id/tv_type"
-            app:layout_constraintTop_toBottomOf="@+id/tv_starttime"
-            android:id="@+id/tv_endtime"
+            app:layout_constraintTop_toBottomOf="@+id/tv_carlisence"
+            android:id="@+id/tv_nametel"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="3dp"
             android:gravity="center_vertical"

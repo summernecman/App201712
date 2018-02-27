@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
-    xmlns:style_toptypeview="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_mana_car"
@@ -8,52 +8,36 @@
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/content_acct"
-        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/color_grey_300"
+        >
 
         <com.android.lib.view.title.TitleView
-            android:id="@+id/title"
+                android:visibility="gone"
+            android:id="@+id/cartitle"
+            style_common:txt_mid ="车辆列表"
             style_common:iv_left ="@drawable/icon_hv_back"
             style_common:iv_right ="@drawable/icon_hv_scan"
-            style_common:iv_right2 ="@drawable/icon_hv_add"
-            style_common:txt_mid ="车辆管理"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <RelativeLayout
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh"
+            style_common:srlEnableLoadmoreWhenContentNotFull="false"
+            style_common:srlEnableOverScrollBounce="false"
+            style_common:srlEnableAutoLoadmore="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.siweisoft.heavycenter.module.view.menu.TopTypeView
-                android:id="@+id/topview"
-                style_toptypeview:txts="发货中,我的车辆,收货中"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycle"
+                android:scrollbars="vertical"
+                android:scrollbarSize="10dp"
+                android:fadeScrollbars="false"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-            <LinearLayout
-                android:layout_below="@id/topview"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <com.android.lib.view.viewpager.ScrollbleViewPager
-                    android:orientation="vertical"
-                    android:id="@+id/ll_cntent"
-                    android:layout_centerInParent="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-
-            <com.siweisoft.heavycenter.module.view.menu.ScrollMenu
-                android:id="@+id/scrollmenu"
-                android:layout_marginTop="-1.5dp"
-                android:layout_below="@id/topview"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"/>
-
-        </RelativeLayout>
-            </LinearLayout>
+    </LinearLayout>
 </layout>

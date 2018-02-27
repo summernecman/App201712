@@ -114,7 +114,7 @@
                     android:paddingBottom="2dp"
 
                     android:singleLine="true"
-                    android:textSize="22sp"
+                    android:textSize="21sp"
                     android:visibility="visible"
                     style_common:color_one="@color/color_hv_yelll"
                     style_common:stroke="0dp"

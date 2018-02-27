@@ -85,7 +85,7 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
                 getP().getD().getUnitInfo().setCompanyAddress(poiInfo.address);
                 getP().getD().getUnitInfo().setCompanyLat(poiInfo.location.latitude);
                 getP().getD().getUnitInfo().setCompanyLng(poiInfo.location.longitude);
-                getArguments().putSerializable(ValueConstant.DATA_DATA,getP().getD().getUnitInfo());
+                getArguments().putSerializable(ValueConstant.DATA_DATA2,getP().getD().getUnitInfo());
                 getBaseUIAct().onBackPressed();
                 break;
         }

@@ -13,6 +13,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.regist.RegistResBean;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
+import com.siweisoft.heavycenter.module.acct.agree.AgreeFrag;
 import com.siweisoft.heavycenter.module.acct.role.RoleFrag;
 
 import butterknife.OnClick;
@@ -26,7 +27,7 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
     }
 
     @Optional
-    @OnClick({R.id.regist})
+    @OnClick({R.id.regist,R.id.tv_agree1})
     public void onClick(final View v){
         super.onClick(v);
         switch (v.getId()){
@@ -38,7 +39,7 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
                         public void onSuccess(RegistResBean o) {
                             LocalValue.save登录参数(getP().getU().getLoginReqBean());
                             getBaseUIAct().onBackPressed();
-                            FragManager2.getInstance().start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,new RoleFrag());
+                            FragManager2.getInstance().setAnim(true).setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,new RoleFrag());
                         }
                     });
                 }
@@ -64,6 +65,9 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
                         }
                     });
                 }
+                break;
+            case R.id.tv_agree1:
+                FragManager2.getInstance().start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,new AgreeFrag());
                 break;
         }
     }

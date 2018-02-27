@@ -278,7 +278,7 @@ public class NetDataOpe {
 
 
         public static void updatePhoto(Context context, UpdateHeadReqBean reqBean, NetI<UpdateHeadResBean> adapter) {
-            NetGet.getData(context,NetValue.获取地址("/user/updatePhoto"),reqBean,adapter);
+            NetGet.postData(context,NetValue.获取地址("/user/updatePhoto"),reqBean,adapter);
         }
 
 
@@ -373,6 +373,11 @@ public class NetDataOpe {
 
             public static void NamesGood(Context context, NamesReq reqBean, NetI<NamesRes> adapter) {
                 NetGet.getData(context,NetValue.获取地址("/product/productList"),reqBean,adapter);
+            }
+
+
+            public static void ProductList(Context context, NamesReq reqBean, NetI<NamesRes> adapter) {
+                NetGet.getData(context,NetValue.获取地址("/materiel/list"),reqBean,adapter);
             }
 
 

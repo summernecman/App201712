@@ -7,6 +7,7 @@ import android.view.View;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -31,7 +32,7 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
             public void onClick(final View v) {
                 switch (v.getId()){
                     case R.id.tv_sure:
-                        getP().getD().login(LocalValue.get登录参数(), new UINetAdapter<LoginResBean>(RoleFrag.this,true) {
+                        getP().getD().login(LocalValue.get登录参数(), new UINetAdapter<LoginResBean>(RoleFrag.this,false) {
                             @Override
                             public void onSuccess(LoginResBean o) {
                                 getP().getU().getUserTypeReqBean().setId(o.getUserId());
@@ -40,21 +41,14 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
                                 getP().getD().setUserType(getP().getU().getUserTypeReqBean(), new UINetAdapter<UserTypeResBean>(getContext()) {
                                     @Override
                                     public void onSuccess(UserTypeResBean o) {
-                                        LogUtil.E("1");
+                                        ToastUtil.getInstance().showShort(getContext(),"设置用户角色成功");
                                         if(getArguments().getBoolean(直接登录,false)){
-                                            LogUtil.E("2");
                                             LoginResBean resBean = LocalValue.get登录返回信息();
-                                            LogUtil.E("3");
                                             resBean.setUserType((R.id.tv_driver==vv.getId())?UserTypeReqBean.驾驶员 :UserTypeReqBean.非驾驶员);
-                                            LogUtil.E("4");
                                             LocalValue.save登录返回信息(resBean);
-                                            LogUtil.E("5");
                                             IntentUtil.startActivityWithFinish(getBaseUIAct(), MainAct.class,null);
-                                            LogUtil.E("6");
                                         }else{
-                                            LogUtil.E("7");
                                             getBaseUIAct().onBackPressed();
-                                            LogUtil.E("8");
                                         }
                                     }
                                 });

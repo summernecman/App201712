@@ -13,6 +13,8 @@
         >
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refresh"
+            app:srlEnableOverScrollBounce="false"
+            app:srlEnableAutoLoadmore="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.android.lib.view.LinearRecycleView

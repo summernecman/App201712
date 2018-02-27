@@ -59,8 +59,8 @@ public class IngOrderUIOpe extends BaseUIOpe {
                     doingBinding.tvCarno.setSelected(false);
                 }
                 doingBinding.tvPlan.setText(StringUtil.getStr(s.getResults().get(position).getPlanNumber())+"t");
-                doingBinding.tvStarttime.setText("开始时间："+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
-                doingBinding.tvEndtime.setText("结束时间：");
+                doingBinding.tvCarlisence.setText("开始时间："+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
+                doingBinding.tvNametel.setText("结束时间：");
                 if(NullUtil.isStrEmpty(s.getResults().get(position).getCarLicenseNo())){
                     doingBinding.tvCarno.setVisibility(View.GONE);
                 }else{

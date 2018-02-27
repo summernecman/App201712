@@ -66,7 +66,7 @@ public class NewOrderUIOpe extends BaseUIOpe<FragMainOrderNewBinding>{
 
     public boolean canGugeGo(NewsOrderReqBean newsOrderReqBean){
         if(NullUtil.isStrEmpty(newsOrderReqBean.getProductName())){
-            ToastUtil.getInstance().showShort(getActivity(),"请先输入物料");
+            ToastUtil.getInstance().showShort(getActivity(),"请先选择物料名称");
             return false;
         }
         return true;

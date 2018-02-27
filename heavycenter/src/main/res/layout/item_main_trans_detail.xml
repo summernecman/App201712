@@ -3,233 +3,293 @@
     <data>
         <variable
                 name="item_main_trans_detail"
-                type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes" />
+                type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes.DeliverRecordListBean" />
 
         <import type="com.android.lib.util.StringUtil"/>
     </data>
-    <android.support.constraint.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-    >
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="5dp">
 
         <android.support.constraint.Guideline
-                android:id="@+id/midline"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5"
-                android:layout_width="1dp"
-                android:layout_height="match_parent"/>
-        <TextView
-                android:id="@+id/lab_mao"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="毛"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
+            android:id="@+id/midline"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
         <TextView
-                android:layout_marginLeft="15dp"
-                app:layout_constraintTop_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/lab_mao"
-                android:id="@+id/tv_mao"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="160.6"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/color_hv_yelll"
+            android:id="@+id/lab_mao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_hv_cirlce_stroke_yell"
+            android:gravity="center"
+            android:text="毛"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
-                android:layout_marginLeft="15dp"
-                android:text="10:00"
-                app:layout_constraintLeft_toRightOf="@+id/tv_mao"
-                app:layout_constraintTop_toTopOf="parent"
-                android:id="@+id/tv_maotime"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"/>
-
-
-
-
-
-        <TextView
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/midline"
-                android:text="仓库"
-                android:id="@+id/lab_ck"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            android:textColor="@color/black"
+            android:id="@+id/tv_mao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text='@{item_main_trans_detail.gross+""}'
+            android:textSize="17sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_mao"
+            app:layout_constraintLeft_toRightOf="@+id/lab_mao"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
-                android:layout_marginLeft="15dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/lab_ck"
-                android:text="A-15"
-                android:id="@+id/tv_ck"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-
-
-        <TextView
-                android:layout_marginTop="10dp"
-                android:id="@+id/lab_pi"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lab_mao"
-                android:text="皮"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_mao"
+            android:id="@+id/tv_maotime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_mao"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
-                android:layout_marginLeft="15dp"
-                app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
-                app:layout_constraintLeft_toRightOf="@+id/lab_pi"
-                android:id="@+id/tv_pi"
-                android:text="160.6"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_mao"
+            android:textColor="@color/color_grey_600"
+            android:id="@+id/lab_ck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="仓库"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toRightOf="@+id/midline"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
-                android:layout_marginLeft="15dp"
-                android:text="10:00"
-                app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
-                app:layout_constraintLeft_toRightOf="@+id/tv_pi"
-                android:id="@+id/tv_pitime"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-
-
-
-
-        <TextView
-               app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
-                app:layout_constraintLeft_toRightOf="@+id/midline"
-                android:text="仓库"
-                android:id="@+id/lab_bz"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_mao"
+            android:id="@+id/tv_ck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="A-15"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toRightOf="@+id/lab_ck"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
-                android:layout_marginLeft="15dp"
-                app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
-                app:layout_constraintLeft_toRightOf="@+id/lab_bz"
-                android:text="A-15"
-                android:id="@+id/tv_bz"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
 
-        <TextView
-                android:layout_marginTop="10dp"
-                android:id="@+id/lab_kou"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lab_pi"
-                android:text="扣"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            android:textColor="@color/white"
+            android:background="@drawable/bg_hv_cirlce_solid_yell"
+            android:id="@+id/lab_pi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="皮"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@+id/lab_mao"
+            app:layout_constraintTop_toBottomOf="@id/lab_mao" />
 
 
         <TextView
-                android:layout_marginLeft="15dp"
-                app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
-                app:layout_constraintLeft_toRightOf="@+id/lab_kou"
-                android:id="@+id/tv_kou"
-                android:text="160.6"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_pi"
+            android:textColor="@color/black"
+            android:id="@+id/tv_pi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text='@{item_main_trans_detail.tare+""}'
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
+            app:layout_constraintLeft_toRightOf="@+id/lab_pi" />
 
 
         <TextView
-                android:layout_marginLeft="15dp"
-                android:text="10:00"
-                app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
-                app:layout_constraintLeft_toRightOf="@+id/tv_kou"
-                android:id="@+id/tv_kouime"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-
-
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_pi"
+            android:id="@+id/tv_pitime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
+            app:layout_constraintLeft_toRightOf="@+id/tv_pi" />
 
 
         <TextView
-                app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
-                app:layout_constraintLeft_toRightOf="@+id/midline"
-                android:text="操作人"
-                android:id="@+id/lab_czr"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_pi"
+            android:textColor="@color/color_grey_600"
+            android:id="@+id/lab_bz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="备注"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
+            app:layout_constraintLeft_toRightOf="@+id/midline" />
 
 
         <TextView
-                android:layout_marginLeft="15dp"
-                app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
-                app:layout_constraintLeft_toRightOf="@+id/lab_czr"
-                android:text="A-15"
-                android:id="@+id/tv_czr"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_pi"
+            android:id="@+id/tv_bz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="A-15"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
+            app:layout_constraintLeft_toRightOf="@+id/lab_bz" />
 
+        <TextView
+            android:textColor="@color/color_hv_yelll"
+            android:background="@drawable/bg_hv_cirlce_stroke_yell"
+            android:gravity="center"
+            android:id="@+id/lab_kou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="扣"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@+id/lab_mao"
+            app:layout_constraintTop_toBottomOf="@id/lab_pi" />
 
 
         <TextView
-                android:layout_marginTop="10dp"
-                android:id="@+id/lab_jin"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lab_kou"
-                android:text="净"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_kou"
+            android:textColor="@color/black"
+            android:id="@+id/tv_kou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text='@{item_main_trans_detail.deduct+""}'
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
+            app:layout_constraintLeft_toRightOf="@+id/lab_kou" />
 
 
         <TextView
-                android:layout_marginLeft="15dp"
-                app:layout_constraintBottom_toBottomOf="@+id/lab_jin"
-                app:layout_constraintLeft_toRightOf="@+id/lab_jin"
-                android:id="@+id/tv_jin"
-                android:text="160.6"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_kou"
+            android:id="@+id/tv_koutime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
+            app:layout_constraintLeft_toRightOf="@+id/tv_kou" />
 
 
         <TextView
-                android:layout_marginLeft="15dp"
-                android:text="10:00"
-                app:layout_constraintBottom_toBottomOf="@+id/lab_jin"
-                app:layout_constraintLeft_toRightOf="@+id/tv_jin"
-                android:id="@+id/tv_jinime"
-                android:textSize="17sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_kou"
+            android:textColor="@color/color_grey_600"
+            android:id="@+id/lab_czr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="操作人"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
+            app:layout_constraintLeft_toRightOf="@+id/midline" />
 
 
+        <TextView
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_kou"
+            android:id="@+id/tv_czr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="A-15"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
+            app:layout_constraintLeft_toRightOf="@+id/lab_czr" />
+
+
+        <TextView
+            android:textColor="@color/color_hv_yelll"
+            android:background="@drawable/bg_hv_cirlce_stroke_yell"
+            android:gravity="center"
+            android:id="@+id/lab_jin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="净"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@+id/lab_mao"
+            app:layout_constraintTop_toBottomOf="@id/lab_kou" />
+
+
+        <TextView
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_jin"
+            android:textColor="@color/black"
+            android:id="@+id/tv_jin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text='@{item_main_trans_detail.netWeight+""}'
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_jin"
+            app:layout_constraintLeft_toRightOf="@+id/lab_jin" />
+
+
+        <TextView
+            android:visibility="gone"
+            app:layout_constraintBaseline_toBaselineOf="@+id/lab_jin"
+            android:id="@+id/tv_jintime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="10:00"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lab_jin"
+            app:layout_constraintLeft_toRightOf="@+id/tv_jin" />
+
+
+        <com.android.lib.view.line.view.VerticalDashView
+            app:dashcolor = "@color/color_hv_yelll"
+            app:layout_constraintTop_toBottomOf="@+id/lab_mao"
+            app:layout_constraintBottom_toTopOf="@+id/lab_pi"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="30dp"
+            android:layout_width="1dp"
+            android:layout_height="0dp" />
+
+
+
+        <com.android.lib.view.line.view.VerticalDashView
+            app:dashcolor = "@color/color_hv_yelll"
+            app:layout_constraintTop_toBottomOf="@+id/lab_pi"
+            app:layout_constraintBottom_toTopOf="@+id/lab_kou"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="30dp"
+            android:layout_width="1dp"
+            android:layout_height="0dp" />
+
+
+        <com.android.lib.view.line.view.VerticalDashView
+            app:dashcolor = "@color/color_hv_yelll"
+            app:layout_constraintTop_toBottomOf="@+id/lab_kou"
+            app:layout_constraintBottom_toTopOf="@+id/lab_jin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="30dp"
+            android:layout_width="1dp"
+            android:layout_height="0dp" />
+
+        <View
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lab_jin"
+            android:background="@color/color_grey_500"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

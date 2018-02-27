@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="frag_main_order_new"
@@ -22,170 +22,168 @@
             style_common:iv_right2 = "@drawable/icon_hv_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            app:srlEnablePureScrollMode="true"
-            app:srlDragRate="0.2"
-            android:id="@+id/refresh"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-    <LinearLayout
+        <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_item_content"
-            android:paddingLeft="@dimen/dimen_item_content_left_padding">
-            <LinearLayout
-                android:gravity="center_vertical"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_item_content_h">
-
-                <TextView
-                    android:id="@+id/tv_left"
-                    android:layout_marginLeft="8dp"
-                    android:text="订单类型"
-                    android:textSize="15dp"
-                    android:textColor="@color/color_item_content_left_txt_color"
+                android:layout_height="wrap_content"
+                android:background="@color/color_item_content"
+                android:paddingLeft="@dimen/dimen_item_content_left_padding">
+                <LinearLayout
                     android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
-                <TextView
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="发货"
-                    android:singleLine="true"
-                    android:textSize="14dp"
-                    android:layout_marginLeft="15dp"
-                    android:id="@+id/tv_send"
-                    android:background="@drawable/bg_hv_sel_sharp10_while_yell"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_item_content_h">
 
-                <TextView
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="收货"
-                    android:singleLine="true"
-                    android:textSize="14dp"
-                    android:layout_marginLeft="15dp"
-                    android:id="@+id/tv_receipt"
-                    android:background="@drawable/bg_hv_sel_sharp10_while_yell"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tv_left"
+                        android:layout_marginLeft="8dp"
+                        android:text="订单类型"
+                        android:textSize="17dp"
+                        android:textColor="@color/hv_color_text_title"
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:textColor="@color/color_white_yell"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="发货"
+                        android:singleLine="true"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="15dp"
+                        android:id="@+id/tv_send"
+                        android:background="@drawable/bg_hv_sel_sharp10_while_yell"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textColor="@color/color_white_blue"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="收货"
+                        android:singleLine="true"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="15dp"
+                        android:id="@+id/tv_receipt"
+                        android:background="@drawable/bg_hv_sel_sharp10_blue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
 
-                <ImageView
-                    android:id="@+id/iv_right"
-                    android:layout_marginRight="@dimen/dimen_item_content_right_txt_right_padding"
-                    android:layout_width="@dimen/dimen_item_content_right_icon_size"
-                    android:layout_height="@dimen/dimen_item_content_right_icon_size" />
+                    <ImageView
+                        android:id="@+id/iv_right"
+                        android:layout_marginRight="@dimen/dimen_item_content_right_txt_right_padding"
+                        android:layout_width="@dimen/dimen_item_content_right_icon_size"
+                        android:layout_height="@dimen/dimen_item_content_right_icon_size" />
 
 
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="8dp"
+                    android:id="@+id/divide"
+                    android:background="@color/color_item_content_gap"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_item_content_gap_size"/>
             </LinearLayout>
 
-            <View
-                android:layout_marginLeft="8dp"
-                android:id="@+id/divide"
-                android:background="@color/color_item_content_gap"
+
+            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+                android:id="@+id/item_wuliname"
+                style_common:txt_left = "物料名称"
+                style_common:txt_two ="请选择"
+                style_common:txt_mid = "请输入"
+                style_common:iv_right = "@drawable/icon_arraw"
+                style_common:boo_edit = "false"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_item_content_gap_size"/>
+                android:layout_height="wrap_content"/>
+
+            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+                android:id="@+id/item_wuliguige"
+                style_common:txt_left = "物料规格"
+                style_common:txt_two ="请选择"
+                style_common:txt_mid = "请输入"
+                style_common:iv_right = "@drawable/icon_arraw"
+                style_common:boo_edit = "false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+                android:id="@+id/item_unit"
+                style_common:txt_left = "发货单位"
+                style_common:txt_two ="请选择"
+                style_common:txt_mid = "请输入"
+                style_common:iv_right = "@drawable/icon_arraw"
+                style_common:boo_edit = "false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+                android:id="@+id/item_addr"
+                style_common:txt_left = "送货地址"
+                style_common:txt_two ="请选择"
+                style_common:txt_mid = "请输入"
+                style_common:iv_right = "@drawable/icon_arraw"
+                style_common:boo_edit = "false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <RelativeLayout
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+                    android:id="@+id/item_plannum"
+                    style_common:inputType="3"
+                    style_common:txt_left = "计划数量"
+                    style_common:txt_mid = "请输入内容"
+                    style_common:iv_right = "@color/transparent"
+                    style_common:boo_edit = "true"
+                    style_common:txt_maxlenth="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textSize="17sp"
+                    android:textColor="@color/color_hv_yelll"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="t"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+
+            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+                android:id="@+id/item_starttime"
+                style_common:txt_left = "计划开始时间"
+                style_common:txt_two ="请选择"
+                style_common:txt_mid = "请输入"
+                style_common:iv_right = "@drawable/icon_arraw"
+                style_common:boo_edit = "false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+                android:id="@+id/item_rule"
+                style_common:txt_left = "备用签收规则"
+                style_common:txt_two ="请选择"
+                style_common:txt_mid = "请输入"
+                style_common:iv_right = "@drawable/icon_arraw"
+                style_common:boo_edit = "false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
 
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/item_wuliname"
-            style_common:txt_left = "物料名称"
-            style_common:txt_two ="请选择"
-            style_common:txt_mid = "请输入"
-            style_common:iv_right = "@drawable/icon_arraw"
-            style_common:boo_edit = "false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/item_wuliguige"
-            style_common:txt_left = "物料规格"
-            style_common:txt_two ="请选择"
-            style_common:txt_mid = "请输入"
-            style_common:iv_right = "@drawable/icon_arraw"
-            style_common:boo_edit = "false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/item_unit"
-            style_common:txt_left = "发货单位"
-            style_common:txt_two ="请选择"
-            style_common:txt_mid = "请输入"
-            style_common:iv_right = "@drawable/icon_arraw"
-            style_common:boo_edit = "false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/item_addr"
-            style_common:txt_left = "送货地址"
-            style_common:txt_two ="请选择"
-            style_common:txt_mid = "请输入"
-            style_common:iv_right = "@drawable/icon_arraw"
-            style_common:boo_edit = "false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-                android:id="@+id/item_plannum"
-                style_common:inputType="3"
-                style_common:txt_left = "计划数量"
-                style_common:txt_mid = "请输入内容"
-                style_common:iv_right = "@color/transparent"
-                style_common:boo_edit = "true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textSize="17sp"
-                android:textColor="@color/color_hv_yelll"
-                android:layout_marginRight="10dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:text="t"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-
-
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/item_starttime"
-            style_common:txt_left = "计划开始时间"
-            style_common:txt_two ="请选择"
-            style_common:txt_mid = "请输入"
-            style_common:iv_right = "@drawable/icon_arraw"
-            style_common:boo_edit = "false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:id="@+id/item_rule"
-            style_common:txt_left = "备用签收规则"
-            style_common:txt_two ="请选择"
-            style_common:txt_mid = "请输入"
-            style_common:iv_right = "@drawable/icon_arraw"
-            style_common:boo_edit = "false"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </layout>

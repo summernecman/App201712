@@ -27,10 +27,11 @@
                 android:layout_height="20dp" />
 
             <TextView
+                android:gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textColor="@color/color_grey_500"
-                android:text='@{item_mana_good_names.productName+" "+item_mana_good_names.specifications}'
+                android:text='@{item_mana_good_names.materielName}'
                 android:id="@+id/tv_com_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

@@ -9,11 +9,11 @@ import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.util.LogUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
-import com.siweisoft.heavycenter.databinding.FragManaCarBinding;
+import com.siweisoft.heavycenter.databinding.FragManaCarsBinding;
 
 import java.util.ArrayList;
 
-public class CarUIOpe extends AppUIOpe<FragManaCarBinding> {
+public class CarsUIOpe extends AppUIOpe<FragManaCarsBinding> {
 
 
 
@@ -25,6 +25,7 @@ public class CarUIOpe extends AppUIOpe<FragManaCarBinding> {
         bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
         bind.topview.setViewPager(bind.llCntent);
         bind.scrollmenu.setViewPager(bind.llCntent);
+        bind.llCntent.setScrollble(true);
         bind.llCntent.addOnPageChangeListener(new BaseOnPagerChangeListener(){
             @Override
             public void onPageSelected(int position) {

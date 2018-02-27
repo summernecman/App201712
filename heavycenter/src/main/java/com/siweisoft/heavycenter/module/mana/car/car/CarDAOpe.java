@@ -1,8 +1,8 @@
-package com.siweisoft.heavycenter.module.mana.car.my;
+package com.siweisoft.heavycenter.module.mana.car.car;
 
 //by summer on 2017-12-19.
 
-import android.content.Context;
+import android.view.View;
 
 import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.base.AppDAOpe;
@@ -15,9 +15,9 @@ import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarResBean;
 
 import java.util.ArrayList;
 
-public class MyDAOpe extends AppDAOpe {
+public class CarDAOpe extends AppDAOpe {
 
-
+    CarsReqBean carsReqBean = new CarsReqBean();
 
 
     public ArrayList<String> getData(){
@@ -28,14 +28,27 @@ public class MyDAOpe extends AppDAOpe {
         return data;
     }
 
-    public void Cars(String moudle,NetI<CarsResBean> adapter){
-        CarsReqBean carsReqBean = new CarsReqBean();
+
+    public void initCarReq(String moudle,Integer status){
         carsReqBean.setIsApp(1);
         carsReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         carsReqBean.setPageIndex(0);
         carsReqBean.setPageSize(1000);
+        carsReqBean.setStatus(status);
         carsReqBean.setWhat(moudle);
+    }
+
+    public void Cars(CarsReqBean carsReqBean,NetI<CarsResBean> adapter){
         NetDataOpe.Mana.Car.Cars(getActivity(),carsReqBean,adapter);
+    }
+
+    public Integer getReqStatus(int status){
+        switch (status){
+            case CarValue.选择车辆:
+                return CarValue.启用;
+            default:
+                return CarValue.全部;
+        }
     }
 
 
@@ -47,4 +60,8 @@ public class MyDAOpe extends AppDAOpe {
         NetDataOpe.Mana.Car.statusCar(getActivity(),reqBean,adapter);
     }
 
+
+    public CarsReqBean getCarsReqBean() {
+        return carsReqBean;
+    }
 }

@@ -19,7 +19,7 @@ public class NameUIOpe extends AppUIOpe<FragMyceNameBinding>{
 
 
 
-    public void initUI() {
+    public void initTxt() {
         bind.itemName.setMidEtTxt(StringUtil.getStr(LocalValue.get登录返回信息().getTrueName()));
     }
 

@@ -17,6 +17,8 @@ public class CarsReqBean extends BaseReqBean {
 
 
 
+
+
     private int isApp;
 
     private int companyId;
@@ -27,8 +29,18 @@ public class CarsReqBean extends BaseReqBean {
 
     private String what;
 
+    private Integer status;
+
 
     public CarsReqBean() {
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public int getIsApp() {

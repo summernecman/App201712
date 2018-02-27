@@ -63,7 +63,7 @@
         <LinearLayout
             app:layout_constraintLeft_toLeftOf="@+id/circlebar"
             app:layout_constraintRight_toRightOf="@+id/circlebar"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_endtime"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_nametel"
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -173,7 +173,7 @@
         <TextView
            app:layout_constraintLeft_toLeftOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@+id/tv_duimian"
-            android:id="@+id/tv_starttime"
+            android:id="@+id/tv_carlisence"
             android:layout_marginTop="7dp"
             android:gravity="center_vertical"
             android:textColor="@color/color_hv_txt_dark"
@@ -184,8 +184,8 @@
 
         <TextView
             app:layout_constraintLeft_toLeftOf="@+id/tv_type"
-            app:layout_constraintTop_toBottomOf="@+id/tv_starttime"
-            android:id="@+id/tv_endtime"
+            app:layout_constraintTop_toBottomOf="@+id/tv_carlisence"
+            android:id="@+id/tv_nametel"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="3dp"
             android:gravity="center_vertical"

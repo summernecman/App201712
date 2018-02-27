@@ -24,13 +24,18 @@ import com.siweisoft.heavycenter.module.main.trans.TransFrag;
 import com.siweisoft.heavycenter.module.main.weigts.WeigtsFrag;
 import com.siweisoft.heavycenter.module.main.weigts.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.myce.MyceFrag;
+import com.siweisoft.heavycenter.module.myce.unit.nobind.NoBindFrag;
 import com.siweisoft.heavycenter.module.scan.ScanDAOpe;
 
 import java.util.ArrayList;
 
 public class MainDAOpe extends AppDAOpe {
 
+    private ArrayList<BottomMenuBean> bottomdata = new ArrayList<>();
+
     private ArrayList<BottomMenuBean> menudata = new ArrayList<>();
+
+    private ArrayList<BottomMenuBean> nodata = new ArrayList<>();
 
     private PermissionUtil permissionUtil;
 
@@ -45,6 +50,7 @@ public class MainDAOpe extends AppDAOpe {
     public void initDA() {
         super.initDA();
         initBottomMenuViewData();
+        initBottomMenuViewNoData();
         permissionUtil= new PermissionUtil();
     }
 
@@ -74,6 +80,35 @@ public class MainDAOpe extends AppDAOpe {
         RelativeLayout v4 = new RelativeLayout(context);v4.setId(MainValue.消息ID);
         menudata.add(new BottomMenuBean(MainValue.消息, R.drawable.drawable_main_bottom_msg,new MsgsFrag(),v4,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         return menudata;
+    }
+
+
+    protected ArrayList<BottomMenuBean> initBottomMenuViewNoData(){
+        nodata.clear();
+        if(OjectUtil.equals(LocalValue.get登录返回信息().getUserType(),UserTypeReqBean.驾驶员)){
+            RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainValue.地磅ID);
+            nodata.add(new BottomMenuBean(MainValue.地磅, R.drawable.drawable_main_bottom_weight,new NoBindFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }else{
+            RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainValue.地磅ID);
+            nodata.add(new BottomMenuBean(MainValue.地磅, R.drawable.drawable_main_bottom_weight,new NoBindFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }
+
+        RelativeLayout v1 = new RelativeLayout(context);v1.setId(MainValue.运输单ID);
+        nodata.add(new BottomMenuBean(MainValue.运输单, R.drawable.drawable_main_bottom_trans,new NoBindFrag(),v1,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+
+        if(OjectUtil.equals(LocalValue.get登录返回信息().getUserType(),UserTypeReqBean.驾驶员)){
+            RelativeLayout v2 = new RelativeLayout(context);v2.setId(MainValue.地图ID);
+            nodata.add(new BottomMenuBean(MainValue.地图, R.drawable.drawable_main_bottom_order,new NoBindFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }else{
+            RelativeLayout v2 = new RelativeLayout(context);v2.setId(MainValue.订单ID);
+            nodata.add(new BottomMenuBean(MainValue.订单, R.drawable.drawable_main_bottom_order,new NoBindFrag(),v2,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+
+            RelativeLayout v3 = new RelativeLayout(context);v3.setId(MainValue.仓库ID);
+            nodata.add(new BottomMenuBean(MainValue.仓库, R.drawable.drawable_main_bottom_store,new NoBindFrag(),v3,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        }
+        RelativeLayout v4 = new RelativeLayout(context);v4.setId(MainValue.消息ID);
+        nodata.add(new BottomMenuBean(MainValue.消息, R.drawable.drawable_main_bottom_msg,new MsgsFrag(),v4,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+        return nodata;
     }
 
 
@@ -107,8 +142,11 @@ public class MainDAOpe extends AppDAOpe {
     }
 
 
-    public ArrayList<BottomMenuBean> getMenudata() {
-        return menudata;
+    public ArrayList<BottomMenuBean> getBottomdata() {
+        if(is绑定了单位()){
+            return menudata;
+        }
+        return nodata;
     }
 
     public PermissionUtil getPermissionUtil() {
@@ -128,6 +166,8 @@ public class MainDAOpe extends AppDAOpe {
         }
         return false;
     }
+
+
 
 
     public ScanDAOpe getScanDAOpe() {

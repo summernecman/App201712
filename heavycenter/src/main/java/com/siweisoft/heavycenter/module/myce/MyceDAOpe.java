@@ -35,10 +35,10 @@ public class MyceDAOpe extends AppDAOpe {
         NetDataOpe.User.uploadPhoto(getActivity(),keyValues,adapter);
     }
 
-    public void updateHead(NetI<UpdateHeadResBean> adapter){
+    public void updateHead(String headfile,NetI<UpdateHeadResBean> adapter){
         UpdateHeadReqBean updateHeadReqBean = new UpdateHeadReqBean();
         updateHeadReqBean.setId(LocalValue.get登录返回信息().getUserId());
-        updateHeadReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        updateHeadReqBean.setMyFile(headfile);
         NetDataOpe.User.updatePhoto(getActivity(),updateHeadReqBean,adapter);
     }
 

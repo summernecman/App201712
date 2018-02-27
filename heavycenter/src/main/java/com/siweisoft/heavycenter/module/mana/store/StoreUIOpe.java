@@ -81,10 +81,12 @@ public class StoreUIOpe extends AppUIOpe<FragManaStoreBinding> {
                     case StoreDetail.STATUS_OFF:
                         menu.setText(StoreDetail.STATUS_ON_CN);
                         menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
+                        content.setSelected(true);
                         break;
                     default:
                         menu.setText(StoreDetail.STATUS_OFF_CN);
                         menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
+                        content.setSelected(false);
                         break;
                 }
 

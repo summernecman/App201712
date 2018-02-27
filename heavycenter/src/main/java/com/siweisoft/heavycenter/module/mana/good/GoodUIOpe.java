@@ -33,7 +33,7 @@ public class GoodUIOpe extends AppUIOpe<FragManaGoodBinding> {
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    public void LoadListData(GoodListRes o, final ViewListener listener) {
+    public void LoadListData(final GoodListRes o, final ViewListener listener) {
         if(o==null || o.getResults()==null || o.getResults().size()==0){
             getFrag().showTips("暂无数据");
             return;
@@ -59,6 +59,7 @@ public class GoodUIOpe extends AppUIOpe<FragManaGoodBinding> {
                 menu.setTag(R.id.data1,binding.sml);
                 menu.setTag(R.id.type,0);
 
+                content.setSelected(true);
 
                 binding.sml.setSwipeEnable(false);
 

@@ -18,9 +18,9 @@ public class NameFrag extends AppFrag<NameUIOpe,NameDAOpe> {
 
 
     @Override
-    public void initNow() {
-        super.initNow();
-
+    public void initdelay() {
+        super.initdelay();
+        getP().getU().initTxt();
     }
 
     @OnClick({R.id.ftv_right2})

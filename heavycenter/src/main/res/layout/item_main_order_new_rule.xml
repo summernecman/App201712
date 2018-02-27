@@ -26,9 +26,10 @@
                 android:layout_height="20dp" />
 
             <TextView
+                android:gravity="center_vertical"
                 android:text="@{item_main_order_new_rule.value}"
                 android:layout_marginLeft="10dp"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:textColor="@color/color_grey_500"
                 android:id="@+id/tv_com_name"
                 android:layout_width="wrap_content"

@@ -105,8 +105,8 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
                     doingBinding.tvCarno.setSelected(false);
                 }
                 doingBinding.tvPlan.setText(StringUtil.getStr(res.getPlanNumber())+"t");
-                doingBinding.tvStarttime.setText("开始时间："+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(res.getPlanTime()))));
-                doingBinding.tvEndtime.setText("结束时间：");
+                doingBinding.tvCarlisence.setText("开始时间："+StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(res.getPlanTime()))));
+                doingBinding.tvNametel.setText("结束时间：");
                 if(NullUtil.isStrEmpty(res.getCarLicenseNo())){
                     doingBinding.tvCarno.setVisibility(View.GONE);
                 }else{

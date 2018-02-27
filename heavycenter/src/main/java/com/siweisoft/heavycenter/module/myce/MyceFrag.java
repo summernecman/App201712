@@ -3,24 +3,16 @@ package com.siweisoft.heavycenter.module.myce;
 //by summer on 2017-12-14.
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
-import android.transition.ChangeBounds;
-import android.transition.Slide;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AnimationSet;
 
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.StringUtil;
+import com.android.lib.util.ToastUtil;
 import com.android.lib.util.UriUtils;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
@@ -32,14 +24,13 @@ import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
-import com.siweisoft.heavycenter.module.mana.car.CarFrag;
+import com.siweisoft.heavycenter.module.mana.car.CarsFrag;
 import com.siweisoft.heavycenter.module.mana.good.GoodFrag;
 import com.siweisoft.heavycenter.module.mana.store.StoreFrag;
 import com.siweisoft.heavycenter.module.mana.user.list.UserFrag;
 import com.siweisoft.heavycenter.module.myce.car.bind.BindFrag;
 import com.siweisoft.heavycenter.module.myce.name.NameFrag;
 import com.siweisoft.heavycenter.module.myce.sett.SetFrag;
-import com.siweisoft.heavycenter.module.myce.test.HeadTestFrag;
 import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
 import com.siweisoft.heavycenter.module.myce.base.info.InfoFrag;
 import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
@@ -48,7 +39,6 @@ import java.io.File;
 import java.io.IOException;
 
 import butterknife.OnClick;
-import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
 import id.zelory.compressor.Compressor;
 
 public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
@@ -79,7 +69,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
         });
     }
 
-    @OnClick({R.id.item_car,R.id.item_good,R.id.item_store,R.id.item_user,R.id.item_unit,R.id.iv_nameedit,R.id.ftv_right,R.id.iv_head,R.id.item_setting,R.id.iv_car,R.id.iv_dirver,R.id.item_driver})
+    @OnClick({R.id.item_car,R.id.tv_name,R.id.item_good,R.id.item_store,R.id.item_user,R.id.item_unit,R.id.iv_nameedit,R.id.ftv_right,R.id.iv_head,R.id.item_setting,R.id.iv_car,R.id.iv_dirver,R.id.item_driver})
     public void onClick(View v){
 
         //((MainAct)activity).getP().getU().unSelectBottomMenu();
@@ -91,7 +81,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
 
                 break;
             case R.id.item_car:
-                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new CarFrag());
+                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new CarsFrag());
 
                 break;
             case R.id.item_good:
@@ -121,7 +111,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                         break;
                 }
                 break;
-            case R.id.iv_nameedit:
+            case R.id.tv_name:
                 FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new NameFrag());
                 break;
             case R.id.ftv_right:
@@ -211,7 +201,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
         }
         final String finalType = type;
-        getP().getD().uploadPhoto(file,type, new UINetAdapter<UpdateHeadResBean>(getBaseUIAct()) {
+        getP().getD().uploadPhoto(file,type, new UINetAdapter<UpdateHeadResBean>(this,true) {
             @Override
             public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                 stopLoading();
@@ -224,16 +214,10 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                         }
                         switch (finalType){
                             case UpdateHeadReqBean.头像:
-                                final String finalS = s;
-                                getP().getD().updateHead(new UINetAdapter<UpdateHeadResBean>(MyceFrag.this,true) {
-                                    @Override
-                                    public void onResult(boolean success, String msg, UpdateHeadResBean o) {
-                                        super.onResult(success, msg, o);
-                                        loginResBean.setUserPhoto(finalS);
-                                        LocalValue.save登录返回信息(loginResBean);
-                                        getP().getU().initUI();
-                                    }
-                                });
+                                loginResBean.setUserPhoto(s);
+                                LocalValue.save登录返回信息(loginResBean);
+                                getP().getU().initUI();
+                                ToastUtil.getInstance().showShort(getActivity(),"更换头像成功");
                                 break;
                             case UpdateHeadReqBean.车辆照片:
                                 loginResBean.setVehicleLicense(s);

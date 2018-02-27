@@ -1,19 +1,16 @@
-package com.siweisoft.heavycenter.module.mana.car.my;
+package com.siweisoft.heavycenter.module.mana.car.car;
 
 //by summer on 2017-12-19.
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
-import com.android.lib.util.LogUtil;
-import com.daimajia.swipe.SwipeLayout;
+import com.android.lib.constant.ValueConstant;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
@@ -21,18 +18,33 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
-import com.siweisoft.heavycenter.databinding.FragManaCarMyBinding;
+import com.siweisoft.heavycenter.databinding.FragManaCarBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaCarMyBinding;
 import com.tubb.smrv.SwipeHorizontalMenuLayout;
 import com.tubb.smrv.SwipeMenuLayout;
 
-public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
+public class CarUIOpe extends AppUIOpe<FragManaCarBinding>{
 
 
     CarsResBean cars;
 
+    private int status = CarValue.选择车辆;
+
     public void initUI() {
         initRecycle();
+    }
+
+
+    public void initUI(int status){
+        this.status = status;
+        switch (status){
+            case CarValue.管理车辆:
+                bind.cartitle.setVisibility(View.GONE);
+                break;
+            default:
+                bind.cartitle.setVisibility(View.VISIBLE);
+                break;
+        }
     }
 
     private void initRecycle(){
@@ -80,17 +92,25 @@ public class MyUIOpe extends AppUIOpe<FragManaCarMyBinding>{
                             menu.setText(CarsResBean.CarInfoRes.STATUS_OFF_CN);
                             content.setSelected(false);
                         }
-                        binding.sml.setSwipeListener(new com.siweisoft.heavycenter.module.view.swipe.MySwipeListener(){
-                            @Override
-                            public void endMenuOpened(SwipeMenuLayout swipeMenuLayout) {
-                                for(int i=0;i<bind.recycle.getChildCount();i++){
-                                    SwipeHorizontalMenuLayout swipeLayout= (SwipeHorizontalMenuLayout) bind.recycle.getChildAt(i);
-                                    if(swipeLayout!=binding.sml){
-                                        swipeLayout.smoothCloseMenu(400);
+                        switch (status){
+                            case CarValue.管理车辆:
+                                binding.sml.setSwipeListener(new com.siweisoft.heavycenter.module.view.swipe.MySwipeListener(){
+                                    @Override
+                                    public void endMenuOpened(SwipeMenuLayout swipeMenuLayout) {
+                                        for(int i=0;i<bind.recycle.getChildCount();i++){
+                                            SwipeHorizontalMenuLayout swipeLayout= (SwipeHorizontalMenuLayout) bind.recycle.getChildAt(i);
+                                            if(swipeLayout!=binding.sml){
+                                                swipeLayout.smoothCloseMenu(400);
+                                            }
+                                        }
                                     }
-                                }
-                            }
-                        });
+                                });
+                                break;
+                            default:
+                                binding.sml.setSwipeEnable(false);
+                                break;
+                        }
+
                         break;
                         default:
                             content.setSelected(false);

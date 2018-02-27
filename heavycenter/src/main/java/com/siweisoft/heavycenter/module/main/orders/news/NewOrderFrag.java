@@ -34,8 +34,8 @@ import butterknife.OnClick;
 
 public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
 
-    
-    
+
+
 
     @Override
     public void initNow() {
@@ -49,22 +49,23 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
         Bundle bundle = new Bundle();
         switch (v.getId()){
             case R.id.item_addr:
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new AddrFrag());
+                bundle.putInt(ValueConstant.FARG_REQ,NewOrderValue.送货地址);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new AddrFrag(),bundle);
                 break;
             case R.id.item_wuliname:
-                bundle.putInt(ValueConstant.FARG_REQ,1);
+                bundle.putInt(ValueConstant.FARG_REQ,NewOrderValue.物料名称);
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NamesFrag(),bundle);
                 break;
             case R.id.item_wuliguige:
                 if(getP().getU().canGugeGo(getP().getD().getNewsOrderReqBean())){
-                    bundle.putInt(ValueConstant.FARG_REQ,2);
+                    bundle.putInt(ValueConstant.FARG_REQ,NewOrderValue.物料规格);
                     bundle.putInt(ValueConstant.DATA_POSITION2,getP().getD().getNewsOrderReqBean().getProductId());
                     FragManager2.getInstance().start(getBaseUIAct(), get容器(),new SpecsFrag(),bundle);
                 }
                 break;
             case R.id.item_unit:
                 bundle.putInt(ValueConstant.DATA_DATA, ListDAOpe.SEL_UNIT);
-                bundle.putInt(ValueConstant.FARG_REQ,3);
+                bundle.putInt(ValueConstant.FARG_REQ,NewOrderValue.收货单位);
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(),new ListFrag(),bundle);
                 break;
             case R.id.item_starttime:
@@ -79,11 +80,11 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                     }
                 });
                 TimePickerDialog timePickerDialog = builder.setType(Type.MONTH_DAY_HOUR_MIN).build();
-                timePickerDialog.show(getFragmentManager(),"timepick");
+                timePickerDialog.show(getFragmentManager(),"计划开始时间");
 
                 break;
             case R.id.item_rule:
-                bundle.putInt(ValueConstant.FARG_REQ,4);
+                bundle.putInt(ValueConstant.FARG_REQ,NewOrderValue.备用签收规则);
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(),new RuleFrag(),bundle);
                 break;
             case R.id.tv_receipt:
@@ -115,26 +116,21 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
     @Override
     public void onResult(int res, Bundle bundle) {
         super.onResult(res, bundle);
+        if(bundle==null||bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
+            return;
+        }
         switch (res){
-            case 1:
-                if(bundle==null||bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
-                    return;
-                }
+            case NewOrderValue.物料名称:
                 NamesRes.ResultsBean data = (NamesRes.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA2);
-                getP().getD().getNewsOrderReqBean().setProductName(data.getProductName());
-                getP().getD().getNewsOrderReqBean().setProductId(data.getProductId());
+                getP().getD().getNewsOrderReqBean().setProductName(data.getMaterielName());
+                getP().getD().getNewsOrderReqBean().setProductId(data.getId());
+                getP().getD().getNewsOrderReqBean().setSpecification(null);
                 break;
-            case 2:
-                if(bundle==null ||bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
-                    return;
-                }
+            case NewOrderValue.物料规格:
                 SpecsRes.ResultsBean data1 = (SpecsRes.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA2);
                 getP().getD().getNewsOrderReqBean().setSpecification(data1.getSpecifications());
                 break;
-            case 3:
-                if(bundle==null||bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
-                    return;
-                }
+            case NewOrderValue.收货单位:
                 UnitInfo unitInfo = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
                 if(NewsOrderReqBean.发货.equals(getP().getD().getNewsOrderReqBean().getOrderType())){
                     getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(LocalValue.get登录返回信息().getCompanyId());
@@ -147,13 +143,14 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 getP().getD().getNewsOrderReqBean().setTempCompany(unitInfo.getId());
                 getP().getD().getNewsOrderReqBean().setAddress(unitInfo.getCompanyAddress());
                 break;
-            case 4:
-                if(bundle==null||bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
-                    return;
-                }
+            case NewOrderValue.备用签收规则:
                 Rule rule = (Rule) bundle.getSerializable(ValueConstant.DATA_DATA2);
                 getP().getD().getNewsOrderReqBean().setSignRule(rule.getKey());
                 getP().getD().getNewsOrderReqBean().setSignRuleValue(rule.getValue());
+                break;
+            case NewOrderValue.送货地址:
+                UnitInfo unitInfo1 = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
+                getP().getD().getNewsOrderReqBean().setAddress(unitInfo1.getCompanyAddress());
                 break;
         }
         getP().getU().init(getP().getD().getNewsOrderReqBean());
