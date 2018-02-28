@@ -149,6 +149,15 @@ public class MainDAOpe extends AppDAOpe {
         return nodata;
     }
 
+
+    public ArrayList<BottomMenuBean> initBottomdata() {
+        if(is绑定了单位()){
+            return initBottomMenuViewData();
+        }
+        return initBottomMenuViewNoData();
+    }
+
+
     public PermissionUtil getPermissionUtil() {
         return permissionUtil;
     }

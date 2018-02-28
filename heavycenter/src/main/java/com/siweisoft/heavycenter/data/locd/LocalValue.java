@@ -47,6 +47,9 @@ public class LocalValue {
             "云南","浙江","",
     };
 
+
+
+
     public static boolean is自动登录(){
         return  SPUtil.getInstance().getBoolean(ValueConstant.AUTO_LOGIN);
     }

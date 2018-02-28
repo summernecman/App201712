@@ -20,11 +20,10 @@ import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
 import com.siweisoft.heavycenter.data.netd.unit.update.UpdateUnitRes;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.myce.unit.addr.AddrFrag;
 import com.siweisoft.heavycenter.module.myce.unit.area.prov.ProvFrag;
-import com.siweisoft.heavycenter.module.myce.unit.list.ListDAOpe;
-import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
+import com.siweisoft.heavycenter.module.myce.unit.list.UnitListDAOpe;
+import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
 
 import butterknife.OnClick;
 
@@ -93,9 +92,9 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> implements OnFinishListe
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(),new AddrFrag(),bundle);
                 break;
             case R.id.upunit:
-                bundle.putInt(ValueConstant.DATA_DATA, ListDAOpe.UP_UNIT);
+                bundle.putInt(ValueConstant.DATA_DATA, UnitListDAOpe.UP_UNIT);
                 bundle.putInt(ValueConstant.FARG_REQ,3);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new ListFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new UnitListFrag(),bundle);
                 break;
             case R.id.area:
                 bundle.putInt(ValueConstant.FARG_REQ,4);

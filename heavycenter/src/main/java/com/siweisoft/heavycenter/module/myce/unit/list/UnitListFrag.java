@@ -22,14 +22,13 @@ import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
 
 import java.io.Serializable;
 
 import butterknife.OnClick;
 
-public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListener,OnRefreshListener,OnFinishListener {
+public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implements ViewListener,OnRefreshListener,OnFinishListener {
 
     @Override
     public void initdelay() {
@@ -56,8 +55,8 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                     bundle.putInt(ValueConstant.FARG_REQ,2);
                 }
                 if(LocalValue.get登录返回信息().getBindCompanyState()==LoginResBean.BIND_UNIT_STATE_BINDED){
-                    if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.UP_UNIT
-                            ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.SEL_UNIT){
+                    if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.UP_UNIT
+                            ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.SEL_UNIT){
                         bundle.putInt(ValueConstant.FARG_REQ,3);
                     }
                 }
@@ -67,7 +66,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                 getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(this){
                     @Override
                     public void onSuccess(SearchResBean o) {
-                        getP().getU().LoadListData(o,ListFrag.this);
+                        getP().getU().LoadListData(o,UnitListFrag.this);
                     }
                 });
                 break;
@@ -78,8 +77,8 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
     public void onInterupt(int type, final View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.UP_UNIT
-                        ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.SEL_UNIT){
+                if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.UP_UNIT
+                        ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.SEL_UNIT){
                     getArguments().putSerializable(ValueConstant.DATA_DATA2, (Serializable) v.getTag(R.id.data));
                     getBaseUIAct().onBackPressed();
                     return;
@@ -96,7 +95,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                         case R.id.tv_n:
                                             break;
                                         case R.id.tv_y:
-                                            getP().getD().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(ListFrag.this,true) {
+                                            getP().getD().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
                                                 @Override
                                                 public void onResult(boolean success, String msg, BindResBean o) {
                                                     super.onResult(success, msg, o);
@@ -119,7 +118,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                 }
                             });
                         }else{
-                            getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(ListFrag.this,true) {
+                            getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
                                 @Override
                                 public void onResult(boolean success, String msg, BindResBean o) {
                                     super.onResult(success, msg, o);
@@ -155,7 +154,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                 super.onResult(success, msg, o);
                 //o = new Test().getListResBean();
                 getP().getD().setNetUnits(o);
-                getP().getU().LoadListData(getP().getD().getSelUnits(""),ListFrag.this);
+                getP().getU().LoadListData(getP().getD().getSelUnits(""),UnitListFrag.this);
                 getP().getU().finishRefresh();
             }
         });
@@ -191,14 +190,14 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
 
     @Override
     public void onFinish(Object o) {
-        getP().getU().LoadListData(getP().getD().getSelUnits(o.toString()),ListFrag.this);
+        getP().getU().LoadListData(getP().getD().getSelUnits(o.toString()),UnitListFrag.this);
     }
 
 
     public void selUnit(final UnitInfo unitInfo){
         getArguments().putSerializable(ValueConstant.DATA_DATA2,unitInfo);
-        if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.UP_UNIT
-                ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== ListDAOpe.SEL_UNIT){
+        if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.UP_UNIT
+                ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.SEL_UNIT){
             getBaseUIAct().onBackPressed();
         }else{
             getP().getD().getUnitInfo(unitInfo.getCompanyId(), new UINetAdapter<UnitInfo>(getBaseUIAct()) {
@@ -213,7 +212,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                                     case R.id.tv_n:
                                         break;
                                     case R.id.tv_y:
-                                        getP().getD().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(ListFrag.this,true) {
+                                        getP().getD().bindUnit(unitInfo.getCompanyId(), true,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
                                             @Override
                                             public void onResult(boolean success, String msg, BindResBean o) {
                                                 super.onResult(success, msg, o);
@@ -239,7 +238,7 @@ public class ListFrag extends AppFrag<ListUIOpe,ListDAOpe> implements ViewListen
                             }
                         });
                     }else{
-                        getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(ListFrag.this,true) {
+                        getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
                             @Override
                             public void onResult(boolean success, String msg, BindResBean o) {
                                 super.onResult(success, msg, o);

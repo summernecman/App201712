@@ -21,7 +21,7 @@
                 android:id="@+id/tv_left_content"
                 android:layout_marginLeft="8dp"
                 android:text="文字内容"
-                android:textSize="@dimen/hv_dimen_text_title_a"
+                android:textSize="17dp"
                 android:textColor="@color/hv_color_text_title"
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"

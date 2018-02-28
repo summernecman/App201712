@@ -21,7 +21,6 @@ public class MsgsUIOpe extends BaseUIOpe<FragMainMsgsBinding>{
         bind.llCntent.setOffscreenPageLimit(pages.size());
         bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
         bind.topview.setViewPager(bind.llCntent);
-        bind.scrollmenu.setViewPager(bind.llCntent);
         final BaseOnPagerChangeListener baseOnPagerChangeListener = new BaseOnPagerChangeListener(){
             @Override
             public void onPageSelected(int position) {

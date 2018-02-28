@@ -41,13 +41,16 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
 
     public void 初始化界面(){
-        getP().getU().setBottomMenuViewData(getP().getD().getBottomdata());
+        getP().getU().setBottomMenuViewData(getP().getD().initBottomdata());
         getP().getU().initDrawerMenu(getP().getD().getMyceFrag());
-        go判断是否绑定单位处理();
+        getP().getU().initPages(getP().getD().getBottomdata(),this);
+        if(getP().getD().getMyceFrag().getP().getU()!=null){
+            getP().getD().getMyceFrag().init();
+        }
     }
 
     public void go判断是否绑定单位处理(){
-        getP().getU().initPages(getP().getD().getBottomdata(),this);
+        getP().getU().initPages(getP().getD().initBottomdata(),this);
         if(getP().getD().getMyceFrag().getP().getU()!=null){
             getP().getD().getMyceFrag().init();
         }

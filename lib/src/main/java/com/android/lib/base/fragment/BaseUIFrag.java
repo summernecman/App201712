@@ -115,7 +115,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                 public void run() {
                     onFristVisibleDelayInit();
                 }
-            }, 200);
+            }, 400);
             isFiistVisibleinit = true;
         }
     }

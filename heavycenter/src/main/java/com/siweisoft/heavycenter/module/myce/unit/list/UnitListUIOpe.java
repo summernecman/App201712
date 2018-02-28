@@ -33,7 +33,7 @@ import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
 import java.util.List;
 
-public class ListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
+public class UnitListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
 
     private SearchReqBean searchReqBean = new SearchReqBean();
 

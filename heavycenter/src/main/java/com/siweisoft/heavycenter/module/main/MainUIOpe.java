@@ -56,7 +56,6 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
             views.add(pages.get(i).getContainerView());
         }
 
-
         bind.content.setAdapter(new HomePageAdapter(context, views, new OnFinishListener() {
 
             @Override
@@ -112,7 +111,7 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
         if(bind.content.getAdapter().getCount()<=item){
             return;
         }
-        bind.content.setCurrentItem(item);
+        bind.content.setCurrentItem(item,true);
     }
 
     public void switchDrawer(){
@@ -120,6 +119,14 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
             bind.drawerLayout.closeDrawer(Gravity.LEFT);
         }else{
             bind.drawerLayout.openDrawer(Gravity.LEFT);
+        }
+    }
+
+    public void switchDrawerNoanim(){
+        if(bind.drawerLayout.isDrawerOpen(Gravity.LEFT)){
+            bind.drawerLayout.closeDrawer(Gravity.LEFT,false);
+        }else{
+            bind.drawerLayout.openDrawer(Gravity.LEFT,false);
         }
     }
 

@@ -23,7 +23,7 @@ import com.siweisoft.heavycenter.module.main.map.MapFrag;
 import com.siweisoft.heavycenter.module.main.orders.news.NewOrderFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
-import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
+import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
 
 public class UserScanDAOpe extends BaseDAOpe {
 
@@ -71,7 +71,7 @@ public class UserScanDAOpe extends BaseDAOpe {
             return;
         }
 
-        if(appFrag.getClass().getName().equals(ListFrag.class.getName())){
+        if(appFrag.getClass().getName().equals(UnitListFrag.class.getName())){
             ToastUtil.getInstance().showShort(getActivity(),"从单位列表中 选择一个单位");
             UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
             unitInfoReqBean.setId(scaned.getCompanyId());
@@ -79,8 +79,8 @@ public class UserScanDAOpe extends BaseDAOpe {
                 @Override
                 public void onSuccess(UnitInfo o) {
                     super.onSuccess(o);
-                    ListFrag listFrag = (ListFrag) appFrag;
-                    listFrag.selUnit(o);
+                    UnitListFrag unitListFrag = (UnitListFrag) appFrag;
+                    unitListFrag.selUnit(o);
                 }
             });
             return;

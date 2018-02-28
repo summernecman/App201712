@@ -10,9 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/white"
         >
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refresh"
+            app:srlDragRate= "0.2"
+            app:srlEnableLoadmoreWhenContentNotFull="false"
             app:srlEnableOverScrollBounce="false"
             app:srlEnableAutoLoadmore="false"
             android:layout_width="match_parent"

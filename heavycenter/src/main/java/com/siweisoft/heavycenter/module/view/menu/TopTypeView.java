@@ -27,6 +27,9 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
 
     private ViewPager viewPager;
 
+    ScrollMenu scrollMenu;
+
+
     private ArrayList<TextView> textViews = new ArrayList<>();
 
     public TopTypeView(Context context, AttributeSet attrs) {
@@ -43,7 +46,7 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
         if(true){
             LayoutInflater.from(context).inflate(R.layout.item_main_msg_top,this,true);
             LinearLayout viewGroup = (LinearLayout) findViewById(R.id.ll_root);
-
+            scrollMenu = findViewById(R.id.scrollmenu);
             for(int i=0;i<strs.length;i++){
                 TextView t= (TextView) LayoutInflater.from(context).inflate(R.layout.item_main_msg_top_txt,null);
                 t.setText(strs[i]);
@@ -79,10 +82,10 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
                 for(int i=0;i<textViews.size();i++){
                     if(position==i){
                         textViews.get(i).setTextColor(getResources().getColorStateList(R.color.color_hv_yelll));
-                        textViews.get(i).setTextSize(TypedValue.COMPLEX_UNIT_SP,19);
+                        //textViews.get(i).setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
                     }else{
                         textViews.get(i).setTextColor(getResources().getColorStateList(R.color.white));
-                        textViews.get(i).setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
+                       // textViews.get(i).setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
                     }
                 }
             }
@@ -101,6 +104,8 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
                 }
             });
         }
+        scrollMenu.setViewPager(viewPager);
+
     }
 
     public void setTxt(int index,String str){

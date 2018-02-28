@@ -25,8 +25,8 @@ import com.siweisoft.heavycenter.module.main.orders.news.rule.RuleFrag;
 import com.siweisoft.heavycenter.module.mana.good.lists.NamesFrag;
 import com.siweisoft.heavycenter.module.mana.good.specs.SpecsFrag;
 import com.siweisoft.heavycenter.module.myce.unit.addr.AddrFrag;
-import com.siweisoft.heavycenter.module.myce.unit.list.ListDAOpe;
-import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
+import com.siweisoft.heavycenter.module.myce.unit.list.UnitListDAOpe;
+import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
 
 import java.util.Date;
 
@@ -64,9 +64,9 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 }
                 break;
             case R.id.item_unit:
-                bundle.putInt(ValueConstant.DATA_DATA, ListDAOpe.SEL_UNIT);
+                bundle.putInt(ValueConstant.DATA_DATA, UnitListDAOpe.SEL_UNIT);
                 bundle.putInt(ValueConstant.FARG_REQ,NewOrderValue.收货单位);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new ListFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new UnitListFrag(),bundle);
                 break;
             case R.id.item_starttime:
                 TimePickerDialog.Builder builder = new TimePickerDialog.Builder();

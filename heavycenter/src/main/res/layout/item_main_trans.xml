@@ -172,7 +172,7 @@
                         android:layout_toLeftOf="@+id/tv_sendnum"
                         android:gravity="right|center_vertical"
                         android:layout_weight="1"
-                        android:id="@+id/tv_sendnum"
+                        android:id="@+id/tv_send_time"
                         android:singleLine="true"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/white"

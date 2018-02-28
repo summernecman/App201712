@@ -29,13 +29,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            app:layout_constraintTop_toTopOf="@+id/circlebar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="@+id/circlebar"
             app:layout_constraintLeft_toLeftOf="@+id/circlebar"
             app:layout_constraintRight_toRightOf="@+id/circlebar"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            app:layout_constraintTop_toTopOf="@+id/circlebar">
 
 
             <TextView
@@ -57,40 +57,41 @@
                 android:textSize="15sp" />
 
 
-
         </LinearLayout>
 
         <LinearLayout
-            app:layout_constraintLeft_toLeftOf="@+id/circlebar"
-            app:layout_constraintRight_toRightOf="@+id/circlebar"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_nametel"
-            android:gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:singleLine="true"
-                android:maxEms="7"
-                android:id="@+id/tv_current"
-                android:textSize="15sp"
-                android:textColor="@color/color_yell_blue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:text="/"
-                android:textSize="15sp"
-                android:textColor="@color/color_hv_yelll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:singleLine="true"
-                android:maxEms="7"
-                android:id="@+id/tv_plan"
-                android:textSize="15sp"
-                android:textColor="@color/color_hv_yelll"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_nametel"
+            app:layout_constraintLeft_toLeftOf="@+id/circlebar"
+            app:layout_constraintRight_toRightOf="@+id/circlebar">
 
+            <TextView
+                android:id="@+id/tv_current"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxEms="7"
+                android:singleLine="true"
+                android:textColor="@color/color_yell_blue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/"
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_plan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxEms="7"
+                android:singleLine="true"
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="15sp" />
+        </LinearLayout>
 
 
         <android.support.constraint.Guideline
@@ -102,97 +103,100 @@
 
 
         <TextView
-            android:includeFontPadding="false"
-            app:layout_constraintLeft_toRightOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/tv_goodname"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-            android:text="混凝土"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <TextView
+            android:layout_height="wrap_content"
             android:includeFontPadding="false"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_goodname"
-            app:layout_constraintLeft_toRightOf="@+id/tv_goodname"
-            android:id="@+id/tv_spes"
             android:singleLine="true"
-            android:layout_marginLeft="15dp"
+            android:text="混凝土"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-            android:text="C30"
+            app:layout_constraintLeft_toRightOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_spes"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:text="C30"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_goodname"
+            app:layout_constraintLeft_toRightOf="@+id/tv_goodname" />
 
 
         <TextView
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_alignParentRight="true"
             android:id="@+id/tv_carno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:background="@drawable/bg_hv_sel_yel_blue_stroke"
             android:singleLine="true"
+            android:text="沪A2345"
             android:textColor="@color/color_yell_blue"
             android:textSize="12sp"
-            android:text="沪A2345"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
-            android:padding="1dp"
-            android:includeFontPadding="false"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_goodname"
-            app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
             android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@drawable/bg_hv_sharp2_blue_solid"
+            android:includeFontPadding="false"
+            android:padding="1dp"
             android:singleLine="true"
+            android:text="发往"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:text="发往"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
+            app:layout_constraintTop_toBottomOf="@+id/tv_goodname" />
+
         <TextView
+            android:id="@+id/tv_duimian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:includeFontPadding="false"
-            app:layout_constraintLeft_toRightOf="@+id/tv_type"
-            app:layout_constraintTop_toBottomOf="@+id/tv_goodname"
-            android:id="@+id/tv_duimian"
             android:singleLine="true"
-            android:layout_marginLeft="10dp"
+            android:text="上海绿地"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            android:text="上海绿地"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintLeft_toRightOf="@+id/tv_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_goodname" />
 
 
         <TextView
-           app:layout_constraintLeft_toLeftOf="@+id/tv_type"
-            app:layout_constraintTop_toBottomOf="@+id/tv_duimian"
             android:id="@+id/tv_carlisence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:gravity="center_vertical"
+            android:text="开始时间：2017/12/09 10:00"
             android:textColor="@color/color_hv_txt_dark"
             android:textSize="@dimen/dimen_recylce_item_date_txtsize"
-            android:text="开始时间：2017/12/09 10:00"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintLeft_toLeftOf="@+id/tv_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_duimian" />
 
         <TextView
-            app:layout_constraintLeft_toLeftOf="@+id/tv_type"
-            app:layout_constraintTop_toBottomOf="@+id/tv_carlisence"
             android:id="@+id/tv_nametel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="3dp"
             android:gravity="center_vertical"
             android:textColor="@color/color_hv_txt_dark"
             android:textSize="@dimen/dimen_recylce_item_date_txtsize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintLeft_toLeftOf="@+id/tv_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_carlisence" />
+
+
 
     </android.support.constraint.ConstraintLayout>
 </layout>

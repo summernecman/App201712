@@ -110,6 +110,13 @@ public class LoginResBean extends BaseBean {
     private String driverNoPhoto;
     private String driverNo;
 
+    public boolean is驾驶员(){
+        if(getUserType()==UserTypeReqBean.驾驶员){
+            return true;
+        }
+        return false;
+    }
+
     public int getUserId() {
         return userId;
     }

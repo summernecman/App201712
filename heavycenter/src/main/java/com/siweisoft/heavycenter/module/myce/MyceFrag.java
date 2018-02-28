@@ -3,18 +3,20 @@ package com.siweisoft.heavycenter.module.myce;
 //by summer on 2017-12-14.
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.view.ViewCompat;
 import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
+import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.UriUtils;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.github.florent37.viewanimator.ViewAnimator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -31,7 +33,7 @@ import com.siweisoft.heavycenter.module.mana.user.list.UserFrag;
 import com.siweisoft.heavycenter.module.myce.car.bind.BindFrag;
 import com.siweisoft.heavycenter.module.myce.name.NameFrag;
 import com.siweisoft.heavycenter.module.myce.sett.SetFrag;
-import com.siweisoft.heavycenter.module.myce.unit.list.ListFrag;
+import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
 import com.siweisoft.heavycenter.module.myce.base.info.InfoFrag;
 import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
 
@@ -39,6 +41,7 @@ import java.io.File;
 import java.io.IOException;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 import id.zelory.compressor.Compressor;
 
 public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
@@ -48,10 +51,13 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     @Override
     public void initNow() {
         super.initNow();
+        getP().getU().hideOrShowManageFunction(((MainAct)(getActivity())).getP().getD().is绑定了单位());
+    }
 
-
-
-        init();
+    @Override
+    public void initdelay() {
+        super.initdelay();
+        getP().getU().initUI();
     }
 
     public void init(){
@@ -69,6 +75,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
         });
     }
 
+    @Optional
     @OnClick({R.id.item_car,R.id.tv_name,R.id.item_good,R.id.item_store,R.id.item_user,R.id.item_unit,R.id.iv_nameedit,R.id.ftv_right,R.id.iv_head,R.id.item_setting,R.id.iv_car,R.id.iv_dirver,R.id.item_driver})
     public void onClick(View v){
 
@@ -107,7 +114,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
-                        FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new ListFrag());
+                        FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new UnitListFrag());
                         break;
                 }
                 break;
@@ -115,16 +122,16 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new NameFrag());
                 break;
             case R.id.ftv_right:
-                InfoFrag infoFrag = new InfoFrag();
+                final InfoFrag infoFrag = new InfoFrag();
                 infoFrag.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        FragManager2.getInstance().setFinishAnim(R.anim.scale_in,R.anim.scale_out).finish(getBaseUIAct(),MainValue.主界面,false);
-                        ((MainAct)getBaseUIAct()).getP().getU().switchDrawer(true);
+                        infoFrag.getView().findViewById(R.id.rl_scan_info).setBackgroundColor(Color.TRANSPARENT);
+                        FragManager2.getInstance().setFinishAnim(R.anim.anim_in3,R.anim.anim_out3).finish(getBaseUIAct(),MainValue.主界面,false);
                     }
                 });
-
-                FragManager2.getInstance().setShareName(ViewCompat.getTransitionName(v)).setShareElement(v).setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,infoFrag);
+                FragManager2.getInstance().setAnim(false).start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,infoFrag);
+                ViewAnimator.animate(infoFrag.getView().findViewById(R.id.ll_a)).pivotX(ScreenUtil.w/2).pivotY(ScreenUtil.h/2).zoomIn().duration(300).start();
                 break;
             case R.id.iv_head:
 
@@ -172,7 +179,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
         }
         getBaseUIAct().setMoudle(MainValue.主界面);
-         ((MainAct)getActivity()).getP().getU().switchDrawer();
+        ((MainAct)getActivity()).getP().getU().switchDrawerNoanim();
     }
 
     @Override

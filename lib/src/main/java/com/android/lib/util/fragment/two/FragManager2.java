@@ -160,7 +160,7 @@ public class FragManager2  {
 
     public int getAnim1() {
         if(anim1==0){
-            anim1 =R.anim.anim_push_right_in;
+            anim1 =R.anim.anim_push_right_in_helf;
         }
         return anim1;
     }
@@ -174,14 +174,14 @@ public class FragManager2  {
 
     public int getAnim3() {
         if(anim3==0){
-            anim3 =R.anim.anim_push_right_in;
+            anim3 =R.anim.anim_push_right_in_helf;
         }
         return anim3;
     }
 
     public int getAnim4() {
         if(anim4==0){
-            anim4 =R.anim.anim_push_left_out;
+            anim4 =R.anim.anim_push_left_out_litte;
         }
         return anim4;
     }

@@ -7,81 +7,35 @@
             type="String" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:orientation="vertical">
+        android:background="@color/white">
         <com.android.lib.view.title.TitleView
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintTop_toTopOf="parent"
             android:id="@+id/title"
             style_common:txt_mid ="绑定单位"
             style_common:iv_right ="@drawable/icon_hv_scan"
             style_common:iv_left ="@drawable/icon_hv_person"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            app:srlEnablePureScrollMode="true"
-            app:srlDragRate="0.2"
-            android:id="@+id/refresh"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_centerInParent="true"
-                android:gravity="center_horizontal|bottom"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="0dp">
-                <ImageView
-                    android:layout_marginBottom="10dp"
-                    android:src="@drawable/icon_hv_myce_unit_nobind"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp" />
-
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:text="请绑定单位"
-                    android:textSize="15sp"
-                    android:textColor="@color/color_grey_500"
-                    android:singleLine="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
 
-            </LinearLayout>
+        <TextView
+            android:id="@+id/tv_bindtip"
+            style_common:layout_constraintTop_toBottomOf="@+id/title"
+           style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="50dp"
+            android:textSize="15sp"
+            android:textColor="@color/color_grey_500"
+            android:singleLine="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-            <LinearLayout
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp">
-
-                <TextView
-                    android:id="@+id/bind"
-                    android:text="立刻绑定"
-                    android:textSize="22sp"
-                    android:textColor="@color/color_yell_white"
-                    android:gravity="center"
-                    android:background="@drawable/bg_hv_press_sharp20_yell_while"
-                    android:layout_marginTop="40dp"
-                    android:paddingLeft="40dp"
-                    android:paddingRight="40dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>

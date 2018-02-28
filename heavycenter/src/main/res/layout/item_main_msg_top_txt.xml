@@ -12,7 +12,6 @@
                 android:id="@+id/a"
                 android:gravity="center"
                 android:text="全部"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="35dp" />
 </layout>

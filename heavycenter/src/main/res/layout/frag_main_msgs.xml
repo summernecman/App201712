@@ -9,11 +9,19 @@
             type="String" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:elevation="2dp"
+        android:background="@color/color_base"
+        style_common:layout_constraintTop_toTopOf="parent"
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        android:orientation="vertical"
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <com.android.lib.view.title.TitleView
             android:id="@+id/title"
             style_common:iv_left ="@drawable/icon_hv_person"
@@ -22,9 +30,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
         <com.siweisoft.heavycenter.module.view.menu.TopTypeView
             android:id="@+id/topview"
@@ -32,35 +37,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+    </LinearLayout>
 
-
-            <LinearLayout
-                android:layout_below="@+id/topview"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
         <android.support.v4.view.ViewPager
+            style_common:layout_constraintRight_toRightOf="parent"
+            style_common:layout_constraintBottom_toBottomOf="parent"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            style_common:layout_constraintTop_toBottomOf="@+id/top"
             android:orientation="vertical"
             android:id="@+id/ll_cntent"
             android:layout_centerInParent="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
 
 
-            </LinearLayout>
 
-            <com.siweisoft.heavycenter.module.view.menu.ScrollMenu
-                android:id="@+id/scrollmenu"
-                android:layout_marginTop="-1.5dp"
-                android:layout_below="@id/topview"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"/>
 
-            <ImageView
-                android:layout_below="@id/topview"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/actionbar_shadow_up" />
-        </RelativeLayout>
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>

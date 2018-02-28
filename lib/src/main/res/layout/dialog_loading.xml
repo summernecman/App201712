@@ -16,7 +16,7 @@
         android:id="@+id/av"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:indicatorColor="@color/color_blue_A700"
+        app:indicatorColor="@color/color_base"
         app:indicatorName="BallPulseIndicator" />
 </RelativeLayout>
 </LinearLayout>

@@ -12,6 +12,7 @@ import android.view.View;
 import com.android.lib.network.news.NetAdapter;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
+import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.HCApp;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;

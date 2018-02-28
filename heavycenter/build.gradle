@@ -12,7 +12,7 @@ android {
             storePassword 'summer'
         }
     }
-    compileSdkVersion 27
+    compileSdkVersion 26
     buildToolsVersion '27.0.2'
     useLibrary 'org.apache.http.legacy'
     defaultConfig {

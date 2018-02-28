@@ -20,7 +20,7 @@ import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
 
-public class ListDAOpe extends AppDAOpe {
+public class UnitListDAOpe extends AppDAOpe {
 
 
     public static final int BIND_UNIT = 0;

@@ -74,6 +74,7 @@ public class LoadUtil {
         dialog.setContentView(R.layout.dialog_loading);
         AVLoadingIndicatorView imageView;
         imageView = (AVLoadingIndicatorView) dialog.findViewById(R.id.av);
+        imageView.setIndicatorColor(activity.getResources().getColor(R.color.color_base));
 //        imageView.setIndicator("LineScalePulseOutRapidIndicator");
         imageView.show();
         dialog.setCanceledOnTouchOutside(false);
