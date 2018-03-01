@@ -20,7 +20,9 @@
     layout="@layout/item_myce_head"/>
 
        <RelativeLayout
-           android:clickable="true"
+               android:focusable="false"
+               android:focusableInTouchMode="false"
+           android:clickable="false"
            android:id="@+id/rl_myce_container"
            android:layout_width="match_parent"
            android:layout_height="match_parent"/>

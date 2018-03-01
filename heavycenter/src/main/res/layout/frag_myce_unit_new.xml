@@ -39,7 +39,7 @@
             style_common:txt_maxlenth="30"
             android:id="@+id/item_unitname"
             style_common:txt_left = "单位名称"
-            style_common:txt_mid = "请输入公司名称"
+            style_common:txt_hint = "请输入公司名称"
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -47,16 +47,15 @@
             android:id="@+id/item_nunitshortname"
             style_common:txt_maxlenth="4"
             style_common:txt_left = "单位简称"
-            style_common:txt_mid = "请输入"
+            style_common:txt_hint = "请输入"
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/upunit"
-            style_common:txt_two ="请选择（可不选）"
             style_common:txt_left = "上级单位"
-            style_common:txt_mid = "请输入"
+            style_common:txt_hint = "请选择（可不选）"
             style_common:boo_edit = "false"
             style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
@@ -65,8 +64,7 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/unitaddr"
             style_common:txt_left = "单位地址"
-            style_common:txt_mid = "请输入"
-            style_common:txt_two ="请选择"
+            style_common:txt_hint = "请选择"
             style_common:boo_edit = "false"
             style_common:iv_right = "@drawable/icon_arraw"
             android:layout_width="match_parent"
@@ -75,8 +73,7 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/area"
             style_common:txt_left = "送货区域"
-            style_common:txt_two ="请选择"
-            style_common:txt_mid = "请输入"
+            style_common:txt_hint = "请选择"
             style_common:iv_right = "@drawable/icon_arraw"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
@@ -85,7 +82,7 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/unitcontact"
             style_common:txt_left = "联系人    "
-            style_common:txt_mid = "请输入"
+            style_common:txt_hint = "请输入"
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -94,7 +91,7 @@
             android:id="@+id/unitphone"
             style_common:inputType="0"
             style_common:txt_left = "联系电话"
-            style_common:txt_mid = "请输入"
+            style_common:txt_hint = "请输入"
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

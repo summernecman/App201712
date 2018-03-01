@@ -20,27 +20,17 @@
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent" />
-        <EditText
-                android:singleLine="true"
-                android:textSize="17dp"
-                android:layout_marginLeft="15dp"
-                android:id="@+id/et_mid"
-                android:background="@null"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"/>
 
-        <TextView
-                android:singleLine="true"
-                android:gravity="center_vertical"
-                android:textColor="@color/color_grey_500"
-                android:id="@+id/tv_mid"
-                android:textSize="17dp"
+        <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/txtcontainer"
                 android:layout_marginLeft="15dp"
-                android:background="@null"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
+
+        </LinearLayout>
+
 
 
         <ImageView

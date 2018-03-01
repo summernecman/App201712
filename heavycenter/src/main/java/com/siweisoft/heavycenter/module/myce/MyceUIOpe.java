@@ -133,7 +133,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                         break;
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
                         fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
-                        fragMyceGeneralBinding.itemUnit.getRightTV().setVisibility(View.GONE);
+                        fragMyceGeneralBinding.itemUnit.getRight2().setVisibility(View.GONE);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
                         fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));

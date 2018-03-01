@@ -58,6 +58,6 @@ public class WeigtUIOpe extends AppUIOpe<FragMainWeigtBinding> {
         bind.tvPz.setText(StringUtil.getStr(m.getPz()));
         bind.tvKc.setText(StringUtil.getStr(m.getKc()));
         bind.tvJz.setText(StringUtil.getStr(m.getJz()));
-        bind.weight.anim();
+        //bind.weight.anim();
     }
 }

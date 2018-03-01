@@ -100,8 +100,7 @@
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_wuliname"
                 style_common:txt_left = "物料名称"
-                style_common:txt_two =""
-                style_common:txt_mid = "请输入"
+                style_common:txt_hint ="请选择"
                 style_common:iv_right = "@drawable/icon_arraw"
                 style_common:boo_edit = "false"
                 android:layout_width="match_parent"
@@ -110,8 +109,7 @@
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_wuliguige"
                 style_common:txt_left = "物料规格"
-                style_common:txt_two =""
-                style_common:txt_mid = "请输入"
+                style_common:txt_hint ="请选择"
                 style_common:iv_right = "@drawable/icon_arraw"
                 style_common:boo_edit = "false"
                 android:layout_width="match_parent"
@@ -120,8 +118,7 @@
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_unit"
                 style_common:txt_left = "发货单位"
-                style_common:txt_two =""
-                style_common:txt_mid = "请输入"
+                style_common:txt_hint ="请选择"
                 style_common:iv_right = "@drawable/icon_arraw"
                 style_common:boo_edit = "false"
                 android:layout_width="match_parent"
@@ -129,14 +126,14 @@
 
 
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-                android:id="@+id/item_addr"
-                style_common:txt_left = "送货地址"
-                style_common:txt_two =""
-                style_common:txt_mid = "请输入"
-                style_common:iv_right = "@drawable/icon_arraw"
-                style_common:boo_edit = "false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    android:id="@+id/item_addr"
+                    style_common:txt_left="送货地址"
+                    style_common:txt_hint="请选择"
+                    style_common:iv_right="@drawable/icon_arraw"
+                    style_common:boo_edit="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"/>
 
 
             <RelativeLayout
@@ -147,7 +144,6 @@
                     android:id="@+id/item_plannum"
                     style_common:inputType="3"
                     style_common:txt_left = "计划数量"
-                    style_common:txt_mid = "请输入内容"
                     style_common:iv_right = "@color/transparent"
                     style_common:boo_edit = "true"
                     style_common:txt_maxlenth="10"
@@ -166,20 +162,19 @@
 
 
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-                android:id="@+id/item_starttime"
-                style_common:txt_left = "计划开始时间"
-                style_common:txt_two =""
-                style_common:txt_mid = "请输入"
-                style_common:iv_right = "@drawable/icon_arraw"
-                style_common:boo_edit = "false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    android:id="@+id/item_starttime"
+                    style_common:txt_left="计划开始时间"
+                    style_common:txt_hint="请选择"
+                    style_common:iv_right="@drawable/icon_arraw"
+                    style_common:boo_edit="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"/>
 
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_rule"
                 style_common:txt_left = "备用签收规则"
-                style_common:txt_two =""
-                style_common:txt_mid = "请输入"
+                style_common:txt_hint ="请选择"
                 style_common:iv_right = "@drawable/icon_arraw"
                 style_common:boo_edit = "false"
                 android:layout_width="match_parent"
