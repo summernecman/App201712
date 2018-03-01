@@ -109,5 +109,19 @@ public class ItemView extends RelativeLayout{
     public TextView getMidTV() {
         return midTV;
     }
+
+    public void setRightTxt(int o){
+        if(o==0){
+            getRight2().setVisibility(View.GONE);
+        }else{
+            getRightTV().setVisibility(View.VISIBLE);
+            getRightTV().setText(StringUtil.getStr(o));
+        }
+
+    }
+
+    public View getRight2() {
+        return right2;
+    }
 }
 

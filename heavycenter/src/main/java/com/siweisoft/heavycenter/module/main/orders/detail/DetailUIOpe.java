@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
@@ -43,7 +44,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
 
     public void initUI() {
         initRecycle();
-
+        bind.title.getMidTV().setText(getFrag().getArguments().getString(ValueConstant.DATA_TYPE,"车辆列表"));
     }
 
     public void initRecycle(){

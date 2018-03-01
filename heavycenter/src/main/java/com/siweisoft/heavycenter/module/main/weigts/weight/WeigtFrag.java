@@ -12,14 +12,18 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 
+import java.text.DecimalFormat;
+
 
 public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
 
+
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
         getP().getU().init(getP().getD().getWeightMsg());
     }
+
 
     public void refresh(){
         if(getP()!=null&&getP().getU()!=null){
@@ -28,20 +32,20 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
     }
 
 
-    @OnClick({R.id.tv_weight,R.id.ll_mz,R.id.ll_pz,R.id.ll_kc})
+    @OnClick({R.id.tv_weight,R.id.tv_mz,R.id.tv_pz,R.id.tv_kc})
     public void onClick(final View v) {
         String title = "";
         switch (v.getId()){
             case R.id.tv_weight:
               title ="校验";
                 break;
-            case R.id.ll_mz:
+            case R.id.tv_mz:
                 title ="毛重校验";
                 break;
-            case R.id.ll_pz:
+            case R.id.tv_pz:
                 title ="皮重校验";
                 break;
-            case R.id.ll_kc:
+            case R.id.tv_kc:
                 title ="扣除校验";
                 break;
         }
@@ -54,10 +58,11 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
                         double d  = (double) vv.getTag(R.id.data);
                         switch (v.getId()){
                             case R.id.tv_weight:
-                                getP().getU().bind.tvWeight.setText(StringUtil.getStr(d));
+                                DecimalFormat df = new DecimalFormat("#.#");
+                                getP().getU().bind.tvWeight.setText(StringUtil.getStr(Double.parseDouble(df.format(d))));
                                 getP().getD().getWeightMsg().getMessage().setWeigh(d);
                                 break;
-                            case R.id.ll_kc:
+                            case R.id.tv_kc:
                                 getP().getD().getWeightMsg().getMessage().setKc(d);
                                 break;
                         }

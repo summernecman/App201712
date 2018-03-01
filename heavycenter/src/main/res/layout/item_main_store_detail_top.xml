@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"/>
 
         <LinearLayout
-            android:visibility="gone"
+            android:padding="0dp"
+            android:visibility="visible"
             android:gravity="center_vertical"
             android:id="@+id/ll_min"
             android:background="@drawable/icon_hv_main_store_lt"
@@ -30,6 +31,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
+                android:text="12"
+                android:background="@color/red"
+                android:includeFontPadding="false"
                     android:singleLine="true"
                 android:id="@+id/tv_minwuliao"
                 android:textSize="17sp"
@@ -38,6 +42,9 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:text="f"
+                android:background="@color/red"
+                android:includeFontPadding="false"
                     android:singleLine="true"
                 android:id="@+id/tv_minstore"
                 android:textColor="@color/color_grey_500"

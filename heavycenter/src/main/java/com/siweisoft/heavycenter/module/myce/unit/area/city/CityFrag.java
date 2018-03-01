@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.myce.unit.area.city;
 
 //by summer on 2017-12-19.
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
@@ -9,6 +10,8 @@ import com.android.lib.constant.ValueConstant;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.other.city.CityResBean;
+
+import java.io.Serializable;
 
 import butterknife.OnClick;
 
@@ -19,13 +22,24 @@ public class CityFrag extends AppFrag<CityUIOpe,CityDAOpe> implements ViewListen
 
     public static final String 选择多个城市 = "选择多个城市";
 
+    public static CityFrag getInstance(String title,String state,CityResBean.ProvinceListBean provinceListBean,int proindex){
+
+        CityFrag cityFrag = new CityFrag();
+        cityFrag.setArguments(new Bundle());
+        cityFrag.getArguments().putString(ValueConstant.DATA_TYPE,title);
+        cityFrag.getArguments().putString(ValueConstant.DATA_DATA2,state);
+        cityFrag.getArguments().putSerializable(ValueConstant.DATA_DATA,provinceListBean);
+        cityFrag.getArguments().putInt(ValueConstant.DATA_POSITION2,proindex);
+        cityFrag.getP().getD().setState(state);
+        cityFrag.getP().getD().setCitys(provinceListBean);
+        cityFrag.getP().getD().setProindex(proindex);
+        return  cityFrag;
+    }
+
 
     @Override
-    public void initNow() {
-        super.initNow();
-        getP().getD().setState(getArguments().getString(ValueConstant.DATA_DATA2));
-        getP().getD().setCitys((CityResBean.ProvinceListBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
-        getP().getD().setProindex(getArguments().getInt(ValueConstant.DATA_POSITION2));
+    public void initdelay() {
+        super.initdelay();
         getP().getU().initRecycle();
         getP().getU().LoadListData(getP().getD().getCitys().getCityList(),this);
     }

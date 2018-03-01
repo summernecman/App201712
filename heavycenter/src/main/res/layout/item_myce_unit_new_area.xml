@@ -33,15 +33,16 @@
 
         <com.siweisoft.heavycenter.module.view.image.TypeImage
             android:id="@+id/iv_state"
-            android:layout_width="15dp"
-            android:layout_height="15dp" />
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
 
         <TextView
+            android:id="@+id/tv_name"
             android:singleLine="true"
             android:layout_weight="1"
             android:textSize="17sp"
             android:textColor="@color/black"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:text="@{item_myce_unit_new_area.value}"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />

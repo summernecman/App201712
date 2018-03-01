@@ -2,8 +2,6 @@ package com.siweisoft.heavycenter.module.myce.unit.news;
 
 //by summer on 2017-12-19.
 
-import android.content.Context;
-import android.graphics.Color;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +22,9 @@ import com.siweisoft.heavycenter.data.netd.unit.news.NewReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.update.UpdateUnitReq;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitNewBinding;
-import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
-public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
+public class NewUnitUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
 
     NewReqBean newReqBean = new NewReqBean();
 
@@ -94,17 +91,17 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
 
     public void initUI(String type){
         switch (type){
-            case NewFrag.修改单位信息:
+            case NewUnitFrag.修改单位信息:
                 bind.title.getMidTV().setText("单位信息");
                 break;
-            case NewFrag.展示单位信息:
+            case NewUnitFrag.展示单位信息:
                 bind.upunit.setEnabled(false);
                 bind.unitaddr.setEnabled(false);
                 bind.area.setEnabled(false);
                 bind.title.getMidTV().setText("单位信息");
                 bind.title.getRightIV2().setImageResource(R.drawable.icon_hv_quit);
                 break;
-            case NewFrag.其他人查看单位信息:
+            case NewUnitFrag.其他人查看单位信息:
                 bind.itemUnitname.getMidET().setEnabled(false);
                 bind.itemNunitshortname.getMidET().setEnabled(false);
                 bind.unitcontact.getMidET().setEnabled(false);
@@ -115,8 +112,10 @@ public class NewUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
                 bind.title.getMidTV().setText("单位信息");
                 bind.title.getRightIV2().setEnabled(false);
                 bind.title.getRightIV2().setVisibility(View.GONE);
-            case NewFrag.新建单位:
+            case NewUnitFrag.新建单位:
                 bind.title.getMidTV().setText("新建单位");
+                bind.unitphone.setMidEtTxt(LocalValue.get登录返回信息().getTel());
+                bind.unitcontact.setMidEtTxt(LocalValue.get登录返回信息().getTrueName());
                 break;
 
         }

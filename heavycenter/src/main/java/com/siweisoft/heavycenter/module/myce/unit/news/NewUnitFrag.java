@@ -27,7 +27,7 @@ import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
 
 import butterknife.OnClick;
 
-public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> implements OnFinishListener{
+public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements OnFinishListener{
 
     public static final String 展示单位信息 = "展示单位信息";
 
@@ -110,7 +110,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> implements OnFinishListe
                                     case R.id.close:
                                         break;
                                     case R.id.sure:
-                                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(NewFrag.this,true) {
+                                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(NewUnitFrag.this,UINetAdapter.加载,true) {
                                             @Override
                                             public void onSuccess(UnBindResBean o) {
                                                 getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
@@ -135,7 +135,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> implements OnFinishListe
                         break;
                     case 新建单位:
                         if(getP().getU().canGo()){
-                            getP().getD().createUnit(getP().getU().getNewReqBean(getP().getD().getUnit()), new UINetAdapter<NewResBean>(this,true) {
+                            getP().getD().createUnit(getP().getU().getNewReqBean(getP().getD().getUnit()), new UINetAdapter<NewResBean>(this,UINetAdapter.加载,true) {
                                 @Override
                                 public void onSuccess(NewResBean o) {
                                     getArguments().putBoolean(ValueConstant.DATA_RES,true);
@@ -146,7 +146,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> implements OnFinishListe
                         break;
                     case 修改单位信息:
                         if(getP().getU().canGo()){
-                            getP().getD().updateUnit(getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(this,true) {
+                            getP().getD().updateUnit(getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(this,UINetAdapter.加载,true) {
                                 @Override
                                 public void onSuccess(UpdateUnitRes o) {
                                     getInfoAndInit(new OnFinishListener() {
@@ -169,10 +169,10 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> implements OnFinishListe
         super.onResult(res, bundle);
         switch (res){
             case 2:
-                if(bundle==null || bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
+                if(bundle==null || bundle.getSerializable(ValueConstant.DATA_DATA)==null){
                     return;
                 }
-                UnitInfo unitInfo = (UnitInfo) bundle.getSerializable( ValueConstant.DATA_DATA2);
+                UnitInfo unitInfo = (UnitInfo) bundle.getSerializable( ValueConstant.DATA_DATA);
                 getP().getD().getUnit().setCompanyLng(unitInfo.getCompanyLng());
                 getP().getD().getUnit().setCompanyLat(unitInfo.getCompanyLat());
                 getP().getD().getUnit().setCompanyAddress(unitInfo.getCompanyAddress());

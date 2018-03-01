@@ -152,7 +152,7 @@ public  class NetAdapter<A> implements NetI<A> {
         if(success){
             onSuccess(o);
         }else{
-            ToastUtil.getInstance().showShort(context,msg);
+            onFail(o==null,msg);
         }
     }
 

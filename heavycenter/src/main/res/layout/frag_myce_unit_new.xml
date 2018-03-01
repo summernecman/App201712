@@ -25,7 +25,7 @@
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
             app:srlEnablePureScrollMode="true"
-            app:srlDragRate="0.2"
+            app:srlDragRate="0.1"
             android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            style_common:txt_maxlenth="30"
             android:id="@+id/item_unitname"
             style_common:txt_left = "单位名称"
             style_common:txt_mid = "请输入公司名称"

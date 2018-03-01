@@ -22,7 +22,7 @@ import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
+import com.siweisoft.heavycenter.module.myce.unit.news.NewUnitFrag;
 
 import java.io.Serializable;
 
@@ -50,7 +50,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                bundle.putString(ValueConstant.DATA_TYPE,NewFrag.新建单位);
+                bundle.putString(ValueConstant.DATA_TYPE, NewUnitFrag.新建单位);
                 if(LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED){
                     bundle.putInt(ValueConstant.FARG_REQ,2);
                 }
@@ -60,7 +60,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                         bundle.putInt(ValueConstant.FARG_REQ,3);
                     }
                 }
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NewFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NewUnitFrag(),bundle);
                 break;
             case R.id.iv_search:
                 getP().getD().searchUnit(getP().getU().getSearchReqBean(),new UINetAdapter<SearchResBean>(this){

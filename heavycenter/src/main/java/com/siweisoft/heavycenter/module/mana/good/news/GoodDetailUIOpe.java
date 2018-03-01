@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.mana.good.news;
 
 import android.content.Context;
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
@@ -13,12 +14,16 @@ import com.siweisoft.heavycenter.data.netd.mana.good.news.NewsGoodReq;
 import com.siweisoft.heavycenter.data.netd.mana.good.upd.UpdGoodReq;
 import com.siweisoft.heavycenter.databinding.FragManaGoodNewBinding;
 
-public class NewUIOpe extends AppUIOpe<FragManaGoodNewBinding>{
+public class GoodDetailUIOpe extends AppUIOpe<FragManaGoodNewBinding>{
 
 
+    @Override
+    public void initUI() {
+        super.initUI();
+        bind.title.getMidTV().setText(StringUtil.getStr(getFrag().getArguments().getString(ValueConstant.DATA_TYPE)));
+    }
 
     public void edit(GoodListRes.ResultsBean o){
-        bind.title.getMidTV().setText("物料详情");
         bind.itemWuniaoname.setMidTVTxt(StringUtil.getStr(o.getProductName()));
         bind.itemWuliaoguige.setMidTVTxt(StringUtil.getStr(o.getSpecifications()));
         bind.itemCangku.setMidTVTxt(StringUtil.getStr(o.getWarehouseName()));

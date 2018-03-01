@@ -23,6 +23,8 @@ import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.weigts.weighttips.WeightTipsFrag;
 import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
+import java.text.DecimalFormat;
+
 public class WeigtUIOpe extends AppUIOpe<FragMainWeigtBinding> {
 
 
@@ -50,7 +52,8 @@ public class WeigtUIOpe extends AppUIOpe<FragMainWeigtBinding> {
             return;
         }
         WeightMsg.MessageBean m = weightMsg.getMessage();
-        bind.tvWeight.setText(StringUtil.getStr(m.getWeigh()));
+        DecimalFormat df = new DecimalFormat("#.#");
+        bind.tvWeight.setText(StringUtil.getStr(Double.parseDouble(df.format(m.getWeigh()))));
         bind.tvMz.setText(StringUtil.getStr(m.getWeigh()));
         bind.tvPz.setText(StringUtil.getStr(m.getPz()));
         bind.tvKc.setText(StringUtil.getStr(m.getKc()));

@@ -57,10 +57,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
         super.onClick(v);
         switch (v.getId()){
             case R.id.iv_local:
-                Bundle bundle = new Bundle();
-                bundle.putInt(ValueConstant.FARG_REQ, CarValue.选择车辆);
-                bundle.putString(ValueConstant.DATA_POSITION, CarsReqBean.WHAT_MY);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new CarFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),CarFrag.getInstance("指定车辆",CarsReqBean.WHAT_MY, CarValue.选择车辆));
                 break;
         }
     }

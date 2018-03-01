@@ -36,7 +36,7 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_wuniaoname"
             style_common:txt_left = "物料名称"
-            style_common:txt_two ="请选择"
+            style_common:txt_two =""
             style_common:txt_mid = "请输入"
             style_common:iv_right = "@drawable/icon_arraw"
             style_common:boo_edit = "false"
@@ -46,7 +46,7 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_wuliaoguige"
             style_common:txt_left = "物料规格"
-            style_common:txt_two ="请选择"
+            style_common:txt_two =""
             style_common:txt_mid = "请输入"
             style_common:iv_right = "@drawable/icon_arraw"
             style_common:boo_edit = "false"
@@ -56,7 +56,7 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_cangku"
             style_common:txt_left = "仓库    "
-            style_common:txt_two ="请选择"
+            style_common:txt_two =""
             style_common:txt_mid = "请输入"
             style_common:iv_right = "@drawable/icon_arraw"
             style_common:boo_edit = "false"
@@ -68,7 +68,7 @@
             style_common:inputType="3"
             style_common:txt_maxlenth="11"
             style_common:txt_left = "最大库存"
-            style_common:txt_two ="请选择"
+            style_common:txt_two =""
             style_common:txt_mid = "请输入"
             style_common:iv_right = "@color/transparent"
             style_common:boo_edit = "true"
@@ -80,7 +80,7 @@
             style_common:inputType="3"
             style_common:txt_maxlenth="11"
             style_common:txt_left = "安全库存"
-            style_common:txt_two ="请选择"
+            style_common:txt_two =""
             style_common:txt_mid = "请输入"
             style_common:iv_right = "@color/transparent"
             style_common:boo_edit = "true"
@@ -90,7 +90,7 @@
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_area"
             style_common:txt_left = "送货区域"
-            style_common:txt_two ="请选择"
+            style_common:txt_two =""
             style_common:txt_mid = "请输入"
             style_common:iv_right = "@drawable/icon_arraw"
             style_common:boo_edit = "false"

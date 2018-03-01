@@ -13,8 +13,11 @@ import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderReq;
 import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderRes;
+import com.siweisoft.heavycenter.module.main.orders.OrdersFrag;
 
 public class OrderDAOpe extends AppDAOpe {
+
+    OrdersFrag ordersFrag;
 
     private int pageIndex = NetValue.PAGE_INDEX_START;
 
@@ -71,5 +74,13 @@ public class OrderDAOpe extends AppDAOpe {
 
     public void setOrdersRes(OrdersRes ordersRes) {
         this.ordersRes = ordersRes;
+    }
+
+    public OrdersFrag getOrdersFrag() {
+        return ordersFrag;
+    }
+
+    public void setOrdersFrag(OrdersFrag ordersFrag) {
+        this.ordersFrag = ordersFrag;
     }
 }

@@ -27,7 +27,6 @@ public class WeigtsUIOpe extends AppUIOpe<FragMainWeigtsBinding> {
         bind.viewpager.setOffscreenPageLimit(pages.size());
         bind.viewpager.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
         bind.topview.setViewPager(bind.viewpager);
-        bind.scrollmenu.setViewPager(bind.viewpager);
         final BaseOnPagerChangeListener baseOnPagerChangeListener = new BaseOnPagerChangeListener(){
             @Override
             public void onPageSelected(int position) {

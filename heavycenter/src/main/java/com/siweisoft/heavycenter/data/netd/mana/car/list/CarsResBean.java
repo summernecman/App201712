@@ -22,6 +22,9 @@ public class CarsResBean extends BaseBean {
     private int pageIndex;
     private int pageCount;
     private int pageSize;
+    private int fhCount;
+    private int myCount;
+    private int shCount;
     private List<CarInfoRes> results = new ArrayList<>();
 
     public int getTotalCount() {
@@ -62,6 +65,30 @@ public class CarsResBean extends BaseBean {
 
     public void setResults(List<CarInfoRes> results) {
         this.results = results;
+    }
+
+    public int getFhCount() {
+        return fhCount;
+    }
+
+    public void setFhCount(int fhCount) {
+        this.fhCount = fhCount;
+    }
+
+    public int getMyCount() {
+        return myCount;
+    }
+
+    public void setMyCount(int myCount) {
+        this.myCount = myCount;
+    }
+
+    public int getShCount() {
+        return shCount;
+    }
+
+    public void setShCount(int shCount) {
+        this.shCount = shCount;
     }
 
     public static class CarInfoRes extends BaseBean{

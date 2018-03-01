@@ -100,7 +100,7 @@
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_wuliname"
                 style_common:txt_left = "物料名称"
-                style_common:txt_two ="请选择"
+                style_common:txt_two =""
                 style_common:txt_mid = "请输入"
                 style_common:iv_right = "@drawable/icon_arraw"
                 style_common:boo_edit = "false"
@@ -110,7 +110,7 @@
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_wuliguige"
                 style_common:txt_left = "物料规格"
-                style_common:txt_two ="请选择"
+                style_common:txt_two =""
                 style_common:txt_mid = "请输入"
                 style_common:iv_right = "@drawable/icon_arraw"
                 style_common:boo_edit = "false"
@@ -120,7 +120,7 @@
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_unit"
                 style_common:txt_left = "发货单位"
-                style_common:txt_two ="请选择"
+                style_common:txt_two =""
                 style_common:txt_mid = "请输入"
                 style_common:iv_right = "@drawable/icon_arraw"
                 style_common:boo_edit = "false"
@@ -131,7 +131,7 @@
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_addr"
                 style_common:txt_left = "送货地址"
-                style_common:txt_two ="请选择"
+                style_common:txt_two =""
                 style_common:txt_mid = "请输入"
                 style_common:iv_right = "@drawable/icon_arraw"
                 style_common:boo_edit = "false"
@@ -168,7 +168,7 @@
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_starttime"
                 style_common:txt_left = "计划开始时间"
-                style_common:txt_two ="请选择"
+                style_common:txt_two =""
                 style_common:txt_mid = "请输入"
                 style_common:iv_right = "@drawable/icon_arraw"
                 style_common:boo_edit = "false"
@@ -178,7 +178,7 @@
             <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
                 android:id="@+id/item_rule"
                 style_common:txt_left = "备用签收规则"
-                style_common:txt_two ="请选择"
+                style_common:txt_two =""
                 style_common:txt_mid = "请输入"
                 style_common:iv_right = "@drawable/icon_arraw"
                 style_common:boo_edit = "false"

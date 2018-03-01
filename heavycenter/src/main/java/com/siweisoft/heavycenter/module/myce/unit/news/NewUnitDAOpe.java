@@ -22,7 +22,7 @@ import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindReqBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
 
-public class NewDAOpe extends AppDAOpe {
+public class NewUnitDAOpe extends AppDAOpe {
 
    UnitInfo unit = new UnitInfo();
 

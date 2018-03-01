@@ -16,8 +16,6 @@ import com.siweisoft.heavycenter.data.netd.mana.good.news.NewsGoodRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.upd.UpdGoodRes;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.good.lists.NamesFrag;
 import com.siweisoft.heavycenter.module.mana.good.specs.SpecsFrag;
 import com.siweisoft.heavycenter.module.mana.store.StoreFrag;
@@ -25,8 +23,16 @@ import com.siweisoft.heavycenter.module.myce.unit.area.prov.ProvFrag;
 
 import butterknife.OnClick;
 
-public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
+public class GoodDetailFrag extends AppFrag<GoodDetailUIOpe,GoodDetailDAOpe> {
 
+
+    public static GoodDetailFrag getInstance(String type,int goodid){
+        GoodDetailFrag goodDetailFrag = new GoodDetailFrag();
+        goodDetailFrag.setArguments(new Bundle());
+        goodDetailFrag.getArguments().putString(ValueConstant.DATA_TYPE,type);
+        goodDetailFrag.getArguments().putInt(ValueConstant.DATA_DATA,goodid);
+        return goodDetailFrag;
+    }
 
     @Override
     public void initdelay() {
@@ -116,8 +122,9 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                     return;
                 }
                 NamesRes.ResultsBean data = (NamesRes.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA2);
-                getP().getD().getNewsGoodReq().setMaterielId(data.getProductId());
-                getP().getD().getNewsGoodReq().setMaterielName(data.getProductName());
+                getP().getD().getNewsGoodReq().setMaterielId(data.getId());
+                getP().getD().getNewsGoodReq().setMaterielName(data.getMaterielName());
+                getP().getD().getNewsGoodReq().setMaterielSpecName("");
                 //getP().getD().getNewsGoodReq().setMaterielSpecId(data.getProductId());
                 //getP().getD().getNewsGoodReq().setMaterielSpecName(data.getSpecifications());
                 break;

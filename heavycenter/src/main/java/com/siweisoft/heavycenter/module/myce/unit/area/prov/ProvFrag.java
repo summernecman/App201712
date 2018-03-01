@@ -25,10 +25,19 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
 
     public static final String 选择省 = "选择省";
 
+
+    public static ProvFrag getInstance(String state,String title){
+        ProvFrag provFrag = new ProvFrag();
+        provFrag.setArguments(new Bundle());
+        provFrag.getArguments().putString(ValueConstant.DATA_DATA,state);
+        provFrag.getArguments().putString(ValueConstant.DATA_TYPE,title);
+        provFrag.getP().getD().setState(state);
+        return provFrag;
+    }
+
     @Override
     public void initNow() {
         super.initNow();
-        getP().getD().setState(getArguments().getString(ValueConstant.DATA_DATA));
         getP().getU().initRecycle();
         getP().getU().LoadListData(getP().getD().getPro(),this);
     }
@@ -37,11 +46,14 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
     public void onInterupt(int type, View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(ValueConstant.DATA_POSITION2, (int) v.getTag(R.id.position));
-                bundle.putSerializable(ValueConstant.DATA_DATA, (Serializable) v.getTag(R.id.data));
-                bundle.putString(ValueConstant.DATA_DATA2,getP().getD().getState());
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new CityFrag(),bundle);
+                switch (v.getId()){
+                    case R.id.iv_state:
+                        break;
+                    default:
+                        FragManager2.getInstance().start(getBaseUIAct(), get容器(),
+                                CityFrag.getInstance("选择城市",getP().getD().getState(), (CityResBean.ProvinceListBean) v.getTag(R.id.data),(int) v.getTag(R.id.position)));
+                        break;
+                }
                 break;
         }
     }

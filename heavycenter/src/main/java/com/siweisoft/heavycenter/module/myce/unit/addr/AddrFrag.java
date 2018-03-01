@@ -25,6 +25,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.myce.unit.area.prov.ProvFrag;
+import com.siweisoft.heavycenter.module.myce.unit.area.prov.ProvValue;
 
 import butterknife.OnClick;
 
@@ -33,8 +34,8 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
 
 
     @Override
-    public void initNow() {
-        super.initNow();
+    public void initdelay() {
+        super.initdelay();
 
         getP().getD().getMapUtil().init(getBaseUIAct(),true);
         getP().getD().getMapUtil().registerLocationListener(getBaseUIAct(), new BDAbstractLocationListener() {
@@ -85,7 +86,7 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
                 getP().getD().getUnitInfo().setCompanyAddress(poiInfo.address);
                 getP().getD().getUnitInfo().setCompanyLat(poiInfo.location.latitude);
                 getP().getD().getUnitInfo().setCompanyLng(poiInfo.location.longitude);
-                getArguments().putSerializable(ValueConstant.DATA_DATA2,getP().getD().getUnitInfo());
+                getArguments().putSerializable(ValueConstant.DATA_DATA,getP().getD().getUnitInfo());
                 getBaseUIAct().onBackPressed();
                 break;
         }
@@ -122,8 +123,7 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
             case R.id.tv_city:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                bundle.putString(ValueConstant.DATA_DATA,ProvFrag.选择一个城市);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new ProvFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),ProvFrag.getInstance(ProvValue.选择一个城市,"选择省份"),bundle);
                 break;
         }
     }

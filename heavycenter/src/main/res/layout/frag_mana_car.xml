@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:style_common="http://schemas.android.com/apk/res-auto">
+   >
     <data>
         <variable
             name="frag_mana_car"
@@ -11,25 +11,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/color_grey_300"
+        android:background="@color/color_block_back"
         >
 
         <com.android.lib.view.title.TitleView
             android:elevation="2dp"
             android:background="@color/color_base"
-                android:visibility="gone"
+            android:visibility="gone"
             android:id="@+id/cartitle"
-            style_common:txt_mid ="车辆列表"
-            style_common:iv_left ="@drawable/icon_hv_back"
-            style_common:iv_right ="@drawable/icon_hv_scan"
+            app:txt_mid ="车辆列表"
+            app:iv_left ="@drawable/icon_hv_back"
+            app:iv_right ="@drawable/icon_hv_scan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <com.siweisoft.heavycenter.module.view.input.SearchBindUnitMyceItem
+            android:visibility="gone"
+            android:layout_marginTop="5dp"
+            android:id="@+id/search"
+            android:elevation="2dp"
+            app:txt_mid = "请输入车牌号"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refresh"
-            style_common:srlEnableLoadmoreWhenContentNotFull="false"
-            style_common:srlEnableOverScrollBounce="false"
-            style_common:srlEnableAutoLoadmore="false"
+            app:srlDragRate= "0.2"
+            app:srlEnableAutoLoadmore="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <android.support.v7.widget.RecyclerView
@@ -40,6 +50,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+
 
     </LinearLayout>
 </layout>

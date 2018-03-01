@@ -5,9 +5,11 @@ package com.siweisoft.heavycenter.module.mana.car.car;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -18,13 +20,22 @@ import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarResBean;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 
-public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener{
+public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener,OnFinishListener{
 
+
+    public static CarFrag getInstance(String title,String what,int status){
+        CarFrag carFrag = new CarFrag();
+        carFrag.setArguments(new Bundle());
+        carFrag.getArguments().putString(ValueConstant.DATA_TYPE,title);
+        carFrag.getArguments().putString(ValueConstant.DATA_POSITION,what);
+        carFrag.getArguments().putInt(ValueConstant.FARG_REQ,status);
+        carFrag.getP().getD().initCarReq(what,carFrag.getP().getD().getReqStatus(status));
+        return carFrag;
+    }
 
     @Override
     public void initNow() {
         super.initNow();
-        getP().getD().initCarReq(getArguments().getString(ValueConstant.DATA_POSITION),getP().getD().getReqStatus(getArguments().getInt(ValueConstant.FARG_REQ,CarValue.选择车辆)));
         getP().getU().initUI(getArguments().getInt(ValueConstant.FARG_REQ,CarValue.选择车辆));
         getP().getU().initRefresh(this,this);
     }
@@ -33,6 +44,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
     public void initdelay() {
         super.initdelay();
         onRefresh(null);
+        getP().getU().initSearch(this);
     }
 
 
@@ -79,8 +91,12 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
         getP().getD().Cars(getP().getD().getCarsReqBean(),new UINetAdapter<CarsResBean>(this) {
             @Override
             public void onSuccess(CarsResBean o) {
-                getP().getU().LoadListData(o,getArguments().getString(ValueConstant.DATA_POSITION),CarFrag.this);
+                getP().getD().setNetcarsRes(o);
+                getP().getU().LoadListData( getP().getD().searchCar(""),getArguments().getString(ValueConstant.DATA_POSITION),CarFrag.this);
                 getP().getU().finishRefresh();
+                if(getP().getD().getCarsFrag()!=null){
+                    getP().getD().getCarsFrag().getP().getU().refreshTopMenu(getP().getD().getNetcarsRes());
+                }
             }
         });
     }
@@ -96,5 +112,10 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
                 onRefresh(null);
                 break;
         }
+    }
+
+    @Override
+    public void onFinish(Object o) {
+        getP().getU().LoadListData( getP().getD().searchCar(o.toString()),getArguments().getString(ValueConstant.DATA_POSITION),CarFrag.this);
     }
 }

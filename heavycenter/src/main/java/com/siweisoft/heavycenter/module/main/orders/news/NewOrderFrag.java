@@ -163,17 +163,10 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
             public void onResult(boolean success, String msg, UnitInfo unitInfo) {
                 super.onResult(success, msg, unitInfo);
                 if(success){
-                    if(NewsOrderReqBean.发货.equals(getP().getD().getNewsOrderReqBean().getOrderType())){
-                        getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(LocalValue.get登录返回信息().getCompanyId());
-                        getP().getD().getNewsOrderReqBean().setReceiveCompanyId(unitInfo.getId());
-                    }else{
-                        getP().getD().getNewsOrderReqBean().setReceiveCompanyId(LocalValue.get登录返回信息().getCompanyId());
-                        getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(unitInfo.getId());
-                    }
-                    getP().getD().getNewsOrderReqBean().setTempCompanyName(unitInfo.getCompanyName());
-                    getP().getD().getNewsOrderReqBean().setTempCompany(unitInfo.getId());
-                    getP().getD().getNewsOrderReqBean().setAddress(unitInfo.getCompanyAddress());
-                    getP().getU().init(getP().getD().getNewsOrderReqBean());
+                    Bundle bundle = new Bundle();
+                    unitInfo.setId(unitInfo.getCompanyId());
+                    bundle.putSerializable(ValueConstant.DATA_DATA2,unitInfo);
+                    NewOrderFrag.this.onResult(NewOrderValue.收货单位,bundle);
                 }
             }
         });

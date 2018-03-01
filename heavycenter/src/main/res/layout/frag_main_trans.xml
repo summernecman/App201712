@@ -30,7 +30,8 @@
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refresh"
-            app:srlEnableOverScrollBounce="false"
+            app:srlDragRate= "0.2"
+            app:srlEnableLoadmoreWhenContentNotFull="false"
             app:srlEnableAutoLoadmore="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent">

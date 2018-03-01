@@ -8,7 +8,11 @@ import android.support.v4.app.Fragment;
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
+import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
+import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumRes;
 import com.siweisoft.heavycenter.databinding.FragManaCarsBinding;
 
 import java.util.ArrayList;
@@ -39,6 +43,13 @@ public class CarsUIOpe extends AppUIOpe<FragManaCarsBinding> {
         });
     }
 
-
+    public void refreshTopMenu(CarsResBean o){
+        if(o==null){
+            return;
+        }
+        bind.topview.setTxt(0, "发货中("+StringUtil.getStr(o.getFhCount())+")");
+        bind.topview.setTxt(1, "我的车辆("+StringUtil.getStr(o.getMyCount())+")");
+        bind.topview.setTxt(2, "收货中("+StringUtil.getStr(o.getShCount())+")");
+    }
 
 }

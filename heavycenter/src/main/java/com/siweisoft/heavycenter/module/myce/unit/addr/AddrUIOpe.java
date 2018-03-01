@@ -14,6 +14,7 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
@@ -29,7 +30,6 @@ import com.siweisoft.heavycenter.databinding.ItemMyceUnitAddrBinding;
 import java.util.List;
 
 public class AddrUIOpe extends AppUIOpe<FragMyceUnitAddrBinding>{
-
 
 
     public void LoadListData(final List<PoiInfo> addrs, final ViewListener listener) {

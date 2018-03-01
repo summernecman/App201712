@@ -19,7 +19,7 @@
 
 
         <TextView
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:gravity="center"
             android:textColor="@color/white"
             android:text="解除\n绑定"

@@ -18,7 +18,7 @@ import com.siweisoft.heavycenter.data.netd.mana.good.upd.UpdGoodRes;
 
 import java.util.HashMap;
 
-public class NewDAOpe extends AppDAOpe {
+public class GoodDetailDAOpe extends AppDAOpe {
 
     private NewsGoodReq newsGoodReq = new NewsGoodReq();
 

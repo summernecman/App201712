@@ -2,15 +2,20 @@ package com.siweisoft.heavycenter.module.mana.car.car;
 
 //by summer on 2017-12-19.
 
+import android.media.MediaCas;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.interf.OnFinishListener;
+import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.constant.ValueConstant;
+import com.android.lib.util.LogUtil;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
@@ -40,10 +45,26 @@ public class CarUIOpe extends AppUIOpe<FragManaCarBinding>{
         switch (status){
             case CarValue.管理车辆:
                 bind.cartitle.setVisibility(View.GONE);
+                bind.search.setVisibility(View.GONE);
                 break;
             default:
+                bind.search.setVisibility(View.VISIBLE);
                 bind.cartitle.setVisibility(View.VISIBLE);
                 break;
+        }
+    }
+
+    public void initSearch(final OnFinishListener onFinishListener){
+        if(bind.search.getVisibility()==View.VISIBLE){
+            bind.search.getEditText().addTextChangedListener(new BaseTextWather(){
+                @Override
+                public void afterTextChanged(Editable s) {
+                    super.afterTextChanged(s);
+                    if(onFinishListener!=null){
+                        onFinishListener.onFinish(s.toString());
+                    }
+                }
+            });
         }
     }
 
@@ -52,11 +73,13 @@ public class CarUIOpe extends AppUIOpe<FragManaCarBinding>{
     }
 
     public void LoadListData(CarsResBean data, final String moudle, ViewListener listener){
-        if(data==null || data.getResults()==null || data.getResults().size()==0){
+        if(data==null || data.getResults()==null){
             getFrag().showTips("暂无数据");
-            return;
+            data = new CarsResBean();
+        }else{
+            getFrag().removeTips();
         }
-        getFrag().removeTips();
+        LogUtil.E(data.getResults().size());
         this.cars = data;
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_mana_car_my, BR.item_mana_car_my,cars.getResults(),listener){
             @Override

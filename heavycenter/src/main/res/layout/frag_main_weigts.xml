@@ -2,68 +2,85 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:style_common="http://schemas.android.com/apk/res-auto"
     xmlns:style_toptypeview="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="frag_main_weigts"
             type="String" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/color_block_back"
-        >
+        android:orientation="vertical">
 
-        <com.android.lib.view.title.TitleView
+        <LinearLayout
+            android:id="@+id/top"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:elevation="2dp"
             android:background="@color/color_base"
-            android:id="@+id/title"
-            style_common:iv_left ="@drawable/icon_hv_person"
-            style_common:iv_right ="@drawable/icon_hv_scan"
-            style_common:iv_right2 ="@drawable/icon_hv_add"
-            style_common:txt_mid ="地磅"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        <com.android.lib.view.title.TitleView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style_common:iv_left="@drawable/icon_hv_person"
+            style_common:iv_right="@drawable/icon_hv_scan"
+            style_common:iv_right2="@drawable/icon_hv_add"
+            style_common:txt_mid="地磅" />
+
         <com.siweisoft.heavycenter.module.view.menu.TopTypeView
             android:id="@+id/topview"
             style_toptypeview:txts="1号,2号,3号,4号,5号"
             android:layout_width="match_parent"
             android:layout_height="35dp"/>
+        </LinearLayout>
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.7"
+            android:orientation="horizontal" />
+
+        <View
+            android:id="@+id/view1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline4"
+            android:layout_marginBottom="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_below="@+id/topview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <android.support.v4.view.ViewPager
-                android:layout_weight="55"
-                android:id="@+id/viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/top"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline4"
+            android:id="@+id/viewpager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
 
 
         <include
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintTop_toTopOf="@+id/view1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/bottom"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="45"
             layout="@layout/frag_main_weigts_bottom"/>
-    </LinearLayout>
 
 
-    <com.siweisoft.heavycenter.module.view.menu.ScrollMenu
-        android:layout_marginTop="-4dp"
-        android:id="@+id/scrollmenu"
-        android:layout_below="@id/topview"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"/>
-</RelativeLayout>
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>

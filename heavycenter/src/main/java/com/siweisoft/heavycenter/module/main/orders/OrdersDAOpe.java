@@ -30,7 +30,9 @@ public class OrdersDAOpe extends BaseDAOpe {
     public ArrayList<Fragment> initPages(){
         pages.clear();
         for(int i=0;i<statuss.length;i++){
-            pages.add(OrderFrag.getInstance(statuss[i],getFrag().get容器()));
+            OrderFrag orderFrag = OrderFrag.getInstance(statuss[i],getFrag().get容器());
+            orderFrag.getP().getD().setOrdersFrag((OrdersFrag) getFrag());
+            pages.add(orderFrag);
         }
         return pages;
     }

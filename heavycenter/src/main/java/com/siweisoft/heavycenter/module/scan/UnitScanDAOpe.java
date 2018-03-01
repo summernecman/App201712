@@ -25,7 +25,7 @@ import com.siweisoft.heavycenter.module.main.map.MapFrag;
 import com.siweisoft.heavycenter.module.main.orders.news.NewOrderFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
 import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
-import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
+import com.siweisoft.heavycenter.module.myce.unit.news.NewUnitFrag;
 
 public class UnitScanDAOpe extends BaseDAOpe {
 
@@ -97,10 +97,10 @@ public class UnitScanDAOpe extends BaseDAOpe {
 
             Bundle bundle = new Bundle();
             bundle.putInt(ValueConstant.DATA_DATA,unit.getId());
-            NewFrag newFrag = new NewFrag();
-            newFrag.setArguments(new Bundle());
-            newFrag.getArguments().putString(ValueConstant.DATA_TYPE,NewFrag.其他人查看单位信息);
-            FragManager2.getInstance().start(getActivity(),getActivity().getMoudle(),newFrag,bundle);
+            NewUnitFrag newUnitFrag = new NewUnitFrag();
+            newUnitFrag.setArguments(new Bundle());
+            newUnitFrag.getArguments().putString(ValueConstant.DATA_TYPE, NewUnitFrag.其他人查看单位信息);
+            FragManager2.getInstance().start(getActivity(),getActivity().getMoudle(), newUnitFrag,bundle);
             return;
         }
     }

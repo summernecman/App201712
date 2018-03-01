@@ -38,7 +38,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
             case UserTypeReqBean.驾驶员:
                 fragMyceDriverBinding = DataBindingUtil.bind(LayoutInflater.from(getActivity()).inflate(R.layout.frag_myce_driver,null));
                 bind.rlMyceContainer.addView(fragMyceDriverBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
+                fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
                 //bind.llHead.tvRole.setText(UserTypeReqBean.USER_TYPE_DRIVER_CN);
                 fragMyceDriverBinding.itemDriver.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCarLicenseNo()));
                 fragMyceDriverBinding.itemDriver.getMidTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCarBrand()));
@@ -50,7 +50,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                         fragMyceDriverBinding.itemDriver.setVisibility(View.VISIBLE);
                         break;
                     default:
-                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
+                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
                         fragMyceDriverBinding.itemDriver.setVisibility(View.GONE);
                         break;
                 }
@@ -72,15 +72,15 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                         fragMyceDriverBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_UNBIND_CN);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
-                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
+                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
                         fragMyceDriverBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_CHECK_CN);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
-                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
-                        fragMyceDriverBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_BINDED_CN);
+                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
+                        fragMyceDriverBinding.itemUnit.getRight2().setVisibility(View.GONE);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
-                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
+                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
                         fragMyceDriverBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_REJECT_CN);
                         break;
                 }
@@ -88,7 +88,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
             case UserTypeReqBean.非驾驶员:
                 fragMyceGeneralBinding = DataBindingUtil.bind(LayoutInflater.from(getActivity()).inflate(R.layout.frag_myce_general,null));
                 bind.rlMyceContainer.addView(fragMyceGeneralBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
+                fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
 
                 bind.llHead.tvRole.setText(UserTypeReqBean.USER_TYPE_GENERAL_CN);
                 switch (LocalValue.get登录返回信息().getUserRole()){
@@ -110,10 +110,17 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                         break;
                 }
 
+
                 fragMyceGeneralBinding.itemStore.getRightTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getWareHouseCount()));
                 fragMyceGeneralBinding.itemGood.getRightTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getProductCount()));
                 fragMyceGeneralBinding.itemUser.getRightTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getUserCount()));
                 fragMyceGeneralBinding.itemCar.getRightTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getVehicleCount()));
+
+
+                fragMyceGeneralBinding.itemStore.setRightTxt(LocalValue.get登录返回信息().getWareHouseCount());
+                fragMyceGeneralBinding.itemGood.setRightTxt(LocalValue.get登录返回信息().getProductCount());
+                fragMyceGeneralBinding.itemUser.setRightTxt(LocalValue.get登录返回信息().getUserCount());
+                fragMyceGeneralBinding.itemCar.setRightTxt(LocalValue.get登录返回信息().getVehicleCount());
 
                 switch (LocalValue.get登录返回信息().getBindCompanyState()){
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
@@ -121,15 +128,15 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                         fragMyceGeneralBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_UNBIND_CN);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
-                        fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
+                        fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
                         fragMyceGeneralBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_CHECK_CN);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
-                        fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
-                        fragMyceGeneralBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_BINDED_CN);
+                        fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
+                        fragMyceGeneralBinding.itemUnit.getRightTV().setVisibility(View.GONE);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
-                        fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getAbbreviationName()));
+                        fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
                         fragMyceGeneralBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_REJECT_CN);
                         break;
                 }

@@ -14,7 +14,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
-import com.siweisoft.heavycenter.module.mana.good.news.NewFrag;
+import com.siweisoft.heavycenter.module.mana.good.news.GoodDetailFrag;
 
 import butterknife.OnClick;
 
@@ -35,7 +35,7 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NewFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),GoodDetailFrag.getInstance(GoodDetailValue.新建物料,-1),bundle);
                 break;
         }
     }
@@ -48,8 +48,7 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
                 GoodListRes.ResultsBean resultsBean = (GoodListRes.ResultsBean) v.getTag(R.id.data);
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                bundle.putInt(ValueConstant.DATA_DATA,resultsBean.getProductInfoId());
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NewFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),GoodDetailFrag.getInstance(GoodDetailValue.物料详情,resultsBean.getProductInfoId()),bundle);
                 break;
         }
     }

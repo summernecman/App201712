@@ -35,7 +35,7 @@ import com.siweisoft.heavycenter.module.myce.name.NameFrag;
 import com.siweisoft.heavycenter.module.myce.sett.SetFrag;
 import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
 import com.siweisoft.heavycenter.module.myce.base.info.InfoFrag;
-import com.siweisoft.heavycenter.module.myce.unit.news.NewFrag;
+import com.siweisoft.heavycenter.module.myce.unit.news.NewUnitFrag;
 
 import java.io.File;
 import java.io.IOException;
@@ -105,11 +105,11 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
                         Bundle bundle = new Bundle();
                         if(StringUtil.equals(LocalValue.get登录返回信息().getUserRole(),LoginResBean.USER_ROLE_SUPER_ADMIN)){
-                            bundle.putString(ValueConstant.DATA_TYPE,NewFrag.修改单位信息);
+                            bundle.putString(ValueConstant.DATA_TYPE, NewUnitFrag.修改单位信息);
                         }else{
-                            bundle.putString(ValueConstant.DATA_TYPE,NewFrag.展示单位信息);
+                            bundle.putString(ValueConstant.DATA_TYPE, NewUnitFrag.展示单位信息);
                         }
-                        FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID, new NewFrag(),bundle);
+                        FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID, new NewUnitFrag(),bundle);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                     case LoginResBean.BIND_UNIT_STATE_REJECT:

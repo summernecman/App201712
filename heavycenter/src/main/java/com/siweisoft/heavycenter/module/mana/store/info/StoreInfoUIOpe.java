@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.mana.store.info;
 
 import android.content.Context;
 import com.android.lib.base.ope.BaseUIOpe;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
@@ -17,7 +18,18 @@ import com.siweisoft.heavycenter.databinding.FragManaStoreInfoBinding;
 public class StoreInfoUIOpe  extends BaseUIOpe<FragManaStoreInfoBinding>{
 
 
-
+    @Override
+    public void initUI() {
+        super.initUI();
+        switch (getFrag().getArguments().getString(StoreInfoValue.仓库类型)){
+            case StoreInfoValue.修改仓库:
+                bind.title.getMidTV().setText("仓库详情");
+                break;
+            case StoreInfoValue.新建仓库:
+                bind.title.getMidTV().setText("新建仓库");
+                break;
+        }
+    }
 
     public void initUI(StoreDetail storeDetail){
         bind.itemMaxstock.setMidEtTxt(StringUtil.getStr(storeDetail.getMaxStock()));

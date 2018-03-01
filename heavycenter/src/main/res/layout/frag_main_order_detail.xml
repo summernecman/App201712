@@ -10,7 +10,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_grey_200"
+        android:background="@color/color_block_back"
         android:clickable="true"
         >
 
@@ -106,12 +106,18 @@
 
         </LinearLayout>
 
+        <View
+            android:background="@color/color_grey_200"
+            android:id="@+id/gap"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_fuction"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-            android:layout_marginTop="10dp"
             android:clickable="true"
             android:id="@+id/item_tip"
-            app:layout_constraintTop_toBottomOf="@+id/ll_fuction"
+            app:layout_constraintTop_toBottomOf="@+id/gap"
             app:layout_constraintLeft_toLeftOf="parent"
             app:txt_left = "指定承运车辆"
             app:txt_mid = "请输入"
@@ -135,7 +141,7 @@
         <android.support.v7.widget.RecyclerView
             android:clickable="true"
             android:id="@+id/recycle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/white"
             android:fadeScrollbars="false"

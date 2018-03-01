@@ -65,6 +65,7 @@ public class OrdersRes extends BaseBean {
         this.results = results;
     }
 
+
     public static class ResultsBean extends BaseBean{
 
 

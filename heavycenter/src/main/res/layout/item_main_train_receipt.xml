@@ -38,7 +38,7 @@
             android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
-            android:id="@+id/tv_planNumber"
+            android:id="@+id/tv_totalnum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxWidth="100dp"
@@ -49,7 +49,7 @@
 
         <TextView
             android:layout_marginTop="2dp"
-            android:layout_below="@+id/tv_planNumber"
+            android:layout_below="@+id/tv_totalnum"
             android:layout_centerHorizontal="true"
             android:id="@+id/tv_carnum"
             android:layout_width="wrap_content"

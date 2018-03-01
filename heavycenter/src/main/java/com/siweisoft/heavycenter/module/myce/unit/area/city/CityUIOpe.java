@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.NullUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
@@ -21,7 +22,11 @@ import java.util.List;
 
 public class CityUIOpe extends AppUIOpe<FragMyceUnitNewCityBinding>{
 
-
+    @Override
+    public void initUI() {
+        super.initUI();
+        bind.title.getMidTV().setText(getFrag().getArguments().getString(ValueConstant.DATA_TYPE,"选择城市"));
+    }
 
 
     public void initRecycle(){

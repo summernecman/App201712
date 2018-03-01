@@ -32,6 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <LinearLayout
+
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal"
             android:background="@color/white"
             android:paddingLeft="10dp"
@@ -47,9 +50,9 @@
                 android:layout_height="wrap_content" />
 
             <ImageView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:src="@drawable/icon_addr_down"
+                android:layout_width="15sp"
+                android:layout_height="15sp" />
 
             <com.siweisoft.heavycenter.module.view.input.SearchBindUnitMyceItem
                 android:id="@+id/search"

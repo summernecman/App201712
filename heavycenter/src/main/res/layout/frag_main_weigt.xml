@@ -8,75 +8,71 @@
             type="String" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/color_hv_base"
-        >
+        android:orientation="vertical">
+
+
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="50dp" />
+
+
 
         <LinearLayout
-
-            android:orientation="vertical"
+            android:id="@+id/bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline1"
+            android:layout_marginBottom="1dp"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_carno"
+                android:gravity="right|center_vertical"
                 android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp">
-                <com.siweisoft.heavycenter.module.view.weight.WeightView
-                        android:id="@+id/weight"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_centerInParent="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="@dimen/hv_dimen_text_title_aa"
+                android:text="2333"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tv_weight"
-                    android:layout_centerInParent="true"
-                    android:textColor="@color/color_hv_yelll"
-                    android:text="906.5"
-                    android:textSize="60sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_name"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="@dimen/hv_dimen_text_title_aa"
+                android:text="2333"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    android:layout_below="@+id/tv_weight"
-                    android:layout_centerInParent="true"
-                    android:textColor="@color/color_hv_yelll"
-                    android:text="吨"
-                    android:textSize="15sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_tel"
+                android:gravity="center_vertical|left"
+                android:layout_weight="1"
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="@dimen/hv_dimen_text_title_aa"
+                android:text="2333"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
 
+        </LinearLayout>
 
-<LinearLayout
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-            <LinearLayout
-                    android:id="@+id/ll_mz"
-                    android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/tv_mz"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/hv_dimen_text_big"
-                        android:text="2333"
-                        android:layout_height="wrap_content"/>
-
-    <TextView
-
+        <TextView
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/lab_pz"
+        android:id="@+id/lab_mz"
             android:gravity="center"
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -84,127 +80,134 @@
             android:textSize="@dimen/hv_dimen_text_a"
             android:text="毛重"
             android:layout_height="wrap_content" />
-</LinearLayout>
-    <LinearLayout
-            android:id="@+id/ll_pz"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
+
         <TextView
+            app:layout_constraintBottom_toBottomOf="@+id/lab_mz"
+            app:layout_constraintLeft_toRightOf="@+id/lab_mz"
+            app:layout_constraintRight_toLeftOf="@+id/lab_kc"
+            android:id="@+id/lab_pz"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="@dimen/hv_dimen_text_a"
+            android:text="皮重"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            app:layout_constraintBottom_toBottomOf="@+id/lab_mz"
+            app:layout_constraintLeft_toRightOf="@+id/lab_pz"
+            app:layout_constraintRight_toLeftOf="@+id/lab_jz"
+            android:id="@+id/lab_kc"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="@dimen/hv_dimen_text_a"
+            android:text="扣除"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            app:layout_constraintBottom_toBottomOf="@+id/lab_mz"
+            app:layout_constraintLeft_toRightOf="@+id/lab_kc"
+            app:layout_constraintRight_toLeftOf="parent"
+            android:id="@+id/lab_jz"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="@dimen/hv_dimen_text_a"
+            android:text="净重"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/lab_mz"
+           app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_pz"
+            android:id="@+id/tv_mz"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/hv_dimen_text_big"
+            android:text="2333"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintBottom_toBottomOf="@+id/tv_mz"
+            app:layout_constraintLeft_toRightOf="@+id/tv_mz"
+            app:layout_constraintRight_toLeftOf="@+id/tv_kc"
             android:id="@+id/tv_pz"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text_big"
-                android:text="2333"
-                android:layout_height="wrap_content" />
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/hv_dimen_text_big"
+            android:text="2333"
+            android:layout_height="wrap_content" />
 
         <TextView
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textColor="@color/color_hv_txt_dark"
-                android:textSize="@dimen/hv_dimen_text_a"
-                android:text="皮重"
-                android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-            android:id="@+id/ll_kc"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
-        <TextView
+            app:layout_constraintBottom_toBottomOf="@+id/tv_mz"
+            app:layout_constraintLeft_toRightOf="@+id/tv_pz"
+            app:layout_constraintRight_toLeftOf="@+id/tv_jz"
             android:id="@+id/tv_kc"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text_big"
-                android:text="2333"
-                android:layout_height="wrap_content" />
-
-        <TextView
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textColor="@color/color_hv_txt_dark"
-                android:textSize="@dimen/hv_dimen_text_a"
-                android:text="扣除"
-                android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-            android:id="@+id/ll_jz"
+            android:gravity="center"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/hv_dimen_text_big"
+            android:text="2333"
+            android:layout_height="wrap_content" />
+
+
         <TextView
+            app:layout_constraintBottom_toBottomOf="@+id/tv_mz"
+            app:layout_constraintLeft_toRightOf="@+id/tv_kc"
+            app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/tv_jz"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="@dimen/hv_dimen_text_big"
-                android:text="2333"
-                android:layout_height="wrap_content" />
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/hv_dimen_text_big"
+            android:text="2333"
+            android:layout_height="wrap_content" />
+
+
+
+        <com.siweisoft.heavycenter.module.view.weight.WeightView
+            android:id="@+id/weight"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tv_mz"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
 
         <TextView
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textColor="@color/color_hv_txt_dark"
-                android:textSize="@dimen/hv_dimen_text_a"
-                android:text="净重"
-                android:layout_height="wrap_content" />
-    </LinearLayout>
-</LinearLayout>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/weight"
+            app:layout_constraintBottom_toBottomOf="@+id/weight"
+            android:id="@+id/tv_weight"
+            android:layout_centerInParent="true"
+            android:textColor="@color/color_hv_yelll"
+            android:text="906.5"
+            android:textSize="60sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-            <LinearLayout
-                    android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                        android:id="@+id/tv_carno"
-                    android:gravity="right|center_vertical"
-                    android:layout_weight="1"
-                    android:textColor="@color/color_hv_yelll"
-                    android:textSize="@dimen/hv_dimen_text_title_aa"
-                    android:text="2333"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content" />
+        <TextView
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_weight"
+            android:layout_centerInParent="true"
+            android:textColor="@color/color_hv_yelll"
+            android:text="吨"
+            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-                <TextView
-                        android:id="@+id/tv_name"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:textColor="@color/color_hv_yelll"
-                        android:textSize="@dimen/hv_dimen_text_title_aa"
-                    android:text="2333"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                        android:id="@+id/tv_tel"
-                    android:gravity="center_vertical|left"
-                    android:layout_weight="1"
-                    android:textColor="@color/color_hv_yelll"
-                        android:textSize="@dimen/hv_dimen_text_title_aa"
-                    android:text="2333"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>
