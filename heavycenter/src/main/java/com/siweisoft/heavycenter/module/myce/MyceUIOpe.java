@@ -33,17 +33,22 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
         bind.llHead.tvName.setText(StringUtil.getStr(LocalValue.get登录返回信息().getTrueName()));
         bind.llHead.tvPhone.setText(StringUtil.getStr(LocalValue.get登录返回信息().getTel()));
 
-
         switch (LocalValue.get登录返回信息().getUserType()){
             case UserTypeReqBean.驾驶员:
-                fragMyceDriverBinding = DataBindingUtil.bind(LayoutInflater.from(getActivity()).inflate(R.layout.frag_myce_driver,null));
-                bind.rlMyceContainer.addView(fragMyceDriverBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                if(fragMyceDriverBinding==null){
+                    fragMyceDriverBinding = DataBindingUtil.bind(LayoutInflater.from(getActivity()).inflate(R.layout.frag_myce_driver,null));
+                    bind.contentAcct.addView(fragMyceDriverBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                }
                 fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
                 //bind.llHead.tvRole.setText(UserTypeReqBean.USER_TYPE_DRIVER_CN);
                 fragMyceDriverBinding.itemDriver.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCarLicenseNo()));
                 fragMyceDriverBinding.itemDriver.getMidTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCarBrand()));
                 fragMyceDriverBinding.tvEmptyweight.setText("自重: "+StringUtil.getStr(LocalValue.get登录返回信息().getEmptyWeight()));
                 fragMyceDriverBinding.tvMaxweight.setText("载重: "+StringUtil.getStr(LocalValue.get登录返回信息().getMaxCapacity()));
+
+
+                bind.llHead.tvRole.setText(LoginResBean.USER_ROLE_DRIVER_CN);
+
 
                 switch (LocalValue.get登录返回信息().getBindCompanyState()){
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
@@ -86,8 +91,10 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                 }
                 break;
             case UserTypeReqBean.非驾驶员:
-                fragMyceGeneralBinding = DataBindingUtil.bind(LayoutInflater.from(getActivity()).inflate(R.layout.frag_myce_general,null));
-                bind.rlMyceContainer.addView(fragMyceGeneralBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                if(fragMyceGeneralBinding==null){
+                    fragMyceGeneralBinding = DataBindingUtil.bind(LayoutInflater.from(getActivity()).inflate(R.layout.frag_myce_general,null));
+                    bind.contentAcct.addView(fragMyceGeneralBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                }
                 fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
 
                 bind.llHead.tvRole.setText(UserTypeReqBean.USER_TYPE_GENERAL_CN);

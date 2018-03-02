@@ -3,6 +3,7 @@ package com.siweisoft.heavycenter.data.netd.unit.user;
 //by summer on 2018-01-11.
 
 import com.android.lib.bean.BaseBean;
+import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +77,7 @@ public class UnitUserResBean extends BaseBean {
          * bindCompanyState : 2
          * status : 1
          */
+
 
         private String trueName;
         private String userPhoto;

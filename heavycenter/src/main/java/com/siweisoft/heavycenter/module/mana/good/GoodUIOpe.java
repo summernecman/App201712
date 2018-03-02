@@ -18,6 +18,7 @@ import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.databinding.FragManaGoodBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaGoodBinding;
 import com.tubb.smrv.SwipeHorizontalMenuLayout;
@@ -59,9 +60,24 @@ public class GoodUIOpe extends AppUIOpe<FragManaGoodBinding> {
                 menu.setTag(R.id.data1,binding.sml);
                 menu.setTag(R.id.type,0);
 
-                content.setSelected(true);
 
-                binding.sml.setSwipeEnable(false);
+
+
+                switch (o.getResults().get(position).getStatus()){
+                    case GoodListRes.ResultsBean.停用:
+                        menu.setText(GoodListRes.ResultsBean.启用CN);
+                        menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_red));
+                        content.setSelected(true);
+                        break;
+                    case GoodListRes.ResultsBean.启用:
+                        menu.setText(GoodListRes.ResultsBean.停用CN);
+                        menu.setBackgroundColor(context.getResources().getColor(R.color.color_hv_yelll));
+                        content.setSelected(false);
+                        break;
+                }
+
+
+                binding.sml.setSwipeEnable(true);
 
                 binding.sml.setSwipeListener(new com.siweisoft.heavycenter.module.view.swipe.MySwipeListener(){
                     @Override
@@ -130,6 +146,13 @@ public class GoodUIOpe extends AppUIOpe<FragManaGoodBinding> {
 
     public void autoRefresh(int delay){
         bind.refresh.autoRefresh(delay);
+    }
+
+
+    public void notifyDataSetChanged(){
+        if(bind.recycle.getAdapter()!=null){
+            bind.recycle.getAdapter().notifyDataSetChanged();
+        }
     }
 
 

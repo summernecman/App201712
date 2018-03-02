@@ -91,7 +91,10 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
                     public void onSuccess(MsgDealResBean o) {
                         data.setAuditState(finalAuditstate);
                         getP().getU().setBtnGone((View) v.getTag(R.id.data1),pos);
-                        if((status[0] == MsgDealReqBean.AUDII_STATUS_YES)){
+                        if(
+                                (StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为用户)
+                                ||StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为管理员)
+                                ||StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为驾驶员))){
                             ((MainAct) getBaseUIAct()).go网络获取用户信息重新加载();
                         }
                     }

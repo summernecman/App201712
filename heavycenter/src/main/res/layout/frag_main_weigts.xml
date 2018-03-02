@@ -39,7 +39,7 @@
             android:id="@+id/topview"
             style_toptypeview:txts="1号,2号,3号,4号,5号"
             android:layout_width="match_parent"
-            android:layout_height="35dp"/>
+            android:layout_height="wrap_content"/>
         </LinearLayout>
         <android.support.constraint.Guideline
             android:id="@+id/guideline4"

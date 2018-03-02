@@ -38,6 +38,8 @@ import com.siweisoft.heavycenter.data.netd.mana.good.news.NewsGoodReq;
 import com.siweisoft.heavycenter.data.netd.mana.good.news.NewsGoodRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsReq;
 import com.siweisoft.heavycenter.data.netd.mana.good.specs.SpecsRes;
+import com.siweisoft.heavycenter.data.netd.mana.good.status.GoodStatusReq;
+import com.siweisoft.heavycenter.data.netd.mana.good.status.GoodStatusRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.upd.UpdGoodReq;
 import com.siweisoft.heavycenter.data.netd.mana.good.upd.UpdGoodRes;
 import com.siweisoft.heavycenter.data.netd.mana.store.add.NewStoreReqBean;
@@ -81,6 +83,8 @@ import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes;
 import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriversReq;
+import com.siweisoft.heavycenter.data.netd.unit.historyfh.HistoryFhUnitReq;
+import com.siweisoft.heavycenter.data.netd.unit.historysh.HistoryShUnitReq;
 import com.siweisoft.heavycenter.data.netd.unit.info.UnitInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
@@ -242,6 +246,15 @@ public class NetDataOpe {
             NetGet.postData(context,NetValue.获取地址("/company/update"),reqBean,adapter);
         }
 
+
+        public static void historyFhUnit(Context context, HistoryFhUnitReq reqBean, NetI<ListResBean> adapter) {
+            NetGet.getData(context,NetValue.获取地址("/orders/historyFhdw"),reqBean,adapter);
+        }
+
+        public static void historyShUnit(Context context, HistoryShUnitReq reqBean, NetI<ListResBean> adapter) {
+            NetGet.getData(context,NetValue.获取地址("/orders/historyShdw"),reqBean,adapter);
+        }
+
     }
 
     public static class Msg{
@@ -397,6 +410,11 @@ public class NetDataOpe {
 
             public static void updGood(Context context, UpdGoodReq reqBean, NetI<UpdGoodRes> adapter) {
                 NetGet.postData(context,NetValue.获取地址("/product/updateProduct"),reqBean,adapter);
+            }
+
+
+            public static void updateStatus(Context context, GoodStatusReq reqBean, NetI<GoodStatusRes> adapter) {
+                NetGet.postData(context,NetValue.获取地址("/product/updateProductStatus"),reqBean,adapter);
             }
 
         }

@@ -14,6 +14,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
+import com.siweisoft.heavycenter.data.netd.mana.good.status.GoodStatusRes;
 import com.siweisoft.heavycenter.module.mana.good.news.GoodDetailFrag;
 
 import butterknife.OnClick;
@@ -45,11 +46,25 @@ public class GoodFrag extends AppFrag<GoodUIOpe,GoodDAOpe> implements ViewListen
     public void onInterupt(int type, View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                GoodListRes.ResultsBean resultsBean = (GoodListRes.ResultsBean) v.getTag(R.id.data);
-                Bundle bundle = new Bundle();
-                bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),GoodDetailFrag.getInstance(GoodDetailValue.物料详情,resultsBean.getProductInfoId()),bundle);
-                break;
+                switch (v.getId()){
+                    case R.id.smMenuViewRight:
+                        final GoodListRes.ResultsBean data = (GoodListRes.ResultsBean) v.getTag(R.id.data);
+                        GoodDAOpe.goodStatus(getActivity(), data.getProductInfoId(), data.getStatus() == GoodListRes.ResultsBean.停用 ? GoodListRes.ResultsBean.启用 :  GoodListRes.ResultsBean.停用, new UINetAdapter<GoodStatusRes>(this) {
+                            @Override
+                            public void onSuccess(GoodStatusRes o) {
+                                super.onSuccess(o);
+                                data.setStatus(data.getStatus() == GoodListRes.ResultsBean.停用 ? GoodListRes.ResultsBean.启用 :  GoodListRes.ResultsBean.停用);
+                                getP().getU().notifyDataSetChanged();
+                            }
+                        });
+                        break;
+                    default:
+                        GoodListRes.ResultsBean resultsBean = (GoodListRes.ResultsBean) v.getTag(R.id.data);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(ValueConstant.FARG_REQ,1);
+                        FragManager2.getInstance().start(getBaseUIAct(), get容器(),GoodDetailFrag.getInstance(GoodDetailValue.物料详情,resultsBean.getProductInfoId()),bundle);
+                        break;
+                }
         }
     }
 

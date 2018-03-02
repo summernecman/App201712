@@ -2,27 +2,14 @@ package com.siweisoft.heavycenter.module.main.msg.msg;
 
 //by summer on 2017-12-11.
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
-import android.view.ViewAnimationUtils;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
-import com.android.lib.util.AnimUtil;
-import com.android.lib.util.LogUtil;
-import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.StringUtil;
-import com.android.lib.util.data.DateFormatUtil;
-import com.android.lib.util.system.HandleUtil;
 import com.github.florent37.viewanimator.AnimationListener;
 import com.github.florent37.viewanimator.ViewAnimator;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -32,8 +19,6 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
 import com.siweisoft.heavycenter.databinding.FragMainMsgsMsgBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainMsgAllBinding;
-
-import java.util.Date;
 
 public class MsgUIOpe extends BaseUIOpe<FragMainMsgsMsgBinding>{
 
@@ -63,7 +48,8 @@ public class MsgUIOpe extends BaseUIOpe<FragMainMsgsMsgBinding>{
                     case MsgsResBean.ResultsBean.AUDITOR_STATE_CHECKING:
                         binding.llFuction.setVisibility(View.VISIBLE);
                         switch (o.getResults().get(position).getMessageType()){
-                            case MsgsResBean.ResultsBean.MSG_TYPE_INVITE_M:
+                            case MsgsResBean.ResultsBean.用户申请:
+                                binding.btMana.setVisibility(View.VISIBLE);
                                 binding.btMana.setOnClickListener(this);
                                 binding.btReject.setOnClickListener(this);
                                 binding.btAgree.setOnClickListener(this);

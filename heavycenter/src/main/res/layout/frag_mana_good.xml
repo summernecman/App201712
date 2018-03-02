@@ -27,6 +27,9 @@
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refresh"
+            style_common:srlDragRate= "0.2"
+            style_common:srlEnableLoadmoreWhenContentNotFull="false"
+            style_common:srlEnableOverScrollBounce="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <android.support.v7.widget.RecyclerView

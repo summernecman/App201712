@@ -48,7 +48,7 @@
             android:layout_centerVertical="true"
             android:layout_weight="1"
             style_common:txt_left = "车牌号"
-            style_common:txt_mid = "请输入内容"
+            style_common:txt_hint = "请输入内容"
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -159,7 +159,7 @@
             android:id="@+id/item_brand"
             android:layout_marginTop="10dp"
             style_common:txt_left = "品牌名称"
-            style_common:txt_mid = "请输入"
+            style_common:txt_hint = "请输入"
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -172,7 +172,7 @@
                 android:id="@+id/item_emptyweight"
                 style_common:txt_maxlenth="8"
                 style_common:txt_left = "车辆自重"
-                style_common:txt_mid = "请输入"
+                style_common:txt_hint = "请输入"
                 style_common:boo_edit = "true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -194,7 +194,7 @@
                 style_common:txt_maxlenth="8"
                 android:id="@+id/item_maxweight"
                 style_common:txt_left = "车辆载重"
-                style_common:txt_mid = "请输入"
+                style_common:txt_hint = "请输入"
                 style_common:boo_edit = "true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -214,7 +214,7 @@
             android:id="@+id/item_iccard"
             style_common:txt_maxlenth="20"
             style_common:txt_left = "车辆IC卡号"
-            style_common:txt_mid = "请输入"
+            style_common:txt_hint = "请输入"
             style_common:boo_edit = "true"
             android:layout_width="match_parent"
             android:layout_height="45dp"/>
@@ -224,7 +224,6 @@
             android:layout_marginTop="10dp"
             android:background="@color/white"
             style_common:txt_left = "选择当前驾驶员"
-            style_common:txt_mid = "请输入"
             style_common:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

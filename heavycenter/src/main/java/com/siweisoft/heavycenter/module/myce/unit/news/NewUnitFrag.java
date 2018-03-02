@@ -92,9 +92,8 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(),new AddrFrag(),bundle);
                 break;
             case R.id.upunit:
-                bundle.putInt(ValueConstant.DATA_DATA, UnitListDAOpe.UP_UNIT);
                 bundle.putInt(ValueConstant.FARG_REQ,3);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new UnitListFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),UnitListFrag.getInstance(UnitListDAOpe.上级单位),bundle);
                 break;
             case R.id.area:
                 bundle.putInt(ValueConstant.FARG_REQ,4);

@@ -67,20 +67,13 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <com.scwang.smartrefresh.layout.SmartRefreshLayout
-                app:srlEnablePureScrollMode="true"
-                app:srlDragRate="0.1"
-                android:id="@+id/refresh"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recycle"
-                    android:scrollbars="vertical"
-                    android:scrollbarSize="10dp"
-                    android:fadeScrollbars="false"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle"
+            android:scrollbars="vertical"
+            android:scrollbarSize="10dp"
+            android:fadeScrollbars="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </layout>

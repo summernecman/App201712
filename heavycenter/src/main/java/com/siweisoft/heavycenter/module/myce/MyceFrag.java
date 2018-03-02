@@ -30,9 +30,11 @@ import com.siweisoft.heavycenter.module.mana.car.CarsFrag;
 import com.siweisoft.heavycenter.module.mana.good.GoodFrag;
 import com.siweisoft.heavycenter.module.mana.store.StoreFrag;
 import com.siweisoft.heavycenter.module.mana.user.list.UserFrag;
+import com.siweisoft.heavycenter.module.mana.user.list.UserValue;
 import com.siweisoft.heavycenter.module.myce.car.bind.BindFrag;
 import com.siweisoft.heavycenter.module.myce.name.NameFrag;
 import com.siweisoft.heavycenter.module.myce.sett.SetFrag;
+import com.siweisoft.heavycenter.module.myce.unit.list.UnitListDAOpe;
 import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
 import com.siweisoft.heavycenter.module.myce.base.info.InfoFrag;
 import com.siweisoft.heavycenter.module.myce.unit.news.NewUnitFrag;
@@ -98,7 +100,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new StoreFrag());
                 break;
             case R.id.item_user:
-                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new UserFrag());
+                FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,UserFrag.getInstance(UserValue.查看用户));
                 break;
             case R.id.item_unit:
                 switch (LocalValue.get登录返回信息().getBindCompanyState()){
@@ -114,7 +116,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
-                        FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new UnitListFrag());
+                        FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,UnitListFrag.getInstance(UnitListDAOpe.绑定单位));
                         break;
                 }
                 break;

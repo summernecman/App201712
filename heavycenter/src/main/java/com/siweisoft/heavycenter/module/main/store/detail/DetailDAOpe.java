@@ -34,4 +34,8 @@ public class DetailDAOpe extends BaseDAOpe {
     public StoreDetail getStoreDetail() {
         return storeDetail;
     }
+
+    public void setStoreDetail(StoreDetail storeDetail) {
+        this.storeDetail = storeDetail;
+    }
 }

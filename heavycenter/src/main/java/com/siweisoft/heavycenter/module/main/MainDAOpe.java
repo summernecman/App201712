@@ -61,7 +61,7 @@ public class MainDAOpe extends AppDAOpe {
             menudata.add(new BottomMenuBean(MainValue.称重, R.drawable.drawable_main_bottom_weight,new DetailFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         }else{
             RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainValue.地磅ID);
-            menudata.add(new BottomMenuBean(MainValue.称重, R.drawable.drawable_main_bottom_weight,new WeigtsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+            menudata.add(new BottomMenuBean(MainValue.地磅, R.drawable.drawable_main_bottom_weight,new WeigtsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         }
 
         RelativeLayout v1 = new RelativeLayout(context);v1.setId(MainValue.运输单ID);
@@ -109,6 +109,15 @@ public class MainDAOpe extends AppDAOpe {
         RelativeLayout v4 = new RelativeLayout(context);v4.setId(MainValue.消息ID);
         nodata.add(new BottomMenuBean(MainValue.消息, R.drawable.drawable_main_bottom_msg,new MsgsFrag(),v4,context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         return nodata;
+    }
+
+    public int getPos(String name){
+        for(int i=0;i<getBottomdata().size();i++){
+            if(getBottomdata().get(i).getName().equals(name)){
+                return i;
+            }
+        }
+        return 0;
     }
 
 

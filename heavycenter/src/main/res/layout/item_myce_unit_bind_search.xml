@@ -38,11 +38,11 @@
             android:layout_height="match_parent" />
 
         <ImageView
+          android:padding="5dp"
             android:id="@+id/iv_search"
-            android:layout_marginRight="13dp"
             android:src="@drawable/icon_hv_search"
-            android:layout_width="19dp"
-            android:layout_height="19dp" />
+            android:layout_width="50dp"
+            android:layout_height="30dp" />
     </LinearLayout>
     </LinearLayout>
 </layout>

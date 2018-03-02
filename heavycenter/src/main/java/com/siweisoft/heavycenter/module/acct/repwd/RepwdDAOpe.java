@@ -10,6 +10,7 @@ import com.android.lib.network.netadapter.UINetAdapter;
 import com.android.lib.network.news.NetAdapter;
 import com.android.lib.network.news.NetI;
 import com.android.lib.util.GsonUtil;
+import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.thread.ThreadUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;
@@ -39,7 +40,7 @@ public class RepwdDAOpe extends AppDAOpe {
         NetDataOpe.getCode(getActivity(), NetValue.获取地址("/user/getSecurityCode"), reqBean, new NetAdapter<CodeResBean>(getActivity()) {
             @Override
             public void onNetFinish(boolean haveData, String url, BaseResBean o) {
-                ToastUtil.getInstance().showShort(getActivity(),o.getResult()+":"+o.getMessage());
+                ToastUtil.getInstance().showShort(getActivity(), StringUtil.getStr(o.getResult())+" "+o.getMessage());
 
             }
         });

@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.main.store.detail;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.ope.BaseUIOpe;
@@ -20,6 +21,11 @@ import java.util.List;
 
 public class DetailUIOpe extends BaseUIOpe<FragMainStoreDetailBinding>{
 
+    @Override
+    public void initUI() {
+        super.initUI();
+        bind.title.getRightIV2().setVisibility(View.GONE);
+    }
 
     public void initRefresh(){
         bind.refresh.setOnRefreshListener(new OnRefreshListener() {
@@ -47,5 +53,9 @@ public class DetailUIOpe extends BaseUIOpe<FragMainStoreDetailBinding>{
     public void initUI( StoreDetail storeDetail){
         bind.setVariable(BR.frag_main_store_detail,storeDetail);
         bind.store.setTxt(storeDetail.getMinStock(),storeDetail.getProductMinStock(),storeDetail.getMaxStock(),storeDetail.getProductMaxStock(),storeDetail.getCurrentStock());
+    }
+
+    public void ready(){
+        bind.title.getRightIV2().setVisibility(View.VISIBLE);
     }
 }

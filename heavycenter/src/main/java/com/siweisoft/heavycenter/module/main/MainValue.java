@@ -10,6 +10,8 @@ public class MainValue {
 
     public static final String 称重 = "称重";
 
+    public static final String 地磅 = "地磅";
+
     public static final String 运输单 = "运输单";
 
     public static final String 订单 = "订单";

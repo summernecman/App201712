@@ -10,6 +10,8 @@ import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.unit.historyfh.HistoryFhUnitReq;
+import com.siweisoft.heavycenter.data.netd.unit.historysh.HistoryShUnitReq;
 import com.siweisoft.heavycenter.data.netd.unit.info.UnitInfoReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListReqBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
@@ -23,11 +25,15 @@ import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
 public class UnitListDAOpe extends AppDAOpe {
 
 
-    public static final int BIND_UNIT = 0;
+    public static final int 绑定单位 = 0;
 
-    public static final int UP_UNIT = 1;
+    public static final int 上级单位 = 1;
 
-    public static final int SEL_UNIT = 2;
+    public static final int 选择单位 = 2;
+
+    public static final int 历史发货单位 = 3;
+
+    public static final int 历史收货单位 = 4;
 
     ListResBean netUnits = new ListResBean();
 
@@ -42,6 +48,32 @@ public class UnitListDAOpe extends AppDAOpe {
         listReqBean.setPageSize(1000);
         NetDataOpe.unitList(getActivity(), listReqBean,adapter);
     }
+
+
+    public static void getHistoryFhUnit(Context context,String key,NetI<ListResBean> adapter){
+        HistoryFhUnitReq historyFhUnitReq = new HistoryFhUnitReq();
+        historyFhUnitReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        historyFhUnitReq.setPageIndex(1);
+        if(!NullUtil.isStrEmpty(key)){
+            historyFhUnitReq.setKeyword(key);
+        }
+        historyFhUnitReq.setPageSize(1000);
+        NetDataOpe.Unit.historyFhUnit(context,historyFhUnitReq,adapter);
+    }
+
+
+    public static void getHistoryShUnit(Context context,String key,NetI<ListResBean> adapter){
+        HistoryShUnitReq historyShUnitReq = new HistoryShUnitReq();
+        historyShUnitReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        historyShUnitReq.setPageIndex(1);
+        if(!NullUtil.isStrEmpty(key)){
+            historyShUnitReq.setKeyword(key);
+        }
+        historyShUnitReq.setPageSize(1000);
+        NetDataOpe.Unit.historyShUnit(context,historyShUnitReq,adapter);
+    }
+
+
 
     public void searchUnit(SearchReqBean reqBean,NetI<SearchResBean> adapter){
         reqBean.setPageSize(100);

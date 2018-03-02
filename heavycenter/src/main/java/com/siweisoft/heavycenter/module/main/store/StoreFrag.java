@@ -23,6 +23,7 @@ import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.store.check.CheckFrag;
+import com.siweisoft.heavycenter.module.main.store.check.CheckValue;
 import com.siweisoft.heavycenter.module.main.store.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
@@ -47,7 +48,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new CheckFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),CheckFrag.getInstance(CheckValue.盘点所有仓库,-1),bundle);
                 break;
             case R.id.ftv_right:
                 if(getActivity() instanceof MainAct){

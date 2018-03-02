@@ -98,7 +98,7 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
         getP().getD().stopMap();
     }
 
-    @OnClick({R.id.tv_addr,R.id.ll_local,R.id.tv_city})
+    @OnClick({R.id.tv_addr,R.id.iv_local,R.id.tv_local,R.id.tv_city})
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()){
@@ -110,7 +110,8 @@ public class AddrFrag extends AppFrag<AddrUIOpe,AddrDAOpe> implements ViewListen
                 getArguments().putSerializable(ValueConstant.DATA_DATA,getP().getD().getUnitInfo());
                 getBaseUIAct().onBackPressed();
                 break;
-            case R.id.ll_local:
+            case R.id.iv_local:
+            case R.id.tv_local:
                 getP().getD().getMapUtil().init(getBaseUIAct(),true);
                 getP().getD().getMapUtil().registerLocationListener(getBaseUIAct(), new BDAbstractLocationListener() {
                     @Override

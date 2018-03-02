@@ -10,6 +10,7 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
+import com.siweisoft.heavycenter.module.myce.unit.list.UnitListDAOpe;
 import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
@@ -30,7 +31,7 @@ public class NoBindFrag extends AppFrag<NoBindUIOpe,NoBindDAOpe> {
                 break;
             case R.id.ftv_title:
             case R.id.tv_bindtip:
-                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,MainValue.主界面ID,new UnitListFrag());
+                FragManager2.getInstance().start(getBaseUIAct(), MainValue.主界面,MainValue.主界面ID,UnitListFrag.getInstance(UnitListDAOpe.绑定单位));
                 break;
         }
     }

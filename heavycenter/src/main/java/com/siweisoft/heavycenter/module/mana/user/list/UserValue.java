@@ -6,7 +6,10 @@ import com.android.lib.constant.ValueConstant;
 
 public class UserValue {
 
-    public static final String 选取超级管理员KEY = "选取超级管理员KEY";
 
-    public static final String 选取超级管理员 = "选取超级管理员";
+    public static final String 选择用户 = "选择用户";
+
+    public static final String 查看用户  = "查看用户";
+
+
 }

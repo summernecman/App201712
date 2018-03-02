@@ -120,7 +120,6 @@
             app:layout_constraintTop_toBottomOf="@+id/gap"
             app:layout_constraintLeft_toLeftOf="parent"
             app:txt_left = "指定承运车辆"
-            app:txt_mid = "请输入"
             app:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

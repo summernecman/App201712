@@ -84,9 +84,13 @@ public class GoodListRes extends BaseBean{
         private float minStock;
         private int status;
 
-        public static int 启用 =1;
+        public static final int 启用 =1;
 
-        public static int 停用 = 0;
+        public static final int 停用 = 0;
+
+        public static final String 启用CN ="启用";
+
+        public static final String 停用CN = "停用";
 
 
         public String getBelongArea() {

@@ -2,8 +2,10 @@ package com.siweisoft.heavycenter.module.main;
 
 //by summer on 17-08-23.
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +14,12 @@ import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.GsonUtil;
+import com.android.lib.util.IntentUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.activity.ActivityUtil;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.android.lib.util.system.SystemUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -22,6 +27,8 @@ import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.jpush.main.MainPush;
+import com.siweisoft.heavycenter.data.netd.msg.push.MsgPush;
 import com.siweisoft.heavycenter.module.welc.welc.WelcAct;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -132,6 +139,33 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
             this.finish();
         }
     }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void MainPush(MainPush m) {
+        if(m==null||m.getMsg()==null){
+            return;
+        }
+        MsgPush msgPush = GsonUtil.getInstance().fromJson(m.getMsg(),MsgPush.class);
+        if(msgPush.getMessageType()==null){
+            return;
+        }
+        switch (msgPush.getMessageType()){
+           default:
+               if (SystemUtil.isBackground(getActivity())) {
+                   IntentUtil.getInstance().IntentTo(getActivity(), getActivity().getPackageName());
+               }
+
+               PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
+               PowerManager.WakeLock mWakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE, "SimpleTimer");
+               mWakeLock.acquire();//这里唤醒锁，用这种方式要记得在适当的地方关闭锁，
+               mWakeLock.release();
+               onAppItemSelect(null,null,getP().getD().getPos(MainValue.消息));
+               break;
+        }
+    }
+
+
 
     @Override
     protected boolean registerEventBus() {

@@ -3,40 +3,87 @@ package com.siweisoft.heavycenter.module.mana.user.news;
 //by summer on 2017-12-19.
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.android.lib.base.fragment.BaseUIFrag;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.NullUtil;
+import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
+import com.siweisoft.heavycenter.GlideApp;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
+import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserReqBean;
+import com.siweisoft.heavycenter.databinding.FragManaUserDetailBinding;
+import com.siweisoft.heavycenter.databinding.FragManaUserInfoBinding;
 import com.siweisoft.heavycenter.databinding.FragManaUserNewBinding;
 
 import java.util.ArrayList;
 
-public class NewUIOpe extends AppUIOpe<FragManaUserNewBinding> implements View.OnClickListener{
+public class NewUIOpe extends AppUIOpe<FragManaUserDetailBinding> implements View.OnClickListener{
 
     ArrayList<View> views = new ArrayList<>();
 
 
+    FragManaUserNewBinding fragManaUserNewBinding;
+
+    FragManaUserInfoBinding fragManaUserInfoBinding;
+
+
     public void initUI() {
         super.initUI();
-        bind.itemName.setVisibility(View.GONE);
-        bind.one.setOnClickListener(this);views.add(bind.one);bind.one.setTag(R.id.data, LoginResBean.USER_ROLE_GENERAL);
-        bind.two.setOnClickListener(this);views.add(bind.two);bind.two.setTag(R.id.data, LoginResBean.USER_ROLE_DRIVER);
-        bind.three.setOnClickListener(this);views.add(bind.three);bind.three.setTag(R.id.data, LoginResBean.USER_ROLE_ADMIN);
-        bind.one.setSelected(true);
+        switch (getFrag().getArguments().getString(ValueConstant.DATA_TYPE)){
+            case NewUserValue.新建用户:
+
+                fragManaUserNewBinding = DataBindingUtil.bind(LayoutInflater.from(getActivity()).inflate(R.layout.frag_mana_user_new,null));
+                bind.llUserdetail.addView(fragManaUserNewBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+                fragManaUserNewBinding.one.setOnClickListener(this);views.add(fragManaUserNewBinding.one);fragManaUserNewBinding.one.setTag(R.id.data, LoginResBean.USER_ROLE_GENERAL);
+                fragManaUserNewBinding.two.setOnClickListener(this);views.add(fragManaUserNewBinding.two);fragManaUserNewBinding.two.setTag(R.id.data, LoginResBean.USER_ROLE_DRIVER);
+                fragManaUserNewBinding.three.setOnClickListener(this);views.add(fragManaUserNewBinding.three);fragManaUserNewBinding.three.setTag(R.id.data, LoginResBean.USER_ROLE_ADMIN);
+                fragManaUserNewBinding.one.setSelected(true);
+                break;
+            case NewUserValue.用户信息:
+                fragManaUserInfoBinding = DataBindingUtil.bind(LayoutInflater.from(getActivity()).inflate(R.layout.frag_mana_user_info,null));
+                bind.llUserdetail.addView(fragManaUserInfoBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                break;
+
+        }
 
     }
 
+    public void initUserInfo(LoginResBean userInfo){
+        GlideApp.with(context).asBitmap().load(NetValue.获取地址(userInfo.getUserPhoto())).placeholder(R.drawable.icon_hv_myce_head).centerCrop().into( fragManaUserInfoBinding.head);
+        fragManaUserInfoBinding.itemName.setMidEtTxt(StringUtil.getStr(userInfo.getTrueName()));
+        fragManaUserInfoBinding.itemPhone.setMidEtTxt(StringUtil.getStr(userInfo.getTel()));
+        switch (userInfo.getUserRole()){
+            case LoginResBean.USER_ROLE_ADMIN:
+            case LoginResBean.USER_ROLE_SUPER_ADMIN:
+            case LoginResBean.USER_ROLE_SYS_ADMIN:
+                fragManaUserInfoBinding.tvUser.setSelected(true);
+                fragManaUserInfoBinding.tvMana.setSelected(false);
+                break;
+            case LoginResBean.USER_ROLE_GENERAL:
+            case LoginResBean.USER_ROLE_DRIVER:
+                fragManaUserInfoBinding.tvUser.setSelected(false);
+                fragManaUserInfoBinding.tvMana.setSelected(true);
+                break;
+        }
+    }
+
     public boolean canGo(){
-        if(NullUtil.isStrEmpty(bind.itemTel.getMidET().getText().toString())){
+        if(NullUtil.isStrEmpty(fragManaUserNewBinding.itemTel.getMidET().getText().toString())){
             ToastUtil.getInstance().showShort(getActivity(),"请输入手机号");
             return false;
         }
-        if(bind.itemTel.getMidET().getText().toString().length()!=11){
+        if(fragManaUserNewBinding.itemTel.getMidET().getText().toString().length()!=11){
             ToastUtil.getInstance().showShort(getActivity(),"手机号格式输入有误");
             return false;
         }
@@ -60,7 +107,7 @@ public class NewUIOpe extends AppUIOpe<FragManaUserNewBinding> implements View.O
               break;
             }
         }
-        reqBean.setTel(bind.itemTel.getMidET().getText().toString());
+        reqBean.setTel(fragManaUserNewBinding.itemTel.getMidET().getText().toString());
         return reqBean;
     }
 }

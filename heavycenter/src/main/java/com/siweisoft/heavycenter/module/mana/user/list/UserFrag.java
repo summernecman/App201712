@@ -16,6 +16,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserResBean;
 import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
@@ -24,16 +25,31 @@ import com.siweisoft.heavycenter.data.netd.user.userrole.UserRoleRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.user.news.NewFrag;
+import com.siweisoft.heavycenter.module.mana.user.news.NewUserValue;
 
 import butterknife.OnClick;
 
 public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshListener,OnLoadmoreListener,ViewListener{
 
+    public static UserFrag getInstance(String type){
+        UserFrag userFrag = new UserFrag();
+        userFrag.setArguments(new Bundle());
+        userFrag.getArguments().putString(ValueConstant.DATA_TYPE,type);
+        return userFrag;
+    }
+
+
     @Override
     public void initNow() {
         super.initNow();
-        if(OjectUtil.equals(getArguments().getString(UserValue.选取超级管理员KEY),UserValue.选取超级管理员)){
-            getP().getU().setSwipe(false);
+        switch (getArguments().getString(ValueConstant.DATA_TYPE)){
+            case UserValue.查看用户:
+
+                break;
+            case UserValue.选择用户:
+                getP().getU().setSwipe(false);
+                break;
+
         }
     }
 
@@ -54,7 +70,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new NewFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),NewFrag.getInstance(NewUserValue.新建用户,-1),bundle);
                 break;
         }
     }
@@ -87,9 +103,8 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                         switch (t){
                             case 1:
                                 Bundle bundle = new Bundle();
-                                bundle.putString(UserValue.选取超级管理员KEY,UserValue.选取超级管理员);
                                 bundle.putInt(ValueConstant.FARG_REQ,2);
-                                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new UserFrag(),bundle);
+                                FragManager2.getInstance().start(getBaseUIAct(), get容器(),UserFrag.getInstance(UserValue.选择用户),bundle);
                                 break;
                             case 0:
                                 switch (resultsBean.getBindCompanyState()){
@@ -118,9 +133,15 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                         break;
                     case R.id.smContentView:
                         UnitUserResBean.ResultsBean data  = (UnitUserResBean.ResultsBean) v.getTag(R.id.data);
-                        if(OjectUtil.equals(getArguments().getString(UserValue.选取超级管理员KEY),UserValue.选取超级管理员)){
-                            getArguments().putSerializable(ValueConstant.DATA_DATA,data);
-                           getBaseUIAct().onBackPressed();
+                        switch (getArguments().getString(ValueConstant.DATA_TYPE)){
+                            case UserValue.查看用户:
+                                FragManager2.getInstance().start(getBaseUIAct(), get容器(),NewFrag.getInstance(NewUserValue.用户信息,data.getUserId()));
+                                break;
+                            case UserValue.选择用户:
+                                getArguments().putSerializable(ValueConstant.DATA_DATA,data);
+                                getBaseUIAct().onBackPressed();
+                                break;
+
                         }
                         break;
                 }

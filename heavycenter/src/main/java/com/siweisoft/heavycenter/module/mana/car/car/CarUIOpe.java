@@ -37,6 +37,7 @@ public class CarUIOpe extends AppUIOpe<FragManaCarBinding>{
 
     public void initUI() {
         initRecycle();
+        bind.cartitle.getMidTV().setText(getFrag().getArguments().getString(ValueConstant.DATA_TYPE,"车辆列表"));
     }
 
 

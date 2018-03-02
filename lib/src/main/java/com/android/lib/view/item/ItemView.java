@@ -70,7 +70,6 @@ public class ItemView extends RelativeLayout{
     }
 
     private void init(Context context, AttributeSet attrs){
-
         LayoutInflater.from(getContext()).inflate(R.layout.item_content,this,true);
         leftIV = (ImageView) findViewById(R.id.iv_left_icon);
         leftTV = (TextView) findViewById(R.id.tv_left_content);

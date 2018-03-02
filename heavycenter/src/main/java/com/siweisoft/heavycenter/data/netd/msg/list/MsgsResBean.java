@@ -82,11 +82,11 @@ public class MsgsResBean extends BaseBean {
          */
 
         public static final String MSG_TYPE_UPDATE = "update";
-        public static final String MSG_TYPE_INVITE_D = "inviteD";
-        public static final String MSG_TYPE_INVITE_U = "inviteU";
-        public static final String MSG_TYPE_INVITE_M = "inviteM";
-        public static final String MSG_TYPE_APPLY_D = "applyD";
-        public static final String MSG_TYPE_APPLY_U = "applyU";
+        public static final String 邀请为驾驶员 = "inviteD";
+        public static final String 邀请为用户 = "inviteU";
+        public static final String 邀请为管理员 = "inviteM";
+        public static final String 驾驶员申请 = "applyD";
+        public static final String 用户申请 = "applyU";
         public static final String MSG_TYPE_INFO = "info";
 
 
@@ -118,7 +118,7 @@ public class MsgsResBean extends BaseBean {
         private String auditorName;
         private String messageContent;
         private long sendTime;
-        private String sendTimeDes;
+        private String sendTimeDes="";
 
         public String getSenderName() {
             return senderName;
@@ -206,17 +206,14 @@ public class MsgsResBean extends BaseBean {
 
         public void setSendTime(long sendTime) {
             this.sendTime = sendTime;
-            if(sendTime!=0){
-                setSendTimeDes(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getSendTime())));
-            }
         }
 
         public String getSendTimeDes() {
+            if(sendTime!=0){
+               return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getSendTime()));
+            }
             return sendTimeDes;
         }
 
-        public void setSendTimeDes(String sendTimeDes) {
-            this.sendTimeDes = sendTimeDes;
-        }
     }
 }

@@ -41,6 +41,9 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
         getP().getU().initUI();
         getP().getD().initDA();
         ButterKnife.bind(getActivity());
+        if(registerEventBus()){
+            EventBus.getDefault().register(this);
+        }
     }
 
     protected int getBaseUILayout() {
@@ -89,22 +92,12 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        if(registerEventBus()){
-            EventBus.getDefault().register(this);
-        }
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         if(registerEventBus()){
             EventBus.getDefault().unregister(this);
         }
     }
-
-
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

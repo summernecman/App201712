@@ -64,9 +64,15 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 }
                 break;
             case R.id.item_unit:
-                bundle.putInt(ValueConstant.DATA_DATA, UnitListDAOpe.SEL_UNIT);
                 bundle.putInt(ValueConstant.FARG_REQ,NewOrderValue.收货单位);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new UnitListFrag(),bundle);
+                switch (getP().getD().getNewsOrderReqBean().getOrderType()){
+                    case NewsOrderReqBean.发货:
+                        FragManager2.getInstance().start(getBaseUIAct(), get容器(),UnitListFrag.getInstance(UnitListDAOpe.历史收货单位),bundle);
+                        break;
+                    case NewsOrderReqBean.收货:
+                        FragManager2.getInstance().start(getBaseUIAct(), get容器(),UnitListFrag.getInstance(UnitListDAOpe.历史发货单位),bundle);
+                        break;
+                }
                 break;
             case R.id.item_starttime:
                 TimePickerDialog.Builder builder = new TimePickerDialog.Builder();
@@ -79,7 +85,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                         getP().getU().init(getP().getD().getNewsOrderReqBean());
                     }
                 });
-                TimePickerDialog timePickerDialog = builder.setType(Type.MONTH_DAY_HOUR_MIN).build();
+                TimePickerDialog timePickerDialog = builder.setType(Type.MONTH_DAY_HOUR_MIN).setTitleStringId("计划开始时间").build();
                 timePickerDialog.show(getFragmentManager(),"计划开始时间");
 
                 break;

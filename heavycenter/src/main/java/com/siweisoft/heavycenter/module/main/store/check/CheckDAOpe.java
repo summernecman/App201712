@@ -13,6 +13,8 @@ import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.mana.store.check.Check;
 import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreResBean;
+import com.siweisoft.heavycenter.data.netd.mana.store.detail.StoreDetailReq;
+import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 
@@ -69,6 +71,12 @@ public class CheckDAOpe extends AppDAOpe {
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);
         NetDataOpe.Mana.Store.sotresInfo(getActivity(),reqBean,adapter);
+    }
+
+    public static void storesDetail(Context context,int id,NetI<StoreDetail> adapter){
+        StoreDetailReq storeDetailReq = new StoreDetailReq();
+        storeDetailReq.setWarehouseId(id);
+        NetDataOpe.Mana.Store.detail(context,storeDetailReq,adapter);
     }
 
     public boolean canGo(){

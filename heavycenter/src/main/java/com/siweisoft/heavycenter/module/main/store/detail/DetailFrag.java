@@ -12,6 +12,7 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.module.main.store.check.CheckFrag;
+import com.siweisoft.heavycenter.module.main.store.check.CheckValue;
 
 import butterknife.OnClick;
 
@@ -25,7 +26,9 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
             @Override
             public void onSuccess(StoreDetail o) {
                 //o = new Test().getStoreDetail();
-                getP().getU().initUI(o);
+                getP().getU().ready();
+                getP().getD().setStoreDetail(o);
+                getP().getU().initUI(getP().getD().getStoreDetail());
             }
         });
 
@@ -38,7 +41,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new CheckFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),CheckFrag.getInstance(CheckValue.盘点一个仓库,getP().getD().getStoreDetail().getWarehouseId()),bundle);
         }
     }
 
