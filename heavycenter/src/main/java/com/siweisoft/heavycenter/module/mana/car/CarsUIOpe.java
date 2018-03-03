@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
@@ -28,16 +29,16 @@ public class CarsUIOpe extends AppUIOpe<FragManaCarsBinding> {
         bind.llCntent.setOffscreenPageLimit(pages.size());
         bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
         bind.topview.setViewPager(bind.llCntent);
-        bind.scrollmenu.setViewPager(bind.llCntent);
-        bind.llCntent.setScrollble(true);
+        final int gap = (int) (50* ScreenUtil.最小DIMEN);
+        bind.llCntent.setGapw(gap);
         bind.llCntent.addOnPageChangeListener(new BaseOnPagerChangeListener(){
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 if(position==1){
-                    bind.llCntent.setScrollble(false);
+                    bind.llCntent.setGapw(gap);
                 }else{
-                    bind.llCntent.setScrollble(true);
+                    bind.llCntent.setGapw((int) ScreenUtil.w);
                 }
             }
         });

@@ -32,16 +32,6 @@ public class ScrollbleViewPager extends ViewPager {
         return super.onInterceptTouchEvent(ev);
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()) {
-            case MotionEvent.ACTION_MOVE:
-                if (!scrollble) {
-                    return false;
-                }
-        }
-        return super.onTouchEvent(ev);
-    }
 
     public void setScrollble(boolean scrollble) {
         this.scrollble = scrollble;

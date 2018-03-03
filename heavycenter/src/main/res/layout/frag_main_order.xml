@@ -27,8 +27,6 @@
             <com.android.lib.view.title.TitleView
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:elevation="2dp"
-                android:background="@color/color_base"
                 android:id="@+id/title"
                 style_common:iv_left ="@drawable/icon_hv_person"
                 style_common:iv_right ="@drawable/icon_hv_scan"

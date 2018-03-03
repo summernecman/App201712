@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+                android:id="@+id/top"
             android:elevation="2dp"
             android:background="@color/color_base"
             style_common:layout_constraintLeft_toLeftOf="parent"
@@ -23,9 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.android.lib.view.title.TitleView
-
-                android:elevation="2dp"
-                android:background="@color/color_base"
                 android:id="@+id/title"
                 style_common:iv_left ="@drawable/icon_hv_back"
                 style_common:iv_right ="@drawable/icon_hv_scan"
@@ -42,15 +40,16 @@
         </LinearLayout>
 
 
-        <com.android.lib.view.viewpager.ScrollbleViewPager
+        <com.android.lib.view.viewpager.GapScrollbleViewPager
+                style_common:layout_constraintTop_toBottomOf="@+id/top"
             style_common:layout_constraintLeft_toLeftOf="parent"
             style_common:layout_constraintRight_toRightOf="parent"
             style_common:layout_constraintBottom_toBottomOf="parent"
             android:orientation="vertical"
             android:id="@+id/ll_cntent"
             android:layout_centerInParent="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
 
 
 

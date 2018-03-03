@@ -6,6 +6,7 @@ import android.os.Environment;
 
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
@@ -286,6 +287,32 @@ public class Test {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public  CarsResBean getCarsResBean(){
+        CarsResBean carsResBean = new CarsResBean();
+        for(int i=0;i<30;i++){
+            CarsResBean.CarInfoRes carInfoRes = new CarsResBean.CarInfoRes();
+            carInfoRes.setCarBrand("品牌");
+            carInfoRes.setCarLat(13.4444);
+            carInfoRes.setCarLicenseNo("沪A3232q");
+            carInfoRes.setCarLng(34.4444);
+            carInfoRes.setCompanyId(0);
+            carInfoRes.setCompanyName("公司名称");
+            carInfoRes.setCreater(0);
+            carInfoRes.setCurrentDriver(0);
+            carInfoRes.setEmptyWeight(12);
+            carInfoRes.setIcCard("fdsgsdfsf");
+            carInfoRes.setMaxCapacity(34);
+            carInfoRes.setSpecifications("规格");
+            carInfoRes.setStatus(1);
+            carInfoRes.setTel("16355252251");
+            carInfoRes.setTrueName("唐杰");
+            carInfoRes.setVehicleId(0);
+            carInfoRes.setVehicleLicense("fjdfd");
+            carsResBean.getResults().add(carInfoRes);
+        }
+        return carsResBean;
     }
 
 }

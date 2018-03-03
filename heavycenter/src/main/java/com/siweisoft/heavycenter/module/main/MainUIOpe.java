@@ -111,7 +111,7 @@ public class MainUIOpe extends AppUIOpe<ActMainBinding> {
         if(bind.content.getAdapter().getCount()<=item){
             return;
         }
-        bind.content.setCurrentItem(item,true);
+        bind.content.setCurrentItem(item,false);
     }
 
     public void switchDrawer(){

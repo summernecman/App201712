@@ -102,9 +102,8 @@ public class CarUIOpe extends AppUIOpe<FragManaCarBinding>{
                 menu.setTag(R.id.data,list.get(position));
                 menu.setTag(R.id.data1,binding.sml);
                 menu.setTag(R.id.type,0);
-
-
                 binding.executePendingBindings();//加一行，问题解决
+
                 switch (moudle){
                     case CarsReqBean.WHAT_MY:
                         if(cars.getResults().get(position).getStatus()== CarsResBean.CarInfoRes.STATUS_OFF){

@@ -60,6 +60,8 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
         });
     }
 
+
+
     @Override
     public void onInterupt(int type, final View v) {
         final MsgsResBean.ResultsBean data = (MsgsResBean.ResultsBean) v.getTag(R.id.data);
