@@ -15,6 +15,7 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -38,6 +39,29 @@ public class UnitListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
     private SearchReqBean searchReqBean = new SearchReqBean();
 
 
+    @Override
+    public void initUI() {
+        super.initUI();
+        switch (getFrag().getArguments().getInt(ValueConstant.DATA_DATA)){
+            case UnitListDAOpe.上级单位:
+                bind.title.getMidTV().setText("上级单位");
+                break;
+            case UnitListDAOpe.历史发货单位:
+                bind.title.getMidTV().setText("历史发货单位");
+                break;
+            case UnitListDAOpe.历史收货单位:
+                bind.title.getMidTV().setText("历史收货单位");
+                break;
+            case UnitListDAOpe.绑定单位:
+                bind.title.getMidTV().setText("绑定单位");
+                break;
+            case UnitListDAOpe.选择单位:
+                bind.title.getMidTV().setText("选择单位");
+                break;
+                default:
+                    break;
+        }
+    }
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));

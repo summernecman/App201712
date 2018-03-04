@@ -41,6 +41,7 @@ public class UnitListDAOpe extends AppDAOpe {
     ListResBean selUnits = new ListResBean();
 
 
+
     public void getData( NetI<ListResBean> adapter){
         ListReqBean listReqBean = new ListReqBean();
         listReqBean.setIsAPP(1);
