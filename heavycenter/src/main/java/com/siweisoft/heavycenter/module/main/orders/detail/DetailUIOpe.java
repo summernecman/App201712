@@ -64,6 +64,9 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
                 break;
             case OrdersReq.已完成订单:
                 bind.rlTopcontainer.addView(ItemMainOrderDetailDoneBinding.inflate(LayoutInflater.from(context)).getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                bind.recycle.setVisibility(View.GONE);
+                bind.itemTip.setVisibility(View.GONE);
+                bind.ivLocal.setVisibility(View.GONE);
                 break;
         }
     }
@@ -163,6 +166,9 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
     }
 
     public void initdata(List<CarsResBean.CarInfoRes> list, ViewListener listener ){
+        if(bind.recycle.getVisibility()==View.GONE){
+            return;
+        }
         bind.recycle.setAdapter(new AppsDataBindingAdapter(getActivity(),R.layout.item_main_order_detail_driver,BR.item_main_order_detail_driver,list,listener){
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {

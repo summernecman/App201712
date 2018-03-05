@@ -75,41 +75,6 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
     }
 
     public void LoadListData(final List<TransDetailRes> s, final ViewListener listener) {
-//        if(o==null || o.getResults()==null || o.getResults().size()==0){
-//            getFrag().showTips("暂无数据");
-//            return;
-//        }
-//        getFrag().removeTips();
-//        final Paint paint = new Paint();
-//        paint.setColor(Color.WHITE);
-//        paint.setAntiAlias(true);
-//        paint.setStyle(Paint.Style.FILL);
-//        paint.setStrokeWidth(ScreenUtil.最小DIMEN);
-//        bind.recycle.addItemDecoration(new RecyclerView.ItemDecoration() {
-//
-//
-//            @Override
-//            public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
-//                super.onDrawOver(c, parent, state);
-//                int left = parent.getPaddingLeft();
-//                int right = parent.getWidth()-parent.getPaddingRight();
-//                paint.setColor(context.getResources().getColor(R.color.color_grey_700));
-//                for(int i=0;i<parent.getChildCount();i++){
-//                    View view = parent.getChildAt(i);
-//                    for(int j=0;j<(right-left)/3;j++){
-//                        c.drawRect(left+j*(6),view.getBottom(),left+j*(6)+3,view.getBottom()+ScreenUtil.最小DIMEN,paint);
-//                    }
-//
-//                    for(int j=0;j<view.getHeight()/3;j++){
-//                        c.drawRect(ScreenUtil.最小DIMEN*120,view.getTop()+j*3, (float) (ScreenUtil.最小DIMEN*120.25),view.getTop()+j*6+3,paint);
-//                    }
-//                    paint.setColor(Color.WHITE);
-//                    c.drawCircle((float) (left+120.5*ScreenUtil.最小DIMEN),(float) (view.getBottom()+0.5*ScreenUtil.最小DIMEN),5*ScreenUtil.最小DIMEN,paint);
-//                }
-//
-//
-//            }
-//        });
 
         if(s==null || s.size()==0){
             getFrag().showTips("暂无数据");

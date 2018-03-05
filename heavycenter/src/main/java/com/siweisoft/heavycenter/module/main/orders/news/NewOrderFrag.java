@@ -140,13 +140,13 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 UnitInfo unitInfo = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
                 if(NewsOrderReqBean.发货.equals(getP().getD().getNewsOrderReqBean().getOrderType())){
                     getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(LocalValue.get登录返回信息().getCompanyId());
-                    getP().getD().getNewsOrderReqBean().setReceiveCompanyId(unitInfo.getId());
+                    getP().getD().getNewsOrderReqBean().setReceiveCompanyId(unitInfo.getTrueComId());
                 }else{
                     getP().getD().getNewsOrderReqBean().setReceiveCompanyId(LocalValue.get登录返回信息().getCompanyId());
-                    getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(unitInfo.getId());
+                    getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(unitInfo.getTrueComId());
                 }
                 getP().getD().getNewsOrderReqBean().setTempCompanyName(unitInfo.getCompanyName());
-                getP().getD().getNewsOrderReqBean().setTempCompany(unitInfo.getId());
+                getP().getD().getNewsOrderReqBean().setTempCompany(unitInfo.getTrueComId());
                 getP().getD().getNewsOrderReqBean().setAddress(unitInfo.getCompanyAddress());
                 break;
             case NewOrderValue.备用签收规则:
@@ -170,7 +170,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 super.onResult(success, msg, unitInfo);
                 if(success){
                     Bundle bundle = new Bundle();
-                    unitInfo.setId(unitInfo.getCompanyId());
+                    unitInfo.setId(unitInfo.getTrueComId());
                     bundle.putSerializable(ValueConstant.DATA_DATA2,unitInfo);
                     NewOrderFrag.this.onResult(NewOrderValue.收货单位,bundle);
                 }

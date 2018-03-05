@@ -17,6 +17,10 @@ import com.android.lib.util.ToastUtil;
 import com.android.lib.util.UriUtils;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.github.florent37.viewanimator.ViewAnimator;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.lzy.imagepicker.ImagePicker;
+import com.lzy.imagepicker.bean.ImageItem;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -41,6 +45,8 @@ import com.siweisoft.heavycenter.module.myce.unit.news.NewUnitFrag;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.OnClick;
 import butterknife.Optional;
@@ -165,7 +171,8 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
 
 
                 // IntentUtil.getInstance().takeGetPhoto(activity);
-                IntentUtil.getInstance().photoShowFromphone(this,01);
+                IntentUtil.getInstance().pickImage(this,01);
+                //IntentUtil.getInstance().photosShowFromphone(this,01);
                 break;
             case R.id.item_setting:
                 FragManager2.getInstance().start(getBaseUIAct(),MainValue.主界面,MainValue.主界面ID,new SetFrag());
@@ -187,15 +194,19 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(data==null){
+        if(data==null||requestCode != 01){
+            return;
+        }
+        List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(data);
+        if(selectList==null||selectList.size()!=1){
             return;
         }
         File file;
         try {
-            file = new Compressor(getActivity()).compressToFile(new File(UriUtils.getPath(getBaseUIAct(), data.getData())));
+            file = new Compressor(getActivity()).compressToFile(new File(selectList.get(0).getCompressPath()));
         } catch (IOException e) {
             e.printStackTrace();
-            file = new File(UriUtils.getPath(getBaseUIAct(), data.getData()));
+            file = new File(selectList.get(0).getCompressPath());
         }
         String type = "";
         switch (requestCode){

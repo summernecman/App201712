@@ -6,6 +6,14 @@ package com.android.lib.util;
 public class NullUtil {
 
 
+
+    public static Object isEmpty(Object str,Object o) {
+       if(str==null){
+           return o;
+       }
+       return str;
+    }
+
     public static boolean isStrEmpty(String str) {
         return str == null || "".equals(str);
     }

@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.main.msg.msg;
 
 //by summer on 2017-12-11.
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.listener.ViewListener;
@@ -17,17 +18,27 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.deal.MsgDealResBean;
+import com.siweisoft.heavycenter.data.netd.msg.list.MsgBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.MainValue;
 
 public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshListener,OnLoadmoreListener ,ViewListener{
 
 
+    public static MsgFrag getInstance(MsgBean msgBean){
+        MsgFrag msgFrag = new MsgFrag();
+        msgFrag.setArguments(new Bundle());
+        msgFrag.getArguments().putString(ValueConstant.DATA_INDEX,msgBean.getName());
+        msgFrag.getArguments().putString(ValueConstant.DATA_TYPE,msgBean.getType());
+        return msgFrag;
+    }
+
     @Override
     protected void onFristVisibleDelayInit() {
         getP().getU().initRefresh(this,this);
-        if(StringUtil.equals(MsgsReqBean.MESSAGE_CATE_ALL,getArguments().getString(ValueConstant.DATA_INDEX))){
+        if(StringUtil.equals(MsgsReqBean.MESSAGE_CATE_ALL,getArguments().getString(ValueConstant.DATA_TYPE))){
             getP().getU().autoRefresh();
         }else{
             onRefresh(getP().getU().bind.refresh);
@@ -37,7 +48,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         getP().getD().setPageindex(getP().getD().getPageindex()+1);
-        getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_INDEX),new UINetAdapter<MsgsResBean>(this) {
+        getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_TYPE),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
                 //o= new Test().getMsgsResBean();
@@ -50,7 +61,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getD().setPageindex(NetValue.PAGE_INDEX_START);
-        getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_INDEX),new UINetAdapter<MsgsResBean>(this) {
+        getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_TYPE),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
                 //o= new Test().getMsgsResBean();
@@ -93,7 +104,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
                     public void onSuccess(MsgDealResBean o) {
                         data.setAuditState(finalAuditstate);
                         getP().getU().setBtnGone((View) v.getTag(R.id.data1),pos);
-                        if(
+                        if(!StringUtil.equals(MsgDealReqBean.AUDII_STATUS_NO,status[0])&&
                                 (StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为用户)
                                 ||StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为管理员)
                                 ||StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为驾驶员))){

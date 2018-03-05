@@ -16,6 +16,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.good.list.GoodListRes;
 import com.siweisoft.heavycenter.data.netd.mana.good.status.GoodStatusRes;
 import com.siweisoft.heavycenter.module.mana.good.news.GoodDetailFrag;
+import com.siweisoft.heavycenter.module.mana.good.news.GoodDetailValue;
 
 import butterknife.OnClick;
 

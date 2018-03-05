@@ -79,6 +79,13 @@ public class UnitInfo extends BaseBean {
 
         public static final int COMPANY_EXSIT = 1;
 
+        public int getTrueComId(){
+            if(id==0){
+                return companyId;
+            }
+            return id;
+        }
+
     public String getBelongAreaNo() {
         return belongAreaNo;
     }

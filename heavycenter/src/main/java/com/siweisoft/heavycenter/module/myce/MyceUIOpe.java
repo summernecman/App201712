@@ -47,7 +47,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                 fragMyceDriverBinding.tvMaxweight.setText("载重: "+StringUtil.getStr(LocalValue.get登录返回信息().getMaxCapacity()));
 
 
-                bind.llHead.tvRole.setText(LoginResBean.USER_ROLE_DRIVER_CN);
+                //bind.llHead.tvRole.setText(LoginResBean.USER_ROLE_DRIVER_CN);
 
 
                 switch (LocalValue.get登录返回信息().getBindCompanyState()){
@@ -85,7 +85,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                         fragMyceDriverBinding.itemUnit.getRight2().setVisibility(View.GONE);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
-                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
+                        fragMyceDriverBinding.itemUnit.getLeftTV().setText("绑定单位");
                         fragMyceDriverBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_REJECT_CN);
                         break;
                 }
@@ -143,7 +143,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                         fragMyceGeneralBinding.itemUnit.getRight2().setVisibility(View.GONE);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
-                        fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
+                        fragMyceGeneralBinding.itemUnit.getLeftTV().setText("绑定单位");
                         fragMyceGeneralBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_REJECT_CN);
                         break;
                 }

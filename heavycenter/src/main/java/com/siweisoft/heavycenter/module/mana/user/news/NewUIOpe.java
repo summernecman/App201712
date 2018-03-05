@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.NullUtil;
+import com.android.lib.util.OjectUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
+import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.heavycenter.GlideApp;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -21,11 +23,13 @@ import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserReqBean;
+import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.databinding.FragManaUserDetailBinding;
 import com.siweisoft.heavycenter.databinding.FragManaUserInfoBinding;
 import com.siweisoft.heavycenter.databinding.FragManaUserNewBinding;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NewUIOpe extends AppUIOpe<FragManaUserDetailBinding> implements View.OnClickListener{
 
@@ -35,6 +39,8 @@ public class NewUIOpe extends AppUIOpe<FragManaUserDetailBinding> implements Vie
     FragManaUserNewBinding fragManaUserNewBinding;
 
     FragManaUserInfoBinding fragManaUserInfoBinding;
+
+
 
 
     public void initUI() {
@@ -63,18 +69,31 @@ public class NewUIOpe extends AppUIOpe<FragManaUserDetailBinding> implements Vie
         GlideApp.with(context).asBitmap().load(NetValue.获取地址(userInfo.getUserPhoto())).placeholder(R.drawable.icon_hv_myce_head).centerCrop().into( fragManaUserInfoBinding.head);
         fragManaUserInfoBinding.itemName.setMidEtTxt(StringUtil.getStr(userInfo.getTrueName()));
         fragManaUserInfoBinding.itemPhone.setMidEtTxt(StringUtil.getStr(userInfo.getTel()));
-        switch (userInfo.getUserRole()){
-            case LoginResBean.USER_ROLE_ADMIN:
-            case LoginResBean.USER_ROLE_SUPER_ADMIN:
-            case LoginResBean.USER_ROLE_SYS_ADMIN:
-                fragManaUserInfoBinding.tvUser.setSelected(true);
-                fragManaUserInfoBinding.tvMana.setSelected(false);
-                break;
-            case LoginResBean.USER_ROLE_GENERAL:
-            case LoginResBean.USER_ROLE_DRIVER:
-                fragManaUserInfoBinding.tvUser.setSelected(false);
-                fragManaUserInfoBinding.tvMana.setSelected(true);
-                break;
+
+        if(OjectUtil.equals(userInfo.getUserType(), UserTypeReqBean.驾驶员)){
+            fragManaUserInfoBinding.llRole.setVisibility(View.GONE);
+            fragManaUserInfoBinding.llImage.setVisibility(View.VISIBLE);
+            GlideApp.with(context).asBitmap().load(NetValue.获取地址(userInfo.getVehicleLicensePhoto())).placeholder(R.drawable.icon_hv_car).centerCrop().into(fragManaUserInfoBinding.ivCarlicenseno);
+            GlideApp.with(context).asBitmap().load(NetValue.获取地址(userInfo.getVehiclePhoto())).placeholder(R.drawable.icon_hv_driveid).centerCrop().into(fragManaUserInfoBinding.ivDriverno);
+        }else{
+            fragManaUserInfoBinding.llRole.setVisibility(View.VISIBLE);
+            fragManaUserInfoBinding.llImage.setVisibility(View.GONE);
+            switch (userInfo.getUserRole()){
+                case LoginResBean.USER_ROLE_ADMIN:
+                case LoginResBean.USER_ROLE_SUPER_ADMIN:
+                case LoginResBean.USER_ROLE_SYS_ADMIN:
+                    fragManaUserInfoBinding.tvUser.setSelected(true);
+                    fragManaUserInfoBinding.tvMana.setSelected(false);
+                    break;
+                case LoginResBean.USER_ROLE_GENERAL:
+                case LoginResBean.USER_ROLE_DRIVER:
+                    fragManaUserInfoBinding.tvUser.setSelected(false);
+                    fragManaUserInfoBinding.tvMana.setSelected(true);
+                    break;
+            }
+        }
+        if(userInfo.getBindCompanyTime()!=null){
+            fragManaUserInfoBinding.tvDate.setText("由管理员审核于"+ StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(userInfo.getBindCompanyTime()))));
         }
     }
 

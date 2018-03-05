@@ -9,11 +9,8 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.exception.exception.CrashHander;
 import com.android.lib.network.news.NetAdapter;
 import com.android.lib.network.news.NetGet;
-import com.android.lib.network.news.NetI;
 import com.android.lib.network.newsf.NetFAdapter;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
-import com.android.lib.view.image.ImagePickerLoader;
 import com.android.lib.view.refresh.MyClassicsFooter;
 import com.android.lib.view.refresh.MyClassicsHeader;
 import com.baidu.mapapi.SDKInitializer;
@@ -26,8 +23,6 @@ import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreater;
 import com.scwang.smartrefresh.layout.api.RefreshFooter;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.crash.CrashNetOpe;
 
@@ -36,7 +31,7 @@ import cn.jpush.android.api.JPushInterface;
 public class HCApp extends LibAplication implements OnFinishListener{
 
 
-    public static boolean test  = true;
+    public static boolean test  = false;
 
     //static 代码段可以防止内存泄露
     static {

@@ -9,13 +9,27 @@ import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.base.ope.BaseUIOpe;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.LogUtil;
+import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainMsgsBinding;
+import com.siweisoft.heavycenter.module.main.MainValue;
+import com.siweisoft.heavycenter.module.main.msg.msg.MsgFrag;
 
 import java.util.ArrayList;
 
 public class MsgsUIOpe extends BaseUIOpe<FragMainMsgsBinding>{
 
+
+    @Override
+    public void initUI() {
+        super.initUI();
+        ArrayList<String> strs = new ArrayList<>();
+        for(int i = 0; i< MsgsReqBean.get消息类型().size(); i++){
+            strs.add(MsgsReqBean.get消息类型().get(i).getName());
+        }
+        bind.topview.initTxtView(strs);
+    }
 
     public void initPages(Fragment fragment, final ArrayList<Fragment> pages){
         bind.llCntent.setOffscreenPageLimit(pages.size());

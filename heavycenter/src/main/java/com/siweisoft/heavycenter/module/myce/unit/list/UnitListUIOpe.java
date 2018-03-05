@@ -47,10 +47,10 @@ public class UnitListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
                 bind.title.getMidTV().setText("上级单位");
                 break;
             case UnitListDAOpe.历史发货单位:
-                bind.title.getMidTV().setText("历史发货单位");
+                bind.title.getMidTV().setText("发货单位");
                 break;
             case UnitListDAOpe.历史收货单位:
-                bind.title.getMidTV().setText("历史收货单位");
+                bind.title.getMidTV().setText("收货单位");
                 break;
             case UnitListDAOpe.绑定单位:
                 bind.title.getMidTV().setText("绑定单位");

@@ -8,291 +8,267 @@
     </data>
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/ll_trans"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:style_common="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-                  android:background="@drawable/bg_hv_sel_dark_light"
+        android:background="@drawable/bg_hv_sel_dark_light"
         android:foreground="?android:attr/selectableItemBackground"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:id="@+id/ll_trans"
         >
+
+
+
+
+        <com.siweisoft.heavycenter.module.view.circle.CircleBar
+            android:id="@+id/circlebar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            style_common:color_one="@color/color_hv_yelll"
+            android:layout_margin="5dp" />
+
         <RelativeLayout
-            android:src="@drawable/icon_hv_myce_car"
-            android:layout_width="90dp"
-            android:layout_height="match_parent" >
+            android:layout_width="80dp"
+            android:layout_height="80dp">
 
-            <com.siweisoft.heavycenter.module.view.circle.CircleBar
-                android:layout_margin="5dp"
-                android:id="@+id/circlebar"
-                android:layout_centerInParent="true"
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/tv_totalnum"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:maxWidth="100dp"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans_send.totalSuttle)+"t"}'
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="25sp" />
 
-            <LinearLayout
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:layout_centerInParent="true"
+            <TextView
+                android:layout_marginTop="2dp"
+                android:layout_below="@+id/tv_totalnum"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/tv_carnum"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:maxWidth="100dp"
-                    android:singleLine="true"
-                    android:id="@+id/tv_totalnum"
-                    android:text="3t"
-                    android:textSize="25sp"
-                    android:textColor="@color/color_yell_blue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:singleLine="true"
-                    android:id="@+id/tv_carnum"
-                    android:text="10车"
-                    android:textSize="15sp"
-                    android:textColor="@color/color_yell_blue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans_send.carNumber)+"t"}'
+                android:textColor="@color/color_hv_yelll"
+                android:textSize="15sp" />
         </RelativeLayout>
 
-        <LinearLayout
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:gravity="center_vertical"
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <RelativeLayout
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/tv_productName"
-                    android:singleLine="true"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-                    android:text="@{item_main_trans.productName}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_toRightOf="@+id/tv_productName"
-                    android:singleLine="true"
-                    android:layout_marginLeft="14dp"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-                    android:text="@{item_main_trans.specifications}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <LinearLayout
-                    android:layout_alignParentRight="true"
-                    android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:src="@drawable/icon_hv_local"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp" />
-                    <TextView
-                        android:id="@+id/tv_carlicenseno"
-                        android:background="@drawable/bg_hv_sharp1_yell_stroke"
-                        android:singleLine="true"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="@color/color_base_txt_heavycenter_y"
-                        android:textSize="12sp"
-                        android:text="@{item_main_trans.carLicenseNo}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-            </RelativeLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/ll_my"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tv_my_dirvername"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize" />
+            app:layout_constraintGuide_begin="90dp" />
 
 
-                    <com.siweisoft.heavycenter.module.view.text.BgTextView
-                        android:layout_toRightOf="@+id/tv_dirvername"
-                        android:id="@+id/type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="23dp"
-                        android:layout_marginLeft="10dp"
-                        android:padding="1dp"
-                        android:singleLine="true"
-                        android:text="发往"
-                        android:textSize="13sp"
-                        android:visibility="visible"
-                        style_common:boo_one="false"
-                        style_common:color_one="@color/color_hv_yelll"
+        <TextView
 
-                        style_common:color_stroke="@color/red"
-                        style_common:color_stroke_two="@color/color_hv_yelll"
-                        style_common:color_two="@color/color_red_800"
-                        style_common:color_txt="@color/white"
-                        style_common:color_txt_two="@color/white"
-                        style_common:corner="2dp"
-                        style_common:corner_two="5dp"
-                        style_common:stroke="0dp"
-                        style_common:stroke_two="2dp" />
+            android:id="@+id/tv_productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text='@{StringUtil.getStr(item_main_trans_send.productName)}'
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+            app:layout_constraintLeft_toRightOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tv_my_comp"
-                        android:singleLine="true"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-                        android:text="@{item_main_trans.develiverCompanyName}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_toLeftOf="@+id/tv_sendnum"
-                        android:gravity="right|center_vertical"
-                        android:layout_weight="1"
-                        android:id="@+id/tv_send_time"
-                        android:singleLine="true"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_specifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true"
+            android:text='@{StringUtil.getStr(item_main_trans_send.specifications)}'
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
+            app:layout_constraintLeft_toRightOf="@+id/tv_productName"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-                    <TextView
-                     android:layout_alignParentRight="true"
-                        android:id="@+id/tv_sendnum"
-                        android:singleLine="true"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/color_hv_txt_dark"
-                        android:textSize="@dimen/dimen_recylce_item_date_txtsize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_marginTop="5dp"
-                    android:id="@+id/ll_other"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        <ImageView
 
-                    <TextView
-                        android:id="@+id/tv_other_dirvername"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize" />
+            android:id="@+id/iv_local"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/icon_hv_local"
+            app:layout_constraintTop_toTopOf="@+id/tv_carlicenseno"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_carlicenseno"
+            app:layout_constraintRight_toLeftOf="@+id/tv_carlicenseno" />
+
+        <TextView
+            android:includeFontPadding="false"
+            android:text='@{StringUtil.getStr(item_main_trans_send.carLicenseNo)}'
+            android:id="@+id/tv_carlicenseno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_hv_sharp1_yell_stroke"
+            android:singleLine="true"
+            android:textColor="@color/color_base_txt_heavycenter_y"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
+            app:layout_constraintRight_toRightOf="parent" />
 
 
-                    <com.siweisoft.heavycenter.module.view.text.BgTextView
-                        android:layout_toRightOf="@+id/tv_dirvername"
-                        android:id="@+id/other_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="23dp"
-                        android:layout_marginLeft="10dp"
-                        android:padding="1dp"
-                        android:singleLine="true"
-                        android:text="发来"
-                        android:textSize="13sp"
-                        android:visibility="visible"
-                        style_common:boo_one="false"
-                        style_common:color_one="@color/color_hv_blue"
-
-                        style_common:color_stroke="@color/red"
-                        style_common:color_stroke_two="@color/color_hv_yelll"
-                        style_common:color_two="@color/color_red_800"
-                        style_common:color_txt="@color/black"
-                        style_common:color_txt_two="@color/white"
-                        style_common:corner="2dp"
-                        style_common:corner_two="5dp"
-                        style_common:stroke="0dp"
-                        style_common:stroke_two="2dp" />
-
-                    <TextView
-                        android:id="@+id/tv_other_comp"
-                        android:singleLine="true"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-                        android:text="@{item_main_trans.develiverCompanyName}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_toLeftOf="@+id/tv_receipttime"
-                        android:gravity="right|center_vertical"
-                        android:layout_weight="1"
-                        android:id="@+id/tv_receiptnum"
-                        android:singleLine="true"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_my_dirvername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:singleLine="true"
+            android:text='@{StringUtil.getStr(item_main_trans_send.trueName)}'
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_productName"
+            app:layout_constraintTop_toBottomOf="@+id/tv_productName" />
 
 
-                    <TextView
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/tv_receipttime"
-                        android:singleLine="true"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@color/color_hv_txt_dark"
-                        android:textSize="@dimen/dimen_recylce_item_date_txtsize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+        <com.siweisoft.heavycenter.module.view.text.BgTextView
+            android:id="@+id/type"
+            android:includeFontPadding="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true"
+            android:text="发往"
+            android:layout_marginBottom="3dp"
+            android:textSize="13sp"
+            android:visibility="visible"
+            app:layout_constraintLeft_toRightOf="@+id/tv_my_dirvername"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername"
+            style_common:boo_one="false"
+            style_common:color_one="@color/color_hv_yelll"
 
-                    <com.siweisoft.heavycenter.module.view.text.BgTextView
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/bt_sure"
-                        android:paddingTop="2dp"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:singleLine="true"
-                        android:layout_marginLeft="10dp"
-                        android:textSize="15sp"
-                        android:visibility="visible"
-                        style_common:color_one="@color/color_hv_yelll"
-                        style_common:stroke="0dp"
-                        style_common:color_stroke="@color/red"
-                        style_common:corner="5dp"
-                        style_common:color_txt="@color/white"
+            style_common:color_stroke="@color/red"
+            style_common:color_stroke_two="@color/color_hv_yelll"
+            style_common:color_two="@color/color_red_800"
+            style_common:color_txt="@color/white"
+            style_common:color_txt_two="@color/white"
+            style_common:corner="2dp"
+            style_common:corner_two="5dp"
+            style_common:stroke="0dp"
+            style_common:stroke_two="2dp" />
 
-                        style_common:color_two="@color/color_red_800"
-                        style_common:stroke_two="2dp"
-                        style_common:color_stroke_two="@color/color_hv_yelll"
-                        style_common:corner_two="5dp"
-                        style_common:color_txt_two="@color/white"
-                        style_common:boo_one="false"
-                        android:text="完成"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </RelativeLayout>
-            </LinearLayout>
 
-        </LinearLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_sendnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text='@{StringUtil.getStr(item_main_trans_send.develiverNum)+"t"}'
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            app:layout_constraintLeft_toRightOf="@+id/type"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername" />
+
+
+        <TextView
+            android:id="@+id/tv_sendtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:singleLine="true"
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="@dimen/dimen_recylce_item_date_txtsize"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+
+        <com.siweisoft.heavycenter.module.view.text.BgTextView
+            app:layout_constraintLeft_toLeftOf="@+id/tv_my_dirvername"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_dirvername"
+            android:includeFontPadding="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:singleLine="true"
+            android:text="送来"
+            android:textSize="13sp"
+            android:visibility="visible"
+            style_common:boo_one="false"
+            style_common:color_one="@color/color_hv_blue"
+
+            style_common:color_stroke="@color/red"
+            style_common:color_stroke_two="@color/color_hv_yelll"
+            style_common:color_two="@color/color_red_800"
+            style_common:color_txt="@color/black"
+            style_common:color_txt_two="@color/white"
+            style_common:corner="2dp"
+            style_common:corner_two="5dp"
+            style_common:stroke="0dp"
+            style_common:stroke_two="2dp" />
+
+        <TextView
+            android:id="@+id/tv_receiptnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right|center_vertical"
+            android:singleLine="true"
+            android:text='@{StringUtil.getStr(item_main_trans_send.receiveNum)+"t"}'
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_other_comp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_sendnum" />
+
+
+        <TextView
+
+            android:id="@+id/tv_receipttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/color_hv_txt_dark"
+            android:textSize="@dimen/dimen_recylce_item_date_txtsize"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_other_comp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <com.siweisoft.heavycenter.module.view.text.BgTextView
+            android:id="@+id/bt_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="2dp"
+            android:singleLine="true"
+            android:text="完成"
+            android:textSize="15sp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@+id/tv_other_comp"
+            app:layout_constraintRight_toRightOf="parent"
+            style_common:boo_one="false"
+            style_common:color_one="@color/color_hv_yelll"
+
+            style_common:color_stroke="@color/red"
+            style_common:color_stroke_two="@color/color_hv_yelll"
+            style_common:color_two="@color/color_red_800"
+            style_common:color_txt="@color/white"
+            style_common:color_txt_two="@color/white"
+            style_common:corner="5dp"
+            style_common:corner_two="5dp"
+            style_common:stroke="0dp"
+            style_common:stroke_two="2dp" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
 </layout>

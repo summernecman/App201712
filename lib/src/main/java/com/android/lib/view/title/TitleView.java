@@ -53,9 +53,9 @@ public class TitleView extends RelativeLayout {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.style_common);
         midTxt =  a.getString(R.styleable.style_common_txt_mid);
-        leftivid = a.getResourceId(R.styleable.style_common_iv_left,R.color.transparent);
-        rightivid = a.getResourceId(R.styleable.style_common_iv_right,R.color.transparent);
-        rightiv2id = a.getResourceId(R.styleable.style_common_iv_right2,R.color.transparent);
+        leftivid = a.getResourceId(R.styleable.style_common_iv_left,android.R.color.transparent);
+        rightivid = a.getResourceId(R.styleable.style_common_iv_right,android.R.color.transparent);
+        rightiv2id = a.getResourceId(R.styleable.style_common_iv_right2,android.R.color.transparent);
         leftIV.setImageResource(leftivid);
         rightIV.setImageResource(rightivid);
         rightIV2.setImageResource(rightiv2id);

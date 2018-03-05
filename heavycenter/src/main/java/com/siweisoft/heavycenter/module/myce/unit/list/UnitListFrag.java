@@ -108,8 +108,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
     public void onInterupt(int type, final View v) {
         switch (type){
             case ViewListener.TYPE_ONCLICK:
-                if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.上级单位
-                        ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.选择单位){
+                if(getArguments().getInt(ValueConstant.DATA_DATA,-1)!= UnitListDAOpe.绑定单位){
                     getArguments().putSerializable(ValueConstant.DATA_DATA2, (Serializable) v.getTag(R.id.data));
                     getBaseUIAct().onBackPressed();
                     return;
@@ -254,8 +253,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
 
     public void selUnit(final UnitInfo unitInfo){
         getArguments().putSerializable(ValueConstant.DATA_DATA2,unitInfo);
-        if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.上级单位
-                ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.选择单位){
+        if(getArguments().getInt(ValueConstant.DATA_DATA,-1)!= UnitListDAOpe.绑定单位){
             getBaseUIAct().onBackPressed();
         }else{
             getP().getD().getUnitInfo(unitInfo.getCompanyId(), new UINetAdapter<UnitInfo>(getBaseUIAct()) {

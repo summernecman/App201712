@@ -13,6 +13,7 @@ import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderReq;
 import com.siweisoft.heavycenter.data.netd.order.receipt.ReceiptOrderRes;
+import com.siweisoft.heavycenter.module.main.orders.OrdersDAOpe;
 import com.siweisoft.heavycenter.module.main.orders.OrdersFrag;
 
 public class OrderDAOpe extends AppDAOpe {
@@ -44,7 +45,7 @@ public class OrderDAOpe extends AppDAOpe {
 
     public static void orders(Context context,String type, int pageIndex, NetI<OrdersRes> adapter){
         OrdersReq ordersReq = new OrdersReq();
-        ordersReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        ordersReq.setCompanyId(OrdersDAOpe.companyid);
         ordersReq.setIsApp(1);
         ordersReq.setPageIndex(pageIndex);
         ordersReq.setPageSize(10);

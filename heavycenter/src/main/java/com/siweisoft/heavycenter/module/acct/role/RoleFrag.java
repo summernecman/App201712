@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.acct.role;
 
 //by summer on 2017-12-18.
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.network.news.UINetAdapter;
@@ -23,6 +24,14 @@ import butterknife.OnClick;
 public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
 
     public static String 直接登录 = "直接登录";
+
+
+    public static RoleFrag getInstance(boolean login){
+        RoleFrag roleFrag = new RoleFrag();
+        roleFrag.setArguments(new Bundle());
+        roleFrag.getArguments().putBoolean(直接登录,login);
+        return roleFrag;
+    }
 
     @OnClick({R.id.tv_notdriver,R.id.tv_driver})
     public void onClick(final View vv){

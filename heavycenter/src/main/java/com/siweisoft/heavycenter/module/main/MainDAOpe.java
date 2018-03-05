@@ -90,7 +90,7 @@ public class MainDAOpe extends AppDAOpe {
             nodata.add(new BottomMenuBean(MainValue.称重, R.drawable.drawable_main_bottom_weight,new NoBindFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         }else{
             RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainValue.地磅ID);
-            nodata.add(new BottomMenuBean(MainValue.称重, R.drawable.drawable_main_bottom_weight,new NoBindFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+            nodata.add(new BottomMenuBean(MainValue.地磅, R.drawable.drawable_main_bottom_weight,new NoBindFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         }
 
         RelativeLayout v1 = new RelativeLayout(context);v1.setId(MainValue.运输单ID);
@@ -194,4 +194,6 @@ public class MainDAOpe extends AppDAOpe {
         }
         return scanDAOpe;
     }
+
+
 }

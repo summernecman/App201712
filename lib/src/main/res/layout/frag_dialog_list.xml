@@ -10,20 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-        </RelativeLayout>
-
         <android.support.v7.widget.RecyclerView
             android:background="@drawable/pop_bg"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:elevation="10dp"
+            android:layout_marginTop="60dp"
+            android:elevation="2dp"
             android:id="@+id/recycle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
 
     </RelativeLayout>
 </layout>

@@ -48,9 +48,7 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
                                 LocalValue.set自动登录(true);
                                 IntentUtil.startActivityWithFinish(getBaseUIAct(), MainAct.class,null);
                             }else{
-                                Bundle bundle = new Bundle();
-                                bundle.putBoolean(RoleFrag.直接登录,true);
-                                FragManager2.getInstance().start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,new RoleFrag(),bundle);
+                                FragManager2.getInstance().start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,RoleFrag.getInstance(true));
                             }
                         }
                     });

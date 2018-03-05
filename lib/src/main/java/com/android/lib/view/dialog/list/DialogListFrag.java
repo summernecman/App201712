@@ -7,9 +7,11 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.android.lib.R;
+import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.interf.view.OnAppItemClickListener;
 import com.android.lib.base.listener.ViewListener;
+import com.android.lib.util.fragment.two.FragManager2;
 
 import java.util.List;
 
@@ -36,7 +38,10 @@ public class DialogListFrag extends BaseUIFrag<DialogListUIOpe,DialogListDAOpe> 
 
     @Override
     public void onClick(View v) {
-        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+        FragManager2.getInstance()
+                .setFinishAnim(R.anim.top_in,R.anim.top_out)
+                .setHideLast(false)
+                .finish((BaseUIActivity) getActivity(),get容器(),true);
     }
 
     @Override
@@ -44,7 +49,10 @@ public class DialogListFrag extends BaseUIFrag<DialogListUIOpe,DialogListDAOpe> 
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 int pos = (int) v.getTag(R.id.position);
-                getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+                FragManager2.getInstance()
+                        .setFinishAnim(R.anim.top_in,R.anim.top_out)
+                        .setHideLast(false)
+                        .finish((BaseUIActivity) getActivity(),get容器(),true);
                 if(onAppItemsClickListener!=null){
                     onAppItemsClickListener.onAppItemClick(v,pos);
                 }

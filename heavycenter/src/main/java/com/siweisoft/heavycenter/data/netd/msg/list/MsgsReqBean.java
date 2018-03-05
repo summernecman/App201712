@@ -3,6 +3,9 @@ package com.siweisoft.heavycenter.data.netd.msg.list;
 //by summer on 2018-01-11.
 
 import com.android.lib.network.bean.req.BaseReqBean;
+import com.android.lib.util.OjectUtil;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 
 import java.util.ArrayList;
 
@@ -30,14 +33,30 @@ public class MsgsReqBean extends BaseReqBean {
 
     private int pageSize;
 
-    public static final ArrayList<String> 消息类型 = new ArrayList<>();
+    public static final ArrayList<MsgBean> 非驾驶员消息类型 = new ArrayList<>();
+
+    public static final ArrayList<MsgBean> 驾驶员消息类型 = new ArrayList<>();
 
     static{
-        消息类型.add(MESSAGE_CATE_ALL);
-        消息类型.add(MESSAGE_CATE_TRANS);
-        消息类型.add(MESSAGE_CATE_CAR);
-        消息类型.add(MESSAGE_CATE_PUB);
-        消息类型.add(MESSAGE_CATE_SYS);
+        非驾驶员消息类型.add(new MsgBean(MESSAGE_CATE_ALL,"全部"));
+        非驾驶员消息类型.add(new MsgBean(MESSAGE_CATE_TRANS,"运输"));
+        非驾驶员消息类型.add(new MsgBean(MESSAGE_CATE_CAR,"车辆"));
+        非驾驶员消息类型.add(new MsgBean(MESSAGE_CATE_PUB,"公告"));
+        非驾驶员消息类型.add(new MsgBean(MESSAGE_CATE_SYS,"系统"));
+
+
+        驾驶员消息类型.add(new MsgBean(MESSAGE_CATE_ALL,"全部"));
+        驾驶员消息类型.add(new MsgBean(MESSAGE_CATE_TRANS,"运输"));
+        驾驶员消息类型.add(new MsgBean(MESSAGE_CATE_PUB,"公告"));
+        驾驶员消息类型.add(new MsgBean(MESSAGE_CATE_SYS,"系统"));
+
+    }
+
+    public static ArrayList<MsgBean> get消息类型(){
+        if(OjectUtil.equals(LocalValue.get登录返回信息().getUserType(), UserTypeReqBean.驾驶员)){
+            return 驾驶员消息类型;
+        }
+        return 非驾驶员消息类型;
     }
 
 

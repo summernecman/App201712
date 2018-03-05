@@ -208,6 +208,13 @@ public class FragManager2  {
         return this;
     }
 
+
+    public FragManager2 setStartAnim(int anim1, int anim2) {
+        this.anim1 = anim1;
+        this.anim2 = anim2;
+        return this;
+    }
+
     public FragManager2 setFinishAnim(int anim5, int anim6) {
         this.anim5 = anim5;
         this.anim6 = anim6;

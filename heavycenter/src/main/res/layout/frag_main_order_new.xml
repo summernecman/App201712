@@ -144,7 +144,7 @@
                     android:id="@+id/item_plannum"
                     style_common:inputType="3"
                     style_common:txt_left = "计划数量"
-                    style_common:iv_right = "@color/transparent"
+                    style_common:iv_right = "@android:color/transparent"
                     style_common:boo_edit = "true"
                     style_common:txt_maxlenth="10"
                     android:layout_width="match_parent"

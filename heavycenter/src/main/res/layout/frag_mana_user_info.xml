@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_grey_200"
+        android:clickable="true"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -28,6 +29,7 @@
         </RelativeLayout>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:clickable="true"
             android:id="@+id/item_name"
             android:layout_marginTop="10dp"
             style_common:minwidth ="40dp"
@@ -38,6 +40,7 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:clickable="true"
             android:id="@+id/item_phone"
             style_common:minwidth ="40dp"
             style_common:txt_left = "手机号"
@@ -48,6 +51,9 @@
 
 
         <LinearLayout
+            android:clickable="true"
+            android:visibility="gone"
+            android:id="@+id/ll_role"
             android:background="@color/color_item_content"
             android:paddingLeft="@dimen/dimen_item_content_left_padding"
             android:gravity="center_vertical"
@@ -100,8 +106,46 @@
         </LinearLayout>
 
 
+        <TextView
+            android:visibility="gone"
+            android:layout_marginLeft="8dp"
+            android:text=""
+            android:textSize="15dp"
+            android:textColor="@color/color_item_content_left_txt_color"
+            android:gravity="center_vertical"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:clickable="true"
+            android:visibility="gone"
+            android:id="@+id/ll_image"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <ImageView
+
+            android:id="@+id/iv_carlicenseno"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+            <ImageView
+
+                android:id="@+id/iv_driverno"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+
+
 
         <TextView
+            android:id="@+id/tv_date"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:textSize="14sp"

@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:background="@color/transparent"
+                android:background="@android:color/transparent"
                 android:hint="请输入"
                 android:textSize="14sp"
                 android:textColor="@color/color_grey_300"

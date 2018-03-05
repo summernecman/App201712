@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.mana.good;
+package com.siweisoft.heavycenter.module.mana.good.news;
 
 //by summer on 2018-03-01.
 

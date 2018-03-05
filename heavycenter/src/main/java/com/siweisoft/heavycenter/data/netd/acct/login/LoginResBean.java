@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.data.netd.acct.login;
 import com.android.lib.bean.BaseBean;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LoginResBean extends BaseBean {
@@ -94,7 +95,7 @@ public class LoginResBean extends BaseBean {
     private int productCount;
     private int userCount;
     private int vehicleCount;
-    private List<BranchCompanyListBean> branchCompanyList;
+    private List<BranchCompanyListBean> branchCompanyList = new ArrayList<>();
     private String carLat;
     private String carLng;
     private String carBrand;

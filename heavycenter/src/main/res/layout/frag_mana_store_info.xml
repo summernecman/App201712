@@ -38,7 +38,7 @@
                 style_common:txt_maxlenth="11"
                 style_common:txt_left = "仓库名称"
                 style_common:txt_hint = "请输入"
-                style_common:iv_right = "@color/transparent"
+                style_common:iv_right = "@android:color/transparent"
                 style_common:boo_edit = "true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -51,7 +51,7 @@
                 style_common:txt_maxlenth="11"
                 style_common:txt_left = "最大库存"
             style_common:txt_hint = "请输入"
-                style_common:iv_right = "@color/transparent"
+                style_common:iv_right = "@android:color/transparent"
                 style_common:boo_edit = "true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -63,7 +63,7 @@
                 style_common:txt_maxlenth="11"
                 style_common:txt_left = "安全库存"
             style_common:txt_hint = "请输入"
-                style_common:iv_right = "@color/transparent"
+                style_common:iv_right = "@android:color/transparent"
                 style_common:boo_edit = "true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -74,7 +74,7 @@
                 style_common:txt_maxlenth="11"
                 style_common:txt_left = "位置描述"
             style_common:txt_hint = "请输入"
-                style_common:iv_right = "@color/transparent"
+                style_common:iv_right = "@android:color/transparent"
                 style_common:boo_edit = "true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

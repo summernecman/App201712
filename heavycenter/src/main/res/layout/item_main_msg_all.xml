@@ -33,7 +33,7 @@
                 android:includeFontPadding="false"
                 android:textColor="@color/color_recylce_item_title_txtcolor"
                 android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-                android:text="fdfdfdsf"
+                android:text="@{item_main_msg_all.senderName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -49,7 +49,7 @@
                 android:paddingRight="7dp"
                 android:singleLine="true"
                 android:layout_marginLeft="10dp"
-                android:textSize="10sp"
+                android:textSize="13sp"
                 android:visibility="gone"
                 style_common:color_one="@color/white"
                 style_common:stroke="1dp"

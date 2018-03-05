@@ -20,16 +20,29 @@ public class GoodDetailUIOpe extends AppUIOpe<FragManaGoodNewBinding>{
     @Override
     public void initUI() {
         super.initUI();
+        switch (getFrag().getArguments().getString(ValueConstant.DATA_TYPE,"")){
+            case GoodDetailValue.新建物料:
+                break;
+            case GoodDetailValue.物料详情:
+                bind.itemWuniaoname.getMidTV().setHint("");
+                bind.itemWuliaoguige.getMidTV().setHint("");
+                bind.itemCangku.getMidTV().setHint("");
+                bind.itemMinstock.getMidTV().setHint("");
+                bind.itemMaxstock.getMidTV().setHint("");
+                bind.itemArea.getMidTV().setHint("");
+                break;
+        }
+
         bind.title.getMidTV().setText(StringUtil.getStr(getFrag().getArguments().getString(ValueConstant.DATA_TYPE)));
     }
 
     public void edit(GoodListRes.ResultsBean o){
-        bind.itemWuniaoname.setMidTVTxt(StringUtil.getStr(o.getProductName()));
-        bind.itemWuliaoguige.setMidTVTxt(StringUtil.getStr(o.getSpecifications()));
-        bind.itemCangku.setMidTVTxt(StringUtil.getStr(o.getWarehouseName()));
+        bind.itemWuniaoname.setMidTVTxt(StringUtil.getStr(o.getProductName()),"请选择");
+        bind.itemWuliaoguige.setMidTVTxt(StringUtil.getStr(o.getSpecifications()),"请选择");
+        bind.itemCangku.setMidTVTxt(StringUtil.getStr(o.getWarehouseName()),"请选择");
         bind.itemMaxstock.setMidEtTxt(StringUtil.getStr(o.getMaxStock()));
         bind.itemMinstock.setMidEtTxt(StringUtil.getStr(o.getMinStock()));
-        bind.itemArea.setMidTVTxt(StringUtil.getStr(o.getBelongArea()));
+        bind.itemArea.setMidTVTxt(StringUtil.getStr(o.getBelongArea()),"请选择");
     }
 
     public boolean canSpecsGo(NewsGoodReq newsGoodReq){
@@ -74,10 +87,10 @@ public class GoodDetailUIOpe extends AppUIOpe<FragManaGoodNewBinding>{
     }
 
     public void init(NewsGoodReq newsGoodReq){
-        bind.itemWuniaoname.setMidTVTxt(StringUtil.getStr(newsGoodReq.getMaterielName()));
-        bind.itemWuliaoguige.setMidTVTxt(StringUtil.getStr(newsGoodReq.getMaterielSpecName()));
-        bind.itemArea.setMidTVTxt(StringUtil.getStr(newsGoodReq.getBelongAreaName()));
-        bind.itemCangku.setMidTVTxt(StringUtil.getStr(newsGoodReq.getWarehouseName()));
+        bind.itemWuniaoname.setMidTVTxt(StringUtil.getStr(newsGoodReq.getMaterielName()),"请选择");
+        bind.itemWuliaoguige.setMidTVTxt(StringUtil.getStr(newsGoodReq.getMaterielSpecName()),"请选择");
+        bind.itemArea.setMidTVTxt(StringUtil.getStr(newsGoodReq.getBelongAreaName()),"请选择");
+        bind.itemCangku.setMidTVTxt(StringUtil.getStr(newsGoodReq.getWarehouseName()),"请选择");
     }
 
     public NewsGoodReq getNewsGoodReq(NewsGoodReq newsGoodReq){

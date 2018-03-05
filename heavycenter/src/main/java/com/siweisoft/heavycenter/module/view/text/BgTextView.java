@@ -46,18 +46,18 @@ public class BgTextView extends TextView {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.style_common);
 
 
-        showDrawable.setColor(a.getColor(R.styleable.style_common_color_one,context.getResources().getColor(R.color.transparent)));
+        showDrawable.setColor(a.getColor(R.styleable.style_common_color_one,context.getResources().getColor(android.R.color.transparent)));
         showDrawable.setStroke(
                 (int)a.getDimension(R.styleable.style_common_stroke,0),
                 a.getColor(R.styleable.style_common_color_stroke,
-                        a.getColor(R.styleable.style_common_color_one,context.getResources().getColor(R.color.transparent))));
+                        a.getColor(R.styleable.style_common_color_one,context.getResources().getColor(android.R.color.transparent))));
         showDrawable.setCornerRadius(a.getDimension(R.styleable.style_common_corner,0));
         if(a.getBoolean(R.styleable.style_common_boo_one,false)){
-            hideDrawable.setColor(a.getColor(R.styleable.style_common_color_two,context.getResources().getColor(R.color.transparent)));
+            hideDrawable.setColor(a.getColor(R.styleable.style_common_color_two,context.getResources().getColor(android.R.color.transparent)));
             hideDrawable.setStroke(
                     (int)a.getDimension(R.styleable.style_common_stroke_two,0),
                     a.getColor(R.styleable.style_common_color_stroke_two,
-                            a.getColor(R.styleable.style_common_color_one,context.getResources().getColor(R.color.transparent))));
+                            a.getColor(R.styleable.style_common_color_one,context.getResources().getColor(android.R.color.transparent))));
             hideDrawable.setCornerRadius(a.getDimension(R.styleable.style_common_corner_two,0));
         }else{
             hideDrawable = showDrawable;

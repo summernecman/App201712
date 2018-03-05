@@ -85,9 +85,11 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'//注解
     compile 'com.github.florent37:viewanimator:1.0.5'//动画帮助
     compile 'org.greenrobot:eventbus:3.0.0'//消息总线处理
-    compile 'com.lzy.widget:imagepicker:0.5.5'//图片选择
-    compile 'com.github.bumptech.glide:glide:4.0.0'//图片加载
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'////如果glideapp找不到 build-make project
+    compile 'com.lzy.widget:imagepicker:0.6.1'//图片选择
+    compile 'com.github.LuckSiege.PictureSelector:picture_library:v2.1.9'
+
+    compile 'com.github.bumptech.glide:glide:4.5.0'//图片加载
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'////如果glideapp找不到 build-make project
     compile 'com.j256.ormlite:ormlite-core:4.48'//本地数据库存储
     compile 'com.j256.ormlite:ormlite-android:4.48'
     compile 'com.journeyapps:zxing-android-embedded:3.5.0'//二维码扫码

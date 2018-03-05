@@ -90,7 +90,7 @@ public class Test {
             resultsBean.setMessageCate("");
             resultsBean.setMessageContent("吊装国际有限公司的null向你们单位发了一个新的收货订单，请注意确认");
             resultsBean.setMessageId(10);
-            resultsBean.setMessageType("消息类型");
+            resultsBean.setMessageType("非驾驶员消息类型");
             resultsBean.setSender(1);
             resultsBean.setSenderName("发送人");
             resultsBean.setSendTime(System.currentTimeMillis());

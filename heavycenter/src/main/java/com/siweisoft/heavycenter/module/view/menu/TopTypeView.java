@@ -29,6 +29,8 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
 
     ScrollMenu scrollMenu;
 
+    LinearLayout viewGroup;
+
 
     private ArrayList<TextView> textViews = new ArrayList<>();
 
@@ -45,7 +47,7 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
 
         if(true){
             LayoutInflater.from(context).inflate(R.layout.item_main_msg_top,this,true);
-            LinearLayout viewGroup = (LinearLayout) findViewById(R.id.ll_root);
+            viewGroup = (LinearLayout) findViewById(R.id.ll_root);
             scrollMenu = findViewById(R.id.scrollmenu);
             for(int i=0;i<strs.length;i++){
                 TextView t= (TextView) LayoutInflater.from(context).inflate(R.layout.item_main_msg_top_txt,null);
@@ -57,6 +59,19 @@ public class TopTypeView extends RelativeLayout implements View.OnClickListener{
             }
         }
 
+    }
+
+    public void initTxtView(ArrayList<String> strs){
+        viewGroup.removeAllViews();
+        textViews.clear();
+        for(int i=0;i<strs.size();i++){
+            TextView t= (TextView) LayoutInflater.from(getContext()).inflate(R.layout.item_main_msg_top_txt,null);
+            t.setText(strs.get(i));
+            viewGroup.addView(t,new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,1));
+            t.setTag(R.id.position,i);
+            t.setOnClickListener(this);
+            textViews.add(t);
+        }
     }
 
 

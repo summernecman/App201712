@@ -65,7 +65,6 @@ public class UnitScanDAOpe extends BaseDAOpe {
         }
 
         if(appFrag.getClass().getName().equals(UnitListFrag.class.getName())){
-            ToastUtil.getInstance().showShort(getActivity(),"从单位列表中 选择一个单位");
             UnitListFrag unitListFrag = (UnitListFrag) appFrag;
             unitListFrag.selUnit(unit);
             return;

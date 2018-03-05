@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
@@ -62,6 +63,8 @@ public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
         if(data.getReceiveRecordList()!=null&&data.getReceiveRecordList().size()!=0){
             fragments.add( TransDetailRecordFrag.getInstance(data.getReceiveRecordList()));
         }
+
+        bind.tvCarno.setText("第"+NullUtil.isEmpty(data.getCarNumber(),1)+"车");
         bind.viewpager.setAdapter(new AppBasePagerAdapter2(getFrag().getChildFragmentManager(),getActivity(),fragments));
     }
 }

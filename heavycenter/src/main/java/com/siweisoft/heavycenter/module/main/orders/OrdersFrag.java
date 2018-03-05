@@ -5,17 +5,20 @@ package com.siweisoft.heavycenter.module.main.orders;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.lib.base.interf.view.OnAppItemClickListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.NetAdapter;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
-import com.android.lib.view.dialog.list.DialogListFrag;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.orders.order.OrderFrag;
 import com.siweisoft.heavycenter.module.main.orders.news.NewOrderFrag;
+import com.siweisoft.heavycenter.module.upunit.TitleTipFrag;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 import java.util.ArrayList;
@@ -47,17 +50,27 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
                 ((MainAct)getBaseAct()).getP().getU().switchDrawer();
                 break;
             case R.id.ftv_title:
-                List<String> strs = new ArrayList<>();
-                for(int i=0;i<10;i++){
-                    strs.add("fdfdsfsd"+i);
+                final List<String> strs = new ArrayList<>();
+                final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get登录返回信息().getBranchCompanyList();
+                if(coms==null||coms.size()==0){
+                    return;
                 }
-                DialogListFrag frag = new DialogListFrag();
-                frag.init(strs);
+                for(int i = 0;coms!=null&& i< coms.size(); i++){
+                    strs.add(coms.get(i).getAbbreviationName());
+                }
+                TitleTipFrag tipFrag = new TitleTipFrag();
+                tipFrag.setOnAppItemsClickListener(new OnAppItemClickListener() {
+                    @Override
+                    public void onAppItemClick(View view, int position) {
+                        OrdersDAOpe.companyid = coms.get(position).getBranchId();
+                        refreshOrders();
+                    }
+                });
+                tipFrag.init(strs);
                 FragManager2.getInstance()
-                        .setStartAnim(R.anim.top_in,R.anim.top_out,R.anim.top_in,R.anim.top_out)
-                        .setFinishAnim(R.anim.top_out,R.anim.top_in)
+                       .setAnim(false)
                         .setHideLast(false)
-                        .start(getBaseUIAct(),get容器(),frag);
+                        .start(getBaseUIAct(),get容器(),tipFrag);
                 break;
             case R.id.ftv_right2:
 
@@ -96,6 +109,13 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
                 OrderFrag orderFrag = (OrderFrag) getP().getD().getPages().get(0);
                 orderFrag.getP().getU().autoRefresh();
                 break;
+        }
+    }
+
+    public void refreshOrders(){
+        for(int i=0;i<getP().getD().getPages().size();i++){
+            OrderFrag orderFrag = (OrderFrag) getP().getD().getPages().get(i);
+            orderFrag.getP().getU().autoRefresh();
         }
     }
 }

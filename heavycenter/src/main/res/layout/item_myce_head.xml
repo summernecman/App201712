@@ -28,9 +28,9 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style_common:color_bg="@color/transparent"
+            style_common:color_bg="@android:color/transparent"
             style_common:iv_right="@drawable/icon_hv_myce_code"
-            style_common:iv_right2="@color/transparent"
+            style_common:iv_right2="@android:color/transparent"
             style_common:layout_constraintLeft_toLeftOf="parent"
             style_common:layout_constraintTop_toTopOf="parent" />
 
@@ -80,7 +80,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:singleLine="true"
-            android:text="管理员"
             android:textColor="@color/white"
             android:textSize="14sp"
          />

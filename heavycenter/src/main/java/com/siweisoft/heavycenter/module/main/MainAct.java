@@ -118,7 +118,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode,resultCode,data);
-        if (null != data && data.getExtras()!=null) {
+        if (null != data && data.getExtras()!=null &&IntentIntegrator.REQUEST_CODE==requestCode) {
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
             if(result != null&&result.getContents() != null) {
                 ToastUtil.getInstance().showShort(getActivity(),FragManager2.getInstance().getCurrentFrag(getMoudle()).getClass().getSimpleName());

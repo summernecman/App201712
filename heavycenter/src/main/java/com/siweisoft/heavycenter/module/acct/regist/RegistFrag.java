@@ -39,7 +39,7 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
                         public void onSuccess(RegistResBean o) {
                             LocalValue.save登录参数(getP().getU().getLoginReqBean());
                             getBaseUIAct().onBackPressed();
-                            FragManager2.getInstance().setAnim(true).setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,new RoleFrag());
+                            FragManager2.getInstance().setAnim(true).setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getBaseUIAct(), AcctAct.账号,AcctAct.账号界面根布局,RoleFrag.getInstance(true));
                         }
                     });
                 }
