@@ -15,7 +15,7 @@ public class RuleFrag extends AppFrag<RuleUIOpe,RuleDAOpe> implements ViewListen
     @Override
     public void initNow() {
         super.initNow();
-        getP().getU().LoadListData(getP().getD().getRuleRes(), RuleFrag.this);
+        getP().getU().LoadListData(RuleDAOpe.getRuleRes(), RuleFrag.this);
     }
 
     @Override

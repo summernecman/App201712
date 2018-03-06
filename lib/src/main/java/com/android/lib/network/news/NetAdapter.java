@@ -3,23 +3,18 @@ package com.android.lib.network.news;
 import android.content.Context;
 
 import com.android.lib.base.fragment.BaseUIFrag;
-import com.android.lib.bean.BaseBean;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.util.*;
 import com.android.lib.view.bottommenu.MessageEvent;
-import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 public  class NetAdapter<A> implements NetI<A> {
 
@@ -27,7 +22,7 @@ public  class NetAdapter<A> implements NetI<A> {
     protected Context context;
     protected String url;
 
-    protected boolean showTips = false;
+    protected boolean showtoast = false;
 
     protected BaseUIFrag baseUIFrag;
 
@@ -44,12 +39,12 @@ public  class NetAdapter<A> implements NetI<A> {
     public NetAdapter(BaseUIFrag baseUIFrag,boolean isshow) {
         this.baseUIFrag = baseUIFrag;
         this.context = baseUIFrag.getActivity();
-        showTips = isshow;
+        showtoast = isshow;
     }
 
     public NetAdapter(Context context,boolean isshow) {
         this.context = context;
-        showTips = isshow;
+        showtoast = isshow;
     }
 
 
@@ -76,7 +71,7 @@ public  class NetAdapter<A> implements NetI<A> {
             }
         } else {
             if(cache){
-                if(showTips){
+                if(showtoast){
                     ToastUtil.getInstance().showShort(context,"当前为无网络测试环境");
                 }
                 BaseResBean resBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(url),BaseResBean.class);
@@ -86,7 +81,7 @@ public  class NetAdapter<A> implements NetI<A> {
                 }
                 deal(haveData,url,resBean);
             }else{
-                if(!NullUtil.isStrEmpty(baseResBean.getMessage())&& showTips){
+                if(!NullUtil.isStrEmpty(baseResBean.getMessage())&& showtoast){
                     ToastUtil.getInstance().showShort(context.getApplicationContext(),StringUtil.getStr(baseResBean.getMessage())+StringUtil.getStr(baseResBean.getErrorMessage()));
                 }
                 SPUtil.getInstance().saveStr(url,GsonUtil.getInstance().toJson(baseResBean));

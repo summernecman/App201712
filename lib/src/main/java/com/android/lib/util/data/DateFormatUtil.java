@@ -53,6 +53,16 @@ public class DateFormatUtil {
     }
 
 
+    public static String getMMDDHHMM(String before,long time,String after) {
+        if(time==0){
+            return "";
+        }
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd HH:mm");
+        return before+format.format(new Date(time))+after;
+    }
+
+
+
     public static String getdDateStr(String dateFormat, String dateFormat2, String data) {
         if (NullUtil.isStrEmpty(data)) {
             return "";

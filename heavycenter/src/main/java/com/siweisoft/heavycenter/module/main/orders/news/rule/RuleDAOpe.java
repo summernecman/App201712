@@ -10,16 +10,16 @@ import java.util.ArrayList;
 
 public class RuleDAOpe extends BaseDAOpe {
 
-    RuleRes ruleRes = new RuleRes();
+    public static RuleRes ruleRes = new RuleRes();
+
+    public static String 收货单位直接签收 ="zjSign";
+
+    public static String 需驾驶员确认 ="jsyQr";
+
+    public static String 需发货单位确认 ="fhdwQr";
 
 
-    public RuleDAOpe() {
-        initRule();
-    }
-
-
-
-    public void initRule(){
+    static{
         if(ruleRes.getData()==null){
             ruleRes .setData(new ArrayList<Rule>());
         }
@@ -29,7 +29,9 @@ public class RuleDAOpe extends BaseDAOpe {
         ruleRes.getData().add(new Rule("fhdwQr","需发货单位确认"));
     }
 
-    public RuleRes getRuleRes() {
+
+
+    public static RuleRes getRuleRes() {
         return ruleRes;
     }
 }

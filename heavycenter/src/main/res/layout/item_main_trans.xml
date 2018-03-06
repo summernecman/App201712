@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:DashView="http://schemas.android.com/apk/res-auto"
+<layout
     xmlns:style_common="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="item_main_trans"
             type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes" />
+        <import type="com.android.lib.util.StringUtil"/>
     </data>
 
 
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:style_common="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_hv_sel_dark_light"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:maxWidth="100dp"
                 android:singleLine="true"
-                android:text='@{StringUtil.getStr(item_main_trans_send.totalSuttle)+"t"}'
+                android:text='@{StringUtil.getStr(item_main_trans.totalSuttle)+"t"}'
                 android:textColor="@color/color_hv_yelll"
                 android:textSize="25sp" />
 
@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:text='@{StringUtil.getStr(item_main_trans_send.carNumber)+"t"}'
+                android:text='@{StringUtil.getStr(item_main_trans.carNumber)+"t"}'
                 android:textColor="@color/color_hv_yelll"
                 android:textSize="15sp" />
         </RelativeLayout>
@@ -74,12 +74,12 @@
 
 
         <TextView
-
+            android:layout_marginLeft="10dp"
             android:id="@+id/tv_productName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_send.productName)}'
+            android:text='@{StringUtil.getStr(item_main_trans.productName)}'
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_title_txtsize"
             app:layout_constraintLeft_toRightOf="@id/guideline"
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_send.specifications)}'
+            android:text='@{StringUtil.getStr(item_main_trans.specifications)}'
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_title_txtsize"
             app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
@@ -107,49 +107,21 @@
             android:layout_marginRight="5dp"
             android:src="@drawable/icon_hv_local"
             app:layout_constraintTop_toTopOf="@+id/tv_carlicenseno"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_carlicenseno"
-            app:layout_constraintRight_toLeftOf="@+id/tv_carlicenseno" />
-
-        <TextView
-            android:includeFontPadding="false"
-            android:text='@{StringUtil.getStr(item_main_trans_send.carLicenseNo)}'
-            android:id="@+id/tv_carlicenseno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_hv_sharp1_yell_stroke"
-            android:singleLine="true"
-            android:textColor="@color/color_base_txt_heavycenter_y"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
             app:layout_constraintRight_toRightOf="parent" />
 
 
-        <TextView
-            android:id="@+id/tv_my_dirvername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_send.trueName)}'
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            app:layout_constraintLeft_toLeftOf="@+id/tv_productName"
-            app:layout_constraintTop_toBottomOf="@+id/tv_productName" />
-
-
         <com.siweisoft.heavycenter.module.view.text.BgTextView
-            android:id="@+id/type"
+            android:id="@+id/type_send"
             android:includeFontPadding="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:singleLine="true"
             android:text="发往"
-            android:layout_marginBottom="3dp"
             android:textSize="13sp"
+            android:layout_marginTop="5dp"
             android:visibility="visible"
-            app:layout_constraintLeft_toRightOf="@+id/tv_my_dirvername"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_productName"
+            app:layout_constraintTop_toBottomOf="@+id/tv_productName"
             style_common:boo_one="false"
             style_common:color_one="@color/color_hv_yelll"
 
@@ -165,17 +137,31 @@
 
 
         <TextView
+            android:id="@+id/tv_send_comname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:singleLine="true"
+            android:text='@{StringUtil.getStr(item_main_trans.develiverCompanyName)}'
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            app:layout_constraintLeft_toRightOf="@+id/type_send"
+            app:layout_constraintTop_toBottomOf="@+id/tv_productName"/>
+
+
+
+        <TextView
             android:id="@+id/tv_sendnum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_send.develiverNum)+"t"}'
+            android:text='@{StringUtil.getStr(item_main_trans.develiverNum)+"t"}'
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            app:layout_constraintLeft_toRightOf="@+id/type"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername" />
+            app:layout_constraintLeft_toRightOf="@+id/tv_send_comname"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_send_comname" />
 
 
         <TextView
@@ -187,14 +173,13 @@
             android:singleLine="true"
             android:textColor="@color/color_hv_txt_dark"
             android:textSize="@dimen/dimen_recylce_item_date_txtsize"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_send_comname"
             app:layout_constraintRight_toRightOf="parent" />
 
 
-
         <com.siweisoft.heavycenter.module.view.text.BgTextView
-            app:layout_constraintLeft_toLeftOf="@+id/tv_my_dirvername"
-            app:layout_constraintTop_toBottomOf="@+id/tv_my_dirvername"
+            app:layout_constraintLeft_toLeftOf="@+id/type_send"
+            app:layout_constraintTop_toBottomOf="@+id/tv_send_comname"
             android:includeFontPadding="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -216,16 +201,30 @@
             style_common:stroke="0dp"
             style_common:stroke_two="2dp" />
 
+
+        <TextView
+            android:layout_marginTop="3dp"
+            android:id="@+id/tv_receipt_comname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text='@{StringUtil.getStr(item_main_trans.receiveCompanyName)}'
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_send_comname"
+            app:layout_constraintTop_toBottomOf="@+id/tv_send_comname"/>
+
+
         <TextView
             android:id="@+id/tv_receiptnum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right|center_vertical"
             android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_send.receiveNum)+"t"}'
+            android:text='@{StringUtil.getStr(item_main_trans.receiveNum)+"t"}'
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_other_comp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_receipt_comname"
             app:layout_constraintLeft_toLeftOf="@+id/tv_sendnum" />
 
 
@@ -237,8 +236,10 @@
             android:singleLine="true"
             android:textColor="@color/color_hv_txt_dark"
             android:textSize="@dimen/dimen_recylce_item_date_txtsize"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_other_comp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_receipt_comname"
             app:layout_constraintRight_toRightOf="parent" />
+
+
 
         <com.siweisoft.heavycenter.module.view.text.BgTextView
             android:id="@+id/bt_sure"
@@ -253,7 +254,7 @@
             android:text="完成"
             android:textSize="15sp"
             android:visibility="gone"
-            app:layout_constraintTop_toTopOf="@+id/tv_other_comp"
+            app:layout_constraintTop_toTopOf="@+id/tv_receipt_comname"
             app:layout_constraintRight_toRightOf="parent"
             style_common:boo_one="false"
             style_common:color_one="@color/color_hv_yelll"
@@ -267,8 +268,6 @@
             style_common:corner_two="5dp"
             style_common:stroke="0dp"
             style_common:stroke_two="2dp" />
-
-
 
     </android.support.constraint.ConstraintLayout>
 </layout>

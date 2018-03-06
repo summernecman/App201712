@@ -33,7 +33,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
 
     public void LoadListData(final ArrayList<WeightMsg.MessageBean> s) {
 //        if(o==null || o.getResults()==null || o.getResults().size()==0){
-//            getFrag().showTips("暂无数据");
+//            getFrag().showtoast("暂无数据");
 //            return;
 //        }
 //        getFrag().removeTips();

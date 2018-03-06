@@ -76,6 +76,33 @@ public class StringUtil {
         return str + "";
     }
 
+
+    /**
+     * 将可能为null的Int处理为""
+     */
+    public static String getStr(int str) {
+        return str + "";
+    }
+
+    public static String getStr(Double str) {
+        if (str == null) {
+            return "";
+        }
+        return str + "";
+    }
+
+    public static String getStr(double str) {
+        return str + "";
+    }
+
+
+    public static String getStr(Integer str,Integer v) {
+        if (str == null) {
+            return v+"";
+        }
+        return str + "";
+    }
+
     /**
      * 去掉换行
      */

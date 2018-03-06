@@ -110,7 +110,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                 switch (resultsBean.getBindCompanyState()){
                                     case LoginResBean.BIND_UNIT_STATE_BINDED:
                                         if(getP().getD().canUnBind(resultsBean)){
-                                            getP().getD().unBindUser(resultsBean.getUserId(), new UINetAdapter<UnBindResBean>(getBaseUIAct()) {
+                                            getP().getD().unBindUser(resultsBean.getUserId(), new UINetAdapter<UnBindResBean>(this,true) {
                                                 @Override
                                                 public void onResult(boolean success, String msg, UnBindResBean o) {
                                                     super.onResult(success, msg, o);
@@ -120,7 +120,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                         }
                                         break;
                                     default:
-                                        getP().getD().addUser(resultsBean.getUserId(), new UINetAdapter<AddUserResBean>(this) {
+                                        getP().getD().addUser(resultsBean.getUserId(), new UINetAdapter<AddUserResBean>(this,true) {
                                             @Override
                                             public void onSuccess(AddUserResBean o) {
                                                 onRefresh(null);

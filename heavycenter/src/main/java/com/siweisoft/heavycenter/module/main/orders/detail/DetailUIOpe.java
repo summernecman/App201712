@@ -137,8 +137,6 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
             case OrdersReq.已完成订单:
                 ItemMainOrderDetailDoneBinding doneBinding = DataBindingUtil.bind(bind.rlTopcontainer.getChildAt(0));
                 doneBinding.setVariable(BR.item_main_order_detail_done,res);
-                doneBinding.tvGoodname.setText(StringUtil.getStr(res.getProductName()));
-                doneBinding.tvSpes.setText(StringUtil.getStr(res.getSpecification()));
                 if("S".equals(res.getOrderType())){
                     doneBinding.tvType.setText("发往");
                     doneBinding.tvCompanyname.setText(StringUtil.getStr(res.getShdwName()));
@@ -146,6 +144,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
                     doneBinding.tvType.setText("来自");
                     doneBinding.tvCompanyname.setText(StringUtil.getStr(res.getFhdwName()));
                 }
+                doneBinding.tvYk.setText(StringUtil.getStr(res.getActualFh()-res.getActualSh())+"t");
                 break;
         }
         if(res==null){

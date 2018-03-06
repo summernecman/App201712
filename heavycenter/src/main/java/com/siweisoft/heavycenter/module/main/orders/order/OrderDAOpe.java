@@ -43,9 +43,9 @@ public class OrderDAOpe extends AppDAOpe {
 
 
 
-    public static void orders(Context context,String type, int pageIndex, NetI<OrdersRes> adapter){
+    public static void orders(int comid,Context context,String type, int pageIndex, NetI<OrdersRes> adapter){
         OrdersReq ordersReq = new OrdersReq();
-        ordersReq.setCompanyId(OrdersDAOpe.companyid);
+        ordersReq.setCompanyId(comid);
         ordersReq.setIsApp(1);
         ordersReq.setPageIndex(pageIndex);
         ordersReq.setPageSize(10);

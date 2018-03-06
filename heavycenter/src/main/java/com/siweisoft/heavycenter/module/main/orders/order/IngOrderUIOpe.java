@@ -34,28 +34,14 @@ public class IngOrderUIOpe extends BaseUIOpe {
 
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
+                super.onBindViewHolder(holder,position);
                 ItemMainOrderDoingBinding doingBinding = (ItemMainOrderDoingBinding) holder.viewDataBinding;
                 doingBinding.getRoot().setSelected(position % 2 == 0 ? true : false);
                 doingBinding.getRoot().setTag(R.id.type,type);
 
-                doingBinding.llIngorder.setTag(com.android.lib.R.id.data, list.get(position));
-                doingBinding.llIngorder.setTag(com.android.lib.R.id.position, position);
-                doingBinding.llIngorder.setOnClickListener(this);
-                doingBinding.setVariable(vari, list.get(position));
-                doingBinding.executePendingBindings();//加一行，问题解决
-
-                doingBinding.tvGoodname.setText(StringUtil.getStr(s.getResults().get(position).getProductName()));
-                doingBinding.tvSpes.setText(StringUtil.getStr(s.getResults().get(position).getSpecification()));
                 if(comname.equals(s.getResults().get(position).getFhdwName())){
-                    doingBinding.tvDuimian.setText(s.getResults().get(position).getShdwName());
-                    doingBinding.tvType.setText("发往");
-                    doingBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_solid);
                     doingBinding.tvCarno.setSelected(true);
                 }else{
-                    LogUtil.E(position+""+s.getResults().get(position).getFhdwName());
-                    doingBinding.tvDuimian.setText(s.getResults().get(position).getFhdwName());
-                    doingBinding.tvType.setText("来自");
-                    doingBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_blue_solid);
                     doingBinding.tvCarno.setSelected(false);
                 }
                 doingBinding.tvPlan.setText(StringUtil.getStr(s.getResults().get(position).getPlanNumber())+"t");

@@ -67,7 +67,7 @@ public  class TransDetailRes extends BaseBean {
     private ArrayList<DeliverRecordListBean> receiveRecordList;
 
 
-    public static final int SING_STATUS_等待确认 = 0;
+    public static final int SING_STATUS_未确认 = 0;
 
     public static final int SING_STATUS_已确认 = 1;
 

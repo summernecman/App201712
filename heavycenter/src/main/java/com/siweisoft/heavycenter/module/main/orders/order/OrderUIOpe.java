@@ -4,13 +4,18 @@ package com.siweisoft.heavycenter.module.main.orders.order;
 
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
+import com.android.lib.bean.AppViewHolder;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.siweisoft.heavycenter.BR;
+import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.databinding.FragMainOrderBeginBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainOrderDoneBinding;
 
 public class OrderUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 
@@ -46,7 +51,17 @@ public class OrderUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                 ingOrderUIOpe.LoadListData(bind.recycle,type,s,listener);
                 break;
             case OrdersReq.已完成订单:
-                doneOrderUIOpe.LoadListData(bind.recycle,type,s,listener);
+                bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_done, BR.item_main_order_done,s.getResults(),listener){
+
+                    @Override
+                    public void onBindViewHolder(AppViewHolder holder, int position) {
+                        super.onBindViewHolder(holder,position);
+                        ItemMainOrderDoneBinding doneBinding = (ItemMainOrderDoneBinding) holder.viewDataBinding;
+                        doneBinding.getRoot().setSelected(position%2==0?true:false);
+                        doneBinding.getRoot().setTag(R.id.type,type);
+
+                    }
+                });
                 break;
         }
 

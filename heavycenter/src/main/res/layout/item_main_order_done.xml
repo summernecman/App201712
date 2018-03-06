@@ -5,6 +5,8 @@
         <variable
             name="item_main_order_done"
             type="com.siweisoft.heavycenter.data.netd.order.list.OrdersRes.ResultsBean" />
+
+        <import type="com.android.lib.util.StringUtil"/>
     </data>
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -26,7 +28,7 @@
             android:singleLine="true"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-            android:text="混凝土"
+            android:text="@{item_main_order_done.productName}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -37,8 +39,8 @@
             android:singleLine="true"
             android:layout_marginLeft="15dp"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            android:text="D150"
+            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+            android:text="@{item_main_order_done.specification}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -53,7 +55,7 @@
             android:singleLine="true"
             android:textColor="@color/white"
             android:textSize="14sp"
-            android:text="来自"
+            android:text="@{item_main_order_done.type}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -65,7 +67,7 @@
             android:layout_marginLeft="10dp"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            android:text="上海绿地"
+            android:text="@{item_main_order_done.accessComName}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -82,11 +84,11 @@
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
                 android:includeFontPadding="false"
-                android:id="@+id/tv_carno"
+                android:id="@+id/tv_totalcarnum"
                 android:singleLine="true"
                 android:textColor="@color/color_base_txt_heavycenter_y"
                 android:textSize="12sp"
-                android:text=" 沪A2345 "
+                android:text="@{item_main_order_done.totalRecordCN}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -98,14 +100,14 @@
                 android:singleLine="true"
                 android:textColor="@color/color_base_txt_heavycenter_y"
                 android:textSize="12sp"
-                android:text=" 沪A2345 "
+                android:text="@{item_main_order_done.planNumberCN}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
 
         <TextView
-            android:id="@+id/sflab"
+            android:id="@+id/tv_send"
             android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@+id/tv_companyname"
             app:layout_constraintLeft_toLeftOf="@+id/tv_type"
@@ -114,26 +116,14 @@
             android:singleLine="true"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:text="实发："
+            android:text="@{item_main_order_done.actualFhCN}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <TextView
-            app:layout_constraintLeft_toRightOf="@+id/sflab"
-            app:layout_constraintBottom_toBottomOf="@+id/sflab"
-            android:id="@+id/tv_sf"
-            android:layout_gravity="bottom|left"
-            android:gravity="center"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:text="2000t"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
 
         <LinearLayout
-            app:layout_constraintBottom_toBottomOf="@+id/sflab"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_send"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_gravity="bottom"
@@ -157,38 +147,26 @@
                 android:layout_gravity="bottom|left"
                 android:gravity="center"
                 android:singleLine="true"
-                android:textColor="@color/white"
+                android:textColor="@color/color_hv_yelll"
                 android:textSize="21sp"
-                android:text="2000t"
+                android:text='@{item_main_order_done.actualSh+"t"}'
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
 
         <TextView
-            app:layout_constraintRight_toLeftOf="@+id/tv_yk"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_yk"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_send"
             android:layout_gravity="bottom"
             android:gravity="bottom|right"
             android:singleLine="true"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:text="盈亏："
+            android:text="@{item_main_order_done.YKCN}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <TextView
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/sflab"
-            android:id="@+id/tv_yk"
-            android:layout_gravity="bottom|right"
-            android:gravity="center"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:text="2000t"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
 
 

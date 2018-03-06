@@ -62,7 +62,7 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
                 tipFrag.setOnAppItemsClickListener(new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
-                        OrdersDAOpe.companyid = coms.get(position).getBranchId();
+                        getP().getD().setCompanyid(coms.get(position).getBranchId());
                         refreshOrders();
                     }
                 });

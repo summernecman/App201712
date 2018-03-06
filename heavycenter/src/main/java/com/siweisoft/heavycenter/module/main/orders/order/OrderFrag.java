@@ -87,7 +87,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
-        OrderDAOpe.orders(getBaseUIAct(),getP().getD().getSTATUS(),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
+        OrderDAOpe.orders(getP().getD().getOrdersFrag().getP().getD().getCompanyid(),getBaseUIAct(),getP().getD().getSTATUS(),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
             @Override
             public void onSuccess(OrdersRes o) {
                 //o = new Test().getOrdersRes();
@@ -100,7 +100,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
-        OrderDAOpe.orders(getBaseUIAct(),getP().getD().getSTATUS(),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
+        OrderDAOpe.orders(getP().getD().getOrdersFrag().getP().getD().getCompanyid(),getBaseUIAct(),getP().getD().getSTATUS(),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
             @Override
             public void onSuccess(OrdersRes o) {
                 getP().getD().setOrdersRes(o);

@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 android {
     signingConfigs {
@@ -52,8 +50,13 @@ android {
     dataBinding {
         enabled = true
     }
+
     dexOptions {
+        maxProcessCount 8
+        preDexLibraries false
         jumboMode true
+        javaMaxHeapSize "4g"
+        incremental true
     }
     //自定义资源目录
     sourceSets {
@@ -68,6 +71,10 @@ android {
             ]
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -76,10 +83,12 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile 'com.github.bumptech.glide:glide:4.5.0'//图片加载
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'////如果glideapp找不到 build-make project
+    compile 'com.github.bumptech.glide:glide:4.5.0'
+    //图片加载
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    ////如果glideapp找不到 build-make project
     compile 'org.greenrobot:eventbus:3.0.0'
-    compile project(':lib')
+    implementation project(':lib')
     implementation files('libs/BaiduLBS_Android.jar')
     compile 'cn.jiguang.sdk:jpush:3.0.9'
     // 此处以JPush 3.0.9 版本为例。

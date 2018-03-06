@@ -25,7 +25,7 @@ public class OrdersDAOpe extends BaseDAOpe {
 
     private String[] statuss = new String[]{OrdersReq.新订单,OrdersReq.进行中订单,OrdersReq.已完成订单};
 
-    public static int companyid = LocalValue.get登录返回信息().getCompanyId();
+    private int companyid = LocalValue.get登录返回信息().getCompanyId();
 
 
     public ArrayList<Fragment> initPages(){
@@ -51,5 +51,13 @@ public class OrdersDAOpe extends BaseDAOpe {
 
     public ArrayList<Integer> getTotalcounts() {
         return totalcounts;
+    }
+
+    public int getCompanyid() {
+        return companyid;
+    }
+
+    public void setCompanyid(int companyid) {
+        this.companyid = companyid;
     }
 }

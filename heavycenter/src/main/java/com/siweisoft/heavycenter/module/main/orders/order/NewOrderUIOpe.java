@@ -33,33 +33,12 @@ public class NewOrderUIOpe extends BaseUIOpe {
 
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
-
+                super.onBindViewHolder(holder, position);
                 ItemMainOrderBeginBinding beginBinding = (ItemMainOrderBeginBinding) holder.viewDataBinding;
                 beginBinding.getRoot().setSelected(position%2==0?true:false);
 
-                beginBinding.llNeworder.setTag(com.android.lib.R.id.data, list.get(position));
-                beginBinding.llNeworder.setTag(com.android.lib.R.id.position, position);
-                beginBinding.llNeworder.setOnClickListener(this);
-                beginBinding.setVariable(vari, list.get(position));
-                beginBinding.executePendingBindings();//加一行，问题解决
-
-                beginBinding.tvPlantime.setText("开始时间 "+ StringUtil.getStr(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.getResults().get(position).getPlanTime()))));
                 beginBinding.getRoot().setTag(R.id.type,type);
 
-                if(comname.equals(s.getResults().get(position).getFhdwName())){
-                    beginBinding.tvDuimian.setText(s.getResults().get(position).getShdwName());
-                    beginBinding.tvType.setText("发往");
-                    beginBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_solid);
-                    beginBinding.tvPlanmun.setBackgroundResource(R.drawable.bg_hv_sharp2_yell_stroke);
-                    beginBinding.tvPlanmun.setTextColor(context.getResources().getColor(R.color.color_hv_yelll));
-                }else{
-                    LogUtil.E(position+""+s.getResults().get(position).getFhdwName());
-                    beginBinding.tvDuimian.setText(s.getResults().get(position).getFhdwName());
-                    beginBinding.tvType.setText("来自");
-                    beginBinding.tvType.setBackgroundResource(R.drawable.bg_hv_sharp2_blue_solid);
-                    beginBinding.tvPlanmun.setBackgroundResource(R.drawable.bg_hv_sharp2_blue_stroke);
-                    beginBinding.tvPlanmun.setTextColor(context.getResources().getColor(R.color.color_hv_blue));
-                }
 
                 if((s.getResults().get(position).getAuditState()==OrdersRes.ResultsBean.AUDITSTATE_未审核)&&
                         NewsOrderReqBean.发货.equals(s.getResults().get(position).getOrderType())){

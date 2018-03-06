@@ -4,19 +4,11 @@ package com.siweisoft.heavycenter.module.main.trans;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.DashPathEffect;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Rect;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -24,37 +16,26 @@ import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
-import com.android.lib.util.ObjectUtil;
-import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
-import com.android.lib.view.ItemDecoration.MyItemDecoration2;
-import com.baidu.mapapi.map.BaiduMap;
-import com.github.florent37.viewanimator.ViewAnimator;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
-import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
-import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
-import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainTransBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainTrainReceiptBinding;
-import com.siweisoft.heavycenter.databinding.ItemMainTrans2Binding;
-import com.siweisoft.heavycenter.databinding.ItemMainTrans3Binding;
 import com.siweisoft.heavycenter.databinding.ItemMainTransBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainTransSendBinding;
-import com.siweisoft.heavycenter.databinding.ItemTransBinding;
+import com.siweisoft.heavycenter.module.main.orders.news.rule.RuleDAOpe;
 
 import java.text.DecimalFormat;
 import java.util.Date;
@@ -83,27 +64,38 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
         getFrag().removeTips();
 
         final String comname = LocalValue.get登录返回信息().getAbbreviationName();
+        final LoginResBean loginResBean = LocalValue.get登录返回信息();
         final int usertype = LocalValue.get登录返回信息().getUserType();
         final DecimalFormat df = new DecimalFormat("#.##");
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_trans, BR.item_main_trans, s,listener){
 
             @Override
             public AppViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                if(viewType==0){
-                    return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans_send, parent, false));
+                switch (viewType){
+                    case 0:
+                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans_send, parent, false));
+                    case 1:
+                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_train_receipt, parent, false));
+                    default:
+                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans, parent, false));
                 }
-                return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_train_receipt, parent, false));
             }
 
             @Override
             public int getItemViewType(int position) {
                 //return position%2;
-                //我是发货公司
-                if(StringUtil.equals(comname,s.get(position).getDeveliverCompanyName())){
-                    return 0;
+
+                if(loginResBean.is驾驶员()){
+                    return 2;
+                }else{
+                    if(StringUtil.equals(comname,s.get(position).getDeveliverCompanyName())){
+                        //我是发货公司
+                        return 0;
+                    }else{
+                        //我是收货公司
+                        return 1;
+                    }
                 }
-                //我是收货公司
-                return 1;
             }
 
             @Override
@@ -142,7 +134,7 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                                 sendBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).getCarNumber()));
                                 sendBinding.circlebar.update(0,false);
                                 break;
-                            case TransDetailRes.SING_STATUS_等待确认:
+                            case TransDetailRes.SING_STATUS_未确认:
                                 sendBinding.tvTotalnum.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
                                 sendBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).getCarNumber()));
                                 sendBinding.circlebar.update((int) (100*s.get(position).getTotalSuttle()/(s.get(position).getPlanNumber()+0.00001)),false);
@@ -179,7 +171,7 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                                 receiptBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).getCarNumber()));
                                 receiptBinding.circlebar.update(0,false);
                                 break;
-                            case TransDetailRes.SING_STATUS_等待确认:
+                            case TransDetailRes.SING_STATUS_未确认:
                                 receiptBinding.tvTotalnum.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
                                 receiptBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).getCarNumber()));
                                 receiptBinding.circlebar.update((int) (100*s.get(position).getTotalSuttle()/(s.get(position).getPlanNumber()+0.00001)),false);
@@ -190,6 +182,41 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                                     receiptBinding.tvSendtime.setVisibility(View.VISIBLE);
                                 }
                                 break;
+                        }
+                        break;
+                    case 2:
+                        ItemMainTransBinding driverBinding = (ItemMainTransBinding) holder.viewDataBinding;
+                        viewDataBinding.setVariable(BR.item_main_trans, list.get(position));
+                        viewDataBinding.executePendingBindings();//加一行，问题解决
+
+                        if(s.get(position).getFhTime()!=null){
+                            driverBinding.tvSendtime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getFhTime())));
+                        }
+
+                        if(s.get(position).getShTime()!=null){
+                            driverBinding.tvReceipttime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(s.get(position).getShTime())));
+                        }
+
+
+                        driverBinding.btSure.setOnClickListener(this);
+                        driverBinding.btSure.setTag(R.id.position,position);
+                        driverBinding.btSure.setTag(R.id.data,list.get(position));
+
+                        if(s.get(position).getSignStatus()==TransDetailRes.SING_STATUS_未确认
+                               &&StringUtil.equals(s.get(position).getSignRule(), RuleDAOpe.需驾驶员确认)
+                                &&s.get(position).getReceiveNum()==0){
+
+                            driverBinding.tvTotalnum.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                            driverBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).getCarNumber(),1)+"车");
+                            driverBinding.circlebar.update((int) (100*s.get(position).getTotalSuttle()/(s.get(position).getPlanNumber()+0.00001)),false);
+                            driverBinding.btSure.setVisibility(View.VISIBLE);
+                            driverBinding.tvSendtime.setVisibility(View.GONE);
+
+                        }else{
+                            driverBinding.btSure.setVisibility(View.GONE);
+                            driverBinding.tvTotalnum.setText(StringUtil.getStr(s.get(position).getReceiveNum()-s.get(position).getDeveliverNum()));
+                            driverBinding.tvCarnum.setText("第"+StringUtil.getStr(s.get(position).getCarNumber(),1)+"车");
+                            driverBinding.circlebar.update(0,false);
                         }
                         break;
                 }
