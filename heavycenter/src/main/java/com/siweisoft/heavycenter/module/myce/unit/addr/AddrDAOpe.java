@@ -19,7 +19,7 @@ public class AddrDAOpe extends AppDAOpe {
 
     private List<PoiInfo> addrs = new ArrayList<>();
 
-
+    private int index = 1;
 
 
 
@@ -54,8 +54,22 @@ public class AddrDAOpe extends AppDAOpe {
         this.addrs.addAll(addrs);
     }
 
+    public void addAddrs(List<PoiInfo> addrs) {
+        if(addrs==null){
+            return;
+        }
+        this.addrs.addAll(addrs);
+    }
+
     public UnitInfo getUnitInfo() {
         return unitInfo;
     }
 
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
 }

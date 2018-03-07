@@ -49,6 +49,7 @@
 
             <com.siweisoft.heavycenter.module.view.input.EditLoginAcctItem
                 style_common:inputType="1"
+                style_common:iv_right = "@drawable/icon_hv_clear"
                 style_common:txt_mid = "请输入密码"
                 style_common:iv_left="@drawable/icon_hv_pwd"
                 android:layout_marginTop="5dp"

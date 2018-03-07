@@ -18,7 +18,7 @@ public class Test {
         LoginResBean loginResBean = new LoginResBean();
         loginResBean.setAbbreviationName("公司简称");
         loginResBean.setBindCompanyState(LoginResBean.BIND_UNIT_STATE_BINDED);
-        loginResBean.setBindCompanyTime("2017-10-11");
+        loginResBean.setBindCompanyTime(System.currentTimeMillis());
 
         List<LoginResBean.BranchCompanyListBean> branchCompanyList = new ArrayList<>();
         LoginResBean.BranchCompanyListBean branchCompanyListBean = new LoginResBean.BranchCompanyListBean();

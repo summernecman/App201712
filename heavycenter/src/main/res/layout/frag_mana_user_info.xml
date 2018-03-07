@@ -151,7 +151,6 @@
             android:textSize="14sp"
             android:textColor="@color/color_grey_400"
             android:gravity="center_vertical"
-            android:text="由管理员审核与2017/12/29 10:00"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

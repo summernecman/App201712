@@ -7,238 +7,236 @@
             type="String" />
 </data>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:background="@color/color_grey_200"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
 
     <com.android.lib.view.title.TitleView
-            android:elevation="2dp"
-            android:background="@color/color_base"
-            android:id="@+id/title"
-            style_common:iv_left ="@drawable/icon_hv_back"
-            style_common:iv_right ="@drawable/icon_hv_scan"
-            style_common:iv_right2 ="@drawable/icon_hv_save"
-            style_common:txt_mid ="车辆详情"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            app:srlEnablePureScrollMode="true"
-            app:srlDragRate="0.2"
-            android:id="@+id/refresh"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <RelativeLayout
-                    android:visibility="gone"
-                    android:id="@+id/ll_input"
-                    android:background="@color/white"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-                        android:id="@+id/item_carlicenseno"
-                        android:paddingRight="100dp"
-                        style_common:txt_maxlenth="7"
-                        android:layout_centerVertical="true"
-                        android:layout_weight="1"
-                        style_common:txt_left = "车牌号"
-                        style_common:txt_hint = "请输入内容"
-                        style_common:boo_edit = "true"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        style_common:layout_constraintTop_toTopOf="parent"
+        android:elevation="2dp"
+        android:background="@color/color_base"
+        android:id="@+id/title"
+        style_common:iv_left="@drawable/icon_hv_back"
+        style_common:txt_mid ="车辆详情"
+        style_common:iv_right ="@drawable/icon_hv_scan"
+        style_common:iv_right2 ="@drawable/icon_hv_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-                <com.siweisoft.heavycenter.module.view.text.BgTextView
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:alpha="0.5"
-                        android:layout_marginRight="10dp"
-                        android:gravity="center"
-                        android:id="@+id/reinput"
-                        android:text="重新输入"
-                        android:paddingTop="2dp"
-                        android:paddingBottom="2dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/top"
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        style_common:layout_constraintTop_toBottomOf="@+id/title"
+        android:background="@color/color_grey_200"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        style_common:layout_constraintTop_toTopOf="parent"
+        style_common:layout_constraintBottom_toBottomOf="parent"
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/labcar"
+        android:gravity="center_vertical"
+        android:text="车牌号"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-                        android:singleLine="true"
-                        android:textSize="15sp"
-                        android:visibility="visible"
-                        style_common:color_one="@color/color_hv_yelll"
-                        style_common:stroke="0dp"
-                        style_common:color_stroke="@color/red"
-                        style_common:corner="20dp"
-                        style_common:color_txt="@color/white"
-
-                        style_common:color_two="@color/color_grey_400"
-                        style_common:stroke_two="0dp"
-                        style_common:color_stroke_two="@color/color_hv_yelll"
-                        style_common:corner_two="20dp"
-                        style_common:color_txt_two="@color/color_hv_yelll"
-                        style_common:boo_one="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-            </RelativeLayout>
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginBottom="10dp"
-                    android:background="@color/white"
-                    android:orientation="horizontal">
-
-                <LinearLayout
-                        android:id="@+id/ll_vehiclePhoto"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_hv_sharp2_gray_stroke"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                    <ImageView
-                            android:id="@+id/iv_vehiclePhoto"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/icon_hv_car" />
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="上传车辆照片"
-                            android:textColor="@color/color_hv_txt_dark"
-                            android:textSize="12sp" />
-                </LinearLayout>
+    <EditText
+        android:paddingLeft="10dp"
+        style_common:layout_constraintRight_toLeftOf="@+id/tv_y"
+        style_common:layout_constraintLeft_toRightOf="@+id/labcar"
+        style_common:layout_constraintBottom_toBottomOf="@+id/labcar"
+        style_common:layout_constraintBaseline_toBaselineOf="@+id/labcar"
+        android:hint="请输入内容"
+        android:id="@+id/et_name"
+        android:textSize="16sp"
+        android:background="@android:color/transparent"
+        android:layout_width="0dp"
+        android:layout_height="40dp" />
 
 
-                <LinearLayout
-                        android:id="@+id/ll_vehicleLicensePhoto"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_hv_sharp2_gray_stroke"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
+    <TextView
+        android:layout_marginRight="10dp"
+        style_common:layout_constraintRight_toRightOf="parent"
+        style_common:layout_constraintBaseline_toBaselineOf="@+id/et_name"
+        android:layout_centerInParent="true"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:id="@+id/tv_y"
+        android:text="重新输入"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@drawable/drawable_hv_bg_btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp" />
 
-                    <ImageView
-                            android:id="@+id/iv_vehicleLicensePhoto"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/icon_hv_driveid" />
+    </android.support.constraint.ConstraintLayout>
 
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="上传驾驶证照片"
-                            android:textColor="@color/color_hv_txt_dark"
-                            android:textSize="12sp" />
-                </LinearLayout>
+    <View
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        style_common:layout_constraintTop_toBottomOf="@+id/top"
+        android:background="@color/color_grey_300"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
 
+    <ImageView
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/bg_hv_sharp2_gray_stroke"
+        android:layout_marginTop="10dp"
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        style_common:layout_constraintTop_toBottomOf="@+id/top"
+        style_common:layout_constraintRight_toLeftOf="@+id/iv_vehicleLicensePhoto"
+        android:id="@+id/iv_vehiclePhoto"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:src="@drawable/icon_hv_car" />
 
-            </LinearLayout>
-
-            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-                    android:id="@+id/item_brand"
-                    android:layout_marginTop="10dp"
-                    style_common:txt_left = "品牌名称"
-                    style_common:txt_hint = "请输入"
-                    style_common:boo_edit = "true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-                        style_common:inputType="3"
-                        android:id="@+id/item_emptyweight"
-                        style_common:txt_maxlenth="8"
-                        style_common:txt_left = "车辆自重"
-                        style_common:txt_hint = "请输入"
-                        style_common:boo_edit = "true"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                <TextView
-                        android:textSize="17sp"
-                        android:textColor="@color/color_hv_yelll"
-                        android:layout_marginRight="10dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:text="t"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-            </RelativeLayout>
-            <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-                        style_common:inputType="3"
-                        style_common:txt_maxlenth="8"
-                        android:id="@+id/item_maxweight"
-                        style_common:txt_left = "车辆载重"
-                        style_common:txt_hint = "请输入"
-                        style_common:boo_edit = "true"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                <TextView
-                        android:textSize="17sp"
-                        android:textColor="@color/color_hv_yelll"
-                        android:layout_marginRight="10dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:text="t"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-            </RelativeLayout>
+    <ImageView
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/bg_hv_sharp2_gray_stroke"
+        android:layout_marginTop="10dp"
+        style_common:layout_constraintLeft_toRightOf="@+id/iv_vehiclePhoto"
+        style_common:layout_constraintTop_toBottomOf="@+id/top"
+        style_common:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/iv_vehicleLicensePhoto"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:src="@drawable/icon_hv_driveid" />
 
 
-            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-                    android:id="@+id/item_iccard"
-                    style_common:txt_maxlenth="20"
-                    style_common:txt_left = "车辆IC卡号"
-                    style_common:txt_hint = "请输入"
-                    style_common:boo_edit = "true"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"/>
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_marginTop="10dp"
+        style_common:layout_constraintTop_toBottomOf="@+id/iv_vehiclePhoto"
+        style_common:layout_constraintLeft_toLeftOf="@+id/iv_vehiclePhoto"
+        style_common:layout_constraintRight_toRightOf="@+id/iv_vehiclePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="上传车辆照片"
+        android:textColor="@color/color_hv_txt_dark"
+        android:textSize="12sp" />
 
-            <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
-                    android:id="@+id/bindcartip"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
-                    style_common:txt_left = "选择当前驾驶员"
-                    style_common:boo_edit = "false"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
 
-            <android.support.v7.widget.RecyclerView
-                    android:layout_marginTop="1dp"
-                    android:id="@+id/recycle"
-                    android:scrollbars="vertical"
-                    android:scrollbarSize="10dp"
-                    android:fadeScrollbars="false"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_marginTop="10dp"
+        style_common:layout_constraintTop_toBottomOf="@+id/iv_vehicleLicensePhoto"
+        style_common:layout_constraintLeft_toLeftOf="@+id/iv_vehicleLicensePhoto"
+        style_common:layout_constraintRight_toRightOf="@+id/iv_vehicleLicensePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="上传驾驶证照片"
+        android:textColor="@color/color_hv_txt_dark"
+        android:textSize="12sp" />
 
-        </LinearLayout>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-</LinearLayout>
+    <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        style_common:layout_constraintTop_toBottomOf="@+id/tv2"
+        android:id="@+id/item_brand"
+        android:layout_marginTop="10dp"
+        style_common:txt_left = "品牌名称"
+        style_common:txt_hint = "请输入"
+        style_common:boo_edit = "true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        style_common:layout_constraintTop_toBottomOf="@+id/item_brand"
+        style_common:inputType="3"
+        android:id="@+id/item_emptyweight"
+        style_common:txt_maxlenth="8"
+        style_common:txt_left = "车辆自重"
+        style_common:txt_hint = "请输入"
+        style_common:boo_edit = "true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        style_common:layout_constraintRight_toRightOf="parent"
+        style_common:layout_constraintTop_toTopOf="@+id/item_emptyweight"
+        style_common:layout_constraintBottom_toBottomOf="@+id/item_emptyweight"
+        android:textSize="17sp"
+        android:textColor="@color/color_hv_yelll"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:text="t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        style_common:layout_constraintTop_toBottomOf="@+id/item_emptyweight"
+        style_common:inputType="3"
+        style_common:txt_maxlenth="8"
+        android:id="@+id/item_maxweight"
+        style_common:txt_left = "车辆载重"
+        style_common:txt_hint = "请输入"
+        style_common:boo_edit = "true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        style_common:layout_constraintRight_toRightOf="parent"
+        style_common:layout_constraintTop_toTopOf="@+id/item_maxweight"
+        style_common:layout_constraintBottom_toBottomOf="@+id/item_maxweight"
+        android:textSize="17sp"
+        android:textColor="@color/color_hv_yelll"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:text="t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        style_common:layout_constraintTop_toBottomOf="@+id/item_maxweight"
+        android:id="@+id/item_iccard"
+        style_common:txt_maxlenth="20"
+        style_common:txt_left = "车辆IC卡号"
+        style_common:txt_hint = "请输入"
+        style_common:boo_edit = "true"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
+
+    <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        style_common:layout_constraintTop_toBottomOf="@+id/item_iccard"
+        android:id="@+id/bindcartip"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        style_common:txt_left = "选择当前驾驶员"
+        style_common:boo_edit = "false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.RecyclerView
+        style_common:layout_constraintTop_toBottomOf="@+id/bindcartip"
+        style_common:layout_constraintLeft_toLeftOf="parent"
+        style_common:layout_constraintRight_toRightOf="parent"
+        style_common:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="1dp"
+        android:id="@+id/recycle"
+        android:scrollbars="vertical"
+        android:scrollbarSize="10dp"
+        android:fadeScrollbars="false"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+
+</android.support.constraint.ConstraintLayout>
 </layout>

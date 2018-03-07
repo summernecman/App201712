@@ -74,7 +74,7 @@ public class RegistUIOpe extends AppUIOpe<FragAcctRegistBinding> {
     }
 
     public RegistReqBean getRegistReqBean() {
-        registReqBean.setTrueName(bind.phone.getText().toString());
+        registReqBean.setUserName(bind.phone.getText().toString());
         registReqBean.setTel(bind.phone.getText().toString());
         registReqBean.setPassWord(MD5Util.md5(bind.pwd.getText().toString()));
         registReqBean.setSecurityCode(bind.code.getText().toString());

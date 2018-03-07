@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
@@ -11,11 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.lib.base.activity.BaseUIActivity;
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.ColorUtil;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.IntentUtil;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.activity.ActivityUtil;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -23,6 +27,7 @@ import com.android.lib.util.system.SystemUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -44,7 +49,12 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
             return;
         }
         初始化界面();
+
+
+
     }
+
+
 
 
     public void 初始化界面(){
@@ -106,13 +116,22 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     @Override
     public void onBackPressed() {
-
-        if(!FragManager2.getInstance().finish(getActivity(),getMoudle(),!getMoudle().equals(MainValue.主界面))){
-            super.onBackPressed();
-        }
         if(FragManager2.getInstance().getMoudleFragSize(MainValue.主界面)==0){
             onAppItemSelect(null,null,getP().getU().bind.bottommenu.getIndex());
         }
+
+        BaseUIFrag baseUIFrag = FragManager2.getInstance().getCurrentFrag(getMoudle());
+        if(baseUIFrag!=null&&baseUIFrag.getFragM()!=null){
+            FragManager2 fragManager2 = baseUIFrag.getFragM();
+            if(!fragManager2.finish(getActivity(),getMoudle(),!getMoudle().equals(MainValue.主界面))){
+                super.onBackPressed();
+            }
+        }else{
+            super.onBackPressed();
+        }
+//        if(!FragManager2.getInstance().finish(getActivity(),getMoudle(),!getMoudle().equals(MainValue.主界面))){
+//            super.onBackPressed();
+//        }
     }
 
     @Override
@@ -151,17 +170,17 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
             return;
         }
         switch (msgPush.getMessageType()){
-           default:
-               if (SystemUtil.isBackground(getActivity())) {
-                   IntentUtil.getInstance().IntentTo(getActivity(), getActivity().getPackageName());
-               }
+            default:
+                if (SystemUtil.isBackground(getActivity())) {
+                    IntentUtil.getInstance().IntentTo(getActivity(), getActivity().getPackageName());
+                }
 
-               PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
-               PowerManager.WakeLock mWakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE, "SimpleTimer");
-               mWakeLock.acquire();//这里唤醒锁，用这种方式要记得在适当的地方关闭锁，
-               mWakeLock.release();
-               onAppItemSelect(null,null,getP().getD().getPos(MainValue.消息));
-               break;
+                PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
+                PowerManager.WakeLock mWakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE, "SimpleTimer");
+                mWakeLock.acquire();//这里唤醒锁，用这种方式要记得在适当的地方关闭锁，
+                mWakeLock.release();
+                onAppItemSelect(null,null,getP().getD().getPos(MainValue.消息));
+                break;
         }
     }
 

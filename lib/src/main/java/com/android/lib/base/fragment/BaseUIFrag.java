@@ -16,6 +16,7 @@ import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.LoadUtil;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.android.lib.util.system.HandleUtil;
 import com.android.lib.util.video.TipUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
@@ -51,7 +52,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     private TipUtil tipUtil = new TipUtil();
 
-
+    private FragManager2 fragM;
 
     public BaseUIFrag() {
         setArguments(new Bundle());
@@ -271,5 +272,13 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     public BaseUIActivity getBaseUIAct() {
         return (BaseUIActivity) getBaseAct();
+    }
+
+    public FragManager2 getFragM() {
+        return fragM;
+    }
+
+    public void setFragM(FragManager2 fragM) {
+        this.fragM = fragM;
     }
 }

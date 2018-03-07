@@ -46,6 +46,7 @@ public class FragManager2  {
     }
 
     public void start(BaseUIActivity activity, String moudle, int viewid,BaseUIFrag fragment){
+        fragment.setFragM(this);
         checkMap(moudle,viewid);
         checkArguments(fragment);
         activity.setMoudle(moudle);

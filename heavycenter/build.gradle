@@ -88,7 +88,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
     ////如果glideapp找不到 build-make project
     compile 'org.greenrobot:eventbus:3.0.0'
-    implementation project(':lib')
+    compile project(':lib')
     implementation files('libs/BaiduLBS_Android.jar')
     compile 'cn.jiguang.sdk:jpush:3.0.9'
     // 此处以JPush 3.0.9 版本为例。

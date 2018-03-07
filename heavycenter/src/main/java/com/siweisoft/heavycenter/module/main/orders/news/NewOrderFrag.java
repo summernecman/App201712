@@ -103,7 +103,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 break;
             case R.id.ftv_right2:
                 if(getP().getU().canGo()){
-                    getP().getD().newOrder(getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(this,UINetAdapter.加载,true) {
+                    getP().getD().newOrder(getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(this,UINetAdapter.Loading,true) {
 
                         @Override
                         public void onResult(boolean success, String msg, NewOrderRes o) {
@@ -155,7 +155,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 getP().getD().getNewsOrderReqBean().setSignRuleValue(rule.getValue());
                 break;
             case NewOrderValue.送货地址:
-                UnitInfo unitInfo1 = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
+                UnitInfo unitInfo1 = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA);
                 getP().getD().getNewsOrderReqBean().setAddress(unitInfo1.getCompanyAddress());
                 break;
         }

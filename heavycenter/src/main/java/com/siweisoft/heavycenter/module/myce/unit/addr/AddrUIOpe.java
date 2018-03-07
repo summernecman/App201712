@@ -21,6 +21,8 @@ import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.baidu.mapapi.search.poi.PoiAddrInfo;
+import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -67,6 +69,7 @@ public class AddrUIOpe extends AppUIOpe<FragMyceUnitAddrBinding>{
         }
         return true;
     }
+
 
     public void notifyDataSetChanged(){
         if(bind.recycle.getAdapter()!=null){

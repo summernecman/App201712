@@ -109,7 +109,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                                     case R.id.close:
                                         break;
                                     case R.id.sure:
-                                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(NewUnitFrag.this,UINetAdapter.加载,true) {
+                                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(NewUnitFrag.this,UINetAdapter.Loading,true) {
                                             @Override
                                             public void onSuccess(UnBindResBean o) {
                                                 getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
@@ -134,7 +134,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                         break;
                     case 新建单位:
                         if(getP().getU().canGo()){
-                            getP().getD().createUnit(getP().getU().getNewReqBean(getP().getD().getUnit()), new UINetAdapter<NewResBean>(this,UINetAdapter.加载,true) {
+                            getP().getD().createUnit(getP().getU().getNewReqBean(getP().getD().getUnit()), new UINetAdapter<NewResBean>(this,UINetAdapter.Loading,true) {
                                 @Override
                                 public void onSuccess(NewResBean o) {
                                     getArguments().putBoolean(ValueConstant.DATA_RES,true);
@@ -145,7 +145,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                         break;
                     case 修改单位信息:
                         if(getP().getU().canGo()){
-                            getP().getD().updateUnit(getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(this,UINetAdapter.加载,true) {
+                            getP().getD().updateUnit(getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(this,UINetAdapter.Loading,true) {
                                 @Override
                                 public void onSuccess(UpdateUnitRes o) {
                                     getInfoAndInit(new OnFinishListener() {

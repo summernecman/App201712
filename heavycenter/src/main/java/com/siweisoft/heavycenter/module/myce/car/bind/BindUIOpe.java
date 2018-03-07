@@ -37,7 +37,7 @@ public class BindUIOpe extends AppUIOpe<FragMyceCarBindBinding>{
     }
 
     public void 实时搜索(final OnFinishListener listener){
-        bind.search.getEditText().addTextChangedListener(new BaseTextWather(){
+        bind.etName.addTextChangedListener(new BaseTextWather(){
             @Override
             public void afterTextChanged(Editable s) {
                 listener.onFinish(s.toString());
@@ -79,11 +79,11 @@ public class BindUIOpe extends AppUIOpe<FragMyceCarBindBinding>{
     }
 
     public boolean canSearchGo(){
-        if(NullUtil.isStrEmpty(bind.search.getEditText().getText().toString())){
+        if(NullUtil.isStrEmpty(bind.etName.getText().toString())){
             ToastUtil.getInstance().showShort(getActivity(),"车牌号为输入");
             return false;
         }
-        if(bind.search.getEditText().getText().toString().length()!=7){
+        if(bind.etName.getText().toString().length()!=7){
             ToastUtil.getInstance().showShort(getActivity(),"车牌号输入有误");
             return false;
         }
@@ -91,7 +91,7 @@ public class BindUIOpe extends AppUIOpe<FragMyceCarBindBinding>{
     }
 
     public String getInputText(){
-        return bind.search.getEditText().getText().toString();
+        return bind.etName.getText().toString();
     }
 
     public void finishRefresh(){
@@ -108,10 +108,10 @@ public class BindUIOpe extends AppUIOpe<FragMyceCarBindBinding>{
 
 
     public String getKeyWord(){
-        return bind.search.getEditText().getText().toString();
+        return bind.etName.getText().toString();
     }
 
     public void clearKey(){
-        bind.search.getEditText().setText("");
+        bind.etName.setText("");
     }
 }

@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.mana.user.list;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.OjectUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.daimajia.swipe.SwipeLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -26,6 +28,7 @@ import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
 import com.siweisoft.heavycenter.databinding.FragManaUserBinding;
 import com.siweisoft.heavycenter.databinding.ItemManaUserBinding;
 import com.siweisoft.heavycenter.module.view.MySwipeListener;
+import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 import com.tubb.smrv.SwipeHorizontalMenuLayout;
 import com.tubb.smrv.SwipeMenuLayout;
 
@@ -176,11 +179,33 @@ public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
+
+
     }
+
+
+    FragManager2 showBindTipM;
+
+    public FragManager2 showBindTip(String name,String moudle, View.OnClickListener onClickListener){
+        DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
+        View view = LayoutInflater.from(context).inflate(R.layout.frag_mana_superuser,null);
+        TextView textView = view.findViewById(R.id.tv_tip1);
+        textView.setText("您将指定"+name+"成为新的超级管理员");
+        diaLogCenterFrag.setCustomView(view);
+        diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_y,R.id.tv_n,R.id.iv_close);
+        showBindTipM = FragManager2.getInstance();
+        showBindTipM.setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setHideLast(false).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(), moudle,diaLogCenterFrag);
+        return showBindTipM;
+    }
+
 
     public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener){
         bind.refresh.setOnRefreshListener(refreshListener);
         bind.refresh.setOnLoadmoreListener(loadmoreListener);
+    }
+
+    public FragManager2 getShowBindTipM() {
+        return showBindTipM;
     }
 
     public void finishRefresh(){

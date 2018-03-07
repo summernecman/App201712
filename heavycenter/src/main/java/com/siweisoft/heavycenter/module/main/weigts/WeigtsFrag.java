@@ -57,6 +57,7 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
                 if(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh()!=0&&getP().getD().getWeightMsg()!=null&&getP().getD().getWeightMsg().getMessage()!=null){
                     getP().getD().getWeightMsg().getMessage().setWeigh(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh());
                 }
+                getP().getU().bind.bottom.getRoot().setVisibility(View.GONE);
                 if(weigtFrag.getP().getD().getWeightMsg()!=null&&weigtFrag.getP().getD().getWeightMsg().getMessage()!=null){
                     getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(this,true) {
                         @Override
@@ -85,6 +86,7 @@ public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
         if(weightMsg==null|| weightMsg.getMessage()==null || weightMsg.getMessage().getOrder()==null){
             return;
         }
+        getP().getU().bind.bottom.getRoot().setVisibility(View.VISIBLE);
         getP().getD().setWeightMsg(weightMsg);
         getP().getU().initUI(getP().getD().getWeightMsg());
         initPage(weightMsg);

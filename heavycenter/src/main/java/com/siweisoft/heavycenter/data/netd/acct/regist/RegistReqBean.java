@@ -22,7 +22,7 @@ public class RegistReqBean extends BaseReqBean {
 
     private String passWord;
 
-    private String trueName;
+    private String userName;
 
     private int identifier;
 
@@ -55,13 +55,6 @@ public class RegistReqBean extends BaseReqBean {
         this.passWord = passWord;
     }
 
-    public String getTrueName() {
-        return trueName;
-    }
-
-    public void setTrueName(String trueName) {
-        this.trueName = trueName;
-    }
 
     public int getIdentifier() {
         return identifier;
@@ -77,5 +70,13 @@ public class RegistReqBean extends BaseReqBean {
 
     public void setSecurityCode(String securityCode) {
         this.securityCode = securityCode;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

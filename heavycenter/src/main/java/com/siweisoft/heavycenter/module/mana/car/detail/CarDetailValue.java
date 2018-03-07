@@ -4,6 +4,11 @@ package com.siweisoft.heavycenter.module.mana.car.detail;
 
 public class CarDetailValue {
 
+    public static final String 类型 = "类型";
+
+    public static final String 数据 = "数据";
+
+    public static final String 标题 = "标题";
 
     public static final String 新建车辆 = "新建车辆";
 

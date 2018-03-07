@@ -21,6 +21,8 @@ public class NetValue {
 
     protected static String 测试域名1 = "172.26.1.15:8080";
 
+    protected static String 测试域名林子 = "172.26.1.12:8080";
+
     protected static String 域名 = 测试域名;
 
 

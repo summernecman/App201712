@@ -16,16 +16,19 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserResBean;
 import com.siweisoft.heavycenter.data.netd.unit.user.UnitUserResBean;
+import com.siweisoft.heavycenter.data.netd.user.unit.bind.BindResBean;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
 import com.siweisoft.heavycenter.data.netd.user.userrole.UserRoleRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.user.news.NewFrag;
 import com.siweisoft.heavycenter.module.mana.user.news.NewUserValue;
+import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
 
 import butterknife.OnClick;
 
@@ -120,7 +123,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                         }
                                         break;
                                     default:
-                                        getP().getD().addUser(resultsBean.getUserId(), new UINetAdapter<AddUserResBean>(this,true) {
+                                        getP().getD().addUser(resultsBean, new UINetAdapter<AddUserResBean>(this,true) {
                                             @Override
                                             public void onSuccess(AddUserResBean o) {
                                                 onRefresh(null);
@@ -156,7 +159,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
             case 1:
                 if(bundle==null || bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
                     return;
-                }
+                } UnitUserResBean.ResultsBean data = (UnitUserResBean.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA);
                 if(bundle.getBoolean(ValueConstant.FARG_TYPE,false)){
                     onRefresh(null);
                 }
@@ -165,13 +168,26 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                 if(bundle==null || bundle.getSerializable(ValueConstant.DATA_DATA)==null){
                     return;
                 }
-                UnitUserResBean.ResultsBean data = (UnitUserResBean.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA);
-                getP().getD().setUserRole(data.getUserId(), new UINetAdapter<UserRoleRes>(this) {
+                UnitUserResBean.ResultsBean data1 = (UnitUserResBean.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA);
+                getP().getU().showBindTip(data1.getTrueName(),get容器(), new View.OnClickListener() {
                     @Override
-                    public void onSuccess(UserRoleRes o) {
-                        super.onSuccess(o);
-                        getBaseAct().onBackPressed();
-                        ((MainAct)getBaseAct()).go网络获取用户信息重新加载();
+                    public void onClick(View vv) {
+                        switch (vv.getId()){
+                            case R.id.tv_n:
+                                break;
+                            case R.id.tv_y:
+
+                                getP().getD().setUserRole(data1.getUserId(), new UINetAdapter<UserRoleRes>(UserFrag.this) {
+                                    @Override
+                                    public void onSuccess(UserRoleRes o) {
+                                        super.onSuccess(o);
+                                        getBaseAct().onBackPressed();
+                                        ((MainAct)getBaseAct()).go网络获取用户信息重新加载();
+                                    }
+                                });
+                                break;
+                        }
+                        getP().getU().getShowBindTipM().setAnim(false).finish(getBaseUIAct(),get容器(),true);
                     }
                 });
                 break;

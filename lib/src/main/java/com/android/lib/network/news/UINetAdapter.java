@@ -13,7 +13,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 public abstract class UINetAdapter<A> extends NetAdapter<A> {
 
 
-    public static final int 加载 = 1;
+    public static final int Loading = 1;
 
 
     private int isload = 0;

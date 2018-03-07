@@ -30,7 +30,7 @@ public class NewUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 
 
     public CarNewReqBean getCarNewReqBean(CarNewReqBean carNewReqBean) {
-        carNewReqBean.setCarLicenseNo(bind.itemCarlicenseno.getMidET().getText().toString());
+        carNewReqBean.setCarLicenseNo(bind.etName.getText().toString());
         carNewReqBean.setCarBrand(bind.itemBrand.getMidET().getText().toString());
         carNewReqBean.setMaxCapacity(Integer.parseInt(bind.itemMaxweight.getMidET().getText().toString()));
         carNewReqBean.setEmptyWeight(Integer.parseInt(bind.itemEmptyweight.getMidET().getText().toString()));
@@ -39,7 +39,7 @@ public class NewUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
     }
 
     public boolean canGo(){
-        if(NullUtil.isStrEmpty(bind.itemCarlicenseno.getMidET().getText().toString())){
+        if(NullUtil.isStrEmpty(bind.etName.getText().toString())){
             ToastUtil.getInstance().showShort(getActivity(),"请输入车牌号");
             return false;
         }

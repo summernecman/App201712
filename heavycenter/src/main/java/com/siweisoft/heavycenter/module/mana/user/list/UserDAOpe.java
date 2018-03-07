@@ -41,11 +41,12 @@ public class UserDAOpe extends AppDAOpe {
         NetDataOpe.Unit.unitUsers(getActivity(),reqBean,adapter);
     }
 
-    public void addUser(int id, NetI<AddUserResBean> adapter){
+    public void addUser(UnitUserResBean.ResultsBean user, NetI<AddUserResBean> adapter){
         AddUserReqBean reqBean = new AddUserReqBean();
         reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
-        reqBean.setUserId(id);
-        reqBean.setUserRole(LoginResBean.USER_ROLE_GENERAL);
+        reqBean.setUserId(user.getUserId());
+        reqBean.setTel(user.getTel());
+        reqBean.setUserRole(user.getUserRole());
         NetDataOpe.Mana.User.addUser(getActivity(),reqBean,adapter);
     }
 

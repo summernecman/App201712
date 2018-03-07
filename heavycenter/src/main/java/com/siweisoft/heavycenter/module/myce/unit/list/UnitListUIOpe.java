@@ -109,7 +109,18 @@ public class UnitListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
         DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
         diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip_nullunit,null));
         diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_y,R.id.tv_n,R.id.iv_close);
-        FragManager2.getInstance().setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(), moudle,diaLogCenterFrag);
+        FragManager2.getInstance().setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(), moudle,diaLogCenterFrag);
+    }
+
+    FragManager2 showBindTipM = null;
+
+    public FragManager2 showBindTip(String moudle,View.OnClickListener onClickListener){
+        DiaLogCenterFrag diaLogCenterFrag = new DiaLogCenterFrag();
+        diaLogCenterFrag.setCustomView(LayoutInflater.from(context).inflate(R.layout.frag_myce_unit_bind_tip,null));
+        diaLogCenterFrag.setOnClickListener(onClickListener,R.id.tv_y,R.id.tv_n,R.id.iv_close);
+        showBindTipM = FragManager2.getInstance();
+        showBindTipM.setStartAnim(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out).setHideLast(false).setFinishAnim(R.anim.fade_in,R.anim.fade_out).start(getActivity(), moudle,diaLogCenterFrag);
+        return showBindTipM;
     }
 
 
@@ -145,5 +156,9 @@ public class UnitListUIOpe extends AppUIOpe<FragMyceUnitListBinding>{
 
     public void clearKey(){
         bind.search.getEditText().setText("");
+    }
+
+    public FragManager2 getShowBindTipM() {
+        return showBindTipM;
     }
 }

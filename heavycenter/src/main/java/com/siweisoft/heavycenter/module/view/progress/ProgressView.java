@@ -58,7 +58,7 @@ public class ProgressView extends RelativeLayout {
         q.leftMargin = (int) (w*proValue.min/proValue.max);
         minV.setLayoutParams(q);
 
-        if(now<min){
+        if(now<=min){
             nowV.setBackgroundResource(R.drawable.bg_hv_sharp10_gradient_yell_red);
         }
 

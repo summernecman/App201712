@@ -83,7 +83,7 @@ public class LoginResBean extends BaseBean {
     private String userPhoto;
     private int companyId;
     private int bindCompanyState;
-    private String bindCompanyTime;
+    private Long bindCompanyTime;
     private String companyName;
     private String abbreviationName;
     private int userType;
@@ -110,6 +110,15 @@ public class LoginResBean extends BaseBean {
     private int vehicleId;
     private String driverNoPhoto;
     private String driverNo;
+
+
+    public Long getBindCompanyTime() {
+        return bindCompanyTime;
+    }
+
+    public void setBindCompanyTime(Long bindCompanyTime) {
+        this.bindCompanyTime = bindCompanyTime;
+    }
 
     public boolean is驾驶员(){
         if(getUserType()==UserTypeReqBean.驾驶员){
@@ -174,13 +183,6 @@ public class LoginResBean extends BaseBean {
         this.bindCompanyState = bindCompanyState;
     }
 
-    public String getBindCompanyTime() {
-        return bindCompanyTime;
-    }
-
-    public void setBindCompanyTime(String bindCompanyTime) {
-        this.bindCompanyTime = bindCompanyTime;
-    }
 
     public String getCompanyName() {
         return companyName;

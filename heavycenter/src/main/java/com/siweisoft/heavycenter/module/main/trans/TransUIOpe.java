@@ -206,7 +206,7 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                                &&StringUtil.equals(s.get(position).getSignRule(), RuleDAOpe.需驾驶员确认)
                                 &&s.get(position).getReceiveNum()==0){
 
-                            driverBinding.tvTotalnum.setText(StringUtil.getStr(s.get(position).getTotalSuttle()));
+                            driverBinding.tvTotalnum.setText(StringUtil.getStr(s.get(position).getTotalSuttle())+"t");
                             driverBinding.tvCarnum.setText(StringUtil.getStr(s.get(position).getCarNumber(),1)+"车");
                             driverBinding.circlebar.update((int) (100*s.get(position).getTotalSuttle()/(s.get(position).getPlanNumber()+0.00001)),false);
                             driverBinding.btSure.setVisibility(View.VISIBLE);
@@ -214,7 +214,7 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
                         }else{
                             driverBinding.btSure.setVisibility(View.GONE);
-                            driverBinding.tvTotalnum.setText(StringUtil.getStr(s.get(position).getReceiveNum()-s.get(position).getDeveliverNum()));
+                            driverBinding.tvTotalnum.setText(StringUtil.getStr(s.get(position).getReceiveNum()-s.get(position).getDeveliverNum())+"t");
                             driverBinding.tvCarnum.setText("第"+StringUtil.getStr(s.get(position).getCarNumber(),1)+"车");
                             driverBinding.circlebar.update(0,false);
                         }

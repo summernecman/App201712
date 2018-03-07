@@ -20,6 +20,7 @@ import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresReqBean
 import com.siweisoft.heavycenter.databinding.FragMainStoreBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainOrderDoneBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainStoreBinding;
+import com.siweisoft.heavycenter.tools.ZXTools;
 
 import java.util.List;
 
@@ -75,10 +76,10 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
                 ItemMainStoreBinding storeBinding = (ItemMainStoreBinding) holder.viewDataBinding;
                 storeBinding.getRoot().setSelected(position%2==0?true:false);
                 storeBinding.tvCurrent.setText("剩余:"+StringUtil.getStr(o.getResults().get(position).getCurrentStock())+"t");
-
-                storeBinding.pvProgress.setValues(Math.min(o.getResults().get(position).getMaxStock(),o.getResults().get(position).getProductMaxStock()),
-                        Math.max(o.getResults().get(position).getMinStock(),o.getResults().get(position).getProductMinStock()),
-                        o.getResults().get(position).getCurrentStock());
+                storeBinding.pvProgress.setValues(ZXTools.get仓库最小最大当前(o.getResults().get(position),1),
+                        ZXTools.get仓库最小最大当前(o.getResults().get(position),0),
+                        ZXTools.get仓库最小最大当前(o.getResults().get(position),2)
+                        );
 
             }
         });

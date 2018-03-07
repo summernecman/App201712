@@ -74,7 +74,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
             case R.id.iv_search:
                 switch (getArguments().getInt(ValueConstant.DATA_DATA)){
                     case UnitListDAOpe.历史发货单位:
-                        UnitListDAOpe.getHistoryFhUnit(getContext(), (String) v.getTag(R.id.data), new UINetAdapter<ListResBean>(this,UINetAdapter.加载){
+                        UnitListDAOpe.getHistoryFhUnit(getContext(), (String) v.getTag(R.id.data), new UINetAdapter<ListResBean>(this,UINetAdapter.Loading){
                             @Override
                             public void onSuccess(ListResBean o) {
                                 super.onSuccess(o);
@@ -83,7 +83,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                         });
                         break;
                     case UnitListDAOpe.历史收货单位:
-                        UnitListDAOpe.getHistoryShUnit(getContext(),  (String) v.getTag(R.id.data), new UINetAdapter<ListResBean>(this,UINetAdapter.加载){
+                        UnitListDAOpe.getHistoryShUnit(getContext(),  (String) v.getTag(R.id.data), new UINetAdapter<ListResBean>(this,UINetAdapter.Loading){
                             @Override
                             public void onSuccess(ListResBean o) {
                                 super.onSuccess(o);
@@ -148,21 +148,33 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                                 }
                             });
                         }else{
-                            getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
+                            getP().getU().showBindTip(get容器(),new View.OnClickListener(){
                                 @Override
-                                public void onResult(boolean success, String msg, BindResBean o) {
-                                    super.onResult(success, msg, o);
-                                    getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
-                                        @Override
-                                        public void onResult(boolean success, String msg, LoginResBean o) {
-                                            super.onResult(success, msg, o);
-                                            if(success){
-                                                LocalValue.save登录返回信息(o);
-                                                getBaseUIAct().onBackPressed();
-                                                ((MainAct)getBaseUIAct()).go判断是否绑定单位处理();
-                                            }
-                                        }
-                                    });
+                                public void onClick(View vv) {
+                                    switch (vv.getId()){
+                                        case R.id.tv_n:
+                                            break;
+                                        case R.id.tv_y:
+                                            getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
+                                                @Override
+                                                public void onResult(boolean success, String msg, BindResBean o) {
+                                                    super.onResult(success, msg, o);
+                                                    getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                                        @Override
+                                                        public void onResult(boolean success, String msg, LoginResBean o) {
+                                                            super.onResult(success, msg, o);
+                                                            if(success){
+                                                                LocalValue.save登录返回信息(o);
+                                                                getBaseUIAct().onBackPressed();
+                                                                ((MainAct)getBaseUIAct()).go判断是否绑定单位处理();
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                            break;
+                                    }
+                                    getP().getU().getShowBindTipM().setAnim(false).finish(getBaseUIAct(),get容器(),true);
                                 }
                             });
                         }
@@ -180,7 +192,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
         getP().getU().clearKey();
         switch (getArguments().getInt(ValueConstant.DATA_DATA)){
             case UnitListDAOpe.历史发货单位:
-                UnitListDAOpe.getHistoryFhUnit(getContext(), "", new UINetAdapter<ListResBean>(this,UINetAdapter.加载){
+                UnitListDAOpe.getHistoryFhUnit(getContext(), "", new UINetAdapter<ListResBean>(this,UINetAdapter.Loading){
                     @Override
                     public void onSuccess(ListResBean o) {
                         super.onSuccess(o);
@@ -189,7 +201,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                 });
                 break;
             case UnitListDAOpe.历史收货单位:
-                UnitListDAOpe.getHistoryShUnit(getContext(), "", new UINetAdapter<ListResBean>(this,UINetAdapter.加载){
+                UnitListDAOpe.getHistoryShUnit(getContext(), "", new UINetAdapter<ListResBean>(this,UINetAdapter.Loading){
                     @Override
                     public void onSuccess(ListResBean o) {
                         super.onSuccess(o);
@@ -198,7 +210,7 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                 });
                 break;
                 default:
-                    getP().getD().getData(new UINetAdapter<ListResBean>(this,UINetAdapter.加载) {
+                    getP().getD().getData(new UINetAdapter<ListResBean>(this,UINetAdapter.Loading) {
                         @Override
                         public void onResult(boolean success, String msg, ListResBean o) {
                             super.onResult(success, msg, o);

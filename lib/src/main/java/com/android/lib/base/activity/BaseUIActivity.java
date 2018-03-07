@@ -9,6 +9,7 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseOpes;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.util.LogUtil;
+import com.android.lib.util.fragment.two.FragManager2;
 import com.android.lib.view.bottommenu.MessageEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -30,6 +31,7 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
     protected BaseOpes<A, B> opes;
 
     private String moudle;
+
 
 
     @Override
@@ -120,4 +122,5 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
     public ViewGroup getBaseUIRoot() {
         return baseUIRoot;
     }
+
 }

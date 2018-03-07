@@ -95,20 +95,28 @@ public class NewUnitUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
                 bind.title.getMidTV().setText("单位信息");
                 break;
             case NewUnitFrag.展示单位信息:
-                bind.upunit.setEnabled(false);
-                bind.unitaddr.setEnabled(false);
-                bind.area.setEnabled(false);
+                bind.itemUnitname.getMidET().setEnabled(false);
+                bind.itemNunitshortname.getMidET().setEnabled(false);
+                bind.unitcontact.getMidET().setEnabled(false);
+                bind.unitphone.getMidET().setEnabled(false);
+                bind.upunit.setEnabled(false);bind.upunit.getRightIV().setBackgroundResource(R.color.transparent);
+                bind.unitaddr.setEnabled(false);bind.unitaddr.getRightIV().setBackgroundResource(R.color.transparent);
+                bind.area.setEnabled(false);bind.area.getRightIV().setBackgroundResource(R.color.transparent);
                 bind.title.getMidTV().setText("单位信息");
+                bind.title.getRightIV2().setEnabled(false);
                 bind.title.getRightIV2().setImageResource(R.drawable.icon_hv_quit);
+
+
+
                 break;
             case NewUnitFrag.其他人查看单位信息:
                 bind.itemUnitname.getMidET().setEnabled(false);
                 bind.itemNunitshortname.getMidET().setEnabled(false);
                 bind.unitcontact.getMidET().setEnabled(false);
                 bind.unitphone.getMidET().setEnabled(false);
-                bind.upunit.setEnabled(false);
-                bind.unitaddr.setEnabled(false);
-                bind.area.setEnabled(false);
+                bind.upunit.setEnabled(false);bind.upunit.getRightIV().setImageResource(R.color.transparent);
+                bind.unitaddr.setEnabled(false);bind.unitaddr.getRightIV().setImageResource(R.color.transparent);
+                bind.area.setEnabled(false);bind.area.getRightIV().setImageResource(R.color.transparent);
                 bind.title.getMidTV().setText("单位信息");
                 bind.title.getRightIV2().setEnabled(false);
                 bind.title.getRightIV2().setVisibility(View.GONE);

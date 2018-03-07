@@ -42,9 +42,10 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                 fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
                 //bind.llHead.tvRole.setText(UserTypeReqBean.USER_TYPE_DRIVER_CN);
                 fragMyceDriverBinding.itemDriver.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCarLicenseNo()));
+                fragMyceDriverBinding.itemDriver.getMidTV().setVisibility(View.VISIBLE);
                 fragMyceDriverBinding.itemDriver.getMidTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCarBrand()));
-                fragMyceDriverBinding.tvEmptyweight.setText("自重: "+StringUtil.getStr(LocalValue.get登录返回信息().getEmptyWeight()));
-                fragMyceDriverBinding.tvMaxweight.setText("载重: "+StringUtil.getStr(LocalValue.get登录返回信息().getMaxCapacity()));
+                fragMyceDriverBinding.tvEmptyweight.setText("自重: "+StringUtil.getStr(LocalValue.get登录返回信息().getEmptyWeight())+"t");
+                fragMyceDriverBinding.tvMaxweight.setText("载重: "+StringUtil.getStr(LocalValue.get登录返回信息().getMaxCapacity())+"t");
 
 
                 //bind.llHead.tvRole.setText(LoginResBean.USER_ROLE_DRIVER_CN);
@@ -75,6 +76,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
                         fragMyceDriverBinding.itemUnit.getLeftTV().setText("绑定单位");
                         fragMyceDriverBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_UNBIND_CN);
+                        fragMyceDriverBinding.itemUnit.getRight2().setVisibility(View.GONE);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                         fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
@@ -133,6 +135,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
                         fragMyceGeneralBinding.itemUnit.getLeftTV().setText("绑定单位");
                         fragMyceGeneralBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_UNBIND_CN);
+                        fragMyceGeneralBinding.itemUnit.getRight2().setVisibility(View.GONE);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                         fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));

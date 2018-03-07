@@ -33,7 +33,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
         getP().getU().实时搜索(this);
     }
 
-    @OnClick({R.id.ftv_right,R.id.ftv_right2,R.id.iv_search})
+    @OnClick({R.id.ftv_right,R.id.ftv_right2,R.id.tv_y})
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()){
@@ -45,22 +45,16 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
 //                bundle.putInt(ValueConstant.FARG_REQ,1);
 //                FragManager2.getInstance().start(getBaseUIAct(),get容器(),MainAct.主界面ID,new NewUnitFrag(),bundle);
                 break;
-            case R.id.iv_search:
+            case R.id.tv_y:
                 if(getP().getU().canSearchGo()){
                     getP().getD().infoCar(getP().getU().getInputText(), new UINetAdapter<CarsResBean.CarInfoRes>(this) {
                         @Override
                         public void onResult(boolean success, String msg, CarsResBean.CarInfoRes o) {
                             super.onResult(success, msg, o);
                             if(o!=null){
-                                Bundle bundle = new Bundle();
-                                bundle.putString(ValueConstant.DATA_DATA2,CarDetailValue.绑定车辆);
-                                bundle.putSerializable(ValueConstant.DATA_DATA,o);
-                                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new DetailFrag(),bundle);
+                                FragManager2.getInstance().setAnim(false).start(getBaseUIAct(), get容器(),DetailFrag.getInstance(CarDetailValue.绑定车辆,"绑定车辆",o));
                             }else{
-                                Bundle bundle = new Bundle();
-                                bundle.putString(ValueConstant.DATA_DATA2, CarDetailValue.新建车辆并绑定);
-                                bundle.putString(ValueConstant.DATA_DATA,getP().getU().getInputText());
-                                FragManager2.getInstance().start(getBaseUIAct(),get容器(),new DetailFrag(),bundle);
+                                FragManager2.getInstance().setAnim(false).start(getBaseUIAct(),get容器(),DetailFrag.getInstance(CarDetailValue.新建车辆并绑定,getP().getU().getInputText(),null));
                             }
                         }
                     });
@@ -76,10 +70,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
             case ViewListener.TYPE_ONCLICK:
 
                 CarsResBean.CarInfoRes data = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
-                Bundle bundle = new Bundle();
-                bundle.putString(ValueConstant.DATA_DATA2,CarDetailValue.绑定车辆);
-                bundle.putSerializable(ValueConstant.DATA_DATA,data);
-                FragManager2.getInstance().start(getBaseUIAct(),get容器(),new DetailFrag(),bundle);
+                FragManager2.getInstance().setAnim(false).start(getBaseUIAct(),get容器(),DetailFrag.getInstance(CarDetailValue.绑定车辆,"绑定车辆",data));
 
 //                getP().getD().bindCar(data.getVehicleId(), new UINetAdapter<BindCarRes>(getActivity()) {
 //                    @Override

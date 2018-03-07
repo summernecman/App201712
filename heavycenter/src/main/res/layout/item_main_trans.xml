@@ -39,7 +39,7 @@
             android:layout_height="80dp">
 
             <TextView
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
                 android:id="@+id/tv_totalnum"
@@ -49,10 +49,10 @@
                 android:singleLine="true"
                 android:text='@{StringUtil.getStr(item_main_trans.totalSuttle)+"t"}'
                 android:textColor="@color/color_hv_yelll"
-                android:textSize="25sp" />
+                android:textSize="22sp" />
 
             <TextView
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="1dp"
                 android:layout_below="@+id/tv_totalnum"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/tv_carnum"
@@ -105,7 +105,7 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginRight="5dp"
-            android:src="@drawable/icon_hv_local"
+            android:src="@drawable/icon_trans_local"
             app:layout_constraintTop_toTopOf="@+id/tv_carlicenseno"
             app:layout_constraintRight_toRightOf="parent" />
 
@@ -118,7 +118,7 @@
             android:singleLine="true"
             android:text="发往"
             android:textSize="13sp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="7dp"
             android:visibility="visible"
             app:layout_constraintLeft_toLeftOf="@+id/tv_productName"
             app:layout_constraintTop_toBottomOf="@+id/tv_productName"
@@ -137,6 +137,7 @@
 
 
         <TextView
+            android:layout_marginTop="3dp"
             android:id="@+id/tv_send_comname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -225,7 +226,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
             app:layout_constraintBottom_toBottomOf="@+id/tv_receipt_comname"
-            app:layout_constraintLeft_toLeftOf="@+id/tv_sendnum" />
+            app:layout_constraintLeft_toRightOf="@+id/tv_receipt_comname" />
 
 
         <TextView

@@ -19,6 +19,7 @@ import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.status.StopCarResBean;
+import com.siweisoft.heavycenter.module.mana.car.detail.CarDetailValue;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 
 public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener,OnFinishListener{
@@ -74,7 +75,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
                                 getArguments().putAll(bundle);
                                 getBaseUIAct().onBackPressed();
                             }else{
-                                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new DetailFrag(),bundle);
+                                FragManager2.getInstance().start(getBaseUIAct(), get容器(),DetailFrag.getInstance(CarDetailValue.查看车辆,"车辆详情",bean1),bundle);
                             }
                             break;
                 }
@@ -92,7 +93,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
         getP().getD().Cars(getP().getD().getCarsReqBean(),new UINetAdapter<CarsResBean>(this) {
             @Override
             public void onSuccess(CarsResBean o) {
-                o = new Test().getCarsResBean();
+               // o = new Test().getCarsResBean();
                 getP().getD().setNetcarsRes(o);
                 getP().getU().LoadListData( getP().getD().searchCar(""),getArguments().getString(ValueConstant.DATA_POSITION),CarFrag.this);
                 getP().getU().finishRefresh();
