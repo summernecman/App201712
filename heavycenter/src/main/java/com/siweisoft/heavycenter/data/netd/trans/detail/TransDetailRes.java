@@ -3,9 +3,11 @@ package com.siweisoft.heavycenter.data.netd.trans.detail;
 import android.databinding.Bindable;
 
 import com.android.lib.bean.BaseBean;
+import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -216,12 +218,20 @@ public  class TransDetailRes extends BaseBean {
         return develiverNum;
     }
 
+    public String getDeveliverNumCN() {
+        return StringUtil.getStr(develiverNum)+"t";
+    }
+
     public void setDeveliverNum(double develiverNum) {
         this.develiverNum = develiverNum;
     }
 
     public double getReceiveNum() {
         return receiveNum;
+    }
+
+    public String getReceiveNumCN() {
+        return StringUtil.getStr(receiveNum)+"t";
     }
 
     public void setReceiveNum(double receiveNum) {
@@ -254,7 +264,7 @@ public  class TransDetailRes extends BaseBean {
 
     public String getCarNumberCN() {
         if(getSignStatus()==TransDetailRes.SING_STATUS_已确认){
-            return StringUtil.getStr(getCarNumber())+"车";
+            return "第"+StringUtil.getStr(getCarNumber())+"车";
         }
         return StringUtil.getStr(getCarNumber()-1)+"车";
     }
@@ -310,12 +320,24 @@ public  class TransDetailRes extends BaseBean {
         return FhTime;
     }
 
+    LoginResBean loginResBean = LocalValue.get登录返回信息();
 
     public boolean isIDiliverCom(){
-        if(StringUtil.equals(getDeveliverCompanyName(), LocalValue.get登录返回信息().getCompanyName())){
+        if(StringUtil.equals(getDeveliverCompanyName(), loginResBean.getCompanyName())){
             return true;
         }
         return false;
+    }
+
+    public boolean isDriver(){
+        return  loginResBean.is驾驶员();
+    }
+
+    public boolean isShowCarLicense(){
+        if(isDriver()|| NullUtil.isStrEmpty(getCarLicenseNo())){
+            return false;
+        }
+        return true;
     }
 
     public String getType(){
@@ -333,6 +355,21 @@ public  class TransDetailRes extends BaseBean {
         return getDeveliverAbbreviationName();
     }
 
+    public boolean isUpSecondTypeShow(){
+        if(loginResBean.is驾驶员()||!isIDiliverCom()){
+            return false;
+        }
+        return true;
+    }
+
+
+    public boolean isDownSecondTypeShow(){
+        if(loginResBean.is驾驶员()||isIDiliverCom()){
+            return false;
+        }
+        return true;
+    }
+
     public String getFhTimeCN() {
         if(getFhTime()==null){
             return "";
@@ -340,7 +377,9 @@ public  class TransDetailRes extends BaseBean {
         return DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(getFhTime()));
     }
 
-
+    public int getPercent(){
+        return (int) (100*getTotalSuttle()/getPlanNumber()+0.00001);
+    }
 
 
     public void setFhTime(Long fhTime) {
@@ -364,6 +403,32 @@ public  class TransDetailRes extends BaseBean {
         }
         return true;
     }
+
+    public String getUpLineTxt(){
+        if(loginResBean.is驾驶员()){
+            return StringUtil.getStr(getDeveliverCompanyName());
+        }else{
+            if(isIDiliverCom()){
+                return StringUtil.getStr(getTrueName());
+            }else{
+                return StringUtil.getStr(getDeveliverCompanyName());
+            }
+        }
+    }
+
+
+    public String getDownLineTxt(){
+        if(loginResBean.is驾驶员()){
+            return StringUtil.getStr(getReceiveCompanyName());
+        }else{
+            if(isIDiliverCom()){
+                return StringUtil.getStr(getReceiveCompanyName());
+            }else{
+                return StringUtil.getStr(getTrueName());
+            }
+        }
+    }
+
 
 
     public void setShTime(Long shTime) {

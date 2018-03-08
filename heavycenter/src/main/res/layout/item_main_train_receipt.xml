@@ -8,252 +8,260 @@
         <import type="com.android.lib.util.StringUtil"/>
     </data>
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:style_common="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_hv_sel_dark_light"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        >
-
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 xmlns:style_common="http://schemas.android.com/apk/res-auto"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="wrap_content"
+                                                 android:background="@drawable/bg_hv_sel_dark_light"
+                                                 android:foreground="?android:attr/selectableItemBackground"
+                                                 android:paddingLeft="5dp"
+                                                 android:paddingRight="5dp"
+                                                 android:paddingTop="15dp"
+                                                 android:paddingBottom="15dp"
+    >
 
 
         <com.siweisoft.heavycenter.module.view.circle.CircleBar
-            android:id="@+id/circlebar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerInParent="true"
-            style_common:color_one="@color/color_hv_blue"
-            android:layout_margin="5dp" />
+                android:id="@+id/circlebar"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerInParent="true"
+                style_common:color_one="@color/color_hv_blue"
+                android:layout_margin="5dp"/>
 
         <RelativeLayout
-            android:layout_width="80dp"
-            android:layout_height="80dp">
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/tv_totalnum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxWidth="100dp"
-            android:singleLine="true"
-            android:text="@{item_main_trans_receipt.isshowOpeBtn(item_main_trans_receipt)?item_main_trans_receipt.totalSuttleCN:item_main_trans_receipt.YKCN}"
-            android:textColor="@color/color_hv_blue"
-            android:textSize="25sp" />
+                android:layout_width="90dp"
+                android:layout_height="90dp">
 
-        <TextView
-            android:layout_marginTop="2dp"
-            android:layout_below="@+id/tv_totalnum"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/tv_carnum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:text='@{item_main_trans_receipt.carNumberCN}'
-            android:textColor="@color/color_hv_blue"
-            android:textSize="15sp" />
+            <TextView
+                    tools:text="11.0t"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/tv_totalnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="100dp"
+                    android:singleLine="true"
+                    android:text="@{item_main_trans_receipt.isshowOpeBtn(item_main_trans_receipt)?item_main_trans_receipt.totalSuttleCN:item_main_trans_receipt.YKCN}"
+                    android:textColor="@color/color_hv_blue"
+                    android:textSize="25sp"/>
+
+            <TextView
+                    tools:text="第1车"
+                    android:layout_below="@+id/tv_totalnum"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/tv_carnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text='@{item_main_trans_receipt.carNumberCN}'
+                    android:textColor="@color/color_hv_blue"
+                    android:textSize="12sp"/>
         </RelativeLayout>
 
         <android.support.constraint.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="90dp" />
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="90dp"/>
 
 
         <TextView
-
-            android:id="@+id/tv_productName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_receipt.productName)}'
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-            app:layout_constraintLeft_toRightOf="@id/guideline"
-            app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginLeft="15dp"
+                tools:text="混凝土"
+                android:id="@+id/tv_productName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans_receipt.productName)}'
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+                app:layout_constraintLeft_toRightOf="@id/guideline"
+                app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/tv_specifications"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_receipt.specifications)}'
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
-            app:layout_constraintLeft_toRightOf="@+id/tv_productName"
-            app:layout_constraintTop_toTopOf="parent" />
+                tools:text="c300"
+                android:id="@+id/tv_specifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans_receipt.specifications)}'
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
+                app:layout_constraintLeft_toRightOf="@+id/tv_productName"
+                app:layout_constraintTop_toTopOf="parent"/>
 
 
         <ImageView
-
-            android:id="@+id/iv_local"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginRight="5dp"
-            android:src="@drawable/icon_hv_local"
-            app:layout_constraintTop_toTopOf="@+id/tv_carlicenseno"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_carlicenseno"
-            app:layout_constraintRight_toLeftOf="@+id/tv_carlicenseno" />
-
-        <TextView
-            android:includeFontPadding="false"
-            android:text='@{StringUtil.getStr(item_main_trans_receipt.carLicenseNo)}'
-            android:id="@+id/tv_carlicenseno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_hv_sharp1_yell_stroke"
-            android:singleLine="true"
-            android:textColor="@color/color_base_txt_heavycenter_y"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
-            app:layout_constraintRight_toRightOf="parent" />
-
+                android:id="@+id/iv_local"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/icon_hv_local"
+                app:layout_constraintTop_toTopOf="@+id/tv_carlicenseno"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_carlicenseno"
+                app:layout_constraintRight_toLeftOf="@+id/tv_carlicenseno"/>
 
         <TextView
-            android:id="@+id/tv_my_dirvername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_receipt.trueName)}'
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            app:layout_constraintLeft_toLeftOf="@+id/tv_productName"
-            app:layout_constraintTop_toBottomOf="@+id/tv_other_comp" />
+
+                android:layout_marginRight="5dp"
+                tools:text="沪A11111"
+                android:includeFontPadding="false"
+                android:text='@{StringUtil.getStr(item_main_trans_receipt.carLicenseNo)}'
+                android:id="@+id/tv_carlicenseno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{item_main_trans_receipt.IDiliverCom?@drawable/bg_hv_sharp1_yell_stroke:@drawable/bg_hv_sharp1_blue_stroke}"
+                android:singleLine="true"
+                android:textColor="@color/color_base_txt_heavycenter_y"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+
+        <TextView
+                android:id="@+id/tv_my_dirvername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans_receipt.trueName)}'
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_productName"
+                app:layout_constraintTop_toBottomOf="@+id/tv_other_comp"/>
 
 
         <com.siweisoft.heavycenter.module.view.text.BgTextView
-            android:id="@+id/type"
-            android:includeFontPadding="false"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:singleLine="true"
-            android:text="送来"
-            android:padding="1dp"
-            android:layout_marginBottom="3dp"
-            android:textSize="13sp"
-            android:visibility="visible"
-            app:layout_constraintLeft_toRightOf="@+id/tv_my_dirvername"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername"
-            style_common:boo_one="false"
-            style_common:color_one="@color/color_hv_blue"
+                android:background="@{item_main_trans_receipt.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+                android:id="@+id/type"
+                android:includeFontPadding="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:text="@{item_main_trans_receipt.type}"
+                tools:text="送来"
+                android:padding="1dp"
+                android:layout_marginBottom="3dp"
+                android:textSize="13sp"
+                android:visibility="visible"
+                app:layout_constraintLeft_toRightOf="@+id/tv_my_dirvername"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername"
+                style_common:boo_one="false"
+                style_common:color_one="@color/color_hv_blue"
 
-            style_common:color_stroke="@color/red"
-            style_common:color_stroke_two="@color/color_hv_yelll"
-            style_common:color_two="@color/color_red_800"
-            style_common:color_txt="@color/black"
-            style_common:color_txt_two="@color/white"
-            style_common:corner="2dp"
-            style_common:corner_two="5dp"
-            style_common:stroke="0dp"
-            style_common:stroke_two="2dp" />
-
-
-        <TextView
-            android:id="@+id/tv_sendnum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_receipt.develiverNum)+"t"}'
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            app:layout_constraintLeft_toRightOf="@+id/type"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername" />
+                style_common:color_stroke="@color/red"
+                style_common:color_stroke_two="@color/color_hv_yelll"
+                style_common:color_two="@color/color_red_800"
+                style_common:color_txt="@color/black"
+                style_common:color_txt_two="@color/white"
+                style_common:corner="2dp"
+                style_common:corner_two="5dp"
+                style_common:stroke="0dp"
+                style_common:stroke_two="2dp"/>
 
 
         <TextView
-            tools:text="发货时间"
-            android:text="@{item_main_trans_receipt.fhTimeCN}"
-            android:id="@+id/tv_sendtime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="10dp"
-            android:singleLine="true"
-            android:textColor="@color/color_hv_txt_dark"
-            android:textSize="@dimen/dimen_recylce_item_date_txtsize"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername"
-            app:layout_constraintRight_toRightOf="parent" />
+                android:id="@+id/tv_sendnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans_receipt.develiverNum)+"t"}'
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+                app:layout_constraintLeft_toRightOf="@+id/type"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername"/>
 
 
         <TextView
-            android:id="@+id/tv_other_comp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_receipt.receiveCompanyName)}'
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            app:layout_constraintLeft_toLeftOf="@+id/tv_my_dirvername"
-            app:layout_constraintTop_toBottomOf="@+id/tv_productName" />
-
-        <TextView
-            android:id="@+id/tv_receiptnum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="right|center_vertical"
-            android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_receipt.receiveNum)+"t"}'
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_other_comp"
-            app:layout_constraintLeft_toLeftOf="@+id/tv_sendnum" />
+                android:layout_marginRight="5dp"
+                tools:text="发货时间"
+                android:text="@{item_main_trans_receipt.fhTimeCN}"
+                android:id="@+id/tv_sendtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:singleLine="true"
+                android:textColor="@color/color_hv_txt_dark"
+                android:textSize="@dimen/dimen_recylce_item_date_txtsize"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_my_dirvername"
+                app:layout_constraintRight_toRightOf="parent"/>
 
 
         <TextView
-            tools:text="收货时间"
-            android:text="@{item_main_trans_receipt.shTimeCN}"
-            android:id="@+id/tv_receipttime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:textColor="@color/color_hv_txt_dark"
-            android:textSize="@dimen/dimen_recylce_item_date_txtsize"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_other_comp"
-            app:layout_constraintRight_toRightOf="parent" />
+                android:id="@+id/tv_other_comp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans_receipt.receiveCompanyName)}'
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_my_dirvername"
+                app:layout_constraintTop_toBottomOf="@+id/tv_productName"/>
+
+        <TextView
+                android:id="@+id/tv_receiptnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right|center_vertical"
+                android:singleLine="true"
+                android:text='@{StringUtil.getStr(item_main_trans_receipt.receiveNum)+"t"}'
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_other_comp"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_sendnum"/>
+
+
+        <TextView
+                android:layout_marginRight="5dp"
+                tools:text="收货时间"
+                android:text="@{item_main_trans_receipt.shTimeCN}"
+                android:id="@+id/tv_receipttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/color_hv_txt_dark"
+                android:textSize="@dimen/dimen_recylce_item_date_txtsize"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_other_comp"
+                app:layout_constraintRight_toRightOf="parent"/>
 
         <com.siweisoft.heavycenter.module.view.text.BgTextView
-            android:id="@+id/bt_sure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:paddingBottom="2dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingTop="2dp"
-            android:singleLine="true"
-            android:text="完成"
-            android:textSize="15sp"
-            android:visibility="gone"
-            app:layout_constraintTop_toTopOf="@+id/tv_my_dirvername"
-            app:layout_constraintRight_toRightOf="parent"
-            style_common:boo_one="false"
-            style_common:color_one="@color/color_hv_yelll"
+                android:id="@+id/bt_sure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingBottom="2dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="2dp"
+                android:singleLine="true"
+                android:text="完成"
+                android:textSize="15sp"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="@+id/tv_my_dirvername"
+                app:layout_constraintRight_toRightOf="parent"
+                style_common:boo_one="false"
+                style_common:color_one="@color/color_hv_yelll"
 
-            style_common:color_stroke="@color/red"
-            style_common:color_stroke_two="@color/color_hv_yelll"
-            style_common:color_two="@color/color_red_800"
-            style_common:color_txt="@color/white"
-            style_common:color_txt_two="@color/white"
-            style_common:corner="5dp"
-            style_common:corner_two="5dp"
-            style_common:stroke="0dp"
-            style_common:stroke_two="2dp" />
-
+                style_common:color_stroke="@color/red"
+                style_common:color_stroke_two="@color/color_hv_yelll"
+                style_common:color_two="@color/color_red_800"
+                style_common:color_txt="@color/white"
+                style_common:color_txt_two="@color/white"
+                style_common:corner="5dp"
+                style_common:corner_two="5dp"
+                style_common:stroke="0dp"
+                style_common:stroke_two="2dp"/>
 
 
     </android.support.constraint.ConstraintLayout>

@@ -112,4 +112,6 @@ dependencies {
     compile 'com.android.support:multidex:1.0.2'//并将 Dalvik 可执行文件分包库添加为依赖项
     implementation 'me.drakeet.support:toastcompat:1.0.2'
     compile 'com.tubb.smrv:swipemenu-recyclerview:5.4.4'
+
+    compile 'io.paperdb:paperdb:2.6'//数据库
 }

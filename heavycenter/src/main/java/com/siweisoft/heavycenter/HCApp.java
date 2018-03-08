@@ -31,7 +31,7 @@ import cn.jpush.android.api.JPushInterface;
 public class HCApp extends LibAplication implements OnFinishListener{
 
 
-    public static boolean test  = false;
+    public static boolean test  = true;
 
     //static 代码段可以防止内存泄露
     static {
@@ -66,7 +66,7 @@ public class HCApp extends LibAplication implements OnFinishListener{
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
         FragManager2.getInstance().clear();
-
+        initDB();
         if(test){
             LocalValue.set自动登录(false);
             NetGet.test = true;

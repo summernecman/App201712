@@ -178,7 +178,7 @@ public class Test {
             resultsBean.setCarLicenseNo("车牌号");
             resultsBean.setCarNumber(11);
             resultsBean.setDeveliverCompanyName("运输公司");
-            resultsBean.setDeveliverNum(123);
+            resultsBean.setDeveliverNum(23);
            // resultsBean.setFhTime("发货时间");
             resultsBean.setOrdersId(1);
             resultsBean.setOrderType("订单类型");
@@ -190,10 +190,13 @@ public class Test {
             resultsBean.setSignStatus(1);
             resultsBean.setSpecifications("规格");
             resultsBean.setTel("18721547854");
-           // resultsBean.setTotalSuttle(20);
+            resultsBean.setTotalSuttle(20);
+            resultsBean.setPlanNumber(50);
             resultsBean.setTransportrecordId(1);
             resultsBean.setTrueName("唐杰");
             resultsBean.setUserId(1);
+            resultsBean.setFhTime(System.currentTimeMillis());
+            resultsBean.setShTime(System.currentTimeMillis());
             transRes.getResults().add(resultsBean);
         }
         return transRes;

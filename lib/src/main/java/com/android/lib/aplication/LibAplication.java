@@ -12,6 +12,7 @@ import com.android.lib.util.activity.ActivityUtil;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.view.CropImageView;
 
+import io.paperdb.Paper;
 import org.xutils.x;
 
 import java.util.List;
@@ -39,6 +40,10 @@ public  abstract  class LibAplication extends MultiDexApplication {
         //ZXingLibrary.initDisplayOpinion(this);
     }
 
+
+    protected void initDB(){
+        Paper.init(this);
+    }
 
     /**
      * 初始化系统常量
