@@ -10,6 +10,7 @@ import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.StringUtil;
+import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumRes;
 import com.siweisoft.heavycenter.databinding.FragMainOrderBinding;
 
@@ -48,6 +49,16 @@ public class OrdersUIOpe extends BaseUIOpe<FragMainOrderBinding>{
     }
 
     public void refreshTopMenu(OrderNumRes orderNumRes){
+        if(orderNumRes==null){
+            return;
+        }
+        bind.topview.setTxt(0, "新订单("+StringUtil.getStr(orderNumRes.getNewCount())+")");
+        bind.topview.setTxt(1, "进行中("+StringUtil.getStr(orderNumRes.getIngCount())+")");
+        bind.topview.setTxt(2, "已完成("+StringUtil.getStr(orderNumRes.getDoneCount())+")");
+    }
+
+
+    public void refreshTopMenu(OrdersRes orderNumRes){
         if(orderNumRes==null){
             return;
         }

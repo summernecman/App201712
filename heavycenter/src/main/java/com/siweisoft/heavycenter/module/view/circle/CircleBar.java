@@ -29,7 +29,7 @@ public class CircleBar extends View {
 
     int mCircleColor;
     int mCircleBgColor;
-    private float mCircleRatio=0.02f;//圆环宽度占比
+    private float mCircleRatio=0.03f;//圆环宽度占比
     private boolean mIsDrawValue=false;
 
     public CircleBar(Context context) {

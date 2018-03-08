@@ -19,12 +19,12 @@
 
     <ImageView
         android:id="@+id/ftv_back"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:gravity="center"
-       android:padding="3dp"
+       android:padding="8dp"
         android:textColor="@color/color_title_select"
         android:textSize="17sp"
         android:visibility="visible" />

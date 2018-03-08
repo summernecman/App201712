@@ -5,9 +5,11 @@
         <variable
             name="item_main_order_doing"
             type="com.siweisoft.heavycenter.data.netd.order.list.OrdersRes.ResultsBean" />
+        <import type="android.view.View" />
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/ll_ingorder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,6 +41,7 @@
 
 
             <TextView
+                tools:text="0"
                 android:text='@{item_main_order_doing.totalRecord+""}'
                 android:id="@+id/tv_carnum"
                 android:layout_width="wrap_content"
@@ -48,6 +51,7 @@
                 android:textSize="25sp" />
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_carnum"
@@ -69,6 +73,8 @@
             app:layout_constraintRight_toRightOf="@+id/circlebar">
 
             <TextView
+                android:text="@{item_main_order_doing.actualShCN2}"
+                tools:text="0"
                 android:id="@+id/tv_current"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,6 +91,8 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:text="@{item_main_order_doing.planNumberCN2}"
+                tools:text="0"
                 android:id="@+id/tv_plan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,6 +112,7 @@
 
 
         <TextView
+            tools:text="混凝土"
             android:id="@+id/tv_goodname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,6 +125,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            tools:text="c000"
             android:id="@+id/tv_spes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -130,20 +140,24 @@
 
 
         <TextView
+            android:visibility="@{item_main_order_doing.carLicenseNo==null?View.GONE:View.VISIBLE}"
+            android:textColor="@{item_main_order_doing.sendType?@color/color_hv_yelll:@color/color_hv_blue}"
+            android:background="@{item_main_order_doing.sendType?@drawable/bg_hv_sharp1_yell_stroke:@drawable/bg_hv_sharp1_blue_stroke}"
+            tools:text="沪12345"
             android:id="@+id/tv_carno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@drawable/bg_hv_sel_yel_blue_stroke"
             android:singleLine="true"
             android:text="@{item_main_order_doing.carLicenseNo}"
-            android:textColor="@color/color_yell_blue"
             android:textSize="12sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
+
+            tools:text="来自"
             android:background="@{item_main_order_doing.sendType?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
             android:id="@+id/tv_type"
             android:layout_width="wrap_content"
@@ -154,11 +168,13 @@
             android:singleLine="true"
             android:text="@{item_main_order_doing.type}"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="13sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_duimian"
             app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
             app:layout_constraintTop_toBottomOf="@+id/tv_goodname" />
 
         <TextView
+            tools:text="王尼玛"
             android:id="@+id/tv_duimian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -179,13 +195,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:gravity="center_vertical"
-            android:text="开始时间：2017/12/09 10:00"
+            tools:text="开始时间：2017/12/09 10:00"
+            android:text='@{item_main_order_doing.startTimeCN2}'
             android:textColor="@color/color_hv_txt_dark"
             android:textSize="@dimen/dimen_recylce_item_date_txtsize"
             app:layout_constraintLeft_toLeftOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@+id/tv_duimian" />
 
         <TextView
+            android:text='@{item_main_order_doing.finishTimeCN2}'
+            tools:text="结束时间：2017/12/09 10:00"
             android:id="@+id/tv_nametel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

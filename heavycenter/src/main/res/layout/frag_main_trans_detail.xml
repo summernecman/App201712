@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="com.android.lib.util.StringUtil"/>
         <variable
@@ -56,6 +57,10 @@
 
 
         <TextView
+            android:includeFontPadding="false"
+            android:gravity="top"
+            tools:text="混凝土"
+            android:layout_marginTop="10dp"
             android:id="@+id/tv_productName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,6 +72,8 @@
             app:layout_constraintTop_toTopOf="@+id/line_top"/>
 
         <TextView
+            android:includeFontPadding="false"
+            android:gravity="top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
@@ -80,6 +87,8 @@
 
 
         <TextView
+            tools:text="第一车"
+            android:text="@{frag_main_trans_detail.carNumberCN2}"
             android:id="@+id/tv_carno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,12 +96,15 @@
             android:padding="1dp"
             android:textColor="@color/black"
             android:textSize="13sp"
-            style_common:layout_constraintBaseline_toBaselineOf="@+id/tv_productName"
             app:layout_constraintRight_toRightOf="@+id/line_right"
+            style_common:layout_constraintTop_toTopOf="@+id/line_top"
+            android:layout_marginTop="13dp"
             />
 
 
-        <com.siweisoft.heavycenter.module.view.text.BgTextView
+
+        <TextView
+
             app:layout_constraintLeft_toLeftOf="@+id/line_left"
             app:layout_constraintTop_toBottomOf="@+id/tv_productName"
             android:id="@+id/type"
@@ -101,20 +113,17 @@
             android:layout_marginTop="10dp"
             android:padding="1dp"
             android:singleLine="true"
-            android:text=""
             android:textSize="13sp"
             android:visibility="visible"
-            style_common:boo_one="false"
-            style_common:color_one="@color/color_hv_blue"
-            style_common:color_stroke="@color/red"
-            style_common:color_stroke_two="@color/color_hv_yelll"
-            style_common:color_two="@color/color_red_800"
-            style_common:color_txt="@color/black"
-            style_common:color_txt_two="@color/white"
-            style_common:corner="2dp"
-            style_common:corner_two="5dp"
-            style_common:stroke="0dp"
-            style_common:stroke_two="2dp" />
+            tools:text="@{frag_main_trans_detail.type}"
+            android:background="@{frag_main_trans_detail.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+            android:includeFontPadding="false"
+            android:text="@{frag_main_trans_detail.type}"
+            android:textColor="@color/black"
+
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_duimian"
+   />
+
 
 
 
@@ -124,11 +133,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:singleLine="true"
-            android:text="@{frag_main_trans_detail.receiveCompanyName}"
+            android:text="@{frag_main_trans_detail.accessComName}"
             android:textColor="@color/white"
             android:textSize="17sp"
-            app:layout_constraintLeft_toLeftOf="@+id/line_left"
-            app:layout_constraintTop_toBottomOf="@+id/type"/>
+            style_common:layout_constraintLeft_toRightOf="@+id/type"
+            style_common:layout_constraintBottom_toBottomOf="@+id/type"/>
 
 
         <TextView

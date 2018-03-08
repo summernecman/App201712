@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="item_main_trans_receipt"
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:maxWidth="100dp"
             android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_receipt.totalSuttle)+"t"}'
+            android:text="@{item_main_trans_receipt.isshowOpeBtn(item_main_trans_receipt)?item_main_trans_receipt.totalSuttleCN:item_main_trans_receipt.YKCN}"
             android:textColor="@color/color_hv_blue"
             android:textSize="25sp" />
 
@@ -55,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:text='@{StringUtil.getStr(item_main_trans_receipt.carNumber)+"t"}'
+            android:text='@{item_main_trans_receipt.carNumberCN}'
             android:textColor="@color/color_hv_blue"
             android:textSize="15sp" />
         </RelativeLayout>
@@ -140,6 +140,7 @@
             android:layout_marginLeft="10dp"
             android:singleLine="true"
             android:text="送来"
+            android:padding="1dp"
             android:layout_marginBottom="3dp"
             android:textSize="13sp"
             android:visibility="visible"
@@ -174,6 +175,8 @@
 
 
         <TextView
+            tools:text="发货时间"
+            android:text="@{item_main_trans_receipt.fhTimeCN}"
             android:id="@+id/tv_sendtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -212,7 +215,8 @@
 
 
         <TextView
-
+            tools:text="收货时间"
+            android:text="@{item_main_trans_receipt.shTimeCN}"
             android:id="@+id/tv_receipttime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

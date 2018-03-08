@@ -58,7 +58,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                 bind.top.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                       // bind.itemCarlicenseno.setMidEtTxt("");
+                        bind.etName.setText("");
                     }
                 });
 //                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){

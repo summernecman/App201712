@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="item_main_trans_send"
             type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes" />
 
         <import type="com.android.lib.util.StringUtil"/>
+        <import type="android.view.View"/>
     </data>
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -36,6 +37,7 @@
             android:layout_height="80dp">
 
             <TextView
+                tools:text="12t"
                 android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
@@ -44,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:maxWidth="100dp"
                 android:singleLine="true"
-                android:text='@{StringUtil.getStr(item_main_trans_send.totalSuttle)+"t"}'
+                android:text="@{item_main_trans_send.isshowOpeBtn(item_main_trans_send)?item_main_trans_send.totalSuttleCN:item_main_trans_send.YKCN}"
                 android:textColor="@color/color_hv_yelll"
                 android:textSize="25sp" />
 
@@ -56,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:text='@{StringUtil.getStr(item_main_trans_send.carNumber)+"t"}'
+                android:text='@{item_main_trans_send.carNumberCN}'
                 android:textColor="@color/color_hv_yelll"
                 android:textSize="15sp" />
         </RelativeLayout>
@@ -142,6 +144,7 @@
             android:layout_marginLeft="10dp"
             android:singleLine="true"
             android:text="发往"
+            android:padding="1dp"
             android:layout_marginBottom="3dp"
             android:textSize="13sp"
             android:visibility="visible"
@@ -153,7 +156,7 @@
             style_common:color_stroke="@color/red"
             style_common:color_stroke_two="@color/color_hv_yelll"
             style_common:color_two="@color/color_red_800"
-            style_common:color_txt="@color/white"
+            style_common:color_txt="@color/black"
             style_common:color_txt_two="@color/white"
             style_common:corner="2dp"
             style_common:corner_two="5dp"
@@ -176,6 +179,8 @@
 
 
         <TextView
+            tools:text="发货时间"
+            android:text="@{item_main_trans_send.fhTimeCN}"
             android:id="@+id/tv_sendtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -214,7 +219,8 @@
 
 
         <TextView
-
+            tools:text="收货时间"
+            android:text="@{item_main_trans_send.shTimeCN}"
             android:id="@+id/tv_receipttime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -225,6 +231,7 @@
             app:layout_constraintRight_toRightOf="parent" />
 
         <com.siweisoft.heavycenter.module.view.text.BgTextView
+
             android:id="@+id/bt_sure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -236,7 +243,7 @@
             android:singleLine="true"
             android:text="完成"
             android:textSize="15sp"
-            android:visibility="gone"
+            android:visibility="@{item_main_trans_send.isshowOpeBtn(item_main_trans_send)?View.VISIBLE:View.GONE}"
             app:layout_constraintTop_toTopOf="@+id/tv_other_comp"
             app:layout_constraintRight_toRightOf="parent"
             style_common:boo_one="false"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <import type="com.android.lib.util.StringUtil"/>
@@ -38,6 +39,8 @@
 
 
             <TextView
+                tools:text="0"
+                android:text='@{item_main_order_detail_doing.totalRecord+""}'
                 android:id="@+id/tv_carnum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,6 +70,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
+                android:text="@{item_main_order_detail_doing.actualShCN2}"
+                tools:text="0"
                 android:singleLine="true"
                 android:maxEms="7"
                 android:id="@+id/tv_current"
@@ -81,6 +86,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:text="@{item_main_order_detail_doing.planNumberCN2}"
+                tools:text="0"
                 android:singleLine="true"
                 android:maxEms="7"
                 android:id="@+id/tv_plan"
@@ -101,6 +108,8 @@
 
 
         <TextView
+            tools:text="混凝土"
+            android:text="@{item_main_order_detail_doing.productName}"
             android:includeFontPadding="false"
             app:layout_constraintLeft_toRightOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="parent"
@@ -108,53 +117,55 @@
             android:singleLine="true"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-            android:text="混凝土"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
+            tools:text="c000"
             android:includeFontPadding="false"
             app:layout_constraintBottom_toBottomOf="@+id/tv_goodname"
             app:layout_constraintLeft_toRightOf="@+id/tv_goodname"
             android:id="@+id/tv_spes"
             android:singleLine="true"
             android:layout_marginLeft="15dp"
+            android:text="@{item_main_order_detail_doing.specification}"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-            android:text="C30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
 
         <TextView
+            android:textColor="@{item_main_order_detail_doing.sendType?@color/color_hv_yelll:@color/color_hv_blue}"
+            android:background="@{item_main_order_detail_doing.sendType?@drawable/bg_hv_sharp1_yell_stroke:@drawable/bg_hv_sharp1_blue_stroke}"
+            android:text='@{item_main_order_detail_doing.totalRecordCN}'
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_alignParentRight="true"
             android:id="@+id/tv_carno"
-            android:background="@drawable/bg_hv_sel_yel_blue_stroke"
             android:singleLine="true"
-            android:textColor="@color/color_yell_blue"
             android:textSize="12sp"
-            android:text="沪A2345"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
 
         <TextView
+            android:background="@{item_main_order_detail_doing.sendType?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+            android:text="@{item_main_order_detail_doing.type}"
+            tools:text="来自"
             android:padding="1dp"
             android:includeFontPadding="false"
             android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@+id/tv_goodname"
             app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
             android:id="@+id/tv_type"
-            android:background="@drawable/bg_hv_sharp2_blue_solid"
             android:singleLine="true"
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:text="发往"
+            android:textSize="13sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
+            tools:text="王尼玛"
             android:layout_marginTop="10dp"
             android:includeFontPadding="false"
             app:layout_constraintLeft_toRightOf="@+id/tv_type"
@@ -164,7 +175,7 @@
             android:layout_marginLeft="10dp"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            android:text="上海绿地"
+            android:text="@{item_main_order_detail_doing.accessComName}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

@@ -9,8 +9,10 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.NullUtil;
+import com.android.lib.util.SPUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
+import com.google.gson.reflect.TypeToken;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -21,6 +23,7 @@ import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
@@ -32,13 +35,10 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     @Override
     public void initNow() {
         super.initNow();
-        onFristVisibleInit();
-    }
-
-    @Override
-    public void onFristVisibleInit() {
+        getP().getD().setWeightMsgs(GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr("weight"),new TypeToken<ArrayList<WeightMsg.MessageBean>>(){}.getType()));
         getP().getU().LoadListData(getP().getD().getWeightMsgs());
     }
+
 
     @Override
     public void onClick(View v) {
@@ -70,8 +70,12 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
         getP().getD().getWeightMsgs().add(m);
       getP().getU().notifyDataSetChanged();
 
+    }
 
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        SPUtil.getInstance().saveStr("weight",GsonUtil.getInstance().toJson(getP().getD().getWeightMsgs()));
     }
 
     @Override

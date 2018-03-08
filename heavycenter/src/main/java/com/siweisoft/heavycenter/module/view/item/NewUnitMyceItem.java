@@ -36,6 +36,8 @@ public class NewUnitMyceItem extends RelativeLayout {
 
     private TextView midTV;
 
+    private String txt_mid;
+
 
 
     public NewUnitMyceItem(Context context, AttributeSet attrs) {
@@ -57,6 +59,9 @@ public class NewUnitMyceItem extends RelativeLayout {
         int rightivres = a.getResourceId(R.styleable.style_common_iv_right,0);
         if(rightivres!=0){
             rightIV.setImageResource(rightivres);
+            rightIV.setVisibility(View.VISIBLE);
+        }else{
+            rightIV.setVisibility(View.GONE);
         }
         leftW = a.getDimension(R.styleable.style_common_minwidth,0);
         leftTV.setMinWidth((int) leftW);
@@ -71,12 +76,12 @@ public class NewUnitMyceItem extends RelativeLayout {
        }
 
         String hint = a.getString(R.styleable.style_common_txt_hint);
-        String txt = a.getString(R.styleable.style_common_txt_mid);
+        txt_mid = a.getString(R.styleable.style_common_txt_mid)==null?txt_mid:a.getString(R.styleable.style_common_txt_mid);
 
 
         midTV.setHint(StringUtil.getStr(hint));
-        if(!NullUtil.isStrEmpty(txt)){
-            midTV.setText(txt);
+        if(!NullUtil.isStrEmpty(txt_mid)){
+            midTV.setText(txt_mid);
         }
 
         switch (a.getInt(R.styleable.style_common_inputType,-1)){
@@ -143,7 +148,14 @@ public class NewUnitMyceItem extends RelativeLayout {
     }
 
 
+    public String getTxt_mid() {
+        return txt_mid;
+    }
 
+    public void setTxt_mid(String txt_mid) {
+        this.txt_mid = txt_mid;
+        midTV.setText(txt_mid);
+    }
 
     public void setEdit(boolean edit) {
         this.edit = edit;

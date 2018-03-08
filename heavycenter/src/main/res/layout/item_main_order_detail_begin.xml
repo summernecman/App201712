@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
                 name="item_main_order_detail_begin"
                 type="com.siweisoft.heavycenter.data.netd.order.list.OrdersRes.ResultsBean" />
+        <import type="com.android.lib.util.data.DateFormatUtil"/>
+        <import type="android.view.View" />
     </data>
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:style_common="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="18dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:id="@+id/ll_neworder"
         >
 
         <TextView
+            tools:text="混凝土"
             android:includeFontPadding="false"
             android:id="@+id/tv_productName"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -31,29 +33,38 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            tools:text="c300"
             android:includeFontPadding="false"
             app:layout_constraintLeft_toRightOf="@+id/tv_productName"
             app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
             android:singleLine="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_title_txtsize"
             android:text="@{item_main_order_detail_begin.specification}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            tools:text="沪123445"
+            android:visibility="@{item_main_order_detail_begin==null?View.GONE:View.VISIBLE}"
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
             android:id="@+id/tv_planmun"
-            android:background="@drawable/bg_hv_sel_yel_blue_stroke"
+            android:background="@{item_main_order_detail_begin.sendType?@drawable/bg_hv_sharp1_yell_stroke:@drawable/bg_hv_sharp1_blue_stroke}"
             android:singleLine="true"
-            android:textColor="@color/color_yell_blue"
+            android:textColor="@{item_main_order_detail_begin.sendType?@color/color_hv_yelll:@color/color_hv_blue}"
             android:textSize="12sp"
-            android:text='@{"计划: "+item_main_order_detail_begin.planNumber}'
+            android:text='@{item_main_order_detail_begin.planNumberCN}'
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
+
+            tools:text="来自"
+            android:visibility="@{item_main_order_detail_begin==null?View.GONE : View.VISIBLE}"
+            android:background="@{item_main_order_detail_begin.sendType?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
             android:padding="1dp"
             android:includeFontPadding="false"
             android:layout_marginTop="15dp"
@@ -64,12 +75,13 @@
             android:gravity="center_vertical"
             android:singleLine="true"
             android:textColor="@color/black"
-            android:textSize="14sp"
-            android:text="来自"
+            android:textSize="13sp"
+            android:text='@{item_main_order_detail_begin.type}'
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:layout_marginTop="13dp"
+            tools:text="王尼玛"
+            android:layout_marginTop="14dp"
             android:includeFontPadding="false"
            app:layout_constraintLeft_toRightOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@+id/tv_productName"
@@ -79,12 +91,14 @@
             android:layout_marginLeft="8dp"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            android:text="@{item_main_order_detail_begin.shdwName}"
+            android:text='@{item_main_order_detail_begin.accessComName}'
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
 
         <TextView
+            tools:text="计划开始时间: "
+            android:text="@{item_main_order_detail_begin.planTimeCN}"
             android:includeFontPadding="false"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="@+id/tv_duimian"

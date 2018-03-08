@@ -78,6 +78,13 @@ public class AppsDataBindingAdapter extends RecyclerView.Adapter<AppViewHolder> 
         return true;
     }
 
+    public void setTag(View view,int pos){
+        view.setOnClickListener(this);
+        view.setTag(R.id.data,list.get(pos));
+        view.setTag(R.id.position,pos);
+
+    }
+
     public void setViewListener(ViewListener viewListener) {
         this.viewListener = viewListener;
     }

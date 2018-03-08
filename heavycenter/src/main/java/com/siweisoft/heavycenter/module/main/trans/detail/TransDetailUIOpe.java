@@ -33,14 +33,6 @@ public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
             return;
         }
         bind.setVariable(BR.frag_main_trans_detail,data);
-        final String comname = LocalValue.get登录返回信息().getAbbreviationName();
-        if(StringUtil.equals(comname,data.getDeveliverCompanyName())){
-            bind.type.setText("发往");
-            bind.type.setBackgroundResource(R.color.color_hv_yelll);
-        }else{
-            bind.type.setText("送来");
-            bind.type.setBackgroundResource(R.color.color_hv_blue);
-        }
         if(data.getDeliverRecordList().size()>0){
             bind.tvDelivenum.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getGross()));
             bind.tvReceipt.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getTare()));

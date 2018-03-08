@@ -70,6 +70,7 @@ public class WeigtsDAOpe extends AppDAOpe {
         }
         switch (weightMsg.getMessage().getState()){
             case "s0":
+            case "sF":
             case "s3":
             case "s7":
             case "sD":

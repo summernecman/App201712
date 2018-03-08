@@ -68,6 +68,9 @@ public  class NetAdapter<A> implements NetI<A> {
                 onResult(true,baseResBean.getErrorMessage(), null);
             }else{
                 onResult(false,baseResBean.getErrorMessage(), null);
+                if(!NullUtil.isStrEmpty(baseResBean.getMessage())&& showtoast){
+                    ToastUtil.getInstance().showShort(context.getApplicationContext(),StringUtil.getStr(baseResBean.getMessage())+StringUtil.getStr(baseResBean.getErrorMessage()));
+                }
             }
         } else {
             if(cache){

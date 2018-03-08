@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:style_common="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="item_main_trans"
             type="com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes" />
         <import type="com.android.lib.util.StringUtil"/>
+        <import type="android.view.View"/>
     </data>
 
 
@@ -47,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:maxWidth="100dp"
                 android:singleLine="true"
-                android:text='@{StringUtil.getStr(item_main_trans.totalSuttle)+"t"}'
+                android:text="@{item_main_trans.isshowOpeBtn(item_main_trans)?item_main_trans.totalSuttleCN:item_main_trans.YKCN}"
                 android:textColor="@color/color_hv_yelll"
                 android:textSize="22sp" />
 
@@ -59,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:text='@{StringUtil.getStr(item_main_trans.carNumber)+"t"}'
+                android:text='@{item_main_trans.carNumberCN}'
                 android:textColor="@color/color_hv_yelll"
                 android:textSize="15sp" />
         </RelativeLayout>
@@ -117,6 +118,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:text="发往"
+            android:padding="1dp"
             android:textSize="13sp"
             android:layout_marginTop="7dp"
             android:visibility="visible"
@@ -128,7 +130,7 @@
             style_common:color_stroke="@color/red"
             style_common:color_stroke_two="@color/color_hv_yelll"
             style_common:color_two="@color/color_red_800"
-            style_common:color_txt="@color/white"
+            style_common:color_txt="@color/black"
             style_common:color_txt_two="@color/white"
             style_common:corner="2dp"
             style_common:corner_two="5dp"
@@ -166,6 +168,9 @@
 
 
         <TextView
+            android:visibility="@{item_main_trans.isshowOpeBtn(item_main_trans)?View.GONE:View.VISIBLE}"
+            tools:text="发货时间"
+            android:text="@{item_main_trans.fhTimeCN}"
             android:id="@+id/tv_sendtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -191,7 +196,7 @@
             android:visibility="visible"
             style_common:boo_one="false"
             style_common:color_one="@color/color_hv_blue"
-
+            android:padding="1dp"
             style_common:color_stroke="@color/red"
             style_common:color_stroke_two="@color/color_hv_yelll"
             style_common:color_two="@color/color_red_800"
@@ -230,7 +235,8 @@
 
 
         <TextView
-
+            tools:text="收货时间"
+            android:text="@{item_main_trans.shTimeCN}"
             android:id="@+id/tv_receipttime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -254,7 +260,7 @@
             android:singleLine="true"
             android:text="完成"
             android:textSize="15sp"
-            android:visibility="gone"
+            android:visibility="@{item_main_trans.isshowOpeBtn(item_main_trans)?View.VISIBLE:View.GONE}"
             app:layout_constraintTop_toTopOf="@+id/tv_receipt_comname"
             app:layout_constraintRight_toRightOf="parent"
             style_common:boo_one="false"

@@ -25,24 +25,17 @@ import butterknife.OnClick;
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements ViewListener{
 
 
-    @Override
-    public void initNow() {
-        super.initNow();
-        if(getArguments()==null||getArguments().getString(ValueConstant.TYPE)==null){
-            return;
-        }
-        getP().getU().initUI(getArguments().getString(ValueConstant.TYPE));
-
+    public static DetailFrag getInstance(String type){
+        DetailFrag detailFrag = new DetailFrag();
+        detailFrag.setArguments(new Bundle());
+        detailFrag.getArguments().putString(ValueConstant.TYPE,type);
+        return detailFrag;
     }
 
     @Override
     public void initdelay() {
         super.initdelay();
-        if(getArguments()==null||getArguments().getString(ValueConstant.TYPE)==null){
-            return;
-        }
-        getP().getU().initRecycle();
-        getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<OrdersRes.ResultsBean>(this) {
+        getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<OrdersRes.ResultsBean>(this,UINetAdapter.Loading) {
             @Override
             public void onSuccess(OrdersRes.ResultsBean o) {
                 getP().getD().setData(o);

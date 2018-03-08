@@ -16,9 +16,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
-import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainStoreBinding;
-import com.siweisoft.heavycenter.databinding.ItemMainOrderDoneBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainStoreBinding;
 import com.siweisoft.heavycenter.tools.ZXTools;
 

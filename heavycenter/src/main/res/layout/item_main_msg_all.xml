@@ -50,20 +50,10 @@
                 android:singleLine="true"
                 android:layout_marginLeft="10dp"
                 android:textSize="13sp"
-                android:visibility="gone"
-                style_common:color_one="@color/white"
-                style_common:stroke="1dp"
-                style_common:color_stroke="@color/color_hv_yelll"
-                style_common:corner="5dp"
-                style_common:color_txt="@color/color_hv_yelll"
-
-                style_common:color_two="@color/color_red_800"
-                style_common:stroke_two="2dp"
-                style_common:color_stroke_two="@color/color_hv_yelll"
-                style_common:corner_two="5dp"
-                style_common:color_txt_two="@color/white"
-                style_common:boo_one="false"
+                android:visibility="visible"
                 android:text="接受"
+                android:textColor="@color/color_hv_yelll"
+                android:background="@drawable/bg_hv_sharp1_yell_stroke"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

@@ -27,7 +27,7 @@ public class TitleView extends RelativeLayout {
 
     private ImageView rightIV2;
 
-    private String midTxt = "";
+    private String txt_mid = "";
 
     private int leftivid;
 
@@ -36,6 +36,8 @@ public class TitleView extends RelativeLayout {
     private int rightiv2id;
 
     private int bg;
+
+
 
     public TitleView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -52,7 +54,7 @@ public class TitleView extends RelativeLayout {
         ftitle_bar = findViewById(R.id.ftitle_bar);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.style_common);
-        midTxt =  a.getString(R.styleable.style_common_txt_mid);
+        txt_mid =  a.getString(R.styleable.style_common_txt_mid);
         leftivid = a.getResourceId(R.styleable.style_common_iv_left,android.R.color.transparent);
         rightivid = a.getResourceId(R.styleable.style_common_iv_right,android.R.color.transparent);
         rightiv2id = a.getResourceId(R.styleable.style_common_iv_right2,android.R.color.transparent);
@@ -61,7 +63,7 @@ public class TitleView extends RelativeLayout {
         rightIV2.setImageResource(rightiv2id);
         bg = a.getColor(R.styleable.style_common_color_bg,getResources().getColor(R.color.color_base_statusbar));
         ftitle_bar.setBackgroundColor(bg);
-        midTV.setText(midTxt);
+        midTV.setText(txt_mid);
 
     }
 
@@ -83,8 +85,13 @@ public class TitleView extends RelativeLayout {
         return rightIV2;
     }
 
-    public String getMidTxt() {
-        return midTxt;
+    public String getTxt_mid() {
+        return txt_mid;
+    }
+
+    public void setTxt_mid(String txt_mid) {
+        this.txt_mid = txt_mid;
+        midTV.setText(txt_mid);
     }
 
     public int getLeftivid() {

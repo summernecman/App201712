@@ -53,6 +53,24 @@ public class DateFormatUtil {
     }
 
 
+    public static String getYYYYMMDDHHMM(Long time) {
+        if(time==null){
+            return "";
+        }
+        SimpleDateFormat format = new SimpleDateFormat(YYYY_MM_DD_HH_MM);
+        return format.format(new Date(time));
+    }
+
+
+    public static String getdMMDDHHMM(Long time) {
+        if(time==null){
+            return "";
+        }
+        SimpleDateFormat format = new SimpleDateFormat(MM_DD_HH_MM);
+        return format.format(new Date(time));
+    }
+
+
     public static String getMMDDHHMM(String before,long time,String after) {
         if(time==0){
             return "";

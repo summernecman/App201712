@@ -5,10 +5,14 @@ package com.siweisoft.heavycenter.data.netd.order.list;
 import android.databinding.Bindable;
 
 import com.android.lib.bean.BaseBean;
+import com.android.lib.util.LogUtil;
 import com.android.lib.util.StringUtil;
+import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
+import com.siweisoft.heavycenter.tools.ZXTools;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OrdersRes extends BaseBean {
@@ -23,6 +27,11 @@ public class OrdersRes extends BaseBean {
      */
 
     private int totalCount;
+    private int total;
+    private String orderType;
+    private int newCount;
+    private int ingCount;
+    private int doneCount;
     private int pageIndex;
     private int pageCount;
     private int pageSize;
@@ -68,6 +77,45 @@ public class OrdersRes extends BaseBean {
         this.results = results;
     }
 
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public String getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
+    }
+
+    public int getNewCount() {
+        return newCount;
+    }
+
+    public void setNewCount(int newCount) {
+        this.newCount = newCount;
+    }
+
+    public int getIngCount() {
+        return ingCount;
+    }
+
+    public void setIngCount(int ingCount) {
+        this.ingCount = ingCount;
+    }
+
+    public int getDoneCount() {
+        return doneCount;
+    }
+
+    public void setDoneCount(int doneCount) {
+        this.doneCount = doneCount;
+    }
 
     public static class ResultsBean extends BaseBean{
 
@@ -98,7 +146,7 @@ public class OrdersRes extends BaseBean {
         private double planNumber;
         private String shdwName;
         private String fhdwName;
-        private long planTime;
+        private Long planTime;
         private String address;
         private String shdwQName;
         private String fhdwQName;
@@ -107,8 +155,8 @@ public class OrdersRes extends BaseBean {
         private String carLicenseNo;
         private String trueName;
         private String tel;
-        private Object startTime;
-        private Object finishTime;
+        private Long startTime;
+        private Long finishTime;
         private int totalRecord;
         private double actualFh;
         private double actualSh;
@@ -116,6 +164,7 @@ public class OrdersRes extends BaseBean {
         private String accessComName;
         private String type;
 
+        private boolean showBtn;
 
         public final static int AUDITSTATE_未审核 = 0;
 
@@ -210,6 +259,11 @@ public class OrdersRes extends BaseBean {
             return "计划:"+StringUtil.getStr(planNumber)+"t";
         }
 
+        @Bindable
+        public String getPlanNumberCN2() {
+            return StringUtil.getStr(planNumber)+"t";
+        }
+
         public void setPlanNumber(double planNumber) {
             this.planNumber = planNumber;
         }
@@ -233,12 +287,75 @@ public class OrdersRes extends BaseBean {
             this.fhdwName = fhdwName;
         }
         @Bindable
-        public long getPlanTime() {
+        public Long getPlanTime() {
             return planTime;
         }
-        public void setPlanTime(long planTime) {
+
+
+        @Bindable
+        public String getPlanTimeCN() {
+            if(getPlanTime()==null){
+                    return "";
+            }
+            return "计划开始时间: "+DateFormatUtil.getdDateStr("yyyy/MM/dd HH:mm",new Date(getPlanTime()));
+        }
+
+        public String getPlanTimeCNNOApp() {
+            if(getPlanTime()==null){
+                return "";
+            }
+            return DateFormatUtil.getdDateStr("yyyy/MM/dd HH:mm",new Date(getPlanTime()));
+        }
+
+        public void setPlanTime(Long planTime) {
             this.planTime = planTime;
         }
+        @Bindable
+        public Long getStartTime() {
+            return startTime;
+        }
+
+        public String getStartTimeCN() {
+            if(getStartTime()==null){
+                return "";
+            }
+            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getStartTime()));
+        }
+
+        public String getStartTimeCN2() {
+            if(getStartTime()==null){
+                return "";
+            }
+            return "开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getStartTime()));
+        }
+
+        public void setStartTime(Long startTime) {
+            this.startTime = startTime;
+        }
+        @Bindable
+        public Long getFinishTime() {
+            return finishTime;
+        }
+
+
+        public String getFinishTimeCN() {
+            if(getFinishTime()==null){
+                return "";
+            }
+            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getFinishTime()));
+        }
+
+        public String getFinishTimeCN2() {
+            if(getFinishTime()==null){
+                return "";
+            }
+            return "结束时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getFinishTime()));
+        }
+
+        public void setFinishTime(Long finishTime) {
+            this.finishTime = finishTime;
+        }
+
         @Bindable
         public String getAddress() {
             return address;
@@ -311,22 +428,6 @@ public class OrdersRes extends BaseBean {
         public void setTel(String tel) {
             this.tel = tel;
         }
-        @Bindable
-        public Object getStartTime() {
-            return startTime;
-        }
-
-        public void setStartTime(Object startTime) {
-            this.startTime = startTime;
-        }
-        @Bindable
-        public Object getFinishTime() {
-            return finishTime;
-        }
-
-        public void setFinishTime(Object finishTime) {
-            this.finishTime = finishTime;
-        }
 
 
         @Bindable
@@ -363,7 +464,10 @@ public class OrdersRes extends BaseBean {
             return actualSh;
         }
 
-
+        @Bindable
+        public String getActualShCN2() {
+            return StringUtil.getStr(actualSh)+"t";
+        }
         @Bindable
         public String getActualShCN() {
             return "实收:"+StringUtil.getStr(actualSh)+"t";
@@ -379,10 +483,11 @@ public class OrdersRes extends BaseBean {
             return "盈亏:"+(actualSh-actualFh)+"t";
         }
 
-        @Bindable
-        public String getYK(){
-            return  (actualSh-actualFh)+"";
+        public boolean isShowBtn(OrdersRes.ResultsBean data) {
+            return ZXTools.isNewOrderNeedMyMakeSure(data);
         }
+
+
 
 
 

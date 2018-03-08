@@ -1,8 +1,14 @@
 package com.siweisoft.heavycenter.data.netd.trans.detail;
 
+import android.databinding.Bindable;
+
 import com.android.lib.bean.BaseBean;
+import com.android.lib.util.StringUtil;
+import com.android.lib.util.data.DateFormatUtil;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public  class TransDetailRes extends BaseBean {
@@ -246,6 +252,19 @@ public  class TransDetailRes extends BaseBean {
         this.develiverCompanyName = develiverCompanyName;
     }
 
+    public String getCarNumberCN() {
+        if(getSignStatus()==TransDetailRes.SING_STATUS_已确认){
+            return StringUtil.getStr(getCarNumber())+"车";
+        }
+        return StringUtil.getStr(getCarNumber()-1)+"车";
+    }
+
+
+    public String getCarNumberCN2() {
+        return "第"+StringUtil.getStr(getCarNumber())+"车";
+    }
+
+
     public Integer getCarNumber() {
         return carNumber;
     }
@@ -278,9 +297,51 @@ public  class TransDetailRes extends BaseBean {
         this.receiveRecordList = receiveRecordList;
     }
 
+    public double getYK(){
+        return  getReceiveNum()- getDeveliverNum();
+    }
+
+
+    public String getYKCN(){
+        return  (getReceiveNum()- getDeveliverNum())+"t";
+    }
+
     public Long getFhTime() {
         return FhTime;
     }
+
+
+    public boolean isIDiliverCom(){
+        if(StringUtil.equals(getDeveliverCompanyName(), LocalValue.get登录返回信息().getCompanyName())){
+            return true;
+        }
+        return false;
+    }
+
+    public String getType(){
+        if(isIDiliverCom()){
+            return "发往";
+        }
+        return "来自";
+    }
+
+
+    public String getAccessComName() {
+        if(isIDiliverCom()){
+            return getReceiveAbbreviationName();
+        }
+        return getDeveliverAbbreviationName();
+    }
+
+    public String getFhTimeCN() {
+        if(getFhTime()==null){
+            return "";
+        }
+        return DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(getFhTime()));
+    }
+
+
+
 
     public void setFhTime(Long fhTime) {
         FhTime = fhTime;
@@ -289,6 +350,21 @@ public  class TransDetailRes extends BaseBean {
     public Long getShTime() {
         return ShTime;
     }
+
+    public String getShTimeCN() {
+        if(getShTime()==null){
+            return "";
+        }
+        return DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(getShTime()));
+    }
+
+    public boolean isshowOpeBtn(TransDetailRes data){
+        if(data.getSignStatus()==TransDetailRes.SING_STATUS_已确认){
+            return false;
+        }
+        return true;
+    }
+
 
     public void setShTime(Long shTime) {
         ShTime = shTime;
@@ -518,6 +594,11 @@ public  class TransDetailRes extends BaseBean {
     public double getTotalSuttle() {
         return totalSuttle;
     }
+
+    public String getTotalSuttleCN() {
+        return totalSuttle+"t";
+    }
+
 
     public void setTotalSuttle(double totalSuttle) {
         this.totalSuttle = totalSuttle;

@@ -3,6 +3,7 @@ package com.siweisoft.heavycenter.module.main.orders.order;
 //by summer on 2017-12-19.
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
@@ -15,22 +16,14 @@ import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.databinding.FragMainOrderBeginBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainOrderBeginBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainOrderDoingBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainOrderDoneBinding;
 
 public class OrderUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
 
-    NewOrderUIOpe newOrderUIOpe = new NewOrderUIOpe();
-
-    IngOrderUIOpe ingOrderUIOpe = new IngOrderUIOpe();
-
-    DoneOrderUIOpe doneOrderUIOpe = new DoneOrderUIOpe();
-
-
     public void initUI() {
         initRecycle();
-        newOrderUIOpe.copy(this);
-        ingOrderUIOpe.copy(this);
-        doneOrderUIOpe.copy(this);
     }
 
     private void initRecycle(){
@@ -45,10 +38,45 @@ public class OrderUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
         getFrag().removeTips();
         switch (type){
             case OrdersReq.新订单:
-                newOrderUIOpe.LoadListData(bind.recycle,type,s,listener);
+                bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_begin, BR.item_main_order_begin,s.getResults(),listener){
+
+                    @Override
+                    public void onBindViewHolder(AppViewHolder holder, int position) {
+                        super.onBindViewHolder(holder, position);
+                        ItemMainOrderBeginBinding beginBinding = (ItemMainOrderBeginBinding) holder.viewDataBinding;
+                        beginBinding.getRoot().setSelected(position%2==0?true:false);
+                        beginBinding.getRoot().setTag(R.id.type,type);
+
+                        setTag(beginBinding.btSure,position);
+                        setTag(beginBinding.btReject,position);
+
+                    }
+                });
                 break;
             case OrdersReq.进行中订单:
-                ingOrderUIOpe.LoadListData(bind.recycle,type,s,listener);
+                bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_doing, BR.item_main_order_doing, s.getResults(),listener) {
+
+
+                    @Override
+                    public void onBindViewHolder(AppViewHolder holder, int position) {
+                        super.onBindViewHolder(holder,position);
+                        ItemMainOrderDoingBinding doingBinding = (ItemMainOrderDoingBinding) holder.viewDataBinding;
+                        doingBinding.getRoot().setSelected(position % 2 == 0 ? true : false);
+                        doingBinding.getRoot().setTag(R.id.type,type);
+
+                        int progress = (int) (100*s.getResults().get(position).getActualSh()/s.getResults().get(position).getPlanNumber());
+                        if(progress<0){
+                            progress = 0 ;
+                        }
+                        if(progress>=50){
+                            doingBinding.circlebar.setCircleColor(context.getResources().getColor(R.color.color_hv_blue));
+                        }else{
+                            doingBinding.circlebar.setCircleColor(context.getResources().getColor(R.color.color_hv_yelll));
+                        }
+                        doingBinding.circlebar.update(progress,false);
+
+                    }
+                });
                 break;
             case OrdersReq.已完成订单:
                 bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_order_done, BR.item_main_order_done,s.getResults(),listener){
@@ -65,25 +93,6 @@ public class OrderUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                 break;
         }
 
-//        bind.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//                super.onScrollStateChanged(recyclerView, newState);
-//                switch (newState){
-//                    case RecyclerView.SCROLL_STATE_DRAGGING:
-//                        for(int i=0;i<recyclerView.getChildCount();i++){
-//                            SwipeLayout swipeLayout = (SwipeLayout) recyclerView.getChildAt(i);
-//                            swipeLayout.close(true);
-//                        }
-//                        break;
-//                }
-//            }
-//
-//            @Override
-//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//            }
-//        });
     }
 
 

@@ -32,8 +32,7 @@ public class CarsFrag extends AppFrag<CarsUIOpe,CarsDAOpe> {
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                bundle.putString(ValueConstant.DATA_DATA2, CarDetailValue.新建车辆);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),new DetailFrag(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),DetailFrag.getInstance(CarDetailValue.新建车辆,"新建车辆",null),bundle);
                 break;
         }
 

@@ -11,6 +11,7 @@ import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.StringUtil;
+import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -19,6 +20,7 @@ import com.siweisoft.heavycenter.databinding.FragMainWeigtsDetailBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainWeightDetailBinding;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
@@ -44,7 +46,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
                 ItemMainWeightDetailBinding binding = (ItemMainWeightDetailBinding) holder.viewDataBinding;
 //                binding.tvTime.setText(StringUtil.getStr(s.get(position).getMessage().getTime()));
 //                binding.tvTxt.setText(StringUtil.getStr(s.get(position).getMessage().getContent()));
-                binding.tvTime.setText(StringUtil.getStr(s.get(position).getTime()));
+                binding.tvTime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS,new Date(s.get(position).getTime())));
 
                 StringBuffer sb = new StringBuffer();
                 switch (s.get(position).getMessageType()){

@@ -47,6 +47,7 @@
         android:layout_height="wrap_content" />
 
     <EditText
+        android:maxLength="7"
         android:paddingLeft="10dp"
         style_common:layout_constraintRight_toLeftOf="@+id/tv_y"
         style_common:layout_constraintLeft_toRightOf="@+id/labcar"
