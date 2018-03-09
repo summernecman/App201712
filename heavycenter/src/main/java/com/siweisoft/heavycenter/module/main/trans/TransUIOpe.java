@@ -33,6 +33,7 @@ import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainTransBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainTrainReceiptBinding;
+import com.siweisoft.heavycenter.databinding.ItemMainTrans2Binding;
 import com.siweisoft.heavycenter.databinding.ItemMainTransBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainTransSendBinding;
 import com.siweisoft.heavycenter.module.main.orders.news.rule.RuleDAOpe;
@@ -102,6 +103,9 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder,position);
                 holder.viewDataBinding.getRoot().setSelected(position%2==0?true:false);
+                ItemMainTrans2Binding itemMainTrans2Binding = (ItemMainTrans2Binding) holder.viewDataBinding;
+                itemMainTrans2Binding.productName.setSelected(true);
+                itemMainTrans2Binding.tvSpecifications.setSelected(true);
             }
 
 
