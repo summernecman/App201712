@@ -5,12 +5,13 @@ package com.siweisoft.heavycenter.data.netd.order.list;
 import android.databinding.Bindable;
 
 import com.android.lib.bean.BaseBean;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.tools.ZXTools;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -173,8 +174,20 @@ public class OrdersRes extends BaseBean {
         public final static int AUDITSTATE_拒绝 = 2;
 
 
-        public String getAccessComName() {
+
+
+
+        public boolean isIDiliverCom(){
             if("S".equals(getOrderType())){
+                return true;
+            }
+            return false;
+        }
+
+
+
+        public String getAccessComName() {
+            if(isIDiliverCom()){
                 accessComName = getShdwName();
             }else{
                 accessComName = getFhdwName();
@@ -183,7 +196,7 @@ public class OrdersRes extends BaseBean {
         }
 
         public String getType() {
-            if("S".equals(getOrderType())){
+            if(isIDiliverCom()){
                 type = "发往";
             }else{
                 type = "来自";
@@ -191,13 +204,6 @@ public class OrdersRes extends BaseBean {
             return type;
         }
 
-        public boolean isSendType(){
-            if(getType().equals("发往")){
-               return true;
-            }else{
-              return false;
-            }
-        }
 
         public int getAuditState() {
             return auditState;
@@ -256,7 +262,7 @@ public class OrdersRes extends BaseBean {
 
         @Bindable
         public String getPlanNumberCN() {
-            return "计划:"+StringUtil.getStr(planNumber)+"t";
+            return "计划: "+StringUtil.getStr(planNumber)+"t";
         }
 
         @Bindable
@@ -432,10 +438,13 @@ public class OrdersRes extends BaseBean {
 
         @Bindable
         public String getTotalRecordCN() {
-            return "总计:"+StringUtil.getStr(totalRecord)+"车";
+            return "总计: "+StringUtil.getStr(totalRecord)+"车";
         }
 
-
+        @Bindable
+        public String getTotalRecordCN2() {
+            return "其他: "+StringUtil.getStr(totalRecord)+"车";
+        }
 
         @Bindable
         public int getTotalRecord() {
@@ -478,12 +487,18 @@ public class OrdersRes extends BaseBean {
         }
 
 
-        @Bindable
-        public String getYKCN(){
-            return "盈亏:"+(actualSh-actualFh)+"t";
+        public int getPercent(){
+            return (int) (100*getActualSh()/getPlanNumber());
         }
 
-        public boolean isShowBtn(OrdersRes.ResultsBean data) {
+        @Bindable
+        public String getYKCN(){
+            BigDecimal bd = new BigDecimal((actualSh-actualFh));
+            bd = bd.setScale(1, RoundingMode.HALF_UP);
+            return "盈亏:"+bd.toString()+"t";
+        }
+
+        public boolean isShowBtn(ResultsBean data) {
             return ZXTools.isNewOrderNeedMyMakeSure(data);
         }
 

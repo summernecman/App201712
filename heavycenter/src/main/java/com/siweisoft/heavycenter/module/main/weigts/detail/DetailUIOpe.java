@@ -46,7 +46,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
                 ItemMainWeightDetailBinding binding = (ItemMainWeightDetailBinding) holder.viewDataBinding;
 //                binding.tvTime.setText(StringUtil.getStr(s.get(position).getMessage().getTime()));
 //                binding.tvTxt.setText(StringUtil.getStr(s.get(position).getMessage().getContent()));
-                binding.tvTime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS,new Date(s.get(position).getTime())));
+                binding.tvTime.setText(s.get(position).getTimeCN());
 
                 StringBuffer sb = new StringBuffer();
                 switch (s.get(position).getMessageType()){
@@ -71,6 +71,8 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
                 binding.tvTxt.setText(sb.toString());
             }
         });
+
+        bind.recycle.scrollToPosition(bind.recycle.getAdapter().getItemCount()-1);
     }
 
     public void initTopUI(WeightMsg.MessageBean data){
@@ -86,7 +88,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
     public void  notifyDataSetChanged(){
         if(bind.recycle.getAdapter()!=null){
             bind.recycle.getAdapter().notifyDataSetChanged();
-            bind.recycle.scrollToPosition(bind.recycle.getAdapter().getItemCount());
+            bind.recycle.scrollToPosition(bind.recycle.getAdapter().getItemCount()-1);
         }
     }
 

@@ -3,6 +3,10 @@ package com.siweisoft.heavycenter.data.netd.jpush;
 //by summer on 2018-01-30.
 
 import com.android.lib.bean.BaseBean;
+import com.android.lib.util.StringUtil;
+import com.android.lib.util.data.DateFormatUtil;
+
+import java.util.Date;
 
 public class WeightMsg extends BaseBean {
 
@@ -32,15 +36,18 @@ public class WeightMsg extends BaseBean {
          * fhTare : 10
          */
 
+        private  double mz;
         private  double kc;
         private  double jz;
         private  double pz;
+        private String isFlush;
+
 
         private String weighResult;
         private String messageType;
         private String content;
         private String state;
-        private String time;
+        private Long time;
         private double weigh;
         private OrderBean order = new OrderBean();
         private double fhTare;
@@ -59,6 +66,10 @@ public class WeightMsg extends BaseBean {
             return content;
         }
 
+        public String getContentCN() {
+            return "系统自动识别当前驾驶员"+ StringUtil.getStr(content);
+        }
+
         public void setContent(String content) {
             this.content = content;
         }
@@ -71,11 +82,19 @@ public class WeightMsg extends BaseBean {
             this.state = state;
         }
 
-        public String getTime() {
+        public Long getTime() {
             return time;
         }
 
-        public void setTime(String time) {
+
+        public String getTimeCN() {
+            if(time==null){
+                return "";
+            }
+            return DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM_SS,new Date(time));
+        }
+
+        public void setTime(Long time) {
             this.time = time;
         }
 
@@ -123,12 +142,21 @@ public class WeightMsg extends BaseBean {
             return kc;
         }
 
+        public String getKcCN() {
+            return StringUtil.getStr(kc);
+        }
+
         public void setKc(double kc) {
             this.kc = kc;
         }
 
         public double getJz() {
             return jz;
+        }
+
+
+        public String getJzCN() {
+            return StringUtil.getStr(jz);
         }
 
         public void setJz(double jz) {
@@ -139,55 +167,84 @@ public class WeightMsg extends BaseBean {
             return pz;
         }
 
+
+        public String getPzCN() {
+            return StringUtil.getStr(pz);
+        }
+
         public void setPz(double pz) {
             this.pz = pz;
         }
 
+        public double getMz() {
+            return mz;
+        }
+
+        public String getMzCN() {
+            return StringUtil.getStr(mz);
+        }
+
+        public void setMz(double mz) {
+            this.mz = mz;
+        }
+
         public static class OrderBean extends BaseBean{
+
             /**
-             * orderId : 66
-             * ysdId : 107
-             * fhdwName : 老干爹
-             * driverId : 87
-             * specification : C50
-             * shdwName : 王尼玛
-             * receiveCompanyId : 37
-             * ysdNo : 15301
-             * develiverCompanyId : 39
-             * orderNo : 201802029
-             * productName : 混凝土
+             * orderId : 326
+             * tel : 13255550000
+             * ysdId : 0
+             * fhdwName : 贝塔
+             * orderType : S
+             * specification : 细碎石(10-20mm)
+             * totalRecord : 0
+             * productName : 石子
+             * trueName : p9090308
+             * receiveCompanyId : 99
+             * ysdNo :
+             * develiverCompanyId : 98
+             * driverId : 244
+             * orderNo : 201803096
+             * shdwName : 舒克
+             * planNumber : 100
+             * carLicenseNo : 沪E00000
+             * actualSh : 0
              */
 
             private int orderId;
+            private String tel;
             private int ysdId;
             private String fhdwName;
-            private int driverId;
+            private String orderType;
             private String specification;
-            private String shdwName;
+            private int totalRecord;
+            private String productName;
+            private String trueName;
             private int receiveCompanyId;
             private String ysdNo;
             private int develiverCompanyId;
+            private int driverId;
             private String orderNo;
-            private String productName;
+            private String shdwName;
+            private int planNumber;
             private String carLicenseNo;
-            private String trueName;
-            private String tel;
+            private int actualSh;
 
-
-            public String getCarLicenseNo() {
-                return carLicenseNo;
+            public String getAccessComName() {
+                if(isIDiliverCom()){
+                    return getShdwName();
+                }else{
+                    return  getFhdwName();
+                }
             }
 
-            public void setCarLicenseNo(String carLicenseNo) {
-                this.carLicenseNo = carLicenseNo;
+
+            public int getOrderId() {
+                return orderId;
             }
 
-            public String getTrueName() {
-                return trueName;
-            }
-
-            public void setTrueName(String trueName) {
-                this.trueName = trueName;
+            public void setOrderId(int orderId) {
+                this.orderId = orderId;
             }
 
             public String getTel() {
@@ -196,14 +253,6 @@ public class WeightMsg extends BaseBean {
 
             public void setTel(String tel) {
                 this.tel = tel;
-            }
-
-            public int getOrderId() {
-                return orderId;
-            }
-
-            public void setOrderId(int orderId) {
-                this.orderId = orderId;
             }
 
             public int getYsdId() {
@@ -222,12 +271,12 @@ public class WeightMsg extends BaseBean {
                 this.fhdwName = fhdwName;
             }
 
-            public int getDriverId() {
-                return driverId;
+            public String getOrderType() {
+                return orderType;
             }
 
-            public void setDriverId(int driverId) {
-                this.driverId = driverId;
+            public void setOrderType(String orderType) {
+                this.orderType = orderType;
             }
 
             public String getSpecification() {
@@ -238,12 +287,28 @@ public class WeightMsg extends BaseBean {
                 this.specification = specification;
             }
 
-            public String getShdwName() {
-                return shdwName;
+            public int getTotalRecord() {
+                return totalRecord;
             }
 
-            public void setShdwName(String shdwName) {
-                this.shdwName = shdwName;
+            public void setTotalRecord(int totalRecord) {
+                this.totalRecord = totalRecord;
+            }
+
+            public String getProductName() {
+                return productName;
+            }
+
+            public void setProductName(String productName) {
+                this.productName = productName;
+            }
+
+            public String getTrueName() {
+                return trueName;
+            }
+
+            public void setTrueName(String trueName) {
+                this.trueName = trueName;
             }
 
             public int getReceiveCompanyId() {
@@ -270,6 +335,14 @@ public class WeightMsg extends BaseBean {
                 this.develiverCompanyId = develiverCompanyId;
             }
 
+            public int getDriverId() {
+                return driverId;
+            }
+
+            public void setDriverId(int driverId) {
+                this.driverId = driverId;
+            }
+
             public String getOrderNo() {
                 return orderNo;
             }
@@ -278,13 +351,56 @@ public class WeightMsg extends BaseBean {
                 this.orderNo = orderNo;
             }
 
-            public String getProductName() {
-                return productName;
+            public String getShdwName() {
+                return shdwName;
             }
 
-            public void setProductName(String productName) {
-                this.productName = productName;
+            public void setShdwName(String shdwName) {
+                this.shdwName = shdwName;
             }
+
+            public int getPlanNumber() {
+                return planNumber;
+            }
+
+            public void setPlanNumber(int planNumber) {
+                this.planNumber = planNumber;
+            }
+
+            public String getCarLicenseNo() {
+                return carLicenseNo;
+            }
+
+            public void setCarLicenseNo(String carLicenseNo) {
+                this.carLicenseNo = carLicenseNo;
+            }
+
+            public int getActualSh() {
+                return actualSh;
+            }
+
+            public void setActualSh(int actualSh) {
+                this.actualSh = actualSh;
+            }
+
+            public boolean isIDiliverCom(){
+                if("S".equals(getOrderType())){
+                    return true;
+                }
+                return false;
+            }
+
+
+            public String getType() {
+                if(isIDiliverCom()){
+                    return "发往";
+                }else{
+                    return "来自";
+                }
+            }
+
+
+
         }
     }
 }

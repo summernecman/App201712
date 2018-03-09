@@ -22,6 +22,7 @@ import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.main.weigts.weighttips.WeightTipsFrag;
 import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
+import com.siweisoft.heavycenter.BR;
 
 import java.text.DecimalFormat;
 
@@ -59,5 +60,6 @@ public class WeigtUIOpe extends AppUIOpe<FragMainWeigtBinding> {
         bind.tvKc.setText(StringUtil.getStr(m.getKc()));
         bind.tvJz.setText(StringUtil.getStr(m.getJz()));
         //bind.weight.anim();
+        bind.setVariable(BR.frag_main_weigt,weightMsg.getMessage());
     }
 }

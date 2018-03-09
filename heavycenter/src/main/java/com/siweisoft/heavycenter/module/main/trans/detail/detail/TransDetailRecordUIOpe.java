@@ -25,17 +25,6 @@ public class TransDetailRecordUIOpe extends AppUIOpe<FragMainTransDetailDetailBi
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder,position);
-                ItemMainTransDetailBinding binding = (ItemMainTransDetailBinding) holder.viewDataBinding;
-                if(data.get(position).getGrossTime()!=0){
-                    binding.tvMaotime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(data.get(position).getGrossTime())));
-                }
-                if(data.get(position).getTareTime()!=0){
-                    binding.tvPitime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(data.get(position).getTareTime())));
-                }
-                if(data.get(position).getDeductTime()!=0){
-                    binding.tvKoutime.setText(DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(data.get(position).getDeductTime())));
-                }
-
             }
         });
     }

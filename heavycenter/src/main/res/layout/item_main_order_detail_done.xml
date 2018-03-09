@@ -21,7 +21,7 @@
 
             <TextView
                 android:includeFontPadding="false"
-                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:id="@+id/tv_goodname"
                 android:singleLine="true"
@@ -47,20 +47,21 @@
             <TextView
                 android:padding="1dp"
                 android:text="@{item_main_order_detail_done.type}"
-                android:layout_marginTop="7dp"
                 android:includeFontPadding="false"
-                app:layout_constraintTop_toBottomOf="@+id/tv_goodname"
+                app:layout_constraintTop_toTopOf="@+id/tv_companyname"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_companyname"
                 app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
                 android:id="@+id/tv_type"
-                android:background="@{item_main_order_detail_done.sendType?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+                android:background="@{item_main_order_detail_done.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textSize="13sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:includeFontPadding="false"
                 android:text="@{item_main_order_detail_done.accessComName}"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="7dp"
                 app:layout_constraintLeft_toRightOf="@+id/tv_type"
                 app:layout_constraintTop_toBottomOf="@+id/tv_goodname"
                 android:id="@+id/tv_companyname"
@@ -74,16 +75,19 @@
 
 
             <TextView
-                android:background="@{item_main_order_detail_done.sendType?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:background="@{item_main_order_detail_done.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_goodname"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_goodname"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
                 android:includeFontPadding="false"
                 android:id="@+id/tv_totalcarnum"
                 android:singleLine="true"
                 android:text="@{item_main_order_detail_done.totalRecordCN}"
-                android:textColor="@color/color_base_txt_heavycenter_y"
+                android:textColor="@color/black"
                 android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -92,7 +96,7 @@
 
 
             <TextView
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_type"
                 android:id="@+id/tv_plan"

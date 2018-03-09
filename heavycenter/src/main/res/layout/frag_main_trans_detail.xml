@@ -131,12 +131,13 @@
             android:id="@+id/tv_companyname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:singleLine="true"
             android:text="@{frag_main_trans_detail.accessComName}"
             android:textColor="@color/white"
             android:textSize="17sp"
+            android:layout_marginLeft="15dp"
             style_common:layout_constraintLeft_toRightOf="@+id/type"
+            style_common:layout_constraintTop_toTopOf="@+id/type"
             style_common:layout_constraintBottom_toBottomOf="@+id/type"/>
 
 
@@ -197,7 +198,7 @@
             android:id="@+id/tv_delivenum"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{StringUtil.getStr(frag_main_trans_detail.develiverNum)}"
+            android:text="@{frag_main_trans_detail.develiverNumCN}"
             android:textColor="@color/color_hv_blue"
             android:textSize="23sp"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -207,11 +208,12 @@
             app:layout_constraintTop_toTopOf="@+id/block"/>
 
         <TextView
+            tools:text="1500t"
             android:gravity="center"
             android:id="@+id/tv_yk"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="1500t"
+            android:text="@{frag_main_trans_detail.YKCN}"
             android:textColor="@color/color_hv_red"
             android:textSize="23sp"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
@@ -225,7 +227,8 @@
             android:id="@+id/tv_receipt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{StringUtil.getStr(frag_main_trans_detail.receiveNum)}"
+            android:text="@{frag_main_trans_detail.receiveNumCN}"
+
             android:textColor="@color/color_hv_yelll"
             android:textSize="23sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_delivenum"
@@ -241,7 +244,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="实发"
-            android:textSize="15sp"
+            android:textSize="14sp"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toLeftOf="@+id/line_left"
@@ -254,7 +257,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="盈亏"
-            android:textSize="15sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_lab_delive"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintHorizontal_weight="1"
@@ -267,7 +270,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="实收"
-            android:textSize="15sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_lab_delive"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintHorizontal_weight="1"
@@ -275,11 +278,32 @@
             app:layout_constraintRight_toLeftOf="@+id/line_right"/>
 
 
+        <View
+            android:id="@+id/line"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lab_delive"
+            android:background="@color/color_grey_300"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <com.siweisoft.heavycenter.module.view.menu.ScrollMenu
+            android:layout_marginTop="-1dp"
+            android:layout_below="@+id/ll_root"
+            android:id="@+id/scrollmenu"
+            android:layout_width="match_parent"
+            style_common:layout_constraintTop_toTopOf="@+id/line"
+            style_common:layout_constraintBottom_toBottomOf="@+id/line"
+            style_common:layout_constraintLeft_toLeftOf="parent"
+            android:layout_height="2dp"/>
+
+
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
             style_common:layout_constraintLeft_toLeftOf="parent"
             style_common:layout_constraintRight_toRightOf="parent"
-            style_common:layout_constraintTop_toBottomOf="@+id/tv_lab_delive"
+            style_common:layout_constraintTop_toBottomOf="@+id/line"
             style_common:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="0dp"
             android:layout_height="0dp"/>

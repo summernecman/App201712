@@ -8,7 +8,12 @@ import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
+import com.siweisoft.heavycenter.module.main.orders.news.rule.RuleDAOpe;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -218,6 +223,8 @@ public  class TransDetailRes extends BaseBean {
         return develiverNum;
     }
 
+
+
     public String getDeveliverNumCN() {
         return StringUtil.getStr(develiverNum)+"t";
     }
@@ -313,7 +320,9 @@ public  class TransDetailRes extends BaseBean {
 
 
     public String getYKCN(){
-        return  (getReceiveNum()- getDeveliverNum())+"t";
+        BigDecimal bd = new BigDecimal(getReceiveNum()- getDeveliverNum());
+        bd = bd.setScale(1, RoundingMode.HALF_UP);
+        return  bd.toString()+"t";
     }
 
     public Long getFhTime() {
@@ -323,7 +332,7 @@ public  class TransDetailRes extends BaseBean {
     LoginResBean loginResBean = LocalValue.get登录返回信息();
 
     public boolean isIDiliverCom(){
-        if(StringUtil.equals(getDeveliverCompanyName(), loginResBean.getCompanyName())){
+        if("S".equals(getOrderType())){
             return true;
         }
         return false;
@@ -398,6 +407,24 @@ public  class TransDetailRes extends BaseBean {
     }
 
     public boolean isshowOpeBtn(TransDetailRes data){
+        if((data.getSignStatus()==TransDetailRes.SING_STATUS_未确认)){
+            if(loginResBean.is驾驶员()){
+                if(StringUtil.equals(getSignRule(), RuleDAOpe.需驾驶员确认)){
+                    return true;
+                }
+                return false;
+            }else{
+                if(isIDiliverCom()){
+                    if(StringUtil.equals(getSignRule(), RuleDAOpe.需发货单位确认)){
+                        return true;
+                    }
+                    return false;
+                }else{
+                    return false;
+                }
+            }
+
+        }
         if(data.getSignStatus()==TransDetailRes.SING_STATUS_已确认){
             return false;
         }
@@ -466,17 +493,17 @@ public  class TransDetailRes extends BaseBean {
         private double adjustTare;
         private double gross;
         private String grossPhoto;
-        private long deductTime;
-        private long tareTime;
-        private long grossTime;
+        private Long deductTime;
+        private Long tareTime;
+        private Long grossTime;
         private String remark;
         private long editTime;
         private double netWeight;
         private int warehouseId;
-        private long createTime;
+        private Long createTime;
         private double tare;
         private int creater;
-        private long netWeightTime;
+        private Long netWeightTime;
         private int id;
         private int editer;
         private int transportRecordId;
@@ -523,29 +550,8 @@ public  class TransDetailRes extends BaseBean {
             this.grossPhoto = grossPhoto;
         }
 
-        public long getDeductTime() {
-            return deductTime;
-        }
 
-        public void setDeductTime(long deductTime) {
-            this.deductTime = deductTime;
-        }
 
-        public long getTareTime() {
-            return tareTime;
-        }
-
-        public void setTareTime(long tareTime) {
-            this.tareTime = tareTime;
-        }
-
-        public long getGrossTime() {
-            return grossTime;
-        }
-
-        public void setGrossTime(long grossTime) {
-            this.grossTime = grossTime;
-        }
 
         public String getRemark() {
             return remark;
@@ -555,16 +561,13 @@ public  class TransDetailRes extends BaseBean {
             this.remark = remark;
         }
 
-        public long getEditTime() {
-            return editTime;
-        }
-
-        public void setEditTime(long editTime) {
-            this.editTime = editTime;
-        }
 
         public double getNetWeight() {
             return netWeight;
+        }
+
+        public String getNetWeightCN() {
+            return netWeight+"t";
         }
 
         public void setNetWeight(double netWeight) {
@@ -579,13 +582,6 @@ public  class TransDetailRes extends BaseBean {
             this.warehouseId = warehouseId;
         }
 
-        public long getCreateTime() {
-            return createTime;
-        }
-
-        public void setCreateTime(long createTime) {
-            this.createTime = createTime;
-        }
 
         public double getTare() {
             return tare;
@@ -603,13 +599,6 @@ public  class TransDetailRes extends BaseBean {
             this.creater = creater;
         }
 
-        public long getNetWeightTime() {
-            return netWeightTime;
-        }
-
-        public void setNetWeightTime(long netWeightTime) {
-            this.netWeightTime = netWeightTime;
-        }
 
         public int getId() {
             return id;
@@ -649,6 +638,77 @@ public  class TransDetailRes extends BaseBean {
 
         public void setStatus(int status) {
             this.status = status;
+        }
+
+        public Long getDeductTime() {
+            return deductTime;
+        }
+
+
+        public String getDeductTimeCN() {
+            if(getDeductTime()==null){
+                return "";
+            }
+            return DateFormatUtil.getdDateStr(DateFormatUtil.HH_MM,new Date(getDeductTime()))+"t";
+        }
+
+        public void setDeductTime(Long deductTime) {
+            this.deductTime = deductTime;
+        }
+
+        public Long getTareTime() {
+            return tareTime;
+        }
+
+
+        public String getTareTimeCN() {
+            if(getTareTime()==null){
+                return "";
+            }
+            return DateFormatUtil.getdDateStr(DateFormatUtil.HH_MM,new Date(getTareTime()))+"t";
+        }
+
+        public void setTareTime(Long tareTime) {
+            this.tareTime = tareTime;
+        }
+
+        public Long getGrossTime() {
+            return grossTime;
+        }
+
+        public String getGrossTimeCN() {
+            if(getGrossTime()==null){
+                return "";
+            }
+            return DateFormatUtil.getdDateStr(DateFormatUtil.HH_MM,new Date(getGrossTime()))+"t";
+        }
+
+        public void setGrossTime(Long grossTime) {
+            this.grossTime = grossTime;
+        }
+
+        public long getEditTime() {
+            return editTime;
+        }
+
+        public void setEditTime(long editTime) {
+            this.editTime = editTime;
+        }
+
+        public Long getCreateTime() {
+            return createTime;
+        }
+
+        public void setCreateTime(Long createTime) {
+            this.createTime = createTime;
+        }
+
+        public Long getNetWeightTime() {
+            return netWeightTime;
+        }
+
+        public void setNetWeightTime(Long netWeightTime) {
+            this.netWeightTime = netWeightTime;
         }
     }
 

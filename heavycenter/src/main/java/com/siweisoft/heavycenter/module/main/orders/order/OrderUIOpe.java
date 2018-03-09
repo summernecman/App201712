@@ -63,18 +63,6 @@ public class OrderUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
                         ItemMainOrderDoingBinding doingBinding = (ItemMainOrderDoingBinding) holder.viewDataBinding;
                         doingBinding.getRoot().setSelected(position % 2 == 0 ? true : false);
                         doingBinding.getRoot().setTag(R.id.type,type);
-
-                        int progress = (int) (100*s.getResults().get(position).getActualSh()/s.getResults().get(position).getPlanNumber());
-                        if(progress<0){
-                            progress = 0 ;
-                        }
-                        if(progress>=50){
-                            doingBinding.circlebar.setCircleColor(context.getResources().getColor(R.color.color_hv_blue));
-                        }else{
-                            doingBinding.circlebar.setCircleColor(context.getResources().getColor(R.color.color_hv_yelll));
-                        }
-                        doingBinding.circlebar.update(progress,false);
-
                     }
                 });
                 break;

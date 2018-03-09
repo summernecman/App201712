@@ -78,7 +78,7 @@
 
                 tools:text="c300"
                 android:id="@+id/tv_specifications"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:singleLine="true"
@@ -87,6 +87,7 @@
                 android:textSize="@dimen/dimen_recylce_item_title_txtsize"
                 app:layout_constraintBottom_toBottomOf="@+id/productName"
                 app:layout_constraintLeft_toRightOf="@+id/productName"
+            app:layout_constraintRight_toLeftOf="@+id/tv_carlicenseno"
         />
 
         <TextView
@@ -99,10 +100,10 @@
                 android:background="@drawable/bg_hv_sharp2_blue_solid"
                 android:padding="1dp"
                 android:textSize="13sp"
-                android:layout_marginTop="11dp"
                 android:visibility="@{item_main_trans2.driver?View.VISIBLE:View.GONE}"
-                app:layout_constraintLeft_toLeftOf="@+id/productName"
-                app:layout_constraintTop_toBottomOf="@+id/productName"/>
+            app:layout_constraintTop_toTopOf="@+id/tv_send_comname"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_send_comname"
+                app:layout_constraintLeft_toLeftOf="@+id/productName"/>
 
         <View
                 android:visibility="@{item_main_trans2.driver?View.VISIBLE:View.GONE}"
@@ -138,10 +139,11 @@
                 android:padding="1dp"
                 android:textSize="13sp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:visibility="@{item_main_trans2.upSecondTypeShow?View.VISIBLE:View.GONE}"
                 app:layout_constraintLeft_toRightOf="@+id/tv_send_comname"
-                app:layout_constraintTop_toBottomOf="@+id/productName"/>
+            app:layout_constraintBottom_toBottomOf="@+id/tv_send_comname"
+            app:layout_constraintTop_toTopOf="@+id/tv_send_comname"/>
+
 
 
         <TextView
@@ -169,10 +171,10 @@
                 android:background="@drawable/bg_hv_sharp2_yell_solid"
                 android:padding="1dp"
                 android:textSize="13sp"
-                android:layout_marginTop="10dp"
                 android:visibility="@{item_main_trans2.driver?View.VISIBLE:View.GONE}"
                 app:layout_constraintLeft_toLeftOf="@+id/type_send_left"
-                app:layout_constraintTop_toBottomOf="@+id/type_send_left"/>
+            app:layout_constraintBottom_toBottomOf="@+id/tv_receipt_comname"
+                app:layout_constraintTop_toTopOf="@+id/tv_receipt_comname"/>
 
 
         <TextView
@@ -200,10 +202,11 @@
                 android:padding="1dp"
                 android:textSize="13sp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:visibility="@{item_main_trans2.downSecondTypeShow?View.VISIBLE:View.GONE}"
                 app:layout_constraintLeft_toRightOf="@+id/tv_receipt_comname"
-                app:layout_constraintTop_toBottomOf="@+id/tv_send_comname"/>
+            app:layout_constraintTop_toTopOf="@+id/tv_receipt_comname"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_receipt_comname"
+            />
 
 
         <TextView
@@ -282,6 +285,7 @@
                 android:textColor="@color/color_base_txt_heavycenter_y"
                 android:textSize="12sp"
                 app:layout_constraintTop_toTopOf="@+id/productName"
+            app:layout_constraintBottom_toBottomOf="@+id/productName"
                 app:layout_constraintRight_toRightOf="parent" />
 
 
@@ -292,7 +296,8 @@
                 android:layout_height="15dp"
                 android:layout_marginRight="10dp"
                 android:src="@{item_main_trans2.driver?@drawable/icon_trans_local:@drawable/icon_hv_local}"
-                app:layout_constraintTop_toTopOf="@+id/tv_carlicenseno"
+                app:layout_constraintTop_toTopOf="@+id/productName"
+            app:layout_constraintBottom_toBottomOf="@+id/productName"
        />
 
 

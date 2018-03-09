@@ -5,7 +5,7 @@
     <data>
         <variable
             name="frag_main_weigt"
-            type="String" />
+            type="com.siweisoft.heavycenter.data.netd.jpush.WeightMsg.MessageBean" />
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -41,7 +41,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/color_hv_yelll"
                 android:textSize="@dimen/hv_dimen_text_title_aa"
-                android:text="2333"
+                android:text="@{frag_main_weigt.order.carLicenseNo}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
 
@@ -51,7 +51,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/color_hv_yelll"
                 android:textSize="@dimen/hv_dimen_text_title_aa"
-                android:text="2333"
+                android:text="@{frag_main_weigt.order.trueName}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
 
@@ -61,7 +61,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/color_hv_yelll"
                 android:textSize="@dimen/hv_dimen_text_title_aa"
-                android:text="2333"
+                android:text="@{frag_main_weigt.order.tel}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
 

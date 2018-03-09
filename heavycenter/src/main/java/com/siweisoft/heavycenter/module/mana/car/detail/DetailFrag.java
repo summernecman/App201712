@@ -13,6 +13,8 @@ import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.UriUtils;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.entity.LocalMedia;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -27,6 +29,7 @@ import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 import com.siweisoft.heavycenter.module.main.MainAct;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.OnClick;
 
@@ -114,10 +117,12 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
         super.onClick(v);
         switch (v.getId()){
             case R.id.iv_vehicleLicensePhoto:
-                IntentUtil.getInstance().photoShowFromphone(this,01);
+                IntentUtil.getInstance().pickImage(this,01);
+               // IntentUtil.getInstance().photoShowFromphone(this,01);
                 break;
             case R.id.iv_vehiclePhoto:
-                IntentUtil.getInstance().photoShowFromphone(this,02);
+                IntentUtil.getInstance().pickImage(this,02);
+                //IntentUtil.getInstance().photoShowFromphone(this,02);
                 break;
             case R.id.ftv_right2:
                 switch (getP().getD().getType()){
@@ -208,7 +213,13 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                 s = UpdateHeadReqBean.车辆照片;
                 break;
         }
-        getP().getD().updateHead(UriUtils.getPath(getActivity(), data.getData()),s, new UINetAdapter<UpdateHeadResBean>(this,true) {
+
+        List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(data);
+        if(selectList==null||selectList.size()!=1){
+            return;
+        }
+
+        getP().getD().updateHead(selectList.get(0).getCompressPath(),s, new UINetAdapter<UpdateHeadResBean>(this,true) {
             @Override
             public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                 stopLoading();

@@ -206,6 +206,13 @@ public class StringUtil {
         return "" + i;
     }
 
+    public static String getNUM(int num){
+        if(num>=1000){
+            return num/1000+"K";
+        }
+        return num+"";
+    }
+
 
     public static  boolean equals(String str1,String str2){
         if(str1==null && str2==null){

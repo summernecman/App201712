@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
                 name="item_main_trans_detail"
@@ -37,13 +37,14 @@
 
 
         <TextView
+            tools:text="124"
+            android:textSize="19sp"
             android:textColor="@color/black"
             android:id="@+id/tv_mao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:text='@{item_main_trans_detail.gross+""}'
-            android:textSize="17sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/lab_mao"
             app:layout_constraintLeft_toRightOf="@+id/lab_mao"
             app:layout_constraintTop_toBottomOf="parent"
@@ -57,6 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:textSize="17sp"
+            android:text="@{item_main_trans_detail.grossTimeCN}"
             app:layout_constraintLeft_toRightOf="@+id/tv_mao"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="A-15"
+            tools:text="A-15"
             android:textSize="17sp"
             app:layout_constraintLeft_toRightOf="@+id/lab_ck"
             app:layout_constraintTop_toTopOf="parent" />
@@ -101,6 +103,8 @@
 
 
         <TextView
+            tools:text="124"
+            android:textSize="19sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/lab_pi"
             android:textColor="@color/black"
             android:id="@+id/tv_pi"
@@ -108,7 +112,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:text='@{item_main_trans_detail.tare+""}'
-            android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
             app:layout_constraintLeft_toRightOf="@+id/lab_pi" />
 
@@ -120,6 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:textSize="17sp"
+            android:text="@{item_main_trans_detail.tareTimeCN}"
             app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
             app:layout_constraintLeft_toRightOf="@+id/tv_pi" />
 
@@ -142,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="A-15"
+            tools:text="A-15"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
             app:layout_constraintLeft_toRightOf="@+id/lab_bz" />
@@ -162,7 +166,8 @@
 
 
         <TextView
-
+            tools:text="124"
+            android:textSize="19sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/lab_kou"
             android:textColor="@color/black"
             android:id="@+id/tv_kou"
@@ -170,7 +175,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:text='@{item_main_trans_detail.deduct+""}'
-            android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
             app:layout_constraintLeft_toRightOf="@+id/lab_kou" />
 
@@ -182,6 +186,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:textSize="17sp"
+            android:text="@{item_main_trans_detail.deductTimeCN}"
             app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
             app:layout_constraintLeft_toRightOf="@+id/tv_kou" />
 
@@ -204,7 +209,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="A-15"
+            tools:text="A-15"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
             app:layout_constraintLeft_toRightOf="@+id/lab_czr" />
@@ -225,14 +230,15 @@
 
 
         <TextView
+            tools:text="124"
+            android:textSize="19sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/lab_jin"
             android:textColor="@color/black"
             android:id="@+id/tv_jin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text='@{item_main_trans_detail.netWeight+""}'
-            android:textSize="17sp"
+            android:text='@{item_main_trans_detail.netWeightCN}'
             app:layout_constraintBottom_toBottomOf="@+id/lab_jin"
             app:layout_constraintLeft_toRightOf="@+id/lab_jin" />
 
@@ -287,7 +293,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lab_jin"
-            android:background="@color/color_grey_500"
+            android:background="@color/color_grey_300"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 

@@ -106,6 +106,7 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
                 if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_DATA,false)){
                     return;
                 }
+                getP().getU().setCurrent(0);
                 OrderFrag orderFrag = (OrderFrag) getP().getD().getPages().get(0);
                 orderFrag.getP().getU().autoRefresh();
                 break;

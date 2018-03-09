@@ -3,6 +3,7 @@ package com.siweisoft.heavycenter.module.view.store;
 //by summer on 2018-01-08.
 
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,9 @@ public class StoreView extends RelativeLayout {
     private View maxView;
 
 
+    private View currentView;
+
+
 
     public StoreView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -45,6 +49,7 @@ public class StoreView extends RelativeLayout {
         maxGoodTV = (TextView) findViewById(R.id.tv_maxwuliao);
         minStoreTV = (TextView) findViewById(R.id.tv_minstore);
         maxStoreTV = (TextView) findViewById(R.id.tv_maxstore);
+        currentView = findViewById(R.id.ll_current);
         currentTV = findViewById(R.id.tv_current);
         minView = findViewById(R.id.ll_min);
         maxView = findViewById(R.id.ll_max);
@@ -63,28 +68,35 @@ public class StoreView extends RelativeLayout {
         maxGoodTV.setText("物料最大:"+StringUtil.getStr(maxgood)+"t");
         currentTV.setText("当前:"+StringUtil.getStr(now)+"t");
 
-        RelativeLayout.LayoutParams p = (LayoutParams) currentTV.getLayoutParams();
-        p.leftMargin = (int) ((ScreenUtil.w-ScreenUtil.最小DIMEN *20)*now/(Math.min(maxstore,maxgood)));
-        if(p.leftMargin>((ScreenUtil.w-ScreenUtil.最小DIMEN *20)/3)){
-            currentTV.setBackgroundResource(R.drawable.icon_hv_main_store_tip_rd);
-            p.leftMargin = (int) (p.leftMargin- (StringUtil.getStr(now).length()+2)*ScreenUtil.字宽度);
+        float max = Math.min(maxstore,maxgood);
+        float min = Math.max(mingood,minstore);
+
+        ConstraintLayout.LayoutParams p = (ConstraintLayout.LayoutParams) currentView.getLayoutParams();
+        p.leftMargin = (int) (getW()*now/max);
+        if(now>max/2){
+            currentView.setBackgroundResource(R.drawable.icon_hv_main_store_tip_rd);
+            p.leftMargin = (int) (p.leftMargin+ScreenUtil.最小DIMEN*14- currentTV.getPaint().measureText(currentTV.getText().toString()));
         }else{
-            currentTV.setBackgroundResource(R.drawable.icon_hv_main_store_tip_ld);
-            p.leftMargin = (int) (ScreenUtil.w-ScreenUtil.最小DIMEN *20);
+            currentView.setBackgroundResource(R.drawable.icon_hv_main_store_tip_ld);
         }
 
-        currentTV.setLayoutParams(p);
+        currentView.setLayoutParams(p);
 
-        RelativeLayout.LayoutParams p1 = (LayoutParams) minView.getLayoutParams();
-        p1.leftMargin = (int) ((ScreenUtil.w-ScreenUtil.最小DIMEN *20)*(Math.max(mingood,minstore))/((Math.min(maxstore,maxgood))));
-        if(p1.leftMargin>((ScreenUtil.w-ScreenUtil.最小DIMEN *20)/2)){
+        ConstraintLayout.LayoutParams p1 = (ConstraintLayout.LayoutParams) minView.getLayoutParams();
+        p1.leftMargin = (int) (getW()*min/max);
+        if(min>max/2){
             minView.setBackgroundResource(R.drawable.icon_hv_main_store_rt);
-            p1.leftMargin = (int) (p1.leftMargin- (StringUtil.getStr(now).length()+2)*ScreenUtil.字宽度);
-            p1.leftMargin = p1.leftMargin- minView.getWidth();
+            p1.leftMargin = (int) (p1.leftMargin- Math.max(minGoodTV.getPaint().measureText(minGoodTV.getText().toString()),minStoreTV.getPaint().measureText(minStoreTV.getText().toString())));
+        }else{
+            minView.setBackgroundResource(R.drawable.icon_hv_main_store_lt);
         }
         minView.setLayoutParams(p1);
 
         progressView.setValues(Math.min(maxstore,maxgood),Math.max(mingood,minstore),now);
 
+    }
+
+    private int getW(){
+        return (int) (ScreenUtil.w-ScreenUtil.最小DIMEN *14);
     }
 }

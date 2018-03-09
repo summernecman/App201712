@@ -58,5 +58,8 @@ public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
 
         bind.tvCarno.setText("第"+NullUtil.isEmpty(data.getCarNumber(),1)+"车");
         bind.viewpager.setAdapter(new AppBasePagerAdapter2(getFrag().getChildFragmentManager(),getActivity(),fragments));
+       if(bind.viewpager.getAdapter().getCount()==2){
+           bind.scrollmenu.setViewPager(bind.viewpager);
+       }
     }
 }

@@ -3,6 +3,7 @@ package com.siweisoft.heavycenter.module.main.weigts;
 //by summer on 2017-12-11.
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.support.v4.app.Fragment;
 
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
@@ -14,6 +15,7 @@ import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.databinding.FragMainWeigtsBinding;
+import com.siweisoft.heavycenter.BR;
 
 import java.util.ArrayList;
 
@@ -48,19 +50,6 @@ public class WeigtsUIOpe extends AppUIOpe<FragMainWeigtsBinding> {
     }
 
     public void initUI(WeightMsg weightMsg){
-        bind.bottom.tvContent.setText(StringUtil.getStr(weightMsg.getMessage().getContent()));
-        bind.bottom.tvGoodname.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getProductName()));
-        bind.bottom.tvSpes.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getSpecification()));
-        bind.bottom.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getShdwName()));
-        if(LocalValue.get登录返回信息().getAbbreviationName().equals(weightMsg.getMessage().getOrder().getFhdwName())){
-            bind.bottom.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getShdwName()));
-            bind.bottom.tvType.setText("发往");
-        }else{
-            bind.bottom.tvComp.setText(StringUtil.getStr(weightMsg.getMessage().getOrder().getFhdwName()));
-            bind.bottom.tvType.setText("来自");
-        }
-
-
-
+        bind.bottom.setVariable(BR.frag_main_weigts_bottom,weightMsg);
     }
 }

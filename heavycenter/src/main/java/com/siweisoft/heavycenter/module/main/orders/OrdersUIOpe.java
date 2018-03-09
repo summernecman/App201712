@@ -62,11 +62,17 @@ public class OrdersUIOpe extends BaseUIOpe<FragMainOrderBinding>{
         if(orderNumRes==null){
             return;
         }
-        bind.topview.setTxt(0, "新订单("+StringUtil.getStr(orderNumRes.getNewCount())+")");
-        bind.topview.setTxt(1, "进行中("+StringUtil.getStr(orderNumRes.getIngCount())+")");
-        bind.topview.setTxt(2, "已完成("+StringUtil.getStr(orderNumRes.getDoneCount())+")");
+        bind.topview.setTxt(0, "新订单("+StringUtil.getNUM(orderNumRes.getNewCount())+")");
+        bind.topview.setTxt(1, "进行中("+StringUtil.getNUM(orderNumRes.getIngCount())+")");
+        bind.topview.setTxt(2, "已完成("+StringUtil.getNUM(orderNumRes.getDoneCount())+")");
     }
 
+
+    public void setCurrent(int pos){
+        if(bind.llCntent.getAdapter()!=null){
+            bind.llCntent.setCurrentItem(pos);
+        }
+    }
 
 
 }

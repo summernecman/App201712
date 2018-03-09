@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.module.main.MainAct;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
@@ -26,6 +27,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.Date;
 
+import io.paperdb.Paper;
+
 public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
     public DetailFrag() {
@@ -35,7 +38,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     @Override
     public void initNow() {
         super.initNow();
-        getP().getD().setWeightMsgs(GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr("weight"),new TypeToken<ArrayList<WeightMsg.MessageBean>>(){}.getType()));
+        getP().getD().setWeightMsgs(Paper.book().read("weights"+ LocalValue.get登录返回信息().getUserId(),new ArrayList<WeightMsg.MessageBean>()));
         getP().getU().LoadListData(getP().getD().getWeightMsgs());
     }
 
@@ -61,22 +64,17 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
             return ;
         }
         getP().getU().initTopUI(m);
-        if(NullUtil.isStrEmpty(m.getTime())){
-            m.setTime(DateFormatUtil.getdDateStr(DateFormatUtil.YYYY__MM__DD__HH__MM__SS,new Date()));
-        }
         if(NullUtil.isStrEmpty(m.getMessageType())||NullUtil.isStrEmpty(m.getState())){
             return;
         }
+        ArrayList<WeightMsg.MessageBean> list = new ArrayList<>();
+        list.add(m);
         getP().getD().getWeightMsgs().add(m);
-      getP().getU().notifyDataSetChanged();
+        Paper.book().write("weights"+ LocalValue.get登录返回信息().getUserId(),getP().getD().getWeightMsgs());
+        getP().getU().notifyDataSetChanged();
 
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        SPUtil.getInstance().saveStr("weight",GsonUtil.getInstance().toJson(getP().getD().getWeightMsgs()));
-    }
 
     @Override
     protected boolean registerEventBus() {
