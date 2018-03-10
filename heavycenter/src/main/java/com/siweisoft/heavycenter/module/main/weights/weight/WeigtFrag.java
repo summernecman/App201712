@@ -2,19 +2,29 @@ package com.siweisoft.heavycenter.module.main.weights.weight;
 
 //by summer on 2017-12-11.
 
+import android.os.Bundle;
 import android.view.View;
 
 import butterknife.OnClick;
 
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.module.main.weights.weights.WeightsFrag;
 
 import java.text.DecimalFormat;
 
 
 public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
 
+
+    public static WeigtFrag getInstance(String moudle){
+        WeigtFrag weigtFrag = new WeigtFrag();
+        weigtFrag.setArguments(new Bundle());
+        weigtFrag.getArguments().putString(ValueConstant.容器,moudle);
+        return  weigtFrag;
+    }
 
     @Override
     public void initdelay() {

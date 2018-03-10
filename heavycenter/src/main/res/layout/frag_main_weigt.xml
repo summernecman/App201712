@@ -68,6 +68,7 @@
         </LinearLayout>
 
         <TextView
+                android:includeFontPadding="false"
             app:layout_constraintBottom_toTopOf="@+id/bottom"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/lab_pz"
@@ -81,6 +82,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
+                android:includeFontPadding="false"
             app:layout_constraintBottom_toBottomOf="@+id/lab_mz"
             app:layout_constraintLeft_toRightOf="@+id/lab_mz"
             app:layout_constraintRight_toLeftOf="@+id/lab_kc"
@@ -93,6 +95,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
+                android:includeFontPadding="false"
             app:layout_constraintBottom_toBottomOf="@+id/lab_mz"
             app:layout_constraintLeft_toRightOf="@+id/lab_pz"
             app:layout_constraintRight_toLeftOf="@+id/lab_jz"
@@ -105,6 +108,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
+                android:includeFontPadding="false"
             app:layout_constraintBottom_toBottomOf="@+id/lab_mz"
             app:layout_constraintLeft_toRightOf="@+id/lab_kc"
             app:layout_constraintRight_toLeftOf="parent"
@@ -118,6 +122,7 @@
 
 
         <TextView
+                android:includeFontPadding="false"
             app:layout_constraintBottom_toTopOf="@+id/lab_mz"
            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/tv_pz"
@@ -131,6 +136,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+                android:includeFontPadding="false"
             app:layout_constraintBottom_toBottomOf="@+id/tv_mz"
             app:layout_constraintLeft_toRightOf="@+id/tv_mz"
             app:layout_constraintRight_toLeftOf="@+id/tv_kc"
@@ -144,6 +150,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
+                android:includeFontPadding="false"
             app:layout_constraintBottom_toBottomOf="@+id/tv_mz"
             app:layout_constraintLeft_toRightOf="@+id/tv_pz"
             app:layout_constraintRight_toLeftOf="@+id/tv_jz"
@@ -158,6 +165,7 @@
 
 
         <TextView
+                android:includeFontPadding="false"
             app:layout_constraintBottom_toBottomOf="@+id/tv_mz"
             app:layout_constraintLeft_toRightOf="@+id/tv_kc"
             app:layout_constraintRight_toRightOf="parent"

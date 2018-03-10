@@ -7,7 +7,7 @@ import android.view.View;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.main.store.check.CheckFrag;
 
 import butterknife.OnClick;

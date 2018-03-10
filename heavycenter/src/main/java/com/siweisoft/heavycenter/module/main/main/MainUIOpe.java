@@ -1,8 +1,7 @@
-package com.siweisoft.heavycenter.module.main;
+package com.siweisoft.heavycenter.module.main.main;
 
 //by summer on 17-08-23.
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,21 +9,17 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.android.lib.base.adapter.HomePageAdapter;
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.constant.ValueConstant;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.android.lib.view.bottommenu.BottomMenuBean;
-import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.databinding.ActMainBinding;
-import com.siweisoft.heavycenter.module.myce.MyceFrag;
+import com.siweisoft.heavycenter.module.myce.myce.MyceFrag;
 import com.siweisoft.heavycenter.module.myce.unit.nobind.NoBindFrag;
-import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
 
 import java.util.ArrayList;
 

@@ -2,19 +2,15 @@ package com.siweisoft.heavycenter.module.main.msg;
 
 //by summer on 2017-12-11.
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.base.ope.BaseUIOpe;
-import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.LogUtil;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainMsgsBinding;
-import com.siweisoft.heavycenter.module.main.MainValue;
-import com.siweisoft.heavycenter.module.main.msg.msg.MsgFrag;
 
 import java.util.ArrayList;
 

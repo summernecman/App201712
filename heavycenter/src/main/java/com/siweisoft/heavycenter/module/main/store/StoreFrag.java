@@ -2,7 +2,6 @@ package com.siweisoft.heavycenter.module.main.store;
 
 //by summer on 2017-12-11.
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -15,13 +14,11 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
+import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.main.store.check.CheckFrag;
 import com.siweisoft.heavycenter.module.main.store.check.CheckValue;
 import com.siweisoft.heavycenter.module.main.store.detail.DetailFrag;

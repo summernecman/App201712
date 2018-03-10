@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main;
+package com.siweisoft.heavycenter.module.main.main;
 
 //by summer on 17-08-23.
 
@@ -21,9 +21,9 @@ import com.siweisoft.heavycenter.module.main.msg.MsgsFrag;
 import com.siweisoft.heavycenter.module.main.orders.OrdersFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
-import com.siweisoft.heavycenter.module.main.weights.WeightsFrag;
+import com.siweisoft.heavycenter.module.main.weights.weights.WeightsFrag;
 import com.siweisoft.heavycenter.module.main.weights.detail.DetailFrag;
-import com.siweisoft.heavycenter.module.myce.MyceFrag;
+import com.siweisoft.heavycenter.module.myce.myce.MyceFrag;
 import com.siweisoft.heavycenter.module.myce.unit.nobind.NoBindFrag;
 import com.siweisoft.heavycenter.module.scan.ScanDAOpe;
 

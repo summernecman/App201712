@@ -2,12 +2,10 @@ package com.siweisoft.heavycenter.module.myce.unit.info;
 
 //by summer on 2017-12-19.
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import com.android.lib.util.StringUtil;
-import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -15,8 +13,6 @@ import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.unit.list.UnitInfo;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitInfoBinding;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
 public class InfoUIOpe extends AppUIOpe<FragMyceUnitInfoBinding>{

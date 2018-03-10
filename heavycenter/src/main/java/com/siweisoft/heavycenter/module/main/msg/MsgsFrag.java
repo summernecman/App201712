@@ -2,14 +2,12 @@ package com.siweisoft.heavycenter.module.main.msg;
 
 //by summer on 2017-12-11.
 
-import android.content.Intent;
 import android.view.View;
 
-import com.android.lib.constant.ValueConstant;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {

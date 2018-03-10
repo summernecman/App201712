@@ -1,10 +1,11 @@
-package com.siweisoft.heavycenter.module.main.weights;
+package com.siweisoft.heavycenter.module.main.weights.weights;
 
 //by summer on 2017-12-11.
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.NetI;
 import com.android.lib.util.NullUtil;
@@ -26,23 +27,26 @@ public class WeightsDAOpe extends AppDAOpe {
 
     private  WeightMsg weightMsg;
 
-    ArrayList<Fragment> pages = new ArrayList<>();
+    private ArrayList<Fragment> pages = new ArrayList<>();
+
+    private ArrayList<Fragment> bottomFrag = new ArrayList<>();
 
 
     public ArrayList<Fragment> initPages(){
         pages.clear();
         for(int i=0;i<5;i++){
-            WeigtFrag weigtFrag = new WeigtFrag();
-            weigtFrag.setArguments(new Bundle());
-            weigtFrag.getArguments().putString(ValueConstant.容器,getFrag().get容器());
-            pages.add(weigtFrag);
+            pages.add(WeigtFrag.getInstance(getFrag().get容器()));
         }
         return pages;
     }
 
     public ArrayList<Fragment> getPages() {
+        if(pages==null){
+            initPages();
+        }
         return pages;
     }
+
 
     public void listWeight(NetI<WeightListRes> adapter){
         WeightListReq weightListReq = new WeightListReq();

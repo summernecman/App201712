@@ -19,7 +19,7 @@ import com.siweisoft.heavycenter.data.netd.unit.news.NewResBean;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchResBean;
 import com.siweisoft.heavycenter.data.netd.unit.update.UpdateUnitRes;
 import com.siweisoft.heavycenter.data.netd.user.unit.unbind.UnBindResBean;
-import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.myce.unit.addr.AddrFrag;
 import com.siweisoft.heavycenter.module.myce.unit.area.prov.ProvFrag;
 import com.siweisoft.heavycenter.module.myce.unit.list.UnitListDAOpe;
@@ -51,6 +51,9 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
             @Override
             public void onSuccess(UnitInfo o) {
                 getP().getD().setUnit(o);
+                if(o==null){
+                    return;
+                }
                 getP().getD().getUnit().setBelongAreaDes(getP().getD().getUnit().getBelongArea());
                 getP().getD().getUnit().setBelongArea(getP().getD().getUnit().getBelongAreaNo());
                 getP().getU().initinfo(getP().getD().getUnit());

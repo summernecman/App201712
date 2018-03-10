@@ -1,9 +1,10 @@
-package com.siweisoft.heavycenter.module.main.weights;
+package com.siweisoft.heavycenter.module.main.weights.weights;
 
 //by summer on 2017-12-11.
 
 import android.view.View;
 
+import butterknife.Optional;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.GsonUtil;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -12,7 +13,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
 import com.siweisoft.heavycenter.data.netd.weight.save.SaveWeightRes;
-import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.main.weights.weight.WeigtFrag;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
@@ -28,7 +29,6 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
 
     @Override
     protected void onFristVisibleDelayInit() {
-
         getP().getD().listWeight(new UINetAdapter<WeightListRes>(this) {
             @Override
             public void onSuccess(WeightListRes o) {
@@ -39,7 +39,8 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
     }
 
 
-    @OnClick({R.id.tv_save})
+    @Optional
+    @OnClick({R.id.tv_save,R.id.tv_save_sel,R.id.tv_select,R.id.tv_select_sel})
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
@@ -55,7 +56,7 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
                 if(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh()!=0&&getP().getD().getWeightMsg()!=null&&getP().getD().getWeightMsg().getMessage()!=null){
                     getP().getD().getWeightMsg().getMessage().setWeigh(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh());
                 }
-                getP().getU().bind.bottom.getRoot().setVisibility(View.GONE);
+                getP().getU().showBottomView(true);
                 if(weigtFrag.getP().getD().getWeightMsg()!=null&&weigtFrag.getP().getD().getWeightMsg().getMessage()!=null){
                     getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(this,true) {
                         @Override
@@ -65,6 +66,16 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
                     });
                 }
                 break;
+            case R.id.tv_select:
+                getP().getU().showBottomView(true);
+                break;
+            case R.id.tv_select_sel:
+                getP().getU().showBottomView(false);
+                break;
+            case R.id.tv_save_sel:
+                getP().getU().showBottomView(false);
+                break;
+
         }
     }
 
@@ -84,7 +95,7 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
         if(weightMsg==null|| weightMsg.getMessage()==null || weightMsg.getMessage().getOrder()==null){
             return;
         }
-        getP().getU().bind.bottom.getRoot().setVisibility(View.VISIBLE);
+        getP().getU().showBottomView(false);
         getP().getD().setWeightMsg(weightMsg);
         getP().getU().initUI(getP().getD().getWeightMsg());
         initPage(weightMsg);

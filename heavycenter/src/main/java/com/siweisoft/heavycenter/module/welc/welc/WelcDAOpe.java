@@ -26,4 +26,8 @@ public class WelcDAOpe extends AppDAOpe {
         NetDataOpe.onLogin(getActivity(),LocalValue.get登录参数(),adapter);
     }
 
+    public void initWeightDA(){
+
+    }
+
 }

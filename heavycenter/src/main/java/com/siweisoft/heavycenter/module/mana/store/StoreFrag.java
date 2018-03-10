@@ -13,15 +13,13 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.status.StatusStoresResBean;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.store.info.StoreInfoFrag;
 import com.siweisoft.heavycenter.module.mana.store.info.StoreInfoValue;
-import com.siweisoft.heavycenter.module.mana.store.news.NewFrag;
 
 import butterknife.OnClick;
 
@@ -98,7 +96,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
         getP().getD().storesInfo(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库,new UINetAdapter<StoresResBean>(this) {
             @Override
             public void onSuccess(StoresResBean o) {
-                //o = new Test().getStoresResBean();
+                o = new Test().getStoresResBean();
                 getP().getU().finishRefresh();
                 getP().getU().LoadListData(o,StoreFrag.this);
             }

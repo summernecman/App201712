@@ -3,15 +3,11 @@ package com.siweisoft.heavycenter.module.acct.acct;
 //by summer on 2017-12-14.
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 
-import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.module.acct.login.LoginFrag;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.test.SharedElementFragment1;
 
 public class AcctAct extends AppAct<AcctUIOpe,AcctDAOpe> {
 

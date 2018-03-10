@@ -2,22 +2,18 @@ package com.siweisoft.heavycenter.base;
 
 //by summer on 2017-12-08.
 
-import android.content.Intent;
 import android.view.View;
 
 import butterknife.OnClick;
 import butterknife.Optional;
 
-import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.constant.ValueConstant;
-import com.android.lib.util.fragment.two.FragManager2;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
+import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 public abstract class AppFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseUIFrag<A,B> {

@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.myce;
+package com.siweisoft.heavycenter.module.myce.myce;
 
 //by summer on 2017-12-14.
 
@@ -14,13 +14,10 @@ import com.android.lib.util.IntentUtil;
 import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
-import com.android.lib.util.UriUtils;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.github.florent37.viewanimator.ViewAnimator;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.lzy.imagepicker.ImagePicker;
-import com.lzy.imagepicker.bean.ImageItem;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -28,8 +25,8 @@ import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.car.update.UpdateCarRes;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
+import com.siweisoft.heavycenter.module.main.main.MainAct;
+import com.siweisoft.heavycenter.module.main.main.MainValue;
 import com.siweisoft.heavycenter.module.mana.car.CarsFrag;
 import com.siweisoft.heavycenter.module.mana.good.GoodFrag;
 import com.siweisoft.heavycenter.module.mana.store.StoreFrag;
@@ -45,7 +42,6 @@ import com.siweisoft.heavycenter.module.myce.unit.news.NewUnitFrag;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.OnClick;
@@ -188,7 +184,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
                 break;
         }
         getBaseUIAct().setMoudle(MainValue.主界面);
-        ((MainAct)getActivity()).getP().getU().switchDrawerNoanim();
+        ((MainAct)getActivity()).getP().getU().switchDrawer();
     }
 
     @Override

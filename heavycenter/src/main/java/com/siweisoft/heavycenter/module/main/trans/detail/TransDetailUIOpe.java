@@ -33,14 +33,14 @@ public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
             return;
         }
         bind.setVariable(BR.frag_main_trans_detail,data);
-        if(data.getDeliverRecordList().size()>0){
+        if(data.getDeliverRecordList()!=null&&data.getDeliverRecordList().size()>0){
             bind.tvDelivenum.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getGross()));
             bind.tvReceipt.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getTare()));
             bind.tvYk.setText(StringUtil.getStr(data.getDeliverRecordList().get(0).getDeduct()));
 
         }
 
-        if(data.getReceiveRecordList().size()>0){
+        if(data.getReceiveRecordList()!=null&&data.getReceiveRecordList().size()>0){
             bind.tvDelivenum.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getGross()));
             bind.tvReceipt.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getTare()));
             bind.tvYk.setText(StringUtil.getStr(data.getReceiveRecordList().get(0).getDeduct()));

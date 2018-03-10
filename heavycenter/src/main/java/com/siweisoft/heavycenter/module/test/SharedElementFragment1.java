@@ -3,15 +3,12 @@ package com.siweisoft.heavycenter.module.test;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.transition.ChangeBounds;
 import android.transition.Slide;
 import android.view.*;
 import android.widget.ImageView;
 
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
 
 /**
  * Created by lgvalle on 05/09/15.

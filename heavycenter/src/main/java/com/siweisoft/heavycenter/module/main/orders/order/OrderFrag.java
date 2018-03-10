@@ -15,6 +15,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.Test;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersReq;
@@ -104,6 +105,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
         OrderDAOpe.orders(getP().getD().getOrdersFrag().getP().getD().getCompanyid(),getBaseUIAct(),getP().getD().getSTATUS(),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
             @Override
             public void onSuccess(OrdersRes o) {
+                o= new Test().getOrdersRes();
                 getP().getD().setOrdersRes(o);
                 getP().getD().getOrdersFrag().getP().getU().refreshTopMenu(o);
                 getP().getU().LoadListData(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);

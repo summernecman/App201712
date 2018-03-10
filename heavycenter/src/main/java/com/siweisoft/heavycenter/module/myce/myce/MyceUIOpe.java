@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.myce;
+package com.siweisoft.heavycenter.module.myce.myce;
 
 //by summer on 2017-12-14.
 

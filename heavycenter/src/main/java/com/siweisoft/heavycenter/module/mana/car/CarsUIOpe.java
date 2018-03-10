@@ -15,6 +15,7 @@ import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
 import com.siweisoft.heavycenter.data.netd.order.ordernum.OrderNumRes;
 import com.siweisoft.heavycenter.databinding.FragManaCarsBinding;
+import com.siweisoft.heavycenter.module.mana.car.car.CarFrag;
 
 import java.util.ArrayList;
 
@@ -29,14 +30,19 @@ public class CarsUIOpe extends AppUIOpe<FragManaCarsBinding> {
         bind.llCntent.setOffscreenPageLimit(pages.size());
         bind.llCntent.setAdapter(new AppBasePagerAdapter2(fragment.getChildFragmentManager(),context,pages));
         bind.topview.setViewPager(bind.llCntent);
-        final int gap = (int) (50* ScreenUtil.最小DIMEN);
+        final int gap = (int) (25* ScreenUtil.最小DIMEN);
         bind.llCntent.setGapw(gap);
         bind.llCntent.addOnPageChangeListener(new BaseOnPagerChangeListener(){
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 if(position==1){
-                    bind.llCntent.setGapw(gap);
+                    CarFrag carFrag = (CarFrag) pages.get(1);
+                    if(carFrag.getP().getU().bind.recycle.getAdapter()==null||carFrag.getP().getU().bind.recycle.getAdapter().getItemCount()==0){
+                        bind.llCntent.setGapw((int) ScreenUtil.w);
+                    }else{
+                        bind.llCntent.setGapw(gap);
+                    }
                 }else{
                     bind.llCntent.setGapw((int) ScreenUtil.w);
                 }

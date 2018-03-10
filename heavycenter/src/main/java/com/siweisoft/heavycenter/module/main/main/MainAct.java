@@ -1,10 +1,9 @@
-package com.siweisoft.heavycenter.module.main;
+package com.siweisoft.heavycenter.module.main.main;
 
 //by summer on 17-08-23.
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
@@ -14,12 +13,9 @@ import android.view.ViewGroup;
 import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.interf.view.OnAppItemSelectListener;
-import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.ColorUtil;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.IntentUtil;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.activity.ActivityUtil;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -27,7 +23,6 @@ import com.android.lib.util.system.SystemUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppAct;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;

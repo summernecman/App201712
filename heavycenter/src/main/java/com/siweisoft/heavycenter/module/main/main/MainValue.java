@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main;
+package com.siweisoft.heavycenter.module.main.main;
 
 import com.siweisoft.heavycenter.R;
 

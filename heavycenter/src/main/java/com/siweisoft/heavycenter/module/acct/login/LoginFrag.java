@@ -3,13 +3,11 @@ package com.siweisoft.heavycenter.module.acct.login;
 //by summer on 2017-12-14.
 
 import android.os.Build;
-import android.os.Bundle;
 import android.transition.ChangeBounds;
 import android.transition.Slide;
 import android.view.Gravity;
 import android.view.View;
 
-import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.IntentUtil;
 import com.android.lib.util.fragment.two.FragManager2;
@@ -21,7 +19,7 @@ import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 import com.siweisoft.heavycenter.module.acct.regist.RegistFrag;
 import com.siweisoft.heavycenter.module.acct.repwd.RepwdFrag;
 import com.siweisoft.heavycenter.module.acct.role.RoleFrag;
-import com.siweisoft.heavycenter.module.main.MainAct;
+import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.myce.test.HeadTestFrag;
 
 import butterknife.OnClick;

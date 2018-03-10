@@ -2,7 +2,6 @@ package com.siweisoft.heavycenter.module.main.trans;
 
 //by summer on 2017-12-11.
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -12,7 +11,6 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
-import com.android.lib.util.LogUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -25,8 +23,7 @@ import com.siweisoft.heavycenter.data.netd.NetValue;
 import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
+import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.main.trans.detail.TransDetailFrag;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
@@ -120,6 +117,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
         getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
             @Override
             public void onSuccess(TransRes o) {
+                o= new Test().getTransRes();
                 getP().getD().getTransRes().getResults().addAll(o==null? new TransRes().getResults():o.getResults());
                 getP().getU().LoadListData(getP().getD().getTransRes().getResults(),TransFrag.this);
             }

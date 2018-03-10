@@ -2,13 +2,10 @@ package com.siweisoft.heavycenter.module.myce.unit.list;
 
 //by summer on 2017-12-19.
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.interf.OnFinishListener;
@@ -16,10 +13,7 @@ import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.constant.ValueConstant;
-import com.android.lib.util.StringUtil;
 import com.android.lib.util.fragment.two.FragManager2;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
@@ -28,8 +22,6 @@ import com.siweisoft.heavycenter.data.netd.unit.list.ListResBean;
 import com.siweisoft.heavycenter.data.netd.unit.search.SearchReqBean;
 import com.siweisoft.heavycenter.databinding.FragMyceUnitListBinding;
 import com.siweisoft.heavycenter.databinding.ItemMyceUnitBindBinding;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
 import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
 
 import java.util.List;
