@@ -21,8 +21,8 @@ import com.siweisoft.heavycenter.module.main.msg.MsgsFrag;
 import com.siweisoft.heavycenter.module.main.orders.OrdersFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
 import com.siweisoft.heavycenter.module.main.trans.TransFrag;
-import com.siweisoft.heavycenter.module.main.weigts.WeigtsFrag;
-import com.siweisoft.heavycenter.module.main.weigts.detail.DetailFrag;
+import com.siweisoft.heavycenter.module.main.weights.WeightsFrag;
+import com.siweisoft.heavycenter.module.main.weights.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.myce.MyceFrag;
 import com.siweisoft.heavycenter.module.myce.unit.nobind.NoBindFrag;
 import com.siweisoft.heavycenter.module.scan.ScanDAOpe;
@@ -61,7 +61,7 @@ public class MainDAOpe extends AppDAOpe {
             menudata.add(new BottomMenuBean(MainValue.称重, R.drawable.drawable_main_bottom_weight,new DetailFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         }else{
             RelativeLayout v0 = new RelativeLayout(context);v0.setId(MainValue.地磅ID);
-            menudata.add(new BottomMenuBean(MainValue.地磅, R.drawable.drawable_main_bottom_weight,new WeigtsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
+            menudata.add(new BottomMenuBean(MainValue.地磅, R.drawable.drawable_main_bottom_weight,new WeightsFrag(),v0, context.getResources().getColorStateList(R.color.color_hv_bottom_select)));
         }
 
         RelativeLayout v1 = new RelativeLayout(context);v1.setId(MainValue.运输单ID);

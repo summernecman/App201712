@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main.weigts.weighttips;
+package com.siweisoft.heavycenter.module.main.weights.weighttips;
 
 import android.view.View;
 import butterknife.OnClick;

@@ -1,8 +1,7 @@
-package com.siweisoft.heavycenter.module.main.weigts;
+package com.siweisoft.heavycenter.module.main.weights;
 
 //by summer on 2017-12-11.
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -14,23 +13,20 @@ import com.siweisoft.heavycenter.base.AppDAOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetDataOpe;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
-import com.siweisoft.heavycenter.data.netd.scan.weight.WeightRes;
 import com.siweisoft.heavycenter.data.netd.weight.list.WeightListReq;
 import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
 import com.siweisoft.heavycenter.data.netd.weight.save.SaveWeightReq;
 import com.siweisoft.heavycenter.data.netd.weight.save.SaveWeightRes;
-import com.siweisoft.heavycenter.module.main.weigts.weight.WeigtFrag;
+import com.siweisoft.heavycenter.module.main.weights.weight.WeigtFrag;
 
 import java.util.ArrayList;
 
-public class WeigtsDAOpe extends AppDAOpe {
+public class WeightsDAOpe extends AppDAOpe {
 
 
     private  WeightMsg weightMsg;
 
     ArrayList<Fragment> pages = new ArrayList<>();
-
-
 
 
     public ArrayList<Fragment> initPages(){

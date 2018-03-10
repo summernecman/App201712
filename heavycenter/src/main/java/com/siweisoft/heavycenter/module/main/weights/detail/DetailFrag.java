@@ -1,18 +1,12 @@
-package com.siweisoft.heavycenter.module.main.weigts.detail;
+package com.siweisoft.heavycenter.module.main.weights.detail;
 
 //by summer on 2017-12-11.
 
-import android.content.Intent;
 import android.view.View;
 
-import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.NullUtil;
-import com.android.lib.util.SPUtil;
-import com.android.lib.util.StringUtil;
-import com.android.lib.util.data.DateFormatUtil;
-import com.google.gson.reflect.TypeToken;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
@@ -25,7 +19,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import io.paperdb.Paper;
 

@@ -1,17 +1,12 @@
-package com.siweisoft.heavycenter.module.main.weigts.detail;
+package com.siweisoft.heavycenter.module.main.weights.detail;
 
 //by summer on 2017-12-11.
 
-import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
-import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.StringUtil;
-import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
@@ -20,8 +15,6 @@ import com.siweisoft.heavycenter.databinding.FragMainWeigtsDetailBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainWeightDetailBinding;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
 

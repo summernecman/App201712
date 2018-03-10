@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main.weigts.weight;
+package com.siweisoft.heavycenter.module.main.weights.weight;
 
 //by summer on 2017-12-11.
 
@@ -9,8 +9,6 @@ import butterknife.OnClick;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
 
 import java.text.DecimalFormat;
 

@@ -1,27 +1,16 @@
-package com.siweisoft.heavycenter.module.main.weigts.weight;
+package com.siweisoft.heavycenter.module.main.weights.weight;
 
 //by summer on 2017-12-11.
 
-import android.content.Context;
-
-import android.graphics.Color;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
-import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
-import com.siweisoft.heavycenter.data.netd.jpush.WeightRes;
 import com.siweisoft.heavycenter.databinding.FragMainWeigtBinding;
-import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
-import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.MainValue;
-import com.siweisoft.heavycenter.module.main.weigts.weighttips.WeightTipsFrag;
-import com.siweisoft.heavycenter.module.view.center.DiaLogCenterFrag;
+import com.siweisoft.heavycenter.module.main.weights.weighttips.WeightTipsFrag;
 import com.siweisoft.heavycenter.BR;
 
 import java.text.DecimalFormat;

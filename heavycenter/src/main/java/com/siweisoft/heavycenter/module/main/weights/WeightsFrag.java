@@ -1,11 +1,9 @@
-package com.siweisoft.heavycenter.module.main.weigts;
+package com.siweisoft.heavycenter.module.main.weights;
 
 //by summer on 2017-12-11.
 
-import android.content.Intent;
 import android.view.View;
 
-import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
 import com.android.lib.util.GsonUtil;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -15,7 +13,7 @@ import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.data.netd.weight.list.WeightListRes;
 import com.siweisoft.heavycenter.data.netd.weight.save.SaveWeightRes;
 import com.siweisoft.heavycenter.module.main.MainAct;
-import com.siweisoft.heavycenter.module.main.weigts.weight.WeigtFrag;
+import com.siweisoft.heavycenter.module.main.weights.weight.WeigtFrag;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -25,17 +23,17 @@ import org.json.JSONObject;
 
 import butterknife.OnClick;
 
-public class WeigtsFrag extends AppFrag<WeigtsUIOpe,WeigtsDAOpe> {
+public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
 
 
     @Override
     protected void onFristVisibleDelayInit() {
-        getP().getU().initPages(this,getP().getD().initPages());
+
         getP().getD().listWeight(new UINetAdapter<WeightListRes>(this) {
             @Override
             public void onSuccess(WeightListRes o) {
                 super.onSuccess(o);
-
+                getP().getU().initPages(getFrag(),getP().getD().initPages());
             }
         });
     }

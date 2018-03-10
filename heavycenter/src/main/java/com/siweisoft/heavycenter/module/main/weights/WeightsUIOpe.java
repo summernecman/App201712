@@ -1,25 +1,21 @@
-package com.siweisoft.heavycenter.module.main.weigts;
+package com.siweisoft.heavycenter.module.main.weights;
 
 //by summer on 2017-12-11.
 
-import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.support.v4.app.Fragment;
 
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.util.LogUtil;
-import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.base.AppUIOpe;
-import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.databinding.FragMainWeigtsBinding;
 import com.siweisoft.heavycenter.BR;
 
 import java.util.ArrayList;
 
-public class WeigtsUIOpe extends AppUIOpe<FragMainWeigtsBinding> {
+public class WeightsUIOpe extends AppUIOpe<FragMainWeigtsBinding> {
 
 
     public void initRefresh(){
