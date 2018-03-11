@@ -153,6 +153,12 @@ public  class TransDetailRes extends BaseBean {
         this.productName = productName;
     }
 
+    @Bindable
+    public String getProductNameAndSpecification() {
+        return StringUtil.getStr(productName)+"\t\t"+StringUtil.getStr(specifications);
+    }
+
+
     public String getCarLicenseNo() {
         return carLicenseNo;
     }

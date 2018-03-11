@@ -27,6 +27,8 @@ public class OrdersDAOpe extends BaseDAOpe {
 
     private int companyid = LocalValue.get登录返回信息().getCompanyId();
 
+    private String 较多的订单类型 = "S";
+
 
     public ArrayList<Fragment> initPages(){
         pages.clear();
@@ -59,5 +61,13 @@ public class OrdersDAOpe extends BaseDAOpe {
 
     public void setCompanyid(int companyid) {
         this.companyid = companyid;
+    }
+
+    public String get较多的订单类型() {
+        return 较多的订单类型;
+    }
+
+    public void set较多的订单类型(String 较多的订单类型) {
+        this.较多的订单类型 = 较多的订单类型;
     }
 }

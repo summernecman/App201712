@@ -63,7 +63,7 @@ public class Test {
         loginResBean.setTrueName("唐杰");
         loginResBean.setUserCount(10);
         loginResBean.setUserId(150);
-        loginResBean.setUserPhoto("1747494443");
+        loginResBean.setUserPhoto("13355550000");
         loginResBean.setUserRole(LoginResBean.USER_ROLE_ADMIN);
         loginResBean.setUserType(UserTypeReqBean.非驾驶员);
         loginResBean.setVehicleCount(10);

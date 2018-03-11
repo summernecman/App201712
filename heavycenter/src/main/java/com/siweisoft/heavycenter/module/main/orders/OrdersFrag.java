@@ -88,6 +88,7 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
 
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,2);
+                bundle.putString(ValueConstant.DATA_TYPE,getP().getD().get较多的订单类型());
                 FragManager2.getInstance().start(getBaseUIAct(),get容器(),new NewOrderFrag(),bundle);
                 break;
             case R.id.ftv_right:

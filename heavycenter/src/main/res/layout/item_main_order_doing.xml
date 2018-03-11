@@ -113,33 +113,19 @@
             app:layout_constraintGuide_begin="100dp" />
 
 
-        <TextView
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
             tools:text="混凝土"
             android:id="@+id/tv_goodname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
             android:singleLine="true"
-            android:text="@{item_main_order_doing.productName}"
+            android:text="@{item_main_order_doing.productNameAndSpecification}"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_title_txtsize"
             app:layout_constraintLeft_toRightOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            tools:text="c000"
-            android:id="@+id/tv_spes"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:includeFontPadding="false"
-            android:singleLine="true"
-            android:text="@{item_main_order_doing.specification}"
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_goodname"
-            app:layout_constraintRight_toLeftOf="@+id/tv_carno"
-            app:layout_constraintLeft_toRightOf="@+id/tv_goodname" />
 
 
         <TextView

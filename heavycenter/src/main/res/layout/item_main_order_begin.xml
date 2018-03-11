@@ -24,7 +24,7 @@
         android:id="@+id/ll_neworder"
         >
 
-        <TextView
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
             tools:text="混凝土"
             android:includeFontPadding="false"
             android:id="@+id/tv_productName"
@@ -33,22 +33,10 @@
             android:singleLine="true"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-            android:text="@{item_main_order_begin.productName}"
+            android:text="@{item_main_order_begin.productNameAndSpecification}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <TextView
-            tools:text="c300"
-            android:includeFontPadding="false"
-            app:layout_constraintLeft_toRightOf="@+id/tv_productName"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
-            android:singleLine="true"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-            android:text="@{item_main_order_begin.specification}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
         <TextView
             tools:text="1"
             android:paddingLeft="2dp"

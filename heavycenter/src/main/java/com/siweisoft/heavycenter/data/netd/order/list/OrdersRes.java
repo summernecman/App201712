@@ -243,6 +243,12 @@ public class OrdersRes extends BaseBean {
             return productName;
         }
 
+
+        @Bindable
+        public String getProductNameAndSpecification() {
+            return StringUtil.getStr(productName)+"\t\t"+StringUtil.getStr(specification);
+        }
+
         public void setProductName(String productName) {
             this.productName = productName;
         }

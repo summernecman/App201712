@@ -56,7 +56,7 @@
             android:background="@drawable/icon_hv_main_order_detail"/>
 
 
-        <TextView
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
             android:includeFontPadding="false"
             android:gravity="top"
             tools:text="混凝土"
@@ -65,25 +65,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:text="@{frag_main_trans_detail.productName}"
+            android:text="@{frag_main_trans_detail.productNameAndSpecification}"
             android:textColor="@color/white"
             android:textSize="@dimen/hv_dimen_text_title_aaaaa"
             app:layout_constraintLeft_toLeftOf="@+id/line_left"
             app:layout_constraintTop_toTopOf="@+id/line_top"/>
 
-        <TextView
-            android:includeFontPadding="false"
-            android:gravity="top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="14dp"
-            android:singleLine="true"
-            android:text="@{frag_main_trans_detail.specifications}"
-            android:textColor="@color/white"
-            android:textSize="@dimen/hv_dimen_text_title_aaaaa"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_productName"
-            app:layout_constraintLeft_toRightOf="@+id/tv_productName"
-            app:layout_goneMarginLeft="15dp"/>
 
 
         <TextView

@@ -48,6 +48,13 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
             case ViewListener.TYPE_ONCLICK:
                 switch (v.getId()){
                     case R.id.iv_state:
+                        CityResBean.ProvinceListBean list = (CityResBean.ProvinceListBean)v.getTag(R.id.data);
+                        for(int i=0;i<list.getCityList().size();i++){
+                            list.getCityList().get(i).setCheckStatus(CityResBean.ProvinceListBean.CHECK_STATE_FULL);
+                        }
+                        getArguments().putInt(ValueConstant.DATA_POSITION2,(int) v.getTag(R.id.position));
+                        getArguments().putSerializable(ValueConstant.DATA_DATA,list);
+                        onResult(1,getArguments());
                         break;
                     default:
                         FragManager2.getInstance().start(getBaseUIAct(), get容器(),

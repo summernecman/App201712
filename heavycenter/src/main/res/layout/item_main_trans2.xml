@@ -61,7 +61,7 @@
                 android:textColor="@color/color_hv_yelll"
                 android:textSize="13sp" />
 
-        <TextView
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
             tools:text="混凝土"
@@ -70,28 +70,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:text='@{StringUtil.getStr(item_main_trans2.productName)}'
+                android:text='@{StringUtil.getStr(item_main_trans2.productNameAndSpecification)}'
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen_recylce_item_title_txtsize"
                 app:layout_constraintLeft_toRightOf="@id/circlebar"
                 app:layout_constraintTop_toTopOf="@id/circlebar" />
 
-        <TextView
-            android:ellipsize="marquee"
-            android:marqueeRepeatLimit="marquee_forever"
-            tools:text="c300"
-                android:id="@+id/tv_specifications"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:singleLine="true"
-                android:text='@{StringUtil.getStr(item_main_trans2.specifications)}'
-                android:textColor="@color/white"
-                android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-                app:layout_constraintBottom_toBottomOf="@+id/productName"
-                app:layout_constraintLeft_toRightOf="@+id/productName"
-            app:layout_constraintRight_toLeftOf="@+id/tv_carlicenseno"
-        />
 
         <TextView
                 android:id="@+id/type_send_left"

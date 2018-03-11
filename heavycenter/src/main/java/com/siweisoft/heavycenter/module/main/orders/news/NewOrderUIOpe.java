@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.main.orders.news;
 import android.view.View;
 
 import com.android.lib.base.ope.BaseUIOpe;
+import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
@@ -22,7 +23,14 @@ public class NewOrderUIOpe extends BaseUIOpe<FragMainOrderNewBinding>{
     public void initUI() {
         views.add(bind.tvSend);
         views.add(bind.tvReceipt);
-        bind.tvSend.setSelected(true);
+        if(StringUtil.equals(getFrag().getArguments().getString(ValueConstant.DATA_TYPE,"S"),"S")){
+            bind.tvSend.setSelected(true);
+            bind.tvReceipt.setSelected(false);
+        }else{
+            bind.tvSend.setSelected(false);
+            bind.tvReceipt.setSelected(true);
+        }
+
         changeType(true);
     }
 

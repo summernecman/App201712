@@ -105,7 +105,6 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                 holder.viewDataBinding.getRoot().setSelected(position%2==0?true:false);
                 ItemMainTrans2Binding itemMainTrans2Binding = (ItemMainTrans2Binding) holder.viewDataBinding;
                 itemMainTrans2Binding.productName.setSelected(true);
-                itemMainTrans2Binding.tvSpecifications.setSelected(true);
             }
 
 

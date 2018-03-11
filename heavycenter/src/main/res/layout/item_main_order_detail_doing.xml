@@ -111,7 +111,7 @@
 
         <TextView
             tools:text="混凝土"
-            android:text="@{item_main_order_detail_doing.productName}"
+            android:text="@{item_main_order_detail_doing.productNameAndSpecification}"
             android:includeFontPadding="false"
             app:layout_constraintLeft_toRightOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="parent"
@@ -122,20 +122,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <TextView
-            tools:text="c000"
-            android:includeFontPadding="false"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_goodname"
-            app:layout_constraintLeft_toRightOf="@+id/tv_goodname"
-            app:layout_constraintRight_toLeftOf="@+id/tv_carno"
-            android:id="@+id/tv_spes"
-            android:singleLine="true"
-            android:layout_marginLeft="15dp"
-            android:text="@{item_main_order_detail_doing.specification}"
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
 
 
         <TextView

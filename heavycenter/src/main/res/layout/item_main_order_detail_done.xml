@@ -19,29 +19,18 @@
             android:id="@+id/ll_doneorder"
             android:transitionName="doingorder">
 
-            <TextView
+            <com.siweisoft.heavycenter.module.view.text.MarqTextView
                 android:includeFontPadding="false"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:id="@+id/tv_goodname"
                 android:singleLine="true"
-                android:text="@{item_main_order_detail_done.productName}"
+                android:text="@{item_main_order_detail_done.productNameAndSpecification}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/dimen_recylce_item_title_txtsize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:includeFontPadding="false"
-                app:layout_constraintLeft_toRightOf="@+id/tv_goodname"
-                android:id="@+id/tv_spes"
-                android:text="@{item_main_order_detail_done.specification}"
-                android:singleLine="true"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/white"
-                android:textSize="@dimen/dimen_recylce_item_title_txtsize"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
 
             <TextView
