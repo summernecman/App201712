@@ -31,7 +31,7 @@ import cn.jpush.android.api.JPushInterface;
 public class HCApp extends LibAplication implements OnFinishListener{
 
 
-    public static boolean test  = true;
+    public static boolean test  = false;
 
     //static 代码段可以防止内存泄露
     static {

@@ -93,7 +93,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
         getP().getD().Cars(getP().getD().getCarsReqBean(),new UINetAdapter<CarsResBean>(this) {
             @Override
             public void onSuccess(CarsResBean o) {
-                o = new Test().getCarsResBean();
+                //o = new Test().getCarsResBean();
                 getP().getD().setNetcarsRes(o);
                 getP().getU().LoadListData( getP().getD().searchCar(""),getArguments().getString(ValueConstant.DATA_POSITION),CarFrag.this);
                 getP().getU().finishRefresh();

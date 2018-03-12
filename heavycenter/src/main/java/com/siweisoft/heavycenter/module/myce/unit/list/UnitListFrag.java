@@ -9,6 +9,7 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -155,10 +156,11 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                                         case R.id.tv_n:
                                             break;
                                         case R.id.tv_y:
-                                            getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(UnitListFrag.this,true) {
+                                            getP().getD().bindUnit(unitInfo.getCompanyId(), false,new UINetAdapter<BindResBean>(UnitListFrag.this) {
                                                 @Override
-                                                public void onResult(boolean success, String msg, BindResBean o) {
-                                                    super.onResult(success, msg, o);
+                                                public void onSuccess(BindResBean o) {
+                                                    super.onSuccess(o);
+                                                    ToastUtil.getInstance().showShort(getBaseUIAct(),"用户申请绑定单位成功");
                                                     getP().getD().getInfo(new UINetAdapter<LoginResBean>(getContext()) {
                                                         @Override
                                                         public void onResult(boolean success, String msg, LoginResBean o) {
@@ -170,6 +172,12 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                                                             }
                                                         }
                                                     });
+                                                }
+
+                                                @Override
+                                                public void onFail(boolean haveData, String msg) {
+                                                    super.onFail(haveData, msg);
+                                                    ToastUtil.getInstance().showShort(getBaseUIAct(), StringUtil.getStr(msg));
                                                 }
                                             });
                                             break;

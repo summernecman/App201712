@@ -39,7 +39,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
         getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<OrdersRes.ResultsBean>(this,UINetAdapter.Loading) {
             @Override
             public void onSuccess(OrdersRes.ResultsBean o) {
-                o= new Test().getOrdersRes().getResults().get(0);
+                //o= new Test().getOrdersRes().getResults().get(0);
                 getP().getD().setData(o);
                 getP().getU().initUI(getArguments().getString(ValueConstant.TYPE),getP().getD().getData());
                 getP().getU().initdata(getP().getD().getData().getVehicleList(),DetailFrag.this);

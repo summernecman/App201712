@@ -20,11 +20,13 @@ public class StoreDAOpe extends BaseDAOpe {
 
     private StoresResBean storesResBean = new StoresResBean();
 
+    private int comid =LocalValue.get登录返回信息().getCompanyId() ;
+
 
 
     public void storesInfo(NetI<StoresResBean> adapter){
         StoresReqBean reqBean = new StoresReqBean();
-        reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+        reqBean.setCompanyId(comid);
         reqBean.setIsApp(1);
         reqBean.setPageIndex(getPageIndex());
         reqBean.setPageSize(20);
@@ -47,5 +49,13 @@ public class StoreDAOpe extends BaseDAOpe {
 
     public void setPageIndex(int pageIndex) {
         this.pageIndex = pageIndex;
+    }
+
+    public int getComid() {
+        return comid;
+    }
+
+    public void setComid(int comid) {
+        this.comid = comid;
     }
 }

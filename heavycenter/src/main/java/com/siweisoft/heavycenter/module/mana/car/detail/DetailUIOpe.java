@@ -4,10 +4,12 @@ package com.siweisoft.heavycenter.module.mana.car.detail;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.Editable;
 import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.fragment.BaseUIFrag;
+import com.android.lib.base.listener.BaseTextWather;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.NullUtil;
@@ -55,15 +57,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
             case CarDetailValue.新建车辆:
                 bind.bindcartip.setVisibility(View.GONE);
                 bind.top.setVisibility(View.VISIBLE);
-                bind.top.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        bind.etName.setText("");
-                    }
-                });
-//                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
-//                    bind.title.getRightIV2().setVisibility(View.GONE);
-//                }
+                bind.tvY.setText("确定");
                 bind.title.getMidTV().setText("新建车辆");
                 break;
             case CarDetailValue.绑定车辆:
@@ -205,6 +199,18 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 
     public void notifyDataSetChanged(){
         bind.recycle.getAdapter().notifyDataSetChanged();
+    }
+
+    public boolean canSearchCar(){
+        if(bind.etName.getText().toString().length()!=7){
+            ToastUtil.getInstance().showShort(getActivity(),"车牌号输入不正确");
+            return false;
+        }
+        return true;
+    }
+
+    public String getCarNO(){
+        return bind.etName.getText().toString();
     }
 
 }

@@ -105,7 +105,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
         OrderDAOpe.orders(getP().getD().getOrdersFrag().getP().getD().getCompanyid(),getBaseUIAct(),getP().getD().getSTATUS(),getP().getD().getPageIndex(),new UINetAdapter<OrdersRes>(this) {
             @Override
             public void onSuccess(OrdersRes o) {
-                o= new Test().getOrdersRes();
+                //o= new Test().getOrdersRes();
                 getP().getD().setOrdersRes(o);
                 getP().getD().getOrdersFrag().getP().getD().set较多的订单类型(o.getOrderType());
                 getP().getD().getOrdersFrag().getP().getU().refreshTopMenu(o);

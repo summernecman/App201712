@@ -96,7 +96,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
         getP().getD().storesInfo(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库,new UINetAdapter<StoresResBean>(this) {
             @Override
             public void onSuccess(StoresResBean o) {
-                o = new Test().getStoresResBean();
+                //o = new Test().getStoresResBean();
                 getP().getU().finishRefresh();
                 getP().getU().LoadListData(o,StoreFrag.this);
             }

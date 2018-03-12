@@ -22,6 +22,8 @@ import com.siweisoft.heavycenter.databinding.FragManaStoreListBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainStoreBinding;
 import com.siweisoft.heavycenter.databinding.ItemMainStoreCheckBinding;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 public class CheckUIOpe extends AppUIOpe<FragMainStoreCheckBinding>{
@@ -57,7 +59,7 @@ public class CheckUIOpe extends AppUIOpe<FragMainStoreCheckBinding>{
                         if(NullUtil.isStrEmpty(ss.trim())){
                             ss= "0";
                         }
-                        itemMainStoreCheckBinding.tvAfter.setText(StringUtil.getStr( Float.parseFloat(ss.toString())- o.getResults().get(position).getCurrentStock())+"t");
+                        itemMainStoreCheckBinding.tvAfter.setText(new BigDecimal(Float.parseFloat(ss.toString())- o.getResults().get(position).getCurrentStock()).setScale(1, RoundingMode.HALF_UP).toString()+"t");
                         o.getResults().get(position).setAfterAdjust(Float.parseFloat(ss.toString()));
                     }
                 });

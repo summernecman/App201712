@@ -15,6 +15,9 @@ import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.module.view.progress.ProgressView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class StoreView extends RelativeLayout {
 
     private TextView minGoodTV;
@@ -62,11 +65,13 @@ public class StoreView extends RelativeLayout {
         maxView.setVisibility(View.VISIBLE);
         minView.setVisibility(View.VISIBLE);
         currentTV.setVisibility(View.VISIBLE);
-        minStoreTV.setText("仓库安全:"+StringUtil.getStr(minstore)+"t");
-        minGoodTV.setText("物料安全:"+StringUtil.getStr(mingood)+"t");
-        maxStoreTV.setText("仓库最大:"+StringUtil.getStr(maxstore)+"t");
-        maxGoodTV.setText("物料最大:"+StringUtil.getStr(maxgood)+"t");
-        currentTV.setText("当前:"+StringUtil.getStr(now)+"t");
+
+
+        minStoreTV.setText("仓库安全:"+StringUtil.getStr( new BigDecimal(minstore).setScale(1, RoundingMode.HALF_UP).toString())+"t");
+        minGoodTV.setText("物料安全:"+StringUtil.getStr(  new BigDecimal(mingood).setScale(1, RoundingMode.HALF_UP).toString())+"t");
+        maxStoreTV.setText("仓库最大:"+StringUtil.getStr(  new BigDecimal(maxstore).setScale(1, RoundingMode.HALF_UP).toString())+"t");
+        maxGoodTV.setText("物料最大:"+StringUtil.getStr(  new BigDecimal(maxgood).setScale(1, RoundingMode.HALF_UP).toString())+"t");
+        currentTV.setText("当前:"+StringUtil.getStr(new BigDecimal(now).setScale(1, RoundingMode.HALF_UP).toString())+"t");
 
         float max = Math.min(maxstore,maxgood);
         float min = Math.max(mingood,minstore);

@@ -22,7 +22,6 @@ public class MsgDAOpe extends BaseDAOpe {
     private MsgsResBean msgsResBean = new MsgsResBean();
 
 
-
     public void getMsgSys(String type,NetI<MsgsResBean> adapter){
         MsgsReqBean msgsReqBean = new MsgsReqBean();
         msgsReqBean.setUserId(LocalValue.get登录返回信息().getUserId());

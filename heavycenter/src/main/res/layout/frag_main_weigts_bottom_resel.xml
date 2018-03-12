@@ -54,27 +54,23 @@
 
 
         <TextView
-                app:layout_constraintTop_toTopOf="@+id/tv_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_select_sel"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/tv_save_sel"
                 android:gravity="center"
-                android:layout_marginTop="7dp"
                 android:id="@+id/tv_tips"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:includeFontPadding="false"
                 tools:text="此次称重信息将保存\n,您需要后续在订单中选择进行关联的称重信息"
                 android:textColor="@color/black"
-                android:textSize="@dimen/hv_dimen_text_aaa"
-                app:layout_constraintTop_toBottomOf="@+id/tv_goodname"
-                app:layout_constraintLeft_toRightOf="@+id/tv_type" />
+                android:textSize="@dimen/hv_dimen_text_aaa" />
 
 
 
         <com.siweisoft.heavycenter.module.view.text.BgTextView
-           app:layout_constraintTop_toTopOf="@+id/tv_tips"
+           app:layout_constraintTop_toBottomOf="@+id/tv_tips"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

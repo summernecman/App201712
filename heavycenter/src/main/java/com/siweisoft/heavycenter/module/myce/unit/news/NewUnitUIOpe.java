@@ -103,7 +103,6 @@ public class NewUnitUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
                 bind.unitaddr.setEnabled(false);bind.unitaddr.getRightIV().setBackgroundResource(R.color.transparent);
                 bind.area.setEnabled(false);bind.area.getRightIV().setBackgroundResource(R.color.transparent);
                 bind.title.getMidTV().setText("单位信息");
-                bind.title.getRightIV2().setEnabled(false);
                 bind.title.getRightIV2().setImageResource(R.drawable.icon_hv_quit);
 
 

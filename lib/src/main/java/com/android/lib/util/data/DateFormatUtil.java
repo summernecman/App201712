@@ -31,6 +31,8 @@ public class DateFormatUtil {
 
     public static final String YYYY_MM_DD_HH_MM = "yyyy-MM-dd HH:mm";
 
+    public static final String YYYY_MM_DD_HH_MM2 = "yyyy/MM/dd HH:mm";
+
     public static final String YYYY_MM_DD_HH = "yyyy-MM-dd HH";
 
     public static final String YYYY_MM_DD = "yyyy-MM-dd";

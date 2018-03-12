@@ -56,10 +56,10 @@
             android:id="@+id/tv_maotime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:textSize="17sp"
             android:text="@{item_main_trans_detail.grossTimeCN}"
-            app:layout_constraintLeft_toRightOf="@+id/tv_mao"
+            app:layout_constraintRight_toLeftOf="@+id/lab_ck"
+            android:layout_marginRight="5dp"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -125,7 +125,8 @@
             android:textSize="17sp"
             android:text="@{item_main_trans_detail.tareTimeCN}"
             app:layout_constraintBottom_toBottomOf="@+id/lab_pi"
-            app:layout_constraintLeft_toRightOf="@+id/tv_pi" />
+            app:layout_constraintRight_toLeftOf="@+id/lab_bz"
+            android:layout_marginRight="5dp" />
 
 
         <TextView
@@ -176,7 +177,8 @@
             android:layout_marginLeft="15dp"
             android:text='@{item_main_trans_detail.deduct+""}'
             app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
-            app:layout_constraintLeft_toRightOf="@+id/lab_kou" />
+            app:layout_constraintRight_toLeftOf="@+id/lab_czr"
+            android:layout_marginRight="5dp" />
 
 
         <TextView

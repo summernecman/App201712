@@ -3,6 +3,7 @@ package com.siweisoft.heavycenter.module.view.text;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -13,6 +14,18 @@ public class MarqTextView extends android.support.v7.widget.AppCompatTextView{
 
     public MarqTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        setSelected(true);
+    }
+
+    @Override
+    protected void onVisibilityChanged(View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+        setSelected(true);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
         setSelected(true);
     }
 }

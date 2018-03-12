@@ -27,6 +27,7 @@ public class TransDAOpe extends BaseDAOpe {
 
     private int pageIndex = NetValue.PAGE_INDEX_START;
 
+    private int comid = LocalValue.get登录返回信息().getCompanyId();
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();
@@ -39,11 +40,12 @@ public class TransDAOpe extends BaseDAOpe {
 
     public TransReq getTransReq(int pageIndex) {
         transReq.setIsApp(1);
-        if(OjectUtil.equals(LocalValue.get登录返回信息().getUserType(), UserTypeReqBean.驾驶员)){
-            transReq.setUserId(LocalValue.get登录返回信息().getUserId());
-        }else{
-            transReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
-        }
+//        if(OjectUtil.equals(LocalValue.get登录返回信息().getUserType(), UserTypeReqBean.驾驶员)){
+//            transReq.setUserId(LocalValue.get登录返回信息().getUserId());
+//        }else{
+//            transReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
+//        }
+        transReq.setCompanyId(comid);
         transReq.setPageIndex(pageIndex);
         transReq.setPageSize(10);
         return transReq;
@@ -76,5 +78,11 @@ public class TransDAOpe extends BaseDAOpe {
         this.pageIndex = pageIndex;
     }
 
+    public int getComid() {
+        return comid;
+    }
 
+    public void setComid(int comid) {
+        this.comid = comid;
+    }
 }

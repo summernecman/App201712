@@ -75,7 +75,7 @@
             android:clickable="true"
             android:id="@+id/item_starttime"
             app:txt_left = "开始时间"
-            app:txt_mid = "@{frag_main_order_detail.startTimeCN}"
+            app:txt_mid = "@{frag_main_order_detail.startTimeCN3}"
             app:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -84,7 +84,7 @@
             android:clickable="true"
             android:id="@+id/item_endtime"
             app:txt_left = "结束时间"
-            app:txt_mid = "@{frag_main_order_detail.finishTimeCN}"
+            app:txt_mid = "@{frag_main_order_detail.finishTimeCN3}"
             app:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

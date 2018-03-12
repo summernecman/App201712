@@ -31,14 +31,14 @@
 
         <com.siweisoft.heavycenter.module.view.image.TypeImage
             android:id="@+id/typeimage"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
+            android:layout_width="17dp"
+            android:layout_height="17dp" />
 
-        <TextView
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
             android:id="@+id/tv_name"
             android:layout_weight="1"
             android:singleLine="true"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:textColor="@color/black"
             android:layout_marginLeft="10dp"
             android:text="@{item_myce_unit_new_city.value}"

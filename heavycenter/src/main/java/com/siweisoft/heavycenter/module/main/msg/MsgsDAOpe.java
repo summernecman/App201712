@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class MsgsDAOpe extends BaseDAOpe {
 
 
+    private int comid;
 
 
     public ArrayList<Fragment> getPages(){
@@ -28,5 +29,11 @@ public class MsgsDAOpe extends BaseDAOpe {
         return pages;
     }
 
+    public int getComid() {
+        return comid;
+    }
 
+    public void setComid(int comid) {
+        this.comid = comid;
+    }
 }

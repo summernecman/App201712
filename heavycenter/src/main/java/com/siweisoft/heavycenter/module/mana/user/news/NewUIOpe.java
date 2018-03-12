@@ -59,6 +59,12 @@ public class NewUIOpe extends AppUIOpe<FragManaUserDetailBinding> implements Vie
             case NewUserValue.用户信息:
                 fragManaUserInfoBinding = DataBindingUtil.bind(LayoutInflater.from(getActivity()).inflate(R.layout.frag_mana_user_info,null));
                 bind.llUserdetail.addView(fragManaUserInfoBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                bind.title.getRightIV2().setBackgroundResource(R.drawable.icon_hv_save);
+                bind.title.getRightIV2().setVisibility(View.GONE);
+                fragManaUserInfoBinding.llRole.setVisibility(View.GONE);
+                fragManaUserInfoBinding.tvUser.setOnClickListener(this);views.add(fragManaUserInfoBinding.tvUser);fragManaUserInfoBinding.tvUser.setTag(R.id.data, LoginResBean.USER_ROLE_GENERAL);
+                fragManaUserInfoBinding.tvMana.setOnClickListener(this);views.add(fragManaUserInfoBinding.tvMana);fragManaUserInfoBinding.tvMana.setTag(R.id.data, LoginResBean.USER_ROLE_ADMIN);
+
                 break;
 
         }
@@ -72,23 +78,28 @@ public class NewUIOpe extends AppUIOpe<FragManaUserDetailBinding> implements Vie
 
         if(OjectUtil.equals(userInfo.getUserType(), UserTypeReqBean.驾驶员)){
             fragManaUserInfoBinding.llRole.setVisibility(View.GONE);
-            fragManaUserInfoBinding.llImage.setVisibility(View.VISIBLE);
+            fragManaUserInfoBinding.ivCarlicenseno.setVisibility(View.VISIBLE);
+            fragManaUserInfoBinding.itemDriverno.setVisibility(View.VISIBLE);
+            fragManaUserInfoBinding.itemDriverno.setMidTVTxt(StringUtil.getStr(userInfo.getCarLicenseNo()));
             GlideApp.with(context).asBitmap().load(NetValue.获取地址(userInfo.getVehicleLicensePhoto())).placeholder(R.drawable.icon_hv_car).centerCrop().into(fragManaUserInfoBinding.ivCarlicenseno);
-            GlideApp.with(context).asBitmap().load(NetValue.获取地址(userInfo.getVehiclePhoto())).placeholder(R.drawable.icon_hv_driveid).centerCrop().into(fragManaUserInfoBinding.ivDriverno);
+
         }else{
-            fragManaUserInfoBinding.llRole.setVisibility(View.VISIBLE);
-            fragManaUserInfoBinding.llImage.setVisibility(View.GONE);
+            fragManaUserInfoBinding.itemDriverno.setVisibility(View.GONE);
+            fragManaUserInfoBinding.ivCarlicenseno.setVisibility(View.GONE);
+            bind.title.getRightIV2().setVisibility(View.VISIBLE);
             switch (userInfo.getUserRole()){
-                case LoginResBean.USER_ROLE_ADMIN:
                 case LoginResBean.USER_ROLE_SUPER_ADMIN:
                 case LoginResBean.USER_ROLE_SYS_ADMIN:
-                    fragManaUserInfoBinding.tvUser.setSelected(true);
-                    fragManaUserInfoBinding.tvMana.setSelected(false);
+                    bind.title.getRightIV2().setVisibility(View.GONE);
+                    fragManaUserInfoBinding.llRole.setVisibility(View.GONE);
+                    break;
+                case LoginResBean.USER_ROLE_ADMIN:
+                    fragManaUserInfoBinding.llRole.setVisibility(View.VISIBLE);
+                   onClick(fragManaUserInfoBinding.tvMana);
                     break;
                 case LoginResBean.USER_ROLE_GENERAL:
-                case LoginResBean.USER_ROLE_DRIVER:
-                    fragManaUserInfoBinding.tvUser.setSelected(false);
-                    fragManaUserInfoBinding.tvMana.setSelected(true);
+                    fragManaUserInfoBinding.llRole.setVisibility(View.VISIBLE);
+                    onClick(fragManaUserInfoBinding.tvUser);
                     break;
             }
         }
@@ -117,6 +128,15 @@ public class NewUIOpe extends AppUIOpe<FragManaUserDetailBinding> implements Vie
                 views.get(i).setSelected(false);
             }
         }
+    }
+
+    public String getSelectRole(){
+        for(int i=0;i<views.size();i++){
+            if(views.get(i).isSelected()){
+               return (String) views.get(i).getTag(R.id.data);
+            }
+        }
+        return null;
     }
 
     public AddUserReqBean getUser(AddUserReqBean reqBean){

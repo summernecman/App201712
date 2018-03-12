@@ -70,7 +70,7 @@ public  class TransDetailRes extends BaseBean {
     private String orderNo;
     private int userId;
     private String develiverCompanyName;
-    private Integer carNumber;
+    private int carNumber;
     private int ordersId;
     private double totalSuttle;
     private double planNumber;
@@ -288,11 +288,11 @@ public  class TransDetailRes extends BaseBean {
     }
 
 
-    public Integer getCarNumber() {
+    public int getCarNumber() {
         return carNumber;
     }
 
-    public void setCarNumber(Integer carNumber) {
+    public void setCarNumber(int carNumber) {
         this.carNumber = carNumber;
     }
 
@@ -655,7 +655,7 @@ public  class TransDetailRes extends BaseBean {
             if(getDeductTime()==null){
                 return "";
             }
-            return DateFormatUtil.getdDateStr(DateFormatUtil.HH_MM,new Date(getDeductTime()))+"t";
+            return DateFormatUtil.getdDateStr(DateFormatUtil.HH_MM,new Date(getDeductTime()))+"";
         }
 
         public void setDeductTime(Long deductTime) {
@@ -671,7 +671,7 @@ public  class TransDetailRes extends BaseBean {
             if(getTareTime()==null){
                 return "";
             }
-            return DateFormatUtil.getdDateStr(DateFormatUtil.HH_MM,new Date(getTareTime()))+"t";
+            return DateFormatUtil.getdDateStr(DateFormatUtil.HH_MM,new Date(getTareTime()))+"";
         }
 
         public void setTareTime(Long tareTime) {
@@ -686,7 +686,7 @@ public  class TransDetailRes extends BaseBean {
             if(getGrossTime()==null){
                 return "";
             }
-            return DateFormatUtil.getdDateStr(DateFormatUtil.HH_MM,new Date(getGrossTime()))+"t";
+            return DateFormatUtil.getdDateStr(DateFormatUtil.HH_MM,new Date(getGrossTime()))+"";
         }
 
         public void setGrossTime(Long grossTime) {

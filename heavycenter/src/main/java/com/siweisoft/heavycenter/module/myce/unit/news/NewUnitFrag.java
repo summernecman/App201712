@@ -121,6 +121,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                                                         super.onResult(success, msg, o);
                                                         if(success){
                                                             LocalValue.save登录返回信息(o);
+                                                            getBaseUIAct().onBackPressed();
                                                             ((MainAct) getBaseUIAct()).go判断是否绑定单位处理();
                                                         }
                                                     }
@@ -155,6 +156,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                                         @Override
                                         public void onFinish(Object o) {
                                             ((MainAct)getBaseUIAct()).getP().getD().getMyceFrag().initUINET();
+                                            getBaseUIAct().onBackPressed();
                                         }
                                     });
                                 }
@@ -184,7 +186,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                 if(bundle!=null && bundle.getSerializable(ValueConstant.DATA_DATA2)!=null){
                     UnitInfo unit = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
                     getP().getD().getUnit().setParentCompanyName(unit.getCompanyName());
-                    getP().getD().getUnit().setParentCompanyId(unit.getId());
+                    getP().getD().getUnit().setParentCompanyId(unit.getTrueComId());
                     getP().getU().initUPUnitinfo(getP().getD().getUnit());
                 }
                 break;

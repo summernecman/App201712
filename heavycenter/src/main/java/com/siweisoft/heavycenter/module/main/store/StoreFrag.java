@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.main.store;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.lib.base.interf.view.OnAppItemClickListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.NetAdapter;
@@ -15,14 +16,20 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
+import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.NetValue;
+import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoreDetail;
 import com.siweisoft.heavycenter.data.netd.mana.store.list.StoresResBean;
 import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.main.store.check.CheckFrag;
 import com.siweisoft.heavycenter.module.main.store.check.CheckValue;
 import com.siweisoft.heavycenter.module.main.store.detail.DetailFrag;
+import com.siweisoft.heavycenter.module.upunit.TitleTipFrag;
 import com.siweisoft.heavycenter.module.view.scan.ScanAct;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.OnClick;
 
@@ -36,7 +43,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
         onRefresh(null);
     }
 
-    @OnClick({R.id.ftv_right2})
+    @OnClick({R.id.ftv_right2,R.id.ftv_title})
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
@@ -51,6 +58,29 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 if(getActivity() instanceof MainAct){
                     new IntentIntegrator(getBaseAct()).setCaptureActivity(ScanAct.class).initiateScan();
                 }
+                break;
+            case R.id.ftv_title:
+                final List<String> strs = new ArrayList<>();
+                final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get登录返回信息().getBranchCompanyList();
+                if(coms==null||coms.size()==0){
+                    return;
+                }
+                for(int i = 0;coms!=null&& i< coms.size(); i++){
+                    strs.add(coms.get(i).getAbbreviationName());
+                }
+                TitleTipFrag tipFrag = new TitleTipFrag();
+                tipFrag.setOnAppItemsClickListener(new OnAppItemClickListener() {
+                    @Override
+                    public void onAppItemClick(View view, int position) {
+                        getP().getD().setComid(coms.get(position).getBranchId());
+                        getP().getU().autoRefresh();
+                    }
+                });
+                tipFrag.init(strs);
+                FragManager2.getInstance()
+                        .setAnim(false)
+                        .setHideLast(false)
+                        .start(getBaseUIAct(),get容器(),tipFrag);
                 break;
         }
     }

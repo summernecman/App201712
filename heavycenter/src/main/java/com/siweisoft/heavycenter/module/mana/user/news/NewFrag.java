@@ -12,6 +12,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserResBean;
+import com.siweisoft.heavycenter.data.netd.user.userrole.UserRoleRes;
 
 import butterknife.OnClick;
 import butterknife.Optional;
@@ -40,7 +41,8 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                     @Override
                     public void onSuccess(LoginResBean o) {
                         super.onSuccess(o);
-                        getP().getU().initUserInfo(o);
+                        getP().getD().setUserInfo(o);
+                        getP().getU().initUserInfo(getP().getD().getUserInfo());
                     }
                 });
                 break;
@@ -49,7 +51,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
     }
 
     @Optional
-    @OnClick({R.id.enter})
+    @OnClick({R.id.enter,R.id.ftv_right2})
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()){
@@ -63,6 +65,18 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                         }
                     });
                 }
+                break;
+            case R.id.ftv_right2:
+                if(getP().getD().getUserInfo()!=null&&getP().getU().getSelectRole()!=null){
+
+                }
+                NewDAOpe.setUserRole(getBaseAct(), getP().getD().getUserInfo().getUserId(), getP().getU().getSelectRole(), new UINetAdapter<UserRoleRes>(this,true) {
+                    @Override
+                    public void onSuccess(UserRoleRes o) {
+                        super.onSuccess(o);
+                        getBaseAct().onBackPressed();
+                    }
+                });
                 break;
         }
     }

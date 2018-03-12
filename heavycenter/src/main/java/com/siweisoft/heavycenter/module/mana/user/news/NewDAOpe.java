@@ -13,15 +13,25 @@ import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserReqBean;
 import com.siweisoft.heavycenter.data.netd.mana.user.add.AddUserResBean;
 import com.siweisoft.heavycenter.data.netd.user.info.UserInfoReqBean;
+import com.siweisoft.heavycenter.data.netd.user.userrole.UserRoleReq;
+import com.siweisoft.heavycenter.data.netd.user.userrole.UserRoleRes;
 
 public class NewDAOpe extends AppDAOpe {
 
     AddUserReqBean reqBean = new AddUserReqBean();
 
-
+    private LoginResBean userInfo;
 
     public void addUser(AddUserReqBean reqBean, NetI<AddUserResBean> adapter){
         NetDataOpe.Mana.User.addUser(getActivity(),reqBean,adapter);
+    }
+
+    public static void setUserRole(Context context, int id,String role,NetI<UserRoleRes> adapter){
+        UserRoleReq userRoleReq = new UserRoleReq();
+        userRoleReq.setId(id);
+        userRoleReq.setUserId(LocalValue.get登录返回信息().getUserId());
+        userRoleReq.setUserRole(role);
+        NetDataOpe.User.setUserRole(context,userRoleReq,adapter);
     }
 
     public AddUserReqBean getReqBean() {
@@ -33,5 +43,13 @@ public class NewDAOpe extends AppDAOpe {
         UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
         userInfoReqBean.setId(id);
         NetDataOpe.User.get用户信息(context,userInfoReqBean,adapter);
+    }
+
+    public LoginResBean getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(LoginResBean userInfo) {
+        this.userInfo = userInfo;
     }
 }

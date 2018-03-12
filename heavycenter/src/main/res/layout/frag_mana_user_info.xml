@@ -9,7 +9,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_grey_200"
+        android:background="@color/white"
         android:clickable="true"
         android:orientation="vertical">
 
@@ -28,14 +28,17 @@
                 android:layout_height="120dp" />
         </RelativeLayout>
 
+        <View
+            android:background="@color/color_grey_200"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:clickable="true"
             android:id="@+id/item_name"
-            android:layout_marginTop="10dp"
             style_common:minwidth ="40dp"
             style_common:txt_left = "姓名"
             style_common:txt_hint = "请输入"
-            style_common:boo_edit = "true"
+            style_common:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -45,7 +48,18 @@
             style_common:minwidth ="40dp"
             style_common:txt_left = "手机号"
             style_common:txt_hint = "请输入"
-            style_common:boo_edit = "true"
+            style_common:boo_edit = "false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
+            android:clickable="true"
+            android:id="@+id/item_driverno"
+            style_common:minwidth ="40dp"
+            style_common:txt_left = "驾证号"
+            style_common:txt_hint = "请输入"
+            style_common:boo_edit = "false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -74,8 +88,8 @@
             <TextView
                 android:id="@+id/tv_user"
                 android:layout_marginLeft="15dp"
-                android:background="@drawable/bg_hv_sel_sharp10_yell_while"
-                android:textColor="@color/color_yell_white"
+                android:background="@drawable/bg_hv_sel_sharp10_while_yell"
+                android:textColor="@color/color_white_yell"
                 android:textSize="16sp"
                 android:text="用户"
                 android:paddingLeft="17dp"
@@ -90,8 +104,8 @@
                 android:id="@+id/tv_mana"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/bg_hv_sel_sharp10_yell_while"
-                android:textColor="@color/color_yell_white"
+                android:background="@drawable/bg_hv_sel_sharp10_while_yell"
+                android:textColor="@color/color_white_yell"
                 android:textSize="16sp"
                 android:text="管理员"
                 android:paddingLeft="17dp"
@@ -106,44 +120,21 @@
         </LinearLayout>
 
 
-        <TextView
+
+        <ImageView
             android:visibility="gone"
-            android:layout_marginLeft="8dp"
-            android:text=""
-            android:textSize="15dp"
-            android:textColor="@color/color_item_content_left_txt_color"
-            android:gravity="center_vertical"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:clickable="true"
-            android:visibility="gone"
-            android:id="@+id/ll_image"
-            android:background="@color/white"
-            android:padding="10dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="120dp">
-
-            <ImageView
-
+            android:layout_marginLeft="60dp"
             android:id="@+id/iv_carlicenseno"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent" />
-
-            <ImageView
-
-                android:id="@+id/iv_driverno"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent" />
-        </LinearLayout>
+            android:layout_width="160dp"
+            android:layout_height="120dp" />
 
 
 
-
+<LinearLayout
+    android:background="@color/color_grey_200"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
         <TextView
             android:id="@+id/tv_date"
             android:layout_marginLeft="10dp"
@@ -153,5 +144,6 @@
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+</LinearLayout>
     </LinearLayout>
 </layout>

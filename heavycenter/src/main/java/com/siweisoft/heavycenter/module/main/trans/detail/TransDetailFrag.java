@@ -18,7 +18,7 @@ public class TransDetailFrag extends AppFrag<TransDetailUIOpe,TransDetailDAOpe> 
         getP().getD().detailTrans(getP().getD().getTransid(), new UINetAdapter<TransDetailRes>(this) {
             @Override
             public void onSuccess(TransDetailRes o) {
-                o= new Test().getTransRes().getResults().get(0);
+                //o= new Test().getTransRes().getResults().get(0);
                 getP().getU().initUI(o);
             }
         });

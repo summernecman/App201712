@@ -82,7 +82,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
         getP().getD().unitUsers(new UINetAdapter<UnitUserResBean>(this) {
             @Override
             public void onSuccess(UnitUserResBean o) {
-                o= new Test().getUnitUserResBean();
+                //o= new Test().getUnitUserResBean();
                 getP().getU().LoadListData(o,UserFrag.this);
                 getP().getU().finishRefresh();
             }

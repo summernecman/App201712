@@ -309,14 +309,14 @@ public class OrdersRes extends BaseBean {
             if(getPlanTime()==null){
                     return "";
             }
-            return "计划开始时间: "+DateFormatUtil.getdDateStr("yyyy/MM/dd HH:mm",new Date(getPlanTime()));
+            return "计划开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getPlanTime()));
         }
 
         public String getPlanTimeCNNOApp() {
             if(getPlanTime()==null){
                 return "";
             }
-            return DateFormatUtil.getdDateStr("yyyy/MM/dd HH:mm",new Date(getPlanTime()));
+            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getPlanTime()));
         }
 
         public void setPlanTime(Long planTime) {
@@ -341,6 +341,14 @@ public class OrdersRes extends BaseBean {
             return "开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getStartTime()));
         }
 
+
+        public String getStartTimeCN3() {
+            if(getStartTime()==null){
+                return "";
+            }
+            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getStartTime()));
+        }
+
         public void setStartTime(Long startTime) {
             this.startTime = startTime;
         }
@@ -362,6 +370,14 @@ public class OrdersRes extends BaseBean {
                 return "";
             }
             return "结束时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getFinishTime()));
+        }
+
+
+        public String getFinishTimeCN3() {
+            if(getFinishTime()==null){
+                return "";
+            }
+            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getFinishTime()));
         }
 
         public void setFinishTime(Long finishTime) {

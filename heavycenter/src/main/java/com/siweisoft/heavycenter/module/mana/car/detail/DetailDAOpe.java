@@ -105,6 +105,14 @@ public class DetailDAOpe extends AppDAOpe {
 //        NetDataOpe.Mana.Car.bindCar(getActivity(),carInfoReq,adapter);
     }
 
+
+    public static void infoCar(Context context,String carno,NetI<CarsResBean.CarInfoRes> adapter){
+        CarInfoReq carInfoReq = new CarInfoReq();
+        carInfoReq.setCarLicenseNo(carno);
+        carInfoReq.setIsApp(1);
+        NetDataOpe.Mana.Car.infoCar(context,carInfoReq,adapter);
+    }
+
     public void drvers(String type,CarsResBean.CarInfoRes info,NetI<ArrayList<DriverRes>> adapter){
         DriversReq driversReq = new DriversReq();
         driversReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());

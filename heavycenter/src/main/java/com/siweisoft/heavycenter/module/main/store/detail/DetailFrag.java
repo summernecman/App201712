@@ -22,7 +22,12 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     public void initdelay() {
         super.initdelay();
         getP().getU().initRecycle();
-        getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<StoreDetail>(this) {
+        refresh(true);
+
+    }
+
+    private void refresh(boolean showload){
+        getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<StoreDetail>(this,showload?UINetAdapter.Loading:0) {
             @Override
             public void onSuccess(StoreDetail o) {
                 //o = new Test().getStoreDetail();
@@ -31,8 +36,9 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
                 getP().getU().initUI(getP().getD().getStoreDetail());
             }
         });
-
     }
+
+
 
     @OnClick({R.id.ftv_right2})
     public void onClick(View v) {
@@ -52,6 +58,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
             case 1:
                 if(bundle!=null&&bundle.getBoolean(ValueConstant.FRAG_KEY,false)){
                     getArguments().putBoolean(ValueConstant.FRAG_KEY,true);
+                    refresh(true);
                 }
                 break;
         }
