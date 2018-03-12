@@ -9,11 +9,7 @@ import android.databinding.ViewDataBinding;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
-import android.view.View;
-
-import android.view.ViewAnimationUtils;
-import android.view.ViewGroup;
+import android.view.*;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.interf.OnFinishListener;
@@ -70,43 +66,40 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
         final DecimalFormat df = new DecimalFormat("#.##");
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_trans2, BR.item_main_trans2, s,listener){
 
-//            @Override
-//            public AppViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//                switch (viewType){
-//                    case 0:
-//                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans_send, parent, false));
-//                    case 1:
-//                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_train_receipt, parent, false));
-//                    default:
-//                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans, parent, false));
-//                }
-//            }
+            @Override
+            public AppViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                switch (viewType){
+                    case 1:
+                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans2_driver, parent, false));
+                    default:
+                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans2, parent, false));
+                }
+            }
 
-//            @Override
-//            public int getItemViewType(int position) {
-//                //return position%2;
-//
-//                if(loginResBean.is驾驶员()){
-//                    return 2;
-//                }else{
-//                    if(StringUtil.equals(comname,s.get(position).getDeveliverCompanyName())){
-//                        //我是发货公司
-//                        return 0;
-//                    }else{
-//                        //我是收货公司
-//                        return 1;
-//                    }
-//                }
-//            }
+            @Override
+            public int getItemViewType(int position) {
+                if(loginResBean.is驾驶员()){
+                    return 1;
+                }else{
+                    return 2;
+                }
+            }
 
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
-                super.onBindViewHolder(holder,position);
+                ViewDataBinding viewDataBinding = holder.viewDataBinding;
+                setTag(viewDataBinding.getRoot(),position);
+                switch (getItemViewType(position)){
+                    case 1:
+                        viewDataBinding.setVariable(BR.item_main_trans2_driver, list.get(position));
+                        break;
+                        default:
+                            viewDataBinding.setVariable(BR.item_main_trans2, list.get(position));
+                            break;
+                }
+                viewDataBinding.executePendingBindings();//加一行，问题解决
                 holder.viewDataBinding.getRoot().setSelected(position%2==0?true:false);
-                ItemMainTrans2Binding itemMainTrans2Binding = (ItemMainTrans2Binding) holder.viewDataBinding;
-                itemMainTrans2Binding.productName.setSelected(true);
             }
-
 
         });
 

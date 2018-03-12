@@ -413,6 +413,9 @@ public  class TransDetailRes extends BaseBean {
     }
 
     public boolean isshowOpeBtn(TransDetailRes data){
+        if(getReceiveNum()==0){
+            return false;
+        }
         if((data.getSignStatus()==TransDetailRes.SING_STATUS_未确认)){
             if(loginResBean.is驾驶员()){
                 if(StringUtil.equals(getSignRule(), RuleDAOpe.需驾驶员确认)){

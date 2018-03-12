@@ -20,7 +20,6 @@ public class MarqTextView extends android.support.v7.widget.AppCompatTextView{
     @Override
     protected void onVisibilityChanged(View changedView, int visibility) {
         super.onVisibilityChanged(changedView, visibility);
-        setSelected(true);
     }
 
     @Override
