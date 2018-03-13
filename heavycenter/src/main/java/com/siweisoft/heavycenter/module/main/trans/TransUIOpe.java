@@ -17,7 +17,6 @@ import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.StringUtil;
-import com.android.lib.util.data.DateFormatUtil;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
@@ -26,27 +25,27 @@ import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
-import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.databinding.FragMainTransBinding;
-import com.siweisoft.heavycenter.databinding.ItemMainTrainReceiptBinding;
-import com.siweisoft.heavycenter.databinding.ItemMainTrans2Binding;
-import com.siweisoft.heavycenter.databinding.ItemMainTransBinding;
-import com.siweisoft.heavycenter.databinding.ItemMainTransSendBinding;
-import com.siweisoft.heavycenter.module.main.orders.news.rule.RuleDAOpe;
 
 import java.text.DecimalFormat;
-import java.util.Date;
 import java.util.List;
 
 public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
 
-
-
-
+    @Override
     public void initUI() {
+        super.initUI();
         initRecycle();
+        final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get登录返回信息().getBranchCompanyList();
+        if(coms!=null&&coms.size()>0){
+            bind.title.getMidTV().setText(StringUtil.getStr(coms.get(0).getAbbreviationName()));
+            bind.title.getMidIconIV().setImageResource(R.drawable.arrow_down);
+            bind.title.getMidIconIV().setVisibility(View.VISIBLE);
+        }
     }
+
+
 
     public void initRecycle(){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
@@ -60,41 +59,51 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
         }
         getFrag().removeTips();
 
-        final String comname = LocalValue.get登录返回信息().getAbbreviationName();
-        final LoginResBean loginResBean = LocalValue.get登录返回信息();
-        final int usertype = LocalValue.get登录返回信息().getUserType();
-        final DecimalFormat df = new DecimalFormat("#.##");
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_trans2, BR.item_main_trans2, s,listener){
+
+            public static final int 驾驶员 = 1;
+
+            public static final int 发货单位 = 2;
+
+            public static final int 收货单位 = 3;
 
             @Override
             public AppViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                 switch (viewType){
-                    case 1:
-                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans2_driver, parent, false));
+                    case 驾驶员:
+                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans_driver, parent, false));
+                    case 发货单位:
+                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans_send, parent, false));
                     default:
-                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans2, parent, false));
+                        return new AppViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_main_trans_receipt, parent, false));
                 }
             }
 
             @Override
             public int getItemViewType(int position) {
-                if(loginResBean.is驾驶员()){
-                    return 1;
+                if(LocalValue.get登录返回信息().is驾驶员()){
+                    return 驾驶员;
                 }else{
-                    return 2;
+                    if(s.get(position).isIDiliverCom()){
+                        return 发货单位;
+                    }
+                  return 收货单位;
                 }
             }
+
 
             @Override
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 ViewDataBinding viewDataBinding = holder.viewDataBinding;
                 setTag(viewDataBinding.getRoot(),position);
                 switch (getItemViewType(position)){
-                    case 1:
-                        viewDataBinding.setVariable(BR.item_main_trans2_driver, list.get(position));
+                    case 驾驶员:
+                        viewDataBinding.setVariable(BR.item_main_trans_driver, list.get(position));
                         break;
+                    case 发货单位:
+                        viewDataBinding.setVariable(BR.item_main_trans_send, list.get(position));
                         default:
-                            viewDataBinding.setVariable(BR.item_main_trans2, list.get(position));
+                            viewDataBinding.setVariable(BR.item_main_trans_receipt, list.get(position));
                             break;
                 }
                 viewDataBinding.executePendingBindings();//加一行，问题解决
@@ -144,6 +153,11 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
     }
 
     public void autoRefresh(){
+        bind.refresh.autoRefresh();
+    }
+
+    public void autoRefreshNoSearch(){
+        clearSel();
         bind.refresh.autoRefresh();
     }
 

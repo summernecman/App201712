@@ -37,6 +37,8 @@ public class TitleView extends RelativeLayout {
 
     private int bg;
 
+    private ImageView midIconIV;
+
 
 
     public TitleView(Context context, AttributeSet attrs) {
@@ -52,6 +54,7 @@ public class TitleView extends RelativeLayout {
         rightIV = (ImageView) findViewById(R.id.ftv_right);
         rightIV2 = (ImageView) findViewById(R.id.ftv_right2);
         ftitle_bar = findViewById(R.id.ftitle_bar);
+        midIconIV = findViewById(R.id.ftv_midicon);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.style_common);
         txt_mid =  a.getString(R.styleable.style_common_txt_mid);
@@ -104,5 +107,9 @@ public class TitleView extends RelativeLayout {
 
     public int getRightiv2id() {
         return rightiv2id;
+    }
+
+    public ImageView getMidIconIV() {
+        return midIconIV;
     }
 }

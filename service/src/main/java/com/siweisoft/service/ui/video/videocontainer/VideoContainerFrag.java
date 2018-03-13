@@ -65,7 +65,7 @@ public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, Vide
                 break;
         }
     }
-
+    @Optional
     @Override
     public void onClick(View v) {
         super.onClick(v);

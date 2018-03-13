@@ -191,7 +191,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                 }
                 break;
             case 4:
-                    if(bundle==null){
+                    if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_INTENT2,false)){
                     return ;
                 }
                 getP().getD().getUnit().setBelongArea(StringUtil.getStr(bundle.getString(ValueConstant.DATA_RES2)));

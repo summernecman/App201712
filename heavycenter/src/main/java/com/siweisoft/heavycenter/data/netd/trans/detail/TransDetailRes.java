@@ -109,6 +109,10 @@ public  class TransDetailRes extends BaseBean {
         return receiveCompanyName;
     }
 
+    public String getReceiveCompanyNameCN() {
+        return StringUtil.getStr(receiveCompanyName);
+    }
+
     public void setReceiveCompanyName(String receiveCompanyName) {
         this.receiveCompanyName = receiveCompanyName;
     }
@@ -163,12 +167,21 @@ public  class TransDetailRes extends BaseBean {
         return carLicenseNo;
     }
 
+
+    public String getCarLicenseNoCN() {
+        return StringUtil.getStr(carLicenseNo);
+    }
+
     public void setCarLicenseNo(String carLicenseNo) {
         this.carLicenseNo = carLicenseNo;
     }
 
     public String getTrueName() {
         return trueName;
+    }
+
+    public String getTrueNameCN() {
+        return StringUtil.getStr(trueName);
     }
 
     public void setTrueName(String trueName) {
@@ -230,9 +243,8 @@ public  class TransDetailRes extends BaseBean {
     }
 
 
-
     public String getDeveliverNumCN() {
-        return StringUtil.getStr(develiverNum)+"t";
+        return develiverNum+"t";
     }
 
     public void setDeveliverNum(double develiverNum) {
@@ -269,6 +281,10 @@ public  class TransDetailRes extends BaseBean {
 
     public String getDeveliverCompanyName() {
         return develiverCompanyName;
+    }
+
+    public String getDeveliverCompanyNameCN() {
+        return StringUtil.getStr(develiverCompanyName);
     }
 
     public void setDeveliverCompanyName(String develiverCompanyName) {
@@ -349,7 +365,7 @@ public  class TransDetailRes extends BaseBean {
     }
 
     public boolean isShowCarLicense(){
-        if(isDriver()|| NullUtil.isStrEmpty(getCarLicenseNo())){
+        if(NullUtil.isStrEmpty(getCarLicenseNo())){
             return false;
         }
         return true;
@@ -365,9 +381,9 @@ public  class TransDetailRes extends BaseBean {
 
     public String getAccessComName() {
         if(isIDiliverCom()){
-            return getReceiveAbbreviationName();
+            return getReceiveCompanyNameCN();
         }
-        return getDeveliverAbbreviationName();
+        return getDeveliverCompanyNameCN();
     }
 
     public boolean isUpSecondTypeShow(){
@@ -393,7 +409,13 @@ public  class TransDetailRes extends BaseBean {
     }
 
     public int getPercent(){
-        return (int) (100*getTotalSuttle()/getPlanNumber()+0.00001);
+        if((getSignStatus()==TransDetailRes.SING_STATUS_已确认)){
+            return 0;
+        }
+        if(getPlanNumber()==0){
+            return 0;
+        }
+        return (int) (100*getTotalSuttle()/(getPlanNumber()));
     }
 
 
@@ -435,6 +457,13 @@ public  class TransDetailRes extends BaseBean {
 
         }
         if(data.getSignStatus()==TransDetailRes.SING_STATUS_已确认){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isFinished(TransDetailRes data){
+        if((data.getSignStatus()==TransDetailRes.SING_STATUS_未确认)){
             return false;
         }
         return true;

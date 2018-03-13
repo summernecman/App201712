@@ -200,7 +200,7 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
             }
         }
     }
-
+    @Optional
     @OnClick({R.id.endCall, R.id.btn_switchvideo, R.id.btn_speak, R.id.btn_camera, R.id.surfaceviewlocal, R.id.removeview})
     public void onClickEvent(View v) {
         switch (v.getId()) {

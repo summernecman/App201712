@@ -66,16 +66,18 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                     return;
                 }
                 final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) bundle.getSerializable(ValueConstant.DATA_DATA);
-                getP().getD().addCar(bean.getVehicleId(), AddCarReq.添加,new NetAdapter<AddCarRes>(getContext()){
-                    @Override
-                    public void onResult(boolean success, String msg, AddCarRes o) {
-                        super.onResult(success, msg, o);
-                        if(success){
-                            getP().getD().getData().getVehicleList().add(bean);
-                            getP().getU().initdata(getP().getD().getData().getVehicleList(),DetailFrag.this);
+                if(!getP().getD().haveAddCar(bean)){
+                    getP().getD().addCar(bean.getVehicleId(), AddCarReq.添加,new NetAdapter<AddCarRes>(getContext()){
+                        @Override
+                        public void onResult(boolean success, String msg, AddCarRes o) {
+                            super.onResult(success, msg, o);
+                            if(success){
+                                getP().getD().getData().getVehicleList().add(bean);
+                                getP().getU().initdata(getP().getD().getData().getVehicleList(),DetailFrag.this);
+                            }
                         }
-                    }
-                });
+                    });
+                }
                 break;
         }
     }

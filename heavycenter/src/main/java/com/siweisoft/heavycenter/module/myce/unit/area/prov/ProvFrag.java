@@ -50,7 +50,12 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
                     case R.id.iv_state:
                         CityResBean.ProvinceListBean list = (CityResBean.ProvinceListBean)v.getTag(R.id.data);
                         for(int i=0;i<list.getCityList().size();i++){
-                            list.getCityList().get(i).setCheckStatus(CityResBean.ProvinceListBean.CHECK_STATE_FULL);
+                            if(list.getCheckStatus()==CityResBean.ProvinceListBean.CHECK_STATE_FULL){
+                                list.getCityList().get(i).setCheckStatus(CityResBean.ProvinceListBean.CHECK_STATE_NULL);
+                            }else{
+                                list.getCityList().get(i).setCheckStatus(CityResBean.ProvinceListBean.CHECK_STATE_FULL);
+                            }
+
                         }
                         getArguments().putInt(ValueConstant.DATA_POSITION2,(int) v.getTag(R.id.position));
                         getArguments().putSerializable(ValueConstant.DATA_DATA,list);
@@ -88,15 +93,16 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
         }
         getP().getU().notifyDataSetChanged();
 
-        String s= "";
-        String s2= "";
+        getP().getD().setS("");
+        getP().getD().setS2("");
+
         for(int i=0;i<getP().getD().getPro().size();i++){
             if(getP().getD().getPro().get(i).getCheckStatus()== CityResBean.ProvinceListBean.CHECK_STATE_NULL){
                 continue;
             }
             if(getP().getD().getPro().get(i).getCheckStatus()== CityResBean.ProvinceListBean.CHECK_STATE_FULL){
-                s+=getP().getD().getPro().get(i).getValue()+",";
-                s2+=getP().getD().getPro().get(i).getName()+",";
+                getP().getD().setS(getP().getD().getS()+getP().getD().getPro().get(i).getValue()+",");
+                getP().getD().setS2(getP().getD().getS2()+getP().getD().getPro().get(i).getName()+",");
                 continue;
             }
             if(getP().getD().getPro().get(i).getCityList()==null){
@@ -104,17 +110,15 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
             }
             for(int j=0;j<getP().getD().getPro().get(i).getCityList().size();j++){
                 if(getP().getD().getPro().get(i).getCityList().get(j).getCheckStatus()== CityResBean.ProvinceListBean.CityListBean.CHECK_STATE_FULL){
-                    s+=getP().getD().getPro().get(i).getCityList().get(j).getValue()+",";
-                    s2+=getP().getD().getPro().get(i).getCityList().get(j).getName()+",";
+                    getP().getD().setS(getP().getD().getS()+getP().getD().getPro().get(i).getCityList().get(j).getValue()+",");
+                    getP().getD().setS2(getP().getD().getS2()+getP().getD().getPro().get(i).getCityList().get(j).getName()+",");
                 }
             }
         }
-        if(s.endsWith(",")){
-            s= s.substring(0,s.length()-1);
-            s2= s2.substring(0,s2.length()-1);
+        if(getP().getD().getS().endsWith(",")){
+            getP().getD().setS(getP().getD().getS().substring(0,getP().getD().getS().length()-1));
+            getP().getD().setS2(getP().getD().getS2().substring(0,getP().getD().getS2().length()-1));
         }
-        getArguments().putString(ValueConstant.DATA_RES,s);
-        getArguments().putString(ValueConstant.DATA_RES2,s2);
     }
 
 
@@ -123,8 +127,9 @@ public class ProvFrag extends AppFrag<ProvUIOpe,ProvDAOpe> implements ViewListen
         super.onClick(v);
         switch (v.getId()) {
             case R.id.ftv_right2:
-                getArguments().putString(ValueConstant.DATA_RES, getArguments().getString(ValueConstant.DATA_RES));
-                getArguments().putString(ValueConstant.DATA_RES2, getArguments().getString(ValueConstant.DATA_RES2));
+                getArguments().putBoolean(ValueConstant.DATA_INTENT2,true);
+                getArguments().putString(ValueConstant.DATA_RES, getP().getD().getS());
+                getArguments().putString(ValueConstant.DATA_RES2, getP().getD().getS2());
                 getBaseUIAct().onBackPressed();
                 break;
         }

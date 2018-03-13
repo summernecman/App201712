@@ -12,6 +12,8 @@ import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.interf.view.OnAppItemClickListener;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.github.florent37.viewanimator.AnimationListener;
+import com.github.florent37.viewanimator.ViewAnimator;
 
 import java.util.List;
 
@@ -38,10 +40,15 @@ public class TitleTipFrag extends BaseUIFrag<TitleTipUIOpe,TitleTipDAOpe> implem
 
     @Override
     public void onClick(View v) {
-        FragManager2.getInstance()
-                .setAnim(false)
-                .setHideLast(false)
-                .finish((BaseUIActivity) getActivity(),get容器(),true);
+        ViewAnimator.animate(getP().getU().bind.recycle).duration(300).zoomOut().onStop(new AnimationListener.Stop() {
+            @Override
+            public void onStop() {
+                FragManager2.getInstance()
+                        .setAnim(false)
+                        .setHideLast(false)
+                        .finish((BaseUIActivity) getActivity(),get容器(),true);
+            }
+        }).start();
     }
 
     @Override
@@ -49,10 +56,15 @@ public class TitleTipFrag extends BaseUIFrag<TitleTipUIOpe,TitleTipDAOpe> implem
         switch (type){
             case ViewListener.TYPE_ONCLICK:
                 int pos = (int) v.getTag(R.id.position);
-                FragManager2.getInstance()
-                        .setAnim(false)
-                        .setHideLast(false)
-                        .finish((BaseUIActivity) getActivity(),get容器(),true);
+                ViewAnimator.animate(getP().getU().bind.recycle).duration(300).zoomOut().onStop(new AnimationListener.Stop() {
+                    @Override
+                    public void onStop() {
+                        FragManager2.getInstance()
+                                .setAnim(false)
+                                .setHideLast(false)
+                                .finish((BaseUIActivity) getActivity(),get容器(),true);
+                    }
+                }).start();
                 if(onAppItemsClickListener!=null){
                     onAppItemsClickListener.onAppItemClick(v,pos);
                 }

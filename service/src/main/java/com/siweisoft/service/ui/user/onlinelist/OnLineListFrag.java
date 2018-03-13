@@ -58,7 +58,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
         });
 
     }
-
+    @Optional
     @OnClick({R.id.ftv_right})
     public void onClick(View v) {
         super.onClick(v);

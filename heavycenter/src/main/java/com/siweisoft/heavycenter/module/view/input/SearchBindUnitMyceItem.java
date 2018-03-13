@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,10 @@ public class SearchBindUnitMyceItem extends LinearLayout {
             }
         });
 
+
+        if(a.getInt(R.styleable.style_common_txt_maxlenth,-1)!=-1){
+            editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(a.getInt(R.styleable.style_common_txt_maxlenth,-1))});
+        }
     }
 
     public EditText getEditText() {

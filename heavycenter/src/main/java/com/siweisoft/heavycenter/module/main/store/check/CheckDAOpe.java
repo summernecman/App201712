@@ -27,6 +27,7 @@ public class CheckDAOpe extends AppDAOpe {
 
     private StoresResBean storesResBean;
 
+
     private boolean initdata = false;
 
 
@@ -96,6 +97,8 @@ public class CheckDAOpe extends AppDAOpe {
         return true;
     }
 
+
+
     public StoresResBean getStoresResBean() {
         return storesResBean;
     }
@@ -115,6 +118,18 @@ public class CheckDAOpe extends AppDAOpe {
             ToastUtil.getInstance().showShort(getActivity(),"部分仓库因为没有物料不能盘点");
         }
         this.storesResBean = storesResBean;
+    }
+
+    public boolean changedData(){
+        if(storesResBean==null||storesResBean.getResults()==null||storesResBean.getResults().size()==0){
+            return false;
+        }
+        for(int i=0;i<storesResBean.getResults().size();i++){
+            if(storesResBean.getResults().get(i).getCurrentStock()!=storesResBean.getResults().get(i).getAfterAdjust()){
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isInitdata() {

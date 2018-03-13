@@ -87,6 +87,7 @@ public class UserCenterFrag extends BaseServerFrag<UserCenterUIOpe, UserCenterDA
         getP().getU().initHead();
     }
 
+    @Optional
     @OnClick({R.id.ll_head, R.id.ll_remark, R.id.ll_collect, R.id.ll_account, R.id.ll_feedback, R.id.aboutus, R.id.set, R.id.ll_share, R.id.ll_unit})
     public void onClickEvent(View view) {
         switch (view.getId()) {

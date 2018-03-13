@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.main.store.check;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
+import android.view.View;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.BaseTextWather;
@@ -36,10 +37,13 @@ public class CheckUIOpe extends AppUIOpe<FragMainStoreCheckBinding>{
     }
 
     public void LoadListData(final StoresResBean o) {
+
         if(o==null || o.getResults()==null || o.getResults().size()==0){
             getFrag().showTips("暂无数据");
+            bind.title.getRightIV2().setVisibility(View.GONE);
             return;
         }
+        bind.title.getRightIV2().setVisibility(View.VISIBLE);
         getFrag().removeTips();
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_store_check, BR.item_main_store_check, o.getResults()){
 

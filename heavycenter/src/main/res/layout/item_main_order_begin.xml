@@ -56,7 +56,7 @@
             tools:text="来自"
             android:background="@{item_main_order_begin.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
             android:padding="1dp"
-            android:includeFontPadding="true"
+            android:includeFontPadding="false"
            app:layout_constraintTop_toTopOf="@+id/tv_duimian"
             app:layout_constraintBottom_toBottomOf="@+id/tv_duimian"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -65,7 +65,7 @@
             android:gravity="center"
             android:singleLine="true"
             android:textColor="@color/black"
-            android:textSize="13sp"
+            android:textSize="12sp"
             android:text="@{item_main_order_begin.type}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -81,7 +81,7 @@
             android:layout_marginLeft="8dp"
             android:textColor="@color/white"
             android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
-            android:text="@{item_main_order_begin.accessComName}"
+            android:text="@{item_main_order_begin.shortAccessComName}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

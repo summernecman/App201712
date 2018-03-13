@@ -177,7 +177,7 @@
             android:layout_marginLeft="15dp"
             android:text='@{item_main_trans_detail.deduct+""}'
             app:layout_constraintBottom_toBottomOf="@+id/lab_kou"
-            app:layout_constraintRight_toLeftOf="@+id/lab_czr"
+            app:layout_constraintLeft_toRightOf="@+id/lab_kou"
             android:layout_marginRight="5dp" />
 
 

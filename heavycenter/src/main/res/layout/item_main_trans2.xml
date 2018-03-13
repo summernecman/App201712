@@ -182,9 +182,11 @@
 
 
         <TextView
+            android:gravity="right|center_vertical"
+            tools:text="03-08 17:14"
                 android:layout_marginTop="7dp"
                 android:id="@+id/tv_sendtime"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:singleLine="true"
@@ -193,12 +195,14 @@
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@+id/productName"
                 app:layout_constraintRight_toRightOf="parent"
-                tools:text="发货时间"/>
+          />
 
 
         <TextView
+            android:gravity="right|center_vertical"
+            tools:text="03-08 17:14"
                 android:id="@+id/tv_receipttime"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:singleLine="true"
@@ -209,7 +213,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_sendtime"
                 android:layout_marginTop="7dp"
-                tools:text="收货时间"/>
+              />
 
 
         <TextView
@@ -253,7 +257,7 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginRight="10dp"
-                android:src="@{item_main_trans2.driver?@drawable/icon_trans_local:@drawable/icon_hv_local}"
+                android:src="@{item_main_trans2.IDiliverCom?@drawable/icon_hv_local:@drawable/icon_hv_local_blue}"
                 app:layout_constraintBottom_toBottomOf="@+id/productName"
                 app:layout_constraintRight_toLeftOf="@+id/tv_carlicenseno"
                 app:layout_constraintTop_toTopOf="@+id/productName"/>

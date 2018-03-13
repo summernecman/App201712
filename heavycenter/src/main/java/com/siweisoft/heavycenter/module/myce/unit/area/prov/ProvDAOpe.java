@@ -17,7 +17,8 @@ public class ProvDAOpe extends AppDAOpe {
 
     private String state = ProvFrag.选择多个城市;
 
-
+    private String s= "";
+    private String s2= "";
 
 
     public List<CityResBean.ProvinceListBean> getPro() {
@@ -36,5 +37,21 @@ public class ProvDAOpe extends AppDAOpe {
             return;
         }
         this.state = state;
+    }
+
+    public String getS() {
+        return s;
+    }
+
+    public void setS(String s) {
+        this.s = s;
+    }
+
+    public String getS2() {
+        return s2;
+    }
+
+    public void setS2(String s2) {
+        this.s2 = s2;
     }
 }

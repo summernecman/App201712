@@ -145,7 +145,7 @@ public class GoodDetailFrag extends AppFrag<GoodDetailUIOpe,GoodDetailDAOpe> {
                 }
                 break;
             case 4:
-                if(bundle.getString(ValueConstant.DATA_RES)==null){
+                if(bundle==null||!bundle.getBoolean(ValueConstant.DATA_INTENT2,false)){
                     return;
                 }
                 String name = bundle.getString(ValueConstant.DATA_RES);

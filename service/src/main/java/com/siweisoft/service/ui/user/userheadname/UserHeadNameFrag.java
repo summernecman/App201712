@@ -41,7 +41,7 @@ public class UserHeadNameFrag extends BaseServerFrag<UserHeadNameUIOpe, UserHead
         setTitleBean(new TitleBean("返回", "头像和姓名", ""));
         getP().getU().initInfo();
     }
-
+    @Optional
     @OnClick({R.id.ll_head, R.id.ll_name})
     public void onClickEvent(View v) {
         switch (v.getId()) {

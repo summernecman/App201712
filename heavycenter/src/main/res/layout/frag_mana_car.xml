@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"/>
 
         <com.siweisoft.heavycenter.module.view.input.SearchBindUnitMyceItem
+            app:txt_maxlenth="7"
             android:visibility="gone"
             android:layout_marginTop="5dp"
             android:id="@+id/search"

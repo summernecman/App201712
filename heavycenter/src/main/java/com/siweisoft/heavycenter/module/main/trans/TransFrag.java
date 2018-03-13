@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.main.trans;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.view.View;
 
@@ -35,6 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener {
 
@@ -75,7 +77,8 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @OnClick({R.id.ftv_right2,R.id.search,R.id.view,R.id.ftv_title})
+    @Optional
+    @OnClick({R.id.ftv_right2,R.id.search,R.id.view,R.id.ftv_title,R.id.ftv_midicon})
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
@@ -88,13 +91,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                         boolean b = (boolean) o;
                         if(b){
                             getP().getD().setPageIndex(0);
-                            getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(getBaseUIAct()) {
-                                @Override
-                                public void onResult(boolean success, String msg, TransRes o) {
-                                    super.onResult(success, msg, o);
-
-                                }
-                            });
+                            getP().getU().autoRefresh();
                         }
                     }
                 });
@@ -114,6 +111,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                     new IntentIntegrator(getBaseAct()).setCaptureActivity(ScanAct.class).initiateScan();
                 }
                 break;
+            case R.id.ftv_midicon:
             case R.id.ftv_title:
                 final List<String> strs = new ArrayList<>();
                 final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get登录返回信息().getBranchCompanyList();
@@ -147,7 +145,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
         getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
             @Override
             public void onSuccess(TransRes o) {
-                o= new Test().getTransRes();
+                //o= new Test().getTransRes();
                 getP().getD().getTransRes().getResults().addAll(o==null? new TransRes().getResults():o.getResults());
                 getP().getU().LoadListData(getP().getD().getTransRes().getResults(),TransFrag.this);
             }

@@ -28,6 +28,7 @@ public class SettingFrag extends BaseServerFrag<SettingUIOpe, SettingDAOpe> {
         setTitleBean(new TitleBean("返回", "设置", ""));
         getP().getU().setVersion(getP().getD().getVersion());
     }
+    @Optional
     @OnClick({R.id.ll_set,R.id.ll_check,R.id.ll_clear})
     public void onClickEvent(View view) {
         switch (view.getId()) {

@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 
 import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
+import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.NullUtil;
+import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
@@ -58,8 +60,29 @@ public class TransDetailUIOpe extends AppUIOpe<FragMainTransDetailBinding> {
 
         bind.tvCarno.setText("第"+NullUtil.isEmpty(data.getCarNumber(),1)+"车");
         bind.viewpager.setAdapter(new AppBasePagerAdapter2(getFrag().getChildFragmentManager(),getActivity(),fragments));
-       if(bind.viewpager.getAdapter().getCount()==2){
-           bind.scrollmenu.setViewPager(bind.viewpager);
-       }
+        bind.viewpager.addOnPageChangeListener(new BaseOnPagerChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                if(position==0){
+                    bind.sfline.getLayoutParams().height = (int) (ScreenUtil.最小DIMEN*4);
+                    bind.sfline.requestLayout();
+                    bind.ssline.getLayoutParams().height = (int) (ScreenUtil.最小DIMEN*2);
+                    bind.ssline.requestLayout();
+                }else{
+                    bind.sfline.getLayoutParams().height = (int) (ScreenUtil.最小DIMEN*2);
+                    bind.sfline.requestLayout();
+                    bind.ssline.getLayoutParams().height = (int) (ScreenUtil.最小DIMEN*4);
+                    bind.ssline.requestLayout();
+                }
+
+            }
+        });
+    }
+
+    public void setCurrent(int pos){
+        if(bind.viewpager.getAdapter()!=null&&bind.viewpager.getAdapter().getCount()==2){
+            bind.viewpager.setCurrentItem(pos);
+        }
     }
 }

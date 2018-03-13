@@ -44,7 +44,7 @@
                 android:background="@{item_main_order_detail_done.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textSize="13sp"
+                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView

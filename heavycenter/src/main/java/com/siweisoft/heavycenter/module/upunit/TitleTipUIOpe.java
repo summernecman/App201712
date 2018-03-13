@@ -10,6 +10,7 @@ import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.databinding.FragDialogListBinding;
+import com.github.florent37.viewanimator.ViewAnimator;
 
 import java.util.List;
 
@@ -19,5 +20,6 @@ public class TitleTipUIOpe extends BaseUIOpe<FragDialogListBinding> {
     public void init(List<String> strs, ViewListener listener){
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));
         bind.recycle.setAdapter(new AppsDataBindingAdapter(getActivity(), R.layout.item_txt, BR.item_txt,strs,listener));
+        ViewAnimator.animate(bind.recycle).duration(300).zoomIn().start();
     }
 }

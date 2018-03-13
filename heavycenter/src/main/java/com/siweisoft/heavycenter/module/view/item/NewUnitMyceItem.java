@@ -137,6 +137,7 @@ public class NewUnitMyceItem extends RelativeLayout {
     public void setMidTVTxt(String Str,String hint){
         if(NullUtil.isStrEmpty(Str)){
             midTV.setHint(hint);
+            midTV.setText("");
         }else{
             midTV.setText(Str);
         }

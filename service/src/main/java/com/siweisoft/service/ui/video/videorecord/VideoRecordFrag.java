@@ -92,6 +92,7 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
 
 
 
+    @Optional
     @Override
     public void onClick(View v) {
         super.onClick(v);

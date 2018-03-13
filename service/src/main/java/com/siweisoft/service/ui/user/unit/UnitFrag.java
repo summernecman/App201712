@@ -22,7 +22,7 @@ public class UnitFrag extends BaseServerFrag<UnitUIOpe, UnitDAOpe> {
         setTitleBean(new TitleBean("返回", "更改单位", ""));
         getP().getU().initUnit(Value.getUserInfo().getUnit());
     }
-
+    @Optional
     @OnClick({R.id.button})
     public void onClickEvent(View v) {
         switch (v.getId()) {

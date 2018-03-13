@@ -51,7 +51,7 @@ public class LoginFrag extends BaseServerFrag<LoginUIOpe, LoginDAOpe> {
         }
         getP().getU().initIp();
     }
-
+    @Optional
     @OnClick({R.id.button, R.id.tv_regist, R.id.tv_reset})
     public void onClickEvent(View view) {
         switch (view.getId()) {

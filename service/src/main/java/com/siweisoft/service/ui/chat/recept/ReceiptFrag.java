@@ -51,7 +51,7 @@ public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
         mWakeLock.acquire();//这里唤醒锁，用这种方式要记得在适当的地方关闭锁，
         mWakeLock.release();
     }
-
+    @Optional
     @OnClick({R.id.tv_receipt, R.id.tv_refuse})
     public void onClickEvent(View v) {
         SPUtil.getInstance().saveInt(getP().getD().getVideoBean().getFromUser().getPhone(), 0);

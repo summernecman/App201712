@@ -22,6 +22,7 @@ import com.siweisoft.heavycenter.module.main.main.MainAct;
 import java.util.ArrayList;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
 
@@ -71,7 +72,7 @@ public class WelcAct extends AppAct<WelcUIOpe,WelcDAOpe> {
             IntentUtil.startActivityWithFinish(WelcAct.this, AcctAct.class,null);
         }
     }
-
+    @Optional
     @OnClick({R.id.image})
     public void onClick(View v){
         switch (v.getId()){

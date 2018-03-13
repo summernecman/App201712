@@ -188,4 +188,26 @@ public class StoreDetail extends BaseBean {
     public void setTodayProfitNum(String todayProfitNum) {
         this.todayProfitNum = todayProfitNum;
     }
+
+    public static StoreDetail copyStoreDetail(StoreDetail storeDetail){
+        StoreDetail data = new StoreDetail();
+        data.setAfterAdjust(storeDetail.getAfterAdjust());
+        data.setAllProfitNum(storeDetail.getAllProfitNum());
+        data.setCompanyName(storeDetail.getCompanyName());
+        data.setCurrentStock(storeDetail.getCurrentStock());
+        data.setMaxStock(storeDetail.getMaxStock());
+        data.setMinStock(storeDetail.getMinStock());
+        data.setProductId(storeDetail.getProductId());
+        data.setProductMaxStock(storeDetail.getProductMaxStock());
+        data.setProductMinStock(storeDetail.getProductMinStock());
+        data.setProductName(storeDetail.getProductName());
+        data.setSpecifications(storeDetail.getSpecifications());
+        data.setStatus(storeDetail.getStatus());
+        data.setTodayOutStorage(storeDetail.getTodayOutStorage());
+        data.setTodayProfitNum(storeDetail.getTodayProfitNum());
+        data.setTodayStorage(storeDetail.getTodayStorage());
+        data.setWarehouseId(storeDetail.getWarehouseId());
+        data.setWarehouseName(storeDetail.getWarehouseName());
+        return data;
+    }
 }

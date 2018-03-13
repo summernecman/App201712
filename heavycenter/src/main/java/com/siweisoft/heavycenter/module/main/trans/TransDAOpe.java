@@ -27,6 +27,7 @@ public class TransDAOpe extends BaseDAOpe {
 
     private int pageIndex = NetValue.PAGE_INDEX_START;
 
+
     private int comid = LocalValue.get登录返回信息().getCompanyId();
 
     public ArrayList<String> getData(){
@@ -85,4 +86,5 @@ public class TransDAOpe extends BaseDAOpe {
     public void setComid(int comid) {
         this.comid = comid;
     }
+
 }

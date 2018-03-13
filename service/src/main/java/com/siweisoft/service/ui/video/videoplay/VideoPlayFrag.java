@@ -103,7 +103,7 @@ public class VideoPlayFrag extends BaseServerFrag<VideoPlayUIOpe, VideoPlayDAOpe
         //getP().getU().getOrientationUtils().releaseListener();
     }
 
-
+    @Optional
     @Override
     public void onClick(final View v) {
         super.onClick(v);

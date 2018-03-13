@@ -8,6 +8,7 @@ import com.android.lib.bean.BaseBean;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
+import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 import com.siweisoft.heavycenter.tools.ZXTools;
 
 import java.math.BigDecimal;
@@ -186,11 +187,21 @@ public class OrdersRes extends BaseBean {
 
 
 
-        public String getAccessComName() {
+        public String getShortAccessComName() {
             if(isIDiliverCom()){
                 accessComName = getShdwName();
             }else{
                 accessComName = getFhdwName();
+            }
+            return accessComName;
+        }
+
+
+        public String getAccessComName() {
+            if(isIDiliverCom()){
+                accessComName = getShdwQName();
+            }else{
+                accessComName = getFhdwQName();
             }
             return accessComName;
         }
@@ -336,7 +347,7 @@ public class OrdersRes extends BaseBean {
 
         public String getStartTimeCN2() {
             if(getStartTime()==null){
-                return "";
+                return "开始时间: ";
             }
             return "开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getStartTime()));
         }
@@ -367,7 +378,7 @@ public class OrdersRes extends BaseBean {
 
         public String getFinishTimeCN2() {
             if(getFinishTime()==null){
-                return "";
+                return "结束时间: ";
             }
             return "结束时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getFinishTime()));
         }
@@ -510,8 +521,14 @@ public class OrdersRes extends BaseBean {
 
 
         public int getPercent(){
+            if(getPlanNumber()==0){
+                return 0;
+            }
             return (int) (100*getActualSh()/getPlanNumber());
         }
+
+
+
 
         @Bindable
         public String getYKCN(){

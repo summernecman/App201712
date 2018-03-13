@@ -43,7 +43,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
         onRefresh(null);
     }
 
-    @OnClick({R.id.ftv_right2,R.id.ftv_title})
+    @OnClick({R.id.ftv_right2,R.id.ftv_title,R.id.ftv_midicon})
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
@@ -59,6 +59,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                     new IntentIntegrator(getBaseAct()).setCaptureActivity(ScanAct.class).initiateScan();
                 }
                 break;
+            case R.id.ftv_midicon:
             case R.id.ftv_title:
                 final List<String> strs = new ArrayList<>();
                 final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get登录返回信息().getBranchCompanyList();

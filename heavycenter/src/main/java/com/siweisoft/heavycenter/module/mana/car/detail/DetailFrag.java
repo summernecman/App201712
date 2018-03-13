@@ -193,29 +193,29 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                 }
                 break;
             case R.id.tv_y:
-                if(getP().getU().canSearchCar()){
-                    DetailDAOpe.infoCar(getActivity(), getP().getU().getCarNO(), new UINetAdapter<CarsResBean.CarInfoRes>(this) {
-                        @Override
-                        public void onSuccess(CarsResBean.CarInfoRes o) {
-                            super.onSuccess(o);
-                            if(o!=null){
-                                getP().getD().setCarinfo(o);
-                                getP().getU().initData(getP().getD().getCarinfo());
-                                getP().getD().setType(CarDetailValue.查看车辆);
-                            }else{
-                                onFail(false,"");
-                            }
-
-                        }
-
-                        @Override
-                        public void onFail(boolean haveData, String msg) {
-                            super.onFail(haveData, msg);
-                            getP().getU().initData(new CarsResBean.CarInfoRes());
-                            getP().getD().setType(CarDetailValue.新建车辆);
-                        }
-                    });
-                }
+//                if(getP().getU().canSearchCar()){
+//                    DetailDAOpe.infoCar(getActivity(), getP().getU().getCarNO(), new UINetAdapter<CarsResBean.CarInfoRes>(this) {
+//                        @Override
+//                        public void onSuccess(CarsResBean.CarInfoRes o) {
+//                            super.onSuccess(o);
+//                            if(o!=null){
+//                                getP().getD().setCarinfo(o);
+//                                getP().getU().initData(getP().getD().getCarinfo());
+//                                getP().getD().setType(CarDetailValue.查看车辆);
+//                            }else{
+//                                onFail(false,"");
+//                            }
+//
+//                        }
+//
+//                        @Override
+//                        public void onFail(boolean haveData, String msg) {
+//                            super.onFail(haveData, msg);
+//                            getP().getU().initData(new CarsResBean.CarInfoRes());
+//                            getP().getD().setType(CarDetailValue.新建车辆);
+//                        }
+//                    });
+//                }
                 break;
         }
 

@@ -21,6 +21,7 @@ public class AboutUsFrag extends BaseServerFrag<AboutUsUIOpe, AboutUsDAOpe> {
         getP().getU().initVersion(PackageUtil.getAppVersionName(getActivity()));
     }
 
+    @Optional
     @OnClick({R.id.ll_remarkme, R.id.ll_question, R.id.ll_function})
     public void onClickEvent(View v) {
         switch (v.getId()) {

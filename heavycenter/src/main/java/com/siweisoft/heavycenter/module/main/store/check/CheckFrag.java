@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.store.check.CheckStoreResBean;
@@ -64,6 +65,11 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
         switch (v.getId()){
             case R.id.ftv_right2:
                 if(getP().getD().canGo()){
+                    if(!getP().getD().changedData()){
+                        ToastUtil.getInstance().showShort(getActivity(),"库存没有变化，取消盘点");
+                        getBaseUIAct().onBackPressed();
+                        return;
+                    }
                     getP().getD().checkStore(getP().getD().getCheckStoreReqBean(getP().getD().getStoresResBean()), new UINetAdapter<CheckStoreResBean>(this,true) {
                         @Override
                         public void onResult(boolean success, String msg, CheckStoreResBean o) {

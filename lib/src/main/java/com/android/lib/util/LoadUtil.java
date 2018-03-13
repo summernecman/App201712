@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.android.lib.R;
+import com.android.lib.view.loading.BallTrianglePathIndicator;
+import com.android.lib.view.title.TitleView;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -119,11 +121,18 @@ public class LoadUtil {
 
 
     public void startLoading(Context context,ViewGroup viewGroup){
-        loadingView = LayoutInflater.from(context).inflate(R.layout.dialog_loading,null);
-        AVLoadingIndicatorView avLoadingIndicatorView = (AVLoadingIndicatorView) loadingView.findViewById(R.id.av);
-        viewGroup.addView(loadingView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        avLoadingIndicatorView.show();
-
+       if( viewGroup.getChildAt(0) instanceof ViewGroup){
+           ViewGroup viewGroup1 = (ViewGroup) viewGroup.getChildAt(0);
+           if(viewGroup1.getChildCount()>0&&viewGroup1.getChildAt(0) instanceof TitleView){
+               loadingView = LayoutInflater.from(context).inflate(R.layout.dialog_loading_havetitle,null);
+           }else{
+               loadingView = LayoutInflater.from(context).inflate(R.layout.dialog_loading,null);
+           }
+           AVLoadingIndicatorView avLoadingIndicatorView = (AVLoadingIndicatorView) loadingView.findViewById(R.id.av);
+           viewGroup.addView(loadingView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+           avLoadingIndicatorView.setIndicator(new BallTrianglePathIndicator());
+           avLoadingIndicatorView.show();
+       }
 
     }
 

@@ -21,7 +21,7 @@ public class RenameFrag extends BaseServerFrag<RenameUIOpe, RenameDAOpe> {
         setTitleBean(new TitleBean("返回", "重命名", ""));
         getP().getU().initInfo(getP().getD().getUserBean());
     }
-
+    @Optional
     @OnClick({R.id.button})
     public void onClickEvent(View v) {
         switch (v.getId()) {

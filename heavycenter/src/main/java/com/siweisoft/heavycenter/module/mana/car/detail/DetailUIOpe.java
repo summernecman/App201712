@@ -57,8 +57,14 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
             case CarDetailValue.新建车辆:
                 bind.bindcartip.setVisibility(View.GONE);
                 bind.top.setVisibility(View.VISIBLE);
-                bind.tvY.setText("确定");
+                bind.tvY.setText("重新输入");
                 bind.title.getMidTV().setText("新建车辆");
+                bind.tvY.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bind.etName.setText("");
+                    }
+                });
                 break;
             case CarDetailValue.绑定车辆:
                 bind.bindcartip.setVisibility(View.GONE);

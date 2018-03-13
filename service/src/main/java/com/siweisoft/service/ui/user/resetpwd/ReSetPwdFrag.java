@@ -30,7 +30,7 @@ public class ReSetPwdFrag extends BaseServerFrag<ReSetPwdUIOpe, ReSetPwdDAOpe> {
         getP().getU().bind.setResetpwd(getP().getD().getUserBean());
     }
 
-
+    @Optional
     @OnClick({R.id.onRegist, R.id.ftv_back, R.id.tv_getcode})
     public void onClickEvent(View v) {
         switch (v.getId()) {
