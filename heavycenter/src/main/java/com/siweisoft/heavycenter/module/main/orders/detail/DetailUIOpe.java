@@ -38,6 +38,8 @@ import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 
+import butterknife.ButterKnife;
+
 public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
 
 
@@ -74,7 +76,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
                     doingBinding.circlebar.setCircleColor(context.getResources().getColor(R.color.color_hv_yelll));
                 }
                 doingBinding.circlebar.update(progress,false);
-
+                doingBinding.tvCarno.setOnClickListener(getFrag());
                 break;
             case OrdersReq.已完成订单:
                 ItemMainOrderDetailDoneBinding doneBinding = ItemMainOrderDetailDoneBinding.inflate(LayoutInflater.from(context));
@@ -83,6 +85,7 @@ public class DetailUIOpe extends AppUIOpe<FragMainOrderDetailBinding>{
                 bind.itemTip.setVisibility(View.GONE);
                 bind.ivLocal.setVisibility(View.GONE);
                 doneBinding.setVariable(BR.item_main_order_detail_done,res);
+                doneBinding.tvTotalcarnum.setOnClickListener(getFrag());
                 break;
         }
         if(res==null){

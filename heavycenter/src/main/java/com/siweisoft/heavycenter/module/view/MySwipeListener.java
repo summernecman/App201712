@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.view;
 
 //by summer on 2018-02-08.
 
+import com.android.lib.util.data.DateFormatUtil;
 import com.daimajia.swipe.SwipeLayout;
 
 public class MySwipeListener implements SwipeLayout.SwipeListener {

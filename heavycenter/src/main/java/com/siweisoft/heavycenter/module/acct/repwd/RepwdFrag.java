@@ -49,7 +49,7 @@ public class RepwdFrag extends AppFrag<RepwdUIOpe,RepwdDAOpe> {
                     getP().getD().getThreadUtil().run(this,v,60,1000, new OnLoadingInterf() {
                         @Override
                         public Void onStarLoading(Object o) {
-                            getP().getU().bind.code.getCodeText().setText((60 - (int) o) + "s");
+                            getP().getU().bind.code.getCodeText().setText((60 - (int) o) + "StransUIOpe");
                             if ((60 - (int) o) <= 0) {
                                 getP().getU().bind.code.setEnabled(true);
                                 getP().getD().getThreadUtil().stop();

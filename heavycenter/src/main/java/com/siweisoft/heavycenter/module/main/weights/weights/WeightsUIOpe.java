@@ -59,6 +59,6 @@ public class WeightsUIOpe extends AppUIOpe<FragMainWeigtsBinding> {
 
 
     public void initUI(WeightMsg weightMsg){
-        bind.bottom.setVariable(BR.frag_main_weigts_bottom,weightMsg);
+        bind.bottom.setVariable(BR.frag_main_weigts_bottom,weightMsg.getMessage());
     }
 }

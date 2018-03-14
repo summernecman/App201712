@@ -111,15 +111,18 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
     @Override
     public void onBackPressed() {
-        if(FragManager2.getInstance().getMoudleFragSize(MainValue.主界面)==0){
-            onAppItemSelect(null,null,getP().getU().bind.bottommenu.getIndex());
-        }
 
         BaseUIFrag baseUIFrag = FragManager2.getInstance().getCurrentFrag(getMoudle());
         if(baseUIFrag!=null&&baseUIFrag.getFragM()!=null){
             FragManager2 fragManager2 = baseUIFrag.getFragM();
-            if(!fragManager2.finish(getActivity(),getMoudle(),!getMoudle().equals(MainValue.主界面))){
-                super.onBackPressed();
+            if(!fragManager2.finish(getActivity(),getMoudle(),!getMoudle().equals(MainValue.主界面))){//清除当前页面
+                super.onBackPressed();//当前模块没有可清除界面
+            }else{
+                //当前模块有可清除界面
+                if(FragManager2.getInstance().getMoudleFragSize(MainValue.主界面)==0){
+                    onAppItemSelect(null,null,getP().getU().bind.bottommenu.getIndex());
+                }
+
             }
         }else{
             super.onBackPressed();

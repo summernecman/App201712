@@ -67,16 +67,16 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
                 }
                 break;
             case R.id.ftv_right2:
-                if(getP().getD().getUserInfo()!=null&&getP().getU().getSelectRole()!=null){
-
+                if(v.getVisibility()==View.VISIBLE&&getP().getD().getUserInfo()!=null&&getP().getU().getSelectRole()!=null){
+                    NewDAOpe.setUserRole(getBaseAct(), getP().getD().getUserInfo().getUserId(), getP().getU().getSelectRole(), new UINetAdapter<UserRoleRes>(this,true) {
+                        @Override
+                        public void onSuccess(UserRoleRes o) {
+                            super.onSuccess(o);
+                            getBaseAct().onBackPressed();
+                        }
+                    });
                 }
-                NewDAOpe.setUserRole(getBaseAct(), getP().getD().getUserInfo().getUserId(), getP().getU().getSelectRole(), new UINetAdapter<UserRoleRes>(this,true) {
-                    @Override
-                    public void onSuccess(UserRoleRes o) {
-                        super.onSuccess(o);
-                        getBaseAct().onBackPressed();
-                    }
-                });
+
                 break;
         }
     }

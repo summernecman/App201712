@@ -21,7 +21,7 @@ import com.siweisoft.heavycenter.data.netd.user.usertype.UserTypeReqBean;
 import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.main.map.MapFrag;
 import com.siweisoft.heavycenter.module.main.orders.news.NewOrderFrag;
-import com.siweisoft.heavycenter.module.main.trans.TransFrag;
+import com.siweisoft.heavycenter.module.main.trans.trans.TransFrag;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
 

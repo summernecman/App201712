@@ -18,6 +18,7 @@ import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarReq;
 import com.siweisoft.heavycenter.data.netd.order.addcar.AddCarRes;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
+import com.siweisoft.heavycenter.module.main.trans.strans.StransFrag;
 import com.siweisoft.heavycenter.module.mana.car.car.CarFrag;
 import com.siweisoft.heavycenter.module.mana.car.car.CarValue;
 
@@ -53,6 +54,19 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
         switch (v.getId()){
             case R.id.iv_local:
                 FragManager2.getInstance().start(getBaseUIAct(), get容器(),CarFrag.getInstance("指定车辆",CarsReqBean.WHAT_MY, CarValue.选择车辆));
+                break;
+            case R.id.tv_totalcarnum://done
+                if(getP().getD().getData()==null){
+                    return;
+                }
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),StransFrag.getInstance(getP().getD().getData().getOrderId(),1));
+
+                break;
+            case R.id.tv_carno://doing
+                if(getP().getD().getData()==null){
+                    return;
+                }
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),StransFrag.getInstance(getP().getD().getData().getOrderId(),1));
                 break;
         }
     }

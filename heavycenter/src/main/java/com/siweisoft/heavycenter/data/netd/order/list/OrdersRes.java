@@ -320,7 +320,7 @@ public class OrdersRes extends BaseBean {
             if(getPlanTime()==null){
                     return "";
             }
-            return "计划开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getPlanTime()));
+            return "计划开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getPlanTime()));
         }
 
         public String getPlanTimeCNNOApp() {
@@ -342,14 +342,14 @@ public class OrdersRes extends BaseBean {
             if(getStartTime()==null){
                 return "";
             }
-            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getStartTime()));
+            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getStartTime()));
         }
 
         public String getStartTimeCN2() {
             if(getStartTime()==null){
                 return "开始时间: ";
             }
-            return "开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getStartTime()));
+            return "开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getStartTime()));
         }
 
 

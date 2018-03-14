@@ -184,6 +184,11 @@ public  class TransDetailRes extends BaseBean {
         return StringUtil.getStr(trueName);
     }
 
+
+    public String getTrueNameCN2() {
+        return "驾驶员:"+StringUtil.getStr(trueName);
+    }
+
     public void setTrueName(String trueName) {
         this.trueName = trueName;
     }
@@ -217,6 +222,11 @@ public  class TransDetailRes extends BaseBean {
     public String getTel() {
         return tel;
     }
+
+    public String getTelCN2() {
+        return "联系电话:"+StringUtil.getStr(tel);
+    }
+
 
     public void setTel(String tel) {
         this.tel = tel;
@@ -408,6 +418,13 @@ public  class TransDetailRes extends BaseBean {
         return DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(getFhTime()));
     }
 
+    public String getFhTimeCN2() {
+        if(getFhTime()==null){
+            return "";
+        }
+        return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS,new Date(getFhTime()));
+    }
+
     public int getPercent(){
         if((getSignStatus()==TransDetailRes.SING_STATUS_已确认)){
             return 0;
@@ -432,6 +449,13 @@ public  class TransDetailRes extends BaseBean {
             return "";
         }
         return DateFormatUtil.getdDateStr(DateFormatUtil.MM_DD_HH_MM,new Date(getShTime()));
+    }
+
+    public String getShTimeCN2() {
+        if(getShTime()==null){
+            return "";
+        }
+        return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS,new Date(getShTime()));
     }
 
     public boolean isshowOpeBtn(TransDetailRes data){

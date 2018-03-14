@@ -23,15 +23,21 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <TextView
+        <com.siweisoft.heavycenter.module.view.text.MarqTextView
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
             android:id="@+id/tv_content"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:layout_marginRight="5dp"
             android:text='@{frag_main_weigts_bottom.contentCN}'
             android:textColor="@color/color_grey_500"
             android:textSize="15sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/tv_select"
+            app:layout_constraintTop_toTopOf="@+id/tv_select"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_select"
+            app:layout_constraintRight_toLeftOf="@+id/tv_select"
             app:layout_constraintLeft_toLeftOf="parent" />
 
         <TextView

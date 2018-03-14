@@ -79,6 +79,7 @@ import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailReq;
 import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignReq;
 import com.siweisoft.heavycenter.data.netd.trans.sign.TransSignRes;
+import com.siweisoft.heavycenter.data.netd.trans.strans.StransReq;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransReq;
 import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes;
@@ -194,6 +195,11 @@ public class NetDataOpe {
 
         public static void getOrderCount(Context context, OrderNumReq reqBean, NetI<OrderNumRes> adapter) {
             NetGet.getData(context,NetValue.获取地址("/orders/getOrderCount"),reqBean,adapter);
+        }
+
+
+        public static void getStrans(Context context, StransReq reqBean, NetI<TransRes> adapter) {
+            NetGet.getData(context,NetValue.获取地址("/ysRecord/list"),reqBean,adapter);
         }
     }
 
@@ -344,7 +350,7 @@ public class NetDataOpe {
                 NetGet.getData(context,NetValue.获取地址("/vehicle/list"),reqBean,adapter);
             }
 
-            public static void newCar(Context context, CarNewReqBean reqBean, NetI<CarNewResBean> adapter) {
+            public static void newCar(Context context, CarNewReqBean reqBean, NetI<CarsResBean.CarInfoRes> adapter) {
                 NetGet.postData(context,NetValue.获取地址("/vehicle/insert"),reqBean,adapter);
             }
 

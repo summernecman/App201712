@@ -18,6 +18,7 @@ public class WeightTipsUIOpe extends BaseUIOpe<FragMainWeightSetBinding> {
             return;
         }
         bind.tvNewvalue.setText(StringUtil.getStr(weightMsg.getMessage().getWeigh()));
+        bind.tvValue.setText(StringUtil.getStr(weightMsg.getMessage().getWeigh()));
     }
 
 }

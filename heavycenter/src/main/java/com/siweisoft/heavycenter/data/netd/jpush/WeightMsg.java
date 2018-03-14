@@ -52,7 +52,23 @@ public class WeightMsg extends BaseBean {
         private OrderBean order = new OrderBean();
         private double fhTare;
         private String suttle;
+        private String warnMessage;
 
+        public String getIsFlush() {
+            return isFlush;
+        }
+
+        public void setIsFlush(String isFlush) {
+            this.isFlush = isFlush;
+        }
+
+        public String getWarnMessage() {
+            return warnMessage;
+        }
+
+        public void setWarnMessage(String warnMessage) {
+            this.warnMessage = warnMessage;
+        }
 
         public String getMessageType() {
             return messageType;
@@ -67,7 +83,7 @@ public class WeightMsg extends BaseBean {
         }
 
         public String getContentCN() {
-            return "系统自动识别当前驾驶员"+ StringUtil.getStr(content);
+            return "系统自动识别当前驾驶员"+ StringUtil.getStr(content)+StringUtil.getStr(getWarnMessage());
         }
 
         public void setContent(String content) {
@@ -229,12 +245,25 @@ public class WeightMsg extends BaseBean {
             private int planNumber;
             private String carLicenseNo;
             private int actualSh;
+            private String develiverCompanyName;
+            private String receiveCompanyName;
 
-            public String getAccessComName() {
+
+
+            public String getShortAccessComName() {
                 if(isIDiliverCom()){
                     return getShdwName();
                 }else{
                     return  getFhdwName();
+                }
+            }
+
+
+            public String getAccessComName() {
+                if(isIDiliverCom()){
+                    return getReceiveCompanyName();
+                }else{
+                    return  getDeveliverCompanyName();
                 }
             }
 
@@ -399,8 +428,21 @@ public class WeightMsg extends BaseBean {
                 }
             }
 
+            public String getDeveliverCompanyName() {
+                return develiverCompanyName;
+            }
 
+            public void setDeveliverCompanyName(String develiverCompanyName) {
+                this.develiverCompanyName = develiverCompanyName;
+            }
 
+            public String getReceiveCompanyName() {
+                return receiveCompanyName;
+            }
+
+            public void setReceiveCompanyName(String receiveCompanyName) {
+                this.receiveCompanyName = receiveCompanyName;
+            }
         }
     }
 }

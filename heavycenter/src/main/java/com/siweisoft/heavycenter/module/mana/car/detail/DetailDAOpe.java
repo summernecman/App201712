@@ -87,7 +87,7 @@ public class DetailDAOpe extends AppDAOpe {
         return carNewReqBean;
     }
 
-    public void newCar(CarNewReqBean carNewReqBean, NetI<CarNewResBean> adapter){
+    public void newCar(CarNewReqBean carNewReqBean, NetI<CarsResBean.CarInfoRes> adapter){
         NetDataOpe.Mana.Car.newCar(getActivity(),carNewReqBean,adapter);
     }
 

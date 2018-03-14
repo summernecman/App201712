@@ -68,6 +68,21 @@ public class WeigtFrag extends AppFrag<WeigtUIOpe,WeigtDAOpe> {
                             case R.id.tv_weight:
                                 DecimalFormat df = new DecimalFormat("#.#");
                                 getP().getU().bind.tvWeight.setText(StringUtil.getStr(Double.parseDouble(df.format(d))));
+                                switch (v.getId()){
+                                    case R.id.tv_weight:
+                                        getP().getD().getWeightMsg().getMessage().setWeigh(d);
+                                        break;
+                                    case R.id.tv_mz:
+                                        getP().getD().getWeightMsg().getMessage().setMz(d);
+                                        break;
+                                    case R.id.tv_pz:
+                                        getP().getD().getWeightMsg().getMessage().setPz(d);
+                                        break;
+                                    case R.id.tv_kc:
+                                        getP().getD().getWeightMsg().getMessage().setKc(d);
+                                        break;
+                                }
+
                                 getP().getD().getWeightMsg().getMessage().setWeigh(d);
                                 break;
                             case R.id.tv_kc:

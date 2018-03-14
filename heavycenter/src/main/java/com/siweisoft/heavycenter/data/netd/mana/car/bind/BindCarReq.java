@@ -12,6 +12,8 @@ public class BindCarReq extends BaseReqBean {
 
     private int editer;
 
+    private boolean enable = false;
+
     public int getId() {
         return id;
     }
@@ -34,5 +36,13 @@ public class BindCarReq extends BaseReqBean {
 
     public void setEditer(int editer) {
         this.editer = editer;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }

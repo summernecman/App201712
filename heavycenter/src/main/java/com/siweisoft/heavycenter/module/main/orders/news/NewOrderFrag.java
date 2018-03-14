@@ -122,21 +122,30 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
     @Override
     public void onResult(int res, Bundle bundle) {
         super.onResult(res, bundle);
-        if(bundle==null||bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
+        if(bundle==null){
             return;
         }
         switch (res){
             case NewOrderValue.物料名称:
+                if(bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
+                    return;
+                }
                 NamesRes.ResultsBean data = (NamesRes.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA2);
                 getP().getD().getNewsOrderReqBean().setProductName(data.getMaterielName());
                 getP().getD().getNewsOrderReqBean().setProductId(data.getId());
                 getP().getD().getNewsOrderReqBean().setSpecification(null);
                 break;
             case NewOrderValue.物料规格:
+                if(bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
+                    return;
+                }
                 SpecsRes.ResultsBean data1 = (SpecsRes.ResultsBean) bundle.getSerializable(ValueConstant.DATA_DATA2);
                 getP().getD().getNewsOrderReqBean().setSpecification(data1.getSpecifications());
                 break;
             case NewOrderValue.收货单位:
+                if(bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
+                    return;
+                }
                 UnitInfo unitInfo = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA2);
                 if(NewsOrderReqBean.发货.equals(getP().getD().getNewsOrderReqBean().getOrderType())){
                     getP().getD().getNewsOrderReqBean().setDeveliverCompanyId(LocalValue.get登录返回信息().getCompanyId());
@@ -150,11 +159,17 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 getP().getD().getNewsOrderReqBean().setAddress(unitInfo.getCompanyAddress());
                 break;
             case NewOrderValue.备用签收规则:
+                if(bundle.getSerializable(ValueConstant.DATA_DATA2)==null){
+                    return;
+                }
                 Rule rule = (Rule) bundle.getSerializable(ValueConstant.DATA_DATA2);
                 getP().getD().getNewsOrderReqBean().setSignRule(rule.getKey());
                 getP().getD().getNewsOrderReqBean().setSignRuleValue(rule.getValue());
                 break;
             case NewOrderValue.送货地址:
+                if(bundle.getSerializable(ValueConstant.DATA_DATA)==null){
+                    return;
+                }
                 UnitInfo unitInfo1 = (UnitInfo) bundle.getSerializable(ValueConstant.DATA_DATA);
                 getP().getD().getNewsOrderReqBean().setAddress(unitInfo1.getCompanyAddress());
                 break;

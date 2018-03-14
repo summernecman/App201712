@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.bean.AppViewHolder;
+import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
@@ -37,8 +38,8 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
             public void onBindViewHolder(AppViewHolder holder, int position) {
                 super.onBindViewHolder(holder, position);
                 ItemMainWeightDetailBinding binding = (ItemMainWeightDetailBinding) holder.viewDataBinding;
-//                binding.tvTime.setText(StringUtil.getStr(s.get(position).getMessage().getTime()));
-//                binding.tvTxt.setText(StringUtil.getStr(s.get(position).getMessage().getContent()));
+//                binding.tvTime.setText(StringUtil.getStr(StransUIOpe.get(position).getMessage().getTime()));
+//                binding.tvTxt.setText(StringUtil.getStr(StransUIOpe.get(position).getMessage().getContent()));
                 binding.tvTime.setText(s.get(position).getTimeCN());
 
                 StringBuffer sb = new StringBuffer();
@@ -48,8 +49,12 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
                         break;
                     case "weight":
                         sb.append(StringUtil.getStr(s.get(position).getContent()))
-                                .append("\n")
-                                .append(StringUtil.getStr(s.get(position).getWeighResult()))
+                                .append("\n");
+                                if(!NullUtil.isStrEmpty(s.get(position).getWarnMessage())){
+                                    sb.append(StringUtil.getStr(s.get(position).getWarnMessage()))
+                                            .append("\n");
+                                }
+                        sb.append(StringUtil.getStr(s.get(position).getWeighResult()))
                                 .append("\n")
                                 .append(StringUtil.getStr(s.get(position).getSuttle()));
                         break;
@@ -74,8 +79,8 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
         }
         bind.tvOrderandtransno.setText("订单"+StringUtil.getStr(data.getOrder().getOrderNo())+"     运输单:"+StringUtil.getStr(data.getOrder().getYsdNo()));
         bind.tvGoodnameanspes.setText(StringUtil.getStr(data.getOrder().getProductName())+"        "+StringUtil.getStr(data.getOrder().getSpecification()));
-        bind.tvFrom.setText(StringUtil.getStr(data.getOrder().getFhdwName()));
-        bind.tvTo.setText(StringUtil.getStr(data.getOrder().getShdwName()));
+        bind.tvFrom.setText(StringUtil.getStr(data.getOrder().getDeveliverCompanyName()));
+        bind.tvTo.setText(StringUtil.getStr(data.getOrder().getReceiveCompanyName()));
     }
 
     public void  notifyDataSetChanged(){

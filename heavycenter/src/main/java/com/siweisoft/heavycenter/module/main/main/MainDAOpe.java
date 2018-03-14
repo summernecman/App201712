@@ -20,7 +20,7 @@ import com.siweisoft.heavycenter.module.main.map.MapFrag;
 import com.siweisoft.heavycenter.module.main.msg.MsgsFrag;
 import com.siweisoft.heavycenter.module.main.orders.OrdersFrag;
 import com.siweisoft.heavycenter.module.main.store.StoreFrag;
-import com.siweisoft.heavycenter.module.main.trans.TransFrag;
+import com.siweisoft.heavycenter.module.main.trans.trans.TransFrag;
 import com.siweisoft.heavycenter.module.main.weights.weights.WeightsFrag;
 import com.siweisoft.heavycenter.module.main.weights.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.myce.myce.MyceFrag;

@@ -53,6 +53,7 @@ public class BaseUIOpe<A extends ViewDataBinding> {
         this.frag = baseUIOpe.frag;
         this.bind = (A) baseUIOpe.bind;
         this.viewHolder = new AppViewHolder(this.bind);
+        initUI();
     }
 
 

@@ -62,6 +62,7 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
                         @Override
                         public void onSuccess(SaveWeightRes o) {
                             super.onSuccess(o);
+                            getP().getU().bind.bottom.tvSave.setVisibility(View.INVISIBLE);
                         }
                     });
                 }
@@ -98,6 +99,7 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
         getP().getU().showBottomView(false);
         getP().getD().setWeightMsg(weightMsg);
         getP().getU().initUI(getP().getD().getWeightMsg());
+        getP().getU().bind.bottom.tvSave.setVisibility(View.VISIBLE);
         initPage(weightMsg);
     }
 

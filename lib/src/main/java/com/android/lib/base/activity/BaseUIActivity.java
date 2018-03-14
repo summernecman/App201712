@@ -18,6 +18,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 
@@ -31,6 +32,8 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
     protected BaseOpes<A, B> opes;
 
     private String moudle;
+
+    private ArrayList<String> moudles = new ArrayList<>();
 
 
 
@@ -96,6 +99,7 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        moudles.clear();
         if(registerEventBus()){
             EventBus.getDefault().unregister(this);
         }
@@ -113,6 +117,7 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
 
     public void setMoudle(String moudle) {
         this.moudle = moudle;
+        moudles.add(moudle);
     }
 
     public BaseUIActivity getActivity() {
@@ -121,6 +126,10 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
 
     public ViewGroup getBaseUIRoot() {
         return baseUIRoot;
+    }
+
+    public ArrayList<String> getMoudles() {
+        return moudles;
     }
 
 }

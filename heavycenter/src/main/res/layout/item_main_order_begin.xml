@@ -71,7 +71,7 @@
             android:layout_height="wrap_content" />
         <TextView
             tools:text="王尼玛"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="7dp"
             android:includeFontPadding="false"
            app:layout_constraintLeft_toRightOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@+id/tv_productName"

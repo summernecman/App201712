@@ -21,8 +21,8 @@
 
         <com.siweisoft.heavycenter.module.view.circle.CircleBar
             android:id="@+id/circlebar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             app:color_one="@{item_main_order_detail_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
             app:update="@{item_main_order_detail_doing.percent}"
             android:layout_centerInParent="true"

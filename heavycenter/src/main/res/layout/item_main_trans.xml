@@ -29,8 +29,8 @@
 
         <com.siweisoft.heavycenter.module.view.circle.CircleBar
             android:id="@+id/circlebar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_centerInParent="true"
             style_common:color_one="@color/color_hv_yelll"
             android:layout_margin="5dp" />
