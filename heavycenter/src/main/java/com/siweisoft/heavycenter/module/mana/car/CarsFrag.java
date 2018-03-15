@@ -12,7 +12,6 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.module.mana.car.detail.CarDetailValue;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 import com.siweisoft.heavycenter.module.mana.car.car.CarFrag;
-import com.siweisoft.heavycenter.module.mana.car.news.NewCarFrag;
 
 import butterknife.OnClick;
 
@@ -33,7 +32,7 @@ public class CarsFrag extends AppFrag<CarsUIOpe,CarsDAOpe> {
             case R.id.ftv_right2:
                 Bundle bundle = new Bundle();
                 bundle.putInt(ValueConstant.FARG_REQ,1);
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(), NewCarFrag.getInstance(),bundle);
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),DetailFrag.getInstance(CarDetailValue.新建车辆,"新建车辆",null),bundle);
                 break;
         }
 

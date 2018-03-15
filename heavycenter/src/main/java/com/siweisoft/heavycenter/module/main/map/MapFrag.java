@@ -22,7 +22,6 @@ public class MapFrag extends AppFrag<MapUIOpe,MapDAOpe> {
         getP().getD().getMapUtil().registerLocationListener(getActivity(), new BDAbstractLocationListener() {
             @Override
             public void onReceiveLocation(BDLocation bdLocation) {
-                getP().getD().getMapUtil().setFirst(true);
                 getP().getD().getMapUtil().animateMapStatus(getP().getU().bind.map.getMap(),bdLocation);
                 getP().getD().getMapUtil().setMyLocationData(getP().getU().bind.map.getMap(),bdLocation);
             }

@@ -139,12 +139,7 @@ public class MsgUIOpe extends BaseUIOpe<FragMainMsgsMsgBinding>{
     }
 
     public void setBtnGone(final View view, final int pos){
-        ViewAnimator.animate(view).fadeOut().onStop(new AnimationListener.Stop() {
-            @Override
-            public void onStop() {
-                notifyDataSetChanged(pos);
-            }
-        }).height(view.getHeight(),0).accelerate().duration(400).start();
+        notifyDataSetChanged(pos);
     }
 
 }

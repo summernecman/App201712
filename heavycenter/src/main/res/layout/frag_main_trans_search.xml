@@ -16,6 +16,7 @@
             android:id="@+id/item_good"
             style_common:txt_left="产品/规格"
             style_common:boo_edit="true"
+            style_common:txt_hint="请输入"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -23,6 +24,7 @@
             android:id="@+id/item_unitname"
             style_common:txt_left="单位名称  "
             style_common:boo_edit="true"
+            style_common:txt_hint="请输入"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -30,6 +32,7 @@
             android:id="@+id/item_unitaddr"
             style_common:txt_left="单位地址  "
             style_common:boo_edit="true"
+            style_common:txt_hint="请输入"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -37,6 +40,7 @@
             android:id="@+id/item_unitcar"
             style_common:txt_left="车辆牌照  "
             style_common:boo_edit="true"
+            style_common:txt_hint="请输入"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

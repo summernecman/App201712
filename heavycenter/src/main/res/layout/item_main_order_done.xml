@@ -29,7 +29,7 @@
             android:id="@+id/tv_goodname"
             android:singleLine="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+            android:textSize="@dimen/dimen_text_size_productionName"
             android:text="@{item_main_order_done.productNameAndSpecification}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -48,7 +48,7 @@
             android:id="@+id/tv_type"
             android:singleLine="true"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="@dimen/dimen_text_size_type"
 
             android:text="@{item_main_order_done.type}"
             android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:singleLine="true"
             android:layout_marginLeft="10dp"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:text="@{item_main_order_done.shortAccessComName}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -78,7 +78,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
-
                 tools:text="总计:"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
@@ -99,7 +98,7 @@
                 android:id="@+id/tv_plan"
                 android:singleLine="true"
                 android:textColor="@{item_main_order_done.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-                android:textSize="12sp"
+                android:textSize="@dimen/dimen_text_size_plannum"
                 android:text="@{item_main_order_done.planNumberCN}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -116,7 +115,7 @@
             android:gravity="bottom|left"
             android:singleLine="true"
             android:textColor="@color/white"
-            android:textSize="15sp"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:text="@{item_main_order_done.actualFhCN}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -137,7 +136,7 @@
                 android:gravity="bottom|right"
                 android:singleLine="true"
                 android:textColor="@color/white"
-                android:textSize="15sp"
+                android:textSize="@dimen/dimen_text_size_unit"
                 android:text="实收："
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -164,7 +163,7 @@
             android:gravity="bottom|right"
             android:singleLine="true"
             android:textColor="@color/white"
-            android:textSize="15sp"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:text="@{item_main_order_done.YKCN}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

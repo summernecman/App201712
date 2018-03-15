@@ -13,16 +13,16 @@
         android:id="@+id/ll_ingorder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
+        android:paddingBottom="20dp"
         android:paddingRight="10dp"
-        android:paddingTop="10dp"
+        android:paddingTop="20dp"
         android:transitionName="doingorder">
 
 
         <com.siweisoft.heavycenter.module.view.circle.CircleBar
             android:id="@+id/circlebar"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             app:color_one="@{item_main_order_detail_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
             app:update="@{item_main_order_detail_doing.percent}"
             android:layout_centerInParent="true"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:textColor="@{item_main_order_detail_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-                android:textSize="25sp" />
+                android:textSize="@dimen/dimen_text_size_orderweight" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -65,9 +65,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_bb"
             app:layout_constraintLeft_toLeftOf="@+id/circlebar"
             app:layout_constraintRight_toRightOf="@+id/circlebar"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_nametel"
+            app:layout_constraintTop_toBottomOf="@+id/circlebar"
             android:gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -118,13 +119,15 @@
             android:id="@+id/tv_goodname"
             android:singleLine="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+            android:textSize="@dimen/dimen_text_size_productionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
 
 
         <TextView
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             android:padding="1dp"
             android:textColor="@color/black"
             android:background="@{item_main_order_detail_doing.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
@@ -135,7 +138,7 @@
             android:layout_alignParentRight="true"
             android:id="@+id/tv_carno"
             android:singleLine="true"
-            android:textSize="12sp"
+            android:textSize="@dimen/dimen_text_size_plannum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -151,8 +154,8 @@
             app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
             android:id="@+id/tv_type"
             android:singleLine="true"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/color_grey_900"
+            android:textSize="@dimen/dimen_text_size_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
@@ -165,7 +168,7 @@
             android:singleLine="true"
             android:layout_marginLeft="10dp"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:text="@{item_main_order_detail_doing.accessComName}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -178,7 +181,7 @@
             android:layout_marginTop="7dp"
             android:gravity="center_vertical"
             android:textColor="@color/color_hv_txt_dark"
-            android:textSize="@dimen/dimen_recylce_item_date_txtsize"
+            android:textSize="@dimen/dimen_text_size_datetime"
             android:text="@{item_main_order_detail_doing.carLicenseNo}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -192,7 +195,7 @@
             android:layout_marginTop="3dp"
             android:gravity="center_vertical"
             android:textColor="@color/color_hv_txt_dark"
-            android:textSize="@dimen/dimen_recylce_item_date_txtsize"
+            android:textSize="@dimen/dimen_text_size_datetime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

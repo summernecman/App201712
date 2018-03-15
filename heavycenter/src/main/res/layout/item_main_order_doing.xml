@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -23,8 +24,8 @@
 
         <com.siweisoft.heavycenter.module.view.circle.CircleBar
             android:id="@+id/circlebar"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
             app:color_one="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
             app:update="@{item_main_order_doing.percent}"
             android:layout_centerInParent="true"
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:textColor="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-                android:textSize="25sp" />
+                android:textSize="@dimen/dimen_text_size_orderweight" />
 
             <TextView
 
@@ -61,7 +62,7 @@
                 android:layout_marginTop="2dp"
                 android:text="车"
                 android:textColor="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
 
         </LinearLayout>
@@ -70,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="@+id/tv_nametel"
             app:layout_constraintBottom_toBottomOf="@+id/tv_nametel"
             app:layout_constraintLeft_toLeftOf="@+id/circlebar"
             app:layout_constraintRight_toRightOf="@+id/circlebar">
@@ -83,14 +85,14 @@
                 android:maxEms="7"
                 android:singleLine="true"
                 android:textColor="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="/"
                 android:textColor="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:text="@{item_main_order_doing.planNumberCN2}"
@@ -100,8 +102,8 @@
                 android:layout_height="wrap_content"
                 android:maxEms="7"
                 android:singleLine="true"
-                android:textColor="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-                android:textSize="15sp" />
+                android:textColor="@color/white"
+                android:textSize="14sp" />
         </LinearLayout>
 
 
@@ -114,6 +116,7 @@
 
 
         <com.siweisoft.heavycenter.module.view.text.MarqTextView
+            android:layout_marginLeft="5dp"
             tools:text="混凝土"
             android:id="@+id/tv_goodname"
             android:layout_width="wrap_content"
@@ -122,27 +125,26 @@
             android:singleLine="true"
             android:text="@{item_main_order_doing.productNameAndSpecification}"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+            android:textSize="@dimen/dimen_text_size_productionName"
             app:layout_constraintLeft_toRightOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-
         <TextView
-            android:visibility="@{item_main_order_doing.carLicenseNo==null?View.GONE:View.VISIBLE}"
-            android:textColor="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-            android:background="@{item_main_order_doing.IDiliverCom?@drawable/bg_hv_sharp1_yell_stroke:@drawable/bg_hv_sharp1_blue_stroke}"
-            tools:text="沪12345"
             android:id="@+id/tv_carno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:background="@{item_main_order_doing.IDiliverCom?@drawable/bg_hv_sharp1_yell_stroke:@drawable/bg_hv_sharp1_blue_stroke}"
             android:singleLine="true"
             android:text="@{item_main_order_doing.carLicenseNo}"
-            android:textSize="12sp"
-            app:layout_constraintRight_toRightOf="parent"
+            android:textColor="@{item_main_order_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+            android:textSize="@dimen/dimen_text_size_plannum"
+            android:visibility="@{item_main_order_doing.carLicenseNo==null?View.GONE:View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="@+id/tv_goodname"
-            app:layout_constraintTop_toTopOf="@+id/tv_goodname" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_goodname"
+            tools:text="沪12345" />
 
 
         <TextView
@@ -156,8 +158,8 @@
             android:padding="1dp"
             android:singleLine="true"
             android:text="@{item_main_order_doing.type}"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/color_grey_900"
+            android:textSize="@dimen/dimen_text_size_type"
            app:layout_constraintTop_toTopOf="@+id/tv_duimian"
             app:layout_constraintBottom_toBottomOf="@+id/tv_duimian"
             app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
@@ -174,7 +176,7 @@
             android:singleLine="true"
             android:text="@{item_main_order_doing.shortAccessComName}"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            android:textSize="@dimen/dimen_text_size_unit"
             app:layout_constraintLeft_toRightOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@+id/tv_goodname" />
 
@@ -188,7 +190,7 @@
             tools:text="开始时间：2017/12/09 10:00"
             android:text='@{item_main_order_doing.startTimeCN2}'
             android:textColor="@color/color_hv_txt_dark"
-            android:textSize="@dimen/dimen_recylce_item_date_txtsize"
+            android:textSize="@dimen/dimen_text_size_datetime"
             app:layout_constraintLeft_toLeftOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@+id/tv_duimian" />
 
@@ -202,7 +204,7 @@
             android:layout_marginTop="3dp"
             android:gravity="center_vertical"
             android:textColor="@color/color_hv_txt_dark"
-            android:textSize="@dimen/dimen_recylce_item_date_txtsize"
+            android:textSize="@dimen/dimen_text_size_datetime"
             app:layout_constraintLeft_toLeftOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@+id/tv_carlisence" />
 

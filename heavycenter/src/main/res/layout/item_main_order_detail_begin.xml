@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:id="@+id/ll_neworder"
         >
 
@@ -27,12 +27,14 @@
             app:layout_constraintTop_toTopOf="parent"
             android:singleLine="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+            android:textSize="@dimen/dimen_text_size_productionName"
             android:text="@{item_main_order_detail_begin.productNameAndSpecification}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             tools:text="沪123445"
             android:visibility="@{item_main_order_detail_begin==null?View.GONE:View.VISIBLE}"
             android:paddingLeft="1dp"
@@ -44,7 +46,7 @@
             android:background="@{item_main_order_detail_begin.IDiliverCom?@drawable/bg_hv_sharp1_yell_stroke:@drawable/bg_hv_sharp1_blue_stroke}"
             android:singleLine="true"
             android:textColor="@{item_main_order_detail_begin.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-            android:textSize="12sp"
+            android:textSize="@dimen/dimen_text_size_plannum"
             android:text='@{item_main_order_detail_begin.planNumberCN}'
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -64,7 +66,7 @@
             android:gravity="center_vertical"
             android:singleLine="true"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="@dimen/dimen_text_size_type"
             android:text='@{item_main_order_detail_begin.type}'
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -79,7 +81,7 @@
             android:singleLine="true"
             android:layout_marginLeft="8dp"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:text='@{item_main_order_detail_begin.accessComName}'
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -97,7 +99,7 @@
             android:gravity="bottom|right"
             android:singleLine="true"
             android:textColor="@color/color_hv_txt_dark"
-            android:textSize="@dimen/dimen_recylce_item_date_txtsize"
+            android:textSize="@dimen/dimen_text_size_datetime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

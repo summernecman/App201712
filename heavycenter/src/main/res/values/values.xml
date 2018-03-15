@@ -11,6 +11,18 @@
     <dimen name="dimen_text_size_15">15sp</dimen>
     <dimen name="dimen_text_size_20">20sp</dimen>
 
+    <dimen name="dimens_base_bottom">50dp</dimen>
+    <dimen name="dimen_text_size_productionName">15.5sp</dimen>
+    <dimen name="dimen_text_size_unit">14sp</dimen>
+    <dimen name="dimen_text_size_datetime">11.5sp</dimen>
+    <dimen name="dimen_text_size_plannum">10sp</dimen>
+    <dimen name="dimen_text_size_type">10sp</dimen>
+
+    <dimen name="dimen_text_size_weight">14sp</dimen>
+    <dimen name="dimen_text_size_carbrand">14sp</dimen>
+    <dimen name="dimen_text_size_carno">11sp</dimen>
+    <dimen name="dimen_text_size_orderweight">18sp</dimen>
+
 
     <integer name="anim_duration_very_long">1500</integer>
     <integer name="anim_duration_long">500</integer>

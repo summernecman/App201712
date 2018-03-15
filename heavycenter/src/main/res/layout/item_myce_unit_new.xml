@@ -9,14 +9,14 @@
       >
 
     <TextView
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="13dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/tv_left"
             android:layout_marginLeft="15dp"
             android:text="文字内容"
-            android:textSize="17dp"
+            android:textSize="15dp"
             android:textColor="@color/hv_color_text_title"
             android:gravity="center_vertical"
             android:layout_width="wrap_content"

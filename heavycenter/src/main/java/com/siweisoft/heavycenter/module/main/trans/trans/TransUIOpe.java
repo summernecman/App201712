@@ -118,22 +118,23 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
     public void search(OnFinishListener onFinishListener){
         if(bind.title.getRightIV2().isSelected()){
             bind.title.getRightIV2().setSelected(false);
-            Animator anim = ViewAnimationUtils.createCircularReveal(bind.search.getRoot(), bind.search.getRoot().getWidth()/2, 0, bind.search.getRoot().getWidth()/2, 0);
-            anim.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    super.onAnimationEnd(animation);
-                    bind.search.getRoot().setVisibility(View.GONE);
-                }
-            });
-            anim.start();
+//            Animator anim = ViewAnimationUtils.createCircularReveal(bind.search.getRoot(), bind.search.getRoot().getWidth()/2, 0, bind.search.getRoot().getWidth()/2, 0);
+//            anim.addListener(new AnimatorListenerAdapter() {
+//                @Override
+//                public void onAnimationEnd(Animator animation) {
+//                    super.onAnimationEnd(animation);
+//                    bind.search.getRoot().setVisibility(View.GONE);
+//                }
+//            });
+//            anim.start();
+            bind.search.getRoot().setVisibility(View.GONE);
             onFinishListener.onFinish(true);
         }else{
             bind.title.getRightIV2().setSelected(true);
             //ViewAnimator.animate(bind.search.getRoot()).alpha(0,1).translationY(-bind.search.getRoot().getHeight(),0).accelerate().duration(300).start();
-            Animator anim = ViewAnimationUtils.createCircularReveal(bind.search.getRoot(),bind.search.getRoot().getWidth()/2,0,0,bind.search.getRoot().getWidth()/2);
+            //Animator anim = ViewAnimationUtils.createCircularReveal(bind.search.getRoot(),bind.search.getRoot().getWidth()/2,0,0,bind.search.getRoot().getWidth()/2);
             bind.search.getRoot().setVisibility(View.VISIBLE);
-            anim.start();
+            //anim.start();
             onFinishListener.onFinish(false);
         }
 

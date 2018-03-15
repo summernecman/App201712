@@ -29,6 +29,7 @@ import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 import com.siweisoft.heavycenter.module.main.main.MainAct;
 import com.siweisoft.heavycenter.module.mana.car.detail.CarDetailValue;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
+import com.siweisoft.heavycenter.module.mana.user.list.UserDAOpe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -224,5 +225,19 @@ public class NewCarFrag extends AppFrag<NewCarUIOpe,NewCarDAOpe> implements View
                 getP().getU().notifyDataSetChanged();
                 break;
         }
+    }
+
+    public void bindCar(int userid){
+        for(int i=0;getP().getD().getDriverRes()!=null&&i<getP().getD().getDriverRes().size();i++){
+            if(userid == getP().getD().getDriverRes().get(i).getUserId()){
+                getP().getD().getDriverRes().get(i).setIsCurrentDriver(DriverRes.是当前驾驶员);
+                getP().getD().getBindCarReq().setEnable(true);
+                getP().getD().getBindCarReq().setCurrentDriver(userid);
+                getP().getD().getBindCarReq().setId(getP().getD().getCarInfoRes().getVehicleId());
+            }else{
+                getP().getD().getDriverRes().get(i).setIsCurrentDriver(DriverRes.不当前驾驶员);
+            }
+        }
+        getP().getU().notifyDataSetChanged();
     }
 }

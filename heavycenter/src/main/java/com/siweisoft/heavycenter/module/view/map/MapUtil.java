@@ -26,6 +26,8 @@ import com.baidu.mapapi.search.poi.PoiSearch;
 import com.baidu.mapapi.search.poi.PoiSortType;
 import com.siweisoft.heavycenter.R;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,7 +117,6 @@ public class MapUtil {
     }
 
     public void setMyLocationData(BaiduMap map,BDLocation bdLocation){
-        LogUtil.E(bdLocation.getLatitude()+":"+bdLocation.getLongitude()+":"+bdLocation.getAddrStr());
         map.setMyLocationEnabled(true);
         MyLocationData.Builder locationBuilder = new MyLocationData.Builder();
         locationBuilder.accuracy(bdLocation.getRadius()).direction(100);
@@ -133,7 +134,14 @@ public class MapUtil {
             MapStatus.Builder builder = new MapStatus.Builder();
             builder.target(latLng).zoom(16f);
             map.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-            setFirst(false);
+
+            if(BigDecimal.valueOf(map.getMapStatus().target.latitude).setScale(5, RoundingMode.HALF_UP).doubleValue()==BigDecimal.valueOf(bdLocation.getLatitude()).setScale(5, RoundingMode.HALF_UP).doubleValue()
+                    &&BigDecimal.valueOf(map.getMapStatus().target.longitude).setScale(5, RoundingMode.HALF_UP).doubleValue()==BigDecimal.valueOf(bdLocation.getLongitude()).setScale(5, RoundingMode.HALF_UP).doubleValue()){
+                setFirst(false);
+            }else{
+                setFirst(true);
+            }
+
         }
     }
 

@@ -89,7 +89,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
                         auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_REJECT;
                         break;
                     case R.id.bt_mana:
-                        status[0] = MsgDealReqBean.AUDII_STATUS_YES;
+                        status[0] = MsgDealReqBean.AUDII_STATUS_SetMngr;
                         auditstate = MsgsResBean.ResultsBean.AUDITOR_STATE_AGREEED;
                         break;
                 }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.android.lib.R;
 import com.android.lib.R2;
+import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 
 import butterknife.BindView;
@@ -113,8 +114,20 @@ public class ItemView extends RelativeLayout{
         if(o==0){
             getRight2().setVisibility(View.GONE);
         }else{
+            getRight2().setVisibility(View.VISIBLE);
             getRightTV().setVisibility(View.VISIBLE);
             getRightTV().setText(StringUtil.getStr(o));
+        }
+
+    }
+
+    public void setRightTxt(String o){
+        if(NullUtil.isStrEmpty(o)){
+            getRight2().setVisibility(View.GONE);
+        }else{
+            getRight2().setVisibility(View.VISIBLE);
+            getRightTV().setVisibility(View.VISIBLE);
+            getRightTV().setText(o);
         }
 
     }

@@ -35,12 +35,6 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
     @Override
     public void onFristVisibleDelayInit() {
         getP().getU().initPages(getFrag(),getP().getD().initPages());
-        getP().getD().getOrderCount(new NetAdapter<OrderNumRes>(this){
-            @Override
-            public void onSuccess(OrderNumRes o) {
-                getP().getU().refreshTopMenu(o);
-            }
-        });
 
     }
 

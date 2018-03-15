@@ -320,14 +320,14 @@ public class OrdersRes extends BaseBean {
             if(getPlanTime()==null){
                     return "";
             }
-            return "计划开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getPlanTime()));
+            return "计划开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getPlanTime()));
         }
 
         public String getPlanTimeCNNOApp() {
             if(getPlanTime()==null){
                 return "";
             }
-            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getPlanTime()));
+            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getPlanTime()));
         }
 
         public void setPlanTime(Long planTime) {
@@ -342,14 +342,14 @@ public class OrdersRes extends BaseBean {
             if(getStartTime()==null){
                 return "";
             }
-            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getStartTime()));
+            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getStartTime()));
         }
 
         public String getStartTimeCN2() {
             if(getStartTime()==null){
                 return "开始时间: ";
             }
-            return "开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getStartTime()));
+            return "开始时间: "+DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getStartTime()));
         }
 
 
@@ -357,7 +357,7 @@ public class OrdersRes extends BaseBean {
             if(getStartTime()==null){
                 return "";
             }
-            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getStartTime()));
+            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getStartTime()));
         }
 
         public void setStartTime(Long startTime) {
@@ -388,7 +388,7 @@ public class OrdersRes extends BaseBean {
             if(getFinishTime()==null){
                 return "";
             }
-            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM2,new Date(getFinishTime()));
+            return DateFormatUtil.getdDateStr(DateFormatUtil.YYYY_MM_DD_HH_MM,new Date(getFinishTime()));
         }
 
         public void setFinishTime(Long finishTime) {

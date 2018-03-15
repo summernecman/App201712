@@ -18,8 +18,8 @@
                 android:id="@+id/iv_left"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/icon_hv_phone"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
+                android:layout_width="17sp"
+                android:layout_height="17sp" />
 
             <EditText
 
@@ -38,8 +38,8 @@
                 android:alpha="0.5"
                 android:id="@+id/iv_right"
                 android:layout_marginRight="10dp"
-                android:layout_width="20dp"
-                android:layout_height="20dp" />
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
 
             <TextView
                 android:id="@+id/tv_code"

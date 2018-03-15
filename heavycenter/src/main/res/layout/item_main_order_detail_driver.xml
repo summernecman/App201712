@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         sml:sml_auto_open_percent="0.2"
         android:foreground="?android:attr/selectableItemBackground"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         sml:sml_scroller_duration="250">
 
         <TextView
@@ -46,7 +46,7 @@
                 <TextView
                     android:singleLine="true"
                     android:textColor="@color/hv_color_text"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     android:text="@{item_main_order_detail_driver.carLicenseNo}"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -56,7 +56,7 @@
                 <TextView
                     android:singleLine="true"
                     android:textColor="@color/hv_color_text"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     android:layout_marginRight="10dp"
                     android:text='@{item_main_order_detail_driver.maxCapacity+"t"}'
                     android:gravity="center_vertical"
@@ -66,7 +66,7 @@
                 <TextView
                     android:singleLine="true"
                     android:textColor="@color/hv_color_text"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     android:text="@{item_main_order_detail_driver.trueName}"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
@@ -76,7 +76,7 @@
                 <TextView
                     android:singleLine="true"
                     android:textColor="@color/hv_color_text"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     android:text="@{item_main_order_detail_driver.tel}"
                     android:gravity="center_vertical"
                     android:layout_width="wrap_content"

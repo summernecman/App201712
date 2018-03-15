@@ -14,6 +14,7 @@ import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.netd.mana.car.list.CarsResBean;
 import com.siweisoft.heavycenter.module.mana.car.detail.CarDetailValue;
+import com.siweisoft.heavycenter.module.mana.car.detail.DetailDAOpe;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
 
 import butterknife.OnClick;
@@ -47,7 +48,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
                         @Override
                         public void onResult(boolean success, String msg, CarsResBean.CarInfoRes o) {
                             super.onResult(success, msg, o);
-                            if(o!=null){
+                            if(!DetailDAOpe.IsNewCar(o)){
                                 FragManager2.getInstance().setAnim(false).start(getBaseUIAct(), get容器(),DetailFrag.getInstance(CarDetailValue.绑定车辆,"绑定车辆",o));
                             }else{
                                 FragManager2.getInstance().setAnim(false).start(getBaseUIAct(),get容器(),DetailFrag.getInstance(CarDetailValue.新建车辆并绑定,getP().getU().getInputText(),null));

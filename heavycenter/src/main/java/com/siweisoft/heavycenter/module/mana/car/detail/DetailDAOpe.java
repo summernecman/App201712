@@ -42,6 +42,8 @@ public class DetailDAOpe extends AppDAOpe {
 
     private ArrayList<DriverRes> driverRes = new ArrayList<>();
 
+    private BindCarReq bindCarReq = new BindCarReq();
+
 
     public ArrayList<String> getData(){
         ArrayList<String> data = new ArrayList<>();
@@ -116,11 +118,7 @@ public class DetailDAOpe extends AppDAOpe {
     public void drvers(String type,CarsResBean.CarInfoRes info,NetI<ArrayList<DriverRes>> adapter){
         DriversReq driversReq = new DriversReq();
         driversReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
-        if(type.endsWith(CarDetailValue.新建车辆)){
-            driversReq.setVehicleId(0);
-        }else{
-            driversReq.setVehicleId(info.getVehicleId());
-        }
+        driversReq.setVehicleId(info.getVehicleId());
         NetDataOpe.Unit.drvers(getActivity(),driversReq,adapter);
     }
 
@@ -142,16 +140,46 @@ public class DetailDAOpe extends AppDAOpe {
         return carInfoReq;
     }
 
-    public void bindCar(int carid,int currentdriverid,NetI<BindCarRes> adapter){
-        BindCarReq bindCarReq = new BindCarReq();
+    public void bindCar(BindCarReq bindCarReq,NetI<BindCarRes> adapter){
         bindCarReq.setEditer(LocalValue.get登录返回信息().getUserId());
-        bindCarReq.setId(carid);
-        bindCarReq.setCurrentDriver(currentdriverid);
         NetDataOpe.Mana.Car.bindCar(getActivity(),bindCarReq,adapter);
+    }
+
+
+    public static  boolean IsNewCar(CarsResBean.CarInfoRes carinfo){
+        if(carinfo==null|| NullUtil.isStrEmpty(carinfo.getCarLicenseNo())){
+            return true;
+        }
+        return false;
+    }
+
+    public void addDriverData(ArrayList<DriverRes> o){
+        if(o!=null){
+            getDriverRes().addAll(o);
+        }
+    }
+
+
+    public void ReaddDriverData(ArrayList<DriverRes> o){
+        getDriverRes().clear();
+        if(o!=null){
+            getDriverRes().addAll(o);
+        }
     }
 
 
     public ArrayList<DriverRes> getDriverRes() {
         return driverRes;
+    }
+
+    public BindCarReq getBindCarReq() {
+        return bindCarReq;
+    }
+
+    public BindCarReq getDriverBindCarReq(CarsResBean.CarInfoRes carinfo) {
+        bindCarReq.setCurrentDriver(LocalValue.get登录返回信息().getUserId());
+        bindCarReq.setEditer(LocalValue.get登录返回信息().getUserId());
+        bindCarReq.setId(carinfo.getVehicleId());
+        return bindCarReq;
     }
 }

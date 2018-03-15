@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.main.trans.strans;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
+import com.android.lib.constant.ValueConstant;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -26,6 +27,7 @@ public class StransUIOpe extends AppUIOpe<FragMainStransBinding>{
         if(getFrag() instanceof OnLoadmoreListener){
             bind.refresh.setOnLoadmoreListener((OnLoadmoreListener) getFrag());
         }
+        bind.title.getMidTV().setText(getFrag().getArguments().getInt(ValueConstant.DATA_DATA,0)==0?"运输单":getFrag().getArguments().getInt(ValueConstant.DATA_DATA,0)+"");
     }
 
 

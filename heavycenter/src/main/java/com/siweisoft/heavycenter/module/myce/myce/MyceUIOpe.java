@@ -135,19 +135,19 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
                         fragMyceGeneralBinding.itemUnit.getLeftTV().setText("绑定单位");
                         fragMyceGeneralBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_UNBIND_CN);
-                        fragMyceGeneralBinding.itemUnit.getRight2().setVisibility(View.GONE);
+                        fragMyceGeneralBinding.itemUnit.setRightTxt("");
                         break;
                     case LoginResBean.BIND_UNIT_STATE_CHECK:
                         fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
-                        fragMyceGeneralBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_CHECK_CN);
+                        fragMyceGeneralBinding.itemUnit.setRightTxt(LoginResBean.BIND_UNIT_STATE_CHECK_CN);
                         break;
                     case LoginResBean.BIND_UNIT_STATE_BINDED:
                         fragMyceGeneralBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
-                        fragMyceGeneralBinding.itemUnit.getRight2().setVisibility(View.GONE);
+                        fragMyceGeneralBinding.itemUnit.setRightTxt("");
                         break;
                     case LoginResBean.BIND_UNIT_STATE_REJECT:
                         fragMyceGeneralBinding.itemUnit.getLeftTV().setText("绑定单位");
-                        fragMyceGeneralBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_REJECT_CN);
+                        fragMyceGeneralBinding.itemUnit.setRightTxt(LoginResBean.BIND_UNIT_STATE_REJECT_CN);
                         break;
                 }
                 break;

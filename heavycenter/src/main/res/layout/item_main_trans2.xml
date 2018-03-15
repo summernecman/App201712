@@ -19,11 +19,11 @@
 
         <com.siweisoft.heavycenter.module.view.circle.CircleBar
                 android:id="@+id/circlebar"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginBottom="10dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+                android:layout_marginBottom="15dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 app:color_one="@{item_main_trans2.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -40,7 +40,7 @@
                 android:singleLine="true"
                 android:text="@{item_main_trans2.isshowOpeBtn(item_main_trans2)?item_main_trans2.totalSuttleCN:item_main_trans2.YKCN}"
                 android:textColor="@{item_main_trans2.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-                android:textSize="22sp"
+            android:textSize="@dimen/dimen_text_size_orderweight"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_carnum"
                 app:layout_constraintLeft_toLeftOf="@+id/circlebar"
                 app:layout_constraintRight_toRightOf="@+id/circlebar"
@@ -53,7 +53,7 @@
                 android:singleLine="true"
                 android:text='@{item_main_trans2.carNumberCN}'
                 android:textColor="@{item_main_trans2.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-                android:textSize="13sp"
+                android:textSize="@dimen/dimen_text_size_carno"
                 app:layout_constraintLeft_toLeftOf="@+id/circlebar"
                 app:layout_constraintRight_toRightOf="@+id/circlebar"
                 app:layout_constraintTop_toBottomOf="@+id/tv_totalnum"/>
@@ -68,7 +68,7 @@
                 android:singleLine="true"
                 android:text='@{StringUtil.getStr(item_main_trans2.productNameAndSpecification)}'
                 android:textColor="@color/white"
-                android:textSize="@dimen/dimen_recylce_item_title_txtsize"
+                android:textSize="@dimen/dimen_text_size_productionName"
                 app:layout_constraintLeft_toRightOf="@id/circlebar"
                 app:layout_constraintRight_toLeftOf="@+id/iv_local"
                 app:layout_constraintTop_toTopOf="@id/circlebar"
@@ -89,7 +89,7 @@
                 android:singleLine="true"
                 android:text="@{item_main_trans2.upLineTxt}"
                 android:textColor="@color/white"
-                android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            android:textSize="@dimen/dimen_text_size_unit"
                app:layout_constraintLeft_toLeftOf="@+id/productName"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_sendtime"
                 app:layout_constraintTop_toTopOf="@+id/tv_sendtime"
@@ -97,6 +97,7 @@
 
 
         <TextView
+            android:textColor="@color/color_grey_900"
                 android:id="@+id/type_send_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -105,7 +106,7 @@
                 android:padding="1dp"
                 android:singleLine="true"
                 android:text="发往"
-                android:textSize="12sp"
+            android:textSize="@dimen/dimen_text_size_type"
                 android:layout_marginRight="10dp"
                 android:visibility="@{item_main_trans2.upSecondTypeShow?View.VISIBLE:View.GONE}"
                 app:layout_constraintTop_toTopOf="@+id/tv_sendtime"
@@ -141,7 +142,7 @@
                 android:singleLine="true"
                 android:text="@{item_main_trans2.downLineTxt}"
                 android:textColor="@color/white"
-                android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            android:textSize="@dimen/dimen_text_size_unit"
                app:layout_constraintLeft_toLeftOf="@+id/tv_send_comname"
                 app:layout_constraintTop_toTopOf="@+id/tv_receipttime"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_receipttime"
@@ -150,6 +151,7 @@
 
 
         <TextView
+            android:textColor="@color/color_grey_900"
                 app:layout_constraintLeft_toRightOf="@+id/tv_receipt_comname"
                 android:id="@+id/type_receipt_right"
                 android:layout_width="wrap_content"
@@ -159,7 +161,7 @@
                 android:padding="1dp"
                 android:singleLine="true"
                 android:text="发来"
-                android:textSize="12sp"
+            android:textSize="@dimen/dimen_text_size_type"
                 android:layout_marginRight="10dp"
                 android:visibility="@{item_main_trans2.downSecondTypeShow?View.VISIBLE:View.GONE}"
                 app:layout_constraintTop_toTopOf="@+id/tv_receipttime"
@@ -192,7 +194,8 @@
                 android:singleLine="true"
                 android:text="@{item_main_trans2.fhTimeCN}"
                 android:textColor="@color/color_grey_400"
-                android:textSize="14sp"
+                android:textSize="@dimen/dimen_text_size_datetime"
+
                 app:layout_constraintTop_toBottomOf="@+id/productName"
                 app:layout_constraintRight_toRightOf="parent"
           />
@@ -208,7 +211,7 @@
                 android:singleLine="true"
                 android:text="@{item_main_trans2.shTimeCN}"
                 android:textColor="@color/color_grey_400"
-                android:textSize="14sp"
+            android:textSize="@dimen/dimen_text_size_datetime"
                 android:visibility="@{item_main_trans2.isshowOpeBtn(item_main_trans2)?View.GONE:View.VISIBLE}"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_sendtime"
@@ -253,6 +256,7 @@
 
 
         <ImageView
+            android:visibility="@{item_main_trans2.isFinished(item_main_trans2)?View.GONE:View.VISIBLE}"
                 android:id="@+id/iv_local"
                 android:layout_width="15dp"
                 android:layout_height="15dp"

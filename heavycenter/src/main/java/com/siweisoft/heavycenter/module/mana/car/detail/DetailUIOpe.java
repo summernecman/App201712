@@ -35,30 +35,21 @@ import java.util.List;
 public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
 
 
-    NewCarUIOpe newCarUIOpe = new NewCarUIOpe();
-
-
-    public void initRecycle(){
-        bind.recycle.setLayoutManager(new LinearLayoutManager(context));
-    }
-
-    @Override
-    public void initUI() {
-        initRecycle();
-        newCarUIOpe.copy(this);
-    }
 
     public void init(String type){
         switch (type){
             case CarDetailValue.查看车辆:
                 bind.top.setVisibility(View.GONE);
-                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
-                    bind.title.getRightIV2().setVisibility(View.GONE);
-                }
+//                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
+//                    bind.title.getRightIV2().setVisibility(View.GONE);
+//                }
                 bind.title.getMidTV().setText("车辆详情");
                 break;
             case CarDetailValue.新建车辆:
-                newCarUIOpe.init(type);
+                bind.content.setVisibility(View.INVISIBLE);
+                bind.top.setVisibility(View.VISIBLE);
+                bind.tvY.setText("确定");
+                bind.title.getMidTV().setText("新建车辆");
                 break;
             case CarDetailValue.绑定车辆:
                 bind.bindcartip.setVisibility(View.GONE);
@@ -125,8 +116,18 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
         });
     }
 
-    public void initData(CarsResBean.CarInfoRes data){
-        bind.etName.setText(StringUtil.getStr(data.getCarLicenseNo()));
+    public void initData(String type,CarsResBean.CarInfoRes data){
+        switch (type){
+            case CarDetailValue.查看车辆:
+            case CarDetailValue.绑定车辆:
+                bind.title.getMidTV().setText(StringUtil.getStr(data.getCarLicenseNo()));
+                bind.etName.setText(StringUtil.getStr(data.getCarLicenseNo()));
+                break;
+            case CarDetailValue.新建车辆:
+                bind.title.getMidTV().setText(StringUtil.getStr(data.getCarLicenseNo()));
+                break;
+        }
+        //bind.etName.setText(StringUtil.getStr(data.getCarLicenseNo()));
         bind.itemBrand.setMidEtTxt(StringUtil.getStr(data.getCarBrand()));
         bind.itemEmptyweight.setMidEtTxt(StringUtil.getStr(data.getEmptyWeight()));
         bind.itemMaxweight.setMidEtTxt(StringUtil.getStr(data.getMaxCapacity()));
@@ -177,6 +178,10 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
     }
 
     public boolean canNewGo() {
+        if(bind.content.getVisibility()!=View.VISIBLE){
+            ToastUtil.getInstance().showShort(getActivity(), "还未获取车辆详情 请点击确认按钮");
+            return false;
+        }
         if (NullUtil.isStrEmpty(bind.etName.getText().toString())) {
             ToastUtil.getInstance().showShort(getActivity(), "请输入车牌号");
             return false;
@@ -213,4 +218,28 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
         return bind.etName.getText().toString();
     }
 
+    public void showCotent(boolean show){
+        bind.content.setVisibility(show?View.VISIBLE:View.INVISIBLE);
+    }
+
+    public void whenClickReInput(){
+        showCotent(false);
+        bind.etName.setText("");
+        bind.tvY.setText("确定");
+        bind.etName.setEnabled(true);
+    }
+
+    public void whenClickMakeSure(){
+        showCotent(true);
+        bind.tvY.setText("重新输入");
+        bind.etName.setEnabled(false);
+    }
+
+    public boolean nowReInput(){
+        if(StringUtil.equals(bind.tvY.getText().toString(),"重新输入")){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

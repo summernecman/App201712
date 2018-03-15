@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:background="@drawable/bg_hv_sharp5_gray_solid"
         android:layout_centerInParent="true"
-        android:layout_height="12.5dp">
+        android:layout_height="10dp">
         <View
             android:id="@+id/now"
             android:background="@drawable/bg_hv_sharp10_gradient_yell_blue"

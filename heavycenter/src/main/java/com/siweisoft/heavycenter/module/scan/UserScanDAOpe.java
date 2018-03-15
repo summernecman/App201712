@@ -23,6 +23,7 @@ import com.siweisoft.heavycenter.module.main.map.MapFrag;
 import com.siweisoft.heavycenter.module.main.orders.news.NewOrderFrag;
 import com.siweisoft.heavycenter.module.main.trans.trans.TransFrag;
 import com.siweisoft.heavycenter.module.mana.car.detail.DetailFrag;
+import com.siweisoft.heavycenter.module.mana.car.news.NewCarFrag;
 import com.siweisoft.heavycenter.module.myce.unit.list.UnitListFrag;
 
 public class UserScanDAOpe extends BaseDAOpe {
@@ -93,6 +94,15 @@ public class UserScanDAOpe extends BaseDAOpe {
             ToastUtil.getInstance().showShort(getActivity(),"作为选定的当前驾驶员");
             DetailFrag detailFrag = (DetailFrag) appFrag;
             detailFrag.bindCar(scaned.getUserId());
+            return;
+        }
+
+
+        if(appFrag.getClass().getName().equals(NewCarFrag.class.getName())&&( LocalValue.get登录返回信息().getUserType()==UserTypeReqBean.非驾驶员)
+                &&( scaned.getUserType()==UserTypeReqBean.驾驶员)){
+            ToastUtil.getInstance().showShort(getActivity(),"作为选定的当前驾驶员");
+            NewCarFrag newCarFrag = (NewCarFrag) appFrag;
+            newCarFrag.bindCar(scaned.getUserId());
             return;
         }
 
