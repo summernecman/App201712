@@ -61,27 +61,17 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                 break;
             case R.id.ftv_midicon:
             case R.id.ftv_title:
-                final List<String> strs = new ArrayList<>();
-                final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get登录返回信息().getBranchCompanyList();
-                if(coms==null||coms.size()==0){
-                    return;
-                }
-                for(int i = 0;coms!=null&& i< coms.size(); i++){
-                    strs.add(coms.get(i).getAbbreviationName());
-                }
-                TitleTipFrag tipFrag = new TitleTipFrag();
+                TitleTipFrag tipFrag = TitleTipFrag.getInstance(LocalValue.get下级单位列表());
                 tipFrag.setOnAppItemsClickListener(new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
-                        getP().getD().setComid(coms.get(position).getBranchId());
+                        LoginResBean.BranchCompanyListBean data = (LoginResBean.BranchCompanyListBean) view.getTag(R.id.data);
+                        getP().getD().setComid(data.getBranchId());
+                        getP().getU().bind.title.getMidTV().setText(data.getAbbreviationName());
                         getP().getU().autoRefresh();
                     }
                 });
-                tipFrag.init(strs);
-                FragManager2.getInstance()
-                        .setAnim(false)
-                        .setHideLast(false)
-                        .start(getBaseUIAct(),get容器(),tipFrag);
+                FragManager2.getInstance().setAnim(false).setHideLast(false).start(getBaseUIAct(),get容器(),tipFrag);
                 break;
         }
     }
@@ -107,7 +97,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
             public void onSuccess(StoresResBean o) {
                 //o = new Test().getStoresResBean();
                 getP().getD().addData(o);
-                getP().getU().notifyDataSetChanged();
+                getP().getU().notifyDataSetChanged(getP().getD().getStoresResBean(),StoreFrag.this);
                 getP().getU().finishLoadmore();
             }
         });
@@ -122,7 +112,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
             public void onSuccess(StoresResBean o) {
                 //o = new Test().getStoresResBean();
                 getP().getD().addData(o);
-                getP().getU().LoadListData(getP().getD().getStoresResBean(),StoreFrag.this);
+                getP().getU().notifyDataSetChanged(getP().getD().getStoresResBean(),StoreFrag.this);
                 getP().getU().finishRefresh();
             }
         });

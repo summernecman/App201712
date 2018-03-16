@@ -3,6 +3,7 @@ package com.siweisoft.heavycenter.data.netd.mana.car.list;
 //by summer on 2018-01-11.
 
 import com.android.lib.bean.BaseBean;
+import com.android.lib.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -213,6 +214,10 @@ public class CarsResBean extends BaseBean {
             return trueName;
         }
 
+        public String getTrueNameCN() {
+            return "驾驶员:"+StringUtil.getStr(trueName);
+        }
+
         public void setTrueName(String trueName) {
             this.trueName = trueName;
         }
@@ -221,6 +226,9 @@ public class CarsResBean extends BaseBean {
             return tel;
         }
 
+        public String getTelCN() {
+            return "联系电话:"+StringUtil.getStr(tel);
+        }
         public void setTel(String tel) {
             this.tel = tel;
         }

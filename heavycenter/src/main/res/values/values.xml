@@ -14,14 +14,17 @@
     <dimen name="dimens_base_bottom">50dp</dimen>
     <dimen name="dimen_text_size_productionName">15.5sp</dimen>
     <dimen name="dimen_text_size_unit">14sp</dimen>
-    <dimen name="dimen_text_size_datetime">11.5sp</dimen>
+    <dimen name="dimen_text_size_datetime">12.5sp</dimen>
     <dimen name="dimen_text_size_plannum">10sp</dimen>
     <dimen name="dimen_text_size_type">10sp</dimen>
+    <dimen name="dimen_text_size_weightnum">13sp</dimen>
 
     <dimen name="dimen_text_size_weight">14sp</dimen>
     <dimen name="dimen_text_size_carbrand">14sp</dimen>
     <dimen name="dimen_text_size_carno">11sp</dimen>
     <dimen name="dimen_text_size_orderweight">18sp</dimen>
+
+    <color name="color_text_type">@color/color_grey_900</color>
 
 
     <integer name="anim_duration_very_long">1500</integer>

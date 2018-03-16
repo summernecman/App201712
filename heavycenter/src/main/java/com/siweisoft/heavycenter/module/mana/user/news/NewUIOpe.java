@@ -47,7 +47,7 @@ public class NewUIOpe extends AppUIOpe<FragManaUserDetailBinding> implements Vie
         super.initUI();
         switch (getFrag().getArguments().getString(ValueConstant.DATA_TYPE)){
             case NewUserValue.新建用户:
-
+                bind.title.getMidTV().setText("添加用户");
                 fragManaUserNewBinding = DataBindingUtil.bind(LayoutInflater.from(getActivity()).inflate(R.layout.frag_mana_user_new,null));
                 bind.llUserdetail.addView(fragManaUserNewBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
@@ -57,6 +57,7 @@ public class NewUIOpe extends AppUIOpe<FragManaUserDetailBinding> implements Vie
                 fragManaUserNewBinding.one.setSelected(true);
                 break;
             case NewUserValue.用户信息:
+                bind.title.getMidTV().setText("用户信息");
                 fragManaUserInfoBinding = DataBindingUtil.bind(LayoutInflater.from(getActivity()).inflate(R.layout.frag_mana_user_info,null));
                 bind.llUserdetail.addView(fragManaUserInfoBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 bind.title.getRightIV2().setBackgroundResource(R.drawable.icon_hv_save);

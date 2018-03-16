@@ -31,7 +31,7 @@
                 android:visibility="visible"
                 android:gravity="center_vertical"
                 android:id="@+id/tv_current"
-                android:textSize="14sp"
+                android:textSize="13sp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -66,7 +66,7 @@
                 android:includeFontPadding="false"
                 android:singleLine="true"
                 android:id="@+id/tv_minwuliao"
-                android:textSize="17sp"
+                android:textSize="14sp"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -81,7 +81,7 @@
                 android:singleLine="true"
                 android:id="@+id/tv_minstore"
                 android:textColor="@color/color_grey_500"
-                android:textSize="13sp"
+                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -105,7 +105,7 @@
                 android:layout_marginRight="3dp"
                 android:singleLine="true"
                 android:id="@+id/tv_maxwuliao"
-                android:textSize="17sp"
+                android:textSize="14sp"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -119,7 +119,7 @@
                 android:singleLine="true"
                 android:gravity="center_vertical"
                 android:id="@+id/tv_maxstore"
-                android:textSize="13sp"
+                android:textSize="12sp"
                 android:textColor="@color/color_grey_500"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

@@ -19,11 +19,11 @@
 
         <com.siweisoft.heavycenter.module.view.circle.CircleBar
             android:id="@+id/circlebar"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:layout_marginBottom="10dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             app:color_one="@{item_main_trans_driver.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -76,7 +76,7 @@
 
 
         <TextView
-            android:textColor="@color/black"
+            android:textColor="@color/color_text_type"
             tools:visibility="visible"
             android:id="@+id/type_send_left"
             android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
             android:layout_weight="1"
             android:text="@{item_main_trans_driver.develiverNumCN}"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            android:textSize="@dimen/dimen_text_size_unit"
             app:layout_constraintTop_toTopOf="@+id/tv_sendtime"
             app:layout_constraintBottom_toBottomOf="@+id/tv_sendtime"
             app:layout_constraintRight_toLeftOf="@+id/tv_sendtime"
@@ -133,7 +133,7 @@
 
 
         <TextView
-            android:textColor="@color/black"
+            android:textColor="@color/color_text_type"
             tools:visibility="visible"
             android:id="@+id/type_receipt_left"
             android:layout_width="wrap_content"
@@ -181,7 +181,7 @@
             android:layout_weight="1"
             android:text="@{item_main_trans_driver.receiveNumCN}"
             android:textColor="@color/color_hv_yelll"
-            android:textSize="@dimen/dimen_recylce_item_subtitle_txtsize"
+            android:textSize="@dimen/dimen_text_size_productionName"
             app:layout_constraintTop_toTopOf="@+id/tv_receipttime"
             app:layout_constraintBottom_toBottomOf="@+id/tv_receipttime"
             app:layout_constraintRight_toLeftOf="@+id/tv_receipttime"
@@ -191,7 +191,7 @@
 
         <TextView
             android:gravity="right|center_vertical"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/tv_sendtime"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
@@ -218,7 +218,7 @@
             android:textSize="@dimen/dimen_text_size_datetime"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sendtime"
-            android:layout_marginTop="7dp"/>
+            android:layout_marginTop="10dp"/>
 
 
 
@@ -228,11 +228,30 @@
             android:id="@+id/iv_local"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="20dp"
             android:src="@drawable/icon_trans_local"
             app:layout_constraintBottom_toBottomOf="@+id/productName"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/productName"/>
+
+
+        <TextView
+            android:id="@+id/tv_y"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/drawable_hv_bg_btn_login"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="@{item_main_trans_driver.isshowOpeBtn(item_main_trans_driver)?View.VISIBLE:View.GONE}"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_receipt_comname"
+            tools:visibility="visible"/>
 
 
     </android.support.constraint.ConstraintLayout>

@@ -28,10 +28,11 @@
 >
 
         <EditText
+            android:gravity="center_vertical"
             android:id="@+id/et_name"
             android:paddingLeft="10dp"
             android:layout_marginLeft="20dp"
-            android:textSize="17sp"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:background="@android:color/transparent"
             android:layout_weight="1"
             android:layout_width="0dp"

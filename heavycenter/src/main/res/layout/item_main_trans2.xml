@@ -19,7 +19,7 @@
 
         <com.siweisoft.heavycenter.module.view.circle.CircleBar
                 android:id="@+id/circlebar"
-            android:layout_width="72dp"
+            android:layout_width="70dp"
             android:layout_height="72dp"
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="10dp"
@@ -97,7 +97,7 @@
 
 
         <TextView
-            android:textColor="@color/color_grey_900"
+            android:textColor="@color/color_text_type"
                 android:id="@+id/type_send_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -186,7 +186,7 @@
         <TextView
             android:gravity="right|center_vertical"
             tools:text="03-08 17:14"
-                android:layout_marginTop="7dp"
+            android:layout_marginTop="10dp"
                 android:id="@+id/tv_sendtime"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"

@@ -95,7 +95,7 @@ public class LoginResBean extends BaseBean {
     private int productCount;
     private int userCount;
     private int vehicleCount;
-    private List<BranchCompanyListBean> branchCompanyList = new ArrayList<>();
+    private ArrayList<BranchCompanyListBean> branchCompanyList = new ArrayList<>();
     private String carLat;
     private String carLng;
     private String carBrand;
@@ -272,11 +272,11 @@ public class LoginResBean extends BaseBean {
         this.vehicleCount = vehicleCount;
     }
 
-    public List<BranchCompanyListBean> getBranchCompanyList() {
+    public ArrayList<BranchCompanyListBean> getBranchCompanyList() {
         return branchCompanyList;
     }
 
-    public void setBranchCompanyList(List<BranchCompanyListBean> branchCompanyList) {
+    public void setBranchCompanyList(ArrayList<BranchCompanyListBean> branchCompanyList) {
         this.branchCompanyList = branchCompanyList;
     }
 
@@ -400,7 +400,7 @@ public class LoginResBean extends BaseBean {
         return false;
     }
 
-    public static class BranchCompanyListBean {
+    public static class BranchCompanyListBean extends BaseBean{
         /**
          * branchId : 35
          * companyName : huluwaCompany6

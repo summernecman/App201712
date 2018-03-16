@@ -42,7 +42,7 @@
                 android:id="@+id/tv_type"
                 android:background="@{item_main_order_detail_done.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
                 android:singleLine="true"
-                android:textColor="@color/black"
+                android:textColor="@color/color_text_type"
                 android:textSize="@dimen/dimen_text_size_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -69,8 +69,8 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tv_goodname"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_goodname"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:includeFontPadding="false"
                 android:id="@+id/tv_totalcarnum"
                 android:singleLine="true"
@@ -92,7 +92,7 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="13dp"
                 android:text="@{item_main_order_detail_done.planNumberCN}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -108,7 +108,7 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="13dp"
                 android:text="@{item_main_order_detail_done.actualFhCN}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -123,7 +123,7 @@
                 android:gravity="bottom|right"
                 android:singleLine="true"
                 android:textColor="@color/white"
-                android:textSize="15sp"
+                android:textSize="13dp"
                 android:text="实收："
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -137,7 +137,7 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:textColor="@color/color_hv_yelll"
-                android:textSize="21sp"
+                android:textSize="18sp"
                 android:text='@{item_main_order_detail_done.actualSh+"t"}'
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -154,7 +154,7 @@
                 android:singleLine="true"
                 android:text="@{item_main_order_detail_done.YKCN}"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="13dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

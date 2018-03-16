@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
 
@@ -30,6 +31,8 @@ public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
     }
 
 
+    @Optional
+    @OnClick({R.id.ftv_midicon,R.id.ftv_title})
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ftv_back:
@@ -39,6 +42,20 @@ public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
                 if(getActivity() instanceof MainAct){
                     new IntentIntegrator(getBaseAct()).setCaptureActivity(ScanAct.class).initiateScan();
                 }
+                break;
+            case R.id.ftv_midicon:
+            case R.id.ftv_title:
+                TitleTipFrag tipFrag = TitleTipFrag.getInstance(LocalValue.get下级单位列表());
+                tipFrag.setOnAppItemsClickListener(new OnAppItemClickListener() {
+                    @Override
+                    public void onAppItemClick(View view, int position) {
+                        LoginResBean.BranchCompanyListBean data = (LoginResBean.BranchCompanyListBean) view.getTag(R.id.data);
+                        getP().getD().setComid(data.getBranchId());
+                        getP().getU().bind.title.getMidTV().setText(data.getAbbreviationName());
+                        refreshMsg();
+                    }
+                });
+                FragManager2.getInstance().setAnim(false).setHideLast(false).start(getBaseUIAct(),get容器(),tipFrag);
                 break;
         }
     }

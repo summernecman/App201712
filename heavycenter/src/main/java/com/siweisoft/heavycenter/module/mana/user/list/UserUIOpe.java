@@ -37,9 +37,9 @@ import java.util.List;
 
 public class UserUIOpe extends AppUIOpe<FragManaUserBinding> {
 
-    public final static String 解除绑定 = "解除绑定";
+    public final static String 解除绑定 = "解除\n绑定";
 
-    public final static String 重新邀请 = "重新邀请";
+    public final static String 重新邀请 = "重新\n邀请";
 
     public final static String 指定新的超管 = "指定新的\n超管";
 

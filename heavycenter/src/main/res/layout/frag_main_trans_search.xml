@@ -7,9 +7,14 @@
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/ll_search"
+        android:id="@+id/root_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
@@ -44,10 +49,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+    </LinearLayout>
 
+
+<View
+    android:id="@+id/view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
     </LinearLayout>
 </layout>

@@ -51,7 +51,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
             public void onSuccess(MsgsResBean o) {
                 //o= new Test().getMsgsResBean();
                 getP().getD().addData(o);
-                getP().getU().notifyDataSetChanged();
+                getP().getU().notifyDataSetChanged(getP().getD().getMsgsResBean(),MsgFrag.this);
             }
         });
     }
@@ -64,7 +64,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
             public void onSuccess(MsgsResBean o) {
                 //o= new Test().getMsgsResBean();
                 getP().getD().setMsgsResBean(o);
-                getP().getU().LoadListData(getP().getD().getMsgsResBean(),MsgFrag.this);
+                getP().getU().notifyDataSetChanged(getP().getD().getMsgsResBean(),MsgFrag.this);
             }
         });
     }
@@ -102,8 +102,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
                     public void onSuccess(MsgDealResBean o) {
                         data.setAuditState(finalAuditstate);
                         getP().getU().setBtnGone((View) v.getTag(R.id.data1),pos);
-                        if(!StringUtil.equals(MsgDealReqBean.AUDII_STATUS_NO,status[0])&&
-                                (StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为用户)
+                        if((StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为用户)
                                 ||StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为管理员)
                                 ||StringUtil.equals(data.getMessageType(),MsgsResBean.ResultsBean.邀请为驾驶员))){
                             ((MainAct) getBaseUIAct()).go网络获取用户信息重新加载();

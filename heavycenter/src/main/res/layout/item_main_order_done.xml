@@ -47,7 +47,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
             android:id="@+id/tv_type"
             android:singleLine="true"
-            android:textColor="@color/black"
+            android:textColor="@color/color_text_type"
             android:textSize="@dimen/dimen_text_size_type"
 
             android:text="@{item_main_order_done.type}"
@@ -85,7 +85,7 @@
                 android:id="@+id/tv_totalcarnum"
                 android:singleLine="true"
                 android:textColor="@{item_main_order_done.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-                android:textSize="12sp"
+                android:textSize="@dimen/dimen_text_size_plannum"
                 android:text="@{item_main_order_done.totalRecordCN}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -115,7 +115,7 @@
             android:gravity="bottom|left"
             android:singleLine="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_text_size_unit"
+            android:textSize="13dp"
             android:text="@{item_main_order_done.actualFhCN}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -136,7 +136,7 @@
                 android:gravity="bottom|right"
                 android:singleLine="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/dimen_text_size_unit"
+                android:textSize="13dp"
                 android:text="实收："
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -148,7 +148,7 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:textColor="@{item_main_order_done.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
-                android:textSize="21sp"
+                android:textSize="19sp"
                 android:text='@{item_main_order_done.actualSh+"t"}'
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -163,7 +163,7 @@
             android:gravity="bottom|right"
             android:singleLine="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/dimen_text_size_unit"
+            android:textSize="13dp"
             android:text="@{item_main_order_done.YKCN}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

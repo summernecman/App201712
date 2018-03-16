@@ -59,7 +59,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                                 super.onResult(success, msg, o);
                                 if(success){
                                     resultsBean.setSignStatus(TransDetailRes.SING_STATUS_已确认);
-                                    getP().getU().notifyDataSetChanged();
+                                    getP().getU().notifyDataSetChanged(getP().getD().getTransRes().getResults(),TransFrag.this);
                                 }
                             }
                         });
@@ -101,7 +101,6 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                 }
                 break;
             case R.id.search:
-
                 getP().getU().refreshSearch();
                 break;
             case R.id.ftv_right:
@@ -111,27 +110,17 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                 break;
             case R.id.ftv_midicon:
             case R.id.ftv_title:
-                final List<String> strs = new ArrayList<>();
-                final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get登录返回信息().getBranchCompanyList();
-                if(coms==null||coms.size()==0){
-                    return;
-                }
-                for(int i = 0;coms!=null&& i< coms.size(); i++){
-                    strs.add(coms.get(i).getAbbreviationName());
-                }
-                TitleTipFrag tipFrag = new TitleTipFrag();
+                TitleTipFrag tipFrag = TitleTipFrag.getInstance(LocalValue.get下级单位列表());
                 tipFrag.setOnAppItemsClickListener(new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
-                        getP().getD().setComid(coms.get(position).getBranchId());
+                        LoginResBean.BranchCompanyListBean data = (LoginResBean.BranchCompanyListBean) view.getTag(R.id.data);
+                        getP().getD().setComid(data.getBranchId());
+                        getP().getU().bind.title.getMidTV().setText(data.getAbbreviationName());
                         getP().getU().autoRefresh();
                     }
                 });
-                tipFrag.init(strs);
-                FragManager2.getInstance()
-                        .setAnim(false)
-                        .setHideLast(false)
-                        .start(getBaseUIAct(),get容器(),tipFrag);
+                FragManager2.getInstance().setAnim(false).setHideLast(false).start(getBaseUIAct(),get容器(),tipFrag);
                 break;
         }
     }
@@ -139,13 +128,13 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     @Override
     public void onRefresh(final RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
-        getP().getD().getTransRes().getResults().clear();
         getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
             @Override
             public void onSuccess(TransRes o) {
                 //o= new Test().getTransRes();
+                getP().getD().getTransRes().getResults().clear();
                 getP().getD().getTransRes().getResults().addAll(o==null? new TransRes().getResults():o.getResults());
-                getP().getU().LoadListData(getP().getD().getTransRes().getResults(),TransFrag.this);
+                getP().getU().notifyDataSetChanged(getP().getD().getTransRes().getResults(),TransFrag.this);
             }
         });
 
@@ -159,7 +148,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
             public void onSuccess(TransRes o) {
                 //o = new Test().getTransRes();
                 getP().getD().getTransRes().getResults().addAll(o.getResults());
-                getP().getU().notifyDataSetChanged();
+                getP().getU().notifyDataSetChanged(getP().getD().getTransRes().getResults(),TransFrag.this);
             }
         });
     }

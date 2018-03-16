@@ -127,4 +127,9 @@ public class LocalValue {
     }
 
 
+    public static ArrayList<LoginResBean.BranchCompanyListBean> get下级单位列表(){
+        return  LocalValue.get登录返回信息().getBranchCompanyList();
+    }
+
+
 }

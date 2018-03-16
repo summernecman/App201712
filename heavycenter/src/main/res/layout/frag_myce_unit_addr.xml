@@ -26,7 +26,7 @@
             style_common:txt_mid="单位地址" />
 
         <TextView
-            android:textSize="17sp"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:layout_marginTop="5dp"
             android:drawableRight="@drawable/icon_addr_down"
             android:paddingLeft="10dp"
@@ -57,7 +57,7 @@
             style_common:layout_constraintRight_toRightOf="parent"
             android:background="@color/color_grey_200"
             android:paddingLeft="10dp"
-            android:textSize="17sp"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:textColor="@color/color_hv_yelll"
             android:gravity="center_vertical"
             android:text="当前地址"
@@ -83,7 +83,7 @@
             style_common:layout_constraintRight_toRightOf="parent"
             style_common:layout_constraintTop_toBottomOf="@+id/lab_addr"
             android:paddingRight="10dp"
-            android:textSize="14sp"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:textColor="@color/color_hv_yelll"
             android:gravity="center_vertical|right"
             android:text="重新定位"
@@ -107,7 +107,7 @@
             style_common:layout_constraintLeft_toLeftOf="parent"
             android:background="@color/color_grey_200"
             android:paddingLeft="10dp"
-            android:textSize="17sp"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:textColor="@color/color_hv_yelll"
             android:gravity="center_vertical"
             android:text="附近地址"

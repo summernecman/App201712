@@ -45,7 +45,7 @@ public class Test {
         loginResBean.setBindCompanyState(LoginResBean.BIND_UNIT_STATE_BINDED);
         loginResBean.setBindCompanyTime(System.currentTimeMillis());
 
-        List<LoginResBean.BranchCompanyListBean> branchCompanyList = new ArrayList<>();
+        ArrayList<LoginResBean.BranchCompanyListBean> branchCompanyList = new ArrayList<>();
         LoginResBean.BranchCompanyListBean branchCompanyListBean = new LoginResBean.BranchCompanyListBean();
         branchCompanyListBean.setAbbreviationName("公司简称");
         branchCompanyListBean.setBranchId(40);

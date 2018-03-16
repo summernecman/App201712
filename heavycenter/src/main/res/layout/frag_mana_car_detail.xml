@@ -104,7 +104,7 @@
             style_common:layout_constraintRight_toLeftOf="@+id/iv_vehicleLicensePhoto"
             android:id="@+id/iv_vehiclePhoto"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:src="@drawable/icon_hv_car" />
 
         <ImageView
@@ -117,7 +117,7 @@
             style_common:layout_constraintRight_toRightOf="parent"
             android:id="@+id/iv_vehicleLicensePhoto"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:src="@drawable/icon_hv_driveid" />
 
 

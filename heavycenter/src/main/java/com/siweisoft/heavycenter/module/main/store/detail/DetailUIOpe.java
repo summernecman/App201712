@@ -42,9 +42,6 @@ public class DetailUIOpe extends BaseUIOpe<FragMainStoreDetailBinding>{
         });
     }
 
-    public void initRecycle(){
-        bind.recycle.setLayoutManager(new LinearLayoutManager(context));
-    }
 
     public void LoadListData(List<String> s) {
         bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_main_store_detail, BR.item_main_store_detail, s));

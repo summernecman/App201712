@@ -67,7 +67,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
                             @Override
                             public void onSuccess(ReceiptOrderRes o) {
                                 data.setAuditState(OrdersRes.ResultsBean.AUDITSTATE_接收);
-                                getP().getU().notifyDataSetChanged();
+                                getP().getU().notifyDataSetChanged(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);
                             }
                         });
                         break;
@@ -77,7 +77,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
                             @Override
                             public void onSuccess(ReceiptOrderRes o) {
                                 data1.setAuditState(OrdersRes.ResultsBean.AUDITSTATE_拒绝);
-                                getP().getU().notifyDataSetChanged();
+                                getP().getU().notifyDataSetChanged(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);
                             }
                         });
                         break;
@@ -94,7 +94,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
             public void onSuccess(OrdersRes o) {
                 //o = new Test().getOrdersRes();
                 getP().getD().getOrdersRes().getResults().addAll(o.getResults());
-                getP().getU().notifyDataSetChanged();
+                getP().getU().notifyDataSetChanged(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);
             }
         });
     }
@@ -109,7 +109,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
                 getP().getD().setOrdersRes(o);
                 getP().getD().getOrdersFrag().getP().getD().set较多的订单类型(o.getOrderType());
                 getP().getD().getOrdersFrag().getP().getU().refreshTopMenu(o);
-                getP().getU().LoadListData(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);
+                getP().getU().notifyDataSetChanged(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);
             }
         });
 

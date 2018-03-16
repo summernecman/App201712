@@ -53,7 +53,7 @@
 
         <com.siweisoft.heavycenter.module.view.item.NewUnitMyceItem
             android:id="@+id/item_cangku"
-            style_common:txt_left = "仓库    "
+            style_common:txt_left = "仓库        "
             style_common:txt_hint = "请选择"
             style_common:iv_right = "@drawable/icon_arraw"
             style_common:boo_edit = "false"

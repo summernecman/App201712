@@ -117,7 +117,7 @@
         </LinearLayout>
 
         <TextView
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:textColor="@color/gray"
                 android:textSize="13sp"
                 android:text="新值"
@@ -125,10 +125,13 @@
                 android:layout_height="wrap_content" />
 
         <EditText
+            android:layout_marginTop="5dp"
+            android:background="@color/transparent"
             android:inputType="numberDecimal"
                 android:id="@+id/tv_newvalue"
                 android:textColor="@color/color_hv_yelll"
-                android:textSize="30sp"
+                android:textSize="32sp"
+            android:minWidth="100dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

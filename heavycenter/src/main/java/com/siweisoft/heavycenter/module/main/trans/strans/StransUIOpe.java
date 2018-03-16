@@ -27,7 +27,7 @@ public class StransUIOpe extends AppUIOpe<FragMainStransBinding>{
         if(getFrag() instanceof OnLoadmoreListener){
             bind.refresh.setOnLoadmoreListener((OnLoadmoreListener) getFrag());
         }
-        bind.title.getMidTV().setText(getFrag().getArguments().getInt(ValueConstant.DATA_DATA,0)==0?"运输单":getFrag().getArguments().getInt(ValueConstant.DATA_DATA,0)+"");
+        bind.title.getMidTV().setText(getFrag().getArguments().getString(ValueConstant.DATA_DATA2,"运输单"));
     }
 
 

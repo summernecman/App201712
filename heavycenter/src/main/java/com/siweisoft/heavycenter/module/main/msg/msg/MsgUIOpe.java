@@ -126,9 +126,11 @@ public class MsgUIOpe extends BaseUIOpe<FragMainMsgsMsgBinding>{
         bind.refresh.autoRefresh();
     }
 
-    public void notifyDataSetChanged(){
+    public void notifyDataSetChanged(final MsgsResBean o, ViewListener listener){
         if(bind.recycle.getAdapter()!=null){
             bind.recycle.getAdapter().notifyDataSetChanged();
+        }else{
+            LoadListData(o,listener);
         }
     }
 

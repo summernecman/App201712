@@ -29,7 +29,7 @@
             <TextView
                 android:gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:textSize="17sp"
+                android:textSize="15.5sp"
                 android:textColor="@color/color_grey_500"
                 android:text='@{item_mana_good_names.materielName}'
                 android:id="@+id/tv_com_name"

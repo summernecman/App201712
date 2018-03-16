@@ -92,10 +92,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@{frag_main_trans_detail.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:paddingTop="1dp"
-            android:paddingBottom="1dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
 
             android:textColor="@color/black"
             android:textSize="@dimen/dimen_text_size_plannum"
@@ -147,7 +147,7 @@
             android:id="@+id/tv_carlicenseno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:singleLine="true"
             android:text="@{frag_main_trans_detail.carLicenseNo}"
             android:textColor="@color/white"
@@ -184,7 +184,7 @@
 
 
         <View
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:visibility="visible"
             android:background="@color/white"
             android:id="@+id/block"
@@ -302,6 +302,8 @@
             android:layout_height="0dp"/>
 
         <View
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:id="@+id/sfline"
            style_common:layout_constraintTop_toTopOf="@+id/line"
             style_common:layout_constraintBottom_toBottomOf="@+id/line"
@@ -313,6 +315,8 @@
 
 
         <View
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:id="@+id/ssline"
             style_common:layout_constraintTop_toTopOf="@+id/line"
             style_common:layout_constraintBottom_toBottomOf="@+id/line"

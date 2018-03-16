@@ -97,8 +97,12 @@ public class OrderUIOpe extends AppUIOpe<FragMainOrderBeginBinding>{
         bind.refresh.finishLoadmore();
     }
 
-    public void notifyDataSetChanged(){
-        bind.recycle.getAdapter().notifyDataSetChanged();
+    public void notifyDataSetChanged(final String type, final OrdersRes s, ViewListener listener){
+        if(bind.recycle.getAdapter()!=null){
+            bind.recycle.getAdapter().notifyDataSetChanged();
+        }else{
+            LoadListData(type,s,listener);
+        }
     }
 
 

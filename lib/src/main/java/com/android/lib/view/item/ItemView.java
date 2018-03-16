@@ -57,8 +57,6 @@ public class ItemView extends RelativeLayout{
 
     private int bgDivider;
 
-    private View right2;
-
     private int color_txt_right;
 
     private TextView midTV;
@@ -75,7 +73,6 @@ public class ItemView extends RelativeLayout{
         leftIV = (ImageView) findViewById(R.id.iv_left_icon);
         leftTV = (TextView) findViewById(R.id.tv_left_content);
         rightTV = (TextView) findViewById(R.id.iv_right_content);
-        right2 = findViewById(R.id.rl_right2);
         rightIV = (ImageView) findViewById(R.id.iv_right_icon);
         midTV = (TextView) findViewById(R.id.tv_mid);
         divider = findViewById(R.id.divide);
@@ -94,7 +91,7 @@ public class ItemView extends RelativeLayout{
         rightTV.setText(StringUtil.getStr(txtrightStr));
         rightTV.setTextColor(color_txt_right);
         rightIV.setImageResource(ivrightInt);
-        right2.setBackgroundResource(txtrightBg);
+        rightTV.setBackgroundResource(txtrightBg);
        // divider.setBackgroundColor(bgDivider);
     }
 
@@ -112,9 +109,8 @@ public class ItemView extends RelativeLayout{
 
     public void setRightTxt(int o){
         if(o==0){
-            getRight2().setVisibility(View.GONE);
+            getRightTV().setVisibility(View.GONE);
         }else{
-            getRight2().setVisibility(View.VISIBLE);
             getRightTV().setVisibility(View.VISIBLE);
             getRightTV().setText(StringUtil.getStr(o));
         }
@@ -123,17 +119,13 @@ public class ItemView extends RelativeLayout{
 
     public void setRightTxt(String o){
         if(NullUtil.isStrEmpty(o)){
-            getRight2().setVisibility(View.GONE);
+            getRightTV().setVisibility(View.GONE);
         }else{
-            getRight2().setVisibility(View.VISIBLE);
             getRightTV().setVisibility(View.VISIBLE);
             getRightTV().setText(o);
         }
 
     }
 
-    public View getRight2() {
-        return right2;
-    }
 }
 

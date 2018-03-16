@@ -21,8 +21,8 @@
 
         <com.siweisoft.heavycenter.module.view.circle.CircleBar
             android:id="@+id/circlebar"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             app:color_one="@{item_main_order_detail_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
             app:update="@{item_main_order_detail_doing.percent}"
             android:layout_centerInParent="true"
@@ -78,14 +78,14 @@
                 android:singleLine="true"
                 android:maxEms="7"
                 android:id="@+id/tv_current"
-                android:textSize="15sp"
+                android:textSize="@dimen/dimen_text_size_weightnum"
                 android:textColor="@{item_main_order_detail_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:text="/"
-                android:textSize="15sp"
-                android:textColor="@{item_main_order_detail_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+                android:textSize="@dimen/dimen_text_size_weightnum"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
@@ -94,8 +94,8 @@
                 android:singleLine="true"
                 android:maxEms="7"
                 android:id="@+id/tv_plan"
-                android:textSize="15sp"
-                android:textColor="@{item_main_order_detail_doing.IDiliverCom?@color/color_hv_yelll:@color/color_hv_blue}"
+                android:textSize="@dimen/dimen_text_size_weightnum"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -126,9 +126,7 @@
 
 
         <TextView
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:padding="1dp"
+            android:padding="4dp"
             android:textColor="@color/black"
             android:background="@{item_main_order_detail_doing.IDiliverCom?@drawable/bg_hv_sharp2_yell_solid:@drawable/bg_hv_sharp2_blue_solid}"
             android:text='@{item_main_order_detail_doing.totalRecordCN2}'
@@ -154,7 +152,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
             android:id="@+id/tv_type"
             android:singleLine="true"
-            android:textColor="@color/color_grey_900"
+            android:textColor="@color/color_text_type"
             android:textSize="@dimen/dimen_text_size_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -181,7 +179,7 @@
             android:layout_marginTop="7dp"
             android:gravity="center_vertical"
             android:textColor="@color/color_hv_txt_dark"
-            android:textSize="@dimen/dimen_text_size_datetime"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:text="@{item_main_order_detail_doing.carLicenseNo}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -195,7 +193,7 @@
             android:layout_marginTop="3dp"
             android:gravity="center_vertical"
             android:textColor="@color/color_hv_txt_dark"
-            android:textSize="@dimen/dimen_text_size_datetime"
+            android:textSize="@dimen/dimen_text_size_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

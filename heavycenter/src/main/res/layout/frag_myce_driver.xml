@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/color_item_content"
-            android:paddingLeft="@dimen/dimen_item_content_left_padding">
+            android:paddingLeft="15dp">
             <LinearLayout
                 android:gravity="center_vertical"
                 android:layout_width="match_parent"
@@ -104,14 +104,14 @@
                     android:layout_marginRight="7dp"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="100dp" />
+                    android:layout_height="80dp" />
 
                 <ImageView
                     android:id="@+id/iv_car"
                     android:layout_marginLeft="7dp"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="100dp" />
+                    android:layout_height="80dp" />
             </LinearLayout>
 
             <View

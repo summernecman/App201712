@@ -101,18 +101,18 @@
 
             <LinearLayout
                 android:gravity="center_horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.siweisoft.heavycenter.module.view.text.BgTextView
 
                     android:layout_gravity="center_horizontal"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:text="发送邀请"
                     android:paddingLeft="30dp"
                     android:paddingRight="30dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -139,10 +139,10 @@
                 android:layout_height="match_parent">
                 <TextView
                     android:layout_centerInParent="true"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textColor="@color/color_grey_400"
                     android:gravity="center"
-                    android:text="您也可以使用右上角扫一扫，\n 通过扫描对方二维码开快速邀请对方!"
+                    android:text="您也可以使用右上角扫一扫，\n 通过扫描对方二维码开启快速邀请对方!"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>

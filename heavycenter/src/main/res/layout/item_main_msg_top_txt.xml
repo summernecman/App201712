@@ -7,7 +7,7 @@
     </data>
 
             <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:textSize="@dimen/dimen_viewpage_title_txtsize"
+                android:textSize="13sp"
                 android:textColor="@color/color_viewpage_title_txtcolor"
                 android:id="@+id/a"
                 android:gravity="center"

@@ -16,11 +16,12 @@ import com.siweisoft.heavycenter.data.netd.trans.trans.TransRes;
 
 public class StransFrag extends AppFrag<StransUIOpe,StransDAOpe> implements OnRefreshListener{
 
-    public static StransFrag getInstance(int orderid,int signstatus){
+    public static StransFrag getInstance(int orderid,int signstatus,String orderno){
         StransFrag stransFrag = new StransFrag();
         stransFrag.setArguments(new Bundle());
         stransFrag.getArguments().putInt(ValueConstant.DATA_DATA,orderid);
         stransFrag.getArguments().putInt(ValueConstant.DATA_TYPE,signstatus);
+        stransFrag.getArguments().putString(ValueConstant.DATA_DATA2,orderno);
         return stransFrag;
     }
 

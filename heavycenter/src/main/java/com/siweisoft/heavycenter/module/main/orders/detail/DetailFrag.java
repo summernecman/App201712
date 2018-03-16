@@ -59,14 +59,14 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                 if(getP().getD().getData()==null){
                     return;
                 }
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),StransFrag.getInstance(getP().getD().getData().getOrderId(),1));
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),StransFrag.getInstance(getP().getD().getData().getOrderId(),1,getP().getD().getData().getOrderNo()));
 
                 break;
             case R.id.tv_carno://doing
                 if(getP().getD().getData()==null){
                     return;
                 }
-                FragManager2.getInstance().start(getBaseUIAct(), get容器(),StransFrag.getInstance(getP().getD().getData().getOrderId(),1));
+                FragManager2.getInstance().start(getBaseUIAct(), get容器(),StransFrag.getInstance(getP().getD().getData().getOrderId(),1,getP().getD().getData().getOrderNo()));
                 break;
         }
     }

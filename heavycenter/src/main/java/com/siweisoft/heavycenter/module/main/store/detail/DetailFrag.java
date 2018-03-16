@@ -21,7 +21,6 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getU().initRecycle();
         refresh(true);
 
     }

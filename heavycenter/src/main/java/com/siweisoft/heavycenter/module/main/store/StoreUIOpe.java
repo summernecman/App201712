@@ -62,9 +62,11 @@ public class StoreUIOpe extends BaseUIOpe<FragMainStoreBinding>{
 
 
 
-    public void notifyDataSetChanged(){
+    public void notifyDataSetChanged(final StoresResBean o, ViewListener listener){
         if(bind.recycle.getAdapter()!=null){
             bind.recycle.getAdapter().notifyDataSetChanged();
+        }else{
+            LoadListData(o,listener);
         }
     }
 

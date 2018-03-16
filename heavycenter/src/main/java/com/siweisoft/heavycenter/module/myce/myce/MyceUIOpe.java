@@ -71,26 +71,6 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                 GlideApp.with(context).asBitmap().load(NetValue.获取地址(LocalValue.get登录返回信息().getVehicleLicensePhoto())).centerCrop().into(fragMyceDriverBinding.ivDirver);
                 GlideApp.with(context).asBitmap().load(NetValue.获取地址(LocalValue.get登录返回信息().getVehiclePhoto())).centerCrop().into(fragMyceDriverBinding.ivCar);
 
-
-                switch (LocalValue.get登录返回信息().getBindCompanyState()){
-                    case LoginResBean.BIND_UNIT_STATE_UNBIND:
-                        fragMyceDriverBinding.itemUnit.getLeftTV().setText("绑定单位");
-                        fragMyceDriverBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_UNBIND_CN);
-                        fragMyceDriverBinding.itemUnit.getRight2().setVisibility(View.GONE);
-                        break;
-                    case LoginResBean.BIND_UNIT_STATE_CHECK:
-                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
-                        fragMyceDriverBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_CHECK_CN);
-                        break;
-                    case LoginResBean.BIND_UNIT_STATE_BINDED:
-                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
-                        fragMyceDriverBinding.itemUnit.getRight2().setVisibility(View.GONE);
-                        break;
-                    case LoginResBean.BIND_UNIT_STATE_REJECT:
-                        fragMyceDriverBinding.itemUnit.getLeftTV().setText("绑定单位");
-                        fragMyceDriverBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_REJECT_CN);
-                        break;
-                }
                 break;
             case UserTypeReqBean.非驾驶员:
                 if(fragMyceGeneralBinding==null){
@@ -131,6 +111,33 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                 fragMyceGeneralBinding.itemUser.setRightTxt(LocalValue.get登录返回信息().getUserCount());
                 fragMyceGeneralBinding.itemCar.setRightTxt(LocalValue.get登录返回信息().getVehicleCount());
 
+                break;
+        }
+
+
+        switch (LocalValue.get登录返回信息().getUserType()) {
+            case UserTypeReqBean.驾驶员:
+                switch (LocalValue.get登录返回信息().getBindCompanyState()){
+                    case LoginResBean.BIND_UNIT_STATE_UNBIND:
+                        fragMyceDriverBinding.itemUnit.getLeftTV().setText("绑定单位");
+                        fragMyceDriverBinding.itemUnit.getRightTV().setText(LoginResBean.BIND_UNIT_STATE_UNBIND_CN);
+                        fragMyceDriverBinding.itemUnit.setRightTxt("");
+                        break;
+                    case LoginResBean.BIND_UNIT_STATE_CHECK:
+                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
+                        fragMyceDriverBinding.itemUnit.setRightTxt(LoginResBean.BIND_UNIT_STATE_CHECK_CN);
+                        break;
+                    case LoginResBean.BIND_UNIT_STATE_BINDED:
+                        fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
+                        fragMyceDriverBinding.itemUnit.setRightTxt("");
+                        break;
+                    case LoginResBean.BIND_UNIT_STATE_REJECT:
+                        fragMyceDriverBinding.itemUnit.getLeftTV().setText("绑定单位");
+                        fragMyceDriverBinding.itemUnit.setRightTxt(LoginResBean.BIND_UNIT_STATE_REJECT_CN);
+                        break;
+                }
+                break;
+            case UserTypeReqBean.非驾驶员:
                 switch (LocalValue.get登录返回信息().getBindCompanyState()){
                     case LoginResBean.BIND_UNIT_STATE_UNBIND:
                         fragMyceGeneralBinding.itemUnit.getLeftTV().setText("绑定单位");
@@ -152,7 +159,6 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                 }
                 break;
         }
-
     }
 
     public void hideOrShowManageFunction(boolean show){

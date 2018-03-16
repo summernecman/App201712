@@ -32,16 +32,18 @@
         android:layout_height="wrap_content">
 
         <com.siweisoft.heavycenter.module.view.image.TypeImage
+            android:padding="5dp"
             android:id="@+id/iv_state"
-            android:layout_width="17dp"
-            android:layout_height="17dp" />
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
 
         <com.siweisoft.heavycenter.module.view.text.MarqTextView
             android:id="@+id/tv_name"
             android:singleLine="true"
             android:layout_weight="1"
-            android:textSize="16sp"
-            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/dimen_text_size_unit"
+            android:textColor="@color/color_grey_700"
             android:layout_marginLeft="5dp"
             android:text="@{item_myce_unit_new_area.value}"
             android:layout_width="0dp"

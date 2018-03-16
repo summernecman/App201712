@@ -27,7 +27,7 @@ public class OrdersUIOpe extends BaseUIOpe<FragMainOrderBinding>{
     @Override
     public void initUI() {
         super.initUI();
-        final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get登录返回信息().getBranchCompanyList();
+        final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get下级单位列表();
         if(coms!=null&&coms.size()>0){
             bind.title.getMidTV().setText(StringUtil.getStr(coms.get(0).getAbbreviationName()));
             bind.title.getMidIconIV().setImageResource(R.drawable.arrow_down);
