@@ -12,6 +12,7 @@ import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.order.list.OrdersRes;
@@ -21,17 +22,18 @@ import com.siweisoft.heavycenter.databinding.FragMainOrderBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrdersUIOpe extends BaseUIOpe<FragMainOrderBinding>{
+public class OrdersUIOpe extends AppUIOpe<FragMainOrderBinding> {
 
 
     @Override
     public void initUI() {
         super.initUI();
+        initTitle(R.drawable.icon_hv_person,"订单",R.drawable.icon_hv_add,R.drawable.icon_hv_scan);
         final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get下级单位列表();
         if(coms!=null&&coms.size()>0){
-            bind.title.getMidTV().setText(StringUtil.getStr(coms.get(0).getAbbreviationName()));
-            bind.title.getMidIconIV().setImageResource(R.drawable.arrow_down);
-            bind.title.getMidIconIV().setVisibility(View.VISIBLE);
+            titleView.getMidTV().setText(StringUtil.getStr(coms.get(0).getAbbreviationName()));
+            titleView.getMidIconIV().setImageResource(R.drawable.arrow_down);
+            titleView.getMidIconIV().setVisibility(View.VISIBLE);
         }
     }
 

@@ -26,13 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <com.android.lib.view.title.TitleView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style_common:iv_left="@drawable/icon_hv_person"
-            style_common:iv_right="@drawable/icon_hv_scan"
-            style_common:txt_mid="地磅" />
 
         <com.siweisoft.heavycenter.module.view.menu.TopTypeView
             android:id="@+id/topview"

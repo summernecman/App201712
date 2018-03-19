@@ -67,7 +67,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                     public void onAppItemClick(View view, int position) {
                         LoginResBean.BranchCompanyListBean data = (LoginResBean.BranchCompanyListBean) view.getTag(R.id.data);
                         getP().getD().setComid(data.getBranchId());
-                        getP().getU().bind.title.getMidTV().setText(data.getAbbreviationName());
+                        getP().getU().titleView.getMidTV().setText(data.getAbbreviationName());
                         getP().getU().autoRefresh();
                     }
                 });
@@ -111,7 +111,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
             @Override
             public void onSuccess(StoresResBean o) {
                 //o = new Test().getStoresResBean();
-                getP().getD().addData(o);
+                getP().getD().reAddData(o);
                 getP().getU().notifyDataSetChanged(getP().getD().getStoresResBean(),StoreFrag.this);
                 getP().getU().finishRefresh();
             }

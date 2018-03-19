@@ -54,15 +54,15 @@
             android:paddingTop="5dp"
             android:text="重新选择"
             android:textColor="@color/white"
-            android:textSize="13sp"
+            android:textSize="12sp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <com.siweisoft.heavycenter.module.view.circle.CircleBar
             android:id="@+id/circlebar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="45dp"
@@ -138,7 +138,7 @@
             android:layout_height="wrap_content"
             android:text="@{frag_main_weigts_bottom.order.type}"
             android:padding="1dp"
-            android:textColor="@color/color_text_type"
+            android:textColor="@color/white"
             app:layout_constraintTop_toTopOf="@+id/tv_comp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_comp"
             app:layout_constraintLeft_toLeftOf="@+id/tv_goodname"
@@ -323,7 +323,7 @@
             android:paddingTop="7dp"
             android:singleLine="true"
             android:text="保存"
-            android:textSize="21sp"
+            android:textSize="19sp"
             android:visibility="visible"
 
             app:boo_one="true"

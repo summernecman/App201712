@@ -79,8 +79,8 @@ public class DetailUIOpe extends AppUIOpe<FragMainWeigtsDetailBinding> {
         }
         bind.tvOrderandtransno.setText("订单"+StringUtil.getStr(data.getOrder().getOrderNo())+"     运输单:"+StringUtil.getStr(data.getOrder().getYsdNo()));
         bind.tvGoodnameanspes.setText(StringUtil.getStr(data.getOrder().getProductName())+"        "+StringUtil.getStr(data.getOrder().getSpecification()));
-        bind.tvFrom.setText(StringUtil.getStr(data.getOrder().getDeveliverCompanyName()));
-        bind.tvTo.setText(StringUtil.getStr(data.getOrder().getReceiveCompanyName()));
+        bind.tvFrom.setText(StringUtil.getStr(data.getOrder().getFhdwName()));
+        bind.tvTo.setText(StringUtil.getStr(data.getOrder().getShdwName()));
     }
 
     public void  notifyDataSetChanged(){

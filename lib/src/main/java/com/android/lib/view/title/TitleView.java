@@ -70,6 +70,40 @@ public class TitleView extends RelativeLayout {
 
     }
 
+    public void setLeftBGRes(int res){
+        if(res>0){
+            leftIV.setImageResource(res);
+        }else{
+            leftIV.setImageResource(android.R.color.transparent);
+        }
+    }
+
+    public void setRightBGRes(int res){
+        if(res>0){
+            rightIV.setImageResource(res);
+        }else{
+            rightIV.setImageResource(android.R.color.transparent);
+        }
+    }
+
+    public void setRight2BGRes(int res){
+        if(res>0){
+            rightIV2.setImageResource(res);
+        }else{
+            rightIV2.setImageResource(android.R.color.transparent);
+        }
+    }
+
+    public void setMidText(String str){
+        midTV.setText(str);
+    }
+
+    public void setTitle(int leftres,String mid,int right2res,int rightres){
+        setLeftBGRes(leftres);
+        setMidText(mid);
+        setRight2BGRes(right2res);
+        setRightBGRes(right2res);
+    }
 
 
     public TextView getMidTV() {
@@ -112,4 +146,6 @@ public class TitleView extends RelativeLayout {
     public ImageView getMidIconIV() {
         return midIconIV;
     }
+
+
 }

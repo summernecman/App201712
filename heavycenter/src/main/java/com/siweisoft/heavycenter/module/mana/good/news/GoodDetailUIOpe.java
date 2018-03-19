@@ -79,7 +79,7 @@ public class GoodDetailUIOpe extends AppUIOpe<FragManaGoodNewBinding>{
             return false;
         }
 
-//        if(Float.parseFloat(bind.itemMaxstock.getMidEtTxt())>newsGoodReq.getMaxStock()){
+//        if(Float.parseFloat(content.itemMaxstock.getMidEtTxt())>newsGoodReq.getMaxStock()){
 //            ToastUtil.getInstance().showShort(getActivity(),"最大物料库存不应该大于最大仓库库存");
 //            return false;
 //        }

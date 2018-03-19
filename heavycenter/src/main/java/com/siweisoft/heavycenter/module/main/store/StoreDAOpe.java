@@ -38,8 +38,15 @@ public class StoreDAOpe extends BaseDAOpe {
     }
 
     public void addData(StoresResBean data){
-        if(data!=null&&data.getResults()!=null){
+        if(data!=null&&data.getResults()!=null&&data.getResults().size()!=0){
             storesResBean.getResults().addAll(data.getResults());
+        }
+    }
+
+    public void reAddData(StoresResBean data){
+        getStoresResBean().getResults().clear();
+        if(data!=null&&data.getResults()!=null&&data.getResults().size()!=0){
+            getStoresResBean().getResults().addAll(data.getResults());
         }
     }
 

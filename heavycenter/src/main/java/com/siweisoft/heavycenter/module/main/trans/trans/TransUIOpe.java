@@ -23,6 +23,7 @@ import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.heavycenter.BR;
 import com.siweisoft.heavycenter.R;
+import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.trans.detail.TransDetailRes;
@@ -32,18 +33,19 @@ import com.siweisoft.heavycenter.databinding.FragMainTransBinding;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
+public class TransUIOpe extends AppUIOpe<FragMainTransBinding> {
 
 
     @Override
     public void initUI() {
         super.initUI();
         initRecycle();
+        initTitle(R.drawable.icon_hv_person,"运输单",R.drawable.drawable_hv_sure_search,R.drawable.icon_hv_scan);
         final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get登录返回信息().getBranchCompanyList();
         if(coms!=null&&coms.size()>0){
-            bind.title.getMidTV().setText(StringUtil.getStr(coms.get(0).getAbbreviationName()));
-            bind.title.getMidIconIV().setImageResource(R.drawable.arrow_down);
-            bind.title.getMidIconIV().setVisibility(View.VISIBLE);
+            titleView.getMidTV().setText(StringUtil.getStr(coms.get(0).getAbbreviationName()));
+            titleView.getMidIconIV().setImageResource(R.drawable.arrow_down);
+            titleView.getMidIconIV().setVisibility(View.VISIBLE);
         }
     }
 
@@ -118,8 +120,8 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void search(OnFinishListener onFinishListener){
-        if(bind.title.getRightIV2().isSelected()){
-            bind.title.getRightIV2().setSelected(false);
+        if(titleView.getRightIV2().isSelected()){
+            titleView.getRightIV2().setSelected(false);
             ViewAnimator.animate(bind.search.llSearch).duration(150).translationY(0,-1).onStop(new AnimationListener.Stop(){
                 @Override
                 public void onStop() {
@@ -128,7 +130,7 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
                 }
             }).start();
         }else{
-            bind.title.getRightIV2().setSelected(true);
+            titleView.getRightIV2().setSelected(true);
             bind.search.getRoot().setVisibility(View.VISIBLE);
             ViewAnimator.animate(bind.search.llSearch).duration(150).translationY(-1,0).start();
             onFinishListener.onFinish(false);
@@ -169,7 +171,7 @@ public class TransUIOpe extends BaseUIOpe<FragMainTransBinding>{
 
 
     public void refreshSearch(){
-        bind.title.getRightIV2().setSelected(false);
+        titleView.getRightIV2().setSelected(false);
         bind.search.getRoot().setVisibility(View.GONE);
     }
 

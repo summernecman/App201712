@@ -24,7 +24,6 @@ import com.siweisoft.heavycenter.data.netd.unit.dirvers.DriverRes;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadReqBean;
 import com.siweisoft.heavycenter.data.netd.user.head.UpdateHeadResBean;
 import com.siweisoft.heavycenter.module.main.main.MainAct;
-import com.siweisoft.heavycenter.module.mana.car.news.NewCarDAOpe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +61,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
             case CarDetailValue.新建车辆并绑定:
                 getP().getU().bind.title.getMidTV().setText("绑定车辆");
                 getP().getU().bind.etName.setText(getArguments().getString(CarDetailValue.标题,""));
-                //getP().getU().bind.itemCarlicenseno.setMidEtTxt(StringUtil.getStr(getArguments().getString(ValueConstant.DATA_DATA,"")));
+                //getP().getU().content.itemCarlicenseno.setMidEtTxt(StringUtil.getStr(getArguments().getString(ValueConstant.DATA_DATA,"")));
                 break;
             case CarDetailValue.查看车辆:
                 getP().getD().setCarinfo((CarsResBean.CarInfoRes) getArguments().getSerializable(CarDetailValue.数据));
@@ -119,7 +118,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                                     @Override
                                     public void onSuccess(CarsResBean.CarInfoRes o) {
                                         if(getP().getD().getBindCarReq().isEnable()){
-                                            NewCarDAOpe.infoCar(getContext(), o.getCarLicenseNo(), new UINetAdapter<CarsResBean.CarInfoRes>(DetailFrag.this,UINetAdapter.Loading) {
+                                            DetailDAOpe.infoCar(getContext(), o.getCarLicenseNo(), new UINetAdapter<CarsResBean.CarInfoRes>(DetailFrag.this,UINetAdapter.Loading) {
                                                 @Override
                                                 public void onSuccess(CarsResBean.CarInfoRes o) {
                                                     super.onSuccess(o);

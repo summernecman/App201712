@@ -51,7 +51,7 @@ public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
                     public void onAppItemClick(View view, int position) {
                         LoginResBean.BranchCompanyListBean data = (LoginResBean.BranchCompanyListBean) view.getTag(R.id.data);
                         getP().getD().setComid(data.getBranchId());
-                        getP().getU().bind.title.getMidTV().setText(data.getAbbreviationName());
+                        getP().getU().titleView.getMidTV().setText(data.getAbbreviationName());
                         refreshMsg();
                     }
                 });

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.util.fragment.FragManager;
 import com.android.lib.util.fragment.two.FragManager2;
+import com.github.florent37.viewanimator.ViewAnimator;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.module.acct.acct.AcctAct;
 
@@ -53,6 +54,9 @@ public class DiaLogCenterFrag extends BaseUIFrag<DialogCenterUIOpe,DialogCenterD
                 View view1 = getView().findViewById(views[i]);
                 view1.setOnClickListener(this);
             }
+        }
+        if(customerView!=null){
+            ViewAnimator.animate(customerView).zoomIn().duration(150).start();
         }
 
     }

@@ -69,7 +69,6 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
                         default:
                             final CarsResBean.CarInfoRes bean1 = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
                             Bundle bundle = new Bundle();
-                            bundle.putSerializable(ValueConstant.DATA_DATA,bean1);
                             bundle.putInt(ValueConstant.FARG_REQ,1);
                             if(getArguments().getInt(ValueConstant.FARG_REQ,CarValue.选择车辆)== CarValue.选择车辆){
                                 getArguments().putAll(bundle);

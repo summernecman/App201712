@@ -63,7 +63,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
             @Override
             public void onSuccess(MsgsResBean o) {
                 //o= new Test().getMsgsResBean();
-                getP().getD().setMsgsResBean(o);
+                getP().getD().reAddData(o);
                 getP().getU().notifyDataSetChanged(getP().getD().getMsgsResBean(),MsgFrag.this);
             }
         });

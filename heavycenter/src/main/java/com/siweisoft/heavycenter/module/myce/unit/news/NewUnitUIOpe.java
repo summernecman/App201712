@@ -198,7 +198,7 @@ public class NewUnitUIOpe extends AppUIOpe<FragMyceUnitNewBinding>{
         TextView textView = diaLogCenterFrag.getCustomerView().findViewById(R.id.tv_tip_title);
         textView.setText(StringUtil.getStr(name));
         diaLogCenterFrag.setOnClickListener(onClickListener,R.id.close,R.id.sure);
-        unitexistfragm = FragManager2.getInstance().setHideLast(false).setStartAnim(R.anim.scale_in,R.anim.scale_out,R.anim.scale_in,R.anim.scale_out).setFinishAnim(R.anim.fade_in,R.anim.fade_out);
+        unitexistfragm = FragManager2.getInstance().setHideLast(false).setAnim(false);
         unitexistfragm.start(getActivity(), moudle,diaLogCenterFrag);
     }
 

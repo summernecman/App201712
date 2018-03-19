@@ -93,7 +93,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
             @Override
             public void onSuccess(OrdersRes o) {
                 //o = new Test().getOrdersRes();
-                getP().getD().getOrdersRes().getResults().addAll(o.getResults());
+                getP().getD().addOrdersRes(o);
                 getP().getU().notifyDataSetChanged(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);
             }
         });
@@ -106,7 +106,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
             @Override
             public void onSuccess(OrdersRes o) {
                 //o= new Test().getOrdersRes();
-                getP().getD().setOrdersRes(o);
+                getP().getD().reAddOrdersRes(o);
                 getP().getD().getOrdersFrag().getP().getD().set较多的订单类型(o.getOrderType());
                 getP().getD().getOrdersFrag().getP().getU().refreshTopMenu(o);
                 getP().getU().notifyDataSetChanged(getP().getD().getSTATUS(),getP().getD().getOrdersRes(),OrderFrag.this);

@@ -66,7 +66,9 @@ public class UnitListFrag extends AppFrag<UnitListUIOpe,UnitListDAOpe> implement
                 }
                 if(LocalValue.get登录返回信息().getBindCompanyState()==LoginResBean.BIND_UNIT_STATE_BINDED){
                     if(getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.上级单位
-                            ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.选择单位){
+                            ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.选择单位
+                            ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.历史发货单位
+                            ||getArguments().getInt(ValueConstant.DATA_DATA,-1)== UnitListDAOpe.历史收货单位){
                         bundle.putInt(ValueConstant.FARG_REQ,3);
                     }
                 }

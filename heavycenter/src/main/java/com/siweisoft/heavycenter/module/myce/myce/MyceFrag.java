@@ -156,7 +156,7 @@ public class MyceFrag extends AppFrag<MyceUIOpe,MyceDAOpe> {
 //
 //                    MainAct mainAct = (MainAct) getBaseUIAct();
 //                    getFragmentManager().beginTransaction()
-//                            .add(mainAct.getP().getU().bind.incloud.hvLeftDrawer.getId(), sharedElementFragment2)
+//                            .add(mainAct.getP().getU().content.incloud.hvLeftDrawer.getId(), sharedElementFragment2)
 //                            .hide(this)
 //                            .setReorderingAllowed(true)
 //                            .addToBackStack(null)

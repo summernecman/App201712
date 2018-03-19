@@ -41,7 +41,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
             case CarDetailValue.查看车辆:
                 bind.top.setVisibility(View.GONE);
 //                if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
-//                    bind.title.getRightIV2().setVisibility(View.GONE);
+//                    content.title.getRightIV2().setVisibility(View.GONE);
 //                }
                 bind.title.getMidTV().setText("车辆详情");
                 break;
@@ -84,7 +84,7 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                         }
                     });
 //                    if(!LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())){
-//                        bind.title.getRightIV2().setVisibility(View.GONE);
+//                        content.title.getRightIV2().setVisibility(View.GONE);
 //                    }
                     break;
 
@@ -127,12 +127,12 @@ public class DetailUIOpe extends AppUIOpe<FragManaCarDetailBinding>{
                 bind.title.getMidTV().setText(StringUtil.getStr(data.getCarLicenseNo()));
                 break;
         }
-        //bind.etName.setText(StringUtil.getStr(data.getCarLicenseNo()));
+        //content.etName.setText(StringUtil.getStr(data.getCarLicenseNo()));
         bind.itemBrand.setMidEtTxt(StringUtil.getStr(data.getCarBrand()));
         bind.itemEmptyweight.setMidEtTxt(StringUtil.getStr(data.getEmptyWeight()));
         bind.itemMaxweight.setMidEtTxt(StringUtil.getStr(data.getMaxCapacity()));
         bind.itemIccard.setMidEtTxt(StringUtil.getStr(data.getIcCard()));
-       // bind.title.getMidTV().setText(StringUtil.getStr(data.getCarLicenseNo()));
+       // content.title.getMidTV().setText(StringUtil.getStr(data.getCarLicenseNo()));
         GlideApp.with(context).asBitmap().load(NetValue.获取地址(data.getVehiclePhoto())).placeholder(R.drawable.icon_hv_car).centerCrop().into(bind.ivVehiclePhoto);
         GlideApp.with(context).asBitmap().load(NetValue.获取地址(data.getVehicleLicensePhoto())).placeholder(R.drawable.icon_hv_driveid).centerCrop().into(bind.ivVehicleLicensePhoto);
     }

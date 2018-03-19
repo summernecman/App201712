@@ -45,7 +45,7 @@ public class TransUIOpe extends AppUIOpe<FragMainOrderTransBinding>{
                 beginBinding.getRoot().setSelected(position%2==0?true:false);
             }
         });
-//        bind.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//        content.recycle.addOnScrollListener(new RecyclerView.OnScrollListener() {
 //            @Override
 //            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 //                super.onScrollStateChanged(recyclerView, newState);

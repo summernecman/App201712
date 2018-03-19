@@ -70,6 +70,20 @@ public class TransDAOpe extends BaseDAOpe {
         return transRes;
     }
 
+    public void addTransRes(TransRes transRes){
+        if(transRes!=null&&transRes.getResults()!=null&&transRes.getResults().size()!=0){
+            getTransRes().getResults().addAll(transRes.getResults());
+        }
+    }
+
+    public void reAddTransRes(TransRes transRes){
+        getTransRes().getResults().clear();
+        if(transRes!=null&&transRes.getResults()!=null&&transRes.getResults().size()!=0){
+            getTransRes().getResults().addAll(transRes.getResults());
+        }
+    }
+
+
     public int getPageIndex() {
         return pageIndex;
     }

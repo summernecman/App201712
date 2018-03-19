@@ -8,6 +8,7 @@ import android.view.View;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.UINetAdapter;
+import com.android.lib.util.ObjectUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.fragment.two.FragManager2;
 import com.siweisoft.heavycenter.R;
@@ -208,7 +209,17 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
             @Override
             public void onSuccess(final SearchResBean o) {
                 super.onSuccess(o);
+                String comname = null;
                 if(o.getResults()!=null&& o.getResults().get(0)!=null){
+                    for(int i=0;i<o.getResults().size();i++){
+                        if(StringUtil.equals(getP().getU().bind.itemUnitname.getMidEtTxt(),o.getResults().get(i).getCompanyName())){
+                            comname = o.getResults().get(i).getCompanyName();
+                            break;
+                        }
+                    }
+                    if(comname==null){
+                        return;
+                    }
                     getP().getU().showUnitExistTip(get容器(), o.getResults().get(0).getCompanyName(), new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

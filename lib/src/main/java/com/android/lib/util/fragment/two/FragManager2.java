@@ -85,7 +85,10 @@ public class FragManager2  {
        start(activity,moudle,map.get(moudle).getViewid(),fragment);
     }
 
+    long aa = 0;
+
     public void start(BaseUIActivity activity, String moudle,BaseUIFrag fragment,Bundle bundle){
+        aa = System.currentTimeMillis();
         checkArguments(fragment);
         fragment.getArguments().putAll(bundle);
         start(activity,moudle,fragment);

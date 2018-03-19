@@ -77,6 +77,19 @@ public class OrderDAOpe extends AppDAOpe {
         this.ordersRes = ordersRes;
     }
 
+    public void addOrdersRes(OrdersRes ordersRes){
+        if(ordersRes!=null&&ordersRes.getResults()!=null&&ordersRes.getResults().size()!=0){
+            getOrdersRes().getResults().addAll(ordersRes.getResults());
+        }
+    }
+
+    public void reAddOrdersRes(OrdersRes ordersRes){
+        getOrdersRes().getResults().clear();
+        if(ordersRes!=null&&ordersRes.getResults()!=null&&ordersRes.getResults().size()!=0){
+            getOrdersRes().getResults().addAll(ordersRes.getResults());
+        }
+    }
+
     public OrdersFrag getOrdersFrag() {
         return ordersFrag;
     }

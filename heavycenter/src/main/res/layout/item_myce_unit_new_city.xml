@@ -30,7 +30,7 @@
         android:layout_height="wrap_content">
 
         <com.siweisoft.heavycenter.module.view.image.TypeImage
-            android:padding="5dp"
+            android:padding="10dp"
             android:id="@+id/typeimage"
             android:layout_width="25dp"
             android:layout_height="25dp" />

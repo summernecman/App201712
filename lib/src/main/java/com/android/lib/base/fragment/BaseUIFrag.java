@@ -71,29 +71,34 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         fragIs.onCreate(savedInstanceState);
     }
 
+    long onc = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        onc=System.currentTimeMillis();
         View group = inflater.inflate(getBaseUILayout(), null);
-        baseUIRoot = group.findViewById(R.id.container);
-        initaa(getClass());
-        baseUIRoot.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         fragIs.onCreateView(inflater,container,savedInstanceState);
-        getP().getU().initUI();
         return group;
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        unbinder = ButterKnife.bind(this, view);
-        initNow();
         HandleUtil.getInstance().postDelayed(new Runnable() {
             @Override
             public void run() {
+                baseUIRoot = view.findViewById(R.id.container);
+                initaa(getFrag().getClass());
+                baseUIRoot.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+                getP().getU().initUI();
+
+                unbinder = ButterKnife.bind(getFrag(), view);
+                initNow();
                 initdelay();
             }
-        }, 500);
+        }, 400);
         fragIs.onViewCreated(view,savedInstanceState);
+        LogUtil.E("onViewCreated"+getClass().getName()+(System.currentTimeMillis()-onc));
     }
 
     public void initdelay() {
@@ -116,7 +121,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                 public void run() {
                     onFristVisibleDelayInit();
                 }
-            }, 400);
+            }, 500);
             isFiistVisibleinit = true;
         }
     }
@@ -154,6 +159,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     private void initbb(Class<?> c) {
         if (c == null) {
             opes.setDa((B)(new BaseDAOpe()));
+            return;
         }
         if (c.getGenericSuperclass() instanceof ParameterizedType) {
             Class<B> b = (Class<B>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[1];
@@ -174,6 +180,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     private void initaa(Class<?> c) {
         if (c == null) {
             opes.setUi((A)(new BaseUIOpe<ViewDataBinding>()));
+            return;
         }
         if (c.getGenericSuperclass() instanceof ParameterizedType) {
             Class<A> a = (Class<A>) ((ParameterizedType) c.getGenericSuperclass()).getActualTypeArguments()[0];

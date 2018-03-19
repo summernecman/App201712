@@ -42,8 +42,15 @@ public class MsgDAOpe extends BaseDAOpe {
 
 
     public void addData(MsgsResBean data){
-        if(data!=null && data.getResults()!=null){
+        if(data!=null && data.getResults()!=null&&data.getResults().size()!=0){
             msgsResBean.getResults().addAll(data.getResults());
+        }
+    }
+
+    public void reAddData(MsgsResBean data){
+        getMsgsResBean().getResults().clear();
+        if(data!=null && data.getResults()!=null&&data.getResults().size()!=0){
+            getMsgsResBean().getResults().addAll(data.getResults());
         }
     }
 
