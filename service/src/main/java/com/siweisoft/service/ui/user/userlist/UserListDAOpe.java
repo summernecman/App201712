@@ -16,13 +16,10 @@ public class UserListDAOpe extends BaseDAOpe {
 
     UserBean userBean;
 
-    public UserListDAOpe(Context context) {
-        super(context);
-    }
 
     public void getUserListWithOutMe(UserBean userBean, OnFinishListener onFinishListener) {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         userI.getUserListWithOutMe(userBean, onFinishListener);
     }

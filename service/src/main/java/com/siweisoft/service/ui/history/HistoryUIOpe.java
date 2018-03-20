@@ -26,9 +26,6 @@ import java.util.ArrayList;
 
 public class HistoryUIOpe extends BaseUIOpe<FragHistoryBinding> {
 
-    public HistoryUIOpe(Context context) {
-        super(context);
-    }
 
     public void initList(final ArrayList<HistoryBean> data, ViewListener listener) {
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));

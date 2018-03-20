@@ -41,7 +41,7 @@ public class UserCenterUIOpe extends BaseUIOpe<FragUsercenterBinding> {
 
     public void initTips(ArrayList<TipBean> tipBeen) {
         if (tipBeen == null || tipBeen.size() == 0) {
-            UserInfoDAOpe userInfoDAOpe = new UserInfoDAOpe(context);
+            UserInfoDAOpe userInfoDAOpe = new UserInfoDAOpe();
             final TipsBean tipsBean = userInfoDAOpe.getData();
             bind.recycle.setLayoutManager(new GridLayoutManager(context, 4));
             bind.recycle.setAdapter(new AppsDataBindingAdapter(context, R.layout.item_tip2, BR.item_tip2, tipsBean.getTipBeen()) {

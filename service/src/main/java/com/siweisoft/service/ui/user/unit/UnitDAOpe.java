@@ -14,13 +14,10 @@ public class UnitDAOpe extends BaseDAOpe {
 
     UserI userI;
 
-    public UnitDAOpe(Context context) {
-        super(context);
-    }
 
     public void updateUnitInfo(UserBean userBean, OnFinishListener onFinishListener) {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         userI.updateUnit(userBean, onFinishListener);
     }

@@ -18,9 +18,9 @@ public class NetValue extends UrlConstant {
 
     public static String 正式域名 = "sx.siweisoft.cn:8079";
 
-    protected static String 测试域名 = "192.168.20.106:8079";
+    public static String 测试域名 = "192.168.20.58:8079";
 
-    protected static String 域名 = 正式域名;
+    protected static String 域名 = 测试域名;
 
 
     protected static String 文件路径 = "/files";

@@ -10,9 +10,6 @@ public class ImageDAOpe extends BaseDAOpe {
 
     private String url;
 
-    public ImageDAOpe(Context context) {
-        super(context);
-    }
 
     public String getUrl() {
         return url;

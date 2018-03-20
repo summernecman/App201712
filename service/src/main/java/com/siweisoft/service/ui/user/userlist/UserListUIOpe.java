@@ -27,9 +27,6 @@ import java.util.ArrayList;
 public class UserListUIOpe extends BaseUIOpe<FragUserlistBinding> {
 
 
-    public UserListUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initList(final ArrayList<UserBean> data, final ViewListener viewListener) {

@@ -26,10 +26,6 @@ import com.siweisoft.service.ui.main.MainAct;
 
 public class RemarkUIOpe extends BaseUIOpe<FragRemarkBinding> {
 
-    public RemarkUIOpe(Context context) {
-        super(context);
-
-    }
 
     public void initRatingBar(final OnFinishListener onFinishListener) {
         bind.ratingbar.setOnRatingChangeListener(new RatingBar.OnRatingChangeListener() {

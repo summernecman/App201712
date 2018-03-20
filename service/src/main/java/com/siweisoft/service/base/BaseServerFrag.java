@@ -22,15 +22,6 @@ public class BaseServerFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends Ba
     private MainAct.OnTitleClick onTitleClick;
 
 
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-    }
 
     public TitleBean getTitleBean() {
         return titleBean;

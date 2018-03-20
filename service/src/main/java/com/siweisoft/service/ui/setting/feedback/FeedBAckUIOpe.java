@@ -24,9 +24,6 @@ import com.siweisoft.service.databinding.ItemPicBinding;
 import java.util.ArrayList;
 
 public class FeedBAckUIOpe extends BaseUIOpe<FragFeedbackBinding> {
-    public FeedBAckUIOpe(Context context) {
-        super(context);
-    }
 
     public void initPics(final ArrayList<Object> data, ViewListener viewListener) {
         bind.recycle.setLayoutManager(new GridLayoutManager(context, 4));

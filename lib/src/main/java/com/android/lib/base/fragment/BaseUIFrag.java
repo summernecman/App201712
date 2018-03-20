@@ -71,34 +71,36 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         fragIs.onCreate(savedInstanceState);
     }
 
-    long onc = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        onc=System.currentTimeMillis();
         View group = inflater.inflate(getBaseUILayout(), null);
+        baseUIRoot = group.findViewById(R.id.container);
+        initaa(getClass());
+        baseUIRoot.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         fragIs.onCreateView(inflater,container,savedInstanceState);
+        getP().getU().initUI();
+        unbinder = ButterKnife.bind(this, baseUIRoot);
         return group;
     }
 
     @Override
-    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initNow();
         HandleUtil.getInstance().postDelayed(new Runnable() {
             @Override
             public void run() {
-                baseUIRoot = view.findViewById(R.id.container);
-                initaa(getFrag().getClass());
-                baseUIRoot.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
-                getP().getU().initUI();
-
-                unbinder = ButterKnife.bind(getFrag(), view);
-                initNow();
+                getP().getD().initDA(getBaseAct());
+                getP().getU().initDelay();
                 initdelay();
+                unbinder = ButterKnife.bind(getFrag(), baseUIRoot);
             }
-        }, 400);
+        }, delayTime());
         fragIs.onViewCreated(view,savedInstanceState);
-        LogUtil.E("onViewCreated"+getClass().getName()+(System.currentTimeMillis()-onc));
+    }
+
+    protected int delayTime(){
+        return 300;
     }
 
     public void initdelay() {
@@ -121,7 +123,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
                 public void run() {
                     onFristVisibleDelayInit();
                 }
-            }, 500);
+            }, 400);
             isFiistVisibleinit = true;
         }
     }

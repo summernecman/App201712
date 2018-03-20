@@ -12,9 +12,6 @@ import com.siweisoft.service.netdb.unit.UnitBean;
 public class UnitUIOpe extends BaseUIOpe<FragRenameBinding> {
 
 
-    public UnitUIOpe(Context context) {
-        super(context);
-    }
 
     public void initUnit(UnitBean unitBean) {
         if (unitBean == null) {

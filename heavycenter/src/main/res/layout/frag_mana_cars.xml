@@ -34,7 +34,7 @@
 
             <com.siweisoft.heavycenter.module.view.menu.TopTypeView
                 android:id="@+id/topview"
-                style_toptypeview:txts="发货中,我的车辆,收货中"
+                style_toptypeview:txts="发货中(0),我的车辆(0),收货中(0)"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

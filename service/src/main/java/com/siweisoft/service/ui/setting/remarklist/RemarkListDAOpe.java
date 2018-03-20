@@ -24,13 +24,10 @@ public class RemarkListDAOpe extends BaseDAOpe {
 
     private ArrayList<CommentBean> list;
 
-    public RemarkListDAOpe(Context context) {
-        super(context);
-    }
 
     public void getRemarks(UserBean userBean, final OnFinishListener onFinishListener) {
         if (commentI == null) {
-            commentI = new CommentOpe(context);
+            commentI = new CommentOpe();
         }
         if (Value.getUserInfo().getUsertype() == UserBean.USER_TYPE_CUSTOMER) {
             commentI.getCommentByUserIdWithLimit(userBean, new OnFinishListener() {

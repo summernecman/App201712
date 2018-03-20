@@ -24,14 +24,11 @@ public class ShareListDAOpe extends BaseDAOpe {
 
     private int pagestart = 0;
 
-    public ShareListDAOpe(Context context) {
-        super(context);
-    }
 
 
     public void getSharesByReceipt(ShareBean shareBean, OnFinishListener onFinishListener) {
         if (shareI == null) {
-            shareI = new ShareOpe(context);
+            shareI = new ShareOpe();
         }
         shareI.getSharesByReceiptWithLimit(shareBean, onFinishListener);
     }

@@ -61,6 +61,11 @@ public class BaseUIOpe<A extends ViewDataBinding> {
 
     }
 
+    public void initDelay(){
+
+    }
+
+
 
     public A initViewDataBinding() {
         A viewDataBinding = null;
@@ -110,8 +115,10 @@ public class BaseUIOpe<A extends ViewDataBinding> {
         this.context = frag.getActivity();
         if(bind==null){
             bind = initViewDataBinding();
-            viewHolder = new AppViewHolder(bind);
-            bind.executePendingBindings();
+            if(bind!=null){
+                viewHolder = new AppViewHolder(bind);
+                bind.executePendingBindings();
+            }
         }
     }
 
@@ -119,8 +126,10 @@ public class BaseUIOpe<A extends ViewDataBinding> {
         this.context = context;
         if(bind==null){
             bind = initViewDataBinding();
-            viewHolder = new AppViewHolder(bind);
-            bind.executePendingBindings();
+            if(bind!=null){
+                viewHolder = new AppViewHolder(bind);
+                bind.executePendingBindings();
+            }
         }
     }
 }

@@ -20,10 +20,6 @@ import com.siweisoft.service.ui.Constant.Value;
 public class LoginUIOpe extends BaseUIOpe<FragLoginBinding> {
 
 
-    public LoginUIOpe(Context context) {
-        super(context);
-        //StatusBarUtil.setTranslucentForImageView((Activity) context, null);
-    }
 
     public void initIp() {
         bind.etServer.addTextChangedListener(new BaseTextWather() {

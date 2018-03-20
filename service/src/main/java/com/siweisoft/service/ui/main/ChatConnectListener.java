@@ -64,7 +64,7 @@ public class ChatConnectListener implements EMConnectionListener {
             crashBean.setCreatedtime(DateFormatUtil.getNowStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS));
             crashBean.setUserBean(Value.getUserInfo());
             if (crashI == null) {
-                crashI = new CrashOpe(app);
+                crashI = new CrashOpe();
             }
             crashI.sendCrash(crashBean, new OnFinishListener() {
                 @Override

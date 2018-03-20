@@ -11,6 +11,7 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.constant.UrlConstant;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.util.FragmentUtil2;
+import com.android.lib.util.GsonUtil;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.SPUtil;
 import com.android.lib.util.StringUtil;
@@ -19,6 +20,7 @@ import com.android.lib.view.bottommenu.MessageEvent;
 import com.hyphenate.chat.EMClient;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
+import com.siweisoft.service.base.UISNetAdapter;
 import com.siweisoft.service.netdb.NetValue;
 import com.siweisoft.service.netdb.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
@@ -27,15 +29,15 @@ import com.siweisoft.service.ui.user.regist.RegistFrag;
 import com.siweisoft.service.ui.user.resetpwd.ReSetPwdFrag;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class LoginFrag extends BaseServerFrag<LoginUIOpe, LoginDAOpe> {
 
+
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
+    public void initNow() {
+        super.initNow();
         FragmentUtil2.getInstance().print();
-
-        super.onViewCreated(view, savedInstanceState);
         getP().getU().bind.setLogin(getP().getD().getUserBean());
         getP().getU().initImage(getP().getD().getImageUril());
         getP().getU().bind.etServer.setText(NetValue.获取域名从文件(getActivity()));
@@ -51,6 +53,7 @@ public class LoginFrag extends BaseServerFrag<LoginUIOpe, LoginDAOpe> {
         }
         getP().getU().initIp();
     }
+
     @Optional
     @OnClick({R.id.button, R.id.tv_regist, R.id.tv_reset})
     public void onClickEvent(View view) {
@@ -59,26 +62,17 @@ public class LoginFrag extends BaseServerFrag<LoginUIOpe, LoginDAOpe> {
                 if (NullUtil.isStrEmpty(getP().getD().getUserBean().getPhone())) {
                     return;
                 }
-                getP().getD().login(getP().getD().getUserBean(), new OnFinishListener() {
+                getP().getD().login(getP().getD().getUserBean(), new UISNetAdapter<UserBean>(this) {
                     @Override
-                    public void onFinish(Object o) {
-                        final BaseResBean res = (BaseResBean) o;
-                        if (!res.isException()) {
-                            EMClient.getInstance().chatManager().loadAllConversations();
-                            EMClient.getInstance().groupManager().loadAllGroups();
-                            Value.saveUserInfo((UserBean) res.getData());
-                            Value.saveVideoTips(StringUtil.getStr(res.getOther()));
+                    public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
+                        if(haveData){
+                            UserBean userBean = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getData()),UserBean.class);
+                            Value.saveUserInfo(userBean);
+                            Value.saveVideoTips(StringUtil.getStr(baseResBean.getOther()));
                             SPUtil.getInstance().init(getActivity()).saveStr(Value.DATA_INTENT2, NetValue.获取地址(""));
                             Intent intent = new Intent(getActivity(), MainAct.class);
                             getActivity().startActivity(intent);
                             getActivity().finish();
-                        } else {
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    ToastUtil.getInstance().showShort(getActivity(), res.getErrorMessage());
-                                }
-                            });
                         }
                     }
                 });

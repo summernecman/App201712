@@ -10,9 +10,6 @@ import com.siweisoft.service.databinding.FragAboutusBinding;
 public class AboutUsUIOpe extends BaseUIOpe<FragAboutusBinding> {
 
 
-    public AboutUsUIOpe(Context context) {
-        super(context);
-    }
 
     public void initVersion(String v) {
         bind.tvVersion.setText(v);

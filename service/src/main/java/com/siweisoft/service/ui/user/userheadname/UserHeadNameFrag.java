@@ -31,6 +31,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class UserHeadNameFrag extends BaseServerFrag<UserHeadNameUIOpe, UserHeadNameDAOpe> {
 

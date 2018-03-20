@@ -16,9 +16,6 @@ public class SeachDAOpe extends BaseDAOpe {
     private SeachBean seachBean;
 
 
-    public SeachDAOpe(Context context) {
-        super(context);
-    }
 
     public List getList() {
         return list;

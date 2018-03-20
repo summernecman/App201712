@@ -29,7 +29,7 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
 
     @Override
     protected void onFristVisibleDelayInit() {
-        getP().getD().listWeight(new UINetAdapter<WeightListRes>(this) {
+        WeightsDAOpe.listWeight(getActivity(),new UINetAdapter<WeightListRes>(this) {
             @Override
             public void onSuccess(WeightListRes o) {
                 super.onSuccess(o);

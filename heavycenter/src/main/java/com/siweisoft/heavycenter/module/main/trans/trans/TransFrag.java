@@ -96,7 +96,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                 break;
             case R.id.view:
                 if(getP().getU().bind.search.getRoot().getVisibility()==View.VISIBLE){
-                    getP().getU().titleView.getRightIV2().setSelected(false);
+                    getP().getU().bind.title.getRightIV2().setSelected(false);
                     getP().getU().bind.search.getRoot().setVisibility(View.GONE);
                 }
                 break;
@@ -116,7 +116,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                     public void onAppItemClick(View view, int position) {
                         LoginResBean.BranchCompanyListBean data = (LoginResBean.BranchCompanyListBean) view.getTag(R.id.data);
                         getP().getD().setComid(data.getBranchId());
-                        getP().getU().titleView.getMidTV().setText(data.getAbbreviationName());
+                        getP().getU().bind.title.getMidTV().setText(data.getAbbreviationName());
                         getP().getU().autoRefresh();
                     }
                 });

@@ -28,9 +28,6 @@ import java.util.List;
 public class CollectUIOpe extends BaseUIOpe<FragCollectBinding> {
 
 
-    public CollectUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initList(final List<VideoBean> data, ViewListener viewListener, MyRecyclerView.OnScroll onScroll) {

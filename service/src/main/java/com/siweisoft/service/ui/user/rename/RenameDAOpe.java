@@ -17,10 +17,9 @@ public class RenameDAOpe extends BaseDAOpe {
 
     UserI userI;
 
-    public RenameDAOpe(Context context) {
-        super(context);
+    public RenameDAOpe() {
         userBean = new UserBean();
-        userI = new UserNetOpe(context);
+        userI = new UserNetOpe();
         userBean.setPhone(Value.getUserInfo().getPhone());
         userBean.setName(Value.getUserInfo().getName());
     }

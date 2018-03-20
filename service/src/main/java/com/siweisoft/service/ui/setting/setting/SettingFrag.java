@@ -19,6 +19,7 @@ import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.setting.setting.tip.TipFrag;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class SettingFrag extends BaseServerFrag<SettingUIOpe, SettingDAOpe> {
 

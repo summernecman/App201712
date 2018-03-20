@@ -12,11 +12,11 @@ import com.siweisoft.service.databinding.FragResetBinding;
 public class ReSetPwdUIOpe extends BaseUIOpe<FragResetBinding> {
 
 
-    public ReSetPwdUIOpe(Context context) {
-        super(context);
+    @Override
+    public void initUI() {
+        super.initUI();
         bind.tophead.setTitle2(new TitleBean("返回", "重置密码", ""));
     }
-
 
     public boolean vevify() {
         return !NullUtil.isStrEmpty(bind.etAccount.getText().toString()) && !NullUtil.isStrEmpty(bind.etPwd.getText().toString()) && !NullUtil.isStrEmpty(bind.etCode.getText().toString());

@@ -16,9 +16,6 @@ import com.siweisoft.service.ui.Constant.Value;
 public class VideoChatUIOpe extends BaseUIOpe<FragVideochatBinding> {
 
 
-    public VideoChatUIOpe(Context context) {
-        super(context);
-    }
 
     public void setCallInfo(UserBean userBean) {
         bind.tvCallinfo.setVisibility(View.VISIBLE);

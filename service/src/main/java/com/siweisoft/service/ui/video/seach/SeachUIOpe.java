@@ -19,9 +19,6 @@ import java.util.ArrayList;
 public class SeachUIOpe extends BaseUIOpe<FragSeachBinding> {
 
 
-    public SeachUIOpe(Context context) {
-        super(context);
-    }
 
     public void initList(final ArrayList<VideoTipBean> data) {
         bind.recycle.setLayoutManager(new GridLayoutManager(context, 3));

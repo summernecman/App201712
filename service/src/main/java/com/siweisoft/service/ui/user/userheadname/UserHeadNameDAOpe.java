@@ -15,9 +15,9 @@ public class UserHeadNameDAOpe extends BaseDAOpe {
 
     UserI userI;
 
-    public UserHeadNameDAOpe(Context context) {
-        super(context);
-        userI = new UserNetOpe(context);
+    public UserHeadNameDAOpe() {
+        super();
+        userI = new UserNetOpe();
     }
 
     public void setHead(UserBean userBean, OnFinishListener onFinishListener) {

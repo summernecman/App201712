@@ -47,9 +47,6 @@ public class VideoContainerDAOpe extends BaseDAOpe {
 
     CollectionBean collectionBean = new CollectionBean();
 
-    public VideoContainerDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<Fragment> getVideosPager(VideoBean videoBean, int type) {
         ArrayList<Fragment> fragments = new ArrayList<>();
@@ -68,7 +65,7 @@ public class VideoContainerDAOpe extends BaseDAOpe {
 
     public void collect(CollectionBean collectionBean, OnFinishListener onFinishListener) {
         if (collectionI == null) {
-            collectionI = new CollectionOpe(context);
+            collectionI = new CollectionOpe();
         }
 
         if (Value.getUserInfo().getId() == videoBean.getFromUser().getId()) {
@@ -81,7 +78,7 @@ public class VideoContainerDAOpe extends BaseDAOpe {
 
     public void disCollect(CollectionBean collectionBean, OnFinishListener onFinishListener) {
         if (collectionI == null) {
-            collectionI = new CollectionOpe(context);
+            collectionI = new CollectionOpe();
         }
         if (Value.getUserInfo().getId() == videoBean.getFromUser().getId()) {
             collectionBean.setUserid(videoBean.getFromUser().getId());
@@ -102,14 +99,14 @@ public class VideoContainerDAOpe extends BaseDAOpe {
 
     public void share(ShareBean shareBean, OnFinishListener onFinishListener) {
         if (shareI == null) {
-            shareI = new ShareOpe(context);
+            shareI = new ShareOpe();
         }
         shareI.share(shareBean, onFinishListener);
     }
 
     public void isCollectedByVideoIdAndUserId(VideoBean videoBean, OnFinishListener onFinishListener) {
         if (collectionI == null) {
-            collectionI = new CollectionOpe(context);
+            collectionI = new CollectionOpe();
         }
         CollectionBean collectionBean = new CollectionBean();
         collectionBean.setUserid(Value.getUserInfo().getId());

@@ -10,7 +10,4 @@ import com.siweisoft.service.databinding.FragUploadBinding;
 public class UploadUIOpe extends BaseUIOpe<FragUploadBinding> {
 
 
-    public UploadUIOpe(Context context) {
-        super(context);
-    }
 }

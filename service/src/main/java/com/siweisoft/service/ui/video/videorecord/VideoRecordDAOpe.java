@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class VideoRecordDAOpe extends BaseDAOpe {
 
 
-    VideoI videoI = new VideoOpe(context);
+    VideoI videoI ;
 
     ArrayList<VideoBean> videos = new ArrayList<>();
 
@@ -29,9 +29,13 @@ public class VideoRecordDAOpe extends BaseDAOpe {
 
     private SeachBean seachBean = new SeachBean();
 
+    @Override
+    public void initDA(Context context) {
+        super.initDA(context);
+        videoI = new VideoOpe(context);
+    }
 
-    public VideoRecordDAOpe(Context context) {
-        super(context);
+    public VideoRecordDAOpe() {
         seachBean.setTxt("");
         seachBean.setData(Value.getVideotipsList());
     }

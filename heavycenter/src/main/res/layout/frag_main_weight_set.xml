@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:style_common="http://schemas.android.com/apk/res-auto">
+<layout xmlns:style_common="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
                 name="frag_main_weight_set"
@@ -125,6 +126,8 @@
                 android:layout_height="wrap_content" />
 
         <EditText
+            tools:text="123"
+            android:gravity="center"
             android:layout_marginTop="5dp"
             android:background="@color/transparent"
             android:inputType="numberDecimal"
@@ -136,35 +139,23 @@
                 android:layout_height="wrap_content" />
 
 
-        <com.siweisoft.heavycenter.module.view.text.BgTextView
+        <TextView
                 android:gravity="center"
                 android:id="@+id/tv_sure"
                 android:text="确定"
-
+                android:background="@drawable/bg_hv_sharp10_yell_solid"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:layout_marginBottom="15dp"
                 android:paddingLeft="35dp"
                 android:paddingRight="35dp"
                 android:layout_marginTop="15dp"
-
+                android:textColor="@color/white"
                 android:singleLine="true"
                 android:textSize="20sp"
                 android:visibility="visible"
-                style_common:color_one="@color/color_hv_yelll"
-                style_common:stroke="0dp"
-                style_common:color_stroke="@color/red"
-                style_common:corner="20dp"
-                style_common:color_txt="@color/white"
-
-                style_common:color_two="@color/color_grey_400"
-                style_common:stroke_two="0dp"
-                style_common:color_stroke_two="@color/color_hv_yelll"
-                style_common:corner_two="20dp"
-                style_common:color_txt_two="@color/color_hv_yelll"
-                style_common:boo_one="true"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp" />
+                android:layout_height="wrap_content" />
 
     </LinearLayout>
     </LinearLayout>

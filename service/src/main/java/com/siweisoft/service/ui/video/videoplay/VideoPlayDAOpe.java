@@ -52,9 +52,8 @@ public class VideoPlayDAOpe extends BaseDAOpe {
 
     VideoDetailOpe videoDetailI;
 
-    public VideoPlayDAOpe(Context context) {
-        super(context);
-        userInfoDAOpe = new UserInfoDAOpe(context);
+    public VideoPlayDAOpe() {
+        userInfoDAOpe = new UserInfoDAOpe();
         userBean = new UserBean();
     }
 
@@ -72,7 +71,7 @@ public class VideoPlayDAOpe extends BaseDAOpe {
 
     public void getComment(VideoBean videoBean, OnFinishListener onFinishListener) {
         if (commentI == null) {
-            commentI = new CommentOpe(context);
+            commentI = new CommentOpe();
         }
         videoBean.setToUser(Value.getUserInfo());
         commentI.getVideoCommentByVideoIdAndCommentId(videoBean, onFinishListener);
@@ -80,7 +79,7 @@ public class VideoPlayDAOpe extends BaseDAOpe {
 
     public void isCollectedByVideoIdAndUserId(VideoBean videoBean, OnFinishListener onFinishListener) {
         if (collectionI == null) {
-            collectionI = new CollectionOpe(context);
+            collectionI = new CollectionOpe();
         }
         CollectionBean collectionBean = new CollectionBean();
         collectionBean.setUserid(Value.getUserInfo().getId());
@@ -90,7 +89,7 @@ public class VideoPlayDAOpe extends BaseDAOpe {
 
     public void collect(CollectionBean collectionBean, OnFinishListener onFinishListener) {
         if (collectionI == null) {
-            collectionI = new CollectionOpe(context);
+            collectionI = new CollectionOpe();
         }
         if (Value.getUserInfo().getId() == videoBean.getFromUser().getId()) {
             collectionBean.setUserid(videoBean.getFromUser().getId());
@@ -102,7 +101,7 @@ public class VideoPlayDAOpe extends BaseDAOpe {
 
     public void disCollect(CollectionBean collectionBean, OnFinishListener onFinishListener) {
         if (collectionI == null) {
-            collectionI = new CollectionOpe(context);
+            collectionI = new CollectionOpe();
         }
         if (Value.getUserInfo().getId() == videoBean.getFromUser().getId()) {
             collectionBean.setUserid(videoBean.getFromUser().getId());
@@ -131,7 +130,7 @@ public class VideoPlayDAOpe extends BaseDAOpe {
         File file = new File(Value.getCacheFile(), ss[ss.length - 1]);
         videoBean.setFile(file.getPath());
         if (videoi == null) {
-            videoi = new VideoOpe(context);
+            videoi = new VideoOpe(getActivity());
         }
         if (!file.exists()) {
             BaseResBean o = new BaseResBean();
@@ -145,7 +144,7 @@ public class VideoPlayDAOpe extends BaseDAOpe {
             public void onFinish(Object o) {
                 videoBean.setFile(f);
                 if (videoDetailI == null) {
-                    videoDetailI = new VideoDetailOpe(context);
+                    videoDetailI = new VideoDetailOpe();
                 }
                 videoDetailI.updateUpload(vv, onFinishListener);
             }
@@ -155,7 +154,7 @@ public class VideoPlayDAOpe extends BaseDAOpe {
 
     public void isCommentToCustomer(VideoDetailBean vv, final OnFinishListener onFinishListener) {
         if (videoDetailI == null) {
-            videoDetailI = new VideoDetailOpe(context);
+            videoDetailI = new VideoDetailOpe();
         }
         videoDetailI.getCommentToType(vv, new OnFinishListener() {
             @Override
@@ -172,7 +171,7 @@ public class VideoPlayDAOpe extends BaseDAOpe {
 
     public void share(ShareBean shareBean, OnFinishListener onFinishListener) {
         if (shareI == null) {
-            shareI = new ShareOpe(context);
+            shareI = new ShareOpe();
         }
         shareI.share(shareBean, onFinishListener);
     }

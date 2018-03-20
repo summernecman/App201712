@@ -42,9 +42,6 @@ public class VideoChatDAOpe extends BaseDAOpe {
 
     private boolean isRecordVideo = false;
 
-    public VideoChatDAOpe(Context context) {
-        super(context);
-    }
 
     public VideoBean getVideoBean() {
         return videoBean;
@@ -94,7 +91,7 @@ public class VideoChatDAOpe extends BaseDAOpe {
 
     public void updateVideo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
         if (videoI == null) {
-            videoI = new VideoOpe(context.getApplicationContext());
+            videoI = new VideoOpe(getActivity());
         }
         videoI.getMaxVideoId(new OnFinishListener() {
             @Override
@@ -114,7 +111,7 @@ public class VideoChatDAOpe extends BaseDAOpe {
         getVideoBean().setCreated(DateFormatUtil.getNowStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS));
         getVideoBean().setTimenum(getMinute());
         if (videoI == null) {
-            videoI = new VideoOpe(context.getApplicationContext());
+            videoI = new VideoOpe(getActivity());
         }
         videoI.insert_and_getid_fromvieo(videoBean, new OnFinishListener() {
             @Override
@@ -144,7 +141,7 @@ public class VideoChatDAOpe extends BaseDAOpe {
 
     public void updateCallState(VideoBean v, int state) {
         if (videoI == null) {
-            videoI = new VideoOpe(context.getApplicationContext());
+            videoI = new VideoOpe(getActivity());
         }
         v.setCallstate(state);
         videoI.updateCallState(v, null);

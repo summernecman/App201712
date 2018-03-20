@@ -28,9 +28,6 @@ import java.util.List;
 public class ShareListUIOpe extends BaseUIOpe<FragRemarklistBinding> {
 
 
-    public ShareListUIOpe(Context context) {
-        super(context);
-    }
 
 
     public void initList(final List<VideoBean> data, ViewListener viewListener, MyRecyclerView.OnScroll onScroll) {

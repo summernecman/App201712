@@ -2,8 +2,6 @@ package com.siweisoft.service.ui.user.userinfo;
 
 //by summer on 17-08-24.
 
-import android.content.Context;
-
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.network.NetWork;
@@ -12,13 +10,11 @@ import com.siweisoft.service.bean.AllUserBean;
 import com.siweisoft.service.bean.TipBean;
 import com.siweisoft.service.bean.TipsBean;
 import com.siweisoft.service.netdb.agree.AgreeBean;
-import com.siweisoft.service.netdb.agree.AgreeI;
 import com.siweisoft.service.netdb.agree.AgreeOpe;
 import com.siweisoft.service.netdb.comment.CommentBean;
 import com.siweisoft.service.netdb.comment.CommentI;
 import com.siweisoft.service.netdb.comment.CommentOpe;
 import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.user.UserI;
 import com.siweisoft.service.netdb.user.UserNetOpe;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.user.onlinelist.OnLineListFrag;
@@ -34,7 +30,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
     CommentI commentI;
 
-    UserI userI;
+    UserNetOpe userI;
 
     AgreeI agreeI;
 
@@ -42,11 +38,6 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
     ArrayList<CommentBean> commentBeen = new ArrayList<>();
 
-
-    public UserInfoDAOpe(Context context) {
-        super(context);
-
-    }
 
 
     public TipsBean getData() {
@@ -65,7 +56,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
     public void getUserInfo(int id, OnFinishListener onFinishListener) {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         UserBean u = new UserBean();
         u.setId(id);
@@ -74,7 +65,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
     public void getRemarks(CommentBean commentBean, final OnFinishListener onFinishListener) {
         if (commentI == null) {
-            commentI = new CommentOpe(context);
+            commentI = new CommentOpe();
         }
 
         commentI.getCommentByUserIdWithMyOptionWithLimit(commentBean, new OnFinishListener() {
@@ -89,7 +80,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
     public void getOtherUsersInfoByPhone(final UserBean u, List<String> strs, final OnFinishListener onFinishListener) {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         ArrayList<UserBean> userBeen = new ArrayList<>();
         for (int i = 0; i < strs.size(); i++) {
@@ -138,7 +129,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
     public void getUserRateIfNull(UserBean userBean, OnFinishListener onFinishListener) {
         if (commentI == null) {
-            commentI = new CommentOpe(context);
+            commentI = new CommentOpe();
         }
         if (userBean.getAvg() == 0f) {
             commentI.getVideoRateCommentByUseId(userBean, onFinishListener);
@@ -148,7 +139,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
     public void getUserCallInfo(UserBean userBean, OnFinishListener onFinishListener) {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         userI.getUserCallInfo(userBean, onFinishListener);
     }
@@ -172,7 +163,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
     public UserCenterDAOpe getUserCenterDAOpe() {
         if (userCenterDAOpe == null) {
-            userCenterDAOpe = new UserCenterDAOpe(context);
+            userCenterDAOpe = new UserCenterDAOpe();
         }
         return userCenterDAOpe;
     }
@@ -184,7 +175,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
     public void clickAgree(AgreeBean agreeBean, OnFinishListener onFinishListener) {
         if (agreeI == null) {
-            agreeI = new AgreeOpe(context);
+            agreeI = new AgreeOpe();
         }
         agreeI.clickAgree(agreeBean, onFinishListener);
     }

@@ -15,9 +15,6 @@ import com.siweisoft.service.ui.Constant.Value;
 
 public class UserHeadNameUIOpe extends BaseUIOpe<FragUserheadnameBinding> {
 
-    public UserHeadNameUIOpe(Context context) {
-        super(context);
-    }
 
     public void initInfo() {
         bind.setUserheadname(Value.getUserInfo());

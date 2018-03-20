@@ -15,9 +15,6 @@ import java.util.ArrayList;
 public class HomeDAOpe extends BaseDAOpe {
 
 
-    public HomeDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<Fragment> getFragment() {
         ArrayList<Fragment> fragments = new ArrayList<>();

@@ -98,6 +98,7 @@ public class UserScanDAOpe extends BaseDAOpe {
 
 
 
+
         if((scaned.getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED)&&(
                 (LoginResBean.USER_ROLE_ADMIN.equals(LocalValue.get登录返回信息().getUserRole()))
                         ||(LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())))){

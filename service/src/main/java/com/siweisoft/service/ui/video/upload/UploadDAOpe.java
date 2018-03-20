@@ -8,7 +8,4 @@ import com.android.lib.base.ope.BaseDAOpe;
 
 public class UploadDAOpe extends BaseDAOpe {
 
-    public UploadDAOpe(Context context) {
-        super(context);
-    }
 }

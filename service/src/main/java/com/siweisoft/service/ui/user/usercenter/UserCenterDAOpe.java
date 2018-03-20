@@ -38,28 +38,25 @@ public class UserCenterDAOpe extends BaseDAOpe {
 
     private ArrayList<TipBean> tipdata = new ArrayList<>();
 
-    public UserCenterDAOpe(Context context) {
-        super(context);
-    }
 
 
     public UserInfoDAOpe getUserInfoDAOpe() {
         if (userInfoDAOpe == null) {
-            userInfoDAOpe = new UserInfoDAOpe(context);
+            userInfoDAOpe = new UserInfoDAOpe();
         }
         return userInfoDAOpe;
     }
 
     public UserI getUserI() {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         return userI;
     }
 
     public void getUserCallInfo(OnFinishListener onFinishListener) {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         UserBean userBean = new UserBean();
         userBean.setPhone(Value.getUserInfo().getPhone());
@@ -68,28 +65,28 @@ public class UserCenterDAOpe extends BaseDAOpe {
 
     public void getUserTips(UserBean userBean, OnFinishListener onFinishListener) {
         if (commentI == null) {
-            commentI = new CommentOpe(context);
+            commentI = new CommentOpe();
         }
         commentI.getUserTips(userBean, onFinishListener);
     }
 
     public void getCommentNumByUserName(UserBean userBean, OnFinishListener onFinishListener) {
         if (commentI == null) {
-            commentI = new CommentOpe(context);
+            commentI = new CommentOpe();
         }
         commentI.getCommentNumByUserName(userBean, onFinishListener);
     }
 
     public void getCollectionNumByUserId(UserBean userBean, OnFinishListener onFinishListener) {
         if (collectionI == null) {
-            collectionI = new CollectionOpe(context);
+            collectionI = new CollectionOpe();
         }
         collectionI.getCollectionNumByUserId(userBean, onFinishListener);
     }
 
     public void getShareNumByUserPhone(UserBean userBean, OnFinishListener onFinishListener) {
         if (shareI == null) {
-            shareI = new ShareOpe(context);
+            shareI = new ShareOpe();
         }
         shareI.getShareNumByUserPhone(userBean, onFinishListener);
     }

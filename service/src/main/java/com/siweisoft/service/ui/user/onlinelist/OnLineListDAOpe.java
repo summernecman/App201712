@@ -30,9 +30,6 @@ public class OnLineListDAOpe extends BaseDAOpe {
     private ArrayList<UserBean> onlines = new ArrayList<>();
 
 
-    public OnLineListDAOpe(Context context) {
-        super(context);
-    }
 
     public RoleInfo getRoleInfo() {
         return roleInfo;
@@ -46,7 +43,7 @@ public class OnLineListDAOpe extends BaseDAOpe {
 
     public UserI getUserI() {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         return userI;
     }

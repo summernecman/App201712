@@ -13,6 +13,7 @@ import com.siweisoft.service.netdb.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class UnitFrag extends BaseServerFrag<UnitUIOpe, UnitDAOpe> {
 

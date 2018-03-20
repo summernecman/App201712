@@ -17,9 +17,6 @@ import java.util.ArrayList;
 public class VideoContainerUIOpe extends BaseUIOpe<FragVideocontainerBinding> {
 
 
-    public VideoContainerUIOpe(Context context) {
-        super(context);
-    }
 
     public void initViewPager(Fragment f, final ArrayList<Fragment> fragments) {
         bind.vpVp.setOffscreenPageLimit(fragments.size());

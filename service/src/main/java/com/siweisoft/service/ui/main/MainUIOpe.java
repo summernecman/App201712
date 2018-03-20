@@ -20,10 +20,6 @@ import com.siweisoft.service.ui.Constant.Value;
 import java.util.ArrayList;
 
 public class MainUIOpe extends BaseUIOpe<ActMainBinding> {
-    public MainUIOpe(Context context) {
-        super(context);
-        //StatusBarUtil.getInstance().setStatusBarColorResId((Activity) context, R.color.color_base_nurse);
-    }
 
 
     public void initTitle() {

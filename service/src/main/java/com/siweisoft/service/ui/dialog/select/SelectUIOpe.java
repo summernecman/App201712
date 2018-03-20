@@ -11,8 +11,5 @@ import com.siweisoft.service.databinding.FragDialogSelectBinding;
 public class SelectUIOpe extends BaseUIOpe<FragDialogSelectBinding> {
 
 
-    public SelectUIOpe(Context context) {
-        super(context);
-    }
 
 }

@@ -26,13 +26,13 @@ public class MainDAOpe extends BaseDAOpe {
 
     private ChatConnectListener chatConnectListener;
 
-    public MainDAOpe(Context context) {
-        super(context);
-        userI = new UserNetOpe(context);
-        videoChatListener = new VideoChatListener(context);
+    @Override
+    public void initDA() {
+        super.initDA();
+        userI = new UserNetOpe();
+        videoChatListener = new VideoChatListener(getActivity());
         emMsgListener = new EMMsgListener();
-        chatConnectListener = new ChatConnectListener((MainAct) context);
-
+        chatConnectListener = new ChatConnectListener((MainAct) getActivity());
     }
 
     public ArrayList<Fragment> getFragment() {

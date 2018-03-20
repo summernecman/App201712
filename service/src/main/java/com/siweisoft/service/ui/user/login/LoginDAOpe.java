@@ -7,6 +7,7 @@ import android.content.Context;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.network.bean.res.BaseResBean;
+import com.android.lib.network.news.NetI;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.LoadUtil;
 import com.android.lib.util.LogUtil;
@@ -14,6 +15,7 @@ import com.android.lib.util.SPUtil;
 import com.android.lib.util.system.UUUIDUtil;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.user.UserBean;
 import com.siweisoft.service.netdb.user.UserI;
 import com.siweisoft.service.netdb.user.UserNetOpe;
@@ -23,66 +25,24 @@ public class LoginDAOpe extends BaseDAOpe {
 
     UserBean userBean = new UserBean();
 
-    UserI userI;
+    UserNetOpe userI;
 
 
-    public LoginDAOpe(Context context) {
-        super(context);
+    @Override
+    public void initDA(Context context) {
+        super.initDA(context);
         userBean.setPhone(SPUtil.getInstance().getStr(Value.USERNAME));
         userBean.setPwd(SPUtil.getInstance().getStr(Value.PWD));
-        userBean.setUuuid(UUUIDUtil.getInstance().getUUUId(context));
-        userI = new UserNetOpe(context);
+        userBean.setUuuid(UUUIDUtil.getInstance().getUUUId(getActivity()));
+        userI = new UserNetOpe();
     }
 
     public void autoLogin() {
 
     }
 
-    public void login(UserBean userBean, final OnFinishListener onFinishListener) {
-        LoadUtil.getInstance().onStartLoading(context, "login");
-        userI.login(userBean, new OnFinishListener() {
-            @Override
-            public void onFinish(Object o) {
-                final BaseResBean baseResBean = (BaseResBean) o;
-                if (baseResBean.isException()) {
-                    LoadUtil.getInstance().onStopLoading("login");
-                    onFinishListener.onFinish(baseResBean);
-                    return;
-                }
-                final UserBean res = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getData()), UserBean.class);
-                if (res == null) {
-                    LoadUtil.getInstance().onStopLoading("login");
-                    return;
-                }
-                EMClient.getInstance().login(res.getPhone(), "111111", new EMCallBack() {//回调
-                    @Override
-                    public void onSuccess() {
-                        EMClient.getInstance().groupManager().loadAllGroups();
-                        EMClient.getInstance().chatManager().loadAllConversations();
-                        LogUtil.E("main", "登录聊天服务器成功！");
-                        baseResBean.setData(res);
-                        onFinishListener.onFinish(baseResBean);
-                        LoadUtil.getInstance().onStopLoading("login");
-                        SPUtil.getInstance().init(context).saveStr(Value.USERNAME, res.getPhone());
-                        SPUtil.getInstance().saveStr(Value.PWD, res.getPwd());
-                    }
-
-                    @Override
-                    public void onProgress(int progress, String status) {
-
-                    }
-
-                    @Override
-                    public void onError(int code, String message) {
-                        LogUtil.E("main", code + "" + message);
-                        baseResBean.setException(true);
-                        baseResBean.setErrorMessage(message);
-                        onFinishListener.onFinish(baseResBean);
-                        LoadUtil.getInstance().onStopLoading("login");
-                    }
-                });
-            }
-        });
+    public void login(UserBean userBean, NetI<UserBean> adapter) {
+        NetDataOpe.User.login(getActivity(),userBean,adapter);
     }
 
     public String getImageUril() {

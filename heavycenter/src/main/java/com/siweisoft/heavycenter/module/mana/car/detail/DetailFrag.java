@@ -48,20 +48,22 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
     public void initNow() {
         super.initNow();
         getP().getD().setType(getArguments().getString(CarDetailValue.类型));
-        getP().getU().init(getP().getD().getType());
+        getP().getU().initTitle(getP().getD().getType());
     }
 
     @Override
     public void initdelay() {
         super.initdelay();
+        getP().getU().getDetailCotentUIOpe().init(getP().getD().getType());
+
         switch (getP().getD().getType()){
             case CarDetailValue.新建车辆:
 
                 break;
             case CarDetailValue.新建车辆并绑定:
                 getP().getU().bind.title.getMidTV().setText("绑定车辆");
-                getP().getU().bind.etName.setText(getArguments().getString(CarDetailValue.标题,""));
-                //getP().getU().content.itemCarlicenseno.setMidEtTxt(StringUtil.getStr(getArguments().getString(ValueConstant.DATA_DATA,"")));
+                getP().getU().getDetailCotentUIOpe().bind.etName.setText(getArguments().getString(CarDetailValue.标题,""));
+                //getP().getU().bind.itemCarlicenseno.setMidEtTxt(StringUtil.getStr(getArguments().getString(ValueConstant.DATA_DATA,"")));
                 break;
             case CarDetailValue.查看车辆:
                 getP().getD().setCarinfo((CarsResBean.CarInfoRes) getArguments().getSerializable(CarDetailValue.数据));

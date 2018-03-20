@@ -10,9 +10,6 @@ import com.siweisoft.service.databinding.FragSettingBinding;
 public class SettingUIOpe extends BaseUIOpe<FragSettingBinding> {
 
 
-    public SettingUIOpe(Context context) {
-        super(context);
-    }
 
     public void setVersion(String verison){
         bind.tvVersion.setText(verison);

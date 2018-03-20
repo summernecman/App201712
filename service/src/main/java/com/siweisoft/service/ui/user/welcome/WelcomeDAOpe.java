@@ -9,7 +9,4 @@ import com.android.lib.base.ope.BaseDAOpe;
 public class WelcomeDAOpe extends BaseDAOpe {
 
 
-    public WelcomeDAOpe(Context context) {
-        super(context);
-    }
 }

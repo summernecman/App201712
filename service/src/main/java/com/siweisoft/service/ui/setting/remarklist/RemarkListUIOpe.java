@@ -27,9 +27,6 @@ import java.util.ArrayList;
 public class RemarkListUIOpe extends BaseUIOpe<FragRemarklistBinding> {
 
 
-    public RemarkListUIOpe(Context context) {
-        super(context);
-    }
 
     public void initRemarks(final ArrayList<CommentBean> data, MyRecyclerView.OnScroll onScroll, ViewListener listener) {
         bind.recycle.setLayoutManager(new LinearLayoutManager(context));

@@ -15,9 +15,6 @@ public class ImagePagerDAOpe extends BaseDAOpe {
     private int postion;
 
 
-    public ImagePagerDAOpe(Context context) {
-        super(context);
-    }
 
     public ArrayList<String> getUrls() {
         return urls;

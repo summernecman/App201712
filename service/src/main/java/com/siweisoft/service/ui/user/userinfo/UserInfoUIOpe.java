@@ -38,10 +38,6 @@ public class UserInfoUIOpe extends BaseUIOpe<FragUserinfoBinding> {
 
 
 
-    public UserInfoUIOpe(Context context) {
-        super(context);
-
-    }
 
 
     public void initTips(final HashMap<Integer, TipBean> data) {

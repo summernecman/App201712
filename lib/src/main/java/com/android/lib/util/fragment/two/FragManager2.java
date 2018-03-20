@@ -92,6 +92,7 @@ public class FragManager2  {
         checkArguments(fragment);
         fragment.getArguments().putAll(bundle);
         start(activity,moudle,fragment);
+        LogUtil.E("startstart"+(System.currentTimeMillis()-aa));
     }
 
 

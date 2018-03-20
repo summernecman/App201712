@@ -22,6 +22,8 @@ import com.siweisoft.service.netdb.videodetail.VideoDetailBean;
 import java.io.File;
 import java.util.ArrayList;
 
+import butterknife.Optional;
+
 
 public class VideoPlayFrag extends BaseServerFrag<VideoPlayUIOpe, VideoPlayDAOpe> {
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:style_common="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
@@ -8,22 +8,5 @@
     android:fitsSystemWindows="false"
     android:clipToPadding="true"
     android:orientation="vertical">
-    <com.android.lib.view.title.TitleView
-        android:id="@+id/title11"
-        style_common:iv_left ="@drawable/icon_hv_person"
-        style_common:iv_right ="@drawable/icon_hv_scan"
-        style_common:iv_right2 ="@drawable/icon_hv_add"
-        style_common:txt_mid ="订单"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:style_common="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
->
-
 
 </RelativeLayout>
-</LinearLayout>

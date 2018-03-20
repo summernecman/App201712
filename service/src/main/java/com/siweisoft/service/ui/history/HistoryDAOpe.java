@@ -19,13 +19,12 @@ import java.util.ArrayList;
 public class HistoryDAOpe extends BaseDAOpe {
 
 
-    VideoI videoI;
 
     UserI userI;
 
-    public HistoryDAOpe(Context context) {
-        super(context);
-        videoI = new VideoOpe(context);
+    @Override
+    public void initDA(Context context) {
+        super.initDA(context);
     }
 
     public ArrayList<VideoBean> getData() {
@@ -41,7 +40,7 @@ public class HistoryDAOpe extends BaseDAOpe {
     }
 
     public void getVideos(final OnFinishListener onFinishListener) {
-        videoI.getByContacts(Value.getUserInfo(), new OnFinishListener() {
+        VideoI.getByContacts(Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 onFinishListener.onFinish(o);
@@ -55,7 +54,7 @@ public class HistoryDAOpe extends BaseDAOpe {
 
     public void getArrayUsersInfoByPhone(ArrayList<ArrayList<UserBean>> data, OnFinishListener onFinishListener) {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         userI.getArrayUsersInfoByPhone(data, onFinishListener);
     }

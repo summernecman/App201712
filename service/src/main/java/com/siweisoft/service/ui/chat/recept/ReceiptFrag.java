@@ -27,6 +27,7 @@ import com.siweisoft.service.ui.user.onlinelist.OnLineListFrag;
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
 

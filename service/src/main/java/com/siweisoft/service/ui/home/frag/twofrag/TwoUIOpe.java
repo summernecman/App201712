@@ -9,7 +9,4 @@ import com.siweisoft.service.databinding.FragTwoBinding;
 
 public class TwoUIOpe extends BaseUIOpe<FragTwoBinding> {
 
-    public TwoUIOpe(Context context) {
-        super(context);
-    }
 }

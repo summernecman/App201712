@@ -31,6 +31,7 @@ import com.siweisoft.service.ui.chat.remark.RemarkFrag;
 import com.siweisoft.service.ui.main.VideoChatListener;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe> {
 

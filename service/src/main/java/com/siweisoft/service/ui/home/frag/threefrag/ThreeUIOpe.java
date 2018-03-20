@@ -8,7 +8,4 @@ import com.android.lib.base.ope.BaseUIOpe;
 import com.siweisoft.service.databinding.FragThreeBinding;
 
 public class ThreeUIOpe extends BaseUIOpe<FragThreeBinding> {
-    public ThreeUIOpe(Context context) {
-        super(context);
-    }
 }

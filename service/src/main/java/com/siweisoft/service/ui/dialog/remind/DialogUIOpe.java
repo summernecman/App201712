@@ -10,8 +10,5 @@ import com.siweisoft.service.databinding.FragDialogBinding;
 public class DialogUIOpe extends BaseUIOpe<FragDialogBinding> {
 
 
-    public DialogUIOpe(Context context) {
-        super(context);
-    }
 
 }

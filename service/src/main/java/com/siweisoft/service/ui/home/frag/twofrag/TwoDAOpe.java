@@ -7,7 +7,4 @@ import android.content.Context;
 import com.android.lib.base.ope.BaseDAOpe;
 
 public class TwoDAOpe extends BaseDAOpe {
-    public TwoDAOpe(Context context) {
-        super(context);
-    }
 }

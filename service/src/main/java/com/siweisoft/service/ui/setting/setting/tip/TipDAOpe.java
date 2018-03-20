@@ -12,9 +12,6 @@ import java.io.File;
 
 public class TipDAOpe extends BaseDAOpe {
 
-    public TipDAOpe(Context context) {
-        super(context);
-    }
 
 
 }

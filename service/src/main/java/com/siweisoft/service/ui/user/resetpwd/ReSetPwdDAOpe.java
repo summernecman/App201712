@@ -23,9 +23,8 @@ public class ReSetPwdDAOpe extends BaseDAOpe {
 
     private ThreadUtil threadUtil = new ThreadUtil();
 
-    public ReSetPwdDAOpe(Context context) {
-        super(context);
-        userI = new UserNetOpe(context);
+    public ReSetPwdDAOpe() {
+        userI = new UserNetOpe();
     }
 
     public UserBean getUserBean() {
@@ -38,7 +37,7 @@ public class ReSetPwdDAOpe extends BaseDAOpe {
 
     public void resetPwd(UserBean userBean, OnFinishListener onFinishListener) {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         userI.resetPwd(userBean, onFinishListener);
     }

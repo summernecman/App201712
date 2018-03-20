@@ -18,9 +18,6 @@ import java.util.ArrayList;
 
 public class HomeUIOpe extends BaseUIOpe<FragHomeBinding> {
 
-    public HomeUIOpe(Context context) {
-        super(context);
-    }
 
     public void initViewPager(FragmentManager fm, final ArrayList<Fragment> fragments) {
 

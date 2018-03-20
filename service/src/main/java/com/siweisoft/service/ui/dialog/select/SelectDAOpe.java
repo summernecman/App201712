@@ -8,7 +8,4 @@ import com.android.lib.base.ope.BaseDAOpe;
 
 public class SelectDAOpe extends BaseDAOpe {
 
-    public SelectDAOpe(Context context) {
-        super(context);
-    }
 }

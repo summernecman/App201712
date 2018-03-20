@@ -40,7 +40,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                     bind.contentAcct.addView(fragMyceDriverBinding.getRoot(),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 }
                 fragMyceDriverBinding.itemUnit.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCompanyName()));
-                //content.llHead.tvRole.setText(UserTypeReqBean.USER_TYPE_DRIVER_CN);
+                //bind.llHead.tvRole.setText(UserTypeReqBean.USER_TYPE_DRIVER_CN);
                 fragMyceDriverBinding.itemDriver.getLeftTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCarLicenseNo()));
                 fragMyceDriverBinding.itemDriver.getMidTV().setVisibility(View.VISIBLE);
                 fragMyceDriverBinding.itemDriver.getMidTV().setText(StringUtil.getStr(LocalValue.get登录返回信息().getCarBrand()));
@@ -48,7 +48,7 @@ public class MyceUIOpe extends AppUIOpe<FragMyceBinding> {
                 fragMyceDriverBinding.tvMaxweight.setText("载重: "+StringUtil.getStr(LocalValue.get登录返回信息().getMaxCapacity())+"t");
 
 
-                //content.llHead.tvRole.setText(LoginResBean.USER_ROLE_DRIVER_CN);
+                //bind.llHead.tvRole.setText(LoginResBean.USER_ROLE_DRIVER_CN);
 
 
                 switch (LocalValue.get登录返回信息().getBindCompanyState()){

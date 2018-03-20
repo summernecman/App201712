@@ -21,6 +21,7 @@ import com.siweisoft.service.ui.user.login.LoginFrag;
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class RegistFrag extends BaseServerFrag<RegistUIOpe, RegistDAOpe> {
 

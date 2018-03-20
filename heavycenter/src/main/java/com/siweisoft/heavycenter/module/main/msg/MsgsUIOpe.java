@@ -12,7 +12,6 @@ import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.R;
-import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.msg.list.MsgsReqBean;
@@ -21,13 +20,12 @@ import com.siweisoft.heavycenter.databinding.FragMainMsgsBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MsgsUIOpe extends AppUIOpe<FragMainMsgsBinding> {
+public class MsgsUIOpe extends BaseUIOpe<FragMainMsgsBinding>{
 
 
     @Override
     public void initUI() {
         super.initUI();
-        initTitle(R.drawable.icon_hv_person,"消息",0,R.drawable.icon_hv_scan);
         ArrayList<String> strs = new ArrayList<>();
         for(int i = 0; i< MsgsReqBean.get消息类型().size(); i++){
             strs.add(MsgsReqBean.get消息类型().get(i).getName());
@@ -35,9 +33,9 @@ public class MsgsUIOpe extends AppUIOpe<FragMainMsgsBinding> {
         bind.topview.initTxtView(strs);
         final List<LoginResBean.BranchCompanyListBean> coms = LocalValue.get下级单位列表();
         if(coms!=null&&coms.size()>0){
-            titleView.getMidTV().setText(StringUtil.getStr(coms.get(0).getAbbreviationName()));
-            titleView.getMidIconIV().setImageResource(R.drawable.arrow_down);
-            titleView.getMidIconIV().setVisibility(View.VISIBLE);
+            bind.title.getMidTV().setText(StringUtil.getStr(coms.get(0).getAbbreviationName()));
+            bind.title.getMidIconIV().setImageResource(R.drawable.arrow_down);
+            bind.title.getMidIconIV().setVisibility(View.VISIBLE);
         }
     }
 

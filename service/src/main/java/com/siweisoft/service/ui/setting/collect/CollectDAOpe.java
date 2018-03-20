@@ -23,13 +23,10 @@ public class CollectDAOpe extends BaseDAOpe {
 
     private int pagestart = 0;
 
-    public CollectDAOpe(Context context) {
-        super(context);
-    }
 
     public void getCollection(UserBean userBean, OnFinishListener onFinishListener) {
         if (collectionI == null) {
-            collectionI = new CollectionOpe(context);
+            collectionI = new CollectionOpe();
         }
         collectionI.getCollectionVideosByUserIdWithLimit(userBean, onFinishListener);
     }

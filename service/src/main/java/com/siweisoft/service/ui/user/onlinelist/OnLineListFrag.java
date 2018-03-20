@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 import static com.siweisoft.service.netdb.video.VideoBean.type_video_record;
 

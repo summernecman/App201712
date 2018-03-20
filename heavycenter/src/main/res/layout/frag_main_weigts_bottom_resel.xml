@@ -64,8 +64,8 @@
                 android:layout_height="0dp"
                 android:includeFontPadding="false"
                 tools:text="此次称重信息将保存\n,您需要后续在订单中选择进行关联的称重信息"
-                android:textColor="@color/black"
-                android:textSize="@dimen/hv_dimen_text_aaa" />
+                android:textColor="@color/color_grey_500"
+                android:textSize="14sp" />
 
 
 

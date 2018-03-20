@@ -169,7 +169,7 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
     @Override
     public void onFinish(Object o) {
         if (crashI == null) {
-            crashI = new CrashOpe(this);
+            crashI = new CrashOpe();
         }
         if (Value.getRoom() != null) {
             EMClient.getInstance().chatroomManager().leaveChatRoom(Value.getRoom().getId());
@@ -264,7 +264,7 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
     public void onLowMemory() {
         super.onLowMemory();
         if (crashI == null) {
-            crashI = new CrashOpe(this);
+            crashI = new CrashOpe();
         }
         final CrashBean crashBean = new CrashBean();
         crashBean.setError("onLowMemory:" + ":" + FragmentUtil2.getInstance().print());

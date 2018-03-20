@@ -29,6 +29,8 @@ import com.siweisoft.service.ui.video.videocontainer.VideoContainerFrag;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import butterknife.Optional;
+
 public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecordDAOpe> implements ViewListener,OnRefreshListener,OnLoadmoreListener {
 
     @Override

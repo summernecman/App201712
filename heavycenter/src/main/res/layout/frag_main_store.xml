@@ -11,7 +11,17 @@
         android:layout_height="match_parent"
         android:background="@color/color_block_back"
         android:orientation="vertical">
+        <com.android.lib.view.title.TitleView
 
+            android:elevation="2dp"
+            android:background="@color/color_base"
+            android:id="@+id/title"
+            app:txt_mid ="仓库"
+            app:iv_left ="@drawable/icon_hv_person"
+            app:iv_right = "@drawable/icon_hv_scan"
+            app:iv_right2 = "@drawable/icon_hv_panku"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refresh"
             app:srlEnableLoadmoreWhenContentNotFull="false"

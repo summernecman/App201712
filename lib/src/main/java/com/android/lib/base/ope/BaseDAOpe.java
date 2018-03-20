@@ -16,7 +16,7 @@ public class BaseDAOpe implements BaseOpe {
     /**
      * 上下文
      */
-    protected Context context;
+    private Context context;
 
     protected BaseUIFrag frag;
 
@@ -25,6 +25,10 @@ public class BaseDAOpe implements BaseOpe {
     }
 
     public void initDA(){
+
+    }
+
+    public void initDA(Context context){
 
     }
 

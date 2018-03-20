@@ -2,6 +2,7 @@ package com.siweisoft.heavycenter.module.main.weights.weights;
 
 //by summer on 2017-12-11.
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -48,12 +49,12 @@ public class WeightsDAOpe extends AppDAOpe {
     }
 
 
-    public void listWeight(NetI<WeightListRes> adapter){
+    public static void listWeight(Context context,NetI<WeightListRes> adapter){
         WeightListReq weightListReq = new WeightListReq();
         weightListReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         weightListReq.setPageIndex(0);
         weightListReq.setPageSize(1000);
-        NetDataOpe.Weight.listWeight(getActivity(),weightListReq,adapter);
+        NetDataOpe.Weight.listWeight(context,weightListReq,adapter);
     }
 
     public void saveWeight(WeightMsg weightMsg , NetI<SaveWeightRes> adapter){

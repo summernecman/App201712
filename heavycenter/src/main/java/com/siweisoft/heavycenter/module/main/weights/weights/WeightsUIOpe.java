@@ -9,7 +9,6 @@ import com.android.lib.base.adapter.AppBasePagerAdapter2;
 import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.listener.BaseOnPagerChangeListener;
 import com.android.lib.util.LogUtil;
-import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.jpush.WeightMsg;
 import com.siweisoft.heavycenter.databinding.FragMainWeigtsBinding;
@@ -19,11 +18,6 @@ import java.util.ArrayList;
 
 public class WeightsUIOpe extends AppUIOpe<FragMainWeigtsBinding> {
 
-    @Override
-    public void initUI() {
-        super.initUI();
-        initTitle(R.drawable.icon_hv_person,"地磅",0,R.drawable.icon_hv_scan);
-    }
 
     public void initRefresh(){
     }

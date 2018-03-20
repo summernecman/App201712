@@ -23,9 +23,8 @@ public class RegistDAOpe extends BaseDAOpe {
 
     private ThreadUtil threadUtil = new ThreadUtil();
 
-    public RegistDAOpe(Context context) {
-        super(context);
-        userI = new UserNetOpe(context);
+    public RegistDAOpe() {
+        userI = new UserNetOpe();
         userBean.setUsertype(UserBean.USER_TYPE_CUSTOMER);
     }
 
@@ -39,7 +38,7 @@ public class RegistDAOpe extends BaseDAOpe {
 
     public void regist(UserBean userBean, OnFinishListener onFinishListener) {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         userI.regist(userBean, onFinishListener);
     }

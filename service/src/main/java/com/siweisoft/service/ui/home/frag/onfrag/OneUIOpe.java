@@ -9,7 +9,4 @@ import com.siweisoft.service.databinding.FragOneBinding;
 
 public class OneUIOpe extends BaseUIOpe<FragOneBinding> {
 
-    public OneUIOpe(Context context) {
-        super(context);
-    }
 }

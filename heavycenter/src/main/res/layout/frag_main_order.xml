@@ -24,10 +24,19 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            <com.android.lib.view.title.TitleView
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/title"
+                style_common:iv_left ="@drawable/icon_hv_person"
+                style_common:iv_right ="@drawable/icon_hv_scan"
+                style_common:iv_right2 ="@drawable/icon_hv_add"
+                style_common:txt_mid ="订单"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <View
-               app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:id="@+id/now"
                 android:background="@drawable/bg_hv_sharp10_gradient_yell_blue"
@@ -38,7 +47,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/now"
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:id="@+id/topview"
-                style_toptypeview:txts="新订单,进行中,已完成"
+                style_toptypeview:txts="新订单(0),进行中(0),已完成(0)"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </android.support.constraint.ConstraintLayout>

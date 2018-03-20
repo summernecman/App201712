@@ -12,9 +12,6 @@ public class DialogListDAOpe extends BaseDAOpe {
 
     private List list;
 
-    public DialogListDAOpe(Context context) {
-        super(context);
-    }
 
     public List getList() {
         return list;

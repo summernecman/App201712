@@ -16,9 +16,6 @@ import com.siweisoft.service.ui.Constant.Value;
 public class EMChatOpe extends BaseDAOpe {
 
 
-    public EMChatOpe(Context context) {
-        super(context);
-    }
 
 
     public void initEM(Context context) {

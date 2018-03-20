@@ -27,6 +27,7 @@ import com.siweisoft.service.ui.user.userheadname.UserHeadNameFrag;
 import java.util.HashMap;
 
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class UserCenterFrag extends BaseServerFrag<UserCenterUIOpe, UserCenterDAOpe> implements OnRefreshListener{
 

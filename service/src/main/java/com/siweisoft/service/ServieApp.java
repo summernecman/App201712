@@ -14,6 +14,8 @@ import com.android.lib.util.LogUtil;
 import com.android.lib.util.SPUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.hyphenate.chat.EMClient;
+import com.lzy.imagepicker.ImagePicker;
+import com.lzy.imagepicker.view.CropImageView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreater;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreater;
@@ -67,7 +69,8 @@ public class ServieApp extends LibAplication implements OnFinishListener {
         SPUtil.getInstance().init(this);
         x.Ext.init(this);
         x.Ext.setDebug(false); //输出debug日志，开启会影响性能
-        NetValue.setIsOffice(true);
+        NetValue.setIsOffice(false);
+        NetValue.保存域名到文件(this,NetValue.测试域名);
 //        JCVideoPlayer.ACTION_BAR_EXIST = false;
 //        JCVideoPlayer.TOOL_BAR_EXIST = false;
 
@@ -75,7 +78,7 @@ public class ServieApp extends LibAplication implements OnFinishListener {
         startService(new Intent(this, AppService.class));
         startService(new Intent(getBaseContext(), com.siweisoft.service.AppServer.class));
 
-        new EMChatOpe(this).initEM(this);
+        new EMChatOpe().initEM(this);
 
         //startService(new Intent(this, RecordService.class));
 
@@ -87,6 +90,13 @@ public class ServieApp extends LibAplication implements OnFinishListener {
         JPushInterface.init(this);
         JPushInterface.setDebugMode(false);
         LogUtil.CAN_LOGIN = true;
+
+    }
+
+    /**
+     * 初始化图片加载了imagepicker图片选择器
+     */
+    public void initImagePicker() {
 
     }
 
@@ -106,7 +116,7 @@ public class ServieApp extends LibAplication implements OnFinishListener {
     public void onFinish(Object o) {
         SPUtil.getInstance().saveBoolean(Value.autologin, false);
         if (crashI == null) {
-            crashI = new CrashOpe(this);
+            crashI = new CrashOpe();
         }
         if (Value.getRoom() != null) {
             EMClient.getInstance().chatroomManager().leaveChatRoom(Value.getRoom().getId());

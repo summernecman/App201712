@@ -21,8 +21,7 @@ public class FeedBackDAOpe extends BaseDAOpe {
 
     private float rate;
 
-    public FeedBackDAOpe(Context context) {
-        super(context);
+    public FeedBackDAOpe() {
         pics.add(R.drawable.icon_add);
     }
 
@@ -43,7 +42,7 @@ public class FeedBackDAOpe extends BaseDAOpe {
 
     public void sendFeedBack(FeedBackBean feedBackBean, OnFinishListener onFinishListener) {
         if (feedBackI == null) {
-            feedBackI = new FeedBackOpe(context);
+            feedBackI = new FeedBackOpe();
         }
         feedBackI.sendFeedBack(feedBackBean, onFinishListener);
     }

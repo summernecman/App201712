@@ -10,7 +10,4 @@ import com.siweisoft.service.databinding.FragWelcomeBinding;
 public class WelcomeUIOpe extends BaseUIOpe<FragWelcomeBinding> {
 
 
-    public WelcomeUIOpe(Context context) {
-        super(context);
-    }
 }

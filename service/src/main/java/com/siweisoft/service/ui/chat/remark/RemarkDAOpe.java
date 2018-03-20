@@ -52,11 +52,13 @@ public class RemarkDAOpe extends BaseDAOpe {
 
     private VideoTipBean videoTipBean;
 
-    public RemarkDAOpe(Context context) {
-        super(context);
-        userInfoDAOpe = new UserInfoDAOpe(context);
+    @Override
+    public void initDA(Context context) {
+        super.initDA(context);
+        userInfoDAOpe = new UserInfoDAOpe();
         videoI = new VideoOpe(context);
     }
+
 
     public UserInfoDAOpe getUserInfoDAOpe() {
         return userInfoDAOpe;
@@ -84,14 +86,14 @@ public class RemarkDAOpe extends BaseDAOpe {
 
     public void getChatUserInfo(UserBean userBean, OnFinishListener onFinishListener) {
         if (userI == null) {
-            userI = new UserNetOpe(context);
+            userI = new UserNetOpe();
         }
         userI.getUserInfoByPhone(userBean, onFinishListener);
     }
 
     public void getTips(OnFinishListener onFinishListener) {
         if (tipOpe == null) {
-            tipOpe = new TipOpe(context);
+            tipOpe = new TipOpe();
         }
         tipOpe.getTips(onFinishListener);
     }
@@ -154,14 +156,14 @@ public class RemarkDAOpe extends BaseDAOpe {
 
     public void updateVideoCallTimeNum(VideoBean videoBean) {
         if (videoI == null) {
-            videoI = new VideoOpe(context);
+            videoI = new VideoOpe(getActivity());
         }
         videoI.updateVideoCallTimeNum(videoBean, null);
     }
 
     public void insetVideo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
         if (videoDetailI == null) {
-            videoDetailI = new VideoDetailOpe(context);
+            videoDetailI = new VideoDetailOpe();
         }
         final String ff = videoBean.getFile();
         final VideoDetailBean v = new VideoDetailBean();
@@ -187,7 +189,7 @@ public class RemarkDAOpe extends BaseDAOpe {
 
     public void addVideoComment(VideoCommentBean v, OnFinishListener listener) {
         if (videoCommentI == null) {
-            videoCommentI = new VideoCommentOpe(context);
+            videoCommentI = new VideoCommentOpe();
         }
         videoCommentI.addVideoComment(v, listener);
     }
@@ -208,7 +210,7 @@ public class RemarkDAOpe extends BaseDAOpe {
 
     public void updateVideo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
         if (videoI == null) {
-            videoI = new VideoOpe(context.getApplicationContext());
+            videoI = new VideoOpe(getActivity());
         }
         final String ff = videoBean.getFile();
         final String s = getUrlFromLocal(ff);
@@ -230,7 +232,7 @@ public class RemarkDAOpe extends BaseDAOpe {
 
     public void uploadVideo(VideoBean videoBean, final VideoDetailBean vv) {
         if (videoI == null) {
-            videoI = new VideoOpe(context.getApplicationContext());
+            videoI = new VideoOpe(getActivity());
         }
 
         final String ff = videoBean.getFile();
@@ -241,7 +243,7 @@ public class RemarkDAOpe extends BaseDAOpe {
                 ArrayList<String> strs = (ArrayList<String>) o;
                 if (strs != null && strs.size() > 0) {
                     if (videoDetailI == null) {
-                        videoDetailI = new VideoDetailOpe(context);
+                        videoDetailI = new VideoDetailOpe();
                     }
                     videoDetailI.updateUpload(vv, null);
 

@@ -16,8 +16,9 @@ import com.siweisoft.service.databinding.FragRegistBinding;
 public class RegistUIOpe extends BaseUIOpe<FragRegistBinding> {
 
 
-    public RegistUIOpe(Context context) {
-        super(context);
+    @Override
+    public void initUI() {
+        super.initUI();
         bind.tophead.setTitle2(new TitleBean("返回", "注册", ""));
     }
 

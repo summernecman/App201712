@@ -20,6 +20,8 @@ import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.user.userlist.UserListFrag;
 import com.siweisoft.service.ui.video.videoplay.VideoPlayFrag;
 
+import butterknife.Optional;
+
 public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, VideoContainerDAOpe> {
 
     @Override

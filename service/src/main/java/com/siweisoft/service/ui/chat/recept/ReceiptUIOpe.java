@@ -13,9 +13,6 @@ import com.siweisoft.service.netdb.user.UserBean;
 public class ReceiptUIOpe extends BaseUIOpe<FragReceiptBinding> {
 
 
-    public ReceiptUIOpe(Context context) {
-        super(context);
-    }
 
     public void initCallINfo(UserBean userBean) {
         bind.tvUserinfo.setText(userBean.getPhone() + "(" + userBean.getName() + ") 发起视频通话");
