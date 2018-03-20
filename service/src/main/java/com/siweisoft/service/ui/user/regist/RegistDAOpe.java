@@ -7,9 +7,8 @@ import android.content.Context;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.util.thread.ThreadUtil;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.user.UserI;
-import com.siweisoft.service.netdb.user.UserNetOpe;
 
 import cn.jpush.sms.SMSSDK;
 import cn.jpush.sms.listener.SmscheckListener;
@@ -19,12 +18,10 @@ public class RegistDAOpe extends BaseDAOpe {
 
     UserBean userBean = new UserBean();
 
-    private UserI userI;
 
     private ThreadUtil threadUtil = new ThreadUtil();
 
     public RegistDAOpe() {
-        userI = new UserNetOpe();
         userBean.setUsertype(UserBean.USER_TYPE_CUSTOMER);
     }
 
@@ -37,10 +34,7 @@ public class RegistDAOpe extends BaseDAOpe {
     }
 
     public void regist(UserBean userBean, OnFinishListener onFinishListener) {
-        if (userI == null) {
-            userI = new UserNetOpe();
-        }
-        userI.regist(userBean, onFinishListener);
+        NetDataOpe.User.regist(getActivity(),userBean, onFinishListener);
     }
 
     public void sendCode(String phone, final OnFinishListener onFinishListener) {

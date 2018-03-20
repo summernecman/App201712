@@ -9,16 +9,11 @@ import android.support.v4.app.Fragment;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.constant.ValueConstant;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.collection.CollectionBean;
-import com.siweisoft.service.netdb.collection.CollectionI;
-import com.siweisoft.service.netdb.collection.CollectionOpe;
-import com.siweisoft.service.netdb.comment.CommentOpe;
 import com.siweisoft.service.netdb.share.ShareBean;
-import com.siweisoft.service.netdb.share.ShareI;
-import com.siweisoft.service.netdb.share.ShareOpe;
 import com.siweisoft.service.netdb.user.UserBean;
 import com.siweisoft.service.netdb.video.VideoBean;
-import com.siweisoft.service.netdb.video.VideoI;
 import com.siweisoft.service.netdb.videodetail.VideoDetailBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.user.userinfo.UserInfoDAOpe;
@@ -33,17 +28,10 @@ public class VideoContainerDAOpe extends BaseDAOpe {
 
     VideoBean videoBean;
 
-    UserInfoDAOpe userInfoDAOpe;
-
-    CommentOpe commentI;
-
-    CollectionI collectionI;
 
     UserBean userBean;
 
-    ShareI shareI;
 
-    VideoI videoi;
 
     CollectionBean collectionBean = new CollectionBean();
 
@@ -64,28 +52,22 @@ public class VideoContainerDAOpe extends BaseDAOpe {
 
 
     public void collect(CollectionBean collectionBean, OnFinishListener onFinishListener) {
-        if (collectionI == null) {
-            collectionI = new CollectionOpe();
-        }
 
         if (Value.getUserInfo().getId() == videoBean.getFromUser().getId()) {
             collectionBean.setUserid(videoBean.getFromUser().getId());
         } else {
             collectionBean.setUserid(videoBean.getToUser().getId());
         }
-        collectionI.collect(collectionBean, onFinishListener);
+        NetDataOpe.Collection.collect(getActivity(),collectionBean, onFinishListener);
     }
 
     public void disCollect(CollectionBean collectionBean, OnFinishListener onFinishListener) {
-        if (collectionI == null) {
-            collectionI = new CollectionOpe();
-        }
         if (Value.getUserInfo().getId() == videoBean.getFromUser().getId()) {
             collectionBean.setUserid(videoBean.getFromUser().getId());
         } else {
             collectionBean.setUserid(videoBean.getToUser().getId());
         }
-        collectionI.disCollect(collectionBean, onFinishListener);
+        NetDataOpe.Collection.disCollect(getActivity(),collectionBean, onFinishListener);
     }
 
     public String getVideoComment(VideoDetailBean videoDetailBean, VideoBean videoBean) {
@@ -98,20 +80,14 @@ public class VideoContainerDAOpe extends BaseDAOpe {
     }
 
     public void share(ShareBean shareBean, OnFinishListener onFinishListener) {
-        if (shareI == null) {
-            shareI = new ShareOpe();
-        }
-        shareI.share(shareBean, onFinishListener);
+        NetDataOpe.Share.share(getActivity(),shareBean, onFinishListener);
     }
 
     public void isCollectedByVideoIdAndUserId(VideoBean videoBean, OnFinishListener onFinishListener) {
-        if (collectionI == null) {
-            collectionI = new CollectionOpe();
-        }
         CollectionBean collectionBean = new CollectionBean();
         collectionBean.setUserid(Value.getUserInfo().getId());
         collectionBean.setVideoid(videoBean.getId());
-        collectionI.isCollectedByVideoIdAndUserId(collectionBean, onFinishListener);
+        NetDataOpe.Collection.isCollectedByVideoIdAndUserId(getActivity(),collectionBean, onFinishListener);
     }
 
 

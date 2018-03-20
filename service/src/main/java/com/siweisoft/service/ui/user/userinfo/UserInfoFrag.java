@@ -42,6 +42,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import butterknife.OnClick;
+import com.siweisoft.service.ui.user.usercenter.UserCenterDAOpe;
 
 public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> implements ViewListener ,OnRefreshListener,OnLoadmoreListener {
 
@@ -80,7 +81,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
         }
         setTitleBean(new TitleBean("返回", "信息", ""));
         LogUtil.E(GsonUtil.getInstance().toJson(getP().getD().getUserBean()));
-        getP().getD().getUserCenterDAOpe().getUserTips(getP().getD().getUserBean(), new OnFinishListener() {
+        UserCenterDAOpe.getUserTips(getContext(),getP().getD().getUserBean(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getU().initTips((HashMap<Integer, TipBean>) o);

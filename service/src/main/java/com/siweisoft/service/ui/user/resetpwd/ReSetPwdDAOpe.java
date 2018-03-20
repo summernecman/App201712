@@ -7,9 +7,8 @@ import android.content.Context;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.util.thread.ThreadUtil;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.user.UserI;
-import com.siweisoft.service.netdb.user.UserNetOpe;
 
 import cn.jpush.sms.SMSSDK;
 import cn.jpush.sms.listener.SmscheckListener;
@@ -19,13 +18,9 @@ public class ReSetPwdDAOpe extends BaseDAOpe {
 
     UserBean userBean = new UserBean();
 
-    private UserI userI;
 
     private ThreadUtil threadUtil = new ThreadUtil();
 
-    public ReSetPwdDAOpe() {
-        userI = new UserNetOpe();
-    }
 
     public UserBean getUserBean() {
         return userBean;
@@ -36,10 +31,7 @@ public class ReSetPwdDAOpe extends BaseDAOpe {
     }
 
     public void resetPwd(UserBean userBean, OnFinishListener onFinishListener) {
-        if (userI == null) {
-            userI = new UserNetOpe();
-        }
-        userI.resetPwd(userBean, onFinishListener);
+        NetDataOpe.User.resetPwd(getActivity(),userBean, onFinishListener);
     }
 
     public void sendCode(String phone, final OnFinishListener onFinishListener) {

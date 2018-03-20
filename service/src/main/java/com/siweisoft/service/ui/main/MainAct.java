@@ -35,9 +35,8 @@ import com.hyphenate.exceptions.EMNoActiveCallException;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 import com.siweisoft.service.R;
 import com.siweisoft.service.ServieApp;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.crash.CrashBean;
-import com.siweisoft.service.netdb.crash.CrashI;
-import com.siweisoft.service.netdb.crash.CrashOpe;
 import com.siweisoft.service.netdb.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.chat.recept.ReceiptFrag;
@@ -53,7 +52,6 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
 
     LoginInfoBroadCast loginInfoBroadCast;
 
-    CrashI crashI;
 
     OnTitleClick onTitleClick;
 
@@ -168,9 +166,6 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
 
     @Override
     public void onFinish(Object o) {
-        if (crashI == null) {
-            crashI = new CrashOpe();
-        }
         if (Value.getRoom() != null) {
             EMClient.getInstance().chatroomManager().leaveChatRoom(Value.getRoom().getId());
             EMClient.getInstance().logout(true);
@@ -180,7 +175,7 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
         crashBean.setError((String) o);
         crashBean.setCreatedtime(DateFormatUtil.getNowStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS));
         crashBean.setUserBean(Value.getUserInfo());
-        crashI.sendCrash(crashBean, new OnFinishListener() {
+        NetDataOpe.Crash.sendCrash(this,crashBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 ((ServieApp) getActivity().getApplication()).exit();
@@ -263,14 +258,11 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        if (crashI == null) {
-            crashI = new CrashOpe();
-        }
         final CrashBean crashBean = new CrashBean();
         crashBean.setError("onLowMemory:" + ":" + FragmentUtil2.getInstance().print());
         crashBean.setCreatedtime(DateFormatUtil.getNowStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS));
         crashBean.setUserBean(Value.getUserInfo());
-        crashI.sendCrash(crashBean, new OnFinishListener() {
+        NetDataOpe.Crash.sendCrash(this,crashBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
 //                EMClient.getInstance().logout(true);

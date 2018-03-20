@@ -11,9 +11,6 @@ import com.siweisoft.service.netdb.user.UserBean;
 public class RenameUIOpe extends BaseUIOpe<FragRenameBinding> {
 
 
-    public RenameUIOpe(Context context) {
-        super(context);
-    }
 
     public void initInfo(UserBean userBean) {
         bind.setUsername(userBean);

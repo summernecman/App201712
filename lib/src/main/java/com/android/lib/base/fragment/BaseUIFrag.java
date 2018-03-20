@@ -55,6 +55,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     private FragManager2 fragM;
 
     public BaseUIFrag() {
+        LogUtil.E(this.getClass());
         setArguments(new Bundle());
         opes = new BaseOpes<>(null, null);
         initbb(getClass());
@@ -69,6 +70,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             EventBus.getDefault().register(this);
         }
         fragIs.onCreate(savedInstanceState);
+        LogUtil.E(this.getClass());
     }
 
     @Override
@@ -80,6 +82,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         fragIs.onCreateView(inflater,container,savedInstanceState);
         getP().getU().initUI();
         unbinder = ButterKnife.bind(this, baseUIRoot);
+        LogUtil.E(this.getClass());
         return group;
     }
 

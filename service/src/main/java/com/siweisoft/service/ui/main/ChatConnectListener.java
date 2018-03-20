@@ -2,6 +2,7 @@ package com.siweisoft.service.ui.main;
 
 //by summer on 17-09-22.
 
+import android.content.Context;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.LogUtil;
@@ -11,16 +12,14 @@ import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMError;
 import com.hyphenate.chat.EMClient;
 import com.siweisoft.service.ServieApp;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.crash.CrashBean;
-import com.siweisoft.service.netdb.crash.CrashI;
-import com.siweisoft.service.netdb.crash.CrashOpe;
 import com.siweisoft.service.ui.Constant.Value;
 
 public class ChatConnectListener implements EMConnectionListener {
 
     private MainAct app;
 
-    CrashI crashI;
 
     public ChatConnectListener(MainAct app) {
         this.app = app;
@@ -57,16 +56,13 @@ public class ChatConnectListener implements EMConnectionListener {
 
     }
 
-    public void sendCrash(int errorCode) {
+    public void sendCrash(Context context,int errorCode) {
         if (errorCode != EMError.EM_NO_ERROR) {
             final CrashBean crashBean = new CrashBean();
             crashBean.setError(errorCode + "");
             crashBean.setCreatedtime(DateFormatUtil.getNowStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS));
             crashBean.setUserBean(Value.getUserInfo());
-            if (crashI == null) {
-                crashI = new CrashOpe();
-            }
-            crashI.sendCrash(crashBean, new OnFinishListener() {
+            NetDataOpe.Crash.sendCrash(context,crashBean, new OnFinishListener() {
                 @Override
                 public void onFinish(Object o) {
 

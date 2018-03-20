@@ -7,8 +7,7 @@ import android.support.v4.app.Fragment;
 
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
-import com.siweisoft.service.netdb.user.UserI;
-import com.siweisoft.service.netdb.user.UserNetOpe;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.home.frag.onfrag.Onefrag;
 import com.siweisoft.service.ui.home.frag.threefrag.ThreeFrag;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 
 public class MainDAOpe extends BaseDAOpe {
 
-    UserI userI;
 
     private VideoChatListener videoChatListener;
 
@@ -29,7 +27,6 @@ public class MainDAOpe extends BaseDAOpe {
     @Override
     public void initDA() {
         super.initDA();
-        userI = new UserNetOpe();
         videoChatListener = new VideoChatListener(getActivity());
         emMsgListener = new EMMsgListener();
         chatConnectListener = new ChatConnectListener((MainAct) getActivity());
@@ -44,7 +41,7 @@ public class MainDAOpe extends BaseDAOpe {
     }
 
     public void getLoginInfo(OnFinishListener onFinishListener) {
-        userI.getLoginInfo(Value.getUserInfo(), onFinishListener);
+        NetDataOpe.User.getLoginInfo(getActivity(),Value.getUserInfo(), onFinishListener);
     }
 
     public VideoChatListener getVideoChatListener() {

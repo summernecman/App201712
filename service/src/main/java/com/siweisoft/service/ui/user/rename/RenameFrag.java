@@ -9,6 +9,7 @@ import com.android.lib.util.FragmentUtil2;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TitleBean;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
 
@@ -27,7 +28,7 @@ public class RenameFrag extends BaseServerFrag<RenameUIOpe, RenameDAOpe> {
     public void onClickEvent(View v) {
         switch (v.getId()) {
             case R.id.button:
-                getP().getD().userI.setName(getP().getD().getUserBean(), new OnFinishListener() {
+                NetDataOpe.User.setName(getActivity(),getP().getD().getUserBean(), new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         UserBean bean = (UserBean) o;

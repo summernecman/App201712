@@ -31,9 +31,6 @@ public class VideoPlayUIOpe extends BaseUIOpe<FragVideoplayBinding> {
 
     OrientationUtils orientationUtils;
 
-    public VideoPlayUIOpe(Context context) {
-        super(context);
-    }
 
     public void initUpload(VideoDetailBean vv, View.OnClickListener onClickListener) {
 

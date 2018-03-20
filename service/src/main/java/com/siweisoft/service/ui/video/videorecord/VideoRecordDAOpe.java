@@ -8,9 +8,8 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.siweisoft.service.bean.ContactBean;
 import com.siweisoft.service.bean.HistoryBean;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.video.VideoBean;
-import com.siweisoft.service.netdb.video.VideoI;
-import com.siweisoft.service.netdb.video.VideoOpe;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.video.seach.SeachBean;
 
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 public class VideoRecordDAOpe extends BaseDAOpe {
 
 
-    VideoI videoI ;
 
     ArrayList<VideoBean> videos = new ArrayList<>();
 
@@ -32,16 +30,13 @@ public class VideoRecordDAOpe extends BaseDAOpe {
     @Override
     public void initDA(Context context) {
         super.initDA(context);
-        videoI = new VideoOpe(context);
-    }
-
-    public VideoRecordDAOpe() {
         seachBean.setTxt("");
         seachBean.setData(Value.getVideotipsList());
     }
 
+
     public void getHistory(OnFinishListener onFinishListener) {
-        videoI.getHistoryVideos(Value.getUserInfo(), onFinishListener);
+        NetDataOpe.Video.getHistoryVideos(getActivity(),Value.getUserInfo(), onFinishListener);
     }
 
     public ArrayList<VideoBean> getVideos() {
@@ -64,15 +59,15 @@ public class VideoRecordDAOpe extends BaseDAOpe {
         if (getSeachBean().isCan()) {
             contactBean.setType(getSeachBean().getType());
             contactBean.setTxt(getSeachBean().getTxt());
-            videoI.getVideosByBothUserIdWithLimitAndSeach(contactBean, onFinishListener);
+            NetDataOpe.Video.getVideosByBothUserIdWithLimitAndSeach(getActivity(),contactBean, onFinishListener);
         } else {
-            videoI.getVideosByBothUserIdWithLimit(contactBean, onFinishListener);
+            NetDataOpe.Video.getVideosByBothUserIdWithLimit(getActivity(),contactBean, onFinishListener);
         }
     }
 
 
     public void getVideosByBothUserIdWithLimitAndSeach(ContactBean contactBean, OnFinishListener onFinishListener) {
-        videoI.getVideosByBothUserIdWithLimitAndSeach(contactBean, onFinishListener);
+        NetDataOpe.Video.getVideosByBothUserIdWithLimitAndSeach(getActivity(),contactBean, onFinishListener);
     }
 
     public int getPageindex() {

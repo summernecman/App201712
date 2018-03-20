@@ -6,9 +6,8 @@ import android.content.Context;
 
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.comment.CommentBean;
-import com.siweisoft.service.netdb.comment.CommentI;
-import com.siweisoft.service.netdb.comment.CommentOpe;
 import com.siweisoft.service.netdb.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
 
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 
 public class RemarkListDAOpe extends BaseDAOpe {
 
-    CommentI commentI;
 
     private int pageindex = 0;
 
@@ -26,11 +24,8 @@ public class RemarkListDAOpe extends BaseDAOpe {
 
 
     public void getRemarks(UserBean userBean, final OnFinishListener onFinishListener) {
-        if (commentI == null) {
-            commentI = new CommentOpe();
-        }
         if (Value.getUserInfo().getUsertype() == UserBean.USER_TYPE_CUSTOMER) {
-            commentI.getCommentByUserIdWithLimit(userBean, new OnFinishListener() {
+            NetDataOpe.Comment.getCommentByUserIdWithLimit(getActivity(),userBean, new OnFinishListener() {
                 @Override
                 public void onFinish(Object o) {
                     ArrayList<CommentBean> res = (ArrayList<CommentBean>) o;
@@ -38,7 +33,7 @@ public class RemarkListDAOpe extends BaseDAOpe {
                 }
             });
         } else {
-            commentI.getCommentByUserIdWithLimit(userBean, new OnFinishListener() {
+            NetDataOpe.Comment.getCommentByUserIdWithLimit(getActivity(),userBean, new OnFinishListener() {
                 @Override
                 public void onFinish(Object o) {
                     ArrayList<CommentBean> res = (ArrayList<CommentBean>) o;

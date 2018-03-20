@@ -7,9 +7,8 @@ import android.content.Context;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.siweisoft.service.R;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.feedback.FeedBackBean;
-import com.siweisoft.service.netdb.feedback.FeedBackI;
-import com.siweisoft.service.netdb.feedback.FeedBackOpe;
 
 import java.util.ArrayList;
 
@@ -17,7 +16,6 @@ public class FeedBackDAOpe extends BaseDAOpe {
 
     ArrayList<Object> pics = new ArrayList<>();
 
-    FeedBackI feedBackI;
 
     private float rate;
 
@@ -41,10 +39,7 @@ public class FeedBackDAOpe extends BaseDAOpe {
     }
 
     public void sendFeedBack(FeedBackBean feedBackBean, OnFinishListener onFinishListener) {
-        if (feedBackI == null) {
-            feedBackI = new FeedBackOpe();
-        }
-        feedBackI.sendFeedBack(feedBackBean, onFinishListener);
+        NetDataOpe.FeedBack.sendFeedBack(getActivity(),feedBackBean, onFinishListener);
     }
 
     public float getRate() {

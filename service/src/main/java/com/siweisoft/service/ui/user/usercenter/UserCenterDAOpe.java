@@ -8,15 +8,8 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.util.LogUtil;
 import com.siweisoft.service.bean.TipBean;
-import com.siweisoft.service.netdb.collection.CollectionI;
-import com.siweisoft.service.netdb.collection.CollectionOpe;
-import com.siweisoft.service.netdb.comment.CommentI;
-import com.siweisoft.service.netdb.comment.CommentOpe;
-import com.siweisoft.service.netdb.share.ShareI;
-import com.siweisoft.service.netdb.share.ShareOpe;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.user.UserI;
-import com.siweisoft.service.netdb.user.UserNetOpe;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.user.userinfo.UserInfoDAOpe;
 
@@ -28,13 +21,6 @@ public class UserCenterDAOpe extends BaseDAOpe {
 
     UserInfoDAOpe userInfoDAOpe;
 
-    UserI userI;
-
-    CommentI commentI;
-
-    CollectionI collectionI;
-
-    ShareI shareI;
 
     private ArrayList<TipBean> tipdata = new ArrayList<>();
 
@@ -47,48 +33,27 @@ public class UserCenterDAOpe extends BaseDAOpe {
         return userInfoDAOpe;
     }
 
-    public UserI getUserI() {
-        if (userI == null) {
-            userI = new UserNetOpe();
-        }
-        return userI;
-    }
 
     public void getUserCallInfo(OnFinishListener onFinishListener) {
-        if (userI == null) {
-            userI = new UserNetOpe();
-        }
         UserBean userBean = new UserBean();
         userBean.setPhone(Value.getUserInfo().getPhone());
-        userI.getUserCallInfo(userBean, onFinishListener);
+        NetDataOpe.User.getUserCallInfo(getActivity(),userBean, onFinishListener);
     }
 
-    public void getUserTips(UserBean userBean, OnFinishListener onFinishListener) {
-        if (commentI == null) {
-            commentI = new CommentOpe();
-        }
-        commentI.getUserTips(userBean, onFinishListener);
+    public static void getUserTips(Context context,UserBean userBean, OnFinishListener onFinishListener) {
+        NetDataOpe.Comment.getUserTips(context,userBean, onFinishListener);
     }
 
     public void getCommentNumByUserName(UserBean userBean, OnFinishListener onFinishListener) {
-        if (commentI == null) {
-            commentI = new CommentOpe();
-        }
-        commentI.getCommentNumByUserName(userBean, onFinishListener);
+        NetDataOpe.Comment.getCommentNumByUserName(getActivity(),userBean, onFinishListener);
     }
 
     public void getCollectionNumByUserId(UserBean userBean, OnFinishListener onFinishListener) {
-        if (collectionI == null) {
-            collectionI = new CollectionOpe();
-        }
-        collectionI.getCollectionNumByUserId(userBean, onFinishListener);
+        NetDataOpe.Collection.getCollectionNumByUserId(getActivity(),userBean, onFinishListener);
     }
 
     public void getShareNumByUserPhone(UserBean userBean, OnFinishListener onFinishListener) {
-        if (shareI == null) {
-            shareI = new ShareOpe();
-        }
-        shareI.getShareNumByUserPhone(userBean, onFinishListener);
+        NetDataOpe.Share.getShareNumByUserPhone(getActivity(),userBean, onFinishListener);
     }
 
     public ArrayList<TipBean> mapTolist(HashMap<Integer, TipBean> data) {

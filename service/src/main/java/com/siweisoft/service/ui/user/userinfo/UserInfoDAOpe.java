@@ -9,13 +9,10 @@ import com.android.lib.util.FragmentUtil2;
 import com.siweisoft.service.bean.AllUserBean;
 import com.siweisoft.service.bean.TipBean;
 import com.siweisoft.service.bean.TipsBean;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.agree.AgreeBean;
-import com.siweisoft.service.netdb.agree.AgreeOpe;
 import com.siweisoft.service.netdb.comment.CommentBean;
-import com.siweisoft.service.netdb.comment.CommentI;
-import com.siweisoft.service.netdb.comment.CommentOpe;
 import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.user.UserNetOpe;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.user.onlinelist.OnLineListFrag;
 import com.siweisoft.service.ui.user.usercenter.UserCenterDAOpe;
@@ -28,11 +25,6 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
     UserBean userBean;
 
-    CommentI commentI;
-
-    UserNetOpe userI;
-
-    AgreeI agreeI;
 
     UserCenterDAOpe userCenterDAOpe;
 
@@ -55,20 +47,14 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
 
     public void getUserInfo(int id, OnFinishListener onFinishListener) {
-        if (userI == null) {
-            userI = new UserNetOpe();
-        }
         UserBean u = new UserBean();
         u.setId(id);
-        userI.getUserInfoById(u, onFinishListener);
+        NetDataOpe.User.getUserInfoById(getActivity(),u, onFinishListener);
     }
 
     public void getRemarks(CommentBean commentBean, final OnFinishListener onFinishListener) {
-        if (commentI == null) {
-            commentI = new CommentOpe();
-        }
 
-        commentI.getCommentByUserIdWithMyOptionWithLimit(commentBean, new OnFinishListener() {
+        NetDataOpe.Comment.getCommentByUserIdWithMyOptionWithLimit(getActivity(),commentBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 ArrayList<CommentBean> res = (ArrayList<CommentBean>) o;
@@ -79,9 +65,6 @@ public class UserInfoDAOpe extends BaseDAOpe {
     }
 
     public void getOtherUsersInfoByPhone(final UserBean u, List<String> strs, final OnFinishListener onFinishListener) {
-        if (userI == null) {
-            userI = new UserNetOpe();
-        }
         ArrayList<UserBean> userBeen = new ArrayList<>();
         for (int i = 0; i < strs.size(); i++) {
             UserBean userBean = new UserBean(strs.get(i));
@@ -90,7 +73,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
         AllUserBean allUserBean = new AllUserBean();
         allUserBean.setOther(userBeen);
         allUserBean.setMe(Value.getUserInfo());
-        userI.getOtherUsersInfoByPhone(allUserBean, new OnFinishListener() {
+        NetDataOpe.User.getOtherUsersInfoByPhone(getActivity(),allUserBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 ArrayList<UserBean> list = (ArrayList<UserBean>) o;
@@ -128,20 +111,14 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
 
     public void getUserRateIfNull(UserBean userBean, OnFinishListener onFinishListener) {
-        if (commentI == null) {
-            commentI = new CommentOpe();
-        }
         if (userBean.getAvg() == 0f) {
-            commentI.getVideoRateCommentByUseId(userBean, onFinishListener);
+            NetDataOpe.Comment.getVideoRateCommentByUseId(getActivity(),userBean, onFinishListener);
         }
     }
 
 
     public void getUserCallInfo(UserBean userBean, OnFinishListener onFinishListener) {
-        if (userI == null) {
-            userI = new UserNetOpe();
-        }
-        userI.getUserCallInfo(userBean, onFinishListener);
+        NetDataOpe.User.getUserCallInfo(getActivity(),userBean, onFinishListener);
     }
 
 
@@ -174,10 +151,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
     }
 
     public void clickAgree(AgreeBean agreeBean, OnFinishListener onFinishListener) {
-        if (agreeI == null) {
-            agreeI = new AgreeOpe();
-        }
-        agreeI.clickAgree(agreeBean, onFinishListener);
+        NetDataOpe.Agree.clickAgree(getActivity(),agreeBean, onFinishListener);
     }
 
     public ArrayList<CommentBean> getCommentBeen() {

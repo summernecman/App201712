@@ -9,11 +9,9 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.android.lib.util.thread.ThreadUtil;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.user.UserBean;
 import com.siweisoft.service.netdb.video.VideoBean;
-import com.siweisoft.service.netdb.video.VideoI;
-import com.siweisoft.service.netdb.video.VideoOpe;
-import com.siweisoft.service.netdb.videodetail.VideoDetailOpe;
 import com.siweisoft.service.ui.Constant.Value;
 
 public class VideoChatDAOpe extends BaseDAOpe {
@@ -24,7 +22,6 @@ public class VideoChatDAOpe extends BaseDAOpe {
 
     private double end;
 
-    VideoI videoI;
 
     private boolean accept = false;
 
@@ -38,7 +35,6 @@ public class VideoChatDAOpe extends BaseDAOpe {
 
     public int sw = 0;
 
-    private VideoDetailOpe videoDetailI;
 
     private boolean isRecordVideo = false;
 
@@ -90,13 +86,10 @@ public class VideoChatDAOpe extends BaseDAOpe {
     }
 
     public void updateVideo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
-        if (videoI == null) {
-            videoI = new VideoOpe(getActivity());
-        }
-        videoI.getMaxVideoId(new OnFinishListener() {
+        NetDataOpe.Video.getMaxVideoId(getActivity(),new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
-                videoI.addVideo(videoBean, new OnFinishListener() {
+                NetDataOpe.Video.addVideo(getActivity(),videoBean, new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         onFinishListener.onFinish(o);
@@ -110,10 +103,7 @@ public class VideoChatDAOpe extends BaseDAOpe {
         getVideoBean().setFile("");
         getVideoBean().setCreated(DateFormatUtil.getNowStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS));
         getVideoBean().setTimenum(getMinute());
-        if (videoI == null) {
-            videoI = new VideoOpe(getActivity());
-        }
-        videoI.insert_and_getid_fromvieo(videoBean, new OnFinishListener() {
+        NetDataOpe.Video.insert_and_getid_fromvieo(getActivity(),videoBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 onFinishListener.onFinish(o);
@@ -140,11 +130,8 @@ public class VideoChatDAOpe extends BaseDAOpe {
 
 
     public void updateCallState(VideoBean v, int state) {
-        if (videoI == null) {
-            videoI = new VideoOpe(getActivity());
-        }
         v.setCallstate(state);
-        videoI.updateCallState(v, null);
+        NetDataOpe.Video.updateCallState(getActivity(),v, null);
     }
 
     public static boolean isFromUser(VideoBean videoBean) {

@@ -10,28 +10,20 @@ import android.os.Environment;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.util.ToastUtil;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.app.AppBean;
-import com.siweisoft.service.netdb.app.AppI;
-import com.siweisoft.service.netdb.app.AppOpe;
-import com.siweisoft.service.netdb.user.UserI;
-import com.siweisoft.service.netdb.user.UserNetOpe;
 
 import java.io.File;
 
 public class SettingDAOpe extends BaseDAOpe {
 
-    UserI userI;
 
-    AppI appI;
 
     AppBean appBean;
 
-    public SettingDAOpe() {
-        userI = new UserNetOpe();
-    }
 
     public void CheckVersion(final OnFinishListener onFinishListener){
-        getAppI().CheckVersion(new OnFinishListener() {
+        NetDataOpe.App.CheckVersion(getActivity(),new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                  appBean = (AppBean) o;
@@ -58,12 +50,6 @@ public class SettingDAOpe extends BaseDAOpe {
     }
 
 
-    public AppI getAppI() {
-        if(appI==null){
-            appI =  new AppOpe();
-        }
-        return appI;
-    }
 
 
     public String getVersion(){

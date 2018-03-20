@@ -6,9 +6,8 @@ import android.content.Context;
 
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.share.ShareBean;
-import com.siweisoft.service.netdb.share.ShareI;
-import com.siweisoft.service.netdb.share.ShareOpe;
 import com.siweisoft.service.netdb.video.VideoBean;
 
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 public class ShareListDAOpe extends BaseDAOpe {
 
 
-    ShareI shareI;
 
     ArrayList<VideoBean> videos = new ArrayList<>();
 
@@ -27,10 +25,7 @@ public class ShareListDAOpe extends BaseDAOpe {
 
 
     public void getSharesByReceipt(ShareBean shareBean, OnFinishListener onFinishListener) {
-        if (shareI == null) {
-            shareI = new ShareOpe();
-        }
-        shareI.getSharesByReceiptWithLimit(shareBean, onFinishListener);
+        NetDataOpe.Share.getSharesByReceiptWithLimit(getActivity(),shareBean, onFinishListener);
     }
 
     public ArrayList<VideoBean> getVideos() {

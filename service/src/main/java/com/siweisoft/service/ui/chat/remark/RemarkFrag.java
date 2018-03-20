@@ -16,6 +16,7 @@ import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TipsBean;
 import com.siweisoft.service.bean.TitleBean;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.comment.CommentBean;
 import com.siweisoft.service.netdb.video.VideoBean;
 import com.siweisoft.service.netdb.videocomment.VideoCommentBean;
@@ -117,7 +118,7 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
                 commentBean.setFromid(Value.getUserInfo().getId());
                 commentBean.setToid(getP().getD().getVideoBean().getOtherUser().getId());
                 commentBean.setVideoid(getP().getD().getVideoBean().getId());
-                getP().getD().videoI.commentVideo(commentBean, new OnFinishListener() {
+                NetDataOpe.Video.commentVideo(getContext(),commentBean, new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         if (getP().getD().isRecord()) {

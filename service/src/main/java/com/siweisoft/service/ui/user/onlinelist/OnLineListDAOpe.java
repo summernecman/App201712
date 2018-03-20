@@ -8,9 +8,8 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.hyphenate.chat.EMChatRoom;
 import com.siweisoft.service.bean.AllUserBean;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.user.UserI;
-import com.siweisoft.service.netdb.user.UserNetOpe;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.main.RoleInfo;
 
@@ -21,7 +20,6 @@ public class OnLineListDAOpe extends BaseDAOpe {
 
     RoleInfo roleInfo;
 
-    UserNetOpe userI;
 
     private EMChatRoom emChatRoom;
 
@@ -41,24 +39,18 @@ public class OnLineListDAOpe extends BaseDAOpe {
 
 
 
-    public UserI getUserI() {
-        if (userI == null) {
-            userI = new UserNetOpe();
-        }
-        return userI;
-    }
 
     public void getUsersInfoByPhone(ArrayList<UserBean> data, OnFinishListener onFinishListener) {
-        getUserI().getUsersInfoByPhone(data, onFinishListener);
+        NetDataOpe.User.getUsersInfoByPhone(getActivity(),data, onFinishListener);
     }
 
     public void getUnTypeUserList(UserBean data, OnFinishListener onFinishListener) {
-        getUserI().getUnTypeUserList(data, onFinishListener);
+        NetDataOpe.User.getUnTypeUserList(getActivity(),data, onFinishListener);
     }
 
 
     public void getOtherUsersInfoByPhone(AllUserBean data, OnFinishListener onFinishListener) {
-        getUserI().getOtherUsersInfoByPhone(data, onFinishListener);
+        NetDataOpe.User.getOtherUsersInfoByPhone(getActivity(),data, onFinishListener);
     }
 
     public void getOtherUsersInfoByPhone(List<String> strs, OnFinishListener onFinishListener) {
@@ -70,11 +62,11 @@ public class OnLineListDAOpe extends BaseDAOpe {
         AllUserBean allUserBean = new AllUserBean();
         allUserBean.setOther(userBeen);
         allUserBean.setMe(Value.getUserInfo());
-        getUserI().getOtherUsersInfoByPhone(allUserBean, onFinishListener);
+        NetDataOpe.User.getOtherUsersInfoByPhone(getActivity(),allUserBean, onFinishListener);
     }
 
     public void getUserContactsByUserIdAndType(UserBean userBean,OnFinishListener listener){
-        getUserI().getUserContactsByUserIdAndType(userBean,listener);
+        NetDataOpe.User.getUserContactsByUserIdAndType(getActivity(),userBean,listener);
     }
 
 

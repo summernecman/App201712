@@ -17,15 +17,12 @@ import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.user.UserI;
-import com.siweisoft.service.netdb.user.UserNetOpe;
 import com.siweisoft.service.ui.Constant.Value;
 
 public class LoginDAOpe extends BaseDAOpe {
 
     UserBean userBean = new UserBean();
 
-    UserNetOpe userI;
 
 
     @Override
@@ -34,7 +31,6 @@ public class LoginDAOpe extends BaseDAOpe {
         userBean.setPhone(SPUtil.getInstance().getStr(Value.USERNAME));
         userBean.setPwd(SPUtil.getInstance().getStr(Value.PWD));
         userBean.setUuuid(UUUIDUtil.getInstance().getUUUId(getActivity()));
-        userI = new UserNetOpe();
     }
 
     public void autoLogin() {

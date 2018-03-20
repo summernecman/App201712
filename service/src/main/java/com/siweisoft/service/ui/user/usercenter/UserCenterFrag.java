@@ -49,7 +49,7 @@ public class UserCenterFrag extends BaseServerFrag<UserCenterUIOpe, UserCenterDA
             }
         });
 
-        getP().getD().getUserTips(Value.getUserInfo(), new OnFinishListener() {
+        UserCenterDAOpe.getUserTips(getBaseAct(),Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getU().initTips(getP().getD().mapTolist((HashMap<Integer, TipBean>) o));

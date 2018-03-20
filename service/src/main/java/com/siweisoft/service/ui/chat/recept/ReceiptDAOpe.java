@@ -5,8 +5,8 @@ package com.siweisoft.service.ui.chat.recept;
 import android.content.Context;
 
 import com.android.lib.base.ope.BaseDAOpe;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.video.VideoBean;
-import com.siweisoft.service.netdb.video.VideoOpe;
 
 public class ReceiptDAOpe extends BaseDAOpe {
 
@@ -15,8 +15,6 @@ public class ReceiptDAOpe extends BaseDAOpe {
     private String userStr;
 
     private VideoBean videoBean;
-
-    private VideoOpe videoI;
 
 
 
@@ -46,10 +44,7 @@ public class ReceiptDAOpe extends BaseDAOpe {
 
 
     public void updateCallState(VideoBean v, int state) {
-        if (videoI == null) {
-            videoI = new VideoOpe(getActivity());
-        }
         v.setCallstate(state);
-        videoI.updateCallState(v, null);
+        NetDataOpe.Video.updateCallState(getActivity(),v, null);
     }
 }

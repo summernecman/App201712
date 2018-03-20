@@ -11,18 +11,12 @@ import com.android.lib.util.LogUtil;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.service.bean.TipsBean;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.NetValue;
-import com.siweisoft.service.netdb.tip.TipOpe;
 import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.user.UserI;
-import com.siweisoft.service.netdb.user.UserNetOpe;
 import com.siweisoft.service.netdb.video.VideoBean;
-import com.siweisoft.service.netdb.video.VideoI;
-import com.siweisoft.service.netdb.video.VideoOpe;
 import com.siweisoft.service.netdb.videocomment.VideoCommentBean;
-import com.siweisoft.service.netdb.videocomment.VideoCommentOpe;
 import com.siweisoft.service.netdb.videodetail.VideoDetailBean;
-import com.siweisoft.service.netdb.videodetail.VideoDetailOpe;
 import com.siweisoft.service.netdb.videotip.VideoTipBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.user.userinfo.UserInfoDAOpe;
@@ -36,19 +30,11 @@ public class RemarkDAOpe extends BaseDAOpe {
 
     VideoBean videoBean;
 
-    VideoI videoI;
 
     private float ratingbar = 5f;
 
     TipsBean tipsBean;
 
-    UserI userI;
-
-    TipOpe tipOpe;
-
-    VideoDetailOpe videoDetailI;
-
-    VideoCommentOpe videoCommentI;
 
     private VideoTipBean videoTipBean;
 
@@ -56,7 +42,6 @@ public class RemarkDAOpe extends BaseDAOpe {
     public void initDA(Context context) {
         super.initDA(context);
         userInfoDAOpe = new UserInfoDAOpe();
-        videoI = new VideoOpe(context);
     }
 
 
@@ -85,17 +70,11 @@ public class RemarkDAOpe extends BaseDAOpe {
     }
 
     public void getChatUserInfo(UserBean userBean, OnFinishListener onFinishListener) {
-        if (userI == null) {
-            userI = new UserNetOpe();
-        }
-        userI.getUserInfoByPhone(userBean, onFinishListener);
+        NetDataOpe.User.getUserInfoByPhone(getActivity(),userBean, onFinishListener);
     }
 
     public void getTips(OnFinishListener onFinishListener) {
-        if (tipOpe == null) {
-            tipOpe = new TipOpe();
-        }
-        tipOpe.getTips(onFinishListener);
+        NetDataOpe.Tip.getTips(getActivity(),onFinishListener);
     }
 
     //    public void updateVideo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
@@ -155,16 +134,10 @@ public class RemarkDAOpe extends BaseDAOpe {
     }
 
     public void updateVideoCallTimeNum(VideoBean videoBean) {
-        if (videoI == null) {
-            videoI = new VideoOpe(getActivity());
-        }
-        videoI.updateVideoCallTimeNum(videoBean, null);
+        NetDataOpe.Video.updateVideoCallTimeNum(getActivity(),videoBean, null);
     }
 
     public void insetVideo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
-        if (videoDetailI == null) {
-            videoDetailI = new VideoDetailOpe();
-        }
         final String ff = videoBean.getFile();
         final VideoDetailBean v = new VideoDetailBean();
         v.setCallid(videoBean.getId());
@@ -178,7 +151,7 @@ public class RemarkDAOpe extends BaseDAOpe {
             videoBean.setIsfrom(false);
         }
 
-        videoDetailI.insertVideo(v, new OnFinishListener() {
+        NetDataOpe.VideoDetail.insertVideo(getActivity(),v, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 videoBean.setFile(ff);
@@ -188,10 +161,7 @@ public class RemarkDAOpe extends BaseDAOpe {
     }
 
     public void addVideoComment(VideoCommentBean v, OnFinishListener listener) {
-        if (videoCommentI == null) {
-            videoCommentI = new VideoCommentOpe();
-        }
-        videoCommentI.addVideoComment(v, listener);
+        NetDataOpe.VideoComment.addVideoComment(getActivity(),v, listener);
     }
 
     public boolean isRecord() {
@@ -209,9 +179,6 @@ public class RemarkDAOpe extends BaseDAOpe {
     }
 
     public void updateVideo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
-        if (videoI == null) {
-            videoI = new VideoOpe(getActivity());
-        }
         final String ff = videoBean.getFile();
         final String s = getUrlFromLocal(ff);
         videoBean.setFile(s);
@@ -221,7 +188,7 @@ public class RemarkDAOpe extends BaseDAOpe {
         } else {
             videoBean.setIsfrom(false);
         }
-        videoI.updateVideoById(videoBean, new OnFinishListener() {
+        NetDataOpe.Video.updateVideoById(getActivity(),videoBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 videoBean.setFile(ff);
@@ -231,21 +198,15 @@ public class RemarkDAOpe extends BaseDAOpe {
     }
 
     public void uploadVideo(VideoBean videoBean, final VideoDetailBean vv) {
-        if (videoI == null) {
-            videoI = new VideoOpe(getActivity());
-        }
 
         final String ff = videoBean.getFile();
 
-        videoI.updateVideo(videoBean, new OnFinishListener() {
+        NetDataOpe.Video.updateVideo(getActivity(),videoBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 ArrayList<String> strs = (ArrayList<String>) o;
                 if (strs != null && strs.size() > 0) {
-                    if (videoDetailI == null) {
-                        videoDetailI = new VideoDetailOpe();
-                    }
-                    videoDetailI.updateUpload(vv, null);
+                    NetDataOpe.VideoDetail.updateUpload(getActivity(),vv, null);
 
                 }
             }

@@ -6,8 +6,7 @@ import android.content.Context;
 
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
-import com.siweisoft.service.netdb.collection.CollectionI;
-import com.siweisoft.service.netdb.collection.CollectionOpe;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.user.UserBean;
 import com.siweisoft.service.netdb.video.VideoBean;
 
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 
 public class CollectDAOpe extends BaseDAOpe {
 
-    CollectionI collectionI;
 
     ArrayList<VideoBean> videos = new ArrayList<>();
 
@@ -25,10 +23,7 @@ public class CollectDAOpe extends BaseDAOpe {
 
 
     public void getCollection(UserBean userBean, OnFinishListener onFinishListener) {
-        if (collectionI == null) {
-            collectionI = new CollectionOpe();
-        }
-        collectionI.getCollectionVideosByUserIdWithLimit(userBean, onFinishListener);
+        NetDataOpe.Collection.getCollectionVideosByUserIdWithLimit(getActivity(),userBean, onFinishListener);
     }
 
     public ArrayList<VideoBean> getVideos() {

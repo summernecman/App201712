@@ -6,8 +6,6 @@ import android.content.Context;
 
 import com.android.lib.base.ope.BaseDAOpe;
 import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.user.UserI;
-import com.siweisoft.service.netdb.user.UserNetOpe;
 import com.siweisoft.service.ui.Constant.Value;
 
 public class RenameDAOpe extends BaseDAOpe {
@@ -15,11 +13,9 @@ public class RenameDAOpe extends BaseDAOpe {
     UserBean userBean;
 
 
-    UserI userI;
 
     public RenameDAOpe() {
         userBean = new UserBean();
-        userI = new UserNetOpe();
         userBean.setPhone(Value.getUserInfo().getPhone());
         userBean.setName(Value.getUserInfo().getName());
     }

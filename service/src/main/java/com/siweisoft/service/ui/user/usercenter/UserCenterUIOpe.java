@@ -30,9 +30,6 @@ import com.siweisoft.service.ui.user.userinfo.UserInfoDAOpe;
 import java.util.ArrayList;
 
 public class UserCenterUIOpe extends BaseUIOpe<FragUsercenterBinding> {
-    public UserCenterUIOpe(Context context) {
-        super(context);
-    }
 
     public void initTips(TipsBean data) {
         bind.recycle.setLayoutManager(new GridLayoutManager(context, 4));

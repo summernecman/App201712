@@ -29,11 +29,6 @@ import java.util.List;
 public class VideoRecordUIOpe extends BaseUIOpe<FragVideorecordBinding> {
 
 
-    public VideoRecordUIOpe(Context context) {
-        super(context);
-    }
-
-
     public void initRefresh(OnRefreshListener refreshListener, OnLoadmoreListener loadmoreListener) {
         bind.refreshLayout.setOnRefreshListener(refreshListener);
         bind.refreshLayout.setOnLoadmoreListener(loadmoreListener);

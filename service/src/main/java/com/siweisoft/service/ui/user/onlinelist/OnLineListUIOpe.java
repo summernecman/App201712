@@ -30,9 +30,6 @@ import java.util.ArrayList;
 public class OnLineListUIOpe extends BaseUIOpe<FragOnlinelistBinding> {
 
 
-    public OnLineListUIOpe(Context context) {
-        super(context);
-    }
 
     public void refresh() {
         if (bind.recycle.getAdapter() != null) {

@@ -6,19 +6,14 @@ import android.content.Context;
 
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
+import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.user.UserI;
-import com.siweisoft.service.netdb.user.UserNetOpe;
 
 public class UnitDAOpe extends BaseDAOpe {
 
-    UserI userI;
 
 
     public void updateUnitInfo(UserBean userBean, OnFinishListener onFinishListener) {
-        if (userI == null) {
-            userI = new UserNetOpe();
-        }
-        userI.updateUnit(userBean, onFinishListener);
+        NetDataOpe.User.updateUnit(getActivity(),userBean, onFinishListener);
     }
 }
