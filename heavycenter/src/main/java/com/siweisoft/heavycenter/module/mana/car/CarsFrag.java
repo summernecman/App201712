@@ -20,7 +20,7 @@ public class CarsFrag extends AppFrag<CarsUIOpe,CarsDAOpe> {
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getD().initPages();
+        getP().getD().initPages(getBaseUIFrag());
         getP().getU().initPages(getFrag(),getP().getD().getPages());
 
     }

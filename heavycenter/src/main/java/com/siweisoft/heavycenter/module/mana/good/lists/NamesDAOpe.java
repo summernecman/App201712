@@ -14,10 +14,10 @@ public class NamesDAOpe extends BaseDAOpe {
 
 
 
-    public void ProductList(NetI<NamesRes> adapter){
+    public void ProductList(Context context,NetI<NamesRes> adapter){
         NamesReq namesReq = new NamesReq();
         namesReq.setPageIndex(1);
         namesReq.setPageSize(100);
-        NetDataOpe.Mana.Good.ProductList(getActivity(),namesReq,adapter);
+        NetDataOpe.Mana.Good.ProductList(context,namesReq,adapter);
     }
 }

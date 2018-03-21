@@ -33,7 +33,7 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
         switch (v.getId()){
             case R.id.regist:
                 if(getP().getU().is都输入好了()){
-                    getP().getD().regist(getP().getU().getRegistReqBean(), new UINetAdapter<RegistResBean>(this,true) {
+                    getP().getD().regist(getBaseAct(),getP().getU().getRegistReqBean(), new UINetAdapter<RegistResBean>(this,true) {
 
                         @Override
                         public void onSuccess(RegistResBean o) {
@@ -46,7 +46,7 @@ public class RegistFrag extends AppFrag<RegistUIOpe,RegistDAOpe> {
                 break;
             case R.id.tv_code:
                 if(getP().getU().is可以点击验证码()){
-                    getP().getD().getCode(getP().getU().getCodeReqBean());
+                    getP().getD().getCode(getBaseAct(),getP().getU().getCodeReqBean());
                     getP().getD().getThreadUtil().run(this,v,60,1000, new OnLoadingInterf() {
                         @Override
                         public Void onStarLoading(Object o) {

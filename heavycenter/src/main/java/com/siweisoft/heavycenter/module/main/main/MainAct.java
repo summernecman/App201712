@@ -39,6 +39,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getP().getD().initDA(this);
         ActivityUtil.被后台清理了就重启(getActivity(),savedInstanceState,WelcAct.class);
         if(!getP().getD().getPermissionUtil().is所有的权限都允许(getActivity(),getP().getD().getPermissions())){
             return;
@@ -53,7 +54,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
 
 
     public void 初始化界面(){
-        getP().getU().setBottomMenuViewData(getP().getD().initBottomdata());
+        getP().getU().setBottomMenuViewData(getP().getD().initBottomdata(this));
         getP().getU().initDrawerMenu(getP().getD().getMyceFrag());
         getP().getU().initPages(getP().getD().getBottomdata(),this);
         if(getP().getD().getMyceFrag().getP().getU()!=null){
@@ -62,14 +63,14 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     }
 
     public void go判断是否绑定单位处理(){
-        getP().getU().initPages(getP().getD().initBottomdata(),this);
+        getP().getU().initPages(getP().getD().initBottomdata(this),this);
         if(getP().getD().getMyceFrag().getP().getU()!=null){
             getP().getD().getMyceFrag().init();
         }
     }
 
     public void go网络获取用户信息重新加载(){
-        getP().getD().get用户信息(new UINetAdapter<LoginResBean>(this) {
+        getP().getD().get用户信息(this,new UINetAdapter<LoginResBean>(this) {
             @Override
             public void onSuccess(LoginResBean o) {
                 super.onSuccess(o);
@@ -139,7 +140,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
             if(result != null&&result.getContents() != null) {
                 ToastUtil.getInstance().showShort(getActivity(),FragManager2.getInstance().getCurrentFrag(getMoudle()).getClass().getSimpleName());
-                getP().getD().getScanDAOpe().logic((AppFrag) FragManager2.getInstance().getCurrentFrag(getMoudle()),result.getContents());
+                getP().getD().getScanDAOpe().logic(this,(AppFrag) FragManager2.getInstance().getCurrentFrag(getMoudle()),result.getContents());
             } else {
                 ToastUtil.getInstance().showShort(this,"解析二维码失败");
             }

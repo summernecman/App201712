@@ -11,7 +11,6 @@ import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.StringUtil;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppFrag;
-import com.siweisoft.heavycenter.module.main.weights.weights.WeightsFrag;
 
 import java.text.DecimalFormat;
 

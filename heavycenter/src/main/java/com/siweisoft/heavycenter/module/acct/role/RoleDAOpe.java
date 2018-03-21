@@ -19,11 +19,11 @@ public class RoleDAOpe extends AppDAOpe {
 
 
 
-    public void setUserType(UserTypeReqBean reqBean, NetI<UserTypeResBean> adapter){
-        NetDataOpe.setUserType(getActivity(), NetValue.获取地址("/user/setUserType"),reqBean,adapter);
+    public void setUserType(Context context,UserTypeReqBean reqBean, NetI<UserTypeResBean> adapter){
+        NetDataOpe.setUserType(context, NetValue.获取地址("/user/setUserType"),reqBean,adapter);
     }
 
-    public void login(LoginReqBean reqBean, NetI<LoginResBean> adapter){
-        NetDataOpe.onLogin(getActivity(),reqBean,adapter);
+    public void login(Context context,LoginReqBean reqBean, NetI<LoginResBean> adapter){
+        NetDataOpe.onLogin(context,reqBean,adapter);
     }
 }

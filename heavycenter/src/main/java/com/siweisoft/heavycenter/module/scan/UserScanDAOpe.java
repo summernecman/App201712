@@ -31,14 +31,11 @@ public class UserScanDAOpe extends BaseDAOpe {
     public UserScanDAOpe() {
     }
 
-    public UserScanDAOpe(Context context) {
-        super(context);
-    }
 
-    public void logic(final AppFrag appFrag,LoginResBean scaned){
+    public void logic(Context context,final AppFrag appFrag,LoginResBean scaned){
 
         if(appFrag.getClass().getName().equals(TransFrag.class.getName())){
-            ToastUtil.getInstance().showShort(getActivity(),"按单位搜索运输单");
+            ToastUtil.getInstance().showShort(context,"按单位搜索运输单");
             TransFrag transFrag = (TransFrag) appFrag;
             transFrag.getP().getU().setUnit(StringUtil.getStr(scaned.getCompanyName()));
             transFrag.getP().getU().autoRefresh();
@@ -47,17 +44,17 @@ public class UserScanDAOpe extends BaseDAOpe {
 
 
         if(appFrag.getClass().getName().equals(NewOrderFrag.class.getName()) &&( LocalValue.get登录返回信息().getUserType()==UserTypeReqBean.非驾驶员)){
-            ToastUtil.getInstance().showShort(getActivity(),"新建订单选定单位");
+            ToastUtil.getInstance().showShort(context,"新建订单选定单位");
             NewOrderFrag newOrderFrag = (NewOrderFrag) appFrag;
             newOrderFrag.setUnit(scaned.getCompanyId());
             return;
         }
 
         if(appFrag.getClass().getName().equals(MapFrag.class.getName())&&( LocalValue.get登录返回信息().getUserType()==UserTypeReqBean.驾驶员)&&(LoginResBean.BIND_UNIT_STATE_BINDED==scaned.getBindCompanyState())){
-            ToastUtil.getInstance().showShort(getActivity(),"驾驶员扫码地图 地图中心改为单位所在位置");
+            ToastUtil.getInstance().showShort(context,"驾驶员扫码地图 地图中心改为单位所在位置");
             UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
             unitInfoReqBean.setId(scaned.getCompanyId());
-            NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean, new UINetAdapter<UnitInfo>(getActivity(),true) {
+            NetDataOpe.Unit.getInfo(context, unitInfoReqBean, new UINetAdapter<UnitInfo>(context,true) {
                 @Override
                 public void onSuccess(UnitInfo o) {
                     super.onSuccess(o);
@@ -72,10 +69,10 @@ public class UserScanDAOpe extends BaseDAOpe {
         }
 
         if(appFrag.getClass().getName().equals(UnitListFrag.class.getName())){
-            ToastUtil.getInstance().showShort(getActivity(),"从单位列表中 选择一个单位");
+            ToastUtil.getInstance().showShort(context,"从单位列表中 选择一个单位");
             UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
             unitInfoReqBean.setId(scaned.getCompanyId());
-            NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean, new UINetAdapter<UnitInfo>(getActivity()) {
+            NetDataOpe.Unit.getInfo(context, unitInfoReqBean, new UINetAdapter<UnitInfo>(context) {
                 @Override
                 public void onSuccess(UnitInfo o) {
                     super.onSuccess(o);
@@ -90,7 +87,7 @@ public class UserScanDAOpe extends BaseDAOpe {
 
         if(appFrag.getClass().getName().equals(DetailFrag.class.getName())&&( LocalValue.get登录返回信息().getUserType()==UserTypeReqBean.非驾驶员)
                 &&( scaned.getUserType()==UserTypeReqBean.驾驶员)){
-            ToastUtil.getInstance().showShort(getActivity(),"作为选定的当前驾驶员");
+            ToastUtil.getInstance().showShort(context,"作为选定的当前驾驶员");
             DetailFrag detailFrag = (DetailFrag) appFrag;
             detailFrag.bindCar(scaned.getUserId());
             return;
@@ -102,14 +99,14 @@ public class UserScanDAOpe extends BaseDAOpe {
         if((scaned.getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED)&&(
                 (LoginResBean.USER_ROLE_ADMIN.equals(LocalValue.get登录返回信息().getUserRole()))
                         ||(LoginResBean.USER_ROLE_SUPER_ADMIN.equals(LocalValue.get登录返回信息().getUserRole())))){
-            ToastUtil.getInstance().showShort(getActivity(),"管理员发送邀请");
+            ToastUtil.getInstance().showShort(context,"管理员发送邀请");
             BindReqBean bindReqBean = new BindReqBean();
             bindReqBean.setId(scaned.getUserId());
             bindReqBean.setBindOperateType(2);
             bindReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
             bindReqBean.setIsManager(1);
             bindReqBean.setMangerId(LocalValue.get登录返回信息().getUserId());
-            NetDataOpe.User.binUnit(getActivity(), bindReqBean, new UINetAdapter<BindResBean>(getActivity(),true) {
+            NetDataOpe.User.binUnit(context, bindReqBean, new UINetAdapter<BindResBean>(context,true) {
                 @Override
                 public void onSuccess(BindResBean o) {
                     super.onSuccess(o);
@@ -120,25 +117,25 @@ public class UserScanDAOpe extends BaseDAOpe {
         }
 
         if(LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED){
-            ToastUtil.getInstance().showShort(getActivity(),"绑定单位，通知所有管理人员");
+            ToastUtil.getInstance().showShort(context,"绑定单位，通知所有管理人员");
 
         }
 
         if((LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED)&&(
                 (LoginResBean.USER_ROLE_ADMIN.equals(scaned.getUserRole()))
                         ||(LoginResBean.USER_ROLE_SUPER_ADMIN.equals(scaned.getUserRole())))){
-            ToastUtil.getInstance().showShort(getActivity(),"绑定单位，通知被扫用户");
+            ToastUtil.getInstance().showShort(context,"绑定单位，通知被扫用户");
             BindReqBean bindReqBean = new BindReqBean();
             bindReqBean.setId(LocalValue.get登录返回信息().getUserId());
             bindReqBean.setCompanyId(scaned.getCompanyId());
             bindReqBean.setIsManager(BindReqBean.IS_MANAGER_NO);
             bindReqBean.setMangerId(0);
-            NetDataOpe.User.binUnit(getActivity(), bindReqBean, new UINetAdapter<BindResBean>(getActivity(),true) {
+            NetDataOpe.User.binUnit(context, bindReqBean, new UINetAdapter<BindResBean>(context,true) {
                 @Override
                 public void onResult(boolean success, String msg, BindResBean o) {
                     super.onResult(success, msg, o);
                     if(success){
-                        ((MainAct)getActivity()).go判断是否绑定单位处理();
+                        ((MainAct)context).go判断是否绑定单位处理();
                     }
                 }
             });
@@ -146,18 +143,18 @@ public class UserScanDAOpe extends BaseDAOpe {
         }
 
         if((LocalValue.get登录返回信息().getBindCompanyState()!=LoginResBean.BIND_UNIT_STATE_BINDED)&&(LoginResBean.USER_ROLE_GENERAL.equals(scaned.getUserRole()))){
-            ToastUtil.getInstance().showShort(getActivity(),"绑定单位，通知所有管理人员");
+            ToastUtil.getInstance().showShort(context,"绑定单位，通知所有管理人员");
             BindReqBean bindReqBean = new BindReqBean();
             bindReqBean.setId(LocalValue.get登录返回信息().getUserId());
             bindReqBean.setCompanyId(scaned.getCompanyId());
             bindReqBean.setIsManager(BindReqBean.IS_MANAGER_NO);
             bindReqBean.setMangerId(0);
-            NetDataOpe.User.binUnit(getActivity(), bindReqBean, new UINetAdapter<BindResBean>(getActivity(),true) {
+            NetDataOpe.User.binUnit(context, bindReqBean, new UINetAdapter<BindResBean>(context,true) {
                 @Override
                 public void onResult(boolean success, String msg, BindResBean o) {
                     super.onResult(success, msg, o);
                     if(success){
-                        ((MainAct)getActivity()).go判断是否绑定单位处理();
+                        ((MainAct)context).go判断是否绑定单位处理();
                     }
                 }
             });
@@ -165,6 +162,6 @@ public class UserScanDAOpe extends BaseDAOpe {
         }
 
 
-        ToastUtil.getInstance().showShort(getActivity(),"查看用户详情");
+        ToastUtil.getInstance().showShort(context,"查看用户详情");
     }
 }

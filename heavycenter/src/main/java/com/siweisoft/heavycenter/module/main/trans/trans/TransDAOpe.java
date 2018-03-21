@@ -54,16 +54,16 @@ public class TransDAOpe extends BaseDAOpe {
 
 
 
-    public void transs(TransReq transReq, NetI<TransRes> adapter){
-        NetDataOpe.Trans.transs(getActivity(),transReq,adapter);
+    public void transs(Context context,TransReq transReq, NetI<TransRes> adapter){
+        NetDataOpe.Trans.transs(context,transReq,adapter);
     }
 
-    public void signTrans(int id, NetI<TransSignRes> adapter){
+    public void signTrans(Context context,int id, NetI<TransSignRes> adapter){
         TransSignReq transSignReq = new TransSignReq();
         transSignReq.setTransportrecordId(id);
         transSignReq.setUserId(LocalValue.get登录返回信息().getUserId());
         transSignReq.setSignStatus(TransSignReq.已确认);
-        NetDataOpe.Trans.signTrans(getActivity(),transSignReq,adapter);
+        NetDataOpe.Trans.signTrans(context,transSignReq,adapter);
     }
 
     public TransRes getTransRes() {

@@ -20,7 +20,7 @@ public class TransDetailFrag extends AppFrag<TransDetailUIOpe,TransDetailDAOpe> 
     public void initdelay() {
         super.initdelay();
         getP().getD().setTransid(getArguments().getInt(ValueConstant.DATA_DATA,-1));
-        getP().getD().detailTrans(getP().getD().getTransid(), new UINetAdapter<TransDetailRes>(this,UINetAdapter.Loading) {
+        getP().getD().detailTrans(getBaseAct(),getP().getD().getTransid(), new UINetAdapter<TransDetailRes>(this,UINetAdapter.Loading) {
             @Override
             public void onSuccess(TransDetailRes o) {
                 //o= new Test().getTransRes().getResults().get(0);

@@ -40,7 +40,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
 
 
     @Override
-    public void onFristVisibleDelayInit() {
+    public void on第一次显示延迟加载() {
         getP().getU().initRefresh(this,this);
         getP().getU().initRecycle();
         onRefresh(null);
@@ -53,7 +53,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
                 final TransDetailRes resultsBean = (TransDetailRes) v.getTag(R.id.data);
                 switch (v.getId()){
                     case R.id.bt_sure:
-                        getP().getD().signTrans(resultsBean.getTransportrecordId(), new UINetAdapter<TransSignRes>(getContext()) {
+                        getP().getD().signTrans(getBaseAct(),resultsBean.getTransportrecordId(), new UINetAdapter<TransSignRes>(getContext()) {
                             @Override
                             public void onResult(boolean success, String msg, TransSignRes o) {
                                 super.onResult(success, msg, o);
@@ -128,7 +128,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     @Override
     public void onRefresh(final RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
-        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
+        getP().getD().transs(getBaseAct(),getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
             @Override
             public void onSuccess(TransRes o) {
                 //o= new Test().getTransRes();
@@ -143,7 +143,7 @@ public class TransFrag extends AppFrag<TransUIOpe,TransDAOpe> implements ViewLis
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
-        getP().getD().transs(getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
+        getP().getD().transs(getBaseAct(),getP().getU().getTransReq(getP().getD().getTransReq(getP().getD().getPageIndex())), new UINetAdapter<TransRes>(this) {
             @Override
             public void onSuccess(TransRes o) {
                 //o = new Test().getTransRes();

@@ -42,12 +42,12 @@ public class UnitListDAOpe extends AppDAOpe {
 
 
 
-    public void getData( NetI<ListResBean> adapter){
+    public void getData(Context context, NetI<ListResBean> adapter){
         ListReqBean listReqBean = new ListReqBean();
         listReqBean.setIsAPP(1);
         listReqBean.setPageIndex(0);
         listReqBean.setPageSize(1000);
-        NetDataOpe.unitList(getActivity(), listReqBean,adapter);
+        NetDataOpe.unitList(context, listReqBean,adapter);
     }
 
 
@@ -76,13 +76,13 @@ public class UnitListDAOpe extends AppDAOpe {
 
 
 
-    public void searchUnit(SearchReqBean reqBean,NetI<SearchResBean> adapter){
+    public void searchUnit(Context context,SearchReqBean reqBean,NetI<SearchResBean> adapter){
         reqBean.setPageSize(100);
         reqBean.setPageIndex(0);
-        NetDataOpe.Unit.search(getActivity(),reqBean,adapter);
+        NetDataOpe.Unit.search(context,reqBean,adapter);
     }
 
-    public void bindUnit(int companyId, boolean ismanager,NetI<BindResBean> adapter){
+    public void bindUnit(Context context,int companyId, boolean ismanager,NetI<BindResBean> adapter){
         BindReqBean bindReqBean = new BindReqBean();
         bindReqBean.setId(LocalValue.get登录返回信息().getUserId());
         bindReqBean.setCompanyId(companyId);
@@ -91,21 +91,21 @@ public class UnitListDAOpe extends AppDAOpe {
         if(ismanager){
             bindReqBean.setMangerId(LocalValue.get登录返回信息().getUserId());
         }
-        NetDataOpe.User.binUnit(getActivity(),bindReqBean,adapter);
+        NetDataOpe.User.binUnit(context,bindReqBean,adapter);
     }
 
-    public void getInfo(NetI<LoginResBean> adapter){
+    public void getInfo(Context context,NetI<LoginResBean> adapter){
         UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
         userInfoReqBean.setIsApp(1);
         userInfoReqBean.setId(LocalValue.get登录返回信息().getUserId());
-        NetDataOpe.User.get用户信息(getActivity(), userInfoReqBean,adapter);
+        NetDataOpe.User.get用户信息(context, userInfoReqBean,adapter);
     }
 
 
-    public void getUnitInfo(int id,NetI<UnitInfo> adapter){
+    public void getUnitInfo(Context context,int id,NetI<UnitInfo> adapter){
         UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
         unitInfoReqBean.setId(id);
-        NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean,adapter);
+        NetDataOpe.Unit.getInfo(context, unitInfoReqBean,adapter);
     }
 
     public ListResBean getNetUnits() {

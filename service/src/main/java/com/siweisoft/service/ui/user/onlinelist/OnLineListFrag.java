@@ -168,7 +168,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
 //    }
 
     @Override
-    protected boolean registerEventBus() {
+    protected boolean is注册事件总线() {
         return true;
     }
 }

@@ -24,13 +24,13 @@ public class StoreDAOpe extends BaseDAOpe {
 
 
 
-    public void storesInfo(NetI<StoresResBean> adapter){
+    public void storesInfo(Context context,NetI<StoresResBean> adapter){
         StoresReqBean reqBean = new StoresReqBean();
         reqBean.setCompanyId(comid);
         reqBean.setIsApp(1);
         reqBean.setPageIndex(getPageIndex());
         reqBean.setPageSize(20);
-        NetDataOpe.Mana.Store.sotresInfo(getActivity(),reqBean,adapter);
+        NetDataOpe.Mana.Store.sotresInfo(context,reqBean,adapter);
     }
 
     public StoresResBean getStoresResBean() {

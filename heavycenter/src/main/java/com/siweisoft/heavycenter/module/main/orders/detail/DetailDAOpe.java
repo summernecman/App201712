@@ -2,6 +2,8 @@ package com.siweisoft.heavycenter.module.main.orders.detail;
 
 //by summer on 2017-12-19.
 
+import android.content.Context;
+
 import com.android.lib.network.news.NetI;
 import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.base.AppDAOpe;
@@ -29,23 +31,23 @@ public class DetailDAOpe extends AppDAOpe {
     }
 
 
-    public void addCar(int carid, String oper, NetI<AddCarRes> adapter){
+    public void addCar(Context context, int carid, String oper, NetI<AddCarRes> adapter){
         AddCarReq addCarReq = new AddCarReq();
         addCarReq.setId(getData().getOrderId());
         addCarReq.setEditer(LocalValue.get登录返回信息().getUserId());
         addCarReq.setVehicleList(carid);
         addCarReq.setOper(oper);
-        NetDataOpe.Order.addCar(getActivity(),addCarReq,adapter);
+        NetDataOpe.Order.addCar(context,addCarReq,adapter);
     }
 
-    public void detail(int id, NetI<OrdersRes.ResultsBean> adapter){
+    public void detail(Context context,int id, NetI<OrdersRes.ResultsBean> adapter){
         OrderDetailReq orderDetailReq = new OrderDetailReq();
         orderDetailReq.setIsApp(1);
         orderDetailReq.setId(id);
-        NetDataOpe.Order.detail(getActivity(),orderDetailReq,adapter);
+        NetDataOpe.Order.detail(context,orderDetailReq,adapter);
     }
 
-    public boolean haveAddCar(CarsResBean.CarInfoRes bean){
+    public boolean haveAddCar(Context context,CarsResBean.CarInfoRes bean){
         if(bean==null){
             return true;
         }
@@ -58,7 +60,7 @@ public class DetailDAOpe extends AppDAOpe {
         if(!have){
             return false;
         }else{
-            ToastUtil.getInstance().showShort(getActivity(),"该车辆已在指定承运车辆列表中");
+            ToastUtil.getInstance().showShort(context,"该车辆已在指定承运车辆列表中");
             return true;
         }
     }

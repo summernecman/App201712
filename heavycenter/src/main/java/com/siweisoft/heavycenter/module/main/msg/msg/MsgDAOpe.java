@@ -22,21 +22,21 @@ public class MsgDAOpe extends BaseDAOpe {
     private MsgsResBean msgsResBean = new MsgsResBean();
 
 
-    public void getMsgSys(String type,NetI<MsgsResBean> adapter){
+    public void getMsgSys(Context context,String type,NetI<MsgsResBean> adapter){
         MsgsReqBean msgsReqBean = new MsgsReqBean();
         msgsReqBean.setUserId(LocalValue.get登录返回信息().getUserId());
         msgsReqBean.setPageIndex(getPageindex());
         msgsReqBean.setPageSize(20);
         msgsReqBean.setMessageCate(type);
-        NetDataOpe.Msg.list(getActivity(),msgsReqBean,adapter);
+        NetDataOpe.Msg.list(context,msgsReqBean,adapter);
     }
 
-    public void dealMss(int messageId, String auditStatus, NetI<MsgDealResBean> adapter){
+    public void dealMss(Context context,int messageId, String auditStatus, NetI<MsgDealResBean> adapter){
         MsgDealReqBean msgDealReqBean = new MsgDealReqBean();
         msgDealReqBean.setUserId(LocalValue.get登录返回信息().getUserId());
         msgDealReqBean.setMessageId(messageId);
         msgDealReqBean.setAuditStatus(auditStatus);
-        NetDataOpe.Msg.deal(getActivity(),msgDealReqBean,adapter);
+        NetDataOpe.Msg.deal(context,msgDealReqBean,adapter);
 
     }
 

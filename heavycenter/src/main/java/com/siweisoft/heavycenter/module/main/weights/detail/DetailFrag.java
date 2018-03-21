@@ -70,7 +70,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
 
 
     @Override
-    protected boolean registerEventBus() {
+    protected boolean is注册事件总线() {
         return  true;
     }
 }

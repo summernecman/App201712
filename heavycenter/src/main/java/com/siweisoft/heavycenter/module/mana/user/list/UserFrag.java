@@ -79,7 +79,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().unitUsers(new UINetAdapter<UnitUserResBean>(this) {
+        getP().getD().unitUsers(getBaseAct(),new UINetAdapter<UnitUserResBean>(this) {
             @Override
             public void onSuccess(UnitUserResBean o) {
                 //o= new Test().getUnitUserResBean();
@@ -106,8 +106,8 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                             case 0:
                                 switch (resultsBean.getBindCompanyState()){
                                     case LoginResBean.BIND_UNIT_STATE_BINDED:
-                                        if(getP().getD().canUnBind(resultsBean)){
-                                            getP().getD().unBindUser(resultsBean.getUserId(), new UINetAdapter<UnBindResBean>(this,true) {
+                                        if(getP().getD().canUnBind(getBaseAct(),resultsBean)){
+                                            getP().getD().unBindUser(getBaseAct(),resultsBean.getUserId(), new UINetAdapter<UnBindResBean>(this,true) {
                                                 @Override
                                                 public void onResult(boolean success, String msg, UnBindResBean o) {
                                                     super.onResult(success, msg, o);
@@ -117,7 +117,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                         }
                                         break;
                                     default:
-                                        getP().getD().addUser(resultsBean, new UINetAdapter<AddUserResBean>(this,true) {
+                                        getP().getD().addUser(getBaseAct(),resultsBean, new UINetAdapter<AddUserResBean>(this,true) {
                                             @Override
                                             public void onSuccess(AddUserResBean o) {
                                                 onRefresh(null);
@@ -172,7 +172,7 @@ public class UserFrag extends AppFrag<UserUIOpe,UserDAOpe> implements OnRefreshL
                                 break;
                             case R.id.tv_y:
 
-                                getP().getD().setUserRole(data1.getUserId(), new UINetAdapter<UserRoleRes>(UserFrag.this) {
+                                getP().getD().setUserRole(getBaseAct(),data1.getUserId(), new UINetAdapter<UserRoleRes>(UserFrag.this) {
                                     @Override
                                     public void onSuccess(UserRoleRes o) {
                                         super.onSuccess(o);

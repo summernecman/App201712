@@ -26,7 +26,7 @@ public class MsgsFrag extends AppFrag<MsgsUIOpe,MsgsDAOpe> {
 
 
     @Override
-    public void onFristVisibleDelayInit() {
+    public void on第一次显示延迟加载() {
         getP().getU().initPages(getFrag(),getP().getD().getPages());
     }
 

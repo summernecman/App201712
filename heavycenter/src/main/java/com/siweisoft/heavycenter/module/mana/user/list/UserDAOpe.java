@@ -32,42 +32,42 @@ public class UserDAOpe extends AppDAOpe {
         return data;
     }
 
-    public void unitUsers(NetI<UnitUserResBean> adapter){
+    public void unitUsers(Context context,NetI<UnitUserResBean> adapter){
         UnitUsersReqBean reqBean = new UnitUsersReqBean();
         reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setIsApp(1);
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);
-        NetDataOpe.Unit.unitUsers(getActivity(),reqBean,adapter);
+        NetDataOpe.Unit.unitUsers(context,reqBean,adapter);
     }
 
-    public void addUser(UnitUserResBean.ResultsBean user, NetI<AddUserResBean> adapter){
+    public void addUser(Context context,UnitUserResBean.ResultsBean user, NetI<AddUserResBean> adapter){
         AddUserReqBean reqBean = new AddUserReqBean();
         reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setUserId(user.getUserId());
         reqBean.setTel(user.getTel());
         reqBean.setUserRole(user.getUserRole());
-        NetDataOpe.Mana.User.addUser(getActivity(),reqBean,adapter);
+        NetDataOpe.Mana.User.addUser(context,reqBean,adapter);
     }
 
-    public void unBindUser(int userid, NetI<UnBindResBean> adapter){
+    public void unBindUser(Context context,int userid, NetI<UnBindResBean> adapter){
         UnBindReqBean reqBean = new UnBindReqBean();
         reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setId(userid);
-        NetDataOpe.User.unBinUnit(getActivity(),reqBean,adapter);
+        NetDataOpe.User.unBinUnit(context,reqBean,adapter);
     }
 
-    public void setUserRole(int id, NetI<UserRoleRes> adapter){
+    public void setUserRole(Context context,int id, NetI<UserRoleRes> adapter){
         UserRoleReq userRoleReq = new UserRoleReq();
         userRoleReq.setId(id);
         userRoleReq.setUserRole(LoginResBean.USER_ROLE_SUPER_ADMIN);
         userRoleReq.setUserId(LocalValue.get登录返回信息().getUserId());
-        NetDataOpe.User.setUserRole(getActivity(),userRoleReq,adapter);
+        NetDataOpe.User.setUserRole(context,userRoleReq,adapter);
     }
 
-    public boolean canUnBind(UnitUserResBean.ResultsBean resultsBean){
+    public boolean canUnBind(Context context,UnitUserResBean.ResultsBean resultsBean){
         if(LocalValue.get登录返回信息().getUserId()==resultsBean.getUserId()){
-            ToastUtil.getInstance().showShort(getActivity(),"不能解绑自己");
+            ToastUtil.getInstance().showShort(context,"不能解绑自己");
             return false;
         }
         return true;

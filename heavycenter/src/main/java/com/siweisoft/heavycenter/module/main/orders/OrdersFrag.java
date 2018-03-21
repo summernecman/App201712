@@ -33,8 +33,8 @@ public class OrdersFrag extends AppFrag<OrdersUIOpe,OrdersDAOpe> {
 
 
     @Override
-    public void onFristVisibleDelayInit() {
-        getP().getU().initPages(getFrag(),getP().getD().initPages());
+    public void on第一次显示延迟加载() {
+        getP().getU().initPages(getFrag(),getP().getD().initPages(getBaseUIFrag()));
 
     }
 

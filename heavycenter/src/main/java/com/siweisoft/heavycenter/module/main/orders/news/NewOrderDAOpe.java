@@ -2,6 +2,8 @@ package com.siweisoft.heavycenter.module.main.orders.news;
 
 //by summer on 2018-01-17.
 
+import android.content.Context;
+
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.network.news.NetI;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
@@ -22,13 +24,13 @@ public class NewOrderDAOpe extends BaseDAOpe {
         return newsOrderReqBean;
     }
 
-    public void newOrder(NewsOrderReqBean newsOrderReqBean, NetI<NewOrderRes> adapter){
-        NetDataOpe.Order.newOrder(getActivity(),newsOrderReqBean,adapter);
+    public void newOrder(Context context, NewsOrderReqBean newsOrderReqBean, NetI<NewOrderRes> adapter){
+        NetDataOpe.Order.newOrder(context,newsOrderReqBean,adapter);
     }
 
-    public void getInfo(int id,NetI<UnitInfo> adapter){
+    public void getInfo(Context context,int id,NetI<UnitInfo> adapter){
         UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
         unitInfoReqBean.setId(id);
-        NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean,adapter);
+        NetDataOpe.Unit.getInfo(context, unitInfoReqBean,adapter);
     }
 }

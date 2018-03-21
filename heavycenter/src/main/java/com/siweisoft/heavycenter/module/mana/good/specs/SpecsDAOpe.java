@@ -16,10 +16,10 @@ public class SpecsDAOpe extends BaseDAOpe {
 
 
 
-    public void SpecsGood(int productid,NetI<SpecsRes> adapter){
+    public void SpecsGood(Context context,int productid,NetI<SpecsRes> adapter){
         SpecsReq specsReq = new SpecsReq();
         specsReq.setIsApp(1);
         specsReq.setProductId(productid);
-        NetDataOpe.Mana.Good.SpecsGood(getActivity(),specsReq,adapter);
+        NetDataOpe.Mana.Good.SpecsGood(context,specsReq,adapter);
     }
 }

@@ -26,11 +26,8 @@ public class ScanDAOpe extends BaseDAOpe {
     public ScanDAOpe() {
     }
 
-    public ScanDAOpe(Context context ){
-        super(context);
-    }
 
-    public void logic(final AppFrag appFrag,String data){
+    public void logic(Context context,final AppFrag appFrag,String data){
 
          UserInfo userInfo = null;
         try {
@@ -41,7 +38,7 @@ public class ScanDAOpe extends BaseDAOpe {
 
         }
         if(userInfo==null|| NullUtil.isStrEmpty(userInfo.getType())){
-            ToastUtil.getInstance().showShort(context,"扫码信息有误");
+            ToastUtil.getInstance().showShort(appFrag.getContext(),"扫码信息有误");
             return;
         }
 
@@ -49,21 +46,21 @@ public class ScanDAOpe extends BaseDAOpe {
 
         switch (userInfo.getType()) {
             case UserInfo.TYPE_STORE:
-                StoreScanDAOpe storeScanDAOpe = new StoreScanDAOpe(context);
-                storeScanDAOpe.logic(appFrag,userInfo);
+                StoreScanDAOpe storeScanDAOpe = new StoreScanDAOpe();
+                storeScanDAOpe.logic(context,appFrag,userInfo);
                 break;
             case UserInfo.TYPE_UNIT:
                 UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
                 unitInfoReqBean.setId(userInfo.getID());
                 final UserInfo finalUserInfo = userInfo;
-                NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean, new UINetAdapter<UnitInfo>(getActivity()) {
+                NetDataOpe.Unit.getInfo(context, unitInfoReqBean, new UINetAdapter<UnitInfo>(context) {
                     @Override
                     public void onResult(boolean success, String msg, UnitInfo o) {
                         super.onResult(success, msg, o);
                         if(success){
-                            UnitScanDAOpe unitScanDAOpe = new UnitScanDAOpe(context);
+                            UnitScanDAOpe unitScanDAOpe = new UnitScanDAOpe();
                             o.setId(finalUserInfo.getID());
-                            unitScanDAOpe.logic(appFrag, o);
+                            unitScanDAOpe.logic(context,appFrag, o);
                         }
 
                     }
@@ -74,20 +71,20 @@ public class ScanDAOpe extends BaseDAOpe {
                 UserInfoReqBean infoReqBean = new UserInfoReqBean();
                 infoReqBean.setIsApp(1);
                 infoReqBean.setId(userInfo.getID());
-                NetDataOpe.User.get用户信息(getActivity(), infoReqBean, new UINetAdapter<LoginResBean>(getActivity()) {
+                NetDataOpe.User.get用户信息(context, infoReqBean, new UINetAdapter<LoginResBean>(context) {
                     @Override
                     public void onResult(boolean success, String msg, LoginResBean o) {
                         super.onResult(success, msg, o);
                         if (!success) {
                             return;
                         }
-                        UserScanDAOpe userScanDAOpe = new UserScanDAOpe(context);
-                        userScanDAOpe.logic(appFrag, o);
+                        UserScanDAOpe userScanDAOpe = new UserScanDAOpe();
+                        userScanDAOpe.logic(context,appFrag, o);
                     }
                 });
                 break;
             case UserInfo.TYPE_WEIGHT:
-                WeightScanDAOpe weightScanDAOpe = new WeightScanDAOpe(context);
+                WeightScanDAOpe weightScanDAOpe = new WeightScanDAOpe();
                 weightScanDAOpe.logic(appFrag,userInfo);
                 break;
         }

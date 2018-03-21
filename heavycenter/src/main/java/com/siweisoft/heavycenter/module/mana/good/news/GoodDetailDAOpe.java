@@ -32,18 +32,18 @@ public class GoodDetailDAOpe extends AppDAOpe {
         return newsGoodReq;
     }
 
-    public void NewsGood(NewsGoodReq newsGoodReq, NetI<NewsGoodRes> adapter){
-        NetDataOpe.Mana.Good.NewsGood(getActivity(),newsGoodReq,adapter);
+    public void NewsGood(Context context,NewsGoodReq newsGoodReq, NetI<NewsGoodRes> adapter){
+        NetDataOpe.Mana.Good.NewsGood(context,newsGoodReq,adapter);
     }
 
-    public void detailGood(int id,NetI<GoodListRes.ResultsBean> adapter){
+    public void detailGood(Context context,int id,NetI<GoodListRes.ResultsBean> adapter){
         GoodDetailReq goodDetailReq = new GoodDetailReq();
         goodDetailReq.setProductInfoId(id);
-        NetDataOpe.Mana.Good.detailGood(getActivity(),goodDetailReq,adapter);
+        NetDataOpe.Mana.Good.detailGood(context,goodDetailReq,adapter);
     }
 
-    public void updGood(UpdGoodReq updGoodReq, NetI<UpdGoodRes> adapter){
-        NetDataOpe.Mana.Good.updGood(getActivity(),updGoodReq,adapter);
+    public void updGood(Context context,UpdGoodReq updGoodReq, NetI<UpdGoodRes> adapter){
+        NetDataOpe.Mana.Good.updGood(context,updGoodReq,adapter);
     }
 
     public GoodListRes.ResultsBean getO() {

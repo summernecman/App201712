@@ -16,10 +16,10 @@ public class TransDetailDAOpe extends AppDAOpe {
 
 
 
-    public void detailTrans(int id, NetI<TransDetailRes> adapter){
+    public void detailTrans(Context context,int id, NetI<TransDetailRes> adapter){
         TransDetailReq transDetailReq = new TransDetailReq();
         transDetailReq.setTransportRecordId(id);
-        NetDataOpe.Trans.detailTrans(getActivity(),transDetailReq,adapter);
+        NetDataOpe.Trans.detailTrans(context,transDetailReq,adapter);
     }
 
     public int getTransid() {

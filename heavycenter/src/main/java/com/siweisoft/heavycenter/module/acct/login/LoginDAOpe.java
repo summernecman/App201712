@@ -18,12 +18,12 @@ public class LoginDAOpe extends AppDAOpe {
 
 
 
-    public void go登录(LoginReqBean reqBean, NetI<LoginResBean> adapter){
-        NetDataOpe.onLogin(getActivity(),reqBean,adapter);
+    public void go登录(Context context,LoginReqBean reqBean, NetI<LoginResBean> adapter){
+        NetDataOpe.onLogin(context,reqBean,adapter);
     }
 
-    public void get省市列表接口数据(CityReqBean reqBean, NetI<ArrayList<CityResBean>> adapter){
-        NetDataOpe.get省市列表接口数据(getActivity(),reqBean,adapter);
+    public void get省市列表接口数据(Context context,CityReqBean reqBean, NetI<ArrayList<CityResBean>> adapter){
+        NetDataOpe.get省市列表接口数据(context,reqBean,adapter);
     }
 
 

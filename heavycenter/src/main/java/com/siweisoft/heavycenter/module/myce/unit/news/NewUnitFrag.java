@@ -48,7 +48,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
     }
 
     private void getInfoAndInit(final OnFinishListener listener){
-        getP().getD().getInfo(getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
+        getP().getD().getInfo(getBaseAct(),getArguments().getInt(ValueConstant.DATA_DATA,-1),new UINetAdapter<UnitInfo>(this) {
             @Override
             public void onSuccess(UnitInfo o) {
                 getP().getD().setUnit(o);
@@ -113,10 +113,10 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                                     case R.id.close:
                                         break;
                                     case R.id.sure:
-                                        getP().getD().unBinUnit(new UINetAdapter<UnBindResBean>(NewUnitFrag.this,UINetAdapter.Loading,true) {
+                                        getP().getD().unBinUnit(getBaseAct(),new UINetAdapter<UnBindResBean>(NewUnitFrag.this,UINetAdapter.Loading,true) {
                                             @Override
                                             public void onSuccess(UnBindResBean o) {
-                                                getP().getD().getUserInfo(new UINetAdapter<LoginResBean>(getContext()) {
+                                                getP().getD().getUserInfo(getBaseAct(),new UINetAdapter<LoginResBean>(getContext()) {
                                                     @Override
                                                     public void onResult(boolean success, String msg, LoginResBean o) {
                                                         super.onResult(success, msg, o);
@@ -139,7 +139,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                         break;
                     case 新建单位:
                         if(getP().getU().canGo()){
-                            getP().getD().createUnit(getP().getU().getNewReqBean(getP().getD().getUnit()), new UINetAdapter<NewResBean>(this,UINetAdapter.Loading,true) {
+                            getP().getD().createUnit(getBaseAct(),getP().getU().getNewReqBean(getP().getD().getUnit()), new UINetAdapter<NewResBean>(this,UINetAdapter.Loading,true) {
                                 @Override
                                 public void onSuccess(NewResBean o) {
                                     getArguments().putBoolean(ValueConstant.DATA_RES,true);
@@ -150,7 +150,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
                         break;
                     case 修改单位信息:
                         if(getP().getU().canGo()){
-                            getP().getD().updateUnit(getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(this,UINetAdapter.Loading,true) {
+                            getP().getD().updateUnit(getBaseAct(),getP().getU().getUpdateUnitReq(getP().getD().getUnit()), new UINetAdapter<UpdateUnitRes>(this,UINetAdapter.Loading,true) {
                                 @Override
                                 public void onSuccess(UpdateUnitRes o) {
                                     getInfoAndInit(new OnFinishListener() {
@@ -205,7 +205,7 @@ public class NewUnitFrag extends AppFrag<NewUnitUIOpe,NewUnitDAOpe> implements O
     @Override
     public void onFinish(Object o) {
         String s = o.toString();
-        getP().getD().searchUnitInfo(s, new UINetAdapter<SearchResBean>(this) {
+        getP().getD().searchUnitInfo(getBaseAct(),s, new UINetAdapter<SearchResBean>(this) {
             @Override
             public void onSuccess(final SearchResBean o) {
                 super.onSuccess(o);

@@ -13,17 +13,10 @@ import java.util.ArrayList;
  */
 public class BaseDAOpe implements BaseOpe {
 
-    /**
-     * 上下文
-     */
-    private Context context;
-
-    protected BaseUIFrag frag;
 
     public BaseDAOpe() {
 
     }
-
 
     public void initDA(){
 
@@ -33,19 +26,6 @@ public class BaseDAOpe implements BaseOpe {
 
     }
 
-
-
-    public BaseDAOpe(Context context) {
-        this.context = context;
-    }
-
-    public BaseUIActivity getActivity(){
-        if(frag!=null){
-            return frag.getBaseUIAct();
-        }else{
-            return (BaseUIActivity) context;
-        }
-    }
 
 
     public LayoutDABean getData(Object[] objects) {
@@ -62,17 +42,5 @@ public class BaseDAOpe implements BaseOpe {
             data.add(getData(objects[i]));
         }
         return data;
-    }
-
-    public BaseUIFrag getFrag() {
-        return frag;
-    }
-
-    public void setFrag(BaseUIFrag frag) {
-        this.frag = frag;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
     }
 }

@@ -40,8 +40,8 @@ public class CheckDAOpe extends AppDAOpe {
         return data;
     }
 
-    public void checkStore(CheckStoreReqBean checkStoreReqBean, NetI<CheckStoreResBean> adapter){
-        NetDataOpe.Mana.Store.checkStore(getActivity(),checkStoreReqBean,adapter);
+    public void checkStore(Context context,CheckStoreReqBean checkStoreReqBean, NetI<CheckStoreResBean> adapter){
+        NetDataOpe.Mana.Store.checkStore(context,checkStoreReqBean,adapter);
     }
 
     public CheckStoreReqBean getCheckStoreReqBean() {
@@ -65,13 +65,13 @@ public class CheckDAOpe extends AppDAOpe {
     }
 
 
-    public void storesInfo(NetI<StoresResBean> adapter){
+    public void storesInfo(Context context,NetI<StoresResBean> adapter){
         StoresReqBean reqBean = new StoresReqBean();
         reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setIsApp(1);
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);
-        NetDataOpe.Mana.Store.sotresInfo(getActivity(),reqBean,adapter);
+        NetDataOpe.Mana.Store.sotresInfo(context,reqBean,adapter);
     }
 
     public static void storesDetail(Context context,int id,NetI<StoreDetail> adapter){
@@ -80,13 +80,13 @@ public class CheckDAOpe extends AppDAOpe {
         NetDataOpe.Mana.Store.detail(context,storeDetailReq,adapter);
     }
 
-    public boolean canGo(){
+    public boolean canGo(Context context){
         if(!isInitdata()){
-            ToastUtil.getInstance().showShort(getActivity(),"数据还没初始化");
+            ToastUtil.getInstance().showShort(context,"数据还没初始化");
             return false;
         }
         if(getStoresResBean()==null){
-            ToastUtil.getInstance().showShort(getActivity(),"数据初始化失败,请打开重试");
+            ToastUtil.getInstance().showShort(context,"数据初始化失败,请打开重试");
             return false;
         }
         for(int i=0;getStoresResBean().getResults()!=null && i<getStoresResBean().getResults().size();i++){
@@ -103,7 +103,7 @@ public class CheckDAOpe extends AppDAOpe {
         return storesResBean;
     }
 
-    public void setStoresResBean(StoresResBean storesResBean) {
+    public void setStoresResBean(Context context,StoresResBean storesResBean) {
         boolean havenullproduct = false;
         for(int i=0;storesResBean!=null&&storesResBean.getResults()!=null && i<storesResBean.getResults().size();i++){
             if(storesResBean.getResults().get(i).getProductId()==-1){
@@ -115,7 +115,7 @@ public class CheckDAOpe extends AppDAOpe {
             storesResBean.getResults().get(i).setAfterAdjust(storesResBean.getResults().get(i).getCurrentStock());
         }
         if(havenullproduct){
-            ToastUtil.getInstance().showShort(getActivity(),"部分仓库因为没有物料不能盘点");
+            ToastUtil.getInstance().showShort(context,"部分仓库因为没有物料不能盘点");
         }
         this.storesResBean = storesResBean;
     }

@@ -68,7 +68,6 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
     private BaseOpes<A, B> getaabb(Class<?> c) {
         if (c == null) {
             opes = (BaseOpes<A, B>) new BaseOpes<>(new BaseUIOpe<ViewDataBinding>(), new BaseDAOpe());
-            opes.getD().setContext(getActivity());
             opes.getU().setContext(getActivity());
         }
         if (c.getGenericSuperclass() instanceof ParameterizedType) {
@@ -80,7 +79,6 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
                 A aa = ac.newInstance();
                 aa.setContext(getActivity());
                 B bb = bc.newInstance();
-                bb.setContext(getActivity());
                 opes = new BaseOpes<>(aa, bb);
             } catch (Exception e) {
                 e.printStackTrace();

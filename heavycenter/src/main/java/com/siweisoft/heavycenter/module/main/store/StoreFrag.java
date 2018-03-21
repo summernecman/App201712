@@ -37,7 +37,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
 
 
     @Override
-    public void onFristVisibleDelayInit() {
+    public void on第一次显示延迟加载() {
         getP().getU().initRefresh(this,this);
         getP().getU().initRecycle();
         onRefresh(null);
@@ -92,7 +92,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(getP().getD().getPageIndex()+1);
-        getP().getD().storesInfo(new NetAdapter<StoresResBean>(this) {
+        getP().getD().storesInfo(getBaseAct(),new NetAdapter<StoresResBean>(this) {
             @Override
             public void onSuccess(StoresResBean o) {
                 //o = new Test().getStoresResBean();
@@ -107,7 +107,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getD().setPageIndex(NetValue.PAGE_INDEX_START);
         getP().getD().getStoresResBean().getResults().clear();
-        getP().getD().storesInfo(new NetAdapter<StoresResBean>(this) {
+        getP().getD().storesInfo(getBaseAct(),new NetAdapter<StoresResBean>(this) {
             @Override
             public void onSuccess(StoresResBean o) {
                 //o = new Test().getStoresResBean();

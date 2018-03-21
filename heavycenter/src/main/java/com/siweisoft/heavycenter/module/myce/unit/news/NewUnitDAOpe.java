@@ -37,36 +37,36 @@ public class NewUnitDAOpe extends AppDAOpe {
         this.unit = unit;
     }
 
-    public void createUnit(NewReqBean reqBean, NetI<NewResBean> adapter){
-        NetDataOpe.Unit.createUnit(getActivity(),reqBean,adapter);
+    public void createUnit(Context context,NewReqBean reqBean, NetI<NewResBean> adapter){
+        NetDataOpe.Unit.createUnit(context,reqBean,adapter);
     }
 
-    public void getInfo(int id,NetI<UnitInfo> adapter){
+    public void getInfo(Context context,int id,NetI<UnitInfo> adapter){
         UnitInfoReqBean unitInfoReqBean = new UnitInfoReqBean();
         unitInfoReqBean.setId(id==-1? LocalValue.get登录返回信息().getCompanyId():id);
-        NetDataOpe.Unit.getInfo(getActivity(), unitInfoReqBean,adapter);
+        NetDataOpe.Unit.getInfo(context, unitInfoReqBean,adapter);
     }
 
-    public void searchUnitInfo(String name, NetI<SearchResBean> adapter){
+    public void searchUnitInfo(Context context,String name, NetI<SearchResBean> adapter){
         SearchReqBean searchReqBean = new SearchReqBean();
         searchReqBean.setPageIndex(1);
         searchReqBean.setPageSize(1);
         searchReqBean.setKeyword(name);
-        NetDataOpe.Unit.search(getActivity(),searchReqBean,adapter);
+        NetDataOpe.Unit.search(context,searchReqBean,adapter);
     }
 
-    public void unBinUnit(NetI<UnBindResBean> adapter){
+    public void unBinUnit(Context context,NetI<UnBindResBean> adapter){
         UnBindReqBean unBindReqBean = new UnBindReqBean();
         unBindReqBean.setId(LocalValue.get登录返回信息().getUserId());
         unBindReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
-        NetDataOpe.User.unBinUnit(getActivity(),unBindReqBean,adapter);
+        NetDataOpe.User.unBinUnit(context,unBindReqBean,adapter);
     }
 
-    public void getUserInfo(NetI<LoginResBean> adapter){
+    public void getUserInfo(Context context,NetI<LoginResBean> adapter){
         UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
         userInfoReqBean.setIsApp(1);
         userInfoReqBean.setId(LocalValue.get登录返回信息().getUserId());
-        NetDataOpe.User.get用户信息(getActivity(), userInfoReqBean,adapter);
+        NetDataOpe.User.get用户信息(context, userInfoReqBean,adapter);
     }
 
 
@@ -83,10 +83,10 @@ public class NewUnitDAOpe extends AppDAOpe {
 
     }
 
-    public void updateUnit(UpdateUnitReq updateUnitReq, NetI<UpdateUnitRes> adapter){
+    public void updateUnit(Context context,UpdateUnitReq updateUnitReq, NetI<UpdateUnitRes> adapter){
         updateUnitReq.setId(LocalValue.get登录返回信息().getCompanyId());
         updateUnitReq.setEditer(LocalValue.get登录返回信息().getUserId());
-        NetDataOpe.Unit.updateUnit(getActivity(),updateUnitReq,adapter);
+        NetDataOpe.Unit.updateUnit(context,updateUnitReq,adapter);
     }
 
     public UpdateUnitReq getUpdateUnitReq() {

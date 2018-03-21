@@ -1,13 +1,11 @@
-package com.siweisoft.heavycenter.module.main.weights.weights;
+package com.siweisoft.heavycenter.module.main.weights.地磅模块;
 
 //by summer on 2017-12-11.
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.android.lib.base.fragment.BaseUIFrag;
-import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.NetI;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.ToastUtil;
@@ -23,7 +21,7 @@ import com.siweisoft.heavycenter.module.main.weights.weight.WeigtFrag;
 
 import java.util.ArrayList;
 
-public class WeightsDAOpe extends AppDAOpe {
+public class 地磅模块数据 extends AppDAOpe {
 
 
     private  WeightMsg weightMsg;
@@ -33,23 +31,23 @@ public class WeightsDAOpe extends AppDAOpe {
     private ArrayList<Fragment> bottomFrag = new ArrayList<>();
 
 
-    public ArrayList<Fragment> initPages(){
+    public ArrayList<Fragment> get地磅们(BaseUIFrag frag){
         pages.clear();
         for(int i=0;i<5;i++){
-            pages.add(WeigtFrag.getInstance(getFrag().get容器()));
+            pages.add(WeigtFrag.getInstance(frag.get容器()));
         }
         return pages;
     }
 
-    public ArrayList<Fragment> getPages() {
+    public ArrayList<Fragment> getPages(BaseUIFrag frag) {
         if(pages==null){
-            initPages();
+            get地磅们(frag);
         }
         return pages;
     }
 
 
-    public static void listWeight(Context context,NetI<WeightListRes> adapter){
+    public static void get地磅列表(Context context, NetI<WeightListRes> adapter){
         WeightListReq weightListReq = new WeightListReq();
         weightListReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         weightListReq.setPageIndex(0);
@@ -57,7 +55,7 @@ public class WeightsDAOpe extends AppDAOpe {
         NetDataOpe.Weight.listWeight(context,weightListReq,adapter);
     }
 
-    public void saveWeight(WeightMsg weightMsg , NetI<SaveWeightRes> adapter){
+    public void saveWeight(Context context,WeightMsg weightMsg , NetI<SaveWeightRes> adapter){
         if(weightMsg==null||weightMsg.getMessage()==null){
             return;
         }
@@ -66,7 +64,7 @@ public class WeightsDAOpe extends AppDAOpe {
         weightReq.setTransportRecordId(weightMsg.getMessage().getOrder().getYsdId());
         weightReq.setState(weightMsg.getMessage().getState());
         if(NullUtil.isStrEmpty(weightMsg.getMessage().getState())){
-            ToastUtil.getInstance().showShort(getActivity(),"没有返回状态码");
+            ToastUtil.getInstance().showShort(context,"没有返回状态码");
             return;
         }
         switch (weightMsg.getMessage().getState()){
@@ -92,7 +90,7 @@ public class WeightsDAOpe extends AppDAOpe {
         weightReq.setOrderId(weightMsg.getMessage().getOrder().getOrderId());
         weightReq.setDeductWeight(0);
         weightReq.setDriverId(weightMsg.getMessage().getOrder().getDriverId());
-        NetDataOpe.Weight.saveWeight(getActivity(),weightReq,adapter);
+        NetDataOpe.Weight.saveWeight(context,weightReq,adapter);
     }
 
     public WeightMsg getWeightMsg() {

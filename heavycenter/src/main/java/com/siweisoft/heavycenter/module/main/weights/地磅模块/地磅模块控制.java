@@ -1,4 +1,4 @@
-package com.siweisoft.heavycenter.module.main.weights.weights;
+package com.siweisoft.heavycenter.module.main.weights.地磅模块;
 
 //by summer on 2017-12-11.
 
@@ -24,16 +24,16 @@ import org.json.JSONObject;
 
 import butterknife.OnClick;
 
-public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
+public class 地磅模块控制 extends AppFrag<地磅模块界面,地磅模块数据> {
 
 
     @Override
-    protected void onFristVisibleDelayInit() {
-        WeightsDAOpe.listWeight(getActivity(),new UINetAdapter<WeightListRes>(this) {
+    protected void on第一次显示延迟加载() {
+        地磅模块数据.get地磅列表(getActivity(),new UINetAdapter<WeightListRes>(this) {
             @Override
             public void onSuccess(WeightListRes o) {
                 super.onSuccess(o);
-                getP().getU().initPages(getFrag(),getP().getD().initPages());
+                getP().getU().init地磅仪表(getBaseUIFrag(),getP().getD().get地磅们(getBaseUIFrag()));
             }
         });
     }
@@ -52,13 +52,13 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
                 }
                 break;
             case R.id.tv_save:
-                WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages().get(0);
+                WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages(getBaseUIFrag()).get(0);
                 if(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh()!=0&&getP().getD().getWeightMsg()!=null&&getP().getD().getWeightMsg().getMessage()!=null){
                     getP().getD().getWeightMsg().getMessage().setWeigh(weigtFrag.getP().getD().getWeightMsg().getMessage().getWeigh());
                 }
                 getP().getU().showBottomView(true);
                 if(weigtFrag.getP().getD().getWeightMsg()!=null&&weigtFrag.getP().getD().getWeightMsg().getMessage()!=null){
-                    getP().getD().saveWeight(getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(this,true) {
+                    getP().getD().saveWeight(getBaseAct(),getP().getD().getWeightMsg(), new UINetAdapter<SaveWeightRes>(this,true) {
                         @Override
                         public void onSuccess(SaveWeightRes o) {
                             super.onSuccess(o);
@@ -81,7 +81,7 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void XXX(String str) {
+    public void get推送消息(String str) {
         JSONObject jsonObject=null;
         try {
             jsonObject = new JSONObject(str);
@@ -100,19 +100,19 @@ public class WeightsFrag extends AppFrag<WeightsUIOpe,WeightsDAOpe> {
         getP().getD().setWeightMsg(weightMsg);
         getP().getU().initUI(getP().getD().getWeightMsg());
         getP().getU().bind.bottom.tvSave.setVisibility(View.VISIBLE);
-        initPage(weightMsg);
+        go刷新地磅仪表(weightMsg);
     }
 
-    public void initPage(WeightMsg weightMsg){
-           for(int i=0;i<getP().getD().getPages().size();i++){
-               WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages().get(i);
+    public void go刷新地磅仪表(WeightMsg weightMsg){
+           for(int i=0;i<getP().getD().getPages(getBaseUIFrag()).size();i++){
+               WeigtFrag weigtFrag = (WeigtFrag) getP().getD().getPages(getBaseUIFrag()).get(i);
                weigtFrag.getP().getD().setWeightMsg(weightMsg);
                 weigtFrag.refresh();
            }
     }
 
     @Override
-    protected boolean registerEventBus() {
+    protected boolean is注册事件总线() {
         return true;
     }
 }

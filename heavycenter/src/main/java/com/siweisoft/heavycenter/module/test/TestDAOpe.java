@@ -8,7 +8,4 @@ import com.android.lib.base.ope.BaseDAOpe;
  */
 
 public class TestDAOpe extends BaseDAOpe {
-    public TestDAOpe(Context context) {
-        super(context);
-    }
 }

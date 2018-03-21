@@ -59,16 +59,16 @@ public class DetailDAOpe extends AppDAOpe {
     }
 
 
-    public void updateHead(String path,String type, NetI<UpdateHeadResBean> adapter){
+    public void updateHead(Context context,String path,String type, NetI<UpdateHeadResBean> adapter){
         List<KeyValue> keyValues = new ArrayList<>();
         keyValues.add(new KeyValue(UpdateHeadReqBean.用户id, LocalValue.get登录返回信息().getUserId()));
         keyValues.add(new KeyValue(UpdateHeadReqBean.文件类型,type));
         keyValues.add(new KeyValue(UpdateHeadReqBean.文件路径,new File(path)));
-        NetDataOpe.User.uploadPhoto(getActivity(),keyValues,adapter);
+        NetDataOpe.User.uploadPhoto(context,keyValues,adapter);
     }
 
-    public void updateCar(UpdateCarReq updateCarReq,NetI<UpdateCarRes> adapter){
-        NetDataOpe.Mana.Car.updateCar(getActivity(),updateCarReq,adapter);
+    public void updateCar(Context context,UpdateCarReq updateCarReq,NetI<UpdateCarRes> adapter){
+        NetDataOpe.Mana.Car.updateCar(context,updateCarReq,adapter);
     }
 
     public UpdateCarReq getUpdateCarReq(CarsResBean.CarInfoRes carinfo) {
@@ -89,13 +89,13 @@ public class DetailDAOpe extends AppDAOpe {
         return carNewReqBean;
     }
 
-    public void newCar(CarNewReqBean carNewReqBean, NetI<CarsResBean.CarInfoRes> adapter){
-        NetDataOpe.Mana.Car.newCar(getActivity(),carNewReqBean,adapter);
+    public void newCar(Context context,CarNewReqBean carNewReqBean, NetI<CarsResBean.CarInfoRes> adapter){
+        NetDataOpe.Mana.Car.newCar(context,carNewReqBean,adapter);
     }
 
 
-    public void infoCar(CarInfoReq carInfoReq, NetI<CarsResBean.CarInfoRes> adapter){
-        NetDataOpe.Mana.Car.infoCar(getActivity(),carInfoReq,adapter);
+    public void infoCar(Context context,CarInfoReq carInfoReq, NetI<CarsResBean.CarInfoRes> adapter){
+        NetDataOpe.Mana.Car.infoCar(context,carInfoReq,adapter);
     }
 
 
@@ -115,11 +115,11 @@ public class DetailDAOpe extends AppDAOpe {
         NetDataOpe.Mana.Car.infoCar(context,carInfoReq,adapter);
     }
 
-    public void drvers(String type,CarsResBean.CarInfoRes info,NetI<ArrayList<DriverRes>> adapter){
+    public void drvers(Context context,String type,CarsResBean.CarInfoRes info,NetI<ArrayList<DriverRes>> adapter){
         DriversReq driversReq = new DriversReq();
         driversReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         driversReq.setVehicleId(info.getVehicleId());
-        NetDataOpe.Unit.drvers(getActivity(),driversReq,adapter);
+        NetDataOpe.Unit.drvers(context,driversReq,adapter);
     }
 
     public String getType() {
@@ -140,9 +140,9 @@ public class DetailDAOpe extends AppDAOpe {
         return carInfoReq;
     }
 
-    public void bindCar(BindCarReq bindCarReq,NetI<BindCarRes> adapter){
+    public void bindCar(Context context,BindCarReq bindCarReq,NetI<BindCarRes> adapter){
         bindCarReq.setEditer(LocalValue.get登录返回信息().getUserId());
-        NetDataOpe.Mana.Car.bindCar(getActivity(),bindCarReq,adapter);
+        NetDataOpe.Mana.Car.bindCar(context,bindCarReq,adapter);
     }
 
 

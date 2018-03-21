@@ -59,7 +59,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
                switch (v.getId()){
                    case R.id.smMenuViewRight:
                        final StoreDetail data  = (StoreDetail) v.getTag(R.id.data);
-                       getP().getD().statusStore(getP().getU().getStatusStoresReqBean(getP().getD().getStatusStoresReqBean(),data.getWarehouseId(),data.getStatus()), new UINetAdapter<StatusStoresResBean>(this) {
+                       getP().getD().statusStore(getBaseAct(),getP().getU().getStatusStoresReqBean(getP().getD().getStatusStoresReqBean(),data.getWarehouseId(),data.getStatus()), new UINetAdapter<StatusStoresResBean>(this) {
                            @Override
                            public void onSuccess(StatusStoresResBean o) {
                                data.setStatus(1-data.getStatus());
@@ -93,7 +93,7 @@ public class StoreFrag extends AppFrag<StoreUIOpe,StoreDAOpe> implements ViewLis
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().storesInfo(getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库,new UINetAdapter<StoresResBean>(this) {
+        getP().getD().storesInfo(getBaseAct(),getArguments().getInt(ValueConstant.DATA_POSITION2,-1)==选择一个仓库,new UINetAdapter<StoresResBean>(this) {
             @Override
             public void onSuccess(StoresResBean o) {
                 //o = new Test().getStoresResBean();

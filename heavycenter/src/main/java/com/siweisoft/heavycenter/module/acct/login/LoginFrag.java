@@ -37,7 +37,7 @@ public class LoginFrag extends AppFrag<LoginUIOpe,LoginDAOpe> {
         switch (v.getId()){
             case R.id.login:
                 if(getP().getU().is输入完全()){
-                    getP().getD().go登录(getP().getU().getLoginReqBean(), new UINetAdapter<LoginResBean>(this,UINetAdapter.Loading,true) {
+                    getP().getD().go登录(getBaseAct(),getP().getU().getLoginReqBean(), new UINetAdapter<LoginResBean>(this,UINetAdapter.Loading,true) {
                         @Override
                         public void onSuccess(LoginResBean loginResBean) {
                             LocalValue.save登录参数(getP().getU().getLoginReqBean());

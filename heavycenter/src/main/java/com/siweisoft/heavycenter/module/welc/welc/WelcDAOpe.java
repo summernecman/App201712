@@ -16,14 +16,14 @@ public class WelcDAOpe extends AppDAOpe {
 
 
 
-    public void get用户信息(NetI<LoginResBean> adapter){
+    public void get用户信息(Context context,NetI<LoginResBean> adapter){
         UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
         userInfoReqBean.setId(LocalValue.get登录返回信息().getUserId());
-        NetDataOpe.User.get用户信息(getActivity(),userInfoReqBean,adapter);
+        NetDataOpe.User.get用户信息(context,userInfoReqBean,adapter);
     }
 
-    public void go登录(NetI<LoginResBean> adapter){
-        NetDataOpe.onLogin(getActivity(),LocalValue.get登录参数(),adapter);
+    public void go登录(Context context,NetI<LoginResBean> adapter){
+        NetDataOpe.onLogin(context,LocalValue.get登录参数(),adapter);
     }
 
     public void initWeightDA(){

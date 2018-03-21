@@ -2,9 +2,11 @@ package com.siweisoft.heavycenter.module.main.orders;
 
 //by summer on 2017-12-11.
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.network.news.NetI;
@@ -30,20 +32,20 @@ public class OrdersDAOpe extends BaseDAOpe {
     private String 较多的订单类型 = "S";
 
 
-    public ArrayList<Fragment> initPages(){
+    public ArrayList<Fragment> initPages(BaseUIFrag frag){
         pages.clear();
         for(int i=0;i<statuss.length;i++){
-            OrderFrag orderFrag = OrderFrag.getInstance(statuss[i],getFrag().get容器());
-            orderFrag.getP().getD().setOrdersFrag((OrdersFrag) getFrag());
+            OrderFrag orderFrag = OrderFrag.getInstance(statuss[i],frag.get容器());
+            orderFrag.getP().getD().setOrdersFrag((OrdersFrag) frag);
             pages.add(orderFrag);
         }
         return pages;
     }
 
-    public void getOrderCount(NetI<OrderNumRes> adapter){
+    public void getOrderCount(Context context, NetI<OrderNumRes> adapter){
         OrderNumReq orderNumReq = new OrderNumReq();
         orderNumReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
-        NetDataOpe.Order.getOrderCount(getActivity(),orderNumReq,adapter);
+        NetDataOpe.Order.getOrderCount(context,orderNumReq,adapter);
     }
 
 

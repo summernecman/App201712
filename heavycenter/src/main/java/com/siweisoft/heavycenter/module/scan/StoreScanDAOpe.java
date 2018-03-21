@@ -5,6 +5,7 @@ package com.siweisoft.heavycenter.module.scan;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.android.lib.base.activity.BaseUIActivity;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.ToastUtil;
@@ -20,19 +21,16 @@ public class StoreScanDAOpe extends BaseDAOpe {
     public StoreScanDAOpe() {
     }
 
-    public StoreScanDAOpe(Context context) {
-        super(context);
-    }
 
-    public void logic(final AppFrag appFrag, UserInfo userInfo){
+    public void logic(Context context,final AppFrag appFrag, UserInfo userInfo){
 
         if((LocalValue.get登录返回信息().getUserType()== UserTypeReqBean.驾驶员)){
-            ToastUtil.getInstance().showShort(getActivity(),"称重，显示对应消息，缓存或发送请求");
+            ToastUtil.getInstance().showShort(context,"称重，显示对应消息，缓存或发送请求");
             return;
         }
 
         if((LocalValue.get登录返回信息().getUserType()== UserTypeReqBean.非驾驶员)&&(LocalValue.get登录返回信息().getBindCompanyState()==LoginResBean.BIND_UNIT_STATE_BINDED)){
-            ToastUtil.getInstance().showShort(getActivity(),"仓库详情");
+            ToastUtil.getInstance().showShort(context,"仓库详情");
             Bundle bundle = new Bundle();
             int id = 0;
             try {
@@ -41,7 +39,7 @@ public class StoreScanDAOpe extends BaseDAOpe {
                 e.printStackTrace();
             }
             bundle.putInt(ValueConstant.DATA_DATA,id);
-            FragManager2.getInstance().start(getActivity(),getActivity().getMoudle(),new DetailFrag(),bundle);
+            FragManager2.getInstance().start((BaseUIActivity) context,appFrag.get容器(),new DetailFrag(),bundle);
             return;
         }
 

@@ -20,7 +20,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         switch (v.getId()){
             case R.id.ftv_right2:
                 if(getP().getU().canGo()){
-                    getP().getD().newStore(getP().getU().getNewStoreReqBean(getP().getD().getNewStoreReqBean()), new UINetAdapter<NewStoreResBean>(this,true) {
+                    getP().getD().newStore(getBaseAct(),getP().getU().getNewStoreReqBean(getP().getD().getNewStoreReqBean()), new UINetAdapter<NewStoreResBean>(this,true) {
                         @Override
                         public void onSuccess(NewStoreResBean o) {
                             getArguments().putBoolean(ValueConstant.FARG_TYPE,true);

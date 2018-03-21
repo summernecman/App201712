@@ -37,7 +37,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
     @Override
     public void initdelay() {
         super.initdelay();
-        getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<OrdersRes.ResultsBean>(this,UINetAdapter.Loading) {
+        getP().getD().detail(getBaseAct(),getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<OrdersRes.ResultsBean>(this,UINetAdapter.Loading) {
             @Override
             public void onSuccess(OrdersRes.ResultsBean o) {
                 //o= new Test().getOrdersRes().getResults().get(0);
@@ -80,8 +80,8 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                     return;
                 }
                 final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) bundle.getSerializable(ValueConstant.DATA_DATA);
-                if(!getP().getD().haveAddCar(bean)){
-                    getP().getD().addCar(bean.getVehicleId(), AddCarReq.添加,new NetAdapter<AddCarRes>(getContext()){
+                if(!getP().getD().haveAddCar(getBaseAct(),bean)){
+                    getP().getD().addCar(getBaseAct(),bean.getVehicleId(), AddCarReq.添加,new NetAdapter<AddCarRes>(getContext()){
                         @Override
                         public void onResult(boolean success, String msg, AddCarRes o) {
                             super.onResult(success, msg, o);
@@ -103,7 +103,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> implements View
                 switch (v.getId()){
                     case R.id.smMenuViewRight:
                         final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
-                        getP().getD().addCar(bean.getVehicleId(), AddCarReq.移除,new NetAdapter<AddCarRes>(getContext()){
+                        getP().getD().addCar(getBaseAct(),bean.getVehicleId(), AddCarReq.移除,new NetAdapter<AddCarRes>(getContext()){
                             @Override
                             public void onResult(boolean success, String msg, AddCarRes o) {
                                 super.onResult(success, msg, o);

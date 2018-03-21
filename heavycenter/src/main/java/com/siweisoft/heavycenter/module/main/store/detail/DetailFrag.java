@@ -26,7 +26,7 @@ public class DetailFrag extends AppFrag<DetailUIOpe,DetailDAOpe> {
     }
 
     private void refresh(boolean showload){
-        getP().getD().detail(getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<StoreDetail>(this,showload?UINetAdapter.Loading:0) {
+        getP().getD().detail(getBaseAct(),getArguments().getInt(ValueConstant.DATA_DATA), new UINetAdapter<StoreDetail>(this,showload?UINetAdapter.Loading:0) {
             @Override
             public void onSuccess(StoreDetail o) {
                 //o = new Test().getStoreDetail();

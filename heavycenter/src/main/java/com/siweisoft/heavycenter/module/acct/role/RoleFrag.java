@@ -40,13 +40,13 @@ public class RoleFrag extends AppFrag<RoleUIOpe,RoleDAOpe>{
             public void onClick(final View v) {
                 switch (v.getId()){
                     case R.id.tv_sure:
-                        getP().getD().login(LocalValue.get登录参数(), new UINetAdapter<LoginResBean>(RoleFrag.this,UINetAdapter.Loading) {
+                        getP().getD().login(getBaseAct(),LocalValue.get登录参数(), new UINetAdapter<LoginResBean>(RoleFrag.this,UINetAdapter.Loading) {
                             @Override
                             public void onSuccess(LoginResBean o) {
                                 getP().getU().getUserTypeReqBean().setId(o.getUserId());
                                 getP().getU().getUserTypeReqBean().setUserType((R.id.tv_driver==vv.getId())?UserTypeReqBean.驾驶员 :UserTypeReqBean.非驾驶员);
                                 LocalValue.save登录返回信息(o);
-                                getP().getD().setUserType(getP().getU().getUserTypeReqBean(), new UINetAdapter<UserTypeResBean>(RoleFrag.this,UINetAdapter.Loading) {
+                                getP().getD().setUserType(getBaseAct(),getP().getU().getUserTypeReqBean(), new UINetAdapter<UserTypeResBean>(RoleFrag.this,UINetAdapter.Loading) {
                                     @Override
                                     public void onSuccess(UserTypeResBean o) {
                                         ToastUtil.getInstance().showShort(getContext(),"设置用户角色成功");

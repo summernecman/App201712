@@ -109,7 +109,7 @@ public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
     }
 
     @Override
-    protected boolean registerEventBus() {
+    protected boolean is注册事件总线() {
         return true;
     }
 }

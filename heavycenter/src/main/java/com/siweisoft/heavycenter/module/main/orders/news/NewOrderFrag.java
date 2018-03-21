@@ -103,7 +103,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
                 break;
             case R.id.ftv_right2:
                 if(getP().getU().canGo()){
-                    getP().getD().newOrder(getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(this,UINetAdapter.Loading,true) {
+                    getP().getD().newOrder(getBaseAct(),getP().getU().getNewsOrderReqBean(getP().getD().getNewsOrderReqBean()), new UINetAdapter<NewOrderRes>(this,UINetAdapter.Loading,true) {
 
                         @Override
                         public void onResult(boolean success, String msg, NewOrderRes o) {
@@ -179,7 +179,7 @@ public class NewOrderFrag  extends AppFrag<NewOrderUIOpe,NewOrderDAOpe>{
 
 
     public void setUnit(int id){
-        getP().getD().getInfo(id, new UINetAdapter<UnitInfo>(getActivity()) {
+        getP().getD().getInfo(getBaseAct(),id, new UINetAdapter<UnitInfo>(getActivity()) {
             @Override
             public void onResult(boolean success, String msg, UnitInfo unitInfo) {
                 super.onResult(success, msg, unitInfo);

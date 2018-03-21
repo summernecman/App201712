@@ -57,7 +57,7 @@ public class NewFrag extends AppFrag<NewUIOpe,NewDAOpe> {
         switch (v.getId()){
             case R.id.enter:
                 if(getP().getU().canGo()){
-                    getP().getD().addUser(getP().getU().getUser(getP().getD().getReqBean()), new UINetAdapter<AddUserResBean>(this,true) {
+                    getP().getD().addUser(getBaseAct(),getP().getU().getUser(getP().getD().getReqBean()), new UINetAdapter<AddUserResBean>(this,true) {
                         @Override
                         public void onSuccess(AddUserResBean o) {
                             getArguments().putBoolean(ValueConstant.FARG_TYPE,true);

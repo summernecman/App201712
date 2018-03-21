@@ -2,6 +2,8 @@ package com.siweisoft.heavycenter.module.mana.car.car;
 
 //by summer on 2017-12-19.
 
+import android.content.Context;
+
 import com.android.lib.network.news.NetI;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.NullUtil;
@@ -43,8 +45,8 @@ public class CarDAOpe extends AppDAOpe {
         carsReqBean.setWhat(moudle);
     }
 
-    public void Cars(CarsReqBean carsReqBean,NetI<CarsResBean> adapter){
-        NetDataOpe.Mana.Car.Cars(getActivity(),carsReqBean,adapter);
+    public void Cars(Context context, CarsReqBean carsReqBean, NetI<CarsResBean> adapter){
+        NetDataOpe.Mana.Car.Cars(context,carsReqBean,adapter);
     }
 
     public Integer getReqStatus(int status){
@@ -57,12 +59,12 @@ public class CarDAOpe extends AppDAOpe {
     }
 
 
-    public void statusCar(int carid, int status, NetI<StopCarResBean> adapter){
+    public void statusCar(Context context,int carid, int status, NetI<StopCarResBean> adapter){
         StopCarReqBean reqBean = new StopCarReqBean();
         reqBean.setEditer(LocalValue.get登录返回信息().getUserId());
         reqBean.setId(carid);
         reqBean.setStatus(status== CarsResBean.CarInfoRes.STATUS_OFF? CarsResBean.CarInfoRes.STATUS_ON: CarsResBean.CarInfoRes.STATUS_OFF);
-        NetDataOpe.Mana.Car.statusCar(getActivity(),reqBean,adapter);
+        NetDataOpe.Mana.Car.statusCar(context,reqBean,adapter);
     }
 
 

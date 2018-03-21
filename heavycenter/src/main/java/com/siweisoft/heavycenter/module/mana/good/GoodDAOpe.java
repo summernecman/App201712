@@ -27,11 +27,11 @@ public class GoodDAOpe extends AppDAOpe {
         return data;
     }
 
-    public void listGood(NetI<GoodListRes> adapter){
+    public void listGood(Context context,NetI<GoodListRes> adapter){
         GoodListReq goodListReq = new GoodListReq();
         goodListReq.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         goodListReq.setIsApp(1);
-        NetDataOpe.Mana.Good.listGood(getActivity(),goodListReq,adapter);
+        NetDataOpe.Mana.Good.listGood(context,goodListReq,adapter);
     }
 
     public static void goodStatus(Context context, int id, int status, NetI<GoodStatusRes> adapter){

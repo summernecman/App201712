@@ -21,13 +21,13 @@ public class CarsDAOpe extends AppDAOpe {
 
 
 
-    public void initPages(){
+    public void initPages(BaseUIFrag frag){
         pages.clear();
         String[] str = new String[]{CarsReqBean.WHAT_FH,CarsReqBean.WHAT_MY,CarsReqBean.WHAT_SH};
         for(int i=0;i<str.length;i++){
             CarFrag sendFrag = CarFrag.getInstance("车辆列表",str[i],CarValue.管理车辆);
-            sendFrag.getArguments().putString(ValueConstant.容器,getFrag().get容器());
-            sendFrag.getP().getD().setCarsFrag((CarsFrag) getFrag());
+            sendFrag.getArguments().putString(ValueConstant.容器,frag.get容器());
+            sendFrag.getP().getD().setCarsFrag((CarsFrag) frag);
             pages.add(sendFrag);
         }
     }

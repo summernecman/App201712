@@ -270,7 +270,7 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
     }
 
     @Override
-    protected boolean registerEventBus() {
+    protected boolean is注册事件总线() {
         return true;
     }
 }

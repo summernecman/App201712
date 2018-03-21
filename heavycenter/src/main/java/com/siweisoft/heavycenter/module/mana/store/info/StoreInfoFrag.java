@@ -41,7 +41,7 @@ public class StoreInfoFrag extends AppFrag<StoreInfoUIOpe,StoreInfoDAOpe>{
                 switch (getArguments().getString(StoreInfoValue.仓库类型)){
                     case StoreInfoValue.修改仓库:
                         if(getP().getU().canGo()){
-                            getP().getD().update(getP().getU().getUpdateStoreReq(getP().getD().getUpdateStoreReq(getP().getD().getStoreDetail())), new UINetAdapter<UpdateStoreRes>(this) {
+                            getP().getD().update(getBaseAct(),getP().getU().getUpdateStoreReq(getP().getD().getUpdateStoreReq(getP().getD().getStoreDetail())), new UINetAdapter<UpdateStoreRes>(this) {
                                 @Override
                                 public void onSuccess(UpdateStoreRes o) {
                                     getArguments().putBoolean(ValueConstant.FARG_TYPE,true);
@@ -52,7 +52,7 @@ public class StoreInfoFrag extends AppFrag<StoreInfoUIOpe,StoreInfoDAOpe>{
                         break;
                     case StoreInfoValue.新建仓库:
                         if(getP().getU().canGo()){
-                            getP().getD().newStore(getP().getU().getNewStoreReqBean(getP().getD().getNewStoreReqBean()), new UINetAdapter<NewStoreResBean>(this) {
+                            getP().getD().newStore(getBaseAct(),getP().getU().getNewStoreReqBean(getP().getD().getNewStoreReqBean()), new UINetAdapter<NewStoreResBean>(this) {
                                 @Override
                                 public void onSuccess(NewStoreResBean o) {
                                     getArguments().putBoolean(ValueConstant.FARG_TYPE,true);

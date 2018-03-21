@@ -12,7 +12,4 @@ public class AppDAOpe extends BaseDAOpe {
 
     }
 
-    public AppDAOpe(Context context) {
-        super(context);
-    }
 }

@@ -58,7 +58,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
                 switch (v.getId()){
                     case R.id.smMenuViewRight:
                         final CarsResBean.CarInfoRes bean = (CarsResBean.CarInfoRes) v.getTag(R.id.data);
-                        getP().getD().statusCar(bean.getVehicleId(), bean.getStatus(), new UINetAdapter<StopCarResBean>(this,true) {
+                        getP().getD().statusCar(getBaseAct(),bean.getVehicleId(), bean.getStatus(), new UINetAdapter<StopCarResBean>(this,true) {
                             @Override
                             public void onSuccess(StopCarResBean o) {
                                 bean.setStatus(bean.getStatus()== CarsResBean.CarInfoRes.STATUS_ON? CarsResBean.CarInfoRes.STATUS_OFF: CarsResBean.CarInfoRes.STATUS_ON);
@@ -90,7 +90,7 @@ public class CarFrag extends AppFrag<CarUIOpe,CarDAOpe> implements ViewListener,
 
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
-        getP().getD().Cars(getP().getD().getCarsReqBean(),new UINetAdapter<CarsResBean>(this) {
+        getP().getD().Cars(getBaseAct(),getP().getD().getCarsReqBean(),new UINetAdapter<CarsResBean>(this) {
             @Override
             public void onSuccess(CarsResBean o) {
                // o = new Test().getCarsResBean();

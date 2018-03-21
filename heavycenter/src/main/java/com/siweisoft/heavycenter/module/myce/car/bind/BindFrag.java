@@ -44,7 +44,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
                 break;
             case R.id.tv_y:
                 if(getP().getU().canSearchGo()){
-                    getP().getD().infoCar(getP().getU().getInputText(), new UINetAdapter<CarsResBean.CarInfoRes>(this) {
+                    getP().getD().infoCar(getBaseAct(),getP().getU().getInputText(), new UINetAdapter<CarsResBean.CarInfoRes>(this) {
                         @Override
                         public void onResult(boolean success, String msg, CarsResBean.CarInfoRes o) {
                             super.onResult(success, msg, o);
@@ -86,7 +86,7 @@ public class BindFrag extends AppFrag<BindUIOpe,BindDAOpe> implements ViewListen
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getU().clearKey();
-        getP().getD().Cars(new UINetAdapter<CarsResBean>(getActivity()) {
+        getP().getD().Cars(getBaseAct(),new UINetAdapter<CarsResBean>(getActivity()) {
             @Override
             public void onResult(boolean success, String msg, CarsResBean o) {
                 super.onResult(success, msg, o);

@@ -33,8 +33,8 @@ public class StoreInfoDAOpe extends BaseDAOpe {
     }
 
 
-    public void update(UpdateStoreReq updateStoreReq, NetI<UpdateStoreRes> adapter){
-        NetDataOpe.Mana.Store.update(getActivity(),updateStoreReq,adapter);
+    public void update(Context context,UpdateStoreReq updateStoreReq, NetI<UpdateStoreRes> adapter){
+        NetDataOpe.Mana.Store.update(context,updateStoreReq,adapter);
     }
 
 
@@ -45,8 +45,8 @@ public class StoreInfoDAOpe extends BaseDAOpe {
     }
 
 
-    public void newStore(NewStoreReqBean newStoreReqBean, NetI<NewStoreResBean> adapter){
-        NetDataOpe.Mana.Store.newStore(getActivity(),newStoreReqBean,adapter);
+    public void newStore(Context context,NewStoreReqBean newStoreReqBean, NetI<NewStoreResBean> adapter){
+        NetDataOpe.Mana.Store.newStore(context,newStoreReqBean,adapter);
     }
 
     public NewStoreReqBean getNewStoreReqBean() {

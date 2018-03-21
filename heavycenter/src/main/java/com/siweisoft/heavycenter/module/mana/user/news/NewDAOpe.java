@@ -22,8 +22,8 @@ public class NewDAOpe extends AppDAOpe {
 
     private LoginResBean userInfo;
 
-    public void addUser(AddUserReqBean reqBean, NetI<AddUserResBean> adapter){
-        NetDataOpe.Mana.User.addUser(getActivity(),reqBean,adapter);
+    public void addUser(Context context,AddUserReqBean reqBean, NetI<AddUserResBean> adapter){
+        NetDataOpe.Mana.User.addUser(context,reqBean,adapter);
     }
 
     public static void setUserRole(Context context, int id,String role,NetI<UserRoleRes> adapter){

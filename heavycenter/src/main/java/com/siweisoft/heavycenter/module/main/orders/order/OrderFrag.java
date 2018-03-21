@@ -37,7 +37,7 @@ public class OrderFrag extends AppFrag<OrderUIOpe,OrderDAOpe> implements ViewLis
     }
 
     @Override
-    protected void onFristVisibleDelayInit() {
+    protected void on第一次显示延迟加载() {
         getP().getU().initRefresh(this,this);
         if(StringUtil.equals(OrderDAOpe.新订单,getP().getD().getSTATUS())){
             getP().getU().autoRefresh();

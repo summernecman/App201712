@@ -40,17 +40,17 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
                         StoresResBean storesResBean = new StoresResBean();
                         storesResBean.getResults().add(o);
 
-                        getP().getD().setStoresResBean(storesResBean);
+                        getP().getD().setStoresResBean(getBaseAct(),storesResBean);
                         getP().getU().LoadListData(getP().getD().getStoresResBean());
                         getP().getD().setInitdata(true);
                     }
                 });
                 break;
             case CheckValue.盘点所有仓库:
-                getP().getD().storesInfo(new UINetAdapter<StoresResBean>(getBaseUIAct()) {
+                getP().getD().storesInfo(getBaseAct(),new UINetAdapter<StoresResBean>(getBaseUIAct()) {
                     @Override
                     public void onSuccess(StoresResBean o) {
-                        getP().getD().setStoresResBean(o);
+                        getP().getD().setStoresResBean(getBaseAct(),o);
                         getP().getU().LoadListData(getP().getD().getStoresResBean());
                         getP().getD().setInitdata(true);
                     }
@@ -64,13 +64,13 @@ public class CheckFrag extends AppFrag<CheckUIOpe,CheckDAOpe> {
         super.onClick(v);
         switch (v.getId()){
             case R.id.ftv_right2:
-                if(getP().getD().canGo()){
+                if(getP().getD().canGo(getBaseAct())){
                     if(!getP().getD().changedData()){
                         ToastUtil.getInstance().showShort(getActivity(),"库存没有变化，取消盘点");
                         getBaseUIAct().onBackPressed();
                         return;
                     }
-                    getP().getD().checkStore(getP().getD().getCheckStoreReqBean(getP().getD().getStoresResBean()), new UINetAdapter<CheckStoreResBean>(this,true) {
+                    getP().getD().checkStore(getBaseAct(),getP().getD().getCheckStoreReqBean(getP().getD().getStoresResBean()), new UINetAdapter<CheckStoreResBean>(this,true) {
                         @Override
                         public void onResult(boolean success, String msg, CheckStoreResBean o) {
                             super.onResult(success, msg, o);

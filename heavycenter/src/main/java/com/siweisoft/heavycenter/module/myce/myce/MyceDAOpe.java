@@ -27,22 +27,22 @@ public class MyceDAOpe extends AppDAOpe {
 
 
 
-    public void uploadPhoto(File f, String type, NetI<UpdateHeadResBean> adapter){
+    public void uploadPhoto(Context context,File f, String type, NetI<UpdateHeadResBean> adapter){
         List<KeyValue> keyValues = new ArrayList<>();
         keyValues.add(new KeyValue(UpdateHeadReqBean.用户id,LocalValue.get登录返回信息().getUserId()));
         keyValues.add(new KeyValue(UpdateHeadReqBean.文件类型,type));
         keyValues.add(new KeyValue(UpdateHeadReqBean.文件路径,f));
-        NetDataOpe.User.uploadPhoto(getActivity(),keyValues,adapter);
+        NetDataOpe.User.uploadPhoto(context,keyValues,adapter);
     }
 
-    public void updateHead(String headfile,NetI<UpdateHeadResBean> adapter){
+    public void updateHead(Context context,String headfile,NetI<UpdateHeadResBean> adapter){
         UpdateHeadReqBean updateHeadReqBean = new UpdateHeadReqBean();
         updateHeadReqBean.setId(LocalValue.get登录返回信息().getUserId());
         updateHeadReqBean.setMyFile(headfile);
-        NetDataOpe.User.updatePhoto(getActivity(),updateHeadReqBean,adapter);
+        NetDataOpe.User.updatePhoto(context,updateHeadReqBean,adapter);
     }
 
-    public void updateCar(NetI<UpdateCarRes> adapter){
+    public void updateCar(Context context,NetI<UpdateCarRes> adapter){
         UpdateCarReq updateCarReq = new UpdateCarReq();
         updateCarReq.setId(LocalValue.get登录返回信息().getVehicleId());
         updateCarReq.setCarLicenseNo(LocalValue.get登录返回信息().getCarLicenseNo());
@@ -53,16 +53,16 @@ public class MyceDAOpe extends AppDAOpe {
         updateCarReq.setEmptyWeight(LocalValue.get登录返回信息().getEmptyWeight());
         updateCarReq.setIcCard(LocalValue.get登录返回信息().getIcCard());
         updateCarReq.setEditer(LocalValue.get登录返回信息().getUserId());
-        NetDataOpe.Mana.Car.updateCar(getActivity(),updateCarReq,adapter);
+        NetDataOpe.Mana.Car.updateCar(context,updateCarReq,adapter);
     }
 
 
-    public void getInfo(NetI<LoginResBean> adapter){
+    public void getInfo(Context context,NetI<LoginResBean> adapter){
 
         UserInfoReqBean userInfoReqBean = new UserInfoReqBean();
         userInfoReqBean.setId(LocalValue.get登录返回信息().getUserId());
         userInfoReqBean.setIsApp(1);
-        NetDataOpe.User.get用户信息(getActivity(),userInfoReqBean,adapter);
+        NetDataOpe.User.get用户信息(context,userInfoReqBean,adapter);
     }
 
 }

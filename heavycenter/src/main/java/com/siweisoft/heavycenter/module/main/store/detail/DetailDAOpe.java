@@ -25,10 +25,10 @@ public class DetailDAOpe extends BaseDAOpe {
         return data;
     }
 
-    public void detail(int id, NetI<StoreDetail> adapter){
+    public void detail(Context context,int id, NetI<StoreDetail> adapter){
         StoreDetailReq storeDetailReq = new StoreDetailReq();
         storeDetailReq.setWarehouseId(id);
-        NetDataOpe.Mana.Store.detail(getActivity(),storeDetailReq,adapter);
+        NetDataOpe.Mana.Store.detail(context,storeDetailReq,adapter);
     }
 
     public StoreDetail getStoreDetail() {

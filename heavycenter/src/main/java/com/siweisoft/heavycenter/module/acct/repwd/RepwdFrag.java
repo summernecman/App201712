@@ -29,7 +29,7 @@ public class RepwdFrag extends AppFrag<RepwdUIOpe,RepwdDAOpe> {
         switch (v.getId()){
             case R.id.regist:
                 if(getP().getU().go()){
-                    getP().getD().updatePwd(getP().getU().getforGetReqBean(), new com.android.lib.network.news.UINetAdapter<ForGetResBean>(this,true) {
+                    getP().getD().updatePwd(getBaseAct(),getP().getU().getforGetReqBean(), new com.android.lib.network.news.UINetAdapter<ForGetResBean>(this,true) {
                         @Override
                         public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
                             if(baseResBean.getCode().equals("200")){
@@ -45,7 +45,7 @@ public class RepwdFrag extends AppFrag<RepwdUIOpe,RepwdDAOpe> {
                 break;
             case R.id.tv_code:
                 if(getP().getU().canGetCode()){
-                    getP().getD().getCode(getP().getU().getCodeReqBean());
+                    getP().getD().getCode(getBaseAct(),getP().getU().getCodeReqBean());
                     getP().getD().getThreadUtil().run(this,v,60,1000, new OnLoadingInterf() {
                         @Override
                         public Void onStarLoading(Object o) {

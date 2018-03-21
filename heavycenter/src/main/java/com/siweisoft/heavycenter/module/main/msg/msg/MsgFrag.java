@@ -34,7 +34,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
     }
 
     @Override
-    protected void onFristVisibleDelayInit() {
+    protected void on第一次显示延迟加载() {
         getP().getU().initRefresh(this,this);
         if(StringUtil.equals(MsgsReqBean.MESSAGE_CATE_ALL,getArguments().getString(ValueConstant.DATA_TYPE))){
             getP().getU().autoRefresh();
@@ -46,7 +46,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
     @Override
     public void onLoadmore(RefreshLayout refreshlayout) {
         getP().getD().setPageindex(getP().getD().getPageindex()+1);
-        getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_TYPE),new UINetAdapter<MsgsResBean>(this) {
+        getP().getD().getMsgSys(getBaseAct(),getArguments().getString(ValueConstant.DATA_TYPE),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
                 //o= new Test().getMsgsResBean();
@@ -59,7 +59,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
     @Override
     public void onRefresh(RefreshLayout refreshlayout) {
         getP().getD().setPageindex(NetValue.PAGE_INDEX_START);
-        getP().getD().getMsgSys(getArguments().getString(ValueConstant.DATA_TYPE),new UINetAdapter<MsgsResBean>(this) {
+        getP().getD().getMsgSys(getBaseAct(),getArguments().getString(ValueConstant.DATA_TYPE),new UINetAdapter<MsgsResBean>(this) {
             @Override
             public void onSuccess(MsgsResBean o) {
                 //o= new Test().getMsgsResBean();
@@ -97,7 +97,7 @@ public class MsgFrag extends AppFrag<MsgUIOpe,MsgDAOpe> implements OnRefreshList
                     return;
                 }
                 final int finalAuditstate = auditstate;
-                getP().getD().dealMss(data.getMessageId(), status[0], new UINetAdapter<MsgDealResBean>(getContext()) {
+                getP().getD().dealMss(getBaseAct(),data.getMessageId(), status[0], new UINetAdapter<MsgDealResBean>(getContext()) {
                     @Override
                     public void onSuccess(MsgDealResBean o) {
                         data.setAuditState(finalAuditstate);

@@ -1,6 +1,5 @@
 package com.android.lib.base.fragment;
 
-import android.content.Context;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -55,8 +54,11 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     private FragManager2 fragM;
 
+    private BaseUIFrag baseUIFrag;
+
 
     public BaseUIFrag() {
+        baseUIFrag = this;
         LogUtil.E(this.getClass());
         setArguments(new Bundle());
         opes = new BaseOpes<>(null, null);
@@ -69,7 +71,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(registerEventBus()){
+        if(is注册事件总线()){
             EventBus.getDefault().register(this);
         }
         fragIs.onCreate(savedInstanceState);
@@ -96,6 +98,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         HandleUtil.getInstance().postDelayed(new Runnable() {
             @Override
             public void run() {
+                LogUtil.E("initDelay:"+getFrag().getClass());
                 getP().getU().initDelay();
                 initdelay();
                 unbinder = ButterKnife.bind(getFrag(), baseUIRoot);
@@ -126,21 +129,20 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             HandleUtil.getInstance().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    onFristVisibleDelayInit();
+                    on第一次显示延迟加载();
                 }
-            }, 400);
+            }, 300);
             isFiistVisibleinit = true;
         }
     }
 
-    protected void onFristVisibleDelayInit(){
+    protected void on第一次显示延迟加载(){
 
     }
 
     protected void onFristVisibleInit(){
 
     }
-
 
     @Override
     public void onDestroyView() {
@@ -173,7 +175,6 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
             try {
                 Constructor<B> bc = b.getConstructor();
                 B bb = bc.newInstance();
-                bb.setFrag(this);
                 opes.setDa(bb);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -221,7 +222,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     @Override
     public void onDestroy() {
-        if(registerEventBus()){
+        if(is注册事件总线()){
             EventBus.getDefault().unregister(this);
         }
         fragIs.onDestroy();
@@ -268,7 +269,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    protected boolean registerEventBus(){
+    protected boolean is注册事件总线(){
         return false;
     }
 
@@ -294,5 +295,9 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     public void setFragM(FragManager2 fragM) {
         this.fragM = fragM;
+    }
+
+    public BaseUIFrag getBaseUIFrag() {
+        return baseUIFrag;
     }
 }

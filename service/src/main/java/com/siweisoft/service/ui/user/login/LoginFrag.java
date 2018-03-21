@@ -100,7 +100,7 @@ public class LoginFrag extends BaseServerFrag<LoginUIOpe, LoginDAOpe> {
 
 
     @Override
-    protected boolean registerEventBus() {
+    protected boolean is注册事件总线() {
         return true;
     }
 }

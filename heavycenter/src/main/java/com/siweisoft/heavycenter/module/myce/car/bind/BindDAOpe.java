@@ -35,33 +35,33 @@ public class BindDAOpe extends AppDAOpe {
         return data;
     }
 
-    public void Cars(NetI<CarsResBean> adapter){
+    public void Cars(Context context,NetI<CarsResBean> adapter){
         CarsReqBean carsReqBean = new CarsReqBean();
         carsReqBean.setIsApp(1);
         carsReqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         carsReqBean.setPageIndex(0);
         carsReqBean.setPageSize(1000);
         carsReqBean.setWhat(CarsReqBean.WHAT_MY);
-        NetDataOpe.Mana.Car.Cars(getActivity(),carsReqBean,adapter);
+        NetDataOpe.Mana.Car.Cars(context,carsReqBean,adapter);
     }
 
     public BindCarReq getBindCarReq() {
         return bindCarReq;
     }
 
-    public void bindCar(int carid,NetI<BindCarRes> adapter){
+    public void bindCar(Context context,int carid,NetI<BindCarRes> adapter){
         getBindCarReq().setCurrentDriver(LocalValue.get登录返回信息().getUserId());
         getBindCarReq().setId(carid);
         getBindCarReq().setEditer(LocalValue.get登录返回信息().getUserId());
-        NetDataOpe.Mana.Car.bindCar(getActivity(),getBindCarReq(),adapter);
+        NetDataOpe.Mana.Car.bindCar(context,getBindCarReq(),adapter);
     }
 
 
-    public void infoCar(String calicenseno,NetI<CarsResBean.CarInfoRes> adapter){
+    public void infoCar(Context context,String calicenseno,NetI<CarsResBean.CarInfoRes> adapter){
         CarInfoReq carInfoReq = new CarInfoReq();
         carInfoReq.setCarLicenseNo(calicenseno);
         carInfoReq.setIsApp(1);
-        NetDataOpe.Mana.Car.infoCar(getActivity(),carInfoReq,adapter);
+        NetDataOpe.Mana.Car.infoCar(context,carInfoReq,adapter);
     }
 
 

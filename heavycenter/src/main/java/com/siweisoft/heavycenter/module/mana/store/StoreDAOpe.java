@@ -30,7 +30,7 @@ public class StoreDAOpe extends AppDAOpe {
         return data;
     }
 
-    public void storesInfo(boolean sel,NetI<StoresResBean> adapter){
+    public void storesInfo(Context context,boolean sel,NetI<StoresResBean> adapter){
         StoresReqBean reqBean = new StoresReqBean();
         reqBean.setCompanyId(LocalValue.get登录返回信息().getCompanyId());
         reqBean.setIsApp(1);
@@ -43,11 +43,11 @@ public class StoreDAOpe extends AppDAOpe {
         reqBean.setPageIndex(0);
         reqBean.setPageSize(1000);
        // reqBean.setStatus(StoresReqBean.STATUS_ALL);
-        NetDataOpe.Mana.Store.sotresInfo(getActivity(),reqBean,adapter);
+        NetDataOpe.Mana.Store.sotresInfo(context,reqBean,adapter);
     }
 
-    public void statusStore(StatusStoresReqBean statusStoresReqBean, NetI<StatusStoresResBean> adapter){
-        NetDataOpe.Mana.Store.statusStore(getActivity(),statusStoresReqBean,adapter);
+    public void statusStore(Context context,StatusStoresReqBean statusStoresReqBean, NetI<StatusStoresResBean> adapter){
+        NetDataOpe.Mana.Store.statusStore(context,statusStoresReqBean,adapter);
     }
 
 

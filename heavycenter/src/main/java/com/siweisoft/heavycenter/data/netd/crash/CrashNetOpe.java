@@ -17,9 +17,6 @@ import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 
 public class CrashNetOpe extends BaseDAOpe{
 
-    public CrashNetOpe(Context context) {
-        super(context);
-    }
 
     public static void setCrash(Context context,String txt){
         BaseReqBean baseReqBean = new BaseReqBean();
