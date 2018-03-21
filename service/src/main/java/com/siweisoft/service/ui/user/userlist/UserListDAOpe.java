@@ -15,8 +15,8 @@ public class UserListDAOpe extends BaseDAOpe {
     UserBean userBean;
 
 
-    public void getUserListWithOutMe(UserBean userBean, OnFinishListener onFinishListener) {
-        NetDataOpe.User.getUserListWithOutMe(getActivity(),userBean, onFinishListener);
+    public void getUserListWithOutMe(Context context,UserBean userBean, OnFinishListener onFinishListener) {
+        NetDataOpe.User.getUserListWithOutMe(context,userBean, onFinishListener);
     }
 
     public UserBean getUserBean() {

@@ -51,7 +51,7 @@ public class RegistFrag extends BaseServerFrag<RegistUIOpe, RegistDAOpe> {
                     @Override
                     public void onFinish(Object o) {
                         if ((Boolean) o) {
-                            getP().getD().regist(getP().getD().getUserBean(), new OnFinishListener() {
+                            getP().getD().regist(getBaseAct(),getP().getD().getUserBean(), new OnFinishListener() {
                                 @Override
                                 public void onFinish(final Object o) {
                                     LoadUtil.getInstance().onStopLoading("regist");

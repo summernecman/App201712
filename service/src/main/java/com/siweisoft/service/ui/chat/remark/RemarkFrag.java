@@ -51,7 +51,7 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
         getP().getU().initOnclick(this);
         getP().getU().initTop(getP().getD().getOtherUser(getP().getD().getVideoBean()));
         getP().getU().bind.tvName.setText(getP().getD().getOtherUser(getP().getD().getVideoBean()).getName());
-        getP().getD().updateVideoCallTimeNum(getP().getD().getVideoBean());
+        getP().getD().updateVideoCallTimeNum(getBaseAct(),getP().getD().getVideoBean());
         //收到文件内容为空 == 录像不是我录的
         if (!getP().getD().isRecord()) {
             //FragmentUtil2.getInstance().removeTopRightNow(activity, Value.getNowRoot());
@@ -60,13 +60,13 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
         getP().getD().setVideoTipBean(Value.getOtherVideotip());
         getP().getD().renameFile(getP().getD().getVideoBean());
 
-        getP().getD().insetVideo(getP().getD().getVideoBean(), new OnFinishListener() {
+        getP().getD().insetVideo(getBaseAct(),getP().getD().getVideoBean(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 final VideoDetailBean videoBean = (VideoDetailBean) o;
                 getActivity().findViewById(R.id.ftv_right).setVisibility(View.VISIBLE);
                 if (SystemUtil.isWiFi(getActivity())) {
-                    getP().getD().uploadVideo(getP().getD().getVideoBean(), videoBean);
+                    getP().getD().uploadVideo(getBaseAct(),getP().getD().getVideoBean(), videoBean);
                 } else {
                     DialogFrag dialogFrag = new DialogFrag();
                     FragmentUtil2.getInstance().add(getActivity(), Value.FULLSCREEN, dialogFrag);
@@ -75,7 +75,7 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
                         public void onFinish(Object o) {
                             switch (((View) o).getId()) {
                                 case R.id.tv_receipt:
-                                    getP().getD().uploadVideo(getP().getD().getVideoBean(), videoBean);
+                                    getP().getD().uploadVideo(getBaseAct(),getP().getD().getVideoBean(), videoBean);
                                     break;
                                 case R.id.tv_refuse:
 
@@ -93,7 +93,7 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
     @Override
     public void initNow() {
         super.initNow();
-        getP().getD().getTips(new OnFinishListener() {
+        getP().getD().getTips(getBaseAct(),new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getD().setTipsBean((TipsBean) o);
@@ -127,7 +127,7 @@ public class RemarkFrag extends BaseServerFrag<RemarkUIOpe, RemarkDAOpe> {
                             vv.setTxt(getP().getU().bind.videodetail.getText().toString());
                             vv.setType(StringUtil.getStr(getP().getD().getVideoTipBean().getType()));
                             vv.setUserid(Value.getUserInfo().getId());
-                            getP().getD().addVideoComment(vv, new OnFinishListener() {
+                            getP().getD().addVideoComment(getBaseAct(),vv, new OnFinishListener() {
                                 @Override
                                 public void onFinish(Object o) {
                                     FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.getNowRoot());

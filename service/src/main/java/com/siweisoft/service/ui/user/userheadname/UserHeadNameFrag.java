@@ -81,7 +81,7 @@ public class UserHeadNameFrag extends BaseServerFrag<UserHeadNameUIOpe, UserHead
                 UserBean userBean = new UserBean();
                 userBean.setHeadurl(files.get(0));
 
-                getP().getD().setHead(userBean, new OnFinishListener() {
+                getP().getD().setHead(getBaseAct(),userBean, new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         UserBean userBean = (UserBean) o;

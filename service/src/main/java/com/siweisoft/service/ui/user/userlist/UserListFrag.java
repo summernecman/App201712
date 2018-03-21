@@ -37,7 +37,7 @@ public class UserListFrag extends BaseServerFrag<UserListUIOpe, UserListDAOpe> i
     public void initNow() {
         super.initNow();
         setTitleBean(new TitleBean("返回", "联系人", ""));
-        getP().getD().getUserListWithOutMe(Value.getUserInfo(), new OnFinishListener() {
+        getP().getD().getUserListWithOutMe(getBaseAct(),Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getU().initList((ArrayList<UserBean>) o, UserListFrag.this);

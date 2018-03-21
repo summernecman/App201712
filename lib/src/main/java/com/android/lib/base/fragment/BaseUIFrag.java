@@ -1,5 +1,6 @@
 package com.android.lib.base.fragment;
 
+import android.content.Context;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -54,6 +55,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
 
     private FragManager2 fragM;
 
+
     public BaseUIFrag() {
         LogUtil.E(this.getClass());
         setArguments(new Bundle());
@@ -61,6 +63,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         initbb(getClass());
         getP().getD().initDA();
     }
+
 
 
     @Override
@@ -93,7 +96,6 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         HandleUtil.getInstance().postDelayed(new Runnable() {
             @Override
             public void run() {
-                getP().getD().initDA(getBaseAct());
                 getP().getU().initDelay();
                 initdelay();
                 unbinder = ButterKnife.bind(getFrag(), baseUIRoot);

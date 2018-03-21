@@ -2,6 +2,8 @@ package com.siweisoft.service.ui.user.userinfo;
 
 //by summer on 17-08-24.
 
+import android.content.Context;
+
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.network.NetWork;
@@ -46,15 +48,15 @@ public class UserInfoDAOpe extends BaseDAOpe {
     }
 
 
-    public void getUserInfo(int id, OnFinishListener onFinishListener) {
+    public void getUserInfo(Context context, int id, OnFinishListener onFinishListener) {
         UserBean u = new UserBean();
         u.setId(id);
-        NetDataOpe.User.getUserInfoById(getActivity(),u, onFinishListener);
+        NetDataOpe.User.getUserInfoById(context,u, onFinishListener);
     }
 
-    public void getRemarks(CommentBean commentBean, final OnFinishListener onFinishListener) {
+    public void getRemarks(Context context,CommentBean commentBean, final OnFinishListener onFinishListener) {
 
-        NetDataOpe.Comment.getCommentByUserIdWithMyOptionWithLimit(getActivity(),commentBean, new OnFinishListener() {
+        NetDataOpe.Comment.getCommentByUserIdWithMyOptionWithLimit(context,commentBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 ArrayList<CommentBean> res = (ArrayList<CommentBean>) o;
@@ -64,7 +66,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
 
     }
 
-    public void getOtherUsersInfoByPhone(final UserBean u, List<String> strs, final OnFinishListener onFinishListener) {
+    public void getOtherUsersInfoByPhone(Context context,final UserBean u, List<String> strs, final OnFinishListener onFinishListener) {
         ArrayList<UserBean> userBeen = new ArrayList<>();
         for (int i = 0; i < strs.size(); i++) {
             UserBean userBean = new UserBean(strs.get(i));
@@ -73,7 +75,7 @@ public class UserInfoDAOpe extends BaseDAOpe {
         AllUserBean allUserBean = new AllUserBean();
         allUserBean.setOther(userBeen);
         allUserBean.setMe(Value.getUserInfo());
-        NetDataOpe.User.getOtherUsersInfoByPhone(getActivity(),allUserBean, new OnFinishListener() {
+        NetDataOpe.User.getOtherUsersInfoByPhone(context,allUserBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 ArrayList<UserBean> list = (ArrayList<UserBean>) o;
@@ -110,15 +112,15 @@ public class UserInfoDAOpe extends BaseDAOpe {
     }
 
 
-    public void getUserRateIfNull(UserBean userBean, OnFinishListener onFinishListener) {
+    public void getUserRateIfNull(Context context,UserBean userBean, OnFinishListener onFinishListener) {
         if (userBean.getAvg() == 0f) {
-            NetDataOpe.Comment.getVideoRateCommentByUseId(getActivity(),userBean, onFinishListener);
+            NetDataOpe.Comment.getVideoRateCommentByUseId(context,userBean, onFinishListener);
         }
     }
 
 
-    public void getUserCallInfo(UserBean userBean, OnFinishListener onFinishListener) {
-        NetDataOpe.User.getUserCallInfo(getActivity(),userBean, onFinishListener);
+    public void getUserCallInfo(Context context,UserBean userBean, OnFinishListener onFinishListener) {
+        NetDataOpe.User.getUserCallInfo(context,userBean, onFinishListener);
     }
 
 
@@ -138,9 +140,10 @@ public class UserInfoDAOpe extends BaseDAOpe {
         this.userBean = userBean;
     }
 
-    public UserCenterDAOpe getUserCenterDAOpe() {
+    public UserCenterDAOpe getUserCenterDAOpe(Context context) {
         if (userCenterDAOpe == null) {
             userCenterDAOpe = new UserCenterDAOpe();
+            userCenterDAOpe.setContext(context);
         }
         return userCenterDAOpe;
     }
@@ -150,8 +153,8 @@ public class UserInfoDAOpe extends BaseDAOpe {
         return null;
     }
 
-    public void clickAgree(AgreeBean agreeBean, OnFinishListener onFinishListener) {
-        NetDataOpe.Agree.clickAgree(getActivity(),agreeBean, onFinishListener);
+    public void clickAgree(Context context,AgreeBean agreeBean, OnFinishListener onFinishListener) {
+        NetDataOpe.Agree.clickAgree(context,agreeBean, onFinishListener);
     }
 
     public ArrayList<CommentBean> getCommentBeen() {

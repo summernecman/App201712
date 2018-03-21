@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class RemarkDAOpe extends BaseDAOpe {
 
-    UserInfoDAOpe userInfoDAOpe;
+    UserInfoDAOpe userInfoDAOpe= new UserInfoDAOpe();
 
     VideoBean videoBean;
 
@@ -38,11 +38,6 @@ public class RemarkDAOpe extends BaseDAOpe {
 
     private VideoTipBean videoTipBean;
 
-    @Override
-    public void initDA(Context context) {
-        super.initDA(context);
-        userInfoDAOpe = new UserInfoDAOpe();
-    }
 
 
     public UserInfoDAOpe getUserInfoDAOpe() {
@@ -69,12 +64,12 @@ public class RemarkDAOpe extends BaseDAOpe {
         this.tipsBean = tipsBean;
     }
 
-    public void getChatUserInfo(UserBean userBean, OnFinishListener onFinishListener) {
-        NetDataOpe.User.getUserInfoByPhone(getActivity(),userBean, onFinishListener);
+    public void getChatUserInfo(Context context,UserBean userBean, OnFinishListener onFinishListener) {
+        NetDataOpe.User.getUserInfoByPhone(context,userBean, onFinishListener);
     }
 
-    public void getTips(OnFinishListener onFinishListener) {
-        NetDataOpe.Tip.getTips(getActivity(),onFinishListener);
+    public void getTips(Context context,OnFinishListener onFinishListener) {
+        NetDataOpe.Tip.getTips(context,onFinishListener);
     }
 
     //    public void updateVideo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
@@ -133,11 +128,11 @@ public class RemarkDAOpe extends BaseDAOpe {
         }
     }
 
-    public void updateVideoCallTimeNum(VideoBean videoBean) {
-        NetDataOpe.Video.updateVideoCallTimeNum(getActivity(),videoBean, null);
+    public void updateVideoCallTimeNum(Context context,VideoBean videoBean) {
+        NetDataOpe.Video.updateVideoCallTimeNum(context,videoBean, null);
     }
 
-    public void insetVideo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
+    public void insetVideo(Context context,final VideoBean videoBean, final OnFinishListener onFinishListener) {
         final String ff = videoBean.getFile();
         final VideoDetailBean v = new VideoDetailBean();
         v.setCallid(videoBean.getId());
@@ -151,7 +146,7 @@ public class RemarkDAOpe extends BaseDAOpe {
             videoBean.setIsfrom(false);
         }
 
-        NetDataOpe.VideoDetail.insertVideo(getActivity(),v, new OnFinishListener() {
+        NetDataOpe.VideoDetail.insertVideo(context,v, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 videoBean.setFile(ff);
@@ -160,8 +155,8 @@ public class RemarkDAOpe extends BaseDAOpe {
         });
     }
 
-    public void addVideoComment(VideoCommentBean v, OnFinishListener listener) {
-        NetDataOpe.VideoComment.addVideoComment(getActivity(),v, listener);
+    public void addVideoComment(Context context,VideoCommentBean v, OnFinishListener listener) {
+        NetDataOpe.VideoComment.addVideoComment(context,v, listener);
     }
 
     public boolean isRecord() {
@@ -178,7 +173,7 @@ public class RemarkDAOpe extends BaseDAOpe {
         return s;
     }
 
-    public void updateVideo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
+    public void updateVideo(Context context,final VideoBean videoBean, final OnFinishListener onFinishListener) {
         final String ff = videoBean.getFile();
         final String s = getUrlFromLocal(ff);
         videoBean.setFile(s);
@@ -188,7 +183,7 @@ public class RemarkDAOpe extends BaseDAOpe {
         } else {
             videoBean.setIsfrom(false);
         }
-        NetDataOpe.Video.updateVideoById(getActivity(),videoBean, new OnFinishListener() {
+        NetDataOpe.Video.updateVideoById(context,videoBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 videoBean.setFile(ff);
@@ -197,16 +192,16 @@ public class RemarkDAOpe extends BaseDAOpe {
         });
     }
 
-    public void uploadVideo(VideoBean videoBean, final VideoDetailBean vv) {
+    public void uploadVideo(final Context context, VideoBean videoBean, final VideoDetailBean vv) {
 
         final String ff = videoBean.getFile();
 
-        NetDataOpe.Video.updateVideo(getActivity(),videoBean, new OnFinishListener() {
+        NetDataOpe.Video.updateVideo(context,videoBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 ArrayList<String> strs = (ArrayList<String>) o;
                 if (strs != null && strs.size() > 0) {
-                    NetDataOpe.VideoDetail.updateUpload(getActivity(),vv, null);
+                    NetDataOpe.VideoDetail.updateUpload(context,vv, null);
 
                 }
             }

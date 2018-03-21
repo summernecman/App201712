@@ -47,7 +47,7 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
         //发起者
         if (getP().getD().isFromUser(getP().getD().getVideoBean())) {
             //发起视频者先创建一条视频记录
-            getP().getD().insert_and_getid_fromvieo(getP().getD().getVideoBean(), new OnFinishListener() {
+            getP().getD().insert_and_getid_fromvieo(getBaseAct(),getP().getD().getVideoBean(), new OnFinishListener() {
                 @Override
                 public void onFinish(Object o) {
                     //获取创建的视频的相关信息 以及id
@@ -267,5 +267,10 @@ public class VideoChatFrag extends BaseServerFrag<VideoChatUIOpe, VideoChatDAOpe
                 }
                 break;
         }
+    }
+
+    @Override
+    protected boolean registerEventBus() {
+        return true;
     }
 }

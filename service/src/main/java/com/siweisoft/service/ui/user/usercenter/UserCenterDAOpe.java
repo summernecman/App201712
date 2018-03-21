@@ -26,34 +26,35 @@ public class UserCenterDAOpe extends BaseDAOpe {
 
 
 
-    public UserInfoDAOpe getUserInfoDAOpe() {
+    public UserInfoDAOpe getUserInfoDAOpe(Context context) {
         if (userInfoDAOpe == null) {
             userInfoDAOpe = new UserInfoDAOpe();
+            userInfoDAOpe.setContext(context);
         }
         return userInfoDAOpe;
     }
 
 
-    public void getUserCallInfo(OnFinishListener onFinishListener) {
+    public void getUserCallInfo(Context context,OnFinishListener onFinishListener) {
         UserBean userBean = new UserBean();
         userBean.setPhone(Value.getUserInfo().getPhone());
-        NetDataOpe.User.getUserCallInfo(getActivity(),userBean, onFinishListener);
+        NetDataOpe.User.getUserCallInfo(context,userBean, onFinishListener);
     }
 
     public static void getUserTips(Context context,UserBean userBean, OnFinishListener onFinishListener) {
         NetDataOpe.Comment.getUserTips(context,userBean, onFinishListener);
     }
 
-    public void getCommentNumByUserName(UserBean userBean, OnFinishListener onFinishListener) {
-        NetDataOpe.Comment.getCommentNumByUserName(getActivity(),userBean, onFinishListener);
+    public void getCommentNumByUserName(Context context,UserBean userBean, OnFinishListener onFinishListener) {
+        NetDataOpe.Comment.getCommentNumByUserName(context,userBean, onFinishListener);
     }
 
-    public void getCollectionNumByUserId(UserBean userBean, OnFinishListener onFinishListener) {
-        NetDataOpe.Collection.getCollectionNumByUserId(getActivity(),userBean, onFinishListener);
+    public void getCollectionNumByUserId(Context context,UserBean userBean, OnFinishListener onFinishListener) {
+        NetDataOpe.Collection.getCollectionNumByUserId(context,userBean, onFinishListener);
     }
 
-    public void getShareNumByUserPhone(UserBean userBean, OnFinishListener onFinishListener) {
-        NetDataOpe.Share.getShareNumByUserPhone(getActivity(),userBean, onFinishListener);
+    public void getShareNumByUserPhone(Context context,UserBean userBean, OnFinishListener onFinishListener) {
+        NetDataOpe.Share.getShareNumByUserPhone(context,userBean, onFinishListener);
     }
 
     public ArrayList<TipBean> mapTolist(HashMap<Integer, TipBean> data) {

@@ -11,6 +11,7 @@ import com.siweisoft.service.bean.AllUserBean;
 import com.siweisoft.service.netdb.NetDataOpe;
 import com.siweisoft.service.netdb.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
+import com.siweisoft.service.ui.main.OnlineChangeListener;
 import com.siweisoft.service.ui.main.RoleInfo;
 
 import java.util.ArrayList;
@@ -40,20 +41,20 @@ public class OnLineListDAOpe extends BaseDAOpe {
 
 
 
-    public void getUsersInfoByPhone(ArrayList<UserBean> data, OnFinishListener onFinishListener) {
-        NetDataOpe.User.getUsersInfoByPhone(getActivity(),data, onFinishListener);
+    public void getUsersInfoByPhone(Context context,ArrayList<UserBean> data, OnFinishListener onFinishListener) {
+        NetDataOpe.User.getUsersInfoByPhone(context,data, onFinishListener);
     }
 
-    public void getUnTypeUserList(UserBean data, OnFinishListener onFinishListener) {
-        NetDataOpe.User.getUnTypeUserList(getActivity(),data, onFinishListener);
+    public void getUnTypeUserList(Context context,UserBean data, OnFinishListener onFinishListener) {
+        NetDataOpe.User.getUnTypeUserList(context,data, onFinishListener);
     }
 
 
-    public void getOtherUsersInfoByPhone(AllUserBean data, OnFinishListener onFinishListener) {
-        NetDataOpe.User.getOtherUsersInfoByPhone(getActivity(),data, onFinishListener);
+    public void getOtherUsersInfoByPhone(Context context,AllUserBean data, OnFinishListener onFinishListener) {
+        NetDataOpe.User.getOtherUsersInfoByPhone(context,data, onFinishListener);
     }
 
-    public void getOtherUsersInfoByPhone(List<String> strs, OnFinishListener onFinishListener) {
+    public void getOtherUsersInfoByPhone(Context context,List<String> strs, OnFinishListener onFinishListener) {
         ArrayList<UserBean> userBeen = new ArrayList<>();
         for (int i = 0; i < strs.size(); i++) {
             UserBean userBean = new UserBean(strs.get(i));
@@ -62,11 +63,11 @@ public class OnLineListDAOpe extends BaseDAOpe {
         AllUserBean allUserBean = new AllUserBean();
         allUserBean.setOther(userBeen);
         allUserBean.setMe(Value.getUserInfo());
-        NetDataOpe.User.getOtherUsersInfoByPhone(getActivity(),allUserBean, onFinishListener);
+        NetDataOpe.User.getOtherUsersInfoByPhone(context,allUserBean, onFinishListener);
     }
 
-    public void getUserContactsByUserIdAndType(UserBean userBean,OnFinishListener listener){
-        NetDataOpe.User.getUserContactsByUserIdAndType(getActivity(),userBean,listener);
+    public void getUserContactsByUserIdAndType(Context context,UserBean userBean,OnFinishListener listener){
+        NetDataOpe.User.getUserContactsByUserIdAndType(context,userBean,listener);
     }
 
 

@@ -38,8 +38,8 @@ public class FeedBackDAOpe extends BaseDAOpe {
         pics.add(R.drawable.icon_add);
     }
 
-    public void sendFeedBack(FeedBackBean feedBackBean, OnFinishListener onFinishListener) {
-        NetDataOpe.FeedBack.sendFeedBack(getActivity(),feedBackBean, onFinishListener);
+    public void sendFeedBack(Context context,FeedBackBean feedBackBean, OnFinishListener onFinishListener) {
+        NetDataOpe.FeedBack.sendFeedBack(context,feedBackBean, onFinishListener);
     }
 
     public float getRate() {

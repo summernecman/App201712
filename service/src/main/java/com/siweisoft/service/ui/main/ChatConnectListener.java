@@ -20,8 +20,15 @@ public class ChatConnectListener implements EMConnectionListener {
 
     private MainAct app;
 
-
     public ChatConnectListener(MainAct app) {
+        this.app = app;
+    }
+
+    public MainAct getApp() {
+        return app;
+    }
+
+    public void setApp(MainAct app) {
         this.app = app;
     }
 

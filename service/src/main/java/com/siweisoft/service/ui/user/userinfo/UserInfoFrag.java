@@ -58,7 +58,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
         if (((UserBean) getArguments().getSerializable(ValueConstant.DATA_DATA)) != null) {
             init();
         } else {
-            getP().getD().getUserInfo(getArguments().getInt(Value.DATA_POSITION), new OnFinishListener() {
+            getP().getD().getUserInfo(getBaseAct(),getArguments().getInt(Value.DATA_POSITION), new OnFinishListener() {
                 @Override
                 public void onFinish(Object o) {
                     if (o != null && o instanceof UserBean) {
@@ -92,7 +92,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
         getP().getD().getUserBean().setPagestart(getP().getD().getUserBean().getPagestart());
         getP().getD().getCommentBeen().clear();
         CommentBean commentBean = getP().getD().getCommentReq(Value.getUserInfo(), getP().getD().getUserBean());
-        getP().getD().getRemarks(commentBean, new OnFinishListener() {
+        getP().getD().getRemarks(getBaseAct(),commentBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 ArrayList<CommentBean> a = (ArrayList<CommentBean>) o;
@@ -110,7 +110,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
             }
         });
 
-        getP().getD().getUserCallInfo(getP().getD().getUserBean(), new OnFinishListener() {
+        getP().getD().getUserCallInfo(getBaseAct(),getP().getD().getUserBean(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getU().initCallInfo((VideoTimeBean) o);
@@ -127,7 +127,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
         }
         getP().getD().getUserBean().setPagestart(getP().getD().getUserBean().getPagestart());
         CommentBean commentBean = getP().getD().getCommentReq(Value.getUserInfo(), getP().getD().getUserBean());
-        getP().getD().getRemarks(commentBean, new OnFinishListener() {
+        getP().getD().getRemarks(getBaseAct(),commentBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getU().finishLoadmore();
@@ -160,7 +160,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
                 EMClient.getInstance().chatroomManager().asyncFetchChatRoomMembers(Value.getRoom().getId(), null, 100, new EMValueCallBack<EMCursorResult<String>>() {
                     @Override
                     public void onSuccess(EMCursorResult<String> value) {
-                        getP().getD().getOtherUsersInfoByPhone(getP().getD().getUserBean(), value.getData(), new OnFinishListener() {
+                        getP().getD().getOtherUsersInfoByPhone(getBaseAct(),getP().getD().getUserBean(), value.getData(), new OnFinishListener() {
                             @Override
                             public void onFinish(Object o) {
                                 if ((Boolean) o) {
@@ -262,7 +262,7 @@ public class UserInfoFrag extends BaseServerFrag<UserInfoUIOpe, UserInfoDAOpe> i
                         AgreeBean agreeBean = new AgreeBean();
                         agreeBean.setCommentid(commentBean.getId());
                         agreeBean.setAgreeid(Value.getUserInfo().getId());
-                        getP().getD().clickAgree(agreeBean, new OnFinishListener() {
+                        getP().getD().clickAgree(getBaseAct(),agreeBean, new OnFinishListener() {
                             @Override
                             public void onFinish(Object o) {
                                 AgreeNumBean res = (AgreeNumBean) o;

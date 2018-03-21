@@ -11,8 +11,5 @@ import com.siweisoft.service.databinding.FragDialogTipBinding;
 public class TipUIOpe extends BaseUIOpe<FragDialogTipBinding> {
 
 
-    public TipUIOpe(Context context) {
-        super(context);
-    }
 
 }

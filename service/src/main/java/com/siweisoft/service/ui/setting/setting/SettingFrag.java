@@ -17,6 +17,8 @@ import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TitleBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.setting.setting.tip.TipFrag;
+import com.siweisoft.service.ui.setting.setting.videochat.VideoChatSettingFrag;
+import com.siweisoft.service.ui.user.userheadname.UserHeadNameFrag;
 
 import butterknife.OnClick;
 import butterknife.Optional;
@@ -27,10 +29,10 @@ public class SettingFrag extends BaseServerFrag<SettingUIOpe, SettingDAOpe> {
     public void initdelay() {
         super.initdelay();
         setTitleBean(new TitleBean("返回", "设置", ""));
-        getP().getU().setVersion(getP().getD().getVersion());
+        getP().getU().setVersion(getP().getD().getVersion(getBaseAct()));
     }
     @Optional
-    @OnClick({R.id.ll_set,R.id.ll_check,R.id.ll_clear})
+    @OnClick({R.id.ll_set,R.id.ll_check,R.id.ll_clear,R.id.ll_videochatsetting})
     public void onClickEvent(View view) {
         switch (view.getId()) {
             case R.id.ll_set:
@@ -54,7 +56,7 @@ public class SettingFrag extends BaseServerFrag<SettingUIOpe, SettingDAOpe> {
                 });
                 break;
             case R.id.ll_check:
-                getP().getD().CheckVersion(new OnFinishListener() {
+                getP().getD().CheckVersion(getBaseAct(),new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         boolean up = (boolean) o;
@@ -86,6 +88,9 @@ public class SettingFrag extends BaseServerFrag<SettingUIOpe, SettingDAOpe> {
                         }
                     }
                 });
+                break;
+            case R.id.ll_videochatsetting:
+                FragmentUtil2.getInstance().add(getActivity(), Value.ROOTID_THREE, new VideoChatSettingFrag());
                 break;
         }
 

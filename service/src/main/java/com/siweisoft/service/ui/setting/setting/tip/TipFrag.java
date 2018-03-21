@@ -14,10 +14,6 @@ public class TipFrag extends BaseServerFrag<TipUIOpe, TipDAOpe> {
 
     OnFinishListener onFinishListener;
 
-    @Override
-    public void initdelay() {
-        super.initdelay();
-    }
 
     @OnClick({R.id.tv_yes, R.id.ll_root,R.id.tv_no})
     public void onClickEvent(View v) {

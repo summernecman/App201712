@@ -18,11 +18,6 @@ public class HistoryDAOpe extends BaseDAOpe {
 
 
 
-    @Override
-    public void initDA(Context context) {
-        super.initDA(context);
-    }
-
     public ArrayList<VideoBean> getData() {
         ArrayList<VideoBean> data = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
@@ -35,8 +30,8 @@ public class HistoryDAOpe extends BaseDAOpe {
         return data;
     }
 
-    public void getVideos(final OnFinishListener onFinishListener) {
-        NetDataOpe.Video.getByContacts(getActivity(),Value.getUserInfo(), new OnFinishListener() {
+    public void getVideos(Context context,final OnFinishListener onFinishListener) {
+        NetDataOpe.Video.getByContacts(context,Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 onFinishListener.onFinish(o);
@@ -44,11 +39,11 @@ public class HistoryDAOpe extends BaseDAOpe {
         });
     }
 
-    public void getUnUploadVideoNum(final OnFinishListener onFinishListener) {
-        NetDataOpe.Video.getUnUploadVideoNum(getActivity(),Value.getUserInfo(), onFinishListener);
+    public void getUnUploadVideoNum(Context context,final OnFinishListener onFinishListener) {
+        NetDataOpe.Video.getUnUploadVideoNum(context,Value.getUserInfo(), onFinishListener);
     }
 
-    public void getArrayUsersInfoByPhone(ArrayList<ArrayList<UserBean>> data, OnFinishListener onFinishListener) {
-        NetDataOpe.User.getArrayUsersInfoByPhone(getActivity(),data, onFinishListener);
+    public void getArrayUsersInfoByPhone(Context context,ArrayList<ArrayList<UserBean>> data, OnFinishListener onFinishListener) {
+        NetDataOpe.User.getArrayUsersInfoByPhone(context,data, onFinishListener);
     }
 }

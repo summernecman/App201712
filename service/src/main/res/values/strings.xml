@@ -34,4 +34,13 @@
     <string name="str_returncode_disconnect">对方网络异常</string>
     <string name="str_returncode_timeout">呼叫超时</string>
 
+
+    <string-array name="videoresolution">
+        <item>1920*1080</item>
+        <item>1080*720</item>
+        <item>720*640</item>
+        <item>640*360</item>
+        <item>360*240</item>
+    </string-array>
+
 </resources>

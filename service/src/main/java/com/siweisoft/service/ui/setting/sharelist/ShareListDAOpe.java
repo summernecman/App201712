@@ -24,8 +24,8 @@ public class ShareListDAOpe extends BaseDAOpe {
 
 
 
-    public void getSharesByReceipt(ShareBean shareBean, OnFinishListener onFinishListener) {
-        NetDataOpe.Share.getSharesByReceiptWithLimit(getActivity(),shareBean, onFinishListener);
+    public void getSharesByReceipt(Context context,ShareBean shareBean, OnFinishListener onFinishListener) {
+        NetDataOpe.Share.getSharesByReceiptWithLimit(context,shareBean, onFinishListener);
     }
 
     public ArrayList<VideoBean> getVideos() {

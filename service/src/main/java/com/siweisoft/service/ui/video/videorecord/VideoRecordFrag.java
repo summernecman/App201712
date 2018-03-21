@@ -45,7 +45,7 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
         getP().getD().setPageindex(0);
         contactBean.setPagestart(getP().getD().getPageindex());
         contactBean.setToid(getP().getD().getHistoryBean().getUserBean().getId());
-        getP().getD().getVideosByBothUserIdWithLimit(contactBean, new OnFinishListener() {
+        getP().getD().getVideosByBothUserIdWithLimit(getBaseAct(),contactBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getD().getVideos().clear();
@@ -73,7 +73,7 @@ public class VideoRecordFrag extends BaseServerFrag<VideoRecordUIOpe, VideoRecor
         contactBean.setPagesize(5);
         contactBean.setPagestart(getP().getD().getPageindex());
         contactBean.setToid(getP().getD().getHistoryBean().getUserBean().getId());
-        getP().getD().getVideosByBothUserIdWithLimit(contactBean, new OnFinishListener() {
+        getP().getD().getVideosByBothUserIdWithLimit(getBaseAct(),contactBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 ArrayList<VideoBean> a = (ArrayList<VideoBean>) o;

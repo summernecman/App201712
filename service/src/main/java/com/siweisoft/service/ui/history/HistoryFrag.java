@@ -33,7 +33,7 @@ public class HistoryFrag extends BaseServerFrag<HistoryUIOpe, HistoryDAOpe> impl
     public void initNow() {
         super.initNow();
         setTitleBean(new TitleBean("", "呼叫历史", ""));
-        getP().getD().getVideos(new OnFinishListener() {
+        getP().getD().getVideos(getBaseAct(),new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getU().initList((ArrayList<HistoryBean>) o, HistoryFrag.this);

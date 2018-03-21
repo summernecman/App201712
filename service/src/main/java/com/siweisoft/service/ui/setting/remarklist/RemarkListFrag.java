@@ -39,7 +39,7 @@ public class RemarkListFrag extends BaseServerFrag<RemarkListUIOpe, RemarkListDA
         getP().getD().setPageindex(0);
         Value.getUserInfo().setPagesize(getP().getD().getPagesize());
         Value.getUserInfo().setPagestart(getP().getD().getPageindex());
-        getP().getD().getRemarks(Value.getUserInfo(), new OnFinishListener() {
+        getP().getD().getRemarks(getBaseAct(),Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getD().setList((ArrayList<CommentBean>) o);
@@ -59,7 +59,7 @@ public class RemarkListFrag extends BaseServerFrag<RemarkListUIOpe, RemarkListDA
         setTitleBean(new TitleBean("返回", "评论列表", ""));
         Value.getUserInfo().setPagesize(getP().getD().getPagesize());
         Value.getUserInfo().setPagestart(getP().getD().getPageindex());
-        getP().getD().getRemarks(Value.getUserInfo(), new OnFinishListener() {
+        getP().getD().getRemarks(getBaseAct(),Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 ArrayList<CommentBean> list = (ArrayList<CommentBean>) o;

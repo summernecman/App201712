@@ -47,7 +47,7 @@ public class FeedBackFrag extends BaseServerFrag<FeedBAckUIOpe, FeedBackDAOpe> i
                 feedBackBean.setUserid(Value.getUserInfo().getId());
                 feedBackBean.setRate(getP().getD().getRate());
                 feedBackBean.setRemark(getP().getU().bind.input.getText().toString());
-                getP().getD().sendFeedBack(feedBackBean, new OnFinishListener() {
+                getP().getD().sendFeedBack(getBaseAct(),feedBackBean, new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         FragmentUtil2.getInstance().removeTopRightNow(getActivity(), Value.getNowRoot());

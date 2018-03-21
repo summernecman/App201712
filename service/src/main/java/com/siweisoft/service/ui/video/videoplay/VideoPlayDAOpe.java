@@ -38,7 +38,9 @@ public class VideoPlayDAOpe extends BaseDAOpe {
     CollectionBean collectionBean = new CollectionBean();
 
 
-    public VideoPlayDAOpe() {
+    @Override
+    public void initDA() {
+        super.initDA();
         userInfoDAOpe = new UserInfoDAOpe();
         userBean = new UserBean();
     }
@@ -55,34 +57,34 @@ public class VideoPlayDAOpe extends BaseDAOpe {
         return userInfoDAOpe;
     }
 
-    public void getComment(VideoBean videoBean, OnFinishListener onFinishListener) {
+    public void getComment(Context context,VideoBean videoBean, OnFinishListener onFinishListener) {
         videoBean.setToUser(Value.getUserInfo());
-        NetDataOpe.Comment.getVideoCommentByVideoIdAndCommentId(getActivity(),videoBean, onFinishListener);
+        NetDataOpe.Comment.getVideoCommentByVideoIdAndCommentId(context,videoBean, onFinishListener);
     }
 
-    public void isCollectedByVideoIdAndUserId(VideoBean videoBean, OnFinishListener onFinishListener) {
+    public void isCollectedByVideoIdAndUserId(Context context,VideoBean videoBean, OnFinishListener onFinishListener) {
         CollectionBean collectionBean = new CollectionBean();
         collectionBean.setUserid(Value.getUserInfo().getId());
         collectionBean.setVideoid(videoBean.getId());
-        NetDataOpe.Collection.isCollectedByVideoIdAndUserId(getActivity(),collectionBean, onFinishListener);
+        NetDataOpe.Collection.isCollectedByVideoIdAndUserId(context,collectionBean, onFinishListener);
     }
 
-    public void collect(CollectionBean collectionBean, OnFinishListener onFinishListener) {
+    public void collect(Context context,CollectionBean collectionBean, OnFinishListener onFinishListener) {
         if (Value.getUserInfo().getId() == videoBean.getFromUser().getId()) {
             collectionBean.setUserid(videoBean.getFromUser().getId());
         } else {
             collectionBean.setUserid(videoBean.getToUser().getId());
         }
-        NetDataOpe.Collection.collect(getActivity(),collectionBean, onFinishListener);
+        NetDataOpe.Collection.collect(context,collectionBean, onFinishListener);
     }
 
-    public void disCollect(CollectionBean collectionBean, OnFinishListener onFinishListener) {
+    public void disCollect(Context context,CollectionBean collectionBean, OnFinishListener onFinishListener) {
         if (Value.getUserInfo().getId() == videoBean.getFromUser().getId()) {
             collectionBean.setUserid(videoBean.getFromUser().getId());
         } else {
             collectionBean.setUserid(videoBean.getToUser().getId());
         }
-        NetDataOpe.Collection.disCollect(getActivity(),collectionBean, onFinishListener);
+        NetDataOpe.Collection.disCollect(context,collectionBean, onFinishListener);
     }
 
     public String getVideoComment(VideoDetailBean videoDetailBean, VideoBean videoBean) {
@@ -95,7 +97,7 @@ public class VideoPlayDAOpe extends BaseDAOpe {
     }
 
 
-    public void uploadVideo(final VideoBean videoBean, final VideoDetailBean vv, final OnFinishListener onFinishListener, final OnFinishListener onFinishListener2) {
+    public void uploadVideo(final Context context, final VideoBean videoBean, final VideoDetailBean vv, final OnFinishListener onFinishListener, final OnFinishListener onFinishListener2) {
         final String f = videoBean.getFile();
         if (NullUtil.isStrEmpty(videoBean.getFile())) {
             return;
@@ -110,18 +112,18 @@ public class VideoPlayDAOpe extends BaseDAOpe {
             onFinishListener.onFinish(o);
             return;
         }
-        NetDataOpe.Video.updateVideo(getActivity(),videoBean, new OnFinishListener() {
+        NetDataOpe.Video.updateVideo(context,videoBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 videoBean.setFile(f);
-                NetDataOpe.VideoDetail.updateUpload(getActivity(),vv, onFinishListener);
+                NetDataOpe.VideoDetail.updateUpload(context,vv, onFinishListener);
             }
         }, onFinishListener2);
     }
 
 
-    public void isCommentToCustomer(VideoDetailBean vv, final OnFinishListener onFinishListener) {
-        NetDataOpe.VideoDetail.getCommentToType(getActivity(),vv, new OnFinishListener() {
+    public void isCommentToCustomer(Context context,VideoDetailBean vv, final OnFinishListener onFinishListener) {
+        NetDataOpe.VideoDetail.getCommentToType(context,vv, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 UserBean u = (UserBean) o;
@@ -134,8 +136,8 @@ public class VideoPlayDAOpe extends BaseDAOpe {
         });
     }
 
-    public void share(ShareBean shareBean, OnFinishListener onFinishListener) {
-        NetDataOpe.Share.share(getActivity(),shareBean, onFinishListener);
+    public void share(Context context,ShareBean shareBean, OnFinishListener onFinishListener) {
+        NetDataOpe.Share.share(context,shareBean, onFinishListener);
     }
 
 

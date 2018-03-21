@@ -71,6 +71,7 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
         callReceiver = new CallReceiver();
         registerReceiver(callReceiver, callFilter);
 
+        getP().getD().initListener(this);
         EMClient.getInstance().callManager().addCallStateChangeListener(getP().getD().getVideoChatListener());
         EMClient.getInstance().chatManager().addMessageListener(getP().getD().getEmMsgListener());
         EMClient.getInstance().addConnectionListener(getP().getD().getChatConnectListener());
@@ -191,7 +192,7 @@ public class MainAct extends BaseUIActivity<MainUIOpe, MainDAOpe> implements OnF
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            getP().getD().getLoginInfo(new OnFinishListener() {
+            getP().getD().getLoginInfo(MainAct.this,new OnFinishListener() {
                 @Override
                 public void onFinish(Object o) {
                     UserBean userBean = (UserBean) o;

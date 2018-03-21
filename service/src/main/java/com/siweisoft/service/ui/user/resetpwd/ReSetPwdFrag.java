@@ -48,7 +48,7 @@ public class ReSetPwdFrag extends BaseServerFrag<ReSetPwdUIOpe, ReSetPwdDAOpe> {
                             @Override
                             public void run() {
                                 if ((Boolean) o) {
-                                    getP().getD().resetPwd(getP().getD().getUserBean(), new OnFinishListener() {
+                                    getP().getD().resetPwd(getBaseAct(),getP().getD().getUserBean(), new OnFinishListener() {
                                         @Override
                                         public void onFinish(final Object o) {
                                             if (o instanceof Boolean) {

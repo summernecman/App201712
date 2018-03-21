@@ -23,9 +23,9 @@ public class RemarkListDAOpe extends BaseDAOpe {
     private ArrayList<CommentBean> list;
 
 
-    public void getRemarks(UserBean userBean, final OnFinishListener onFinishListener) {
+    public void getRemarks(Context context,UserBean userBean, final OnFinishListener onFinishListener) {
         if (Value.getUserInfo().getUsertype() == UserBean.USER_TYPE_CUSTOMER) {
-            NetDataOpe.Comment.getCommentByUserIdWithLimit(getActivity(),userBean, new OnFinishListener() {
+            NetDataOpe.Comment.getCommentByUserIdWithLimit(context,userBean, new OnFinishListener() {
                 @Override
                 public void onFinish(Object o) {
                     ArrayList<CommentBean> res = (ArrayList<CommentBean>) o;
@@ -33,7 +33,7 @@ public class RemarkListDAOpe extends BaseDAOpe {
                 }
             });
         } else {
-            NetDataOpe.Comment.getCommentByUserIdWithLimit(getActivity(),userBean, new OnFinishListener() {
+            NetDataOpe.Comment.getCommentByUserIdWithLimit(context,userBean, new OnFinishListener() {
                 @Override
                 public void onFinish(Object o) {
                     ArrayList<CommentBean> res = (ArrayList<CommentBean>) o;

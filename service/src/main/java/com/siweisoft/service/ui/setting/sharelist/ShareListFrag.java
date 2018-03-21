@@ -45,7 +45,7 @@ public class ShareListFrag extends BaseServerFrag<ShareListUIOpe, ShareListDAOpe
         getP().getD().setPagesize(5);
         shareBean.setPagesize(getP().getD().getPagesize());
         shareBean.setPagestart(getP().getD().getPagestart());
-        getP().getD().getSharesByReceipt(shareBean, new OnFinishListener() {
+        getP().getD().getSharesByReceipt(getBaseAct(),shareBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getD().getVideos().clear();
@@ -70,7 +70,7 @@ public class ShareListFrag extends BaseServerFrag<ShareListUIOpe, ShareListDAOpe
         shareBean.setReceiptid(Value.getUserInfo().getId());
         shareBean.setPagesize(getP().getD().getPagesize());
         shareBean.setPagestart(getP().getD().getPagestart());
-        getP().getD().getSharesByReceipt(shareBean, new OnFinishListener() {
+        getP().getD().getSharesByReceipt(getBaseAct(),shareBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 if (o != null) {

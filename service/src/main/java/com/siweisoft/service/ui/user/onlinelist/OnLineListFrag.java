@@ -41,7 +41,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
 
     @Override
     public void initdelay() {
-        getActivity().findViewById(R.id.ftv_right2).setOnClickListener(this);
+        getP().getU().bind.title.findViewById(R.id.ftv_right2).setOnClickListener(this);
         getP().getU().initRefresh(this);
         getP().getU().initList(new ArrayList<UserBean>(), null);
         initData2();
@@ -50,7 +50,7 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
 
 
     public void initData2() {
-        getP().getD().getUserContactsByUserIdAndType(Value.getUserInfo(), new OnFinishListener() {
+        getP().getD().getUserContactsByUserIdAndType(getBaseAct(),Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getU().initList((ArrayList<UserBean>) o, OnLineListFrag.this);
@@ -166,4 +166,9 @@ public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDA
 //            super.onActivityResult(requestCode, resultCode, data);
 //        }
 //    }
+
+    @Override
+    protected boolean registerEventBus() {
+        return true;
+    }
 }

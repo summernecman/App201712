@@ -51,23 +51,23 @@ public class VideoContainerDAOpe extends BaseDAOpe {
     }
 
 
-    public void collect(CollectionBean collectionBean, OnFinishListener onFinishListener) {
+    public void collect(Context context,CollectionBean collectionBean, OnFinishListener onFinishListener) {
 
         if (Value.getUserInfo().getId() == videoBean.getFromUser().getId()) {
             collectionBean.setUserid(videoBean.getFromUser().getId());
         } else {
             collectionBean.setUserid(videoBean.getToUser().getId());
         }
-        NetDataOpe.Collection.collect(getActivity(),collectionBean, onFinishListener);
+        NetDataOpe.Collection.collect(context,collectionBean, onFinishListener);
     }
 
-    public void disCollect(CollectionBean collectionBean, OnFinishListener onFinishListener) {
+    public void disCollect(Context context,CollectionBean collectionBean, OnFinishListener onFinishListener) {
         if (Value.getUserInfo().getId() == videoBean.getFromUser().getId()) {
             collectionBean.setUserid(videoBean.getFromUser().getId());
         } else {
             collectionBean.setUserid(videoBean.getToUser().getId());
         }
-        NetDataOpe.Collection.disCollect(getActivity(),collectionBean, onFinishListener);
+        NetDataOpe.Collection.disCollect(context,collectionBean, onFinishListener);
     }
 
     public String getVideoComment(VideoDetailBean videoDetailBean, VideoBean videoBean) {
@@ -79,15 +79,15 @@ public class VideoContainerDAOpe extends BaseDAOpe {
         return "";
     }
 
-    public void share(ShareBean shareBean, OnFinishListener onFinishListener) {
-        NetDataOpe.Share.share(getActivity(),shareBean, onFinishListener);
+    public void share(Context context,ShareBean shareBean, OnFinishListener onFinishListener) {
+        NetDataOpe.Share.share(context,shareBean, onFinishListener);
     }
 
-    public void isCollectedByVideoIdAndUserId(VideoBean videoBean, OnFinishListener onFinishListener) {
+    public void isCollectedByVideoIdAndUserId(Context context,VideoBean videoBean, OnFinishListener onFinishListener) {
         CollectionBean collectionBean = new CollectionBean();
         collectionBean.setUserid(Value.getUserInfo().getId());
         collectionBean.setVideoid(videoBean.getId());
-        NetDataOpe.Collection.isCollectedByVideoIdAndUserId(getActivity(),collectionBean, onFinishListener);
+        NetDataOpe.Collection.isCollectedByVideoIdAndUserId(context,collectionBean, onFinishListener);
     }
 
 

@@ -55,12 +55,12 @@ public class VideoPlayFrag extends BaseServerFrag<VideoPlayUIOpe, VideoPlayDAOpe
             }
         });
 
-        getP().getD().isCommentToCustomer(getP().getD().getVideoDetailBean(), new OnFinishListener() {
+        getP().getD().isCommentToCustomer(getBaseAct(),getP().getD().getVideoDetailBean(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 if (!((Boolean) o)) {
                     getP().getU().initTips(getP().getD().userInfoDAOpe.getData());
-                    getP().getD().getComment(getP().getD().getVideoBean(), new OnFinishListener() {
+                    getP().getD().getComment(getBaseAct(),getP().getD().getVideoBean(), new OnFinishListener() {
                         @Override
                         public void onFinish(Object o) {
                             ArrayList<CommentBean> commentBeen = (ArrayList<CommentBean>) o;
@@ -146,7 +146,7 @@ public class VideoPlayFrag extends BaseServerFrag<VideoPlayUIOpe, VideoPlayDAOpe
                 break;
             case R.id.tv_upload:
                 v.setEnabled(false);
-                getP().getD().uploadVideo(getP().getD().getVideoBean(), getP().getD().getVideoDetailBean(), new OnFinishListener() {
+                getP().getD().uploadVideo(getBaseAct(),getP().getD().getVideoBean(), getP().getD().getVideoDetailBean(), new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         if (o instanceof BaseResBean) {

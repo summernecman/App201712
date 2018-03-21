@@ -42,7 +42,7 @@ public class CollecFrag extends BaseServerFrag<CollectUIOpe, CollectDAOpe> imple
         getP().getD().setPagesize(5);
         Value.getUserInfo().setPagesize(getP().getD().getPagesize());
         Value.getUserInfo().setPagestart(getP().getD().getPagestart());
-        getP().getD().getCollection(Value.getUserInfo(), new OnFinishListener() {
+        getP().getD().getCollection(getBaseAct(),Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getD().getVideos().clear();
@@ -65,7 +65,7 @@ public class CollecFrag extends BaseServerFrag<CollectUIOpe, CollectDAOpe> imple
     public void initData2() {
         Value.getUserInfo().setPagesize(getP().getD().getPagesize());
         Value.getUserInfo().setPagestart(getP().getD().getPagestart());
-        getP().getD().getCollection(Value.getUserInfo(), new OnFinishListener() {
+        getP().getD().getCollection(getBaseAct(),Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 ArrayList<VideoBean> a = (ArrayList<VideoBean>) o;

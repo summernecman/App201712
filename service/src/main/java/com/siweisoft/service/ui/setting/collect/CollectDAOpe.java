@@ -22,8 +22,8 @@ public class CollectDAOpe extends BaseDAOpe {
     private int pagestart = 0;
 
 
-    public void getCollection(UserBean userBean, OnFinishListener onFinishListener) {
-        NetDataOpe.Collection.getCollectionVideosByUserIdWithLimit(getActivity(),userBean, onFinishListener);
+    public void getCollection(Context context,UserBean userBean, OnFinishListener onFinishListener) {
+        NetDataOpe.Collection.getCollectionVideosByUserIdWithLimit(context,userBean, onFinishListener);
     }
 
     public ArrayList<VideoBean> getVideos() {

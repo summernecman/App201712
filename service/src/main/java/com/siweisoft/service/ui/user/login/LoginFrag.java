@@ -38,6 +38,7 @@ public class LoginFrag extends BaseServerFrag<LoginUIOpe, LoginDAOpe> {
     public void initNow() {
         super.initNow();
         FragmentUtil2.getInstance().print();
+        getP().getD().init(getBaseUIAct());
         getP().getU().bind.setLogin(getP().getD().getUserBean());
         getP().getU().initImage(getP().getD().getImageUril());
         getP().getU().bind.etServer.setText(NetValue.获取域名从文件(getActivity()));
@@ -62,10 +63,10 @@ public class LoginFrag extends BaseServerFrag<LoginUIOpe, LoginDAOpe> {
                 if (NullUtil.isStrEmpty(getP().getD().getUserBean().getPhone())) {
                     return;
                 }
-                getP().getD().login(getP().getD().getUserBean(), new UISNetAdapter<UserBean>(this) {
+                getP().getD().login(getBaseAct(),getP().getD().getUserBean(), new UISNetAdapter<UserBean>(this) {
                     @Override
                     public void onNetFinish(boolean haveData, String url, BaseResBean baseResBean) {
-                        if(haveData){
+                        if(haveData&&!baseResBean.isException()){
                             UserBean userBean = GsonUtil.getInstance().fromJson(GsonUtil.getInstance().toJson(baseResBean.getData()),UserBean.class);
                             Value.saveUserInfo(userBean);
                             Value.saveVideoTips(StringUtil.getStr(baseResBean.getOther()));
@@ -95,5 +96,11 @@ public class LoginFrag extends BaseServerFrag<LoginUIOpe, LoginDAOpe> {
         getP().getU().bind.setLogin(getP().getD().getUserBean());
 
 
+    }
+
+
+    @Override
+    protected boolean registerEventBus() {
+        return true;
     }
 }

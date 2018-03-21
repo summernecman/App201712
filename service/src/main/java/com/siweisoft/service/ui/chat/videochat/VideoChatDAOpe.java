@@ -85,11 +85,11 @@ public class VideoChatDAOpe extends BaseDAOpe {
         return (int) ((end - start) / 1000);
     }
 
-    public void updateVideo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
-        NetDataOpe.Video.getMaxVideoId(getActivity(),new OnFinishListener() {
+    public void updateVideo(final Context context, final VideoBean videoBean, final OnFinishListener onFinishListener) {
+        NetDataOpe.Video.getMaxVideoId(context,new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
-                NetDataOpe.Video.addVideo(getActivity(),videoBean, new OnFinishListener() {
+                NetDataOpe.Video.addVideo(context,videoBean, new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         onFinishListener.onFinish(o);
@@ -99,11 +99,11 @@ public class VideoChatDAOpe extends BaseDAOpe {
         });
     }
 
-    public void insert_and_getid_fromvieo(final VideoBean videoBean, final OnFinishListener onFinishListener) {
+    public void insert_and_getid_fromvieo(Context context,final VideoBean videoBean, final OnFinishListener onFinishListener) {
         getVideoBean().setFile("");
         getVideoBean().setCreated(DateFormatUtil.getNowStr(DateFormatUtil.YYYY_MM_DD_HH_MM_SS));
         getVideoBean().setTimenum(getMinute());
-        NetDataOpe.Video.insert_and_getid_fromvieo(getActivity(),videoBean, new OnFinishListener() {
+        NetDataOpe.Video.insert_and_getid_fromvieo(context,videoBean, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 onFinishListener.onFinish(o);
@@ -129,9 +129,9 @@ public class VideoChatDAOpe extends BaseDAOpe {
     }
 
 
-    public void updateCallState(VideoBean v, int state) {
+    public void updateCallState(Context context,VideoBean v, int state) {
         v.setCallstate(state);
-        NetDataOpe.Video.updateCallState(getActivity(),v, null);
+        NetDataOpe.Video.updateCallState(context,v, null);
     }
 
     public static boolean isFromUser(VideoBean videoBean) {

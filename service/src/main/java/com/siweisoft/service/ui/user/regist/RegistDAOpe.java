@@ -33,8 +33,8 @@ public class RegistDAOpe extends BaseDAOpe {
         this.userBean = userBean;
     }
 
-    public void regist(UserBean userBean, OnFinishListener onFinishListener) {
-        NetDataOpe.User.regist(getActivity(),userBean, onFinishListener);
+    public void regist(Context context,UserBean userBean, OnFinishListener onFinishListener) {
+        NetDataOpe.User.regist(context,userBean, onFinishListener);
     }
 
     public void sendCode(String phone, final OnFinishListener onFinishListener) {

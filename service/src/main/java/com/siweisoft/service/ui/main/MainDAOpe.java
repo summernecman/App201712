@@ -24,12 +24,10 @@ public class MainDAOpe extends BaseDAOpe {
 
     private ChatConnectListener chatConnectListener;
 
-    @Override
-    public void initDA() {
-        super.initDA();
-        videoChatListener = new VideoChatListener(getActivity());
-        emMsgListener = new EMMsgListener();
-        chatConnectListener = new ChatConnectListener((MainAct) getActivity());
+    public void initListener(Context context){
+        videoChatListener=new VideoChatListener(context);
+        chatConnectListener =new ChatConnectListener((MainAct) context);
+        emMsgListener= new EMMsgListener();
     }
 
     public ArrayList<Fragment> getFragment() {
@@ -40,8 +38,8 @@ public class MainDAOpe extends BaseDAOpe {
         return fragments;
     }
 
-    public void getLoginInfo(OnFinishListener onFinishListener) {
-        NetDataOpe.User.getLoginInfo(getActivity(),Value.getUserInfo(), onFinishListener);
+    public void getLoginInfo(Context context,OnFinishListener onFinishListener) {
+        NetDataOpe.User.getLoginInfo(context,Value.getUserInfo(), onFinishListener);
     }
 
     public VideoChatListener getVideoChatListener() {

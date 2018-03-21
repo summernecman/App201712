@@ -17,7 +17,6 @@ public class ReceiptDAOpe extends BaseDAOpe {
     private VideoBean videoBean;
 
 
-
     public int getDwUserId() {
         return dwUserId;
     }
@@ -43,8 +42,8 @@ public class ReceiptDAOpe extends BaseDAOpe {
     }
 
 
-    public void updateCallState(VideoBean v, int state) {
+    public void updateCallState(Context context,VideoBean v, int state) {
         v.setCallstate(state);
-        NetDataOpe.Video.updateCallState(getActivity(),v, null);
+        NetDataOpe.Video.updateCallState(context,v, null);
     }
 }

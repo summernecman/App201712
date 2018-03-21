@@ -41,7 +41,7 @@ public class UserCenterFrag extends BaseServerFrag<UserCenterUIOpe, UserCenterDA
         super.initNow();
         setTitleBean(new TitleBean("", "个人中心", ""));
         getP().getU().initHead();
-        getP().getD().getUserCallInfo(new OnFinishListener() {
+        getP().getD().getUserCallInfo(getBaseAct(),new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 VideoTimeBean res = (VideoTimeBean) o;
@@ -56,14 +56,14 @@ public class UserCenterFrag extends BaseServerFrag<UserCenterUIOpe, UserCenterDA
             }
         });
 
-        getP().getD().getCommentNumByUserName(Value.getUserInfo(), new OnFinishListener() {
+        getP().getD().getCommentNumByUserName(getBaseAct(),Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getU().initCommentNum((String) o);
             }
         });
 
-        getP().getD().getShareNumByUserPhone(Value.getUserInfo(), new OnFinishListener() {
+        getP().getD().getShareNumByUserPhone(getBaseAct(),Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getU().initShareNum((String) o);
@@ -71,7 +71,7 @@ public class UserCenterFrag extends BaseServerFrag<UserCenterUIOpe, UserCenterDA
         });
 
 
-        getP().getD().getCollectionNumByUserId(Value.getUserInfo(), new OnFinishListener() {
+        getP().getD().getCollectionNumByUserId(getBaseAct(),Value.getUserInfo(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getP().getU().initCollectNum((String) o);

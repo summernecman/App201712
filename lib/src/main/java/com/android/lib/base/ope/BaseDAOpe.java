@@ -24,6 +24,7 @@ public class BaseDAOpe implements BaseOpe {
 
     }
 
+
     public void initDA(){
 
     }

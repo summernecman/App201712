@@ -36,7 +36,7 @@ public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, Vide
 
         switch (getP().getD().getType()) {
             case VideoPlayFrag.TYPE_FROM_RECORD:
-                getP().getD().isCollectedByVideoIdAndUserId(getP().getD().getVideoBean(), new OnFinishListener() {
+                getP().getD().isCollectedByVideoIdAndUserId(getBaseAct(),getP().getD().getVideoBean(), new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         if (o == null) {
@@ -52,7 +52,7 @@ public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, Vide
             case VideoPlayFrag.TYPE_FROM_COLLECT:
                 break;
             case VideoPlayFrag.TYPE_FROM_SHARE:
-                getP().getD().isCollectedByVideoIdAndUserId(getP().getD().getVideoBean(), new OnFinishListener() {
+                getP().getD().isCollectedByVideoIdAndUserId(getBaseAct(),getP().getD().getVideoBean(), new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         if (o == null) {
@@ -77,7 +77,7 @@ public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, Vide
                 break;
             case R.id.iv_collect:
                 if (getP().getU().bind.ivCollect.isSelected()) {
-                    getP().getD().disCollect(getP().getD().getCollectionBean(), new OnFinishListener() {
+                    getP().getD().disCollect(getBaseAct(),getP().getD().getCollectionBean(), new OnFinishListener() {
                         @Override
                         public void onFinish(Object o) {
                             if ((Boolean) o) {
@@ -87,7 +87,7 @@ public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, Vide
                         }
                     });
                 } else {
-                    getP().getD().collect(getP().getD().getCollectionBean(), new OnFinishListener() {
+                    getP().getD().collect(getBaseAct(),getP().getD().getCollectionBean(), new OnFinishListener() {
                         @Override
                         public void onFinish(Object o) {
                             if (o instanceof CollectionBean) {
@@ -116,7 +116,7 @@ public class VideoContainerFrag extends BaseServerFrag<VideoContainerUIOpe, Vide
                         shareBean.setSendid(Value.getUserInfo().getId());
                         shareBean.setReceiptid(userBean1.getId());
                         shareBean.setVideoid(getP().getD().getVideoBean().getId());
-                        getP().getD().share(shareBean, new OnFinishListener() {
+                        getP().getD().share(getBaseAct(),shareBean, new OnFinishListener() {
                             @Override
                             public void onFinish(Object o) {
                                 ToastUtil.getInstance().showShort(getActivity(), "分享成功");

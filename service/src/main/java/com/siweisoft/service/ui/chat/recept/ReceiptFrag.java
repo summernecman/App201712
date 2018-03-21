@@ -36,8 +36,8 @@ public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
     PowerManager.WakeLock mWakeLock;
 
     @Override
-    public void initdelay() {
-        super.initdelay();
+    public void initNow() {
+        super.initNow();
         getP().getD().setVideoBean((VideoBean) getArguments().getSerializable(Value.DATA_DATA));
         getP().getU().initCallINfo(getP().getD().getVideoBean().getFromUser());
         getP().getU().shark();
@@ -52,13 +52,14 @@ public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
         mWakeLock.acquire();//这里唤醒锁，用这种方式要记得在适当的地方关闭锁，
         mWakeLock.release();
     }
+
     @Optional
     @OnClick({R.id.tv_receipt, R.id.tv_refuse})
     public void onClickEvent(View v) {
         SPUtil.getInstance().saveInt(getP().getD().getVideoBean().getFromUser().getPhone(), 0);
         switch (v.getId()) {
             case R.id.tv_receipt:
-                getP().getD().updateCallState(getP().getD().getVideoBean(), VideoBean.CALL_STATE_SUCCESS);
+                getP().getD().updateCallState(getBaseAct(),getP().getD().getVideoBean(), VideoBean.CALL_STATE_SUCCESS);
                 VideoChatFrag videoChatFrag = new VideoChatFrag();
                 videoChatFrag.setArguments(new Bundle());
                 videoChatFrag.getArguments().putSerializable(ValueConstant.DATA_DATA, getArguments().getSerializable(Value.DATA_DATA));
@@ -67,7 +68,7 @@ public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
                 FragmentUtil2.getInstance().add(getActivity(), Value.FULLSCREEN, videoChatFrag);
                 break;
             case R.id.tv_refuse:
-                getP().getD().updateCallState(getP().getD().getVideoBean(), VideoBean.CALL_STATE_REJECT);
+                getP().getD().updateCallState(getBaseAct(),getP().getD().getVideoBean(), VideoBean.CALL_STATE_REJECT);
                 try {
                     EMClient.getInstance().callManager().rejectCall();
                 } catch (EMNoActiveCallException e) {
@@ -105,5 +106,10 @@ public class ReceiptFrag extends BaseServerFrag<ReceiptUIOpe, ReceiptDAOpe> {
     public void onDestroy() {
         super.onDestroy();
         mVibrator.cancel();
+    }
+
+    @Override
+    protected boolean registerEventBus() {
+        return true;
     }
 }

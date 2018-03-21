@@ -30,8 +30,8 @@ public class ReSetPwdDAOpe extends BaseDAOpe {
         this.userBean = userBean;
     }
 
-    public void resetPwd(UserBean userBean, OnFinishListener onFinishListener) {
-        NetDataOpe.User.resetPwd(getActivity(),userBean, onFinishListener);
+    public void resetPwd(Context context,UserBean userBean, OnFinishListener onFinishListener) {
+        NetDataOpe.User.resetPwd(context,userBean, onFinishListener);
     }
 
     public void sendCode(String phone, final OnFinishListener onFinishListener) {

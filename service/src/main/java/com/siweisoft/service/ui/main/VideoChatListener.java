@@ -18,10 +18,7 @@ public class VideoChatListener implements EMCallStateChangeListener {
     private Context context;
 
     public VideoChatListener(Context context) {
-        this.context = context;
-    }
-
-    public VideoChatListener() {
+        this.context =context;
     }
 
     @Override

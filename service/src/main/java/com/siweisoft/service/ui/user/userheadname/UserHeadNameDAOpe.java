@@ -13,12 +13,9 @@ import com.siweisoft.service.ui.Constant.Value;
 public class UserHeadNameDAOpe extends BaseDAOpe {
 
 
-    public UserHeadNameDAOpe() {
-        super();
-    }
 
-    public void setHead(UserBean userBean, OnFinishListener onFinishListener) {
+    public void setHead(Context context,UserBean userBean, OnFinishListener onFinishListener) {
         userBean.setPhone(Value.getUserInfo().getPhone());
-        NetDataOpe.User.setHeadUrl(getActivity(),userBean, onFinishListener);
+        NetDataOpe.User.setHeadUrl(context,userBean, onFinishListener);
     }
 }

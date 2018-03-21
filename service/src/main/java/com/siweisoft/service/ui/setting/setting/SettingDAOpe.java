@@ -22,8 +22,8 @@ public class SettingDAOpe extends BaseDAOpe {
     AppBean appBean;
 
 
-    public void CheckVersion(final OnFinishListener onFinishListener){
-        NetDataOpe.App.CheckVersion(getActivity(),new OnFinishListener() {
+    public void CheckVersion(final Context context, final OnFinishListener onFinishListener){
+        NetDataOpe.App.CheckVersion(context,new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                  appBean = (AppBean) o;
@@ -31,10 +31,10 @@ public class SettingDAOpe extends BaseDAOpe {
                     onFinishListener.onFinish(false);
                     return;
                 }
-                PackageManager pm = getActivity().getPackageManager();//context为当前Activity上下文
+                PackageManager pm = context.getPackageManager();//context为当前Activity上下文
                 PackageInfo pi = null;
                 try {
-                    pi = pm.getPackageInfo(getActivity().getPackageName(), 0);
+                    pi = pm.getPackageInfo(context.getPackageName(), 0);
                     if(pi.versionCode<appBean.getVersioncode()){
                         onFinishListener.onFinish(true);
                         return;
@@ -52,11 +52,11 @@ public class SettingDAOpe extends BaseDAOpe {
 
 
 
-    public String getVersion(){
-        PackageManager pm = getActivity().getPackageManager();//context为当前Activity上下文
+    public String getVersion(Context context){
+        PackageManager pm = context.getPackageManager();//context为当前Activity上下文
         PackageInfo pi  = null;
         try {
-            pi = pm.getPackageInfo(getActivity().getPackageName(), 0);
+            pi = pm.getPackageInfo(context.getPackageName(), 0);
             return pi.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();

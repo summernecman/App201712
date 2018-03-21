@@ -26,6 +26,32 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_marginTop="10dp"
+                android:id="@+id/ll_videochatsetting"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/drawable_press_black_while"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingLeft="5dp"
+                    android:text="通话设置"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
                 android:id="@+id/ll_check"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"

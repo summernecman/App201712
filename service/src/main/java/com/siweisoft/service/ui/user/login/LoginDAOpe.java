@@ -25,24 +25,22 @@ public class LoginDAOpe extends BaseDAOpe {
 
 
 
-    @Override
-    public void initDA(Context context) {
-        super.initDA(context);
-        userBean.setPhone(SPUtil.getInstance().getStr(Value.USERNAME));
-        userBean.setPwd(SPUtil.getInstance().getStr(Value.PWD));
-        userBean.setUuuid(UUUIDUtil.getInstance().getUUUId(getActivity()));
-    }
-
     public void autoLogin() {
 
     }
 
-    public void login(UserBean userBean, NetI<UserBean> adapter) {
-        NetDataOpe.User.login(getActivity(),userBean,adapter);
+    public void login(Context context,UserBean userBean, NetI<UserBean> adapter) {
+        NetDataOpe.User.login(context,userBean,adapter);
     }
 
     public String getImageUril() {
         return "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504080205794&di=f1615a7fc30840be57ff68b24e6f953e&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F342ac65c103853437fc566079913b07eca80888a.jpg";
+    }
+
+    public void init(Context context){
+        userBean.setPhone(SPUtil.getInstance().getStr(Value.USERNAME));
+        userBean.setPwd(SPUtil.getInstance().getStr(Value.PWD));
+        userBean.setUuuid(UUUIDUtil.getInstance().getUUUId(context));
     }
 
 

@@ -28,15 +28,14 @@ public class VideoRecordDAOpe extends BaseDAOpe {
     private SeachBean seachBean = new SeachBean();
 
     @Override
-    public void initDA(Context context) {
-        super.initDA(context);
+    public void initDA() {
+        super.initDA();
         seachBean.setTxt("");
         seachBean.setData(Value.getVideotipsList());
     }
 
-
-    public void getHistory(OnFinishListener onFinishListener) {
-        NetDataOpe.Video.getHistoryVideos(getActivity(),Value.getUserInfo(), onFinishListener);
+    public void getHistory(Context context,OnFinishListener onFinishListener) {
+        NetDataOpe.Video.getHistoryVideos(context,Value.getUserInfo(), onFinishListener);
     }
 
     public ArrayList<VideoBean> getVideos() {
@@ -55,19 +54,19 @@ public class VideoRecordDAOpe extends BaseDAOpe {
         this.historyBean = historyBean;
     }
 
-    public void getVideosByBothUserIdWithLimit(ContactBean contactBean, OnFinishListener onFinishListener) {
+    public void getVideosByBothUserIdWithLimit(Context context,ContactBean contactBean, OnFinishListener onFinishListener) {
         if (getSeachBean().isCan()) {
             contactBean.setType(getSeachBean().getType());
             contactBean.setTxt(getSeachBean().getTxt());
-            NetDataOpe.Video.getVideosByBothUserIdWithLimitAndSeach(getActivity(),contactBean, onFinishListener);
+            NetDataOpe.Video.getVideosByBothUserIdWithLimitAndSeach(context,contactBean, onFinishListener);
         } else {
-            NetDataOpe.Video.getVideosByBothUserIdWithLimit(getActivity(),contactBean, onFinishListener);
+            NetDataOpe.Video.getVideosByBothUserIdWithLimit(context,contactBean, onFinishListener);
         }
     }
 
 
-    public void getVideosByBothUserIdWithLimitAndSeach(ContactBean contactBean, OnFinishListener onFinishListener) {
-        NetDataOpe.Video.getVideosByBothUserIdWithLimitAndSeach(getActivity(),contactBean, onFinishListener);
+    public void getVideosByBothUserIdWithLimitAndSeach(Context context,ContactBean contactBean, OnFinishListener onFinishListener) {
+        NetDataOpe.Video.getVideosByBothUserIdWithLimitAndSeach(context,contactBean, onFinishListener);
     }
 
     public int getPageindex() {
