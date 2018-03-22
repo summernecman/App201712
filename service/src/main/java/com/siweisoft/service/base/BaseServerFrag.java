@@ -72,12 +72,7 @@ public class BaseServerFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends Ba
             case R.id.ftv_title:
                 break;
             case R.id.ftv_back:
-                if (FragmentUtil2.getInstance().getFragMap() != null && FragmentUtil2.getInstance().getFragMap().get(Value.getNowRoot()) != null) {
-                    if (FragmentUtil2.getInstance().getFragMap().get(Value.getNowRoot()).size() <= 1) {
-                        return;
-                    }
-                }
-                FragmentUtil2.getInstance().removeTopRightNow(getBaseUIAct(), Value.getNowRoot());
+               getBaseUIAct().onBackPressed();
                 break;
             case R.id.ftv_right2:
                 break;

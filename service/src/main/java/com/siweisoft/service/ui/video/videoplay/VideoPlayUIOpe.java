@@ -3,10 +3,8 @@ package com.siweisoft.service.ui.video.videoplay;
 //by summer on 17-08-24.
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.interf.OnFinishListener;
@@ -19,9 +17,9 @@ import com.siweisoft.service.BR;
 import com.siweisoft.service.R;
 import com.siweisoft.service.bean.TipsBean;
 import com.siweisoft.service.databinding.FragVideoplayBinding;
-import com.siweisoft.service.netdb.comment.CommentBean;
-import com.siweisoft.service.netdb.video.VideoBean;
-import com.siweisoft.service.netdb.videodetail.VideoDetailBean;
+import com.siweisoft.service.data.netd.comment.CommentBean;
+import com.siweisoft.service.data.netd.video.VideoBean;
+import com.siweisoft.service.data.netd.videodetail.VideoDetailBean;
 import com.siweisoft.service.ui.Constant.Value;
 
 import java.io.File;

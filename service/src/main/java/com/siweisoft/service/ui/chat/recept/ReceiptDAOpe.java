@@ -5,8 +5,8 @@ package com.siweisoft.service.ui.chat.recept;
 import android.content.Context;
 
 import com.android.lib.base.ope.BaseDAOpe;
-import com.siweisoft.service.netdb.NetDataOpe;
-import com.siweisoft.service.netdb.video.VideoBean;
+import com.siweisoft.service.data.netd.NetDataOpe;
+import com.siweisoft.service.data.netd.video.VideoBean;
 
 public class ReceiptDAOpe extends BaseDAOpe {
 

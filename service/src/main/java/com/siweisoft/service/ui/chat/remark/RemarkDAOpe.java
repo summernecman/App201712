@@ -6,18 +6,17 @@ import android.content.Context;
 
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
-import com.android.lib.constant.UrlConstant;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.siweisoft.service.bean.TipsBean;
-import com.siweisoft.service.netdb.NetDataOpe;
-import com.siweisoft.service.netdb.NetValue;
-import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.video.VideoBean;
-import com.siweisoft.service.netdb.videocomment.VideoCommentBean;
-import com.siweisoft.service.netdb.videodetail.VideoDetailBean;
-import com.siweisoft.service.netdb.videotip.VideoTipBean;
+import com.siweisoft.service.data.netd.NetDataOpe;
+import com.siweisoft.service.data.netd.NetValue;
+import com.siweisoft.service.data.netd.user.UserBean;
+import com.siweisoft.service.data.netd.video.VideoBean;
+import com.siweisoft.service.data.netd.videocomment.VideoCommentBean;
+import com.siweisoft.service.data.netd.videodetail.VideoDetailBean;
+import com.siweisoft.service.data.netd.videotip.VideoTipBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.user.userinfo.UserInfoDAOpe;
 

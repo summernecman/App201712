@@ -16,7 +16,7 @@ import com.android.lib.bean.AppViewHolder;
 import com.android.lib.util.ScreenUtil;
 import com.hedgehog.ratingbar.RatingBar;
 import com.siweisoft.service.BR;
-import com.siweisoft.service.GlideApp;
+import com.android.lib.GlideApp;
 import com.siweisoft.service.R;
 import com.siweisoft.service.databinding.FragFeedbackBinding;
 import com.siweisoft.service.databinding.ItemPicBinding;

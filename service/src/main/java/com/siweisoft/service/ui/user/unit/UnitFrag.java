@@ -9,7 +9,7 @@ import com.android.lib.util.FragmentUtil2;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TitleBean;
-import com.siweisoft.service.netdb.user.UserBean;
+import com.siweisoft.service.data.netd.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
 
 import butterknife.OnClick;
@@ -29,7 +29,7 @@ public class UnitFrag extends BaseServerFrag<UnitUIOpe, UnitDAOpe> {
         switch (v.getId()) {
             case R.id.button:
                 Value.getUserInfo().getUnit().setUnitname(getP().getU().bind.etInput.getText().toString());
-                getP().getD().updateUnitInfo(Value.getUserInfo(), new OnFinishListener() {
+                getP().getD().updateUnitInfo(getBaseAct(),Value.getUserInfo(), new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         Value.saveUserInfo((UserBean) o);

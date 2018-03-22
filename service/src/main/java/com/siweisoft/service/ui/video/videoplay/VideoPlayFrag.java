@@ -15,9 +15,9 @@ import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TitleBean;
-import com.siweisoft.service.netdb.comment.CommentBean;
-import com.siweisoft.service.netdb.video.VideoBean;
-import com.siweisoft.service.netdb.videodetail.VideoDetailBean;
+import com.siweisoft.service.data.netd.comment.CommentBean;
+import com.siweisoft.service.data.netd.video.VideoBean;
+import com.siweisoft.service.data.netd.videodetail.VideoDetailBean;
 
 import java.io.File;
 import java.util.ArrayList;

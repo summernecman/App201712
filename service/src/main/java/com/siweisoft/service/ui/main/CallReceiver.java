@@ -11,7 +11,7 @@ import com.android.lib.util.FragmentUtil2;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.LogUtil;
 import com.hyphenate.chat.EMClient;
-import com.siweisoft.service.netdb.video.VideoBean;
+import com.siweisoft.service.data.netd.video.VideoBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.chat.recept.ReceiptFrag;
 

@@ -3,7 +3,7 @@ package com.siweisoft.service.ui.video.seach;
 //by summer on 2017-11-10.
 
 import com.android.lib.bean.BaseBean;
-import com.siweisoft.service.netdb.videotip.VideoTipBean;
+import com.siweisoft.service.data.netd.videotip.VideoTipBean;
 
 import java.util.ArrayList;
 

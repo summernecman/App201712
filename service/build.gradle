@@ -6,11 +6,24 @@ android {
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.siweisoft.service"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 27
         versionCode 211
         versionName "2.1.1"
         multiDexEnabled true
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "297cd844a85cfab4f298413a", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
+       // javaCompileOptions {annotationProcessorOptions {includeCompileClasspath true}}
     }
 
     signingConfigs {
@@ -70,9 +83,14 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
     compile 'com.github.bumptech.glide:glide:4.5.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    compile 'cn.jiguang.sdk:jpush:3.1.1'  // 此处以JPush 3.1.1 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.9'  // 此处以JCore 1.1.9 版本为例。
+
     compile project(':lib')
     compile files('libs/jsms_android-1.1.0.jar')
-    compile files('libs/jcore-android-1.1.7.jar')
-    compile files('libs/jpush-android-3.0.9.jar')
     implementation files('libs/hyphenatechat_3.3.9.jar')
+
+    compileOnly 'org.projectlombok:lombok:1.16.20'
+    annotationProcessor 'org.projectlombok:lombok:1.16.20'
 }

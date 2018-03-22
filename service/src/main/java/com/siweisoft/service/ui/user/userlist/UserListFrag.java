@@ -12,7 +12,7 @@ import com.android.lib.view.refreshlayout.MaterialRefreshListener;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TitleBean;
-import com.siweisoft.service.netdb.user.UserBean;
+import com.siweisoft.service.data.netd.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
 
 import java.util.ArrayList;

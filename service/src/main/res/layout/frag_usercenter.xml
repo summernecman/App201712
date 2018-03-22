@@ -5,11 +5,11 @@
 
         <variable
             name="frag_usercenter"
-            type="com.siweisoft.service.netdb.user.UserBean" />
+            type="com.siweisoft.service.data.netd.user.UserBean" />
 
         <variable
             name="callinfo"
-            type="com.siweisoft.service.netdb.video.VideoTimeBean" />
+            type="com.siweisoft.service.data.netd.video.VideoTimeBean" />
 
     </data>
 

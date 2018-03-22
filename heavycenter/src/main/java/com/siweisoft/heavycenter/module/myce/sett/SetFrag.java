@@ -11,7 +11,7 @@ import com.siweisoft.heavycenter.base.AppFrag;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginReqBean;
 import com.siweisoft.heavycenter.data.netd.acct.logout.LogOutResBean;
-import com.siweisoft.heavycenter.module.welc.welc.WelcAct;
+import com.siweisoft.heavycenter.module.welc.welc.Welcome;
 
 import butterknife.OnClick;
 
@@ -31,7 +31,7 @@ public class SetFrag extends AppFrag<SetUIOpe,SetDAOpe> {
                         LoginReqBean loginReqBean = LocalValue.get登录参数();
                         loginReqBean.setInputPwd("");
                         LocalValue.save登录参数(loginReqBean);
-                        IntentUtil.startActivityWithFinish(getActivity(),WelcAct.class,null);
+                        IntentUtil.startActivityWithFinish(getActivity(),Welcome.class,null);
                     }
                 });
                 break;

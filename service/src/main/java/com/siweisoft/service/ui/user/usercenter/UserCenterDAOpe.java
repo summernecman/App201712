@@ -8,8 +8,8 @@ import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.util.LogUtil;
 import com.siweisoft.service.bean.TipBean;
-import com.siweisoft.service.netdb.NetDataOpe;
-import com.siweisoft.service.netdb.user.UserBean;
+import com.siweisoft.service.data.netd.NetDataOpe;
+import com.siweisoft.service.data.netd.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.user.userinfo.UserInfoDAOpe;
 
@@ -19,18 +19,14 @@ import java.util.Iterator;
 
 public class UserCenterDAOpe extends BaseDAOpe {
 
-    UserInfoDAOpe userInfoDAOpe;
+    UserInfoDAOpe userInfoDAOpe = new UserInfoDAOpe();
 
 
     private ArrayList<TipBean> tipdata = new ArrayList<>();
 
 
 
-    public UserInfoDAOpe getUserInfoDAOpe(Context context) {
-        if (userInfoDAOpe == null) {
-            userInfoDAOpe = new UserInfoDAOpe();
-            userInfoDAOpe.setContext(context);
-        }
+    public UserInfoDAOpe getUserInfoDAOpe() {
         return userInfoDAOpe;
     }
 

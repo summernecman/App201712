@@ -16,18 +16,19 @@ import com.android.lib.util.LogUtil;
 import com.android.lib.util.ScreenUtil;
 
 public class RoundCricleImageView extends ImageView {
+
     public RoundCricleImageView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            setOutlineProvider(new ViewOutlineProvider() {
-                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-                @Override
-                public void getOutline(View view, Outline outline) {
-                    outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), ScreenUtil.最小DIMEN * 4);
-                    LogUtil.E("getoutline");
-                }
-            });
-        }
-        setClipToOutline(true);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            setOutlineProvider(new ViewOutlineProvider() {
+//                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+//                @Override
+//                public void getOutline(View view, Outline outline) {
+//                    outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), ScreenUtil.最小DIMEN * 4);
+//                    LogUtil.E("getoutline");
+//                }
+//            });
+//        }
+//        setClipToOutline(true);
     }
 }

@@ -3,7 +3,6 @@ package com.siweisoft.service.ui.chat.remark;
 //by summer on 17-08-24.
 
 import android.app.Activity;
-import android.content.Context;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
@@ -12,16 +11,15 @@ import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
-import com.android.lib.constant.UrlConstant;
 import com.android.lib.util.StringUtil;
 import com.hedgehog.ratingbar.RatingBar;
 import com.siweisoft.service.BR;
-import com.siweisoft.service.GlideApp;
+import com.android.lib.GlideApp;
 import com.siweisoft.service.R;
 import com.siweisoft.service.bean.TipsBean;
 import com.siweisoft.service.databinding.FragRemarkBinding;
-import com.siweisoft.service.netdb.NetValue;
-import com.siweisoft.service.netdb.user.UserBean;
+import com.siweisoft.service.data.netd.NetValue;
+import com.siweisoft.service.data.netd.user.UserBean;
 import com.siweisoft.service.ui.main.MainAct;
 
 public class RemarkUIOpe extends BaseUIOpe<FragRemarkBinding> {

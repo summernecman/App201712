@@ -2,7 +2,10 @@ package com.siweisoft.service.ui.user.usercenter;
 
 //by summer on 17-08-24.
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.android.lib.base.interf.OnFinishListener;
 import com.android.lib.util.FragmentUtil2;
@@ -12,7 +15,7 @@ import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TipBean;
 import com.siweisoft.service.bean.TitleBean;
-import com.siweisoft.service.netdb.video.VideoTimeBean;
+import com.siweisoft.service.data.netd.video.VideoTimeBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.setting.aboutus.AboutUsFrag;
 import com.siweisoft.service.ui.setting.account.AccountFrag;
@@ -30,6 +33,12 @@ import butterknife.OnClick;
 import butterknife.Optional;
 
 public class UserCenterFrag extends BaseServerFrag<UserCenterUIOpe, UserCenterDAOpe> implements OnRefreshListener{
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
 
     @Override
     public void initdelay() {

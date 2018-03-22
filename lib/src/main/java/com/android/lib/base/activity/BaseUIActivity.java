@@ -45,12 +45,17 @@ public abstract class BaseUIActivity<A extends BaseUIOpe, B extends BaseDAOpe> e
         if(getP().getU().getBind()!=null){
             baseUIRoot.addView(getP().getU().getBind().getRoot(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         }
-        getP().getU().initUI();
         getP().getD().initDA();
+        getP().getU().initUI();
+        initNow();
         ButterKnife.bind(getActivity());
         if(registerEventBus()){
             EventBus.getDefault().register(this);
         }
+    }
+
+    protected void initNow(){
+
     }
 
     protected int getBaseUILayout() {

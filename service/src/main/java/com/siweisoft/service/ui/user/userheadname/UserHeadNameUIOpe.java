@@ -2,15 +2,12 @@ package com.siweisoft.service.ui.user.userheadname;
 
 //by summer on 17-08-30.
 
-import android.content.Context;
-
 import com.android.lib.base.ope.BaseUIOpe;
-import com.android.lib.constant.UrlConstant;
 import com.android.lib.util.LogUtil;
-import com.siweisoft.service.GlideApp;
+import com.android.lib.GlideApp;
 import com.siweisoft.service.R;
 import com.siweisoft.service.databinding.FragUserheadnameBinding;
-import com.siweisoft.service.netdb.NetValue;
+import com.siweisoft.service.data.netd.NetValue;
 import com.siweisoft.service.ui.Constant.Value;
 
 public class UserHeadNameUIOpe extends BaseUIOpe<FragUserheadnameBinding> {

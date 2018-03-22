@@ -2,7 +2,6 @@ package com.siweisoft.service.ui.video.seach;
 
 //by summer on 17-09-11.
 
-import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 
@@ -12,7 +11,7 @@ import com.android.lib.bean.AppViewHolder;
 import com.siweisoft.service.BR;
 import com.siweisoft.service.R;
 import com.siweisoft.service.databinding.FragSeachBinding;
-import com.siweisoft.service.netdb.videotip.VideoTipBean;
+import com.siweisoft.service.data.netd.videotip.VideoTipBean;
 
 import java.util.ArrayList;
 

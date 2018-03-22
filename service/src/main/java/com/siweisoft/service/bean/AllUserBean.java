@@ -5,7 +5,7 @@ package com.siweisoft.service.bean;
 import android.databinding.Bindable;
 
 import com.android.lib.bean.BaseBean;
-import com.siweisoft.service.netdb.user.UserBean;
+import com.siweisoft.service.data.netd.user.UserBean;
 
 import java.util.ArrayList;
 

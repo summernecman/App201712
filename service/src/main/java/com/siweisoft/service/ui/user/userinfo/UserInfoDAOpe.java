@@ -11,10 +11,10 @@ import com.android.lib.util.FragmentUtil2;
 import com.siweisoft.service.bean.AllUserBean;
 import com.siweisoft.service.bean.TipBean;
 import com.siweisoft.service.bean.TipsBean;
-import com.siweisoft.service.netdb.NetDataOpe;
-import com.siweisoft.service.netdb.agree.AgreeBean;
-import com.siweisoft.service.netdb.comment.CommentBean;
-import com.siweisoft.service.netdb.user.UserBean;
+import com.siweisoft.service.data.netd.NetDataOpe;
+import com.siweisoft.service.data.netd.agree.AgreeBean;
+import com.siweisoft.service.data.netd.comment.CommentBean;
+import com.siweisoft.service.data.netd.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.user.onlinelist.OnLineListFrag;
 import com.siweisoft.service.ui.user.usercenter.UserCenterDAOpe;
@@ -143,7 +143,6 @@ public class UserInfoDAOpe extends BaseDAOpe {
     public UserCenterDAOpe getUserCenterDAOpe(Context context) {
         if (userCenterDAOpe == null) {
             userCenterDAOpe = new UserCenterDAOpe();
-            userCenterDAOpe.setContext(context);
         }
         return userCenterDAOpe;
     }

@@ -3,12 +3,15 @@ package com.android.lib.util.system;
 //by summer on 17-09-20.
 
 import android.app.ActivityManager;
+import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+
+import com.android.lib.util.LogUtil;
 
 import java.util.Iterator;
 import java.util.List;
@@ -126,6 +129,20 @@ public class SystemUtil {
         Log.e("cocos2d-x", "Network Type : " + strNetworkType);
 
         return strNetworkType;
+    }
+
+    public static boolean isAppInit(Application application){
+        int pid = android.os.Process.myPid();
+        String processAppName = SystemUtil.getAppName(application, pid);
+        // 如果APP启用了远程的service，此application:onCreate会被调用2次
+        // 为了防止环信SDK被初始化2次，加此判断会保证SDK被初始化1次
+        // 默认的APP会在以包名为默认的process name下运行，如果查到的process name不是APP的process name就立即返回
+        if (processAppName == null || !processAppName.equalsIgnoreCase(application.getPackageName())) {
+            LogUtil.E("enter the service process!");
+            // 则此application::onCreate 是被service 调用的，直接返回
+            return true;
+        }
+        return false;
     }
 
 }

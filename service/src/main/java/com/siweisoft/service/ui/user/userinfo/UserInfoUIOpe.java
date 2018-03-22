@@ -2,7 +2,6 @@ package com.siweisoft.service.ui.user.userinfo;
 
 //by summer on 17-08-24.
 
-import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -11,24 +10,22 @@ import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
-import com.android.lib.constant.UrlConstant;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.view.recyclerview.MyRecyclerView;
-import com.android.lib.view.refreshlayout.MaterialRefreshListener;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.service.BR;
-import com.siweisoft.service.GlideApp;
+import com.android.lib.GlideApp;
 import com.siweisoft.service.R;
 import com.siweisoft.service.bean.TipBean;
 import com.siweisoft.service.databinding.FragUserinfoBinding;
 import com.siweisoft.service.databinding.ItemRemarkBinding;
-import com.siweisoft.service.netdb.NetValue;
-import com.siweisoft.service.netdb.comment.CommentBean;
-import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.video.VideoTimeBean;
+import com.siweisoft.service.data.netd.NetValue;
+import com.siweisoft.service.data.netd.comment.CommentBean;
+import com.siweisoft.service.data.netd.user.UserBean;
+import com.siweisoft.service.data.netd.video.VideoTimeBean;
 
 import java.util.ArrayList;
 import java.util.HashMap;

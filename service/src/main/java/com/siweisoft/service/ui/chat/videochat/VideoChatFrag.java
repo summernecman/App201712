@@ -25,7 +25,7 @@ import com.hyphenate.exceptions.EMServiceNotReadyException;
 import com.hyphenate.exceptions.HyphenateException;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
-import com.siweisoft.service.netdb.video.VideoBean;
+import com.siweisoft.service.data.netd.video.VideoBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.chat.remark.RemarkFrag;
 import com.siweisoft.service.ui.main.VideoChatListener;

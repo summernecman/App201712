@@ -5,7 +5,7 @@
 
         <variable
             name="item_video111"
-            type="com.siweisoft.service.netdb.video.VideoBean" />
+            type="com.siweisoft.service.data.netd.video.VideoBean" />
 
     </data>
 

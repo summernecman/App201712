@@ -12,8 +12,8 @@ import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMError;
 import com.hyphenate.chat.EMClient;
 import com.siweisoft.service.ServieApp;
-import com.siweisoft.service.netdb.NetDataOpe;
-import com.siweisoft.service.netdb.crash.CrashBean;
+import com.siweisoft.service.data.netd.NetDataOpe;
+import com.siweisoft.service.data.netd.crash.CrashBean;
 import com.siweisoft.service.ui.Constant.Value;
 
 public class ChatConnectListener implements EMConnectionListener {

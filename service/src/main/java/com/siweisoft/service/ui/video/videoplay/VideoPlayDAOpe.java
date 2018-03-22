@@ -9,12 +9,12 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.network.NetWork;
 import com.android.lib.network.bean.res.BaseResBean;
 import com.android.lib.util.NullUtil;
-import com.siweisoft.service.netdb.NetDataOpe;
-import com.siweisoft.service.netdb.collection.CollectionBean;
-import com.siweisoft.service.netdb.share.ShareBean;
-import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.video.VideoBean;
-import com.siweisoft.service.netdb.videodetail.VideoDetailBean;
+import com.siweisoft.service.data.netd.NetDataOpe;
+import com.siweisoft.service.data.netd.collection.CollectionBean;
+import com.siweisoft.service.data.netd.share.ShareBean;
+import com.siweisoft.service.data.netd.user.UserBean;
+import com.siweisoft.service.data.netd.video.VideoBean;
+import com.siweisoft.service.data.netd.videodetail.VideoDetailBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.user.userinfo.UserInfoDAOpe;
 

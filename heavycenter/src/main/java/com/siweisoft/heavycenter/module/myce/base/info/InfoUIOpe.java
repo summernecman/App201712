@@ -2,9 +2,6 @@ package com.siweisoft.heavycenter.module.myce.base.info;
 
 //by summer on 2017-12-19.
 
-import android.content.Context;
-
-import com.android.lib.base.fragment.BaseUIFrag;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.ScreenUtil;
 import com.android.lib.util.StringUtil;
@@ -13,7 +10,7 @@ import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.locd.scan.user.UserInfo;
 import com.siweisoft.heavycenter.databinding.FragScanInfoBinding;
-import com.siweisoft.heavycenter.tools.CodeUtils;
+import com.android.lib.util.scan.CodeUtils;
 
 public class InfoUIOpe extends AppUIOpe<FragScanInfoBinding>{
 

@@ -7,9 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.lib.GlideApp;
 import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
-import com.siweisoft.heavycenter.GlideApp;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.locd.LocalValue;

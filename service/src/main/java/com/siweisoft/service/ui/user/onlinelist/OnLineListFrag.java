@@ -2,37 +2,31 @@ package com.siweisoft.service.ui.user.onlinelist;
 
 //by summer on 2017-07-04.
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.android.lib.base.interf.OnFinishListener;
-import com.android.lib.base.interf.view.OnAppItemClickListener;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.FragmentUtil2;
-import com.android.lib.util.LogUtil;
 import com.android.lib.view.bottommenu.MessageEvent;
-import com.android.lib.view.dialog.list.DialogListFrag;
 import com.hyphenate.chat.EMClient;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
-import com.siweisoft.service.bean.TitleBean;
-import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.video.VideoBean;
+import com.siweisoft.service.data.netd.user.UserBean;
+import com.siweisoft.service.data.netd.video.VideoBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.chat.videochat.VideoChatFrag;
 import com.siweisoft.service.ui.dialog.select.SelectFrag;
 import com.siweisoft.service.ui.user.userinfo.UserInfoFrag;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.OnClick;
 import butterknife.Optional;
 
-import static com.siweisoft.service.netdb.video.VideoBean.type_video_record;
+import static com.siweisoft.service.data.netd.video.VideoBean.type_video_record;
 
 public class OnLineListFrag extends BaseServerFrag<OnLineListUIOpe, OnLineListDAOpe> implements OnRefreshListener{
 

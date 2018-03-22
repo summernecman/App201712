@@ -2,7 +2,6 @@ package com.siweisoft.service.ui.video.videocontainer;
 
 //by summer on 2017-11-08.
 
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
@@ -10,7 +9,7 @@ import com.android.lib.base.activity.BaseActivity;
 import com.android.lib.base.adapter.AppBasePagerAdapter;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.siweisoft.service.databinding.FragVideocontainerBinding;
-import com.siweisoft.service.netdb.video.VideoBean;
+import com.siweisoft.service.data.netd.video.VideoBean;
 
 import java.util.ArrayList;
 

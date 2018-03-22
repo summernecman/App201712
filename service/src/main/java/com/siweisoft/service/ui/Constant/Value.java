@@ -2,18 +2,16 @@ package com.siweisoft.service.ui.Constant;
 
 //by summer on 2017-07-04.
 
-import android.content.Context;
 import android.os.Environment;
 
-import com.android.lib.constant.UrlConstant;
 import com.android.lib.constant.ValueConstant;
 import com.android.lib.util.GsonUtil;
 import com.android.lib.util.SPUtil;
 import com.google.gson.reflect.TypeToken;
 import com.hyphenate.chat.EMChatRoom;
 import com.siweisoft.service.R;
-import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.videotip.VideoTipBean;
+import com.siweisoft.service.data.netd.user.UserBean;
+import com.siweisoft.service.data.netd.videotip.VideoTipBean;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -29,7 +29,7 @@ import com.siweisoft.heavycenter.data.locd.LocalValue;
 import com.siweisoft.heavycenter.data.netd.acct.login.LoginResBean;
 import com.siweisoft.heavycenter.data.netd.jpush.main.MainPush;
 import com.siweisoft.heavycenter.data.netd.msg.push.MsgPush;
-import com.siweisoft.heavycenter.module.welc.welc.WelcAct;
+import com.siweisoft.heavycenter.module.welc.welc.Welcome;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -40,7 +40,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getP().getD().initDA(this);
-        ActivityUtil.被后台清理了就重启(getActivity(),savedInstanceState,WelcAct.class);
+        ActivityUtil.被后台清理了就重启(getActivity(),savedInstanceState,Welcome.class);
         if(!getP().getD().getPermissionUtil().is所有的权限都允许(getActivity(),getP().getD().getPermissions())){
             return;
         }
@@ -153,7 +153,7 @@ public class MainAct extends AppAct<MainUIOpe, MainDAOpe> implements OnAppItemSe
     public void XXX(MessageEvent m) {
         if("net".equals(m.sender)){
             LocalValue.set自动登录(false);
-            startActivity(new Intent(this,WelcAct.class));
+            startActivity(new Intent(this,Welcome.class));
             this.finish();
         }
     }

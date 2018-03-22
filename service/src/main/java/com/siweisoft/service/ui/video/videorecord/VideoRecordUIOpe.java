@@ -2,26 +2,23 @@ package com.siweisoft.service.ui.video.videorecord;
 
 //by summer on 17-08-23.
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.base.ope.BaseUIOpe;
 import com.android.lib.bean.AppViewHolder;
-import com.android.lib.constant.UrlConstant;
 import com.android.lib.util.StringUtil;
 import com.android.lib.view.recyclerview.MyRecyclerView;
-import com.android.lib.view.refreshlayout.MaterialRefreshListener;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.siweisoft.service.BR;
-import com.siweisoft.service.GlideApp;
+import com.android.lib.GlideApp;
 import com.siweisoft.service.R;
 import com.siweisoft.service.databinding.FragVideorecordBinding;
 import com.siweisoft.service.databinding.ItemVideorecordBinding;
-import com.siweisoft.service.netdb.NetValue;
-import com.siweisoft.service.netdb.video.VideoBean;
+import com.siweisoft.service.data.netd.NetValue;
+import com.siweisoft.service.data.netd.video.VideoBean;
 import com.siweisoft.service.ui.Constant.Value;
 
 import java.util.List;

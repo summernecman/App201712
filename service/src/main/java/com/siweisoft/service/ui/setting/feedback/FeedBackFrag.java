@@ -18,7 +18,7 @@ import com.hedgehog.ratingbar.RatingBar;
 import com.siweisoft.service.R;
 import com.siweisoft.service.base.BaseServerFrag;
 import com.siweisoft.service.bean.TitleBean;
-import com.siweisoft.service.netdb.feedback.FeedBackBean;
+import com.siweisoft.service.data.netd.feedback.FeedBackBean;
 import com.siweisoft.service.ui.Constant.Value;
 import com.siweisoft.service.ui.Image.ImageFrag;
 

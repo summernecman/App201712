@@ -2,15 +2,14 @@ package com.siweisoft.service.ui.chat.videochat;
 
 //by summer on 17-09-14.
 
-import android.content.Context;
 import android.view.View;
 
 import com.android.lib.base.ope.BaseUIOpe;
-import com.siweisoft.service.GlideApp;
+import com.android.lib.GlideApp;
 import com.siweisoft.service.R;
 import com.siweisoft.service.databinding.FragVideochatBinding;
-import com.siweisoft.service.netdb.NetValue;
-import com.siweisoft.service.netdb.user.UserBean;
+import com.siweisoft.service.data.netd.NetValue;
+import com.siweisoft.service.data.netd.user.UserBean;
 import com.siweisoft.service.ui.Constant.Value;
 
 public class VideoChatUIOpe extends BaseUIOpe<FragVideochatBinding> {

@@ -9,9 +9,9 @@ import com.android.lib.base.ope.BaseDAOpe;
 import com.android.lib.util.LogUtil;
 import com.android.lib.util.data.DateFormatUtil;
 import com.android.lib.util.thread.ThreadUtil;
-import com.siweisoft.service.netdb.NetDataOpe;
-import com.siweisoft.service.netdb.user.UserBean;
-import com.siweisoft.service.netdb.video.VideoBean;
+import com.siweisoft.service.data.netd.NetDataOpe;
+import com.siweisoft.service.data.netd.user.UserBean;
+import com.siweisoft.service.data.netd.video.VideoBean;
 import com.siweisoft.service.ui.Constant.Value;
 
 public class VideoChatDAOpe extends BaseDAOpe {

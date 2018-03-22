@@ -21,10 +21,6 @@ public class AppService extends Service {
     int index = -1;
 
     private OnFinishListener onFinishListener;
-//
-//    public AppService(OnFinishListener onFinishListener) {
-//        this.onFinishListener = onFinishListener;
-//    }
 
     @Override
     public void onCreate() {
@@ -36,8 +32,10 @@ public class AppService extends Service {
         super.onDestroy();
     }
 
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        LogUtil.E(""+System.currentTimeMillis());
         AppThread.getInstance(new OnFinishWithObjI() {
             @Override
             public void onNetFinish(Object o) {

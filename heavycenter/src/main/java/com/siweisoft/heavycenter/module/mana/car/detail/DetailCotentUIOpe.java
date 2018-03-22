@@ -4,6 +4,7 @@ package com.siweisoft.heavycenter.module.mana.car.detail;
 
 import android.view.View;
 
+import com.android.lib.GlideApp;
 import com.android.lib.base.adapter.AppsDataBindingAdapter;
 import com.android.lib.base.listener.ViewListener;
 import com.android.lib.bean.AppViewHolder;
@@ -11,7 +12,6 @@ import com.android.lib.util.NullUtil;
 import com.android.lib.util.StringUtil;
 import com.android.lib.util.ToastUtil;
 import com.siweisoft.heavycenter.BR;
-import com.siweisoft.heavycenter.GlideApp;
 import com.siweisoft.heavycenter.R;
 import com.siweisoft.heavycenter.base.AppUIOpe;
 import com.siweisoft.heavycenter.data.netd.NetValue;
